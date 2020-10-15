@@ -142,3 +142,22 @@
 .description-block-link:hover .link {
     @apply text-theme-primary-700 underline;
 }
+
+/** Link Collection **/
+.link-collection > div:not(:last-child) {
+    @apply border-b border-theme-secondary-200;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+    .link-collection > div:nth-child(2n + 1):nth-last-child(-n + 2),
+    .link-collection > div:nth-child(2n + 1):nth-last-child(-n + 2) ~ div {
+        @apply border-b-0;
+    }
+}
+
+@screen lg {
+    .link-collection > div:nth-child(3n + 1):nth-last-child(-n + 3),
+    .link-collection > div:nth-child(3n + 1):nth-last-child(-n + 3) ~ div {
+        @apply border-b-0;
+    }
+}
