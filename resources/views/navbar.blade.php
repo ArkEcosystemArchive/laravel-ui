@@ -1,7 +1,7 @@
 <div x-data="{ open: false, openDropdown: null, selectedChild: null }">
     <div x-show="openDropdown !== null || open" class="fixed inset-0 z-30 overflow-y-auto opacity-75 bg-theme-secondary-900" x-cloak @click="openDropdown = null; open = false;"></div>
 
-    <nav class="relative z-30 bg-white shadow-header-smooth">
+    <nav class="relative z-30 bg-white shadow-header-smooth dark:bg-theme-secondary-900">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="relative flex justify-between h-20 md:h-24">
 
@@ -61,7 +61,7 @@
                                     </a>
                                 @endif
                             @endforeach
-                            <div class="hidden h-6 ml-6 border-r border-theme-secondary-400 md:block"></div>
+                            <div class="hidden h-6 ml-6 border-r border-theme-secondary-100 dark:border-theme-secondary-800 md:block"></div>
                         </div>
                     </div>
 
