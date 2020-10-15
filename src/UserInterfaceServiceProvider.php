@@ -159,6 +159,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::toast', 'ark-toast');
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
+        Blade::component('ark::link-collection', 'ark-link-collection');
     }
 
     /**
