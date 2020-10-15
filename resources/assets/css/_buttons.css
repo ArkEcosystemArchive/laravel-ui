@@ -1,0 +1,79 @@
+.button-generic {
+    @apply font-semibold px-4 py-2 rounded text-center transition-default;
+}
+
+.button-primary {
+    @apply button-generic bg-theme-primary-600 text-white;
+}
+
+.button-primary:hover {
+    @apply bg-theme-primary-700 shadow-button-primary;
+}
+
+.button-primary:disabled,
+.button-secondary:disabled,
+.button-cancel:disabled,
+.button-icon:disabled,
+.button-icon-rounded:disabled,
+.button-disabled,
+a.disabled {
+    @apply bg-theme-secondary-200 text-theme-secondary-400 cursor-not-allowed shadow-none pointer-events-none;
+}
+
+.button-secondary {
+    @apply button-generic bg-theme-primary-100 text-theme-primary-500;
+}
+
+.button-cancel {
+    @apply button-generic bg-theme-danger-100 text-theme-danger-400;
+}
+
+.button-icon {
+    @apply button-secondary;
+}
+
+.button-icon-primary,
+.button-icon {
+    @apply p-0 flex items-center justify-center;
+}
+
+.button-icon-primary {
+    @apply button-primary;
+}
+
+.button-icon-rounded {
+    @apply button-icon rounded-xl;
+}
+
+.button-icon:hover,
+.button-secondary:hover,
+.button-icon-rounded:hover {
+    @apply bg-theme-primary-700 text-white shadow-button-secondary;
+}
+
+.button-icon-primary:hover {
+    @apply bg-theme-primary-700 shadow-button-primary;
+}
+
+.button-cancel:hover {
+    @apply bg-theme-danger-400 text-white;
+}
+
+a.button-generic,
+a.button-primary,
+a.button-secondary {
+    @apply inline-block;
+}
+
+.button-pagination-page-indicator {
+    @apply font-semibold px-2 py-2 text-center transition-default bg-theme-primary-100 text-theme-primary-500;
+}
+
+.button-pagination-page-indicator--selected {
+    @apply button-pagination-page-indicator bg-theme-primary-200;
+}
+
+.button-pagination-page-indicator:hover:not([disabled]) {
+    @apply bg-theme-primary-700 text-white rounded;
+    transform: scale(1.2);
+}

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "prettier": "^2.0.2"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
+  }
+}

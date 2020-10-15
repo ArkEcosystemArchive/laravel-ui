@@ -1,0 +1,184 @@
+.alert-wrapper {
+    @apply flex flex-col border rounded-lg border-theme-secondary-300 bg-theme-secondary-100 p-6;
+}
+
+.alert-icon-wrapper {
+    @apply flex items-center justify-center pb-4 rounded-t-lg border-b-2;
+}
+
+.alert-content-wrapper {
+    @apply flex flex-col justify-center text-theme-secondary-900 pt-4 w-full rounded-b-lg;
+}
+
+@screen sm {
+    .alert-wrapper {
+        @apply flex-row;
+    }
+
+    .alert-icon-wrapper {
+        @apply rounded-t-none rounded-l-lg pb-0 pr-4 border-r-2 border-b-0;
+    }
+
+    .alert-content-wrapper {
+        @apply rounded-b-none rounded-r-lg pt-0 pl-4;
+    }
+}
+
+.alert-title {
+    @apply text-xl font-semibold mb-1;
+}
+
+.alert-info-icon {
+    @apply text-theme-info-600 border-theme-info-600;
+}
+
+.alert-info-title {
+    @apply text-theme-info-600 alert-title;
+}
+
+.alert-info a {
+    @apply text-theme-info-600;
+}
+
+.alert-info a:hover {
+    @apply text-theme-info-700;
+}
+
+.alert-success-icon {
+    @apply text-theme-success-600 border-theme-success-600;
+}
+
+.alert-success-title {
+    @apply text-theme-success-600 alert-title;
+}
+
+.alert-success a {
+    @apply text-theme-success-600;
+}
+
+.alert-success a:hover {
+    @apply text-theme-success-700;
+}
+
+.alert-warning-icon {
+    @apply text-theme-warning-600 border-theme-warning-600;
+}
+
+.alert-warning-title {
+    @apply text-theme-warning-600 alert-title;
+}
+
+.alert-warning a {
+    @apply text-theme-warning-600;
+}
+
+.alert-warning a:hover {
+    @apply text-theme-warning-600;
+}
+
+.alert-error-icon,
+.alert-danger-icon {
+    @apply text-theme-danger-400 border-theme-danger-400;
+}
+
+.alert-error-title,
+.alert-danger-title {
+    @apply text-theme-danger-400 alert-title;
+}
+
+.alert-error a,
+.alert-danger a {
+    @apply text-theme-danger-500;
+}
+
+.alert-error a:hover,
+.alert-danger a:hover {
+    @apply text-theme-danger-700;
+}
+
+.alert-hint-icon {
+    @apply text-theme-hint-500 border-theme-hint-500;
+}
+
+.alert-hint-title {
+    @apply text-theme-hint-500 alert-title;
+}
+
+.alert-hint a {
+    @apply text-theme-hint-500;
+}
+
+.alert-hint a:hover {
+    @apply text-theme-hint-700;
+}
+
+.alert-info a,
+.alert-success a,
+.alert-warning a,
+.alert-error a,
+.alert-danger a,
+.alert-hint a  {
+    @apply font-semibold no-underline transition-default;
+}
+
+.alert-info a:hover,
+.alert-success a:hover,
+.alert-warning a:hover,
+.alert-error a:hover,
+.alert-danger a:hover,
+.alert-hint a:hover {
+    @apply underline;
+}
+
+/** Larger sized alerts **/
+.alert-icon-large {
+    @apply px-8 py-6;
+}
+
+.alert-content-large {
+    @apply px-8 py-6;
+}
+
+/** Simple alerts **/
+.alert-simple {
+    @apply text-sm select-none p-4 rounded;
+}
+
+.alert-simple-info {
+    @apply bg-theme-info-100 text-theme-info-500 alert-simple;
+}
+
+.alert-simple-success {
+    @apply bg-theme-success-200 text-theme-success-500 alert-simple;
+}
+
+.alert-simple-warning {
+    @apply bg-theme-warning-100 text-theme-warning-900 alert-simple;
+}
+
+.alert-simple-error,
+.alert-simple-danger {
+    @apply bg-theme-danger-100 text-theme-danger-500 alert-simple;
+}
+
+.alert-simple-hint {
+    @apply bg-theme-secondary-100 text-theme-secondary-500 alert-simple;
+}
+
+.alert-simple-info a,
+.alert-simple-success a,
+.alert-simple-warning a,
+.alert-simple-error a,
+.alert-simple-danger a,
+.alert-simple-hint a  {
+    @apply font-semibold transition-default;
+}
+
+.alert-simple-info a:hover,
+.alert-simple-success a:hover,
+.alert-simple-warning a:hover,
+.alert-simple-error a:hover,
+.alert-simple-danger a:hover,
+.alert-simple-hint a:hover {
+    @apply underline;
+}

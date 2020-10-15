@@ -1,0 +1,39 @@
+.swiper-container {
+    @apply w-full h-full mx-auto;
+}
+
+.swiper-container .swiper-wrapper {
+    margin-bottom: 20px;
+}
+
+.swiper-container .swiper-pagination {
+    bottom: 0;
+}
+
+@screen xl {
+    .swiper-container.slider-multirow > .swiper-wrapper {
+        @apply flex-wrap;
+    }
+}
+
+.swiper-container > .swiper-pagination {
+    @apply relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    @apply pb-12;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 1.75rem;
+}
+
+div.swipwer-button-prev,
+div.swiper-button-next {
+    @apply text-theme-primary-500;
+}
+span.swiper-pagination-bullet {
+    @apply bg-theme-primary-500;
+}
