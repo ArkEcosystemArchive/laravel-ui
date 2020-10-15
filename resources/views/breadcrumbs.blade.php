@@ -1,4 +1,4 @@
-<div class="h-16 w-full flex justify-center {{ $wrapperClass ?? 'bg-theme-secondary-100' }}">
+<div class="h-16 w-full flex justify-center {{ $wrapperClass ?? 'bg-theme-secondary-100 dark:bg-black' }}">
     <div class="w-full h-full flex items-center justify-start text-sm text-theme-secondary-500 leading-none {{ $innerClass ?? 'px-4 sm:px-8' }}">
         @foreach ($crumbs as $crumb)
             @if(isset($crumb['route']))
