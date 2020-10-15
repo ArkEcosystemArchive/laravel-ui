@@ -15,7 +15,7 @@
                     </a>
                 </span>
             @else
-                <span class="font-semibold truncate @if($loop->last) text-theme-secondary-700 @endif">{{ $crumb['label'] }}</span>
+                <span class="font-semibold truncate leading-normal @if($loop->last) text-theme-secondary-700 @endif">{{ $crumb['label'] }}</span>
             @endif
 
             @if(!$loop->last)
