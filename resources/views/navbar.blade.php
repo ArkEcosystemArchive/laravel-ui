@@ -61,7 +61,7 @@
                                     </a>
                                 @endif
                             @endforeach
-                            <div class="hidden h-6 ml-6 border-r border-theme-secondary-100 dark:dark:border-theme-secondary-800 md:block"></div>
+                            <div class="hidden h-6 ml-6 border-r border-theme-secondary-100 dark:border-theme-secondary-800 md:block"></div>
                         </div>
                     </div>
 
