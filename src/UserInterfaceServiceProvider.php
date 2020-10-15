@@ -36,11 +36,23 @@ class UserInterfaceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerLoaders();
+
         $this->registerPublishers();
 
         $this->registerBladeComponents();
 
         $this->registerLivewireComponents();
+    }
+
+    /**
+     * Register the loaders.
+     *
+     * @return void
+     */
+    public function registerLoaders(): void
+    {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ui');
     }
 
     /**
