@@ -1,0 +1,48 @@
+.table-basic thead th {
+    @apply px-6 py-3 border-b border-theme-secondary-200 bg-theme-secondary-100 text-left text-sm leading-4 font-medium tracking-wider;
+}
+
+.table-basic tbody td {
+    @apply px-6 py-4 whitespace-no-wrap leading-5;
+}
+
+.table-basic tbody tr {
+    @apply border-b border-dashed border-theme-secondary-400 transition-default relative;
+}
+
+.table-basic tbody tr:last-child {
+    @apply border-0;
+}
+
+.table-basic tbody tr:hover {
+    @apply rounded-lg shadow-xl border-transparent;
+}
+
+/* MarketSquare Generic Table */
+.table-generic {
+    @apply w-full text-left;
+}
+
+.table-generic thead {
+    @apply text-sm text-theme-secondary-500;
+}
+
+.table-generic thead th {
+    @apply px-3 py-3 font-semibold;
+}
+
+.table-generic tbody td {
+    @apply px-3 py-4 leading-5;
+}
+
+.table-generic tbody tr {
+    @apply border-b border-dashed border-theme-secondary-300;
+}
+
+.table-generic tbody tr:hover {
+    @apply bg-theme-secondary-100;
+}
+
+.table-generic tbody tr:last-child {
+    @apply border-0;
+}
