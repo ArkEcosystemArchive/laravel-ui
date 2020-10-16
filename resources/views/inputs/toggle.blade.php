@@ -36,7 +36,7 @@
         name="{{ $name }}"
         class="hidden"
         wire:model="{{ $model ?? $name }}"
-        @if($alpineClick ?? false) @click="{{ $alpineClick }}" @endif
+        @if($alpineClick ?? false) x-on:click="{{ $alpineClick }}" @endif
         @if($default ?? false) checked @endif
     />
 </div>
