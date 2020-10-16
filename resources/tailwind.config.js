@@ -16,6 +16,7 @@ module.exports = {
                 code: ["FiraMono"],
             },
             maxWidth: {
+                "7xl": "80rem",
                 "8xl": "85rem",
                 "1/2": "50%",
                 "2/3": "66%",
