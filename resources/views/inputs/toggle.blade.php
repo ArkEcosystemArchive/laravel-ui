@@ -2,15 +2,17 @@
     x-data="{ value: {{ $default ?? 'false' }}, toggle() { this.value = !this.value; this.$refs['checkbox-livewire'].click(); }, focused: false }"
     class="flex items-center"
 >
-    <label for="{{ $name }}" class="input-label--toggle {{ $labelClass ?? '' }}">
-        {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+    @unless($hideLabel ?? false)
+        <label for="{{ $name }}" class="input-label--toggle {{ $labelClass ?? '' }}">
+            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
 
-        @if($description ?? false)
-            <div class="font-normal text-theme-secondary-500">
-                {{ $description }}
-            </div>
-        @endif
-    </label>
+            @if($description ?? false)
+                <div class="font-normal text-theme-secondary-500">
+                    {{ $description }}
+                </div>
+            @endif
+        </label>
+    @endunless
 
     <span
         @focus="focused = true"
@@ -34,6 +36,7 @@
         name="{{ $name }}"
         class="hidden"
         wire:model="{{ $model ?? $name }}"
+        @if($alpineClick ?? false) @click="{{ $alpineClick }}" @endif
         @if($default ?? false) checked @endif
     />
 </div>
