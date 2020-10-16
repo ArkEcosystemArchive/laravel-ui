@@ -118,9 +118,7 @@
                                 @slot('button')
                                     <span class="relative inline-block avatar-wrapper">
                                         @if($identifier ?? false)
-                                            <div x-data="{ profilePhoto: '' }" x-init="profilePhoto = createAvatar('{{ $identifier }}')" class="w-12 h-12 overflow-hidden rounded-lg md:h-16 md:w-16 md:rounded-xl">
-                                                <div x-html="profilePhoto" class="object-cover w-full h-full"></div>
-                                            </div>
+                                            <x-ark-avatar :identifier="$identifier" />
                                         @else
                                             <div class="w-12 h-12 overflow-hidden rounded-lg md:h-16 md:w-16 md:rounded-xl">
                                                 <img class="object-cover w-full h-full" src="{{ $profilePhoto }}" alt="Profile Avatar" />
