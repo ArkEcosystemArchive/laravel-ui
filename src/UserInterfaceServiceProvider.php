@@ -121,6 +121,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::accordion', 'ark-accordion');
         Blade::component('ark::alert', 'ark-alert');
         Blade::component('ark::alert-simple', 'ark-alert-simple');
+        Blade::component('ark::avatar', 'ark-avatar');
         Blade::component('ark::breadcrumbs', 'ark-breadcrumbs');
         Blade::component('ark::clipboard', 'ark-clipboard');
         Blade::component('ark::code', 'ark-code');

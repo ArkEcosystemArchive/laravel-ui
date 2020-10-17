@@ -37,7 +37,7 @@ Since this package relies on a few 3rd party packages, you will need to have the
 
 **Protip 2**: in order to lazy-load icons, you will need to publish them by using their tag, e.g. `--tag=\"icons\"`
 
-### Navbar
+### Navbar / Avatar Component
 
 The navigation bar makes use of [picasso](https://github.com/vechain/picasso) to generate a default avatar (in line with the Desktop Wallet). You will need to set this up in your project as follows:
 
@@ -50,6 +50,8 @@ yarn add @vechain/picasso
 2. Add the following snippet to your `app.js` file:
 
 ```js
+import { picasso } from '@vechain/picasso';
+
 // Note: package sets width and height of the svg to 100, which we don't need
 window.createAvatar = (seed) => picasso(seed).replace('width="100" height="100"', '');
 ```
