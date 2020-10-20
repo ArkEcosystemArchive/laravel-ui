@@ -5,15 +5,9 @@
 .button-primary {
     @apply button-generic bg-theme-primary-600 text-white;
 }
-.theme-dark .button-secondary {
-    @apply bg-theme-secondary-800 text-theme-secondary-200;
-}
 
 .button-primary:hover {
     @apply bg-theme-primary-700 shadow-button-primary;
-}
-.theme-dark .button-primary:hover {
-    @apply bg-theme-secondary-700 text-theme-secondary-200;
 }
 
 .button-primary:disabled,
