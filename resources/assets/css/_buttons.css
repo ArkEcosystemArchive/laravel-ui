@@ -44,11 +44,21 @@ a.disabled {
 .button-icon-rounded {
     @apply button-icon rounded-xl;
 }
+.theme-dark .button-icon,
+.theme-dark .button-icon-rounded,
+.theme-dark .button-secondary {
+    @apply bg-theme-secondary-800 text-theme-secondary-200;
+}
 
 .button-icon:hover,
 .button-secondary:hover,
 .button-icon-rounded:hover {
     @apply bg-theme-primary-700 text-white shadow-button-secondary;
+}
+.theme-dark .button-icon:hover,
+.theme-dark .button-icon-rounded:hover,
+.theme-dark .button-secondary:hover {
+    @apply bg-theme-secondary-700 text-theme-secondary-200;
 }
 
 .button-icon-primary:hover {

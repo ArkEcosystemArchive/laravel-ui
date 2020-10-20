@@ -33,6 +33,10 @@
     @apply border-0;
 }
 
+.theme-dark .table-container {
+    @apply text-theme-secondary-500;
+}
+
 /* Table Scrollbar */
 .table-container .table-wrapper {
     scrollbar-color: #e5f0f8 #bad6f0;
