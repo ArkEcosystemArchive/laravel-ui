@@ -233,6 +233,38 @@ There are also default error pages you can use for your Laravel project
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 
+### Livewire Pagination Scroll
+
+1. Add the following to `app.js` file:
+
+```js
+import '../vendor/ark/page-scroll';
+```
+
+2. Use the `HasPagination` trait on Livewire Components:
+
+```php
+use ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasPagination;
+
+class Articles {
+    use HasPagination;
+}
+```
+
+3. Add event trigger at the bottom of the component template:
+
+```html
+<div>
+    ...
+
+    <x-general.pagination :results="$articles" class="mt-8" />
+
+    <script>
+        window.addEventListener('livewire:load', () => window.livewire.on('pageChanged', () => scrollToQuery('#article-list')));
+    </script>
+</div>
+```
+
 ### Footer
 
 Add the following snippet to your `urls.php` lang file:
