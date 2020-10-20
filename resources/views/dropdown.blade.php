@@ -27,7 +27,7 @@
         x-transition:leave-end="transform opacity-0 scale-95"
         class="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg z-10 {{ $dropdownClasses ?? 'w-40' }}"
     >
-        <div class="bg-white dark:bg-theme-secondary-800 dark:text-theme-secondary-200 rounded-md shadow-xs" x-cloak>
+        <div class="bg-white rounded-md shadow-xs dark:bg-theme-secondary-800 dark:text-theme-secondary-200" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="dropdownOpen = !dropdownOpen" @endif>
                 {{ $slot }}
             </div>
