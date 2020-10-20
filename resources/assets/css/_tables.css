@@ -11,6 +11,12 @@
     @apply text-left border-b border-theme-secondary-300;
 }
 
+.theme-dark .table-container table tbody tr,
+.theme-dark .table-container table thead th:not(:last-child)::after,
+.theme-dark .table-container table thead tr {
+    @apply border-theme-secondary-800;
+}
+
 .table-container table thead th {
     @apply relative px-3 py-3;
 }
