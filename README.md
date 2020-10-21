@@ -102,6 +102,34 @@ window.initClipboard = () => {
 }
 ```
 
+### Tooltips
+
+1. Install `tippy.js`
+
+```bash
+yarn add tippy.js
+```
+
+2. Publish the js assets if you haven't yet
+
+```bash
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\ServiceProvider" --tag="js"
+```
+
+3. Add to webpack mix
+
+```js
+.js('resources/js/vendor/ark/tippy.js', 'public/js')
+```
+
+4. Add tippy to any pages that need it
+
+```blade
+@push('scripts')
+    <script src="{{ mix('js/tippy.js')}}" defer></script>
+@endpush
+```
+
 ### Slider
 
 1. Install `swiper`
