@@ -6,19 +6,7 @@ h4 {
 }
 
 h1 {
-    @apply font-extrabold text-4xl mb-2 leading-snug;
-}
-
-h2 {
-    @apply text-3xl mb-1;
-}
-
-h3 {
-    @apply text-2xl mb-1;
-}
-
-h4 {
-    @apply text-lg mb-1;
+    @apply font-extrabold;
 }
 
 .theme-dark h1,
@@ -29,20 +17,15 @@ h4 {
 }
 
 /** Headings without H **/
-.header-1 {
-    @apply text-4xl mb-2 font-extrabold text-theme-secondary-900 leading-snug;
-}
-
-.header-2 {
-    @apply text-2xl mb-1 font-bold text-theme-secondary-900;
-}
-
-.header-3 {
-    @apply text-xl mb-1 font-bold text-theme-secondary-900;
-}
-
+.header-1,
+.header-2,
+.header-3,
 .header-4 {
-    @apply text-lg mb-1 font-bold text-theme-secondary-900;
+    @apply font-bold text-theme-secondary-900;
+}
+
+.header-1 {
+    @apply font-extrabold text-theme-secondary-900;
 }
 
 .theme-dark header-1,
@@ -50,6 +33,27 @@ h4 {
 .theme-dark header-3,
 .theme-dark header-4 {
     @apply text-theme-secondary-200;
+}
+
+/* Heading consistency */
+h1,
+.header-1 {
+    @apply text-4xl mb-2 leading-snug;
+}
+
+h2,
+.header-2 {
+    @apply text-3xl mb-1;
+}
+
+h3,
+.header-3 {
+    @apply text-2xl mb-1;
+}
+
+h4,
+.header-4 {
+    @apply text-lg mb-1;
 }
 
 /* Header Responsiveness */
