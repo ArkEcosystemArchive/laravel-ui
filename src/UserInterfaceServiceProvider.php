@@ -36,6 +36,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        UI::bootErrorMessages();
+
         $this->registerLoaders();
 
         $this->registerPublishers();
