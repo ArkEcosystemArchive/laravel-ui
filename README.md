@@ -41,22 +41,33 @@ Since this package relies on a few 3rd party packages, you will need to have the
 
 The navigation bar makes use of [picasso](https://github.com/vechain/picasso) to generate a default avatar (in line with the Desktop Wallet). You will need to set this up in your project as follows:
 
-1. Install the package
+1. Install dependencies
 
 ```bash
-yarn add @vechain/picasso
+yarn add mersenne-twister ts-loader typescript
 ```
 
-2. Add the following snippet to your `app.js` file:
+2. Add the following snippet to your layout:
+
+```blade
+<script src="{{ mix('js/picasso.js') }}" defer></script>
+```
+
+or to individual pages:
+
+```blade
+@push('scripts')
+    <script src="{{ mix('js/picasso.js') }}" defer></script>
+@endpush
+```
+
+3. Add to webpack mix
 
 ```js
-import { picasso } from '@vechain/picasso';
-
-// Note: package sets width and height of the svg to 100, which we don't need
-window.createAvatar = (seed) => picasso(seed).replace('width="100" height="100"', '');
+.ts('resources/js/vendor/ark/picasso.ts', 'public/js')
 ```
 
-3. Pass an `$identifier` value to the navbar component be used as seed for the generation of the image
+4. Pass an `$identifier` value to the navbar component be used as seed for the generation of the image
 
 ### Clipboard
 
