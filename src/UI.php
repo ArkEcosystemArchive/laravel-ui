@@ -4,15 +4,14 @@ namespace ARKEcosystem\UserInterface;
 
 class UI
 {
-    private static array $errorMessages = [
-        401 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        403 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        404 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        419 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        429 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        500 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-        503 => 'Something went wrong, please try again later or get in touch if the issue persists!',
-    ];
+    private static array $errorMessages = [];
+
+    public static function bootErrorMessages(): void
+    {
+        foreach ([401, 403, 404, 419, 429, 500, 503] as $code) {
+            static::useErrorMessage($code, trans('ui::errors.'.$code));
+        }
+    }
 
     public static function getErrorMessage(int $code): string
     {
