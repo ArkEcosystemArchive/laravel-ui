@@ -171,6 +171,11 @@ body {
     @apply block;
 }
 
+/* Picasso SVG */
+.picasso circle{
+    mix-blend-mode:soft-light;
+}
+
 /** Alpine cloaking **/
 [x-cloak] {
     display: none;
