@@ -172,8 +172,8 @@ body {
 }
 
 /* Picasso SVG */
-.picasso circle{
-    mix-blend-mode:soft-light;
+.picasso circle {
+    mix-blend-mode: soft-light;
 }
 
 /** Alpine cloaking **/
