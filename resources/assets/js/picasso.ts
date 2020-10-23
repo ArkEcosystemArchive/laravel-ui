@@ -50,7 +50,7 @@ export function picasso(content: string, colors: string[] = defaultColors) {
         return colors.splice(idx, 1)[0]
     }
 
-    const bgStr = `<rect fill="${genColor()}" width="100" height="100"/>`
+    const bgStr = `<rect fill="${genColor()}" />`
     let shapesStr = ''
     const layers = 3
     const rs = [35, 40, 45, 50, 55, 60]
