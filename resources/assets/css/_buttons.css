@@ -79,11 +79,32 @@ a.button-secondary {
     @apply font-semibold px-2 py-2 text-center transition-default bg-theme-primary-100 text-theme-primary-500;
 }
 
+.theme-dark .button-pagination-page-indicator {
+    @apply bg-theme-secondary-800 text-theme-secondary-200;
+}
+
 .button-pagination-page-indicator--selected {
     @apply button-pagination-page-indicator bg-theme-primary-200;
+}
+
+.theme-dark .button-pagination-page-indicator--selected {
+    @apply button-pagination-page-indicator bg-theme-secondary-900 text-theme-secondary-200;
 }
 
 .button-pagination-page-indicator:hover:not([disabled]) {
     @apply bg-theme-primary-700 text-white rounded;
     transform: scale(1.2);
+}
+
+.theme-dark .button-pagination-page-indicator:hover:not([disabled]) {
+    @apply bg-theme-secondary-700 rounded;
+    transform: scale(1.2);
+}
+
+.theme-dark .button-primary:hover,
+.theme-dark .button-secondary:hover,
+.theme-dark .button-icon:hover,
+.theme-dark .button-icon-rounded:hover,
+.theme-dark .button-icon-primary:hover {
+    @apply shadow-none;
 }
