@@ -1,13 +1,15 @@
+@php($dropdownProperty = $dropdownProperty ?? 'dropdownOpen')
+
 <div
-    @if ($initAlpine ?? true) x-data="{ dropdownOpen: false }" @endif
-    @keydown.escape="dropdownOpen = false"
-    @click.away="dropdownOpen = false"
+    @if ($initAlpine ?? true) x-data="{ {{ $dropdownProperty }}: false }" @endif
+    @keydown.escape="{{ $dropdownProperty }} = false"
+    @click.away="{{ $dropdownProperty }} = false"
     class="{{ $wrapperClass ?? '' ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
 >
     <div>
         <button
-            @click="dropdownOpen = !dropdownOpen"
-            :class="{ 'text-theme-primary-500' : dropdownOpen }"
+            @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
+            :class="{ 'text-theme-primary-500' : {{ $dropdownProperty }} }"
             class="flex text-theme-secondary-400 items-center hover:text-theme-primary-500 focus:outline-none p-3 {{ $buttonClass ?? '' ? $buttonClass : '' }}"
         >
             @if($button ?? false)
@@ -18,7 +20,7 @@
         </button>
     </div>
     <div
-        x-show="dropdownOpen"
+        x-show="{{ $dropdownProperty }}"
         x-transition:enter="transition ease-out duration-100"
         x-transition:enter-start="transform opacity-0 scale-95"
         x-transition:enter-end="transform opacity-100 scale-100"
@@ -28,7 +30,7 @@
         class="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg z-10 {{ $dropdownClasses ?? 'w-40' }}"
     >
         <div class="bg-white rounded-md shadow-xs dark:bg-theme-secondary-800 dark:text-theme-secondary-200" x-cloak>
-            <div class="py-1" @if($closeOnClick ?? true) @click="dropdownOpen = !dropdownOpen" @endif>
+            <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
                 {{ $slot }}
             </div>
         </div>
