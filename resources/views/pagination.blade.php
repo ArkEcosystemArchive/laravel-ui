@@ -14,7 +14,7 @@
             wire:click="gotoPage({{ $paginator->currentPage() - 1 }})"
             class="items-center button-secondary pagination-button-mobile" @if($paginator->onFirstPage()) disabled @endif
         >
-            <div class="flex items-center">@svg('chevron-left', 'h-3 w-3')<span class="hidden lg:flex lg:ml-2">Previous</span></div>
+            <div class="flex items-center"><span class="hidden lg:flex lg:ml-2">Previous</span></div>
         </button>
 
         <div class="hidden px-2 rounded bg-theme-primary-100 dark:bg-theme-secondary-800 md:flex flex-inline">
@@ -46,7 +46,7 @@
             wire:click="gotoPage({{ $paginator->currentPage() + 1 }})"
             class="items-center button-secondary pagination-button-mobile" @if($paginator->currentPage() === $paginator->lastPage()) disabled @endif
         >
-            <div class="flex items-center"><span class="hidden lg:flex lg:mr-2">Next</span>@svg('chevron-right', 'h-3 w-3')</div>
+            <div class="flex items-center"><span class="hidden lg:flex lg:mr-2">Next</span></div>
         </button>
         <button
             wire:click="gotoPage({{ $paginator->lastPage() }})"

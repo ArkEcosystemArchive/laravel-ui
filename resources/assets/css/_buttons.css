@@ -88,7 +88,7 @@ a.button-secondary {
 }
 
 .theme-dark .button-pagination-page-indicator--selected {
-    @apply button-pagination-page-indicator bg-theme-secondary-900 text-theme-secondary-200;
+    @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
 }
 
 .button-pagination-page-indicator:hover:not([disabled]) {
@@ -97,7 +97,7 @@ a.button-secondary {
 }
 
 .theme-dark .button-pagination-page-indicator:hover:not([disabled]) {
-    @apply bg-theme-secondary-700 rounded;
+    @apply bg-theme-primary-600 rounded;
     transform: scale(1.2);
 }
 
