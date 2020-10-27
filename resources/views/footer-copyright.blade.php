@@ -1,4 +1,4 @@
-<div class="py-6 font-semibold text-theme-secondary-700 flex flex-col space-y-2 md:block md:space-y-0">
+<div class="flex flex-col py-6 space-y-2 font-semibold text-theme-secondary-700 md:block md:space-y-0">
     <span class="whitespace-no-wrap">{{ date('Y') }} &copy; ARK.io | All rights reserved</span>
     <span class="hidden md:inline"> | </span>
     <span class="whitespace-no-wrap">
