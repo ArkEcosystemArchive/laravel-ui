@@ -1,5 +1,4 @@
-<div class="flex flex-col">
-    <x-ark-footer-social />
-    <hr class="w-full mt-6 border-t border-theme-secondary-800 bg-theme-secondary-800" />
+<div class="flex flex-col {{ $class ?? '' }}">
     <x-ark-footer-copyright />
+    <x-ark-footer-social />
 </div>
