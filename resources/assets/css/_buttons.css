@@ -20,6 +20,16 @@ a.disabled {
     @apply bg-theme-secondary-200 text-theme-secondary-400 cursor-not-allowed shadow-none pointer-events-none;
 }
 
+.theme-dark .button-primary:disabled,
+.theme-dark .button-secondary:disabled,
+.theme-dark .button-cancel:disabled,
+.theme-dark .button-icon:disabled,
+.theme-dark .button-icon-rounded:disabled,
+.theme-dark .button-disabled,
+.theme-dark a.disabled {
+    @apply bg-theme-secondary-800 text-theme-secondary-700;
+}
+
 .button-secondary {
     @apply button-generic bg-theme-primary-100 text-theme-primary-500;
 }
@@ -58,7 +68,7 @@ a.disabled {
 .theme-dark .button-icon:hover,
 .theme-dark .button-icon-rounded:hover,
 .theme-dark .button-secondary:hover {
-    @apply bg-theme-secondary-700 text-theme-secondary-200;
+    @apply bg-theme-primary-700 text-theme-secondary-200;
 }
 
 .button-icon-primary:hover {
@@ -88,7 +98,7 @@ a.button-secondary {
 }
 
 .theme-dark .button-pagination-page-indicator--selected {
-    @apply button-pagination-page-indicator bg-theme-secondary-900 text-theme-secondary-200;
+    @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
 }
 
 .button-pagination-page-indicator:hover:not([disabled]) {
@@ -97,8 +107,7 @@ a.button-secondary {
 }
 
 .theme-dark .button-pagination-page-indicator:hover:not([disabled]) {
-    @apply bg-theme-secondary-700 rounded;
-    transform: scale(1.2);
+    @apply bg-theme-primary-600;
 }
 
 .theme-dark .button-primary:hover,

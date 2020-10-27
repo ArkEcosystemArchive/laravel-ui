@@ -10,6 +10,9 @@
 .input-wrapper {
     @apply mt-2 relative rounded-md shadow-sm text-theme-secondary-900;
 }
+.theme-dark .input-wrapper {
+    @apply text-theme-secondary-200;
+}
 
 .input-tooltip {
     @apply ml-2 flex items-center justify-center text-white bg-theme-secondary-700 rounded-full w-4 h-4 text-sm;
@@ -82,10 +85,19 @@
 .input-label--error {
     @apply text-theme-danger-500;
 }
+.theme-dark .input-group:focus-within .input-label--error,
+.theme-dark .input-group:hover .input-label--error,
+.theme-dark .input-label--error {
+    @apply text-theme-danger-400;
+}
 
 .input-text-with-icon--error,
 .input-text--error {
     @apply pr-10 border-theme-danger-500;
+}
+.theme-dark .input-text-with-icon--error,
+.theme-dark .input-text--error {
+    @apply border-theme-danger-400;
 }
 
 .input-group:focus-within .input-text-with-icon--error,

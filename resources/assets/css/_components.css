@@ -6,6 +6,9 @@
 .dropdown-entry:hover {
     @apply text-theme-primary-600 bg-theme-primary-100;
 }
+.theme-dark .dropdown-entry:hover {
+    @apply bg-theme-primary-600 text-white;
+}
 
 /** Tabs **/
 .tabs-wrapper {
