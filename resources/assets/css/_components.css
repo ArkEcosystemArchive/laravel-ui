@@ -10,6 +10,13 @@
     @apply bg-theme-primary-600 text-white;
 }
 
+.dropdown-entry-selected {
+    @apply text-theme-danger-400 bg-theme-danger-100;
+}
+.theme-dark .dropdown-entry-selected {
+    @apply text-white bg-theme-danger-400;
+}
+
 /** Tabs **/
 .tabs-wrapper {
     @apply flex items-center bg-theme-secondary-100 text-theme-secondary-500 rounded-lg px-4 mt-3;
