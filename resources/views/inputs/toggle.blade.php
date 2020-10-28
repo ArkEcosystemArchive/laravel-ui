@@ -24,11 +24,14 @@
         @keydown.space.prevent="toggle()"
         :aria-checked="value.toString()"
     >
-        <span aria-hidden="true" class="absolute h-2 mx-auto transition-colors duration-200 ease-in-out rounded-full bg-theme-secondary-300 w-9"></span>
+        <span aria-hidden="true" class="input-toggle-slide"></span>
         <span
             aria-hidden="true"
-            :class="{ 'translate-x-5 bg-theme-primary-600 hover:shadow-outline': value, 'translate-x-0 bg-theme-secondary-300': !value }"
-            class="absolute left-0 inline-block w-5 h-5 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow"></span>
+            :class="{
+                'input-toggle-button-active': value,
+                'input-toggle-button-inactive': !value
+            }"
+            class="input-toggle-button"></span>
     </span>
     <input
         x-ref="checkbox-livewire"
