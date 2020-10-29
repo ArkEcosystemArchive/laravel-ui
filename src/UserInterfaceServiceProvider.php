@@ -36,8 +36,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        UI::bootErrorMessages();
-
         $this->registerLoaders();
 
         $this->registerPublishers();
@@ -45,6 +43,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         $this->registerBladeComponents();
 
         $this->registerLivewireComponents();
+
+        UI::bootErrorMessages();
     }
 
     /**
