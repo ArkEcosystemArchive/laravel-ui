@@ -22,7 +22,7 @@
                 @endif
 
                 @if ($title ?? false)
-                    <h1 class="{{ $titleClass ?? 'inline-block pb-2 font-bold' }}">
+                    <h1 class="{{ $titleClass ?? 'inline-block pb-2 font-bold dark:text-theme-secondary-200' }}">
                         {{ $title }}
                     </h1>
                 @endif
