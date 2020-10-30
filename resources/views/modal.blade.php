@@ -13,7 +13,7 @@
             <div class="p-6 sm:p-12">
                 @if(($wireClose ?? false) || ($alpineClose ?? false))
                     <button
-                        class="absolute top-0 right-0 w-10 h-10 mt-4 mr-4 rounded text-theme-secondary-700 bg-theme-secondary-100 transition-default hover:shadow-lg hover:bg-theme-secondary-300"
+                        class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                         @if($alpineClose ?? false) @click="{{ $alpineClose }}" @endif
                     >
