@@ -7,9 +7,9 @@
         class="clipboard @unless($noStyling ?? false) button-icon @endif {{ $class ?? 'h-10 w-12' }}"
         tooltip-content="{{ ($tooltipContent ?? '') ? $tooltipContent : trans('tooltips.copied') }}"
         @if($copyInput ?? false)
-            @click="copyFromInput('{{ $value }}')"
+            x-on:click="copyFromInput('{{ $value }}')"
         @else
-            @click="copy('{{ $value }}')"
+            x-on:click="copy('{{ $value }}')"
         @endif
     >
         @svg('copy', 'h-4 w-4')
