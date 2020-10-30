@@ -21,6 +21,9 @@
 .input-text {
     @apply form-input px-4 py-3 block w-full transition-default;
 }
+.theme-dark .input-text {
+    @apply bg-theme-secondary-900 border-theme-secondary-700;
+}
 
 .input-wrapper-with-icon {
     @apply mt-2 relative rounded overflow-hidden shadow-sm text-theme-secondary-900;
