@@ -102,6 +102,14 @@
     @apply hidden bg-theme-primary-100 rounded px-2;
 }
 
+.theme-dark .pagination-pages-mobile {
+    @apply bg-theme-secondary-800;
+}
+
+.theme-dark .pagination-pages {
+    @apply bg-theme-secondary-800;
+}
+
 @media screen and (min-width: 450px) {
     .pagination-wrapper {
         @apply block;
