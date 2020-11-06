@@ -4,6 +4,7 @@
     'dispatchEvent' => null,
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
+    'dropdownClass' => 'mt-1',
     'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
     'placeholder' => '',
     'grouped' => false,
@@ -161,7 +162,7 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute w-full mt-1 min-w-max-content"
+        class="absolute w-full min-w-max-content {{ $dropdownClass }}"
         style="display: none;"
     >
         <div
