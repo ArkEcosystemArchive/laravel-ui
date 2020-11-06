@@ -110,10 +110,12 @@
     <div
         x-show="open"
         @click.away="open = false"
-        x-description="Select popover, show/hide based on select state."
-        x-transition:leave="transition ease-in duration-100"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
+        x-transition:enter="transition ease-out duration-100"
+        x-transition:enter-start="transform opacity-0 scale-95"
+        x-transition:enter-end="transform opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-75"
+        x-transition:leave-start="transform opacity-100 scale-100"
+        x-transition:leave-end="transform opacity-0 scale-95"
         class="absolute w-full mt-1 min-w-max-content"
         style="display: none;"
     >
@@ -140,7 +142,8 @@
                     @mouseenter="selected = index"
                     @mouseleave="selected = null"
                     :class="{
-                        'bg-theme-danger-400 text-theme-secondary-200': value === optionValue || selected === index,
+                        'bg-theme-danger-400 text-theme-secondary-200': value === optionValue,
+                        'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === index,
                     }"
                     class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                     x-text="options[optionValue]"
