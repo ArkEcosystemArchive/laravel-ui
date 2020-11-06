@@ -6,6 +6,7 @@
     'wrapperClass' => 'w-full',
     'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
     'placeholder' => '',
+    'grouped' => false,
 ])
 
 <div
@@ -18,16 +19,36 @@
             @endisset
         },
         init: function() {
+            @isset($initialValue)
+                this.value = '{{ $initialValue }}';
+                this.text = '{{ $grouped
+                    ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
+                    : collect($options)->get($initialValue) }}';
+            @endif
+
             this.$nextTick(() => {
-                this.optionsCount = this.$refs.listbox.children.length;
+                @if($grouped)
+                this.optionsCount = Object.keys(this.options).map(groupName => {
+                    return Object.keys(this.options[groupName])
+                }).flat().length;
+                @else
+                this.optionsCount = Object.keys(this.options).length;
+                @endif
             });
         },
         optionsCount: null,
         open: false,
-        selected: 1,
-        value: @isset($initialValue) '{{ $initialValue }}' @else null @endif,
-        choose: function(value) {
+        selected: null,
+        selectedGroup: null,
+        value: null,
+        text: null,
+        choose: function(value, groupName = null) {
             this.value = value;
+
+            this.text = groupName !==null
+                ? this.options[groupName][value]
+                : this.options[value];
+
             this.open = false;
 
             const { input } = this.$refs;
@@ -42,20 +63,27 @@
         },
         onButtonClick: function() {
             const { listbox } = this.$refs;
+            @if($grouped)
+            const selectedIndex = this.getAllValues().indexOf(this.value);
+            @else
             const selectedIndex = Object.keys(this.options).indexOf(this.value);
+            @endif
             this.selected = selectedIndex >= 0 ? selectedIndex : 0;
             this.open = true;
             this.$nextTick(() => {
                 listbox.focus();
-                listbox.children[this.selected].scrollIntoView({
-                    block: 'nearest'
-                });
+                this.scrollToSelectedOption();
             })
         },
         onOptionSelect: function() {
+            @if($grouped)
+            const allValues = this.getAllValues();
+            this.choose(allValues[this.selected], this.selectedGroup)
+            @else
             if (null !== this.selected) {
                 this.choose(Object.keys(this.options)[this.selected])
             }
+            @endif
             this.open = false;
             this.$refs.button.focus();
         },
@@ -64,18 +92,35 @@
             this.$refs.button.focus();
         },
         onArrowUp: function() {
-            const { listbox } = this.$refs;
             this.selected = this.selected - 1 < 0 ? this.optionsCount - 1 : this.selected - 1;
-            listbox.children[this.selected].scrollIntoView({
+            this.scrollToSelectedOption();
+        },
+        onArrowDown: function() {
+            this.selected = this.selected + 1 > this.optionsCount - 1 ? 1 : this.selected + 1;
+            this.scrollToSelectedOption();
+        },
+        scrollToSelectedOption: function () {
+            const { listbox } = this.$refs;
+            const option = listbox.querySelectorAll('[data-option]')[this.selected]
+            @if($grouped)
+            this.selectedGroup  = option.dataset.group;
+            @endif
+            option.scrollIntoView({
                 block: 'nearest'
             });
         },
-        onArrowDown: function() {
-            const { listbox } = this.$refs;
-            this.selected = this.selected + 1 > this.optionsCount - 1 ? 1 : this.selected + 1;
-            listbox.children[this.selected].scrollIntoView({
-                block: 'nearest'
-            });
+        getAllValues: function() {
+            return Object.keys(this.options).map(groupName => {
+                return Object.keys(this.options[groupName])
+            }).flat();
+        },
+        getOptionIndex: function(groupIndex, optionIndex) {
+            let index = 0;
+            for (var i = 0; i < groupIndex; i++) {
+                const group = this.options[Object.keys(this.options)[i]]
+                index += Object.keys(group).length;
+            }
+            return index + optionIndex;
         },
     }"
     x-init="init()"
@@ -93,8 +138,8 @@
         aria-labelledby="listbox-label"
         class="relative pr-10 {{ $buttonClass }}"
     >
-        <span x-show="options[value]" x-text="options[value]" class="block truncate dark:text-theme-secondary-300"></span>
-        <span x-show="!options[value]" class="block truncate text-theme-secondary-500 dark:text-theme-secondary-700">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
+        <span x-show="text" x-text="text" class="block truncate dark:text-theme-secondary-300"></span>
+        <span x-show="!text" class="block truncate text-theme-secondary-500 dark:text-theme-secondary-700">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
 
         <span
             class="{{ $iconClass }} transition duration-150 transform pointer-events-none"
@@ -119,7 +164,7 @@
         class="absolute w-full mt-1 min-w-max-content"
         style="display: none;"
     >
-        <ul
+        <div
             @keydown.enter.stop.prevent="onOptionSelect()"
             @keydown.space.stop.prevent="onOptionSelect()"
             @keydown.escape="onEscape()"
@@ -131,8 +176,10 @@
             aria-labelledby="listbox-label"
             class="py-3 overflow-auto bg-white rounded-md shadow-xs outline-none dark:bg-theme-secondary-800 dark:text-theme-secondary-200 hover:outline-none max-h-80"
         >
+            @if(!$grouped)
             <template x-for="(optionValue, index) in Object.keys(options)" :key="optionValue">
-                <li
+                <div
+                    data-option
                     x-description="Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation."
                     x-state:on="Highlighted"
                     x-state:off="Not Highlighted"
@@ -147,8 +194,38 @@
                     }"
                     class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                     x-text="options[optionValue]"
-                ></li>
+                ></div>
             </template>
-        </ul>
+            @else
+            <template x-for="(groupName, index) in Object.keys(options)" :key="index">
+                <div>
+                    <span x-show="groupName" class="flex items-center w-full px-8 pt-8 text-sm font-bold leading-5 text-left text-theme-secondary-500" x-text="groupName"></span>
+
+                    <template x-for="(optionValue, index2) in Object.keys(options[groupName])" :key="`${index}-${index2}`">
+                        <div
+                            data-option
+                            :data-group="groupName"
+                            x-description="Select option, manage highlight styles based on mouseenter/mouseleave and keyboard navigation."
+                            x-state:on="Highlighted"
+                            x-state:off="Not Highlighted"
+                            :id="`listbox-option-${optionValue}`"
+                            role="option"
+                            @click="choose(optionValue, groupName)"
+                            @mouseenter="selected = getOptionIndex(index, index2); selectedGroup = groupName"
+                            @mouseleave="selected = null; selectedGroup = null"
+                            :class="{
+                                'bg-theme-danger-400 text-theme-secondary-200': value === optionValue,
+                                'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === getOptionIndex(index, index2) && value !== optionValue,
+                            }"
+                            class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                            x-text="options[groupName][optionValue]"
+                        ></div>
+                    </template>
+
+                    <hr x-show="index < Object.keys(options).length - 1" class="mx-8 mt-4 border-b border-dashed border-theme-secondary-300" />
+                </div>
+            </template>
+            @endif
+        </div>
     </div>
 </div>
