@@ -2,6 +2,7 @@
     'options',
     'initialValue' => null,
     'dispatchEvent' => null,
+    'setValueFromEvent' => null,
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
@@ -11,6 +12,9 @@
 ])
 
 <div
+    @if($setValueFromEvent)
+    {{ '@' . $setValueFromEvent }}.window="choose($event.detail)"
+    @endif
     class="relative {{ $wrapperClass }}"
     x-data="{
         options: {{ json_encode($options) }},
@@ -44,6 +48,10 @@
         value: null,
         text: null,
         choose: function(value, groupName = null) {
+            if (this.value === value) {
+                return;
+            }
+
             this.value = value;
 
             this.text = groupName !==null
