@@ -94,7 +94,7 @@
         class="relative pr-10 {{ $buttonClass }}"
     >
         <span x-show="options[value]" x-text="options[value]" class="block truncate dark:text-theme-secondary-300"></span>
-        <span x-show="!options[value]" class="block truncate dark:text-theme-secondary-700">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
+        <span x-show="!options[value]" class="block truncate text-theme-secondary-500 dark:text-theme-secondary-700">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
 
         <span
             class="{{ $iconClass }} transition duration-150 transform pointer-events-none"
@@ -143,7 +143,7 @@
                     @mouseleave="selected = null"
                     :class="{
                         'bg-theme-danger-400 text-theme-secondary-200': value === optionValue,
-                        'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === index,
+                        'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === index && value !== optionValue,
                     }"
                     class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                     x-text="options[optionValue]"
