@@ -2,8 +2,9 @@
     'options',
     'initialValue' => null,
     'dispatchEvent' => null,
-    'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default',
+    'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
+    'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
     'placeholder' => '',
 ])
 
@@ -92,11 +93,17 @@
         aria-labelledby="listbox-label"
         class="relative pr-10 {{ $buttonClass }}"
     >
-        <span x-show="options[value]" x-text="options[value]" class="block truncate"></span>
-        <span x-show="!options[value]" class="block truncate">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
+        <span x-show="options[value]" x-text="options[value]" class="block truncate dark:text-theme-secondary-300"></span>
+        <span x-show="!options[value]" class="block truncate dark:text-theme-secondary-700">@if(isset($placeholder) && $placeholder) {{ $placeholder }} @else &nbsp; @endif</span>
 
-        <span class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-            <x-icon name="chevron-down" size="xs" />
+        <span
+            class="{{ $iconClass }} transition duration-150 transform pointer-events-none"
+            :class="{ 'rotate-180': open }"
+        >
+            <x-icon
+                name="chevron-down"
+                size="xs"
+            />
         </span>
     </button>
 
@@ -133,10 +140,9 @@
                     @mouseenter="selected = index"
                     @mouseleave="selected = null"
                     :class="{
-                        'dropdown-entry-selected': value === optionValue,
-                        'bg-theme-primary-50': selected === index
+                        'bg-theme-danger-400 text-theme-secondary-200': value === optionValue || selected === index,
                     }"
-                    class="py-1 cursor-pointer dropdown-entry"
+                    class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                     x-text="options[optionValue]"
                 ></li>
             </template>
