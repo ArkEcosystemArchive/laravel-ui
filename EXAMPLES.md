@@ -167,6 +167,12 @@ You can also get an alert with more padding and large icon by specifying `large`
 <x-ark-clipboard :value="$this->user->password" />
 ```
 
+### Icon
+
+```php
+<x-icon name="chevron-down" size="xs" class="md:h-3 md:w-2" />
+```
+
 ### Notification Icon
 
 ```php
