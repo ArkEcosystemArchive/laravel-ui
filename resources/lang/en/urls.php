@@ -10,5 +10,6 @@ return [
     'reddit'   => 'https://reddit.ark.io/',
     'youtube'  => 'https://youtube.ark.io/',
     'github'   => 'https://github.com/ArkEcosystem',
+    'telegram' => 'https://t.me/arkannouncements',
 
 ];

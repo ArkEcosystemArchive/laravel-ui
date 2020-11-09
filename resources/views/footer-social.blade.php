@@ -7,4 +7,5 @@
     <x-ark-social-link :url="trans('ui::urls.reddit')" icon="brands.reddit" />
     <x-ark-social-link :url="trans('ui::urls.youtube')" icon="brands.youtube" />
     <x-ark-social-link :url="trans('ui::urls.github')" icon="brands.github" />
+    <x-ark-social-link :url="trans('ui::urls.telegram')" icon="brands.telegram" />
 </div>
