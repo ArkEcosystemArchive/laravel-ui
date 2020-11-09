@@ -154,7 +154,7 @@
             class="{{ $iconClass }} transition duration-150 transform pointer-events-none"
             :class="{ 'rotate-180': open }"
         >
-            <x-icon
+            <x-ark-icon
                 name="chevron-down"
                 size="xs"
             />
