@@ -1,4 +1,4 @@
-<div class="fixed inset-0 z-40 overflow-y-auto opacity-75 bg-theme-secondary-900"></div>
+<div class="fixed inset-0 z-40 overflow-y-auto opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
 <div
     class="fixed inset-0 z-50 flex overflow-y-auto"

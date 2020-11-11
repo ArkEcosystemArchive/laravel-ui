@@ -77,7 +77,7 @@
     @apply text-theme-primary-400;
 }
 
-/** Navbar **/
+/** Avatar **/
 .avatar-wrapper .avatar-circle {
     @apply bg-theme-primary-100;
 }
@@ -214,4 +214,23 @@
     .link-collection > div:nth-child(3n + 1):nth-last-child(-n + 3) ~ div {
         @apply border-b-0;
     }
+}
+
+/* Navbar */
+.navbar-mobile-link {
+    @apply flex items-center block font-semibold pl-8 py-3 w-full;
+}
+
+.navbar-mobile-link-current {
+    @apply text-theme-primary-600;
+}
+
+.navbar-mobile-link:not(.navbar-mobile-link-current) {
+    @apply text-theme-secondary-900;
+}
+.navbar-mobile-link:not(.navbar-mobile-link-current):hover {
+    @apply text-theme-primary-600;
+}
+.theme-dark .navbar-mobile-link:not(.navbar-mobile-link-current) {
+    @apply text-theme-secondary-200;
 }

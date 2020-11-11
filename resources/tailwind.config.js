@@ -9,6 +9,7 @@ module.exports = {
                 "button-secondary":
                     "2px 3px 10px 2px rgba(var(--theme-color-primary-rgb), 0.34)",
                 "header-smooth": " 0px 2px 10px 0px rgba(192, 200, 207, 0.22)",
+                "header-smooth-dark": " 0px 2px 10px 0px rgba(18, 18, 19, .6)",
                 none: "none",
             },
             fontFamily: {
