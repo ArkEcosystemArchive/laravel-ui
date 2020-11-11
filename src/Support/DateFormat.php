@@ -8,5 +8,7 @@ class DateFormat
 
     const TIME = 'd M Y H:i:s';
 
+    const TIME_SHORT = 'd M Y H:i';
+
     const TIME_PARENTHESES = 'd M Y (H:i:s)';
 }
