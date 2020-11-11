@@ -9,7 +9,7 @@
         @if(isset($style)) style="{{ $style }}" @endif
         @if(!($closeButtonOnly ?? false) && ($alpineClose ?? false)) @click.away="{{ $alpineClose ?? '' }}" @endif
     >
-        <div class="modal-content overflow-y-auto {{ $widthClass ?? 'max-w-2xl' }}" style="max-height: calc(100vh - 8rem)">
+        <div class="modal-content dropdown-scrolling {{ $widthClass ?? 'max-w-2xl' }}" style="max-height: calc(100vh - 8rem)">
             <div class="p-6 sm:p-12">
                 @if(($wireClose ?? false) || ($alpineClose ?? false))
                     <button
