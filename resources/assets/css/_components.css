@@ -218,11 +218,17 @@
 
 /* Navbar */
 .navbar-mobile-link {
-    @apply flex items-center block font-semibold pl-8 py-3 w-full;
+    @apply border-l-3 border-white flex items-center block font-semibold pl-8 py-3 w-full;
+}
+.theme-dark .navbar-mobile-link {
+    @apply border-theme-secondary-900;
 }
 
 .navbar-mobile-link-current {
-    @apply text-theme-primary-600;
+    @apply border-theme-primary-600 bg-theme-primary-100;
+}
+.theme-dark .navbar-mobile-link-current {
+    @apply bg-theme-secondary-800 text-theme-secondary-200 border-theme-primary-600;
 }
 
 .navbar-mobile-link:not(.navbar-mobile-link-current) {
