@@ -1,6 +1,6 @@
 /** Dropdowns **/
 .dropdown-entry {
-    @apply flex w-full items-center text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
+    @apply flex w-full items-center font-medium text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
 }
 
 .dropdown-entry:hover {
