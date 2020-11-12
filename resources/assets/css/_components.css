@@ -1,10 +1,10 @@
 /** Dropdowns **/
 .dropdown-entry {
-    @apply flex w-full items-center font-semibold text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
+    @apply flex w-full items-center text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
 }
 
 .dropdown-entry:hover {
-    @apply text-theme-primary-600 bg-theme-primary-100;
+    @apply text-theme-secondary-900 bg-theme-secondary-100;
 }
 .theme-dark .dropdown-entry:hover {
     @apply bg-theme-primary-600 text-white;
