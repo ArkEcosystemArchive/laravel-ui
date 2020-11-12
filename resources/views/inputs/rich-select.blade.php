@@ -156,7 +156,7 @@
         >
             <x-ark-icon
                 name="chevron-down"
-                size="xs"
+                size="2xs"
             />
         </span>
     </button>
