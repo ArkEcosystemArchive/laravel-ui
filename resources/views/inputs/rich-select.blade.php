@@ -198,10 +198,10 @@
                     @mouseenter="selected = index"
                     @mouseleave="selected = null"
                     :class="{
-                        'bg-theme-danger-400 text-theme-secondary-200': value === optionValue,
-                        'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === index && value !== optionValue,
+                        'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
+                        'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === index && value !== optionValue,
                     }"
-                    class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                    class="px-8 py-4 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                     x-text="options[optionValue]"
                 ></div>
             </template>
@@ -223,10 +223,10 @@
                             @mouseenter="selected = getOptionIndex(index, index2); selectedGroup = groupName"
                             @mouseleave="selected = null; selectedGroup = null"
                             :class="{
-                                'bg-theme-danger-400 text-theme-secondary-200': value === optionValue,
-                                'bg-theme-primary-100 text-theme-primary-600 dark:bg-theme-primary-600 dark:text-theme-secondary-200': selected === getOptionIndex(index, index2) && value !== optionValue,
+                                'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
+                                'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === getOptionIndex(index, index2) && value !== optionValue,
                             }"
-                            class="px-8 py-4 font-semibold transition duration-150 ease-in-out cursor-pointer hover:bg-theme-primary-100 hover:text-theme-primary-600 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                            class="px-8 py-4 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                             x-text="options[groupName][optionValue]"
                         ></div>
                     </template>
