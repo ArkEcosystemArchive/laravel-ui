@@ -1,3 +1,7 @@
-<tr @if(!empty($danger)) data-danger @elseif(!empty($warning)) data-warning @endif>
+@props([
+    'danger' => false,
+    'warning' => false,
+])
+<tr @if($danger) data-danger @elseif($warning) data-warning @endif>
     {{ $slot }}
 </tr>
