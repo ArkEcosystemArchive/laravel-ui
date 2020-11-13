@@ -3,6 +3,13 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
     theme: {
         extend: {
+            borderRadius: {
+                xl: "1rem",
+            },
+            borderWidth: {
+                3: "3px",
+                20: "20px",
+            },
             boxShadow: {
                 "button-primary":
                     "2px 3px 10px 2px rgba(var(--theme-color-primary-rgb), 0.34)",
@@ -21,9 +28,6 @@ module.exports = {
                 "8xl": "85rem",
                 "1/2": "50%",
                 "2/3": "66%",
-            },
-            borderRadius: {
-                xl: "1rem",
             },
             opacity: {
                 "90": ".9",
