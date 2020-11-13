@@ -90,30 +90,10 @@
     @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full border-t border-b border-transparent pointer-events-none;
 }
 
-.table-container
-    table
-    > tbody
-    > tr:hover
-    > td.t-cell:first-child
-    > div::before,
-.table-container
-    table
-    > tbody
-    > tr:hover
-    > td.t-cell.first-cell
-    > div::before,
-.table-container
-    table
-    > tbody
-    > tr:hover
-    > td.t-cell:last-child
-    > div:before,
-.table-container
-    table
-    > tbody
-    > tr:hover
-    > td.t-cell.last-cell
-    > div::before,
+.table-container table > tbody > tr:hover > td.t-cell:first-child > div::before,
+.table-container table > tbody > tr:hover > td.t-cell.first-cell > div::before,
+.table-container table > tbody > tr:hover > td.t-cell:last-child > div:before,
+.table-container table > tbody > tr:hover > td.t-cell.last-cell > div::before,
 .table-container table > tbody > tr:hover > td.t-cell > div {
     @apply bg-theme-secondary-100;
 }
@@ -207,12 +187,7 @@
 }
 
 @screen sm {
-    .table-container
-        table
-        > tbody
-        > tr
-        > td.t-cell.last-cell-sm
-        > div::before {
+    .table-container table > tbody > tr > td.t-cell.last-cell-sm > div::before {
         content: none;
     }
     .table-container
@@ -226,12 +201,7 @@
 }
 
 @screen md {
-    .table-container
-        table
-        > tbody
-        > tr
-        > td.t-cell.last-cell-md
-        > div::before {
+    .table-container table > tbody > tr > td.t-cell.last-cell-md > div::before {
         content: none;
     }
     .table-container
@@ -245,12 +215,7 @@
 }
 
 @screen lg {
-    .table-container
-        table
-        > tbody
-        > tr
-        > td.t-cell.last-cell-lg
-        > div::before {
+    .table-container table > tbody > tr > td.t-cell.last-cell-lg > div::before {
         content: none;
     }
     .table-container
@@ -264,12 +229,7 @@
 }
 
 @screen xl {
-    .table-container
-        table
-        > tbody
-        > tr
-        > td.t-cell.last-cell-xl
-        > div::before {
+    .table-container table > tbody > tr > td.t-cell.last-cell-xl > div::before {
         content: none;
     }
     .table-container
@@ -326,20 +286,8 @@
     @apply border-theme-danger-300;
 }
 
-.theme-dark
-    .table-container
-    table
-    > tbody
-    > tr[data-warning]
-    > td.t-cell
-    > div,
-.theme-dark
-    .table-container
-    table
-    > tbody
-    > tr[data-danger]
-    > td.t-cell
-    > div,
+.theme-dark .table-container table > tbody > tr[data-warning] > td.t-cell > div,
+.theme-dark .table-container table > tbody > tr[data-danger] > td.t-cell > div,
 .theme-dark
     .table-container
     table
