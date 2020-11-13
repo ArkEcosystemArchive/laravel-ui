@@ -19,6 +19,8 @@
                     @if($keydownEnter ?? false) wire:keydown.enter="{{ $keydownEnter }}" @endif
                     @if($autocomplete ?? '') autocomplete="{{ $autocomplete }}" @endif
                     @if($readonly ?? false) readonly @endif
+                    @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
+                    @isset($pattern) pattern="{{ $pattern }}" @endisset
                 />
             </div>
 
