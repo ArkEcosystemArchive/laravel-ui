@@ -20,6 +20,8 @@
                 @isset($readonly) readonly @endisset
                 @isset($required) required @endisset
                 @isset($accept) accept="{{ $accept }}" @endisset
+                @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
+                @isset($pattern) pattern="{{ $pattern }}" @endisset
             />
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>
