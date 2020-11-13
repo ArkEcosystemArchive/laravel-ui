@@ -12,13 +12,12 @@
 
 <td {{ $attributes->merge([
     'class' =>
-        'table-cell'
+        $class . ' t-cell'
         . ($responsive ? ' ' . $breakpoint . ':table-cell hidden' : '')
         . ($lastOn ? ' last-cell last-cell-' . $lastOn : '')
         . ($firstOn ? ' first-cell first-cell-' . $firstOn : '')
-        . ' ' . $class
 ]) }}>
-    <div class="relative flex items-center w-full h-full px-3 py-4">
+    <div>
         {{ $slot }}
     </div>
 </td>

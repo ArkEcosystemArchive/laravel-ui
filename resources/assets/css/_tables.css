@@ -1,6 +1,6 @@
 /* Table Styling */
 .table-container table {
-    @apply w-full h-0 text-left;
+    @apply w-full h-full text-left;
 }
 
 .table-container table thead {
@@ -60,7 +60,7 @@
 
 /* Table highlight & hover effect (requires to use `<x-ark-tables.cell` instead of a `td`) */
 .table-container table tbody td.table-cell {
-    @apply px-0 py-0.5;
+    @apply px-0 py-0.5 h-full;
 }
 
 .table-container table > tbody > tr > td.table-cell:first-child > div::before,
