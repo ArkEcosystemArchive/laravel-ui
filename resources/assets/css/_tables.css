@@ -63,21 +63,56 @@
     @apply px-0 py-0.5;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell:first-child > div::before,
-.table-container table > tbody > tr > td.hoverable-cell.first-cell > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:first-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.first-cell
+    > div::before,
 .table-container table > tbody > tr > td.hoverable-cell:last-child > div:before,
-.table-container table > tbody > tr > td.hoverable-cell.last-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.last-cell
+    > div::before {
     content: "";
     @apply absolute top-0 block w-2 h-full border-t border-b border-transparent;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell:first-child > div::before,
-.table-container table > tbody > tr > td.hoverable-cell.first-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:first-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.first-cell
+    > div::before {
     @apply left-0 -ml-2 border-l rounded-l-md;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell:last-child > div::before,
-.table-container table > tbody > tr > td.hoverable-cell.last-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:last-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.last-cell
+    > div::before {
     @apply right-0 -mr-2 border-r rounded-r-md;
 }
 
@@ -90,10 +125,30 @@
     @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full border-t border-b border-transparent pointer-events-none;
 }
 
-.table-container table > tbody > tr:hover > td.hoverable-cell:first-child > div::before,
-.table-container table > tbody > tr:hover > td.hoverable-cell.first-cell > div::before,
-.table-container table > tbody > tr:hover > td.hoverable-cell:last-child > div:before,
-.table-container table > tbody > tr:hover > td.hoverable-cell.last-cell > div::before,
+.table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell:first-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell.first-cell
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell:last-child
+    > div:before,
+.table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell.last-cell
+    > div::before,
 .table-container table > tbody > tr:hover > td.hoverable-cell > div {
     @apply bg-theme-secondary-100;
 }
@@ -122,7 +177,12 @@
     > tr[data-danger]:hover
     > td.hoverable-cell.last-cell
     > div::before,
-.table-container table > tbody > tr[data-danger]:hover > td.hoverable-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-danger]:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-danger-100;
 }
 
@@ -150,7 +210,12 @@
     > tr[data-warning]:hover
     > td.hoverable-cell.last-cell
     > div::before,
-.table-container table > tbody > tr[data-warning]:hover > td.hoverable-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-warning]:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-warning-100;
 }
 
@@ -182,12 +247,23 @@
     > tr:hover
     > td.hoverable-cell.last-cell
     > div::before,
-.theme-dark .table-container table > tbody > tr:hover > td.hoverable-cell > div {
+.theme-dark
+    .table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-secondary-800 !important;
 }
 
 @screen sm {
-    .table-container table > tbody > tr > td.hoverable-cell.last-cell-sm > div::before {
+    .table-container
+        table
+        > tbody
+        > tr
+        > td.hoverable-cell.last-cell-sm
+        > div::before {
         content: none;
     }
     .table-container
@@ -201,7 +277,12 @@
 }
 
 @screen md {
-    .table-container table > tbody > tr > td.hoverable-cell.last-cell-md > div::before {
+    .table-container
+        table
+        > tbody
+        > tr
+        > td.hoverable-cell.last-cell-md
+        > div::before {
         content: none;
     }
     .table-container
@@ -215,7 +296,12 @@
 }
 
 @screen lg {
-    .table-container table > tbody > tr > td.hoverable-cell.last-cell-lg > div::before {
+    .table-container
+        table
+        > tbody
+        > tr
+        > td.hoverable-cell.last-cell-lg
+        > div::before {
         content: none;
     }
     .table-container
@@ -229,7 +315,12 @@
 }
 
 @screen xl {
-    .table-container table > tbody > tr > td.hoverable-cell.last-cell-xl > div::before {
+    .table-container
+        table
+        > tbody
+        > tr
+        > td.hoverable-cell.last-cell-xl
+        > div::before {
         content: none;
     }
     .table-container
@@ -242,12 +333,22 @@
     }
 }
 
-.table-container table > tbody > tr[data-warning] > td.hoverable-cell > div::before,
+.table-container
+    table
+    > tbody
+    > tr[data-warning]
+    > td.hoverable-cell
+    > div::before,
 .table-container table > tbody > tr[data-warning] > td.hoverable-cell > div {
     @apply bg-theme-warning-50;
 }
 
-.table-container table > tbody > tr[data-danger] > td.hoverable-cell > div::before,
+.table-container
+    table
+    > tbody
+    > tr[data-danger]
+    > td.hoverable-cell
+    > div::before,
 .table-container table > tbody > tr[data-danger] > td.hoverable-cell > div {
     @apply bg-theme-danger-50;
 }
@@ -286,8 +387,20 @@
     @apply border-theme-danger-300;
 }
 
-.theme-dark .table-container table > tbody > tr[data-warning] > td.hoverable-cell > div,
-.theme-dark .table-container table > tbody > tr[data-danger] > td.hoverable-cell > div,
+.theme-dark
+    .table-container
+    table
+    > tbody
+    > tr[data-warning]
+    > td.hoverable-cell
+    > div,
+.theme-dark
+    .table-container
+    table
+    > tbody
+    > tr[data-danger]
+    > td.hoverable-cell
+    > div,
 .theme-dark
     .table-container
     table
