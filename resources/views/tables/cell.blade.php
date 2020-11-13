@@ -12,7 +12,7 @@
 
 <td {{ $attributes->merge([
     'class' =>
-        't-cell'
+        'table-cell'
         . ($responsive ? ' ' . $breakpoint . ':table-cell hidden' : '')
         . ($lastOn ? ' last-cell last-cell-' . $lastOn : '')
         . ($firstOn ? ' first-cell first-cell-' . $firstOn : '')
