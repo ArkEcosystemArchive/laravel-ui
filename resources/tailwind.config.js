@@ -7,8 +7,8 @@ module.exports = {
                 xl: "1rem",
             },
             borderWidth: {
-                3: '3px',
-                20: '20px',
+                3: "3px",
+                20: "20px",
             },
             boxShadow: {
                 "button-primary":
