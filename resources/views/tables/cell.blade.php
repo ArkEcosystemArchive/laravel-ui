@@ -12,7 +12,7 @@
 
 <td {{ $attributes->merge([
     'class' =>
-        't-cell'
+        'hoverable-cell'
         . ($responsive && !$breakpoint ? ' hidden lg:table-cell' : '')
         . ($responsive && $breakpoint === 'xl' ? ' hidden xl:table-cell' : '')
         . ($responsive && $breakpoint === 'lg' ? ' hidden lg:table-cell' : '')
