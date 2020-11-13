@@ -59,6 +59,7 @@
 }
 
 /* Table highlight & hover effect (requires to use `<x-ark-tables.cell` instead of a `td`) */
+/* purgecss ignore */
 .table-container table tbody td.table-cell {
     @apply px-0 py-0.5;
 }
@@ -352,3 +353,4 @@
     > div::before {
     @apply bg-transparent;
 }
+/* purgecss end ignore */
