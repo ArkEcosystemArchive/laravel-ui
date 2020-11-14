@@ -1,6 +1,6 @@
 /* Table Styling */
 .table-container table {
-    @apply w-full h-0 text-left;
+    @apply w-full h-full text-left;
 }
 
 .table-container table thead {
@@ -59,29 +59,68 @@
 }
 
 /* Table highlight & hover effect (requires to use `<x-ark-tables.cell` instead of a `td`) */
-.table-container table tbody td.table-cell {
+.table-container table tbody td.hoverable-cell {
     @apply px-0 py-0.5;
 }
 
-.table-container table > tbody > tr > td.table-cell:first-child > div::before,
-.table-container table > tbody > tr > td.table-cell.first-cell > div::before,
-.table-container table > tbody > tr > td.table-cell:last-child > div:before,
-.table-container table > tbody > tr > td.table-cell.last-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:first-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.first-cell
+    > div::before,
+.table-container table > tbody > tr > td.hoverable-cell:last-child > div:before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.last-cell
+    > div::before {
     content: "";
     @apply absolute top-0 block w-2 h-full border-t border-b border-transparent;
 }
 
-.table-container table > tbody > tr > td.table-cell:first-child > div::before,
-.table-container table > tbody > tr > td.table-cell.first-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:first-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.first-cell
+    > div::before {
     @apply left-0 -ml-2 border-l rounded-l-md;
 }
 
-.table-container table > tbody > tr > td.table-cell:last-child > div::before,
-.table-container table > tbody > tr > td.table-cell.last-cell > div::before {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:last-child
+    > div::before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.last-cell
+    > div::before {
     @apply right-0 -mr-2 border-r rounded-r-md;
 }
 
-.table-container table > tbody > tr > td.table-cell > div:after {
+.table-container table > tbody > tr > td.hoverable-cell > div {
+    @apply box-content relative flex items-center h-full px-3 py-4;
+}
+
+.table-container table > tbody > tr > td.hoverable-cell > div:after {
     content: "";
     @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full border-t border-b border-transparent pointer-events-none;
 }
@@ -90,27 +129,27 @@
     table
     > tbody
     > tr:hover
-    > td.table-cell:first-child
+    > td.hoverable-cell:first-child
     > div::before,
 .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell.first-cell
+    > td.hoverable-cell.first-cell
     > div::before,
 .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell:last-child
+    > td.hoverable-cell:last-child
     > div:before,
 .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell.last-cell
+    > td.hoverable-cell.last-cell
     > div::before,
-.table-container table > tbody > tr:hover > td.table-cell > div {
+.table-container table > tbody > tr:hover > td.hoverable-cell > div {
     @apply bg-theme-secondary-100;
 }
 
@@ -118,27 +157,32 @@
     table
     > tbody
     > tr[data-danger]:hover
-    > td.table-cell:first-child
+    > td.hoverable-cell:first-child
     > div::before,
 .table-container
     table
     > tbody
     > tr[data-danger]:hover
-    > td.table-cell.first-cell
+    > td.hoverable-cell.first-cell
     > div::before,
 .table-container
     table
     > tbody
     > tr[data-danger]:hover
-    > td.table-cell:last-child
+    > td.hoverable-cell:last-child
     > div:before,
 .table-container
     table
     > tbody
     > tr[data-danger]:hover
-    > td.table-cell.last-cell
+    > td.hoverable-cell.last-cell
     > div::before,
-.table-container table > tbody > tr[data-danger]:hover > td.table-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-danger]:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-danger-100;
 }
 
@@ -146,27 +190,32 @@
     table
     > tbody
     > tr[data-warning]:hover
-    > td.table-cell:first-child
+    > td.hoverable-cell:first-child
     > div::before,
 .table-container
     table
     > tbody
     > tr[data-warning]:hover
-    > td.table-cell.first-cell
+    > td.hoverable-cell.first-cell
     > div::before,
 .table-container
     table
     > tbody
     > tr[data-warning]:hover
-    > td.table-cell:last-child
+    > td.hoverable-cell:last-child
     > div:before,
 .table-container
     table
     > tbody
     > tr[data-warning]:hover
-    > td.table-cell.last-cell
+    > td.hoverable-cell.last-cell
     > div::before,
-.table-container table > tbody > tr[data-warning]:hover > td.table-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-warning]:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-warning-100;
 }
 
@@ -175,30 +224,36 @@
     table
     > tbody
     > tr:hover
-    > td.table-cell:first-child
+    > td.hoverable-cell:first-child
     > div::before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell.first-cell
+    > td.hoverable-cell.first-cell
     > div::before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell:last-child
+    > td.hoverable-cell:last-child
     > div:before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr:hover
-    > td.table-cell.last-cell
+    > td.hoverable-cell.last-cell
     > div::before,
-.theme-dark .table-container table > tbody > tr:hover > td.table-cell > div {
+.theme-dark
+    .table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell
+    > div {
     @apply bg-theme-secondary-800 !important;
 }
 
@@ -207,7 +262,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.last-cell-sm
+        > td.hoverable-cell.last-cell-sm
         > div::before {
         content: none;
     }
@@ -215,7 +270,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.first-cell-sm
+        > td.hoverable-cell.first-cell-sm
         > div::before {
         content: none;
     }
@@ -226,7 +281,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.last-cell-md
+        > td.hoverable-cell.last-cell-md
         > div::before {
         content: none;
     }
@@ -234,7 +289,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.first-cell-md
+        > td.hoverable-cell.first-cell-md
         > div::before {
         content: none;
     }
@@ -245,7 +300,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.last-cell-lg
+        > td.hoverable-cell.last-cell-lg
         > div::before {
         content: none;
     }
@@ -253,7 +308,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.first-cell-lg
+        > td.hoverable-cell.first-cell-lg
         > div::before {
         content: none;
     }
@@ -264,7 +319,7 @@
         table
         > tbody
         > tr
-        > td.table-cell.last-cell-xl
+        > td.hoverable-cell.last-cell-xl
         > div::before {
         content: none;
     }
@@ -272,19 +327,29 @@
         table
         > tbody
         > tr
-        > td.table-cell.first-cell-xl
+        > td.hoverable-cell.first-cell-xl
         > div::before {
         content: none;
     }
 }
 
-.table-container table > tbody > tr[data-warning] > td.table-cell > div::before,
-.table-container table > tbody > tr[data-warning] > td.table-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-warning]
+    > td.hoverable-cell
+    > div::before,
+.table-container table > tbody > tr[data-warning] > td.hoverable-cell > div {
     @apply bg-theme-warning-50;
 }
 
-.table-container table > tbody > tr[data-danger] > td.table-cell > div::before,
-.table-container table > tbody > tr[data-danger] > td.table-cell > div {
+.table-container
+    table
+    > tbody
+    > tr[data-danger]
+    > td.hoverable-cell
+    > div::before,
+.table-container table > tbody > tr[data-danger] > td.hoverable-cell > div {
     @apply bg-theme-danger-50;
 }
 
@@ -293,14 +358,14 @@
     table
     > tbody
     > tr[data-warning]
-    > td.table-cell
+    > td.hoverable-cell
     > div::before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr[data-warning]
-    > td.table-cell
+    > td.hoverable-cell
     > div::after {
     @apply border-theme-warning-500;
 }
@@ -310,14 +375,14 @@
     table
     > tbody
     > tr[data-danger]
-    > td.table-cell
+    > td.hoverable-cell
     > div::before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr[data-danger]
-    > td.table-cell
+    > td.hoverable-cell
     > div::after {
     @apply border-theme-danger-300;
 }
@@ -327,28 +392,28 @@
     table
     > tbody
     > tr[data-warning]
-    > td.table-cell
+    > td.hoverable-cell
     > div,
 .theme-dark
     .table-container
     table
     > tbody
     > tr[data-danger]
-    > td.table-cell
+    > td.hoverable-cell
     > div,
 .theme-dark
     .table-container
     table
     > tbody
     > tr[data-warning]
-    > td.table-cell
+    > td.hoverable-cell
     > div::before,
 .theme-dark
     .table-container
     table
     > tbody
     > tr[data-danger]
-    > td.table-cell
+    > td.hoverable-cell
     > div::before {
     @apply bg-transparent;
 }

@@ -156,7 +156,6 @@ module.exports = {
         options: {
             whitelistPatterns: [
                 /horizontal$/,
-                /table-cell/,
                 /alert-/,
                 /swiper-/,
                 /toast-/,

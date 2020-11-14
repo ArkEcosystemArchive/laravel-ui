@@ -12,13 +12,23 @@
 
 <td {{ $attributes->merge([
     'class' =>
-        'table-cell'
-        . ($responsive ? ' ' . $breakpoint . ':table-cell hidden' : '')
-        . ($lastOn ? ' last-cell last-cell-' . $lastOn : '')
-        . ($firstOn ? ' first-cell first-cell-' . $firstOn : '')
+        'hoverable-cell'
+        . ($responsive && !$breakpoint ? ' hidden lg:table-cell' : '')
+        . ($responsive && $breakpoint === 'xl' ? ' hidden xl:table-cell' : '')
+        . ($responsive && $breakpoint === 'lg' ? ' hidden lg:table-cell' : '')
+        . ($responsive && $breakpoint === 'md' ? ' hidden md:table-cell' : '')
+        . ($responsive && $breakpoint === 'sm' ? ' hidden sm:table-cell' : '')
+        . ($lastOn === 'sm' ? ' last-cell last-cell-sm' : '')
+        . ($lastOn === 'md' ? ' last-cell last-cell-md' : '')
+        . ($lastOn === 'lg' ? ' last-cell last-cell-lg' : '')
+        . ($lastOn === 'xl' ? ' last-cell last-cell-xl' : '')
+        . ($firstOn === 'sm' ? ' first-cell first-cell-sm' : '')
+        . ($firstOn === 'md' ? ' first-cell first-cell-md' : '')
+        . ($firstOn === 'lg' ? ' first-cell first-cell-lg' : '')
+        . ($firstOn === 'xl' ? ' first-cell first-cell-xl' : '')
         . ' ' . $class
 ]) }}>
-    <div class="relative flex items-center w-full h-full px-3 py-4">
+    <div class="box-content relative flex items-center h-full px-3 py-4">
         {{ $slot }}
     </div>
 </td>
