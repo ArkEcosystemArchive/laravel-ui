@@ -12,17 +12,7 @@
                 name="{{ $name }}"
                 class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
-                @isset($max) maxlength="{{ $max }}" @endisset
-                @isset($placeholder) placeholder="{{ $placeholder }}" @endisset
-                @isset($value) value="{{ $value }}" @endisset
-                @isset($autocomplete) autocomplete="{{ $autocomplete }}" @endisset
-                @isset($autofocus) autofocus @endisset
-                @isset($readonly) readonly @endisset
-                @isset($required) required @endisset
-                @isset($accept) accept="{{ $accept }}" @endisset
-                @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
-                @isset($pattern) pattern="{{ $pattern }}" @endisset
-                @if($onAnyKeydown ?? false) @keydown="{{ $onAnyKeydown }}" @endif
+                {{ $attributes }}
             />
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>
