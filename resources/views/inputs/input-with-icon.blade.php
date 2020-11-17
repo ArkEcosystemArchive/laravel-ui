@@ -21,6 +21,7 @@
                     @if($readonly ?? false) readonly @endif
                     @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
                     @isset($pattern) pattern="{{ $pattern }}" @endisset
+                    @if($onAnyKeydown ?? false) @keydown="{{ $onAnyKeydown }}" @endif
                 />
             </div>
 

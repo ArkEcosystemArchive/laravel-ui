@@ -22,6 +22,7 @@
                 @isset($accept) accept="{{ $accept }}" @endisset
                 @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
                 @isset($pattern) pattern="{{ $pattern }}" @endisset
+                @if($onAnyKeydown ?? false) @keydown="{{ $onAnyKeydown }}" @endif
             />
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>
