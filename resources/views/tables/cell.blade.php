@@ -28,7 +28,7 @@
         . ($firstOn === 'xl' ? ' first-cell first-cell-xl' : '')
         . ' ' . $class
 ]) }}>
-    <div class="box-content relative flex items-center h-full px-3 py-4">
+    <div class="relative flex items-center h-full px-3 py-4">
         {{ $slot }}
     </div>
 </td>
