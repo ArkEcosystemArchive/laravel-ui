@@ -13,7 +13,11 @@
                     id="{{ $id ?? $name }}"
                     class="{{ $inputClass ?? '' }} input-text-with-icon @error($name) input-text-with-icon--error @enderror"
                     wire:model="{{ $model ?? $name }}"
-                    {{ $attributes->except(['class', 'errors', 'id', 'model', 'slot', 'slotClass', 'type', 'wire:model']) }}
+                    {{-- @TODO: remove --}}
+                    @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
+                    {{-- @TODO: remove --}}
+                    @isset($max) maxlength="{{ $max }}" @endisset
+                    {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slotClass', 'type', 'wire:model', 'wire:keydown.enter']) }}
                 />
             </div>
 

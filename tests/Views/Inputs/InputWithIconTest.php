@@ -81,9 +81,17 @@ it('should render with the given value', function (): void {
 it('should render with the given keydownEnter', function (): void {
     $this
         ->assertView('ark::inputs.input-with-icon', createAttributes([
-            'wire:keydown.enter' => 'function',
+            'keydownEnter' => 'function',
         ]))
         ->contains('wire:keydown.enter="function"');
+});
+
+it('should render with the given max', function (): void {
+    $this
+        ->assertView('ark::inputs.input-with-icon', createAttributes([
+            'max' => 1,
+        ]))
+        ->contains('maxlength="1"');
 });
 
 it('should render with the given autocomplete', function (): void {
