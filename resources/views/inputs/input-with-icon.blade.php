@@ -17,7 +17,7 @@
                     @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
                     {{-- @TODO: remove --}}
                     @isset($max) maxlength="{{ $max }}" @endisset
-                    {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slotClass', 'type', 'wire:model', 'wire:keydown.enter']) }}
+                    {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slot-class', 'type', 'wire:model', 'keydown-enter']) }}
                 />
             </div>
 
