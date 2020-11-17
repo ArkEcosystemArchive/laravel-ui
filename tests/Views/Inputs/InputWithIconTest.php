@@ -6,6 +6,7 @@ use Illuminate\View\ComponentAttributeBag;
 use NunoMaduro\LaravelMojito\ViewAssertion;
 use PHPUnit\Framework\Assert;
 
+// TODO move to generic class
 function createAttributes(array $attributes): array
 {
     $defaults = [

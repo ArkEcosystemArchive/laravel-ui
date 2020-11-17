@@ -2,21 +2,8 @@
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
-use Illuminate\View\ComponentAttributeBag;
 use NunoMaduro\LaravelMojito\ViewAssertion;
 use PHPUnit\Framework\Assert;
-
-function createAttributes(array $attributes): array
-{
-    $defaults = [
-        'name'   => 'username',
-        'errors' => new ViewErrorBag(),
-    ];
-
-    return array_merge([
-        'attributes' => new ComponentAttributeBag(array_merge($defaults, $attributes)),
-    ], $defaults, $attributes);
-}
 
 it('should render with the given name', function (): void {
     $this
