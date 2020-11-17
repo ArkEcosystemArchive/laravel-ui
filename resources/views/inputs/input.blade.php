@@ -12,6 +12,7 @@
                 name="{{ $name }}"
                 class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
+                @isset($max) maxlength="{{ $max }}" @endisset
                 {{ $attributes }}
             />
             @error($name) @include('ark::inputs.input-error') @enderror

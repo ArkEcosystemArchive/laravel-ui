@@ -14,6 +14,7 @@
                     name="{{ $name }}"
                     class="{{ $inputClass ?? '' }} input-text-with-icon @error($name) input-text-with-icon--error @enderror"
                     wire:model="{{ $model ?? $name }}"
+                    @isset($max) maxlength="{{ $max }}" @endisset
                     {{ $attributes }}
                 />
             </div>
