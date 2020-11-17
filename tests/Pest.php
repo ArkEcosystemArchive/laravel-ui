@@ -1,5 +1,6 @@
 <?php
 
+use NunoMaduro\LaravelMojito\InteractsWithViews;
 use Tests\TestCase;
 
-uses(TestCase::class)->in(__DIR__);
+uses(TestCase::class, InteractsWithViews::class)->in(__DIR__);
