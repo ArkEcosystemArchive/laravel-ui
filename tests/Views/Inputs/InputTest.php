@@ -9,7 +9,7 @@ use function Tests\createAttributes;
 
 it('should render with the given name', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'name' => 'username',
         ]))
         ->contains('type="text"')
@@ -19,7 +19,7 @@ it('should render with the given name', function (): void {
 
 it('should render with the given label', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'label' => 'Fancy Label',
         ]))
         ->contains('Fancy Label');
@@ -27,7 +27,7 @@ it('should render with the given label', function (): void {
 
 it('should render with the given type', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'type' => 'number',
         ]))
         ->contains('type="number"');
@@ -35,7 +35,7 @@ it('should render with the given type', function (): void {
 
 it('should render with the given id', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'id' => 'uniqueid',
         ]))
         ->contains('id="uniqueid"');
@@ -43,7 +43,7 @@ it('should render with the given id', function (): void {
 
 it('should render with the given model', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'model' => 'username_model',
         ]))
         ->contains('type="text"')
@@ -53,7 +53,7 @@ it('should render with the given model', function (): void {
 
 it('should render with the given placeholder', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'placeholder' => 'placeholder',
         ]))
         ->contains('placeholder="placeholder"');
@@ -61,7 +61,7 @@ it('should render with the given placeholder', function (): void {
 
 it('should render with the given value', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'value' => 'value',
         ]))
         ->contains('value="value"');
@@ -69,7 +69,7 @@ it('should render with the given value', function (): void {
 
 it('should render with the given keydownEnter', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'keydownEnter' => 'function',
         ]))
         ->contains('wire:keydown.enter="function"');
@@ -77,7 +77,7 @@ it('should render with the given keydownEnter', function (): void {
 
 it('should render with the given max', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'max' => 1,
         ]))
         ->contains('maxlength="1"');
@@ -85,7 +85,7 @@ it('should render with the given max', function (): void {
 
 it('should render with the given autocomplete', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'autocomplete' => 'autocomplete',
         ]))
         ->contains('autocomplete="autocomplete"');
@@ -93,33 +93,23 @@ it('should render with the given autocomplete', function (): void {
 
 it('should render as readonly', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'readonly' => true,
         ]))
         ->contains('readonly');
 });
 
-it('should render without the label', function (): void {
-    ViewAssertion::macro('doesNotContain', function (string $text) {
-        Assert::assertStringNotContainsString(
-            (string) $text,
-            $this->html,
-            "Failed asserting that the text `{$text}` does not exist within `{$this->html}`."
-        );
-
-        return $this;
-    });
-
+it('should render with a default label', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
-            'hideLabel' => true,
+        ->assertView('ark::inputs.input', createAttributes([
+            'name' => 'email',
         ]))
-        ->doesNotContain('<label');
+        ->contains('forms.email');
 });
 
 it('should render with the given input mode', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'inputmode' => 'inputmode',
         ]))
         ->contains('inputmode="inputmode"');
@@ -127,7 +117,7 @@ it('should render with the given input mode', function (): void {
 
 it('should render with the given pattern', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'pattern' => 'pattern',
         ]))
         ->contains('pattern="pattern"');
@@ -135,7 +125,7 @@ it('should render with the given pattern', function (): void {
 
 it('should render with the given class', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'class' => 'class',
         ]))
         ->contains('<div class="class">');
@@ -143,15 +133,15 @@ it('should render with the given class', function (): void {
 
 it('should render with the given inputClass', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'inputClass' => 'inputClass',
         ]))
-        ->contains('class="inputClass');
+        ->contains('inputClass');
 });
 
 it('should render with the given containerClass', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'containerClass' => 'containerClass',
         ]))
         ->contains('containerClass"');
@@ -162,7 +152,7 @@ it('should render error styling for a label', function (): void {
     $errors->put('default', new MessageBag(['username' => ['required']]));
 
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
@@ -174,11 +164,11 @@ it('should render error styling for an input', function (): void {
     $errors->put('default', new MessageBag(['username' => ['required']]));
 
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
-        ->contains('input-text-with-icon--error');
+        ->contains('input-text--error');
 });
 
 it('should render an error message', function (): void {
@@ -186,43 +176,16 @@ it('should render an error message', function (): void {
     $errors->put('default', new MessageBag(['username' => ['This is required.']]));
 
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
-        ->contains('<p class="font-semibold input-help--error">This is required.</p>');
-});
-
-it('should render with the given slot', function (): void {
-    $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
-            'slot'   => 'Hello World',
-        ]))
-        ->contains('Hello World');
-});
-
-it('should render with the given slotClass', function (): void {
-    $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
-            'slot'      => 'Hello World',
-            'slotClass' => 'slotClass',
-        ]))
-        ->contains('Hello World')
-        ->contains('slotClass"');
-});
-
-it('should render a default slotClass', function (): void {
-    $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
-            'slot' => 'Hello World',
-        ]))
-        ->contains('Hello World')
-        ->contains('h-full bg-white');
+        ->contains('<p class="input-help--error">This is required.</p>');
 });
 
 it('should render with the ID as label target', function (): void {
     $this
-        ->assertView('ark::inputs.input-with-icon', createAttributes([
+        ->assertView('ark::inputs.input', createAttributes([
             'id' => 'id',
         ]))
         ->contains('for="id"');

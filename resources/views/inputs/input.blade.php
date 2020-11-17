@@ -9,19 +9,13 @@
             <input
                 type="{{ $type ?? 'text' }}"
                 id="{{ $id ?? $name }}"
-                name="{{ $name }}"
                 class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
+                {{-- @TODO: remove --}}
+                @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
+                {{-- @TODO: remove --}}
                 @isset($max) maxlength="{{ $max }}" @endisset
-                @isset($placeholder) placeholder="{{ $placeholder }}" @endisset
-                @isset($value) value="{{ $value }}" @endisset
-                @isset($autocomplete) autocomplete="{{ $autocomplete }}" @endisset
-                @isset($autofocus) autofocus @endisset
-                @isset($readonly) readonly @endisset
-                @isset($required) required @endisset
-                @isset($accept) accept="{{ $accept }}" @endisset
-                @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
-                @isset($pattern) pattern="{{ $pattern }}" @endisset
+                {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slotClass', 'type', 'wire:model', 'wire:keydown.enter']) }}
             />
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>

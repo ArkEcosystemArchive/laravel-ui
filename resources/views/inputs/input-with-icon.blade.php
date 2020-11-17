@@ -11,16 +11,13 @@
                 <input
                     type="{{ $type ?? 'text' }}"
                     id="{{ $id ?? $name }}"
-                    name="{{ $name }}"
                     class="{{ $inputClass ?? '' }} input-text-with-icon @error($name) input-text-with-icon--error @enderror"
                     wire:model="{{ $model ?? $name }}"
-                    @if($placeholder ?? '') placeholder="{{ $placeholder }}" @endif
-                    @if($value ?? '') value="{{ $value }}" @endif
-                    @if($keydownEnter ?? false) wire:keydown.enter="{{ $keydownEnter }}" @endif
-                    @if($autocomplete ?? '') autocomplete="{{ $autocomplete }}" @endif
-                    @if($readonly ?? false) readonly @endif
-                    @isset($inputMode) inputmode="{{ $inputMode }}" @endisset
-                    @isset($pattern) pattern="{{ $pattern }}" @endisset
+                    {{-- @TODO: remove --}}
+                    @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
+                    {{-- @TODO: remove --}}
+                    @isset($max) maxlength="{{ $max }}" @endisset
+                    {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slotClass', 'type', 'wire:model', 'wire:keydown.enter']) }}
                 />
             </div>
 
