@@ -5,6 +5,8 @@ use Illuminate\Support\ViewErrorBag;
 use NunoMaduro\LaravelMojito\ViewAssertion;
 use PHPUnit\Framework\Assert;
 
+use function Tests\createAttributes;
+
 it('should render with the given name', function (): void {
     $this
         ->assertView('ark::inputs.input', createAttributes([
@@ -97,22 +99,12 @@ it('should render as readonly', function (): void {
         ->contains('readonly');
 });
 
-it('should render without the label', function (): void {
-    ViewAssertion::macro('doesNotContain', function (string $text) {
-        Assert::assertStringNotContainsString(
-            (string) $text,
-            $this->html,
-            "Failed asserting that the text `{$text}` does not exist within `{$this->html}`."
-        );
-
-        return $this;
-    });
-
+it('should render with a default label', function (): void {
     $this
         ->assertView('ark::inputs.input', createAttributes([
-            'hideLabel' => true,
+            'name' => 'email',
         ]))
-        ->doesNotContain('<label');
+        ->contains('forms.email');
 });
 
 it('should render with the given input mode', function (): void {
@@ -144,7 +136,7 @@ it('should render with the given inputClass', function (): void {
         ->assertView('ark::inputs.input', createAttributes([
             'inputClass' => 'inputClass',
         ]))
-        ->contains('class="inputClass');
+        ->contains('inputClass');
 });
 
 it('should render with the given containerClass', function (): void {
@@ -188,34 +180,7 @@ it('should render an error message', function (): void {
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
-        ->contains('<p class="font-semibold input-help--error">This is required.</p>');
-});
-
-it('should render with the given slot', function (): void {
-    $this
-        ->assertView('ark::inputs.input', createAttributes([
-            'slot'   => 'Hello World',
-        ]))
-        ->contains('Hello World');
-});
-
-it('should render with the given slotClass', function (): void {
-    $this
-        ->assertView('ark::inputs.input', createAttributes([
-            'slot'      => 'Hello World',
-            'slotClass' => 'slotClass',
-        ]))
-        ->contains('Hello World')
-        ->contains('slotClass"');
-});
-
-it('should render a default slotClass', function (): void {
-    $this
-        ->assertView('ark::inputs.input', createAttributes([
-            'slot' => 'Hello World',
-        ]))
-        ->contains('Hello World')
-        ->contains('h-full bg-white');
+        ->contains('<p class="input-help--error">This is required.</p>');
 });
 
 it('should render with the ID as label target', function (): void {

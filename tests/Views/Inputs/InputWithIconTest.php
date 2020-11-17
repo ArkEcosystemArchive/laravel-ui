@@ -2,22 +2,10 @@
 
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
-use Illuminate\View\ComponentAttributeBag;
 use NunoMaduro\LaravelMojito\ViewAssertion;
 use PHPUnit\Framework\Assert;
 
-// TODO move to generic class
-function createAttributes(array $attributes): array
-{
-    $defaults = [
-        'name'   => 'username',
-        'errors' => new ViewErrorBag(),
-    ];
-
-    return array_merge([
-        'attributes' => new ComponentAttributeBag(array_merge($defaults, $attributes)),
-    ], $defaults, $attributes);
-}
+use function Tests\createAttributes;
 
 it('should render with the given name', function (): void {
     $this
