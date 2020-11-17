@@ -11,11 +11,9 @@
                 <input
                     type="{{ $type ?? 'text' }}"
                     id="{{ $id ?? $name }}"
-                    name="{{ $name }}"
                     class="{{ $inputClass ?? '' }} input-text-with-icon @error($name) input-text-with-icon--error @enderror"
                     wire:model="{{ $model ?? $name }}"
-                    @isset($max) maxlength="{{ $max }}" @endisset
-                    {{ $attributes }}
+                    {{ $attributes->except(['class', 'errors', 'id', 'model', 'slot', 'slotClass', 'type', 'wire:model']) }}
                 />
             </div>
 
