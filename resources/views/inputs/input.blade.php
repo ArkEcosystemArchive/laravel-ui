@@ -9,11 +9,13 @@
             <input
                 type="{{ $type ?? 'text' }}"
                 id="{{ $id ?? $name }}"
-                name="{{ $name }}"
                 class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
+                {{-- @TODO: remove --}}
+                @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
+                {{-- @TODO: remove --}}
                 @isset($max) maxlength="{{ $max }}" @endisset
-                {{ $attributes }}
+                {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slotClass', 'type', 'wire:model', 'wire:keydown.enter']) }}
             />
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>
