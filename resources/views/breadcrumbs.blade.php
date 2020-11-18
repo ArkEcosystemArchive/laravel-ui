@@ -1,5 +1,5 @@
-<div class="h-16 w-full flex justify-center {{ $wrapperClass ?? 'bg-theme-secondary-100 dark:bg-black' }}">
-    <div class="w-full h-full flex items-center justify-start text-sm text-theme-secondary-500 leading-relaxed {{ $innerClass ?? 'px-4 sm:px-8' }}">
+<div class="h-16 w-full flex justify-center bg-theme-secondary-100 dark:bg-black">
+    <div class="w-full h-full flex items-center justify-start text-sm text-theme-secondary-500 leading-relaxed px-8 mx-auto max-w-7xl">
         @foreach ($crumbs as $crumb)
             @if(isset($crumb['route']))
                 <span>
