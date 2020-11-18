@@ -21,7 +21,7 @@
         @endphp
 
         <div class="flex {{ $notificationSettings['backgroundColor'] }} w-11 h-11 rounded-md">
-            <span class="flex w-full items-center justify-center">
+            <span class="flex items-center justify-center w-full">
                 @svg("{$notificationSettings['icon']}", "w-5 h-5 text-center {$notificationSettings['textColor']}")
             </span>
         </div>
