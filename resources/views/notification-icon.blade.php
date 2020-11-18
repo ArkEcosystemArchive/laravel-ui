@@ -1,26 +1,29 @@
-<div class="relative inline-block pointer-events-none avatar-wrapper">
-    <div class="relative w-12 h-12">
-        <img class="object-cover rounded-md" src="{{ $logo }}" />
+<div class="inline-block pointer-events-none">
+    <div class="w-12 h-12">
+        @php
+            $notificationSettings = [
+                'danger'  => [
+                    'backgroundColor' => 'bg-theme-danger-100',
+                    'textColor'       => 'text-theme-danger-600',
+                    'icon'            => 'notification',
+                ],
+                'success' => [
+                    'backgroundColor' => 'bg-theme-primary-100',
+                    'textColor'       => 'text-theme-primary-600',
+                    'icon'            => 'notification',
+                ],
+                'warning' => [
+                    'backgroundColor' => 'bg-theme-warning-100',
+                    'textColor'       => 'text-theme-warning-600',
+                    'icon'            => 'notification',
+                ],
+            ][$type];
+        @endphp
 
-        <div
-            class="absolute flex items-center justify-center text-transparent rounded-full avatar-circle shadow-solid"
-            style="right: -0.5rem; bottom: -0.5rem;"
-        >
-            <div class="flex flex-shrink-0 items-center justify-center rounded-full {{ $stateColor ?? 'bg-white' }} h-8 w-8">
-                @if ($type === 'danger')
-                    <div class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-theme-danger-200">
-                        @svg('exclamation', 'text-theme-danger-500 h-5 w-5')
-                    </div>
-                @elseif ($type === 'success')
-                    <div class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-theme-success-200">
-                        @svg('checkmark', 'text-theme-success-500 h-3 w-3')
-                    </div>
-                @elseif ($type === 'warning')
-                    <div class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-theme-warning-200">
-                        @svg('notification', 'text-theme-warning-500 h-3 w-3')
-                    </div>
-                @endif
-            </div>
+        <div class="flex {{ $notificationSettings['backgroundColor'] }} w-11 h-11 rounded-md">
+            <span class="flex w-full items-center justify-center">
+                @svg("{$notificationSettings['icon']}", "w-5 h-5 text-center {$notificationSettings['textColor']}")
+            </span>
         </div>
     </div>
 </div>
