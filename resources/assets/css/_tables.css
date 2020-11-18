@@ -117,7 +117,7 @@
 }
 
 .table-container table > tbody > tr > td.hoverable-cell > div {
-    @apply relative flex items-center h-full px-3 py-4;
+    @apply box-content relative flex items-center h-full px-3 py-4;
 }
 
 .table-container table > tbody > tr > td.hoverable-cell.text-right > div {
