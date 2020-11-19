@@ -172,6 +172,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Navigation
         Blade::component('ark::navbar', 'ark-navbar');
+        Blade::component('ark::navbar.dropdown.content', 'ark-navbar-dropdown-content');
         Blade::component('ark::navbar.dropdown.notifications', 'ark-navbar-dropdown-notifications');
         Blade::component('ark::navbar.dropdown.profile', 'ark-navbar-dropdown-profile');
         Blade::component('ark::navbar.dropdown', 'ark-navbar-dropdown');
