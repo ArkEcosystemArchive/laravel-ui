@@ -5,9 +5,7 @@
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="relative flex justify-between h-20 md:h-24">
                 @isset($logo)
-                    <x-ark-navbar-logo :logo="$logo" />
-                @else
-                    <x-ark-navbar-logo :title="$title" />
+                    @include('ark::navbar.logo')
                 @endisset
 
                 <div class="flex justify-end">
@@ -15,28 +13,14 @@
                         @isset($desktop)
                             {{ $desktop }}
                         @else
-                            <x-ark-navbar-items-desktop :navigation="$navigation" />
+                            @include('ark::navbar.items.desktop')
                         @endisset
                     </div>
 
                     @isset($dropdown)
                         {{ $dropdown }}
                     @else
-                        {{-- @TODO: pass down attributes in a separate refactor --}}
-                        @isset($notifications)
-                            <x-ark-navbar-dropdown
-                                :profile-menu="$profileMenu"
-                                :profile-menu-class="$profileMenuClass ?? null"
-                                :profile-photo="$profilePhoto"
-                                :notifications="$notifications"
-                            />
-                        @else
-                            <x-ark-navbar-dropdown
-                                :profile-menu="$profileMenu"
-                                :profile-photo="$profilePhoto"
-                                :profile-menu-class="$profileMenuClass ?? null"
-                            />
-                        @endisset
+                        @include('ark::navbar.dropdown')
                     @endisset
                 </div>
             </div>
@@ -45,7 +29,7 @@
         @isset($mobile)
             {{ $mobile }}
         @else
-            <x-ark-navbar-items-mobile :navigation="$navigation" />
+            @include('ark::navbar.items.mobile')
         @endisset
     </nav>
 </div>
