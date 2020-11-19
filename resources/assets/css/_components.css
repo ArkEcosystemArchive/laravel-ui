@@ -240,3 +240,8 @@
 .theme-dark .navbar-mobile-link:not(.navbar-mobile-link-current) {
     @apply text-theme-secondary-200;
 }
+
+/* Circled Icon */
+.circled-icon {
+    @apply flex items-center justify-center border-2 rounded-full w-11 h-11;
+}
