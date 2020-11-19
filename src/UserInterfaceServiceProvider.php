@@ -134,6 +134,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::code-lines', 'ark-code-lines');
         Blade::component('ark::description-block', 'ark-description-block');
         Blade::component('ark::description-block-link', 'ark-description-block-link');
+        Blade::component('ark::details-box', 'ark-details-box');
+        Blade::component('ark::details-box-mobile', 'ark-details-box-mobile');
         Blade::component('ark::dropdown', 'ark-dropdown');
         Blade::component('ark::external-link', 'ark-external-link');
         Blade::component('ark::flash', 'ark-flash');
@@ -167,6 +169,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::social-link', 'ark-social-link');
         Blade::component('ark::social-square', 'ark-social-square');
         Blade::component('ark::status-circle', 'ark-status-circle');
+        Blade::component('ark::status-circle-shallow', 'ark-status-circle-shallow');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
         Blade::component('ark::toast', 'ark-toast');
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
