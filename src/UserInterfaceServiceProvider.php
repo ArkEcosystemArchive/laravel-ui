@@ -3,7 +3,6 @@
 namespace ARKEcosystem\UserInterface;
 
 use ARKEcosystem\UserInterface\Components\FlashMessage;
-use ARKEcosystem\UserInterface\Components\NotificationsIndicator;
 use ARKEcosystem\UserInterface\Components\Toast;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -155,8 +154,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::message', 'ark-message');
         Blade::component('ark::metatags', 'ark-metatags');
         Blade::component('ark::modal', 'ark-modal');
-        Blade::component('ark::navbar', 'ark-navbar');
-        Blade::component('ark::navbar-link-mobile', 'ark-navbar-link-mobile');
         Blade::component('ark::notification-icon', 'ark-notification-icon');
         Blade::component('ark::outgoing-link', 'ark-outgoing-link');
         Blade::component('ark::pagination', 'ark-pagination');
@@ -175,6 +172,10 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
         Blade::component('ark::link-collection', 'ark-link-collection');
+
+        // Navigation
+        Blade::component('ark::navbar', 'ark-navbar');
+        Blade::component('ark::navbar.link-mobile', 'ark-navbar-link-mobile');
     }
 
     /**
