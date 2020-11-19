@@ -15,12 +15,7 @@
         @isset($profile)
             {{ $profile }}
         @else
-            {{-- @TODO: consider passing $attributes from parent --}}
-            <x-ark-navbar-dropdown-profile
-                :profile-menu="$profileMenu"
-                :profile-photo="$profilePhoto"
-                :profile-menu-class="$profileMenuClass ?? null"
-            />
+            @include('ark::navbar.dropdown.profile')
         @endisset
     @else
         <div class="items-center hidden ml-3 md:flex">
