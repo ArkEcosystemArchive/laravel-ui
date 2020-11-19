@@ -1,18 +1,10 @@
 @auth
-    @isset($notifications)
-        <x-ark-navbar-dropdown-notifications>
-            <x-slot name="indicator">
-                {{ $notificationsIndicator }}
-            </x-slot>
-
-            {!! $notifications !!}
-        </x-ark-navbar-dropdown-notifications>
-    @endisset
+    @include('ark::navbar.notifications')
 
     @isset($profile)
         {{ $profile }}
     @else
-        @include('ark::navbar.dropdown.profile')
+        @include('ark::navbar.profile')
     @endisset
 @else
     <div class="items-center hidden ml-3 md:flex">

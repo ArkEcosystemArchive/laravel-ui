@@ -3,9 +3,9 @@
         <x-slot name="button">
             @svg('notification', 'h-6 w-6 transition-default')
 
-            {{ $indicator }}
+            {{ $notificationsIndicator }}
         </x-slot>
 
-        {{ $slot }}
+        {{ $notifications }}
     </x-ark-dropdown>
 </div>
