@@ -4,9 +4,7 @@
     <nav class="relative z-30 bg-white shadow-header-smooth dark:shadow-none dark:bg-theme-secondary-900">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="relative flex justify-between h-20 md:h-24">
-                @isset($logo)
-                    @include('ark::navbar.logo')
-                @endisset
+                @include('ark::navbar.logo')
 
                 <div class="flex justify-end">
                     <div class="flex items-center justify-end flex-1 sm:items-stretch sm:justify-between">
