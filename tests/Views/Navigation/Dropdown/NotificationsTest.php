@@ -2,19 +2,19 @@
 
 it('should render the component', function (): void {
     $this
-        ->assertView('ark::navbar.dropdown.notifications', [
-            'indicator' => 'indicator',
-            'slot'      => 'list of notifications',
+        ->assertView('ark::navbar.notifications', [
+            'notificationsIndicator' => 'indicator',
+            'notifications'          => 'list of notifications',
         ])
         ->contains('list of notifications');
 });
 
 it('should render the [dropdownClasses] attribute', function (): void {
     $this
-        ->assertView('ark::navbar.dropdown.notifications', [
-            'indicator'       => 'indicator',
-            'slot'            => 'list of notifications',
-            'dropdownClasses' => 'unicorn',
+        ->assertView('ark::navbar.notifications', [
+            'notificationsIndicator' => 'indicator',
+            'notifications'          => 'list of notifications',
+            'dropdownClasses'        => 'unicorn',
         ])
         ->contains('list of notifications')
         ->contains('unicorn');

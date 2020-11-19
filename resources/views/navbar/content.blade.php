@@ -1,5 +1,7 @@
 @auth
-    @include('ark::navbar.notifications')
+    @isset($notifications)
+        @include('ark::navbar.notifications')
+    @endisset
 
     @isset($profile)
         {{ $profile }}
