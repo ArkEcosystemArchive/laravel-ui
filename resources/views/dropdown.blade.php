@@ -2,8 +2,10 @@
 
 <div
     @if ($initAlpine ?? true) x-data="{ {{ $dropdownProperty }}: false }" @endif
-    @keydown.escape="{{ $dropdownProperty }} = false"
-    @click.away="{{ $dropdownProperty }} = false"
+    @if($closeOnBlur ?? true)
+        @keydown.escape="{{ $dropdownProperty }} = false"
+        @click.away="{{ $dropdownProperty }} = false"
+    @endif
     class="{{ $wrapperClass ?? '' ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
 >
     <div>
