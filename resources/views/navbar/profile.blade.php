@@ -2,7 +2,7 @@
     wrapper-class="relative ml-3 whitespace-no-wrap"
     :dropdown-classes="$profileMenuClass ?? null"
 >
-    @slot('button')
+    <x-slot name="button">
         <span class="relative inline-block avatar-wrapper">
             @isset($identifier)
                 <x-ark-avatar :identifier="$identifier" />
@@ -21,7 +21,7 @@
                 </span>
             </span>
         </span>
-    @endslot
+    </x-slot>
 
     @foreach ($profileMenu as $menuItem)
         @if ($menuItem['isPost'] ?? false)

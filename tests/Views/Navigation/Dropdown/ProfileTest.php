@@ -2,7 +2,7 @@
 
 it('should render the component', function (): void {
     $this
-        ->assertView('ark::navbar.dropdown.profile', [
+        ->assertView('ark::navbar.profile', [
             'profilePhoto'     => 'https://imgur.com/abc123',
             'profileMenu'      => [],
         ])
@@ -11,7 +11,7 @@ it('should render the component', function (): void {
 
 it('should render the [profileMenuClass] attribute', function (): void {
     $this
-        ->assertView('ark::navbar.dropdown.profile', [
+        ->assertView('ark::navbar.profile', [
             'profilePhoto'     => 'https://imgur.com/abc123',
             'profileMenu'      => [],
             'profileMenuClass' => 'unicorn',
@@ -22,7 +22,7 @@ it('should render the [profileMenuClass] attribute', function (): void {
 
 it('should render the [identifier] attribute instead of the [profilePhoto] attribute', function (): void {
     $this
-        ->assertView('ark::navbar.dropdown.profile', [
+        ->assertView('ark::navbar.profile', [
             'profilePhoto' => 'https://imgur.com/abc123',
             'profileMenu'  => [],
             'identifier'   => 'unicorn',

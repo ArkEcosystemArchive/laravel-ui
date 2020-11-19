@@ -15,11 +15,15 @@
                         @endisset
                     </div>
 
-                    @isset($dropdown)
-                        {{ $dropdown }}
-                    @else
-                        @include('ark::navbar.dropdown')
-                    @endisset
+                    <div class="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
+                        @include('ark::navbar.hamburger')
+
+                        @isset($content)
+                            {{ $content }}
+                        @else
+                            @include('ark::navbar.content')
+                        @endisset
+                    </div>
                 </div>
             </div>
         </div>
