@@ -4,39 +4,21 @@
     <nav class="relative z-30 bg-white shadow-header-smooth dark:shadow-none dark:bg-theme-secondary-900">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="relative flex justify-between h-20 md:h-24">
-                @isset($logo)
-                    <x-ark-navbar-logo :logo="$logo" />
-                @else
-                    <x-ark-navbar-logo :title="$title" />
-                @endisset
+                @include('ark::navbar.logo')
 
                 <div class="flex justify-end">
                     <div class="flex items-center justify-end flex-1 sm:items-stretch sm:justify-between">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
-                            <x-ark-navbar-items-desktop :navigation="$navigation" />
+                            @include('ark::navbar.items.desktop')
                         @endisset
                     </div>
 
                     @isset($dropdown)
                         {{ $dropdown }}
                     @else
-                        {{-- @TODO: pass down attributes in a separate refactor --}}
-                        @isset($notifications)
-                            <x-ark-navbar-dropdown
-                                :profile-menu="$profileMenu"
-                                :profile-menu-class="$profileMenuClass ?? null"
-                                :profile-photo="$profilePhoto"
-                                :notifications="$notifications"
-                            />
-                        @else
-                            <x-ark-navbar-dropdown
-                                :profile-menu="$profileMenu"
-                                :profile-photo="$profilePhoto"
-                                :profile-menu-class="$profileMenuClass ?? null"
-                            />
-                        @endisset
+                        @include('ark::navbar.dropdown')
                     @endisset
                 </div>
             </div>
@@ -45,7 +27,7 @@
         @isset($mobile)
             {{ $mobile }}
         @else
-            <x-ark-navbar-items-mobile :navigation="$navigation" />
+            @include('ark::navbar.items.mobile')
         @endisset
     </nav>
 </div>
