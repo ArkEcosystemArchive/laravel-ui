@@ -29,6 +29,8 @@
                 this.text = '{{ $grouped
                     ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
                     : collect($options)->get($initialValue) }}';
+
+                this.setHiddenInputValue(this.value, false);
             @endif
 
             this.$nextTick(() => {
@@ -60,8 +62,16 @@
 
             this.open = false;
 
+            this.setHiddenInputValue(value);
+        },
+        setHiddenInputValue: function(value, dispatchEvent = true) {
             const { input } = this.$refs;
+
             input.value = value
+
+            if (!dispatchEvent) {
+                return;
+            }
 
             const event = new Event('input', {
                 bubbles: true,
