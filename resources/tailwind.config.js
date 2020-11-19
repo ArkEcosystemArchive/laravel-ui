@@ -149,6 +149,7 @@ module.exports = {
         content: [
             "./resources/views/**/*.blade.php",
             "./vendor/arkecosystem/ui/resources/views/**/*.blade.php",
+            "./vendor/arkecosystem/fortify/resources/views/**/*.blade.php",
             "./resources/js/**/*.js",
             "./resources/js/**/*.vue",
             "./app/**/*.php",
