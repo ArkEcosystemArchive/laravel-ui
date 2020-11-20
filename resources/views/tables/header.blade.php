@@ -23,6 +23,7 @@
         . ($lastOn === 'md' ? ' last-cell last-cell-md' : '')
         . ($lastOn === 'lg' ? ' last-cell last-cell-lg' : '')
         . ($lastOn === 'xl' ? ' last-cell last-cell-xl' : '')
+        . ($lastOn === 'full' ? ' last-cell' : '')
         . ($firstOn === 'sm' ? ' first-cell first-cell-sm' : '')
         . ($firstOn === 'md' ? ' first-cell first-cell-md' : '')
         . ($firstOn === 'lg' ? ' first-cell first-cell-lg' : '')

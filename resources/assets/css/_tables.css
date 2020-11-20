@@ -30,25 +30,25 @@
     content: "";
 }
 
-@media (min-width: 680px) and (max-width: 767px) {
+@screen sm {
     .table-container table thead th.last-cell-sm::after {
         content: "";
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@screen md {
     .table-container table thead th.last-cell-md::after {
         content: "";
     }
 }
 
-@media (min-width: 1024px) and (max-width: 1279px) {
+@screen lg {
     .table-container table thead th.last-cell-lg::after {
         content: "";
     }
 }
 
-@media (min-width: 1280px) {
+@screen xl {
     .table-container table thead th.last-cell-xl::after {
         content: "";
     }
