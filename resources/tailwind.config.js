@@ -150,6 +150,7 @@ module.exports = {
             "./resources/views/**/*.blade.php",
             "./vendor/arkecosystem/ui/resources/views/**/*.blade.php",
             "./vendor/arkecosystem/fortify/resources/views/**/*.blade.php",
+            "./vendor/arkecosystem/hermes/resources/views/**/*.blade.php",
             "./resources/js/**/*.js",
             "./resources/js/**/*.vue",
             "./app/**/*.php",
