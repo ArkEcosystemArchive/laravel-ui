@@ -1,4 +1,4 @@
-<div class="flex items-center">
+<div class="items-center @if($showMobile ?? false) flex @else hidden md:flex @endif">
     <div
         :class="{
             'text-theme-danger-400 border-theme-danger-100': tableView === 'grid',
