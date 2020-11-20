@@ -70,11 +70,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../resources/views/livewire/notifications-indicator.blade.php' => resource_path('views/livewire/notifications-indicator.blade.php'),
-            __DIR__.'/Livewire/NotificationsIndicator.php'                           => app_path('../Domain/Components/NotificationsIndicator.php'),
-        ], 'notifications-indicator');
-
-        $this->publishes([
             __DIR__.'/../resources/views/pagination.blade.php'     => resource_path('views/vendor/ark/pagination.blade.php'),
             __DIR__.'/../resources/views/pagination-url.blade.php' => resource_path('views/vendor/ark/pagination-url.blade.php'),
         ], 'pagination');
