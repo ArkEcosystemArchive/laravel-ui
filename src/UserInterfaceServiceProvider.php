@@ -151,7 +151,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::message', 'ark-message');
         Blade::component('ark::metatags', 'ark-metatags');
         Blade::component('ark::modal', 'ark-modal');
-        Blade::component('ark::notification-icon', 'ark-notification-icon');
         Blade::component('ark::outgoing-link', 'ark-outgoing-link');
         Blade::component('ark::pagination', 'ark-pagination');
         Blade::component('ark::pagination-url', 'ark-pagination-url');

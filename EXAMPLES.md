@@ -173,15 +173,6 @@ You can also get an alert with more padding and large icon by specifying `large`
 <x-icon name="chevron-down" size="xs" class="md:h-3 md:w-2" />
 ```
 
-### Notification Icon
-
-```php
-<x-notification-icon type="danger" :logo="$notification->token->logo" />
-<x-notification-icon type="success" :logo="$notification->token->logo" />
-<x-notification-icon type="warning" :logo="$notification->token->logo" />
-<x-notification-icon type="warning" :logo="$notification->token->logo" state-color="bg-green-100" />
-```
-
 ### Simple Footer
 
 > Only contains date, copyright notice and an ARK.io link
