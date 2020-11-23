@@ -3,6 +3,10 @@
     @apply button-secondary p-0 flex items-center justify-center bg-transparent;
 }
 
+.dropdown-button-outline {
+    @apply dropdown-button border border-solid border-theme-secondary-200 rounded focus:bg-theme-primary-100;
+}
+
 .dropdown-entry {
     @apply flex w-full items-center font-medium text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
 }
