@@ -8,6 +8,7 @@
     // (Only neccesary if the last column changes on responsive versions)
     'lastOn' => null,
     'class' => '',
+    'colspan' => null,
 ])
 
 <td {{ $attributes->merge([
@@ -27,7 +28,9 @@
         . ($firstOn === 'lg' ? ' first-cell first-cell-lg' : '')
         . ($firstOn === 'xl' ? ' first-cell first-cell-xl' : '')
         . ' ' . $class
-]) }}>
+]) }}
+    @if ($colspan) colspan="{{ $colspan }}" @endif
+>
     <div class="relative flex items-center h-full px-3 py-4">
         {{ $slot }}
     </div>
