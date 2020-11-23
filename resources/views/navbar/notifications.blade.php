@@ -3,7 +3,7 @@
         <x-slot name="button">
             @svg('notification', 'h-6 w-6 transition-default')
 
-            @isset()
+            @isset($notificationsIndicator)
                 {{ $notificationsIndicator }}
             @else
                 @livewire('notifications-indicator')
