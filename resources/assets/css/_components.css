@@ -1,4 +1,8 @@
 /** Dropdowns **/
+.dropdown-button {
+    @apply button-secondary p-0 flex items-center justify-center bg-transparent;
+}
+
 .dropdown-entry {
     @apply flex w-full items-center font-medium text-left px-8 py-4 leading-5 transition duration-150 ease-in-out;
 }
