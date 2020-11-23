@@ -10,7 +10,7 @@
                 type="{{ $type ?? 'text' }}"
                 id="{{ $id ?? $name }}"
                 class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
-                wire:model="{{ $model ?? $name }}"
+                @unless($noModel ?? false) wire:model="{{ $model ?? $name }}" @endUnless
                 {{-- @TODO: remove --}}
                 @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
                 {{-- @TODO: remove --}}
