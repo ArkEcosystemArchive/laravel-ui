@@ -16,7 +16,7 @@
         'base' => 'w-6 h-6',
     ][$containerSize ?? 'base'];
 
-    $icon = [
+    $icon = Arr::get([
         'success' => 'checkmark',
         'failed' => 'cross',
         'error' => 'cross',
@@ -24,9 +24,17 @@
         'paused' => 'update',
         'updated' => 'update',
         'locked' => 'lock',
-    ][$type];
+        'errored' => 'errored',
+        'launching' => 'launching',
+        'one-launch-status' => 'one-status-launch',
+        'online' => 'online',
+        'stopped' => 'stopped',
+        'stopping' => 'stopping',
+        'waiting-restart' => 'waiting-restart',
+        'undefined' => 'undefined',
+    ], $type, 'undefined');
 
-    $color = [
+    $color = Arr::get([
         'success' => 'success-600',
         'failed' => 'danger-400',
         'error' => 'danger-400',
@@ -34,7 +42,15 @@
         'paused' => 'warning-500',
         'updated' => 'warning-900',
         'locked' => 'secondary-700',
-    ][$type];
+        'errored' => 'danger-400',
+        'launching' => 'primary-500',
+        'one-launch-status' => 'info-500',
+        'online' => 'success-600',
+        'stopped' => 'warning-500',
+        'stopping' => 'warning-500',
+        'waiting-restart' => 'hint-400',
+        'undefined' => 'secondary-700',
+    ], $type, 'secondary-700');
 @endphp
 
 <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-{{ $color }} {{ $containerSize }}">
