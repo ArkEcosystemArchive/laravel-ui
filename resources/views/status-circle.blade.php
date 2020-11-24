@@ -2,7 +2,7 @@
     <div class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-theme-success-200">
         @svg('checkmark', 'text-theme-success-500 h-3 w-3')
     </div>
-@elseif ($type === 'failed')
+@elseif ($type === 'failed' || $type === 'error')
     <div class="flex items-center justify-center flex-shrink-0 w-6 h-6 rounded-full bg-theme-danger-100">
         @svg('cross', 'text-theme-danger-500 h-2 w-2')
     </div>
