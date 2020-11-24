@@ -1,5 +1,7 @@
 <div class="flex items-center space-x-5 detail-box @if ($reverse ?? false) flex-row-reverse @endif">
-    @if(isset($icon) || isset($iconRaw))
+    @isset($iconWrapper)
+        {{ $iconWrapper }}
+    @elseif(isset($icon) || isset($iconRaw))
         @isset($noBorder)
             <div class="flex-shrink-0 text-theme-secondary-900 dark:text-theme-secondary-600 {{ $iconWrapperClass ?? '' }} @unless ($reverse ?? false) mr-5 @else ml-5 @endif">
                 @if ($icon ?? false)
@@ -26,6 +28,7 @@
             </div>
         @endisset
     @endif
+
 
     <div class="flex flex-col space-y-2">
         <span class="text-sm font-semibold text-theme-secondary-500 dark:text-theme-secondary-700">
