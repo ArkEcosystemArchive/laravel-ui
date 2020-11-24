@@ -67,21 +67,6 @@ if ($initialValue) {
 
             this.setHiddenInputValue(value);
         },
-        choose: function(value, groupName = null) {
-            if (this.value === value) {
-                return;
-            }
-
-            this.value = value;
-
-            this.text = groupName !==null
-                ? this.options[groupName][value]
-                : this.options[value];
-
-            this.open = false;
-
-            this.setHiddenInputValue(value);
-        },
         setHiddenInputValue: function(value, dispatchEvent = true) {
             const { input } = this.$refs;
 
