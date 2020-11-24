@@ -49,9 +49,6 @@
         selectedGroup: null,
         value: null,
         text: null,
-        dynamycText() {
-            return this.selected
-        },
         choose: function(value, groupName = null) {
             if (this.value === value) {
                 return;
