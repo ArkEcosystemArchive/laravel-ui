@@ -29,7 +29,7 @@
     @apply text-white bg-theme-danger-400;
 }
 
-/* Dropdown Scrollbar */
+/** Dropdown Scrollbar **/
 .dropdown-scrolling::-webkit-scrollbar {
     @apply rounded-lg;
     width: 6px;
@@ -48,7 +48,7 @@
     scrollbar-color: #bad6f0 transparent;
 }
 
-/* Tabs */
+/** Tabs **/
 .tabs {
     @apply px-8 mb-8 font-semibold rounded-lg select-none bg-theme-secondary-100;
 }
@@ -113,7 +113,7 @@
     @apply border-l border-theme-secondary-300 h-4;
 }
 
-/* Tab Badge */
+/** Tab Badge **/
 .info-badge {
     @apply ml-1 text-sm rounded bg-theme-primary-100;
     padding: 2px 6px;
@@ -242,7 +242,7 @@
     }
 }
 
-/* Link Description Block */
+/** Link Description Block **/
 .description-block {
     @apply flex flex-col border-2 border-theme-secondary-200 p-10 rounded-lg transition-default;
 }
@@ -274,7 +274,7 @@
     }
 }
 
-/* Navbar */
+/** Navbar **/
 .navbar-mobile-link {
     @apply border-l-3 border-white flex items-center block font-semibold pl-8 py-3 w-full;
 }
@@ -299,7 +299,7 @@
     @apply text-theme-secondary-200;
 }
 
-/* Circled Icon */
+/** Circled Icon **/
 .circled-icon {
     @apply flex items-center justify-center border-2 rounded-full w-11 h-11;
 }
