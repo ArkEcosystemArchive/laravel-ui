@@ -83,7 +83,6 @@ if ($initialValue) {
             this.setHiddenInputValue(value);
         },
         setHiddenInputValue: function(value, dispatchEvent = true) {
-            console.log('setHiddenInputValue', value)
             const { input } = this.$refs;
 
             input.value = value
