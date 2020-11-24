@@ -1,14 +1,6 @@
 /** Dropdowns **/
-.dropdown-button {
-    @apply button-secondary p-0 flex items-center justify-center bg-transparent;
-}
-
 .dropdown-button-outline {
-    @apply button-secondary p-0 flex items-center justify-center bg-transparent border border-solid border-theme-secondary-200 rounded;
-}
-
-.dropdown-button-outline:focus {
-    @apply bg-theme-primary-100;
+    @apply border border-solid border-theme-secondary-200 rounded bg-transparent;
 }
 
 .dropdown-entry {
