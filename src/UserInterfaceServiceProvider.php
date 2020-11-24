@@ -162,6 +162,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::slider', 'ark-slider');
         Blade::component('ark::social-link', 'ark-social-link');
         Blade::component('ark::social-square', 'ark-social-square');
+        Blade::component('ark::status', 'ark-status');
         Blade::component('ark::status-circle', 'ark-status-circle');
         Blade::component('ark::status-circle-shallow', 'ark-status-circle-shallow');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
