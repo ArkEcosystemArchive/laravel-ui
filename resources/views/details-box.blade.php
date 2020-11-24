@@ -1,9 +1,17 @@
-<div class="flex items-center space-x-5 detail-box">
+<div class="flex items-center space-x-5 detail-box @if ($reverse ?? false) flex-row-reverse @endif">
     @isset($iconWrapper)
         {{ $iconWrapper }}
     @elseif(isset($icon) || isset($iconRaw))
-        @isset($shallow)
-            <div class="flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600 {{ $iconWrapperClass ?? '' }}">
+        @isset($noBorder)
+            <div class="flex-shrink-0 text-theme-secondary-900 dark:text-theme-secondary-600 {{ $iconWrapperClass ?? '' }} @unless ($reverse ?? false) mr-5 @else ml-5 @endif">
+                @if ($icon ?? false)
+                    <x-ark-icon :name="$icon" />
+                @else
+                    {{ $iconRaw }}
+                @endif
+            </div>
+        @elseif(isset($shallow))
+            <div class="flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600 {{ $iconWrapperClass ?? '' }} @unless ($reverse ?? false) mr-5 @else ml-5 @endif">
                 @if ($icon ?? false)
                     <x-ark-icon :name="$icon" />
                 @else
@@ -11,7 +19,7 @@
                 @endif
             </div>
         @else
-            <div class="flex items-center justify-center p-2 rounded-full h-12 w-12 flex-shrink-0 bg-theme-secondary-200 dark:bg-theme-secondary-800 {{ $iconWrapperClass ?? '' }}">
+            <div class="flex items-center justify-center p-2 rounded-full h-12 w-12 flex-shrink-0 bg-theme-secondary-200 dark:bg-theme-secondary-800 {{ $iconWrapperClass ?? '' }} @unless ($reverse ?? false) mr-5 @else ml-5 @endif">
                 @if ($icon ?? false)
                     <x-ark-icon :name="$icon" :class="($iconTextClass ?? ' ') . ' ' . ($iconClass ?? '')" />
                 @else

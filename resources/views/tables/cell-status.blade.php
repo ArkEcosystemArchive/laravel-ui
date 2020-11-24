@@ -9,7 +9,22 @@
     'lastOn' => null,
     'class' => '',
     'colspan' => null,
+    'type' => null,
 ])
+
+@php
+    $colours = [
+        'success' => 'bg-theme-success-50 text-theme-success-400',
+        'failed'  => 'bg-theme-danger-50 text-theme-danger-400',
+        'error'   => 'bg-theme-danger-50 text-theme-danger-400',
+        'debug'   => 'bg-theme-hint-50 text-theme-hint-500',
+        'running' => 'bg-theme-warning-50 text-theme-warning-400',
+        'updated' => 'bg-theme-warning-50 text-theme-warning-400',
+        'active'  => 'bg-theme-primary-50 text-theme-primary-400',
+        'locked'  => 'bg-theme-secondary-50 text-theme-secondary-400',
+        'none'    => '',
+    ][$type ?? 'none'];
+@endphp
 
 <td {{ $attributes->merge([
     'class' =>
@@ -31,7 +46,11 @@
 ]) }}
     @if ($colspan) colspan="{{ $colspan }}" @endif
 >
-    <div class="relative flex items-center h-full px-3 py-4">
-        {{ $slot }}
+    <div>
+        <div class="flex items-center space-x-2 font-semibold px-4 py-3 -mx-3 -my-4 {{ $colours }}">
+            <x-ark-status-circle-shallow :type="$type" />
+
+            <div>@lang('ui::status.'.$type)</div>
+        </div>
     </div>
 </td>

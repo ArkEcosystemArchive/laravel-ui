@@ -21,7 +21,7 @@
     @apply text-white bg-theme-danger-400;
 }
 
-/* Dropdown Scrollbar */
+/** Dropdown Scrollbar **/
 .dropdown-scrolling::-webkit-scrollbar {
     @apply rounded-lg;
     width: 6px;
@@ -41,6 +41,43 @@
 }
 
 /** Tabs **/
+.tabs {
+    @apply px-8 mb-8 font-semibold rounded-lg select-none bg-theme-secondary-100;
+}
+.theme-dark .tabs {
+    @apply bg-black;
+}
+
+.tab-item {
+    @apply relative pt-8 ml-16 border-b-4 border-transparent cursor-pointer pb-7 whitespace-no-wrap;
+}
+.tab-item:first-child {
+    @apply ml-0;
+}
+.tab-item-current,
+.tab-item:hover {
+    @apply text-theme-secondary-900 border-theme-primary-600;
+}
+
+.theme-dark .tab-item:hover {
+    @apply text-theme-secondary-600;
+}
+.theme-dark .tab-item-current,
+.theme-dark .tab-item:hover {
+    @apply text-theme-secondary-200;
+}
+
+.tab-item::before {
+    content: "";
+    @apply absolute left-0 h-6 -ml-8 border-l border-theme-secondary-300;
+}
+.tab-item:first-child::before {
+    @apply border-l-0;
+}
+.theme-dark .tab-item::before {
+    @apply border-theme-secondary-800;
+}
+
 .tabs-wrapper {
     @apply flex items-center bg-theme-secondary-100 text-theme-secondary-500 rounded-lg px-4 mt-3;
 }
@@ -66,6 +103,15 @@
 
 .tabs-separator {
     @apply border-l border-theme-secondary-300 h-4;
+}
+
+/** Tab Badge **/
+.info-badge {
+    @apply ml-1 text-sm rounded bg-theme-primary-100;
+    padding: 2px 6px;
+}
+.theme-dark .info-badge {
+    @apply bg-theme-secondary-900 text-theme-secondary-700;
 }
 
 /** Links **/
@@ -188,7 +234,7 @@
     }
 }
 
-/* Link Description Block */
+/** Link Description Block **/
 .description-block {
     @apply flex flex-col border-2 border-theme-secondary-200 p-10 rounded-lg transition-default;
 }
@@ -220,7 +266,7 @@
     }
 }
 
-/* Navbar */
+/** Navbar **/
 .navbar-mobile-link {
     @apply border-l-3 border-white flex items-center block font-semibold pl-8 py-3 w-full;
 }
@@ -245,7 +291,7 @@
     @apply text-theme-secondary-200;
 }
 
-/* Circled Icon */
+/** Circled Icon **/
 .circled-icon {
     @apply flex items-center justify-center border-2 rounded-full w-11 h-11;
 }

@@ -151,6 +151,10 @@
     @apply justify-end;
 }
 
+.table-container table > tbody > tr > td.hoverable-cell.text-left > div {
+    @apply justify-start;
+}
+
 .table-container table > tbody > tr > td.hoverable-cell > div:after {
     content: "";
     @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full border-t border-b border-transparent pointer-events-none;
