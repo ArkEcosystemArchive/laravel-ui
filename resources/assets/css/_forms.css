@@ -108,6 +108,20 @@
     @apply bg-theme-secondary-700;
 }
 
+/* Switch (toggle alternative) */
+.input-switch-button-left {
+    @apply translate-x-0 bg-theme-primary-600;
+}
+
+.input-switch-button-right {
+    @apply translate-x-5 bg-theme-primary-600;
+}
+
+.input-switch-button-left:hover,
+.input-switch-button-right:hover {
+    @apply shadow-outline;
+}
+
 /* Errors */
 .input-group:focus-within .input-label--error,
 .input-group:hover .input-label--error,
