@@ -2,7 +2,6 @@
     'options',
     'initialValue' => null,
     'dispatchEvent' => null,
-    'setValueFromEvent' => null,
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
@@ -11,28 +10,24 @@
     'grouped' => false,
 ])
 
+@php
+if ($initialValue) {
+    $initialText = $grouped
+        ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
+        : collect($options)->get($initialValue);
+}
+@endphp
+
 <div
-    @if($setValueFromEvent)
-    {{ '@' . $setValueFromEvent }}.window="choose($event.detail)"
-    @endif
     class="relative {{ $wrapperClass }}"
     x-data="{
         options: {{ json_encode($options) }},
-        onInput($dispatch) {
+        onInput($dispatch, $event) {
             @isset($dispatchEvent)
-            $dispatch('{{$dispatchEvent}}', this.value)
+            $dispatch('{{$dispatchEvent}}', $event.target.value)
             @endisset
         },
         init: function() {
-            @isset($initialValue)
-                this.value = '{{ $initialValue }}';
-                this.text = '{{ $grouped
-                    ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
-                    : collect($options)->get($initialValue) }}';
-
-                this.setHiddenInputValue(this.value, false);
-            @endif
-
             this.$nextTick(() => {
                 @if($grouped)
                 this.optionsCount = Object.keys(this.options).map(groupName => {
@@ -47,10 +42,30 @@
         open: false,
         selected: null,
         selectedGroup: null,
+        @isset($initialValue)
+        value: '{{ $initialValue }}',
+        @else
         value: null,
+        @endif
+        @isset($initialText)
+        text: '{{ $initialText }}',
+        @else
         text: null,
-        dynamycText() {
-            return this.selected
+        @endif
+        choose: function(value, groupName = null) {
+            if (this.value === value) {
+                return;
+            }
+
+            this.value = value;
+
+            this.text = groupName !==null
+                ? this.options[groupName][value]
+                : this.options[value];
+
+            this.open = false;
+
+            this.setHiddenInputValue(value);
         },
         choose: function(value, groupName = null) {
             if (this.value === value) {
@@ -68,6 +83,7 @@
             this.setHiddenInputValue(value);
         },
         setHiddenInputValue: function(value, dispatchEvent = true) {
+            console.log('setHiddenInputValue', value)
             const { input } = this.$refs;
 
             input.value = value
@@ -147,7 +163,7 @@
     }"
     x-init="init()"
 >
-    <input x-ref="input" {{ $attributes }} type="hidden" @input="onInput($dispatch)" />
+    <input x-ref="input" {{ $attributes }} type="hidden" @input="onInput($dispatch, $event)" @isset($initialValue) value="{{ $initialValue }}" @endisset />
 
     <button
         x-ref="button"
