@@ -25,32 +25,6 @@
         'none'    => '',
     ][$type ?? 'none'];
 @endphp
-{{-- 
-@if ($type === 'success')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-success-600 {{ $containerSize }}">
-        @svg('checkmark', 'text-theme-success-600 '.$size)
-    </div>
-@elseif ($type === 'failed' || $type === 'error')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-danger-400 {{ $containerSize }}">
-        @svg('cross', 'text-theme-danger-400 '.$size)
-    </div>
-@elseif ($type === 'running')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-warning-900 {{ $containerSize }}">
-        @svg('update', 'text-theme-warning-900 animation-spin '.$size)
-    </div>
-@elseif ($type === 'paused')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-warning-500 {{ $containerSize }}">
-        @svg('update', 'text-theme-warning-500 '.$size)
-    </div>
-@elseif ($type === 'updated')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-warning-900 {{ $containerSize }}">
-        @svg('update', 'text-theme-warning-900 '.$size)
-    </div>
-@elseif ($type === 'locked')
-    <div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-secondary-700 {{ $containerSize }}">
-        @svg('lock', 'text-theme-secondary-700 '.$size)
-    </div>
-@endif --}}
 
 <div class="flex font-semibold space-x-2 {{ $colour }}">
     <div>@lang('ui::status.'.$type)</div>
