@@ -1,5 +1,7 @@
 <div class="flex items-center space-x-5 detail-box">
-    @if(isset($icon) || isset($iconRaw))
+    @isset($iconWrapper)
+        {{ $iconWrapper }}
+    @elseif(isset($icon) || isset($iconRaw))
         @isset($shallow)
             <div class="flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600 {{ $iconWrapperClass ?? '' }}">
                 @if ($icon ?? false)
@@ -18,6 +20,7 @@
             </div>
         @endisset
     @endif
+
 
     <div class="flex flex-col space-y-2">
         <span class="text-sm font-semibold text-theme-secondary-500 dark:text-theme-secondary-700">
