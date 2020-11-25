@@ -104,6 +104,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
     private function registerBladeComponents(): void
     {
         Blade::component('ark::inputs.checkbox', 'ark-checkbox');
+        Blade::component('ark::inputs.date-picker', 'ark-date-picker');
         Blade::component('ark::inputs.input', 'ark-input');
         Blade::component('ark::inputs.input-with-icon', 'ark-input-with-icon');
         Blade::component('ark::inputs.radio', 'ark-radio');
