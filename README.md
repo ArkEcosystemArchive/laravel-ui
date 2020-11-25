@@ -169,6 +169,21 @@ yarn add -D swiper
 @import "../../node_modules/swiper/swiper-bundle.min.css";
 ```
 
+### Date Picker
+
+1. Install `pikaday`
+
+```bash
+yarn add -D pikaday
+```
+
+2. Include pikaday CSS
+
+```css
+@import "../../node_modules/pikaday/css/pikaday.css";
+@import '../../vendor/arkecosystem/ui/resources/assets/css/_pikaday.css';
+```
+
 ### Notifications Indicator
 
 1. Add this to your user migration table
