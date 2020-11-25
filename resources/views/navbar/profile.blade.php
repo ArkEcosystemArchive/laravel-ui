@@ -1,6 +1,7 @@
 <x-ark-dropdown
     wrapper-class="relative ml-3 whitespace-no-wrap"
     :dropdown-classes="$profileMenuClass ?? null"
+    dusk="profile-dropdown"
 >
     <x-slot name="button">
         <span class="relative inline-block avatar-wrapper">
