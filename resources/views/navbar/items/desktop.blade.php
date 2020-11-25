@@ -6,6 +6,7 @@
                 class="relative inline-flex justify-center items-center px-1 pt-1 font-semibold leading-5 border-b-2 border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 focus:outline-none transition duration-150 ease-in-out h-full dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
                     @if(!$loop->first) ml-8 @endif"
                 @click="openDropdown = openDropdown === '{{ $navItem['label'] }}' ? null : '{{ $navItem['label'] }}'"
+                dusk='navbar-{{ Str::slug($navItem['label']) }}'
             >
                 <span :class="{ 'text-theme-primary-600': openDropdown === '{{ $navItem['label'] }}' }">{{ $navItem['label'] }}</span>
                 <span class="ml-2 transition duration-150 ease-in-out text-theme-primary-600" :class="{ 'rotate-180': openDropdown === '{{ $navItem['label'] }}' }">@svg('chevron-down', 'h-3 w-3')</span>
@@ -42,6 +43,7 @@
                     @endif
                     @if(!$loop->first) ml-8 @endif"
                 @click="openDropdown = null;"
+                dusk='navbar-{{ Str::slug($navItem['label']) }}'
             >
                 {{ $navItem['label'] }}
             </a>
