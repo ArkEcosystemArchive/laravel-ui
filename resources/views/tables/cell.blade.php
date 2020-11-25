@@ -31,7 +31,7 @@
 ]) }}
     @if ($colspan) colspan="{{ $colspan }}" @endif
 >
-    <div class="relative flex items-center h-full px-3 py-4">
+    <div>
         {{ $slot }}
     </div>
 </td>
