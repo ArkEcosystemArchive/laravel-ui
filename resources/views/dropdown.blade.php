@@ -7,6 +7,7 @@
         @click.away="{{ $dropdownProperty }} = false"
     @endif
     class="{{ $wrapperClass ?? '' ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
+    @isset($dusk) dusk="{{ $dusk }}" @endisset
 >
     <div>
         <button
