@@ -34,25 +34,43 @@
         'undefined' => 'undefined',
     ], $type, 'undefined');
 
-    $color = Arr::get([
-        'success' => 'success-600',
-        'failed' => 'danger-400',
-        'error' => 'danger-400',
-        'running' => 'warning-900',
-        'paused' => 'warning-500',
-        'updated' => 'warning-900',
-        'locked' => 'secondary-700',
-        'errored' => 'danger-400',
-        'launching' => 'primary-500',
-        'one-launch-status' => 'info-500',
-        'online' => 'success-600',
-        'stopped' => 'warning-500',
-        'stopping' => 'warning-500',
-        'waiting-restart' => 'hint-400',
-        'undefined' => 'secondary-700',
-    ], $type, 'secondary-700');
+    $borderColor = Arr::get([
+        'success' => 'border-theme-success-600',
+        'failed' => 'border-theme-danger-400',
+        'error' => 'border-theme-danger-400',
+        'running' => 'border-theme-warning-900',
+        'paused' => 'border-theme-warning-500',
+        'updated' => 'border-theme-warning-900',
+        'locked' => 'border-theme-secondary-700',
+        'errored' => 'border-theme-danger-400',
+        'launching' => 'border-theme-primary-500',
+        'one-launch-status' => 'border-theme-info-500',
+        'online' => 'border-theme-success-600',
+        'stopped' => 'border-theme-warning-500',
+        'stopping' => 'border-theme-warning-500',
+        'waiting-restart' => 'border-theme-hint-400',
+        'undefined' => 'border-theme-secondary-700',
+    ], $type, 'border-theme-secondary-700');
+
+    $iconColor = Arr::get([
+        'success' => 'text-theme-success-600',
+        'failed' => 'text-theme-danger-400',
+        'error' => 'text-theme-danger-400',
+        'running' => 'text-theme-warning-900',
+        'paused' => 'text-theme-warning-500',
+        'updated' => 'text-theme-warning-900',
+        'locked' => 'text-theme-secondary-700',
+        'errored' => 'text-theme-danger-400',
+        'launching' => 'text-theme-primary-500',
+        'one-launch-status' => 'text-theme-info-500',
+        'online' => 'text-theme-success-600',
+        'stopped' => 'text-theme-warning-500',
+        'stopping' => 'text-theme-warning-500',
+        'waiting-restart' => 'text-theme-hint-400',
+        'undefined' => 'text-theme-secondary-700',
+    ], $type, 'text-theme-secondary-700');
 @endphp
 
-<div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full border-theme-{{ $color }} {{ $containerSize }}">
-    @svg($icon, 'text-theme-'.$color.' '.$size)
+<div class="flex items-center justify-center flex-shrink-0 border-2 rounded-full {{ $borderColor }} {{ $containerSize }}">
+    @svg($icon, $iconColor.' '.$size)
 </div>
