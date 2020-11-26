@@ -182,7 +182,6 @@
     }
 }
 
-
 /** Modal **/
 .modal-content {
     @apply relative mx-auto overflow-y-auto bg-white rounded-lg shadow-2xl;
