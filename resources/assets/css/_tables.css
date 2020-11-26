@@ -145,6 +145,7 @@
 
 .table-container table > tbody > tr > td.hoverable-cell > div {
     @apply box-content relative flex items-center h-full px-3 py-4;
+    -moz-box-sizing: border-box;
 }
 
 .table-container table > tbody > tr > td.hoverable-cell.text-right > div {
