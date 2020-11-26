@@ -1,9 +1,9 @@
 .button-generic {
-    @apply font-semibold px-4 py-2 rounded text-center transition-default;
+    @apply px-4 py-2 font-semibold text-center rounded transition-default;
 }
 
 .button-primary {
-    @apply button-generic bg-theme-primary-600 text-white;
+    @apply text-white button-generic bg-theme-primary-600;
 }
 
 .button-primary:hover {
@@ -17,7 +17,7 @@
 .button-icon-rounded:disabled,
 .button-disabled,
 a.disabled {
-    @apply bg-theme-secondary-200 text-theme-secondary-400 cursor-not-allowed shadow-none pointer-events-none;
+    @apply shadow-none cursor-not-allowed pointer-events-none bg-theme-secondary-200 text-theme-secondary-400;
 }
 
 .theme-dark .button-primary:disabled,
@@ -44,7 +44,7 @@ a.disabled {
 
 .button-icon-primary,
 .button-icon {
-    @apply p-0 flex items-center justify-center;
+    @apply flex items-center justify-center p-0;
 }
 
 .button-icon-primary {
@@ -63,7 +63,7 @@ a.disabled {
 .button-icon:hover,
 .button-secondary:hover,
 .button-icon-rounded:hover {
-    @apply bg-theme-primary-700 text-white shadow-button-secondary;
+    @apply text-white bg-theme-primary-700 shadow-button-secondary;
 }
 .theme-dark .button-icon:hover,
 .theme-dark .button-icon-rounded:hover,
@@ -76,7 +76,7 @@ a.disabled {
 }
 
 .button-cancel:hover {
-    @apply bg-theme-danger-400 text-white;
+    @apply text-white bg-theme-danger-400;
 }
 
 a.button-generic,
@@ -86,7 +86,7 @@ a.button-secondary {
 }
 
 .button-pagination-page-indicator {
-    @apply font-semibold px-2 py-2 text-center transition-default bg-theme-primary-100 text-theme-primary-500;
+    @apply px-2 py-2 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-500;
 }
 
 .theme-dark .button-pagination-page-indicator {
@@ -101,12 +101,12 @@ a.button-secondary {
     @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
 }
 
-.button-pagination-page-indicator:hover:not([disabled]) {
-    @apply bg-theme-primary-700 text-white rounded;
+.button-pagination-page-indicator:hover:not(.button-pagination-page-indicator--search) {
+    @apply text-white rounded bg-theme-primary-700;
     transform: scale(1.2);
 }
 
-.theme-dark .button-pagination-page-indicator:hover:not([disabled]) {
+.theme-dark .button-pagination-page-indicator:hover {
     @apply bg-theme-primary-600;
 }
 
