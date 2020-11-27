@@ -1,6 +1,6 @@
 @props([
-    'options',
-    'initialValue' => null,
+    'options' => [],
+    'initialValue' => '',
     'dispatchEvent' => null,
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
@@ -11,11 +11,9 @@
 ])
 
 @php
-if ($initialValue) {
-    $initialText = $grouped
-        ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
-        : collect($options)->get($initialValue);
-}
+$initialText = $grouped
+    ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
+    : collect($options)->get($initialValue);
 @endphp
 
 <div
@@ -45,12 +43,12 @@ if ($initialValue) {
         @isset($initialValue)
         value: '{{ $initialValue }}',
         @else
-        value: null,
+        value: '',
         @endif
         @isset($initialText)
         text: '{{ $initialText }}',
         @else
-        text: null,
+        text: ''`,
         @endif
         choose: function(value, groupName = null) {
             if (this.value === value) {
