@@ -115,6 +115,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.password-toggle', 'ark-password-toggle');
         Blade::component('ark::inputs.rich-select', 'ark-rich-select');
         Blade::component('ark::inputs.switch', 'ark-switch');
+        Blade::component('ark::inputs.time', 'ark-time');
 
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');

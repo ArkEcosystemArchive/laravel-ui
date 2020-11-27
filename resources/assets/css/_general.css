@@ -180,3 +180,18 @@ body {
 [x-cloak] {
     display: none;
 }
+
+/* YouTube */
+.video-container {
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+    position: relative;
+}
+
+.video-container iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
