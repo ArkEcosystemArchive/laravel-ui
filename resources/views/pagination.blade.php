@@ -11,7 +11,7 @@
                     this.$nextTick(() => {
                         const searchInputs = this.$el.querySelectorAll('input[name={{ $pageName }}]');
                         searchInputs.forEach( (input) => {
-                            input.focus()
+                            input.focus();
                         })
                     })
                  } else {
@@ -40,6 +40,9 @@
         toggleSearch() {
             this.search = !this.search;
         },
+        hideSearch() {
+            this.search = false;
+        },
     }"
     x-init="init"
     class="pagination-wrapper"
@@ -52,18 +55,23 @@
                 min="1"
                 max="{{ $paginator->lastPage() }}"
                 name="{{ $pageName }}"
-                placeholder="Enter the page" class="w-full px-3 py-2 bg-transparent"
+                placeholder="Enter the page"
+                class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
                 @blur="blurHandler"
             />
-            <button type="submit" class="p-2 text-theme-secondary-400 hover:text-theme-primary-500" :disabled="!page">
+            <button type="submit" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" :disabled="!page">
                 <x-ark-icon name="search" size="sm" />
             </button>
-            <button type="button" class="p-2 text-theme-secondary-400 hover:text-theme-primary-500" @click="toggleSearch()">
+            <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" @click="hideSearch()">
                 <x-ark-icon name="close" size="sm" />
             </button>
         </form>
 
-        <button type="button" class="button-pagination-page-indicator button-pagination-page-indicator--search" @click="toggleSearch()"><span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span></button>
+        <button type="button"
+            class="button-pagination-page-indicator button-pagination-page-indicator--search"
+            :class="{ 'opacity-0': search }"
+            @click="toggleSearch()"
+        ><span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span></button>
     </div>
 
     <div class="flex space-x-3">
@@ -92,13 +100,14 @@
                     min="1"
                     max="{{ $paginator->lastPage() }}"
                     name="{{ $pageName }}"
-                    placeholder="Enter the page number" class="w-full px-3 py-2 bg-transparent"
+                    placeholder="Enter the page number"
+                    class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
                     @blur="blurHandler"
                 />
-                <button type="submit" class="p-2 text-theme-secondary-400 hover:text-theme-primary-500" :disabled="!page">
+                <button type="submit" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" :disabled="!page">
                     <x-ark-icon name="search" size="sm" />
                 </button>
-                <button type="button" class="p-2 text-theme-secondary-400 hover:text-theme-primary-500" @click="toggleSearch()">
+                <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" @click="hideSearch()">
                     <x-ark-icon name="close" size="sm" />
                 </button>
             </form>
@@ -107,7 +116,16 @@
                 @foreach ($elements as $element)
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))
-                        <button @click="toggleSearch()" type="button" class="button-pagination-page-indicator button-pagination-page-indicator--search"><span>{{ $element }}</span></button>
+                        <button
+                            @click="toggleSearch()"
+                            @mouseover=""
+                            type="button"
+                            class="button-pagination-page-indicator button-pagination-page-indicator--search"
+                            :class="{ 'opacity-0': search }"
+                        >
+                            <span class="button-pagination-search"><x-ark-icon name="search" size="sm" /></span>
+                            <span class="button-pagination-ellipsis">{{ $element }}</span>
+                        </button>
                     @endif
 
                     {{-- Array Of Links --}}
@@ -125,7 +143,12 @@
             </div>
 
             <div class="pagination-pages md:hidden">
-                <button @click="toggleSearch" type="button" class="button-pagination-page-indicator button-pagination-page-indicator--search"><span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span></button>
+                <button
+                    @click="toggleSearch()"
+                    type="button"
+                    class="button-pagination-page-indicator button-pagination-page-indicator--search"
+                    :class="{ 'opacity-0': search }"
+                ><span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span></button>
             </div>
         </div>
 

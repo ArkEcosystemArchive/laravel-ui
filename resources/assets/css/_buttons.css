@@ -89,6 +89,15 @@ a.button-secondary {
     @apply px-2 py-2 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-500;
 }
 
+.button-pagination-page-indicator:hover .button-pagination-search,
+.button-pagination-page-indicator .button-pagination-ellipsis {
+    @apply inline;
+}
+.button-pagination-page-indicator:hover .button-pagination-ellipsis,
+.button-pagination-page-indicator .button-pagination-search {
+    @apply hidden;
+}
+
 .theme-dark .button-pagination-page-indicator {
     @apply bg-theme-secondary-800 text-theme-secondary-200;
 }
@@ -101,7 +110,7 @@ a.button-secondary {
     @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
 }
 
-.button-pagination-page-indicator:hover:not(.button-pagination-page-indicator--search) {
+.button-pagination-page-indicator:hover {
     @apply text-white rounded bg-theme-primary-700;
     transform: scale(1.2);
 }
