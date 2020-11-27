@@ -57,12 +57,12 @@
                 name="{{ $pageName }}"
                 placeholder="Enter the page"
                 class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
-                @blur="blurHandler"
+                x-on:blur="blurHandler"
             />
             <button type="submit" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" :disabled="!page">
                 <x-ark-icon name="search" size="sm" />
             </button>
-            <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" @click="hideSearch()">
+            <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" x-on:click="hideSearch()">
                 <x-ark-icon name="close" size="sm" />
             </button>
         </form>
@@ -70,7 +70,7 @@
         <button type="button"
             class="button-pagination-page-indicator button-pagination-page-indicator--search"
             :class="{ 'opacity-0': search }"
-            @click="toggleSearch()"
+            x-on:click="toggleSearch"
         ><span>Page {{ $paginator->currentPage() }} of {{ $paginator->lastPage() }}</span></button>
     </div>
 
@@ -102,12 +102,12 @@
                     name="{{ $pageName }}"
                     placeholder="Enter the page number"
                     class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
-                    @blur="blurHandler"
+                    x-on:blur="blurHandler"
                 />
                 <button type="submit" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" :disabled="!page">
                     <x-ark-icon name="search" size="sm" />
                 </button>
-                <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" @click="hideSearch()">
+                <button type="button" class="p-2 text-theme-secondary-500 hover:text-theme-primary-500 transition-default dark:text-theme-secondary-200" x-on:click="hideSearch">
                     <x-ark-icon name="close" size="sm" />
                 </button>
             </form>
@@ -117,8 +117,7 @@
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))
                         <button
-                            @click="toggleSearch()"
-                            @mouseover=""
+                            x-on:click="toggleSearch"
                             type="button"
                             class="button-pagination-page-indicator button-pagination-page-indicator--search"
                             :class="{ 'opacity-0': search }"
@@ -144,7 +143,7 @@
 
             <div class="pagination-pages md:hidden">
                 <button
-                    @click="toggleSearch()"
+                    x-on:click="toggleSearch"
                     type="button"
                     class="button-pagination-page-indicator button-pagination-page-indicator--search"
                     :class="{ 'opacity-0': search }"
