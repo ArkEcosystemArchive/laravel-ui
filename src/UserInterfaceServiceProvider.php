@@ -115,6 +115,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.password-toggle', 'ark-password-toggle');
         Blade::component('ark::inputs.rich-select', 'ark-rich-select');
         Blade::component('ark::inputs.switch', 'ark-switch');
+        Blade::component('ark::inputs.time', 'ark-time');
 
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
@@ -168,7 +169,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::status-circle', 'ark-status-circle');
         Blade::component('ark::status-circle-shallow', 'ark-status-circle-shallow');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
-        Blade::component('ark::time', 'ark-time');
         Blade::component('ark::toast', 'ark-toast');
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
