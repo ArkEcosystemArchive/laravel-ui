@@ -195,7 +195,7 @@
 
 /** Modal **/
 .modal-content {
-    @apply relative mx-auto overflow-y-auto bg-white rounded-lg shadow-2xl;
+    @apply relative mx-auto bg-white rounded-lg shadow-2xl;
     width: calc(100vw - 32px);
     max-height: calc(100vh - 4rem);
 }
