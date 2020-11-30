@@ -319,6 +319,26 @@ class Articles {
 </div>
 ```
 
+### Pagination
+
+1. Copy the JS script
+
+`php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="pagination-script"`
+
+2. Add the following to `app.js` file:
+
+```js
+import Pagination from "./vendor/ark/pagination";
+
+window.Pagination = Pagination
+```
+
+3. All set, now you can use the pagination component
+
+```html 
+<x-general.pagination :results="$results"  />
+```
+
 ### Footer
 
 Add the following snippet to your `urls.php` lang file:
