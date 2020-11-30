@@ -1,21 +1,20 @@
 @props([
-    'options',
-    'initialValue' => null,
+    'options' => [],
+    'initialValue' => '',
     'dispatchEvent' => null,
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
+    'dropdownListClass' => 'max-h-80',
     'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
     'placeholder' => '',
     'grouped' => false,
 ])
 
 @php
-if ($initialValue) {
-    $initialText = $grouped
-        ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
-        : collect($options)->get($initialValue);
-}
+$initialText = $grouped
+    ? collect($options)->flatMap(fn ($value) => $value)->get($initialValue)
+    : collect($options)->get($initialValue);
 @endphp
 
 <div
@@ -45,12 +44,12 @@ if ($initialValue) {
         @isset($initialValue)
         value: '{{ $initialValue }}',
         @else
-        value: null,
+        value: '',
         @endif
         @isset($initialText)
         text: '{{ $initialText }}',
         @else
-        text: null,
+        text: ''`,
         @endif
         choose: function(value, groupName = null) {
             if (this.value === value) {
@@ -187,7 +186,7 @@ if ($initialValue) {
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute w-full min-w-max-content {{ $dropdownClass }}"
+        class="absolute w-full min-w-max-content z-10 {{ $dropdownClass }}"
         style="display: none;"
     >
         <div
@@ -200,7 +199,7 @@ if ($initialValue) {
             tabindex="-1"
             role="listbox"
             aria-labelledby="listbox-label"
-            class="py-3 overflow-auto bg-white rounded-md shadow-xs outline-none dark:bg-theme-secondary-800 dark:text-theme-secondary-200 hover:outline-none max-h-80"
+            class="py-3 overflow-auto bg-white rounded-md shadow-xs outline-none dark:bg-theme-secondary-800 dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
         >
             @isset($dropdownList)
                 {{ $dropdownList }}
