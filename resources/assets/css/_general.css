@@ -87,12 +87,12 @@ a:focus,
 button:focus,
 textarea:focus,
 input:focus {
-    @apply .outline-none;
+    @apply outline-none;
 }
 
 button,
 img {
-    @apply .select-none;
+    @apply select-none;
     -webkit-user-drag: none;
 }
 
