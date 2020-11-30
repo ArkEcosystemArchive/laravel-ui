@@ -126,7 +126,7 @@ module.exports = {
         },
 
         customForms: (theme) => ({
-            default: {
+            DEFAULT: {
                 select: {
                     icon: (
                         iconColor

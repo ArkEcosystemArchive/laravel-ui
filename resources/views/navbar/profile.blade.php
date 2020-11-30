@@ -1,5 +1,5 @@
 <x-ark-dropdown
-    wrapper-class="relative ml-3 whitespace-no-wrap"
+    wrapper-class="relative ml-3 whitespace-nowrap"
     :dropdown-classes="$profileMenuClass ?? null"
     dusk="profile-dropdown"
 >
