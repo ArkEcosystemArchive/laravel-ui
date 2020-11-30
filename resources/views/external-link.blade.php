@@ -1,6 +1,6 @@
 <a
     href="{{ $url }}"
-    class="{{ $class ?? 'link font-semibold' }} {{ ($inline ?? false) ? 'inline space-x-1' : 'flex items-center space-x-2' }} {{ ($allowWrap ?? false) ? '' : 'whitespace-no-wrap' }}"
+    class="{{ $class ?? 'link font-semibold' }} {{ ($inline ?? false) ? 'inline space-x-1' : 'flex items-center space-x-2' }} {{ ($allowWrap ?? false) ? '' : 'whitespace-nowrap' }}"
     target="_blank" rel="noopener nofollow noreferrer"
 >
     <span>{{ $text }}</span>
