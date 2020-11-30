@@ -2,20 +2,22 @@ const Pagination = (pageName, lastPage) => ({
     search: false,
     page: null,
     init() {
-        this.$watch('search', (search) => {
+        this.$watch("search", (search) => {
             if (search) {
                 this.$nextTick(() => {
-                    const searchInputs = this.$el.querySelectorAll(`input[name=${pageName}]`);
-                    searchInputs.forEach( (input) => {
+                    const searchInputs = this.$el.querySelectorAll(
+                        `input[name=${pageName}]`
+                    );
+                    searchInputs.forEach((input) => {
                         input.focus();
-                    })
-                })
-             } else {
+                    });
+                });
+            } else {
                 this.page = null;
-             }
-        })
+            }
+        });
 
-        this.$watch('page', (page) => {
+        this.$watch("page", (page) => {
             if (page === null) {
                 return;
             }
@@ -26,11 +28,11 @@ const Pagination = (pageName, lastPage) => ({
             if (page > lastPage) {
                 this.page = lastPage;
             }
-        })
+        });
     },
     blurHandler() {
         if (!this.page) {
-            this.search = false
+            this.search = false;
         }
     },
     toggleSearch() {
@@ -39,6 +41,6 @@ const Pagination = (pageName, lastPage) => ({
     hideSearch() {
         this.search = false;
     },
-})
+});
 
-export default Pagination
+export default Pagination;
