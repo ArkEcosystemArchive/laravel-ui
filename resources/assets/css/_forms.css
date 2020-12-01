@@ -20,6 +20,8 @@
 
 .input-text {
     @apply form-input block w-full transition-default;
+
+    /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
 }
 .dark .input-text {
