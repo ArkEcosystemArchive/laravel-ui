@@ -127,7 +127,7 @@ yarn add body-scroll-lock
 php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="modal"
 ```
 
-3. Add to modal scripts on the `nodem/resources/js/app.js` file
+3. Add to modal scripts on the `resources/js/app.js` file
 
 ```js
 import Modal from "./vendor/ark/modal.js";
