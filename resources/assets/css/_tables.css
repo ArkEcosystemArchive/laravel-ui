@@ -283,13 +283,7 @@
     > tr:hover
     > td.hoverable-cell.last-cell
     > div::before,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:hover
-    > td.hoverable-cell
-    > div {
+.dark .table-container table > tbody > tr:hover > td.hoverable-cell > div {
     @apply bg-theme-secondary-800 !important;
 }
 

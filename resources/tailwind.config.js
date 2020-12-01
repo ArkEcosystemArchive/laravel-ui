@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    darkMode: 'class',
+    darkMode: "class",
 
     theme: {
         extend: {
@@ -19,7 +19,8 @@ module.exports = {
                     "2px 3px 10px 2px rgba(var(--theme-color-primary-rgb), 0.34)",
                 "header-smooth": " 0px 2px 10px 0px rgba(192, 200, 207, 0.22)",
                 "header-smooth-dark": " 0px 2px 10px 0px rgba(18, 18, 19, .6)",
-                "lg-dark": "0 0px 25px -3px rgba(18, 18, 19, 0.7), 0 4px 15px 0px rgba(18, 18, 19, 0.7)",
+                "lg-dark":
+                    "0 0px 25px -3px rgba(18, 18, 19, 0.7), 0 4px 15px 0px rgba(18, 18, 19, 0.7)",
                 none: "none",
             },
             fontFamily: {
@@ -147,10 +148,10 @@ module.exports = {
         }),
     },
     variants: {
-        boxShadow: ['dark', 'responsive', 'hover', 'focus'],
-        divideColor: ['dark', 'responsive', 'hover', 'focus'],
-        opacity: ['dark', 'responsive', 'hover', 'focus'],
-        display: ['dark', 'responsive'],
+        boxShadow: ["dark", "responsive", "hover", "focus"],
+        divideColor: ["dark", "responsive", "hover", "focus"],
+        opacity: ["dark", "responsive", "hover", "focus"],
+        display: ["dark", "responsive"],
     },
     plugins: [require("@tailwindcss/ui")],
     purge: {
