@@ -172,6 +172,7 @@ module.exports = {
                     /alert-/,
                     /swiper-/,
                     /toast-/,
+                    /tippy-/,
                     /^hljs/,
                 ],
             },
