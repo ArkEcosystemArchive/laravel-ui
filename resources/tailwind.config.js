@@ -155,6 +155,7 @@ module.exports = {
     },
     plugins: [require("@tailwindcss/ui")],
     purge: {
+        mode: 'all',
         content: [
             "./resources/views/**/*.blade.php",
             "./vendor/arkecosystem/ui/resources/views/**/*.blade.php",
@@ -165,13 +166,9 @@ module.exports = {
             "./app/**/*.php",
         ],
         options: {
-            whitelistPatterns: [
-                /horizontal$/,
-                /alert-/,
-                /swiper-/,
-                /toast-/,
-                /^hljs/,
-            ],
+            safelist: {
+                standard: [/horizontal$/, /alert-/, /swiper-/, /toast-/, /^hljs/],
+            },
         },
     },
 };
