@@ -76,10 +76,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'pagination');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/js/pagination.js' => resource_path('js/vendor/ark/pagination.js'),
-        ], 'pagination-script');
-
-        $this->publishes([
             __DIR__.'/../resources/assets/css' => resource_path('css/vendor/ark'),
         ], 'css');
 

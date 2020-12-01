@@ -311,7 +311,7 @@ class Articles {
 <div>
     ...
 
-    <x-general.pagination :results="$articles" class="mt-8" />
+    <x-ark-pagination :results="$articles" class="mt-8" />
 
     <script>
         window.addEventListener('livewire:load', () => window.livewire.on('pageChanged', () => scrollToQuery('#article-list')));
@@ -321,11 +321,11 @@ class Articles {
 
 ### Pagination
 
-1. Copy the JS script
+1. Publish the pagination assets
 
-`php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="pagination-script"`
+`php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="pagination"`
 
-2. Add the following to `app.js` file:
+2. Add the following to the `app.js` file:
 
 ```js
 import Pagination from "./vendor/ark/pagination";
@@ -335,8 +335,8 @@ window.Pagination = Pagination
 
 3. All set, now you can use the pagination component
 
-```html 
-<x-general.pagination :results="$results"  />
+```html
+<x-ark-pagination :results="$results"  />
 ```
 
 ### Footer
