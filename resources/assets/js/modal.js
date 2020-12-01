@@ -1,2 +1,5 @@
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from "body-scroll-lock";
