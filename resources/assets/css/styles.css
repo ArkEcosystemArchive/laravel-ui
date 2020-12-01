@@ -1,3 +1,7 @@
+/** Third-Party **/
+@import "./third-party/tailwindcss-custom-forms.css";
+
+/** Custom **/
 @import "./_alerts.css";
 @import "./_animations.css";
 @import "./_buttons.css";
