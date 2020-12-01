@@ -9,10 +9,10 @@ h1 {
     @apply font-extrabold;
 }
 
-.theme-dark h1,
-.theme-dark h2,
-.theme-dark h3,
-.theme-dark h4 {
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4 {
     @apply text-theme-secondary-200;
 }
 
@@ -28,10 +28,10 @@ h1 {
     @apply font-extrabold text-theme-secondary-900;
 }
 
-.theme-dark header-1,
-.theme-dark header-2,
-.theme-dark header-3,
-.theme-dark header-4 {
+.dark header-1,
+.dark header-2,
+.dark header-3,
+.dark header-4 {
     @apply text-theme-secondary-200;
 }
 

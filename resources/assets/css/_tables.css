@@ -11,9 +11,9 @@
     @apply text-left border-b border-theme-secondary-300;
 }
 
-.theme-dark .table-container table tbody tr,
-.theme-dark .table-container table thead th:not(:last-child)::after,
-.theme-dark .table-container table thead tr {
+.dark .table-container table tbody tr,
+.dark .table-container table thead th:not(:last-child)::after,
+.dark .table-container table thead tr {
     @apply border-theme-secondary-800;
 }
 
@@ -66,7 +66,7 @@
     @apply border-0;
 }
 
-.theme-dark .table-container {
+.dark .table-container {
     @apply text-theme-secondary-500;
 }
 
@@ -255,41 +255,35 @@
     @apply bg-theme-warning-100;
 }
 
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr:hover
     > td.hoverable-cell:first-child
     > div::before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr:hover
     > td.hoverable-cell.first-cell
     > div::before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr:hover
     > td.hoverable-cell:last-child
     > div:before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr:hover
     > td.hoverable-cell.last-cell
     > div::before,
-.theme-dark
-    .table-container
-    table
-    > tbody
-    > tr:hover
-    > td.hoverable-cell
-    > div {
+.dark .table-container table > tbody > tr:hover > td.hoverable-cell > div {
     @apply bg-theme-secondary-800 !important;
 }
 
@@ -389,14 +383,14 @@
     @apply bg-theme-danger-50;
 }
 
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr[data-warning]
     > td.hoverable-cell
     > div::before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
@@ -406,14 +400,14 @@
     @apply border-theme-warning-500;
 }
 
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr[data-danger]
     > td.hoverable-cell
     > div::before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
@@ -423,28 +417,28 @@
     @apply border-theme-danger-300;
 }
 
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr[data-warning]
     > td.hoverable-cell
     > div,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr[data-danger]
     > td.hoverable-cell
     > div,
-.theme-dark
+.dark
     .table-container
     table
     > tbody
     > tr[data-warning]
     > td.hoverable-cell
     > div::before,
-.theme-dark
+.dark
     .table-container
     table
     > tbody

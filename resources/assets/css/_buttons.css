@@ -20,13 +20,13 @@ a.disabled {
     @apply shadow-none cursor-not-allowed pointer-events-none bg-theme-secondary-200 text-theme-secondary-400;
 }
 
-.theme-dark .button-primary:disabled,
-.theme-dark .button-secondary:disabled,
-.theme-dark .button-cancel:disabled,
-.theme-dark .button-icon:disabled,
-.theme-dark .button-icon-rounded:disabled,
-.theme-dark .button-disabled,
-.theme-dark a.disabled {
+.dark .button-primary:disabled,
+.dark .button-secondary:disabled,
+.dark .button-cancel:disabled,
+.dark .button-icon:disabled,
+.dark .button-icon-rounded:disabled,
+.dark .button-disabled,
+.dark a.disabled {
     @apply bg-theme-secondary-800 text-theme-secondary-700;
 }
 
@@ -54,9 +54,9 @@ a.disabled {
 .button-icon-rounded {
     @apply button-icon rounded-xl;
 }
-.theme-dark .button-icon,
-.theme-dark .button-icon-rounded,
-.theme-dark .button-secondary {
+.dark .button-icon,
+.dark .button-icon-rounded,
+.dark .button-secondary {
     @apply bg-theme-secondary-800 text-theme-secondary-200;
 }
 
@@ -65,9 +65,9 @@ a.disabled {
 .button-icon-rounded:hover {
     @apply text-white bg-theme-primary-700 shadow-button-secondary;
 }
-.theme-dark .button-icon:hover,
-.theme-dark .button-icon-rounded:hover,
-.theme-dark .button-secondary:hover {
+.dark .button-icon:hover,
+.dark .button-icon-rounded:hover,
+.dark .button-secondary:hover {
     @apply bg-theme-primary-700 text-theme-secondary-200;
 }
 
@@ -98,7 +98,7 @@ a.button-secondary {
     @apply hidden;
 }
 
-.theme-dark .button-pagination-page-indicator {
+.dark .button-pagination-page-indicator {
     @apply bg-theme-secondary-800 text-theme-secondary-200;
 }
 
@@ -106,7 +106,7 @@ a.button-secondary {
     @apply button-pagination-page-indicator bg-theme-primary-200;
 }
 
-.theme-dark .button-pagination-page-indicator--selected {
+.dark .button-pagination-page-indicator--selected {
     @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
 }
 
@@ -115,14 +115,14 @@ a.button-secondary {
     transform: scale(1.2);
 }
 
-.theme-dark .button-pagination-page-indicator:hover {
+.dark .button-pagination-page-indicator:hover:not([disabled]) {
     @apply bg-theme-primary-600;
 }
 
-.theme-dark .button-primary:hover,
-.theme-dark .button-secondary:hover,
-.theme-dark .button-icon:hover,
-.theme-dark .button-icon-rounded:hover,
-.theme-dark .button-icon-primary:hover {
+.dark .button-primary:hover,
+.dark .button-secondary:hover,
+.dark .button-icon:hover,
+.dark .button-icon-rounded:hover,
+.dark .button-icon-primary:hover {
     @apply shadow-none;
 }
