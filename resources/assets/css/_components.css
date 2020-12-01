@@ -140,6 +140,17 @@
     @apply flex flex-col;
 }
 
+/* Removes the spinner on the number input */
+.pagination-wrapper input::-webkit-outer-spin-button,
+.pagination-wrapper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    @apply m-0;
+}
+
+.pagination-wrapper input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .pagination-pages-mobile {
     @apply flex justify-center px-2 mb-3 rounded bg-theme-primary-100;
 }
@@ -164,7 +175,6 @@
     .pagination-wrapper {
         @apply block;
     }
-
     .pagination-pages-mobile {
         @apply hidden;
     }
@@ -175,6 +185,11 @@
 
     .pagination-pages {
         @apply flex;
+    }
+}
+@media screen and (max-width: 451px) {
+    .pagination-form-desktop {
+        @apply hidden;
     }
 }
 

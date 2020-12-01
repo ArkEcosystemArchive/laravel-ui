@@ -72,6 +72,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views/pagination.blade.php'     => resource_path('views/vendor/ark/pagination.blade.php'),
             __DIR__.'/../resources/views/pagination-url.blade.php' => resource_path('views/vendor/ark/pagination-url.blade.php'),
+            __DIR__.'/../resources/views/pagination.js' => resource_path('js/vendor/ark/pagination.js'),
         ], 'pagination');
 
         $this->publishes([
