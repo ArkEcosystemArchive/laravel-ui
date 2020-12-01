@@ -20,7 +20,7 @@
 
 .input-text {
     @apply form-input block w-full transition-default;
-    padding: .75rem 1rem;
+    padding: 0.75rem 1rem;
 }
 .dark .input-text {
     @apply bg-theme-secondary-900 border-theme-secondary-700;
