@@ -10,7 +10,7 @@
 .input-wrapper {
     @apply mt-2 relative rounded-md shadow-sm text-theme-secondary-900;
 }
-.theme-dark .input-wrapper {
+.dark .input-wrapper {
     @apply text-theme-secondary-200;
 }
 
@@ -21,7 +21,7 @@
 .input-text {
     @apply form-input px-4 py-3 block w-full transition-default;
 }
-.theme-dark .input-text {
+.dark .input-text {
     @apply bg-theme-secondary-900 border-theme-secondary-700;
 }
 
@@ -86,7 +86,7 @@
 .input-toggle-slide {
     @apply absolute h-2 w-9 mx-auto transition-colors duration-200 ease-in-out rounded-full bg-theme-secondary-300;
 }
-.theme-dark .input-toggle-slide {
+.dark .input-toggle-slide {
     @apply bg-theme-secondary-800;
 }
 
@@ -104,7 +104,7 @@
 .input-toggle-button-inactive {
     @apply translate-x-0 bg-theme-secondary-300;
 }
-.theme-dark .input-toggle-button-inactive {
+.dark .input-toggle-button-inactive {
     @apply bg-theme-secondary-700;
 }
 
@@ -128,9 +128,9 @@
 .input-label--error {
     @apply text-theme-danger-500;
 }
-.theme-dark .input-group:focus-within .input-label--error,
-.theme-dark .input-group:hover .input-label--error,
-.theme-dark .input-label--error {
+.dark .input-group:focus-within .input-label--error,
+.dark .input-group:hover .input-label--error,
+.dark .input-label--error {
     @apply text-theme-danger-400;
 }
 
@@ -138,8 +138,8 @@
 .input-text--error {
     @apply pr-10 border-theme-danger-500;
 }
-.theme-dark .input-text-with-icon--error,
-.theme-dark .input-text--error {
+.dark .input-text-with-icon--error,
+.dark .input-text--error {
     @apply border-theme-danger-400;
 }
 
