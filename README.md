@@ -349,7 +349,6 @@ Add the following snippet to your `urls.php` lang file:
 'github'   => 'https://github.com/ArkEcosystem',
 'linkedin' => 'https://www.linkedin.com/company/ark-ecosystem',
 'reddit'   => 'https://reddit.ark.io/',
-'slack'    => 'https://slack.ark.io/',
 'twitter'  => 'https://twitter.ark.io/',
 'youtube'  => 'https://youtube.ark.io/',
 ```
