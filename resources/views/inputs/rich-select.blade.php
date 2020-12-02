@@ -49,7 +49,7 @@ $initialText = $grouped
         @isset($initialText)
         text: '{{ $initialText }}',
         @else
-        text: ''`,
+        text: '',
         @endif
         choose: function(value, groupName = null) {
             if (this.value === value) {
