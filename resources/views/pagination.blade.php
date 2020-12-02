@@ -36,12 +36,14 @@
     <div class="flex space-x-3">
         <button
             wire:click="gotoPage(1)"
+            x-on:click="hideSearch"
             class="items-center button-secondary pagination-button-mobile" @if($paginator->onFirstPage()) disabled @endif
         >
             <x-ark-icon name="pagination-first" size="xs" />
         </button>
         <button
             wire:click="gotoPage({{ $paginator->currentPage() - 1 }})"
+            x-on:click="hideSearch"
             class="items-center button-secondary pagination-button-mobile" @if($paginator->onFirstPage()) disabled @endif
         >
             <div class="flex items-center">
@@ -112,6 +114,7 @@
 
         <button
             wire:click="gotoPage({{ $paginator->currentPage() + 1 }})"
+            x-on:click="hideSearch"
             class="items-center button-secondary pagination-button-mobile" @if($paginator->currentPage() === $paginator->lastPage()) disabled @endif
         >
             <div class="flex items-center">
@@ -121,6 +124,7 @@
         </button>
         <button
             wire:click="gotoPage({{ $paginator->lastPage() }})"
+            x-on:click="hideSearch"
             class="items-center button-secondary pagination-button-mobile"
             @if($paginator->currentPage() === $paginator->lastPage()) disabled @endif
         >

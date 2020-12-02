@@ -103,11 +103,11 @@ a.button-secondary {
 }
 
 .button-pagination-page-indicator--selected {
-    @apply button-pagination-page-indicator bg-theme-primary-200;
+    @apply px-2 py-2 font-semibold text-center transition-default text-theme-primary-500 bg-theme-primary-200;
 }
 
 .dark .button-pagination-page-indicator--selected {
-    @apply button-pagination-page-indicator bg-theme-secondary-600 text-theme-secondary-200;
+    @apply px-2 py-2 font-semibold text-center transition-default bg-theme-secondary-600 text-theme-secondary-200;
 }
 
 .button-pagination-page-indicator:hover {
