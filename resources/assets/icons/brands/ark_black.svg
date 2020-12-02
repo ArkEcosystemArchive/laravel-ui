@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1200 1201" style="enable-background:new 0 0 1200 1201;" xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="1200" height="1201"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	<g id="Logo_ARK.io_Black" class="st0">
+		<g id="logo" transform="translate(-655 -116)">
+			<path id="Rectangle" class="st1" d="M715,116h1080c33.1,0,60,26.9,60,60v1080c0,33.1-26.9,60-60,60H715c-33.1,0-60-26.9-60-60
+				V176C655,142.9,681.9,116,715,116z" fill="currentColor"/>
+			<path id="ARK" class="st2" d="M1253.4,608.2l-456.2,472.3l456.2-730l456.1,730.1L1253.4,608.2z M1118.1,854.1l269.9,0l77.9,80.6
+				l-425.1,0L1118.1,854.1z M1174.9,795.8l78.5-81.3l79.4,81.4L1174.9,795.8z" fill="#212225"/>
+		</g>
+	</g>
+</g>
+</svg>
