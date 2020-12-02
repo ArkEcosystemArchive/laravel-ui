@@ -34,7 +34,7 @@
         class="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg z-10 dropdown {{ $dropdownClasses ?? 'w-40' }}"
         @if ($height ?? false) data-height="{{ $height }}" @endif
     >
-        <div class="bg-white rounded-md ring-1 ring-black ring-opacity-5 dark:bg-theme-secondary-800 dark:text-theme-secondary-200" x-cloak>
+        <div class="bg-white rounded-md dark:bg-theme-secondary-800 dark:text-theme-secondary-200" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
                 {{ $slot }}
             </div>
