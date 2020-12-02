@@ -2,7 +2,6 @@
 
 return [
 
-    'slack'    => 'https://slack.ark.io/',
     'discord'  => 'https://discord.ark.io/',
     'twitter'  => 'https://twitter.ark.io/',
     'linkedin' => 'https://www.linkedin.com/company/ark-ecosystem',

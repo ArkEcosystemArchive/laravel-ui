@@ -1,5 +1,4 @@
 <div class="flex space-x-5">
-    <x-ark-social-link :url="trans('ui::urls.slack')" icon="brands.slack" />
     <x-ark-social-link :url="trans('ui::urls.discord')" icon="brands.discord" />
     <x-ark-social-link :url="trans('ui::urls.twitter')" icon="brands.twitter" />
     <x-ark-social-link :url="trans('ui::urls.linkedin')" icon="brands.linkedin" />
