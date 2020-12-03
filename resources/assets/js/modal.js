@@ -1,4 +1,4 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const Modal = (extraData = {}) => {
     return {
@@ -11,14 +11,16 @@ const Modal = (extraData = {}) => {
             // the element, this interval will ensure to enable the body
             // scrolling once the modal is no longer visible
             const interval = setInterval(() => {
-                if (['', 'none'].includes(window.getComputedStyle(el).display)) {
+                if (
+                    ["", "none"].includes(window.getComputedStyle(el).display)
+                ) {
                     enableBodyScroll(el);
-                    clearInterval(interval)
+                    clearInterval(interval);
                 }
-            }, 500)
+            }, 500);
         },
         ...extraData,
-    }
-}
+    };
+};
 
 export default Modal;
