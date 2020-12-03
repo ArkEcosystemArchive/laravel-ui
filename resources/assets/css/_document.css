@@ -267,6 +267,11 @@ code.hljs .hljs-ln-n {
 }
 
 /* CommonMark */
+aside .heading-permalink,
+.documentation-content .heading-permalink {
+    scroll-margin-top: 120px;
+}
+
 aside .heading-permalink {
     display: none;
 }
