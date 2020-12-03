@@ -135,6 +135,62 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+##### Alpine Modal
+
+If your modal is being toggled with a container that is being shown or hidden with only JS (Alpine) you may need to disable the default alpine data from the Modal to prevent conflicts. You can do that by using the `alpine-modal` attribute.
+
+Still you will need to add the Modal config wherever you define your x-data. Consider this example where the modal is shown when an image is set.
+
+```html
+<div
+    x-data="Modal({
+        image: '',
+        shown: false
+    })"
+    x-init="() => {
+        init();
+        $watch('image', (image) => {
+            shown = !!image;
+        })
+    }"
+>
+    <div>
+        <x-ark-slider id="plugin-images" columns="3" hide-navigation top-pagination>
+            @foreach($module->images() as $image)
+                <div class="px-2 swiper-slide">
+                    <div class="flex justify-center overflow-hidden border cursor-pointer border-theme-secondary-300 rounded-xl">
+                        <img src="{{ $image }}" class="w-full max-w-none max-h-64" @click="image = '{{ $image }}'" />
+                    </div>
+                </div>
+            @endforeach
+        </x-ark-slider>
+    </div>
+
+    <div x-show="shown" x-cloak>
+        <x-ark-modal
+            alpine-modal
+            alpine-close="image = ''"
+        />
+            @slot('title')
+                Preview
+            @endslot
+
+            @slot('description')
+                <img :src="image" class="mx-auto" />
+            @endslot
+        </x-ark-modal>
+    </div>
+</div>
+```
+
+Some notes about the example above: 
+
+1. The `x-data` attribute calls the global `Modal()` method and overrides the Modal `shown` property that defaults to `true,` also adds an attribute `image` that is used explicitly by this example.
+
+2. The `x-init` attribute call the `init` method that comes withing the Modal scripts but is modified to change the `shown` property to `false` when the image is removed.
+
+3. It is important to keep the `shown` property in sync since his value is used to configure the Modal.
+
 ### Tooltips
 
 1. Install `tippy.js`
