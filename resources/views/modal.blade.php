@@ -1,15 +1,17 @@
-<div class="fixed inset-0 z-40 overflow-y-auto opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
+<div class="fixed inset-0 z-40 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
 <div
-    class="fixed inset-0 z-50 flex overflow-y-auto"
+    x-data="Modal()"
+    x-init="init"
+    class="fixed inset-0 z-50 flex px-5 py-10 overflow-y-auto "
     @if(!($closeButtonOnly ?? false) && ($wireClose ?? false)) wire:click.self="{{ $wireClose ?? '' }}" @endif
 >
     <div
-        class="m-auto {{ $class ?? '' }}"
+        class="m-auto w-full {{ $class ?? '' }}"
         @if(isset($style)) style="{{ $style }}" @endif
         @if(!($closeButtonOnly ?? false) && ($alpineClose ?? false)) @click.away="{{ $alpineClose ?? '' }}" @endif
     >
-        <div class="modal-content dropdown-scrolling {{ $widthClass ?? 'max-w-2xl' }} @empty($overflowVisible) 'overflow-y-auto' @endif" style="max-height: calc(100vh - 8rem)">
+        <div class="modal-content dropdown-scrolling {{ $widthClass ?? 'max-w-2xl' }}">
             <div class="p-6 sm:p-12">
                 @if(($wireClose ?? false) || ($alpineClose ?? false))
                     <button

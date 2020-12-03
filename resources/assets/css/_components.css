@@ -49,7 +49,7 @@
 }
 
 .tab-item {
-    @apply relative pt-8 ml-16 whitespace-nowrap border-b-4 border-transparent cursor-pointer pb-7;
+    @apply relative pt-8 ml-16 border-b-4 border-transparent cursor-pointer whitespace-nowrap pb-7;
 }
 .tab-item:first-child {
     @apply ml-0;
@@ -196,8 +196,6 @@
 /** Modal **/
 .modal-content {
     @apply relative mx-auto bg-white rounded-lg shadow-2xl;
-    width: calc(100vw - 32px);
-    max-height: calc(100vh - 4rem);
 }
 .dark .modal-content {
     @apply bg-theme-secondary-900;
@@ -217,17 +215,9 @@
     @apply bg-theme-secondary-700 text-theme-secondary-500;
 }
 
-@screen sm {
-    .modal-content {
-        width: calc(100vw - 48px);
-        max-height: calc(100vh - 6rem);
-    }
-}
-
 @screen lg {
     .modal-content {
         @apply w-full;
-        max-height: calc(100vh - 8rem);
     }
 }
 

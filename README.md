@@ -113,6 +113,28 @@ window.initClipboard = () => {
 }
 ```
 
+### Modals
+
+1. Install `body-scroll-lock`
+
+```bash
+yarn add body-scroll-lock
+```
+
+2. Publish the js assets if you haven't yet
+
+```bash
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="js"
+```
+
+3. Import the modal script in your `resources/js/app.js` file
+
+```js
+import Modal from "./vendor/ark/modal.js";
+
+window.Modal = Modal;
+```
+
 ### Tooltips
 
 1. Install `tippy.js`
