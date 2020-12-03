@@ -1,7 +1,7 @@
 <div class="fixed inset-0 z-40 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
 <div
-    x-data="Modal()"
+    x-data="Modal({{ $xData ?? '{}' }})"
     x-init="init"
     class="fixed inset-0 z-50 flex px-5 py-10 overflow-y-auto "
     @if(!($closeButtonOnly ?? false) && ($wireClose ?? false)) wire:click.self="{{ $wireClose ?? '' }}" @endif
