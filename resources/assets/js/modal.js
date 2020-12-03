@@ -1,6 +1,6 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-const Modal = () => {
+const Modal = (extraData = {}) => {
     return {
         init() {
             const el = this.$el;
@@ -19,6 +19,7 @@ const Modal = () => {
                 }
             }, 500);
         },
+        ...extraData,
     };
 };
 
