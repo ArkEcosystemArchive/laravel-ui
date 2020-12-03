@@ -124,10 +124,10 @@ yarn add body-scroll-lock
 2. Publish the js assets if you haven't yet
 
 ```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="modal"
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="js"
 ```
 
-3. Add to modal scripts on the `resources/js/app.js` file
+3. Import the modal script in your `resources/js/app.js` file
 
 ```js
 import Modal from "./vendor/ark/modal.js";
