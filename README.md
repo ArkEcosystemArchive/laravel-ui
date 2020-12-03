@@ -139,7 +139,9 @@ window.Modal = Modal;
 
 If your modal is being toggled with a container that is being shown or hidden with only JS (Alpine) you may need to disable the default alpine data from the Modal to prevent conflicts. You can do that by using the `alpine-modal` attribute.
 
-Still you will need to add the Modal config wherever you define your x-data. Consider this example where the modal is shown when an image is set.
+Still you will need to add the Modal config wherever you define your `x-data`, you can do that by using the global `Modal` method.
+
+Consider this example where the Modal is shown when an image is set.
 
 ```html
 <div
