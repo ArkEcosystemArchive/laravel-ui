@@ -156,17 +156,7 @@ Consider this example where the Modal is shown when an image is set.
         })
     }"
 >
-    <div>
-        <x-ark-slider id="plugin-images" columns="3" hide-navigation top-pagination>
-            @foreach($module->images() as $image)
-                <div class="px-2 swiper-slide">
-                    <div class="flex justify-center overflow-hidden border cursor-pointer border-theme-secondary-300 rounded-xl">
-                        <img src="{{ $image }}" class="w-full max-w-none max-h-64" @click="image = '{{ $image }}'" />
-                    </div>
-                </div>
-            @endforeach
-        </x-ark-slider>
-    </div>
+    <img src="image.png" class="w-full max-w-none max-h-64" @click="image = 'image.png'" />
 
     <div x-show="shown" x-cloak>
         <x-ark-modal
