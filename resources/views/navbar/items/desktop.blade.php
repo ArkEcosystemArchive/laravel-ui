@@ -1,4 +1,4 @@
-<div class="items-center hidden md:ml-6 md:flex">
+<div class="hidden items-center md:ml-6 md:flex">
     @foreach ($navigation as $navItem)
         @isset($navItem['children'])
             <a
@@ -21,7 +21,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="flex flex-col flex-shrink-0 pl-8 pr-8 w-128">
+                    <div class="flex flex-col flex-shrink-0 pr-8 pl-8 w-128">
                         <img class="w-full" :src="selectedChild ? selectedChild.image : '{{ $navItem['image'] }}'" />
 
                         <template x-if="selectedChild">
@@ -49,5 +49,5 @@
             </a>
         @endisset
     @endforeach
-    <div class="hidden h-6 ml-6 border-r border-theme-secondary-100 dark:border-theme-secondary-800 md:block"></div>
+    <div class="hidden ml-6 h-6 border-r border-theme-secondary-100 dark:border-theme-secondary-800 md:block"></div>
 </div>

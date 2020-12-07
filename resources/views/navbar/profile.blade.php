@@ -4,17 +4,17 @@
     dusk="profile-dropdown"
 >
     <x-slot name="button">
-        <span class="relative inline-block avatar-wrapper">
+        <span class="inline-block relative avatar-wrapper">
             @isset($identifier)
                 <x-ark-avatar :identifier="$identifier" />
             @else
-                <div class="w-12 h-12 overflow-hidden rounded-lg md:h-16 md:w-16 md:rounded-xl">
+                <div class="overflow-hidden w-12 h-12 rounded-lg md:h-16 md:w-16 md:rounded-xl">
                     <img class="object-cover w-full h-full" src="{{ $profilePhoto }}" alt="Profile Avatar" />
                 </div>
             @endisset
 
             <span
-                class="absolute flex items-center justify-center w-6 h-6 text-white transition duration-150 ease-in-out rounded-full avatar-circle shadow-solid"
+                class="flex absolute justify-center items-center w-6 h-6 text-white rounded-full transition duration-150 ease-in-out avatar-circle shadow-solid"
                 style="right: -0.5rem; bottom: 30%"
             >
                 <span :class="{ 'rotate-180': open }" class="w-2 h-2 transition duration-150 ease-in-out text-theme-primary-600">

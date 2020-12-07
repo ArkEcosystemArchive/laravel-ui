@@ -9,7 +9,7 @@
     <span
         @focus="focused = true"
         @blur="focused = false"
-        class="relative inline-flex items-center justify-center flex-shrink-0 w-10 h-5 cursor-pointer focus:outline-none"
+        class="inline-flex relative flex-shrink-0 justify-center items-center w-10 h-5 cursor-pointer focus:outline-none"
         role="checkbox"
         tabindex="0"
         @click="toggle()"
