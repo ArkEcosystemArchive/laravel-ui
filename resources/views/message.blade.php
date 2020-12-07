@@ -1,4 +1,4 @@
-<a href="{{ $message['url'] }}" class="flex flex-1 px-6 py-6 border-b border-dotted select-none last:border-b-0 hover:bg-theme-secondary-100">
+<a href="{{ $message['url'] }}" class="flex flex-1 py-6 px-6 border-b border-dotted select-none last:border-b-0 hover:bg-theme-secondary-100">
     <div class="mr-4">
         <img src="{{ $message['image'] }}" class="w-12 rounded-full" />
     </div>
