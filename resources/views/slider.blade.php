@@ -8,7 +8,7 @@
                     {{ $title }}
 
                     @if ($titleTooltip ?? false)
-                        <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
+                        <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
                     @endif
                 </div>
             @endif

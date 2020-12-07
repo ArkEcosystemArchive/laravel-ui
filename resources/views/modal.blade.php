@@ -3,7 +3,7 @@
 <div
     x-data="Modal({{ $xData ?? '{}' }})"
     x-init="init"
-    class="fixed inset-0 z-50 flex px-5 py-10 overflow-y-auto "
+    class="flex overflow-y-auto fixed inset-0 z-50 py-10 px-5 "
     @if(!($closeButtonOnly ?? false) && ($wireClose ?? false)) wire:click.self="{{ $wireClose ?? '' }}" @endif
 >
     <div
