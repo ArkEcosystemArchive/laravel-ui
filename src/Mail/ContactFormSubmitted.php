@@ -19,9 +19,22 @@ class ContactFormSubmitted extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this
-            ->to(config('mail.stub.address'))
+        $mail = $this
             ->subject(trans('mails.subjects.contact_form'))
-            ->markdown('mail.contact-form-submitted');
+            ->markdown('mails.contact-form-submitted');
+
+        if ($this->data['subject'] === 'job_application') {
+            $mail
+                ->to(config('mail.jobs_stub.address'))
+                ->cc(config('mail.stub.address'));
+        } elseif ($this->data['subject'] === 'partnership_enquiry') {
+            $mail
+                ->to(config('mail.pba_stub.address'))
+                ->cc(config('mail.stub.address'));
+        } else {
+            $mail->to(config('mail.stub.address'));
+        }
+
+        return $mail;
     }
 }
