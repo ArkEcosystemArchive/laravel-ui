@@ -16,7 +16,7 @@
             </div>
 
             <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:space-x-2 sm:space-y-0 sm:items-center">
-                <a href="@lang('urls.documentation.home')" target="_blank" rel="noopener noreferrer" class="button-secondary">@lang('ui::actions.documentation')</a>
+                <a href="@lang('ui::urls.documentation')" target="_blank" rel="noopener noreferrer" class="button-secondary">@lang('ui::actions.documentation')</a>
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
