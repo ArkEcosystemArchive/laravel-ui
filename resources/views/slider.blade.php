@@ -3,9 +3,13 @@
         <div class="flex mb-4">
             @if ($title ?? false)
                 <div
-                    class="flex-1 @if($titleClass ?? false) {{ $titleClass }} @else text-2xl @endif @if (!isset($viewAllUrl)) mb-5 @endif"
+                    class="flex-1 relative {{ $titleClass ?? 'text-2xl' }} @if (!isset($viewAllUrl)) mb-5 @endif"
                 >
                     {{ $title }}
+
+                    @if ($titleTooltip ?? false)
+                        <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                    @endif
                 </div>
             @endif
 

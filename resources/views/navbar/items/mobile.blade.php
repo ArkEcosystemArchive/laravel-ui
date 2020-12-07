@@ -3,10 +3,10 @@
         @foreach ($navigation as $navItem)
             @if(isset($navItem['children']))
                 <div class="flex w-full">
-                    <div class="z-10 w-2 -mr-1"></div>
+                    <div class="z-10 -mr-1 w-2"></div>
                     <a
                         href="#"
-                        class="flex items-center justify-between w-full px-8 py-3 font-semibold border-l-2 border-transparent"
+                        class="flex justify-between items-center py-3 px-8 w-full font-semibold border-l-2 border-transparent"
                         @click="openDropdown = openDropdown === '{{ $navItem['label'] }}' ? null : '{{ $navItem['label'] }}'"
                     >
                         <span :class="{ 'text-theme-primary-600': openDropdown === '{{ $navItem['label'] }}' }">{{ $navItem['label'] }}</span>

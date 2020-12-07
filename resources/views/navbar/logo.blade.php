@@ -1,4 +1,4 @@
-<div class="flex items-center flex-shrink-0">
+<div class="flex flex-shrink-0 items-center">
     <a class="flex items-center" href="{{ route('home') }}">
         @isset($logo)
             {{ $logo }}
