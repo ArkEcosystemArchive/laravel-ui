@@ -4,18 +4,18 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-const onModalClosed = (component, modal) => {
+const onModalClosed = (modal) => {
     enableBodyScroll(modal);
 
-    component.$nextTick(() => {
-        if (!document.querySelectorAll('[data-modal]').length) {
-            clearAllBodyScrollLocks();
-        }
-    });
+    if (!document.querySelectorAll('[data-modal]').length) {
+        clearAllBodyScrollLocks();
+    }
 }
 
 const onModalOpened = (modal) => {
     disableBodyScroll(modal);
+
+    modal.focus();
 }
 
 const Modal = {
@@ -48,25 +48,20 @@ const Modal = {
                                 this.onShown();
                             }
 
-                            Livewire.emit('modalOpened', modal);
-
-                            modal.focus();
+                            onModalOpened(modal);
                         } else {
                             if (typeof this.onHidden === 'function') {
                                 this.onHidden();
                             }
 
-                            enableBodyScroll(modal);
-
-                            Livewire.emit('modalClosed', modal);
+                            onModalClosed(modal);
                         }
                     })
                 });
 
                 if (this.shown) {
-                    Livewire.emit('modalOpened', modal);
+                    onModalOpened(modal);
                 }
-
             },
             hide() {
                 this.shown = false;
@@ -82,13 +77,12 @@ const Modal = {
             init() {
                 const { modal } = this.$refs;
 
-                Livewire.on('modalClosed', () => onModalClosed(this, modal));
+                onModalOpened(modal);
 
-                Livewire.on('modalOpened', onModalOpened);
-
-                Livewire.emit('modalOpened', modal);
-
-                modal.focus();
+                this.$wire.on('modalClosed', () => {
+                    console.log(':D', modal)
+                    onModalClosed(modal)
+                });
             },
             ...extraData,
         };
