@@ -11,5 +11,8 @@ return [
     'github'        => 'https://github.com/ArkEcosystem',
     'telegram'      => 'https://t.me/arkannouncements',
     'documentation' => 'https://ark.dev',
-
+    'ark'           => 'https://ark.io/',
+    'deployer'      => 'https://deployer.io/',
+    'nodem'         => 'https://nodem.io/',
+    'protokol'      => 'https://www.protokol.com/',
 ];
