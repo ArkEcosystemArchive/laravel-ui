@@ -28,7 +28,7 @@
 >
     <div class="fixed inset-0 z-40 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
-    <div class="fixed inset-0 z-50 flex px-5 py-10 overflow-y-auto">
+    <div class="flex overflow-y-auto fixed inset-0 z-50 py-10 px-5">
         <div
             class="m-auto w-full {{ $class }}"
             @if(!$closeButtonOnly)
