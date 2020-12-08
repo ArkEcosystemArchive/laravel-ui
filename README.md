@@ -139,7 +139,7 @@ window.Modal = Modal;
 
 To use the Livewire modals, ensure to add the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait to the component class.
 
-That trait adds the `closeModal` and `openModal` that toggles the `modalShown` property that is the one you should use to whether show or hide the modal.
+That trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
 
 If you need to close the modal using a different variable, just ensure to emit the `modalClosed` event that it's important to restore the web browser's scroll behavior.
 
@@ -160,6 +160,8 @@ You can open the modal by giving it a name (using the `name` attribute) and call
 ```
 
 Alternatively, if you wrap the modal inside another Alpine component, you can use the `Modal.alpine()` method to init the modal (don't forget to call the `init` method on `x-init`).
+
+The `Modal.alpine()` method accepts an object as the first argument. This object will be merged with the original Modal data.
 
 Inside that component, you can use the `show()` method to show the modal:
 
