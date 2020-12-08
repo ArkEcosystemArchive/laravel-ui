@@ -19,7 +19,7 @@ const onModalOpened = (modal) => {
 };
 
 const Modal = {
-    alpine(extraData = {}, modalName = '') {
+    alpine(extraData = {}, modalName = "") {
         return {
             name: modalName,
             shown: false,
@@ -31,11 +31,11 @@ const Modal = {
                 const { modal } = this.$refs;
 
                 if (this.name) {
-                    Livewire.on('openModal', (modalName) => {
+                    Livewire.on("openModal", (modalName) => {
                         if (this.name === modalName) {
                             this.show();
                         }
-                    })
+                    });
                 }
 
                 this.$watch("shown", (shown) => {
