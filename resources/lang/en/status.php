@@ -9,4 +9,10 @@ return [
     'updated' => 'Updated',
     'active'  => 'Active',
     'locked'  => 'Locked',
+    'emergency' => 'Emergency',
+    'alert' => 'Alert',
+    'critical' => 'Critical',
+    'warning' => 'Warning',
+    'notice' => 'Notice',
+    'info' => 'Info',
 ];
