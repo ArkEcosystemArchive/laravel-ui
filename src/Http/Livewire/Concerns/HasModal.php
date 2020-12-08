@@ -20,6 +20,6 @@ trait HasModal
 
     public function modalClosed(): void
     {
-        $this->emit('modalClosed');
+        $this->emitSelf('modalClosed');
     }
 }

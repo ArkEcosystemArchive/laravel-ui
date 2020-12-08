@@ -29,10 +29,6 @@ const Modal = {
             init() {
                 const { modal } = this.$refs;
 
-                Livewire.on('modalClosed', (m) => onModalClosed(this, m));
-
-                Livewire.on('modalOpened', onModalOpened);
-
                 this.$watch("shown", (shown) => {
                     if (typeof this.onBeforeShow === 'function') {
                         this.onBeforeShow();
@@ -77,12 +73,13 @@ const Modal = {
             init() {
                 const { modal } = this.$refs;
 
-                onModalOpened(modal);
-
                 this.$wire.on('modalClosed', () => {
-                    console.log(':D', modal)
-                    onModalClosed(modal)
+                    this.$nextTick(() => {
+                        onModalClosed(modal)
+                    });
                 });
+
+                onModalOpened(modal);
             },
             ...extraData,
         };
