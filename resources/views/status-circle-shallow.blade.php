@@ -31,6 +31,12 @@
         'stopped' => 'stopped',
         'stopping' => 'stopping',
         'waiting-restart' => 'waiting-restart',
+        'emergency' => 'cross',
+        'alert'     => 'cross',
+        'critical'  => 'cross',
+        'warning'   => 'alert-warning',
+        'notice'    => 'alert-hint',
+        'info'      => 'alert-info',
         'undefined' => 'undefined',
     ], $type, 'undefined');
 
@@ -49,6 +55,12 @@
         'stopped' => 'border-theme-warning-500',
         'stopping' => 'border-theme-warning-500',
         'waiting-restart' => 'border-theme-hint-400',
+        'emergency' => 'border-theme-danger-400',
+        'alert'     => 'border-theme-danger-400',
+        'critical'  => 'border-theme-danger-400',
+        'warning'   => 'border-theme-warning-400',
+        'notice'    => 'border-theme-hint-400',
+        'info'      => 'border-theme-info-400',
         'undefined' => 'border-theme-secondary-700',
     ], $type, 'border-theme-secondary-700');
 
@@ -67,6 +79,12 @@
         'stopped' => 'text-theme-warning-500',
         'stopping' => 'text-theme-warning-500',
         'waiting-restart' => 'text-theme-hint-400',
+        'emergency' => 'text-theme-danger-400',
+        'alert'     => 'text-theme-danger-400',
+        'critical'  => 'text-theme-danger-400',
+        'warning'   => 'text-theme-warning-400',
+        'notice'    => 'text-theme-hint-400',
+        'info'      => 'text-theme-info-400',
         'undefined' => 'text-theme-secondary-700',
     ], $type, 'text-theme-secondary-700');
 @endphp
