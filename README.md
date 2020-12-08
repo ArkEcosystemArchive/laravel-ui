@@ -135,6 +135,14 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+#### Livewire modals
+
+To use the Livewire modals, ensure to add the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait to the component class.
+
+That trait adds the `closeModal` and `openModal` that toggles the `modalShown` property that is the one you should use to whether show or hide the modal.
+
+If you need to close the modal using a different variable, just ensure to emit the `modalClosed` event that it's important to restore the web browser's scroll behavior.
+
 #### Alpine modals
 
 For JS-only modals, you can use the `<x-ark-js-modal />` component.
