@@ -27,7 +27,7 @@
         'critical'  => 'bg-theme-danger-50 text-theme-danger-400',
         'warning'   => 'bg-theme-warning-50 text-theme-warning-400',
         'notice'    => 'bg-theme-hint-50 text-theme-hint-400',
-        'info'      => 'bg-theme-hint-50 text-theme-hint-400',
+        'info'      => 'bg-theme-info-50 text-theme-info-400',
         'none'      => '',
     ][$type ?? 'none'];
 @endphp
