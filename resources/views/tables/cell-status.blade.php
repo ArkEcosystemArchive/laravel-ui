@@ -14,15 +14,21 @@
 
 @php
     $colours = [
-        'success' => 'bg-theme-success-50 text-theme-success-400',
-        'failed'  => 'bg-theme-danger-50 text-theme-danger-400',
-        'error'   => 'bg-theme-danger-50 text-theme-danger-400',
-        'debug'   => 'bg-theme-hint-50 text-theme-hint-500',
-        'running' => 'bg-theme-warning-50 text-theme-warning-400',
-        'updated' => 'bg-theme-warning-50 text-theme-warning-400',
-        'active'  => 'bg-theme-primary-50 text-theme-primary-400',
-        'locked'  => 'bg-theme-secondary-50 text-theme-secondary-400',
-        'none'    => '',
+        'success'   => 'bg-theme-success-50 text-theme-success-400',
+        'failed'    => 'bg-theme-danger-50 text-theme-danger-400',
+        'error'     => 'bg-theme-danger-50 text-theme-danger-400',
+        'debug'     => 'bg-theme-hint-50 text-theme-hint-500',
+        'running'   => 'bg-theme-warning-50 text-theme-warning-400',
+        'updated'   => 'bg-theme-warning-50 text-theme-warning-400',
+        'active'    => 'bg-theme-primary-50 text-theme-primary-400',
+        'locked'    => 'bg-theme-secondary-50 text-theme-secondary-400',
+        'emergency' => 'bg-theme-danger-50 text-theme-danger-400',
+        'alert'     => 'bg-theme-danger-50 text-theme-danger-400',
+        'critical'  => 'bg-theme-danger-50 text-theme-danger-400',
+        'warning'   => 'bg-theme-warning-50 text-theme-warning-400',
+        'notice'    => 'bg-theme-hint-50 text-theme-hint-400',
+        'info'      => 'bg-theme-info-50 text-theme-info-400',
+        'none'      => '',
     ][$type ?? 'none'];
 @endphp
 
