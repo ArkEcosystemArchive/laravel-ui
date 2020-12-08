@@ -9,6 +9,7 @@
     'buttonsStyle' => 'modal-buttons',
     'closeButtonOnly' => false,
     'escToClose' => true,
+    'name' => '',
 ])
 
 <div
@@ -17,7 +18,7 @@
     data-modal
     x-cloak
     @if($init)
-    x-data="Modal.alpine({{ $xData }})"
+    x-data="Modal.alpine({{ $xData }}, '{{ $name }}')"
     x-init="init"
     @endif
     @if(!$closeButtonOnly && $escToClose)
