@@ -135,6 +135,80 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+#### Alpine modals
+
+For JS-only modals, you can use the `<x-ark-js-modal />` component.
+
+You can open the modal by giving it a name (using the `name` attribute) and calling the `Livewire.emit('openModal', 'name-of-my-modal')`
+
+```html
+<x-ark-js-modal name="name-of-my-modal'">
+    @slot('description')
+        My Description
+    @endslot
+</x-ark-modal>
+
+<button onclick="Livewire.emit('openModal', 'name-of-my-modal')">Open modal</button>
+```
+
+Alternatively, if you wrap the modal inside another Alpine component, you can use the `Modal.alpine()` method to init the modal (don't forget to call the `init` method on `x-init`).
+
+Inside that component, you can use the `show()` method to show the modal:
+
+```html
+<div
+    x-data="Modal.alpine({}, 'optionalNameOfTheModal')"
+    x-init="init"
+>
+    <button type="button" @click="show">Show modal</button> 
+
+    <x-ark-js-modal
+        class="w-full max-w-2xl text-left"
+        title-class="header-2"
+        :init="false"
+    >
+        @slot('description')
+            My Description
+        @endslot
+    </x-ark-modal>
+</div>
+```
+
+Also, suppose you need to do something depending on the modal's lifecycle. In that case, you can override the `onBeforeHide`, `onBeforeShow`, `onHidden`, and `onShown` properties with a method that will be executed accordingly to the name of the property:
+
+```html
+<div
+    x-data="Modal.alpine({
+        onHidden: () => {
+            alert('The modal was hidden')
+        },
+        onBeforeShow: () => {
+            alert('The modal is about to be shown')
+        }
+    }"
+    x-init="init"
+>
+    <button type="button" @click="show">Show modal</button> 
+
+    <x-ark-js-modal
+        class="w-full max-w-2xl text-left"
+        title-class="header-2"
+        :init="false"
+    >
+        @slot('description')
+            My Description
+        @endslot
+    </x-ark-modal>
+</div>
+```
+
+
+```js
+import Modal from "./vendor/ark/modal.js";
+
+window.Modal = Modal;
+```
+
 ### Tooltips
 
 1. Install `tippy.js`
