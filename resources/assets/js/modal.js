@@ -7,16 +7,16 @@ import {
 const onModalClosed = (modal) => {
     enableBodyScroll(modal);
 
-    if (!document.querySelectorAll('[data-modal]').length) {
+    if (!document.querySelectorAll("[data-modal]").length) {
         clearAllBodyScrollLocks();
     }
-}
+};
 
 const onModalOpened = (modal) => {
     disableBodyScroll(modal);
 
     modal.focus();
-}
+};
 
 const Modal = {
     alpine(extraData = {}) {
@@ -30,29 +30,29 @@ const Modal = {
                 const { modal } = this.$refs;
 
                 this.$watch("shown", (shown) => {
-                    if (typeof this.onBeforeShow === 'function') {
+                    if (typeof this.onBeforeShow === "function") {
                         this.onBeforeShow();
                     }
 
-                    if (typeof this.onBeforeHide === 'function') {
+                    if (typeof this.onBeforeHide === "function") {
                         this.onBeforeHide();
                     }
 
                     this.$nextTick(() => {
                         if (shown) {
-                            if (typeof this.onShown === 'function') {
+                            if (typeof this.onShown === "function") {
                                 this.onShown();
                             }
 
                             onModalOpened(modal);
                         } else {
-                            if (typeof this.onHidden === 'function') {
+                            if (typeof this.onHidden === "function") {
                                 this.onHidden();
                             }
 
                             onModalClosed(modal);
                         }
-                    })
+                    });
                 });
 
                 if (this.shown) {
@@ -73,9 +73,9 @@ const Modal = {
             init() {
                 const { modal } = this.$refs;
 
-                this.$wire.on('modalClosed', () => {
+                this.$wire.on("modalClosed", () => {
                     this.$nextTick(() => {
-                        onModalClosed(modal)
+                        onModalClosed(modal);
                     });
                 });
 
@@ -83,7 +83,7 @@ const Modal = {
             },
             ...extraData,
         };
-    }
-}
+    },
+};
 
 export default Modal;
