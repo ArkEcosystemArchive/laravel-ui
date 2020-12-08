@@ -14,15 +14,21 @@
 
 @php
     $colour = [
-        'success' => 'text-theme-success-600',
-        'failed'  => 'text-theme-danger-400',
-        'error'   => 'text-theme-danger-400',
-        'debug'   => 'text-theme-hint-500',
-        'running' => 'text-theme-warning-900',
-        'updated' => 'text-theme-warning-500',
-        'active'  => 'text-theme-warning-900',
-        'locked'  => 'text-theme-secondary-700',
-        'none'    => '',
+        'success'   => 'text-theme-success-600',
+        'failed'    => 'text-theme-danger-400',
+        'error'     => 'text-theme-danger-400',
+        'debug'     => 'text-theme-hint-500',
+        'running'   => 'text-theme-warning-900',
+        'updated'   => 'text-theme-warning-500',
+        'active'    => 'text-theme-warning-900',
+        'locked'    => 'text-theme-secondary-700',
+        'emergency' => 'text-theme-danger-400',
+        'alert'     => 'text-theme-danger-400',
+        'critical'  => 'text-theme-danger-400',
+        'warning'   => 'text-theme-warning-400',
+        'notice'    => 'text-theme-hint-400',
+        'info'      => 'text-theme-info-400',
+        'none'      => '',
     ][$type ?? 'none'];
 @endphp
 
