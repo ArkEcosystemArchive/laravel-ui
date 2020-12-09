@@ -28,6 +28,11 @@
     @apply bg-theme-secondary-900 border-theme-secondary-700;
 }
 
+.input-rich-select .form-input {
+    /* Note: need this to override form-input padding */
+    padding: 0.75rem 1rem;
+}
+
 .input-wrapper-with-icon {
     @apply mt-2 relative rounded overflow-hidden shadow-sm text-theme-secondary-900;
 }
