@@ -18,7 +18,7 @@ $initialText = $grouped
 @endphp
 
 <div
-    class="relative {{ $wrapperClass }}"
+    class="relative input-rich-select {{ $wrapperClass }}"
     x-data="{
         options: {{ json_encode($options) }},
         onInput($dispatch, $event) {
