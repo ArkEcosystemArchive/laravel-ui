@@ -20,7 +20,7 @@
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
-                <a href="@lang('ui::urls.discord')" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
+                <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
                     <div class="flex justify-center items-center space-x-2 w-full">
                         @svg('brands.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
