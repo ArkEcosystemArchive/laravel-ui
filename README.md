@@ -137,24 +137,22 @@ window.Modal = Modal;
 
 #### Livewire modals
 
-To use the Livewire modals, ensure to add the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait to the component class.
+To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
 
-That trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
-
-If you need to close the modal using a different variable, just ensure to emit the `modalClosed` event that it's important to restore the web browser's scroll behavior.
+**Important**: If you need to use a different variable to close the modal, or you can't make use of the trait for a reason, make sure to emit the `modalClosed` event as that is required for proper handling of the modals on the frontend! If you fail to emit this event, the browser window will not be scrollable after the modal disappears.
 
 #### Alpine modals
 
-For JS-only modals, you can use the `<x-ark-js-modal />` component.
+There's a few ways you can make use of the new modals in conjunction with Alpine:
 
-You can open the modal by giving it a name (using the `name` attribute) and calling the `Livewire.emit('openModal', 'name-of-my-modal')`
+For JS-only modals, you need to use the `<x-ark-js-modal />` component. You need to initiate the modal with a name (using the `name` attribute) and it can be opened by calling `Livewire.emit('openModal', 'name-of-my-modal')`
 
 ```html
 <x-ark-js-modal name="name-of-my-modal'">
     @slot('description')
         My Description
     @endslot
-</x-ark-modal>
+</x-ark-js-modal>
 
 <button onclick="Livewire.emit('openModal', 'name-of-my-modal')">Open modal</button>
 ```
@@ -170,7 +168,7 @@ Inside that component, you can use the `show()` method to show the modal:
     x-data="Modal.alpine({}, 'optionalNameOfTheModal')"
     x-init="init"
 >
-    <button type="button" @click="show">Show modal</button> 
+    <button type="button" @click="show">Show modal</button>
 
     <x-ark-js-modal
         class="w-full max-w-2xl text-left"
@@ -184,7 +182,7 @@ Inside that component, you can use the `show()` method to show the modal:
 </div>
 ```
 
-Also, suppose you need to do something depending on the modal's lifecycle. In that case, you can override the `onBeforeHide`, `onBeforeShow`, `onHidden`, and `onShown` properties with a method that will be executed accordingly to the name of the property:
+Note that it is also possible to hook into the lifecycle methods of the modal. You can override the `onBeforeHide`, `onBeforeShow`, `onHidden`, and `onShown` properties with custom methods if you require so.
 
 ```html
 <div
@@ -198,7 +196,7 @@ Also, suppose you need to do something depending on the modal's lifecycle. In th
     }"
     x-init="init"
 >
-    <button type="button" @click="show">Show modal</button> 
+    <button type="button" @click="show">Show modal</button>
 
     <x-ark-js-modal
         class="w-full max-w-2xl text-left"
