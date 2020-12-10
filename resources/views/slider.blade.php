@@ -16,7 +16,10 @@
             @if ($viewAllUrl ?? false)
                 <div class="flex {{ $viewAllClass ?? '' }}">
                     <div class="flex-1 my-auto text-sm text-right">
-                        <a href="{{ $viewAllUrl }}" class="link">View all</a>
+                        <a href="{{ $viewAllUrl }}" class="link">
+                            @lang('ui::actions.view_all')
+                            <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
+                        </a>
                     </div>
                 </div>
             @endif

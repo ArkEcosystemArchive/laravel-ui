@@ -1,4 +1,4 @@
-<div class="flex items-center space-x-5 detail-box @if ($reverse ?? false) flex-row-reverse @endif">
+<div class="flex items-center detail-box @if ($reverse ?? false) flex-row-reverse @endif">
     @isset($iconWrapper)
         {{ $iconWrapper }}
     @elseif(isset($icon) || isset($iconRaw))
