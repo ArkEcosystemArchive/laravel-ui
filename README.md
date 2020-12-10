@@ -135,6 +135,88 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+#### Livewire modals
+
+To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
+
+**Important**: If you need to use a different variable to close the modal, or you can't make use of the trait for a reason, make sure to emit the `modalClosed` event as that is required for proper handling of the modals on the frontend! If you fail to emit this event, the browser window will not be scrollable after the modal disappears.
+
+#### Alpine modals
+
+There's a few ways you can make use of the new modals in conjunction with Alpine:
+
+For JS-only modals, you need to use the `<x-ark-js-modal />` component. You need to initiate the modal with a name (using the `name` attribute) and it can be opened by calling `Livewire.emit('openModal', 'name-of-my-modal')`
+
+```html
+<x-ark-js-modal name="name-of-my-modal'">
+    @slot('description')
+        My Description
+    @endslot
+</x-ark-js-modal>
+
+<button onclick="Livewire.emit('openModal', 'name-of-my-modal')">Open modal</button>
+```
+
+Alternatively, if you wrap the modal inside another Alpine component, you can use the `Modal.alpine()` method to init the modal (don't forget to call the `init` method on `x-init`).
+
+The `Modal.alpine()` method accepts an object as the first argument. This object will be merged with the original Modal data.
+
+Inside that component, you can use the `show()` method to show the modal:
+
+```html
+<div
+    x-data="Modal.alpine({}, 'optionalNameOfTheModal')"
+    x-init="init"
+>
+    <button type="button" @click="show">Show modal</button>
+
+    <x-ark-js-modal
+        class="w-full max-w-2xl text-left"
+        title-class="header-2"
+        :init="false"
+    >
+        @slot('description')
+            My Description
+        @endslot
+    </x-ark-modal>
+</div>
+```
+
+Note that it is also possible to hook into the lifecycle methods of the modal. You can override the `onBeforeHide`, `onBeforeShow`, `onHidden`, and `onShown` properties with custom methods if you require so.
+
+```html
+<div
+    x-data="Modal.alpine({
+        onHidden: () => {
+            alert('The modal was hidden')
+        },
+        onBeforeShow: () => {
+            alert('The modal is about to be shown')
+        }
+    }"
+    x-init="init"
+>
+    <button type="button" @click="show">Show modal</button>
+
+    <x-ark-js-modal
+        class="w-full max-w-2xl text-left"
+        title-class="header-2"
+        :init="false"
+    >
+        @slot('description')
+            My Description
+        @endslot
+    </x-ark-modal>
+</div>
+```
+
+
+```js
+import Modal from "./vendor/ark/modal.js";
+
+window.Modal = Modal;
+```
+
 ### Tooltips
 
 1. Install `tippy.js`
