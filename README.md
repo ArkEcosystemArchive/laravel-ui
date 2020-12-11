@@ -33,7 +33,7 @@ Since this package relies on a few 3rd party packages, you will need to have the
 ],
 ```
 
-**Protip**: you can publish individual assets by using their tag, e.g. `--tag="css"`
+**Protip**: you can publish individual assets by using their tag, e.g. `--tag="css"`, `--tag="images"`, etc
 
 **Protip 2**: in order to lazy-load icons, you will need to publish them by using their tag, e.g. `--tag=\"icons\"`
 
