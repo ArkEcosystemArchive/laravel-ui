@@ -174,6 +174,14 @@ module.exports = {
                     /toast-/,
                     /tippy-/,
                     /^hljs/,
+
+                    /* pikaday classes */
+                    /^pika-/,
+                    /is-selected/,
+                    /is-today/,
+                    /is-disabled/,
+                    /is-hidden/,
+                    /is-bound/,
                 ],
             },
         },
