@@ -19,7 +19,7 @@ $initialText = $grouped
     : collect($options)->get($initialValue);
 @endphp
 
-<div class="input-group w-full">
+<div class="w-full input-group">
     @if($label ?? false)
         <label
             :for="$name ?? ''"
