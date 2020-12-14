@@ -76,6 +76,7 @@
                 breakpoints: {{ $breakpoints }},
             @else
                 breakpoints: {
+                    @if ($columns > 1)
                     375: {
                         slidesPerGroup: {{ $columns - 3 > 0 ? $columns - 3 : 2 }},
                         slidesPerView: {{ $columns - 3 > 0 ? $columns - 3 : 2 }},
@@ -89,6 +90,9 @@
                         slidesPerView: {{ $columns - 1 > 0 ? $columns - 1 : 4 }}
                     },
                     1280: {
+                    @else
+                    1024: {
+                    @endif
                         slidesPerGroup: {{ $columns }},
                         slidesPerView: {{ $columns }},
                         @if ($rows > 1)
