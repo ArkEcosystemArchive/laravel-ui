@@ -73,7 +73,7 @@
             slidesPerColumn: 1,
             spaceBetween: {{ $spaceBetween }},
             @if($breakpoints)
-                breakpoints: {{ $breakpoints }},
+                breakpoints: {!! $breakpoints !!},
             @else
                 breakpoints: {
                     @if ($columns > 1)
