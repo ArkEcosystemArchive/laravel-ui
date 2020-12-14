@@ -7,7 +7,7 @@
     class="pagination-wrapper"
 >
     <div class="relative pagination-pages-mobile">
-        <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="absolute left-0 z-10 flex w-full h-full px-2 overflow-hidden rounded bg-theme-primary-100 dark:bg-theme-secondary-800">
+        <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="flex overflow-hidden absolute left-0 z-10 px-2 w-full h-full rounded bg-theme-primary-100 dark:bg-theme-secondary-800">
             <input
                 x-model.number="page"
                 type="number"
@@ -15,7 +15,7 @@
                 max="{{ $paginator->lastPage() }}"
                 name="{{ $pageName }}"
                 placeholder="Enter the page"
-                class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
+                class="py-2 px-3 w-full bg-transparent dark:text-theme-secondary-200"
                 x-on:blur="blurHandler"
             />
             @foreach($urlParams as $key => $value)
@@ -70,7 +70,7 @@
         @endif
 
         <div class="relative">
-            <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="absolute left-0 z-10 flex w-full h-full px-2 overflow-hidden rounded bg-theme-primary-100 dark:bg-theme-secondary-800 pagination-form-desktop">
+            <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="flex overflow-hidden absolute left-0 z-10 px-2 w-full h-full rounded bg-theme-primary-100 dark:bg-theme-secondary-800 pagination-form-desktop">
                 <input
                     x-ref="search"
                     x-model.number="page"
@@ -79,7 +79,7 @@
                     max="{{ $paginator->lastPage() }}"
                     name="{{ $pageName }}"
                     placeholder="Enter the page number"
-                    class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
+                    class="py-2 px-3 w-full bg-transparent dark:text-theme-secondary-200"
                     x-on:blur="blurHandler"
                 />
                 @foreach($urlParams as $key => $value)
