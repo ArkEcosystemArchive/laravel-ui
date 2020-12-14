@@ -1,6 +1,14 @@
 @php
 ['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
-$urlParams = Arr::except(request()->query(), [$pageName]);
+$urlParams = collect(Arr::dot(Arr::except(request()->query(), [$pageName])))
+    ->mapWithKeys(function ($value, $key) {
+        $parts = explode('.', $key);
+        // Add square brackets to the query param when needed, example: `state['all']=1`
+        $key = collect($parts)
+            ->slice(1)
+            ->reduce(fn ($key, $part) => $key . '[' . $part . ']', $parts[0]);
+        return [$key => $value];
+    });
 @endphp
 <div
     x-data="Pagination('{{ $pageName }}', {{ $paginator->lastPage() }})"
@@ -8,7 +16,7 @@ $urlParams = Arr::except(request()->query(), [$pageName]);
     class="pagination-wrapper"
 >
     <div class="relative pagination-pages-mobile">
-        <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="flex overflow-hidden absolute left-0 z-10 px-2 w-full h-full rounded bg-theme-primary-100 dark:bg-theme-secondary-800">
+        <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="absolute left-0 z-10 flex w-full h-full px-2 overflow-hidden rounded bg-theme-primary-100 dark:bg-theme-secondary-800">
             <input
                 x-model.number="page"
                 type="number"
@@ -16,7 +24,7 @@ $urlParams = Arr::except(request()->query(), [$pageName]);
                 max="{{ $paginator->lastPage() }}"
                 name="{{ $pageName }}"
                 placeholder="Enter the page"
-                class="py-2 px-3 w-full bg-transparent dark:text-theme-secondary-200"
+                class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
                 x-on:blur="blurHandler"
             />
             @foreach($urlParams as $key => $value)
@@ -71,7 +79,7 @@ $urlParams = Arr::except(request()->query(), [$pageName]);
         @endif
 
         <div class="relative">
-            <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="flex overflow-hidden absolute left-0 z-10 px-2 w-full h-full rounded bg-theme-primary-100 dark:bg-theme-secondary-800 pagination-form-desktop">
+            <form x-show="search" name="searchForm" type="get" action="{{ $path }}" class="absolute left-0 z-10 flex w-full h-full px-2 overflow-hidden rounded bg-theme-primary-100 dark:bg-theme-secondary-800 pagination-form-desktop">
                 <input
                     x-ref="search"
                     x-model.number="page"
@@ -80,7 +88,7 @@ $urlParams = Arr::except(request()->query(), [$pageName]);
                     max="{{ $paginator->lastPage() }}"
                     name="{{ $pageName }}"
                     placeholder="Enter the page number"
-                    class="py-2 px-3 w-full bg-transparent dark:text-theme-secondary-200"
+                    class="w-full px-3 py-2 bg-transparent dark:text-theme-secondary-200"
                     x-on:blur="blurHandler"
                 />
                 @foreach($urlParams as $key => $value)
