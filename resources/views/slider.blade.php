@@ -58,21 +58,23 @@
             @else
                 breakpoints: {
                     @if (!isset($columns) || $columns > 1)
-                    375: {
-                        slidesPerGroup: {{ ($columns ?? 5) - 3 }},
-                        slidesPerView: {{ ($columns ?? 5) - 3 }},
-                    },
-                    640: {
-                        slidesPerGroup: {{ ($columns ?? 5) - 2 }},
-                        slidesPerView: {{ ($columns ?? 5) - 2 }}
-                    },
-                    1024: {
-                        slidesPerGroup: {{ ($columns ?? 5) - 1 }},
-                        slidesPerView: {{ ($columns ?? 5) - 1 }}
-                    },
-                    1280: {
+                        @if ($columns > 3)
+                            375: {
+                                slidesPerGroup: {{ ($columns ?? 5) - 3 }},
+                                slidesPerView: {{ ($columns ?? 5) - 3 }},
+                            },
+                        @endif
+                        640: {
+                            slidesPerGroup: {{ ($columns ?? 5) - 2 }},
+                            slidesPerView: {{ ($columns ?? 5) - 2 }}
+                        },
+                        1024: {
+                            slidesPerGroup: {{ ($columns ?? 5) - 1 }},
+                            slidesPerView: {{ ($columns ?? 5) - 1 }}
+                        },
+                        1280: {
                     @else
-                    1024: {
+                        1024: {
                     @endif
                         slidesPerGroup: {{ $columns ?? 5 }},
                         slidesPerView: {{ $columns ?? 5 }},
