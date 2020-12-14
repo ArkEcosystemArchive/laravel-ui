@@ -30,11 +30,11 @@ class UI
     {
         ['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
 
-        // Extract the query params to be used on the page form
+        // Extracts the query params that will be added to the page form
         $urlParams = collect(Arr::dot(Arr::except(request()->query(), [$pageName])))
             ->mapWithKeys(function ($value, $key) {
                 $parts = explode('.', $key);
-                // Add square brackets to the query params when needed, example: `state['all']=1`
+                // Add square brackets to the query params when needed, example: `&state['all']=1`
                 $key = collect($parts)
                     ->slice(1)
                     ->reduce(fn ($key, $part) => $key . '[' . $part . ']', $parts[0]);
