@@ -1,14 +1,5 @@
 @php
-['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
-$urlParams = collect(Arr::dot(Arr::except(request()->query(), [$pageName])))
-    ->mapWithKeys(function ($value, $key) {
-        $parts = explode('.', $key);
-        // Add square brackets to the query param when needed, example: `state['all']=1`
-        $key = collect($parts)
-            ->slice(1)
-            ->reduce(fn ($key, $part) => $key . '[' . $part . ']', $parts[0]);
-        return [$key => $value];
-    });
+['path' => $path, 'pageName' => $pageName, 'urlParams' => $urlParams] = ARKEcosystem\UserInterface\UI::getPaginationData($paginator);
 @endphp
 <div
     x-data="Pagination('{{ $pageName }}', {{ $paginator->lastPage() }})"
