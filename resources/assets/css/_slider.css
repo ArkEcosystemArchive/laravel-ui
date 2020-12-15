@@ -16,8 +16,12 @@
     }
 }
 
-.swiper-container > .swiper-pagination {
+.swiper-container .swiper-pagination {
     @apply relative;
+}
+
+.swiper-container .swiper-pagination-bullets {
+    @apply space-x-1;
 }
 
 .swiper-button-next,
