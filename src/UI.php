@@ -2,6 +2,9 @@
 
 namespace ARKEcosystem\UserInterface;
 
+use Illuminate\Support\Arr;
+use Illuminate\Pagination\AbstractPaginator;
+
 class UI
 {
     private static array $errorMessages = [];
@@ -21,5 +24,24 @@ class UI
     public static function useErrorMessage(int $code, string $message): void
     {
         static::$errorMessages[$code] = $message;
+    }
+
+    public static function getPaginationData(AbstractPaginator $paginator): array
+    {
+        ['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
+
+        // Extracts the query params that will be added to the page form
+        $urlParams = collect(Arr::dot(Arr::except(request()->query(), [$pageName])))
+            ->mapWithKeys(function ($value, $key) {
+                $parts = explode('.', $key);
+                // Add square brackets to the query params when needed, example: `&state['all']=1`
+                $key = collect($parts)
+                    ->slice(1)
+                    ->reduce(fn ($key, $part) => $key . '[' . $part . ']', $parts[0]);
+
+                return [$key => $value];
+            });
+
+        return compact('path', 'pageName', 'urlParams');
     }
 }

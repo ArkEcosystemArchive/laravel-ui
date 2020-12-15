@@ -1,6 +1,5 @@
 @php
-['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
-$urlParams = Arr::except(request()->all(), [$pageName]);
+['path' => $path, 'pageName' => $pageName, 'urlParams' => $urlParams] = ARKEcosystem\UserInterface\UI::getPaginationData($paginator);
 @endphp
 <div
     x-data="Pagination('{{ $pageName }}', {{ $paginator->lastPage() }})"
