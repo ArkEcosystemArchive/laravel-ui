@@ -38,7 +38,7 @@ h1 {
 /* Heading consistency */
 h1,
 .header-1 {
-    @apply text-4xl mb-2 leading-snug;
+    @apply text-4xl mb-2;
 }
 
 h2,
@@ -81,6 +81,17 @@ h4,
     .header-3 {
         @apply text-3xl;
     }
+}
+
+h1,
+.header-1,
+h2,
+.header-2,
+h3,
+.header-3,
+h4,
+.header-4 {
+    @apply leading-tight;
 }
 
 a:focus,
