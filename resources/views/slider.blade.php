@@ -17,39 +17,47 @@
 ])
 
 <div class="w-full">
-    @if ($title ?? $viewAllUrl)
+    @if ($title && $viewAllUrl)
         <div class="flex mb-4">
-            @if ($title)
-                <div
-                    class="flex-1 relative {{ $titleClass }} @if (!isset($viewAllUrl)) mb-5 @endif"
-                >
-                    {{ $title }}
+            <div class="flex-1 relative {{ $titleClass }}">
+                {{ $title }}
 
-                    @if ($titleTooltip)
-                        <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
-                    @endif
+                @if ($titleTooltip)
+                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                @endif
+            </div>
+
+            <div class="flex {{ $viewAllClass }}">
+                <div class="flex-1 my-auto text-sm text-right">
+                    <a href="{{ $viewAllUrl }}" class="link">
+                        @lang('ui::actions.view_all')
+
+                        <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
+                    </a>
                 </div>
-            @endif
-
-            @if ($viewAllUrl)
-                <div class="flex {{ $viewAllClass }}">
-                    <div class="flex-1 my-auto text-sm text-right">
-                        <a href="{{ $viewAllUrl }}" class="link">
-                            @lang('ui::actions.view_all')
-
-                            <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
-                        </a>
-                    </div>
-                </div>
-            @endif
+            </div>
         </div>
     @endif
 
     <!-- Swiper -->
     <div class="relative @unless($hideNavigation) px-10 @endunless">
         <div id="swiper-{{ $id }}" class="swiper-container @if ($rows > 1) slider-multirow @endif">
-            @if($topPagination)
-                <div class="swiper-pagination text-right mb-3 {{ $paginationClass }}"></div>
+            @if (($title && !$viewAllUrl) || $topPagination)
+                <div class="flex justify-between items-center">
+                    @if($title && !$viewAllUrl)
+                        <div class="flex-1 relative {{ $titleClass }} my-4">
+                            {{ $title }}
+
+                            @if ($titleTooltip)
+                                <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                            @endif
+                        </div>
+                    @endif
+
+                    @if($topPagination)
+                        <div class="swiper-pagination text-right mb-3 {{ $paginationClass }}"></div>
+                    @endif
+                </div>
             @endif
 
             <div class="swiper-wrapper">
