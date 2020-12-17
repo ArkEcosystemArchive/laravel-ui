@@ -1,4 +1,19 @@
-<div class="hidden items-center md:ml-6 md:flex">
+@props([
+    'breakpoint' => 'md',
+    'navigation' => [],
+])
+
+@php
+    // Exact class strings required to prevent purging
+    $breakpointClasses = [
+        'sm' => 'sm:ml-6 sm:flex',
+        'md' => 'md:ml-6 md:flex',
+        'lg' => 'lg:ml-6 lg:flex',
+        'xl' => 'xl:ml-6 xl:flex',
+    ][$breakpoint];
+@endphp
+
+<div class="hidden items-center {{ $breakpointClasses }}">
     @foreach ($navigation as $navItem)
         @isset($navItem['children'])
             <a
