@@ -21,7 +21,7 @@
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
                 <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
-                    <div class="flex justify-center items-center space-x-2 w-full">
+                    <div class="flex items-center justify-center w-full space-x-2">
                         @svg('brands.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
@@ -45,7 +45,7 @@
         <h3>@lang('ui::pages.contact.form.title')</h3>
         <div class="mt-4">@lang('ui::pages.contact.form.description')</div>
 
-        <form method="POST" action="{{ route('contact') }}" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
+        <form id="contact-form" method="POST" action="{{ route('contact') }}#contact-form" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
             @csrf
 
             @honeypot
@@ -113,7 +113,7 @@
                     error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
                 }"
                 x-init="setTimeout(() => { error = false; success = false }, 10000)"
-                class="flex relative flex-col flex-1 justify-end"
+                class="relative flex flex-col justify-end flex-1"
             >
                 <div x-show.transition="success" class="absolute top-0 w-full" x-cloak>
                     <x-ark-toast

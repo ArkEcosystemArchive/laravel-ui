@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 final class ContactController extends Controller
 {
@@ -36,7 +37,7 @@ final class ContactController extends Controller
         return view('app.contact', compact('message', 'subject'));
     }
 
-    public function handle(Request $request): View
+    public function handle(Request $request): RedirectResponse
     {
         $data = $request->validate([
             'name'       => ['required', 'max:64'],
@@ -63,7 +64,7 @@ final class ContactController extends Controller
 
         flash()->success(trans('messages.contact'));
 
-        return view('app.contact');
+        return redirect()->route('contact');
     }
 
     private function getSubjects(): Collection
