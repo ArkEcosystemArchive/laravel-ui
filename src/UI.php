@@ -28,7 +28,7 @@ class UI
 
     public static function getPaginationData(AbstractPaginator $paginator): array
     {
-        ['path' => $path, 'pageName' => $pageName] = $paginator->getOptions();
+        ['pageName' => $pageName] = $paginator->getOptions();
 
         // Extracts the query params that will be added to the page form
         $urlParams = collect(Arr::dot(Arr::except(request()->query(), [$pageName])))
@@ -42,6 +42,6 @@ class UI
                 return [$key => $value];
             });
 
-        return compact('path', 'pageName', 'urlParams');
+        return compact('pageName', 'urlParams');
     }
 }
