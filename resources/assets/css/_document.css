@@ -169,22 +169,12 @@ code.hljs .hljs-ln-n {
 
 /* Image caption */
 .documentation-content .image-caption {
-    @apply relative block w-full mx-auto p-4 mt-6 border-2 rounded-lg border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900;
-}
-
-.documentation-content .image-caption::after {
-    content: "";
-    transform: rotate(45deg) skew(10deg, 10deg);
-
-    @apply absolute top-0 left-0 right-0 mx-auto w-4 h-4 bg-theme-secondary-100 text-theme-secondary-300 rounded-tl-md border-2 border-transparent;
-    border-left: 2px solid;
-    border-top: 2px solid;
-    margin-top: -0.7rem;
+    @apply relative block w-full mx-auto p-4 mt-2 border-2 rounded-lg border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900 text-sm;
 }
 
 @screen sm {
     .documentation-content .image-caption {
-        @apply p-6;
+        @apply px-4 py-2;
     }
 }
 
