@@ -21,7 +21,7 @@
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
                 <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
-                    <div class="flex items-center justify-center w-full space-x-2">
+                    <div class="flex justify-center items-center space-x-2 w-full">
                         @svg('brands.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
@@ -113,7 +113,7 @@
                     error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
                 }"
                 x-init="setTimeout(() => { error = false; success = false }, 10000)"
-                class="relative flex flex-col justify-end flex-1"
+                class="flex relative flex-col flex-1 justify-end"
             >
                 <div x-show.transition="success" class="absolute top-0 w-full" x-cloak>
                     <x-ark-toast
