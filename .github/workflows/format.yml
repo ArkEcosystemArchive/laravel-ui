@@ -49,3 +49,26 @@ jobs:
               with:
                   commit_message: "style: resolve style guide violations"
                   branch: ${{ github.head_ref }}
+
+    icons:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                ref: ${{ github.head_ref }}
+
+            - name: Install
+              run: yarn install
+              env:
+                  CI: true
+
+            - name: Format
+              run: |
+                  node scripts/rename-classes.js
+                  node scripts/generate-preview.js
+
+            - uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: "style: format icons"
+                  branch: ${{ github.head_ref }}
