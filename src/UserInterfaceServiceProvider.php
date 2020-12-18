@@ -141,6 +141,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::clipboard', 'ark-clipboard');
         Blade::component('ark::code', 'ark-code');
         Blade::component('ark::code-lines', 'ark-code-lines');
+        Blade::component('ark::container', 'ark-container');
         Blade::component('ark::description-block', 'ark-description-block');
         Blade::component('ark::description-block-link', 'ark-description-block-link');
         Blade::component('ark::details-box', 'ark-details-box');
