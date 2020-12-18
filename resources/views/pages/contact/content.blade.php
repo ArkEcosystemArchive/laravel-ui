@@ -45,7 +45,7 @@
         <h3>@lang('ui::pages.contact.form.title')</h3>
         <div class="mt-4">@lang('ui::pages.contact.form.description')</div>
 
-        <form method="POST" action="{{ route('contact') }}" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
+        <form id="contact-form" method="POST" action="{{ route('contact') }}#contact-form" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
             @csrf
 
             @honeypot
