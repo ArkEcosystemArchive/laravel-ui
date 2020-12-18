@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@sindresorhus/slugify": "sindresorhus/slugify",
     "prettier": "^2.0.2"
   },
   "devDependencies": {

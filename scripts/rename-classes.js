@@ -12,6 +12,12 @@ for (const file of files) {
     const oldClass = 'st';
     const newClass = slugify(file.replace('.svg', '')) + '-st';
     const oldContent = fs.readFileSync(`${filePath}${file}`).toString();
+
+    // Skip files that don't have `.st` style references
+    if (!/\.st\d+/.test(oldContent)) {
+        continue;
+    }
+
     let newContent = oldContent;
 
     for (let i = 0; i < 3; i++) {
