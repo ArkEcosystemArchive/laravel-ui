@@ -1,10 +1,4 @@
-@props([
-    'breakpoint' => 'md',
-    'navigation' => [],
-    'content' => null,
-    'desktop' => null,
-    'mobile' => null,
-])
+{{-- Better not to use @props as there's too many properties in included components --}}
 
 @php
     // Exact class strings required to prevent purging
@@ -13,7 +7,7 @@
         'md' => 'md:hidden',
         'lg' => 'lg:hidden',
         'xl' => 'xl:hidden',
-    ][$breakpoint];
+    ][$breakpoint ?? 'md'];
 @endphp
 
 <div x-data="{ open: false, openDropdown: null, selectedChild: null }">
@@ -31,30 +25,30 @@
 
                 <div class="flex justify-end">
                     <div class="flex flex-1 justify-end items-center sm:items-stretch sm:justify-between">
-                        @if($desktop)
+                        @isset($desktop)
                             {{ $desktop }}
                         @else
                             @include('ark::navbar.items.desktop')
-                        @endif
+                        @endisset
                     </div>
 
                     <div class="flex inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
                         @include('ark::navbar.hamburger')
 
-                        @if($content)
+                        @isset($content)
                             {{ $content }}
                         @else
                             @include('ark::navbar.content')
-                        @endif
+                        @endisset
                     </div>
                 </div>
             </div>
         </div>
 
-        @if($mobile)
+        @isset($mobile)
             {{ $mobile }}
         @else
             @include('ark::navbar.items.mobile')
-        @endif
+        @endisset
     </nav>
 </div>
