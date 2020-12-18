@@ -67,6 +67,7 @@ jobs:
             - name: Format
               run: |
                   node scripts/rename-classes.js
+                  node scripts/remove-colors.js
                   node scripts/generate-preview.js
 
             - uses: stefanzweifel/git-auto-commit-action@v4
