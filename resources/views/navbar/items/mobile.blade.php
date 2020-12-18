@@ -1,4 +1,19 @@
-<div :class="{'block': open, 'hidden': !open}" class="border-t-2 md:hidden border-theme-secondary-200">
+@props([
+    'breakpoint' => 'md',
+    'navigation' => [],
+])
+
+@php
+    // Exact class strings required to prevent purging
+    $breakpointClass = [
+        'sm' => 'sm:hidden',
+        'md' => 'md:hidden',
+        'lg' => 'lg:hidden',
+        'xl' => 'xl:hidden',
+    ][$breakpoint];
+@endphp
+
+<div :class="{'block': open, 'hidden': !open}" class="border-t-2 border-theme-secondary-200 {{ $breakpointClass }}">
     <div class="pt-2 pb-4 rounded-b-lg">
         @foreach ($navigation as $navItem)
             @if(isset($navItem['children']))
