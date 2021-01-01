@@ -80,7 +80,7 @@ or to individual pages:
 2. Publish the js assets if you haven't yet
 
 ```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\ServiceProvider" --tag="js"
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="js"
 ```
 
 3. Add clipboard to any pages that need it
