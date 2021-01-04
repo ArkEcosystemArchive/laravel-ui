@@ -1,5 +1,22 @@
+{{-- Better not to use @props as there's too many properties in included components --}}
+
+@php
+    // Exact class strings required to prevent purging
+    $backdropClass = [
+        'sm' => 'sm:hidden',
+        'md' => 'md:hidden',
+        'lg' => 'lg:hidden',
+        'xl' => 'xl:hidden',
+    ][$breakpoint ?? 'md'];
+@endphp
+
 <div x-data="{ open: false, openDropdown: null, selectedChild: null }">
-    <div x-show="openDropdown !== null || open" class="overflow-y-auto fixed inset-0 z-30 opacity-75 bg-theme-secondary-900" x-cloak @click="openDropdown = null; open = false;"></div>
+    <div
+        x-show="openDropdown !== null || open"
+        class="overflow-y-auto fixed inset-0 z-30 opacity-75 bg-theme-secondary-900 {{ $backdropClass }}"
+        @click="openDropdown = null; open = false;"
+        x-cloak
+    ></div>
 
     <nav class="relative z-30 bg-white shadow-header-smooth dark:shadow-none dark:bg-theme-secondary-900">
         <div class="px-4 sm:px-6 lg:px-8">
