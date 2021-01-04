@@ -21,6 +21,6 @@ glob.sync("**/*.svg", { cwd: "./resources/assets/icons/" }).forEach((file) => {
 
 html += "</div></div></body></html>";
 
-fs.writeFile("icons.html", html, (error) =>
+fs.writeFile("./icons.html", html, (error) =>
     error ? console.log(error) : console.log("written to icons.html")
 );
