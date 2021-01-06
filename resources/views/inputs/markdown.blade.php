@@ -11,6 +11,14 @@ $icons = [
     'iconItalic' => 'text-italic',
     'iconStrike' => 'text-strike-through',
     'iconUnderline' => 'text-underline',
+    'iconQuote' => 'open-quote',
+    'iconUl' => 'list-numbers',
+    'iconOl' => 'list-bullets',
+    'iconTable' => 'table',
+    'iconImage' => 'image-file-landscape',
+    'iconLink' => 'hyperlink',
+    'iconCode' => 'programming-browser-1',
+    'iconCodeblock' => 'programming-browser',
 ]
 @endphp
 <div

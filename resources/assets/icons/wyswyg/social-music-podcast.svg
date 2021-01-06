@@ -2,20 +2,17 @@
 <!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 20.4 22.1" style="enable-background:new 0 0 20.4 22.1;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-</style>
 <g id="social-music-podcast" transform="translate(-1.649 0.296)">
-	<path id="Path_390" class="st0" d="M6.6,11.7C5.1,9.3,5.8,6.1,8.2,4.6s5.6-0.8,7.1,1.6c0.4,0.7,0.7,1.4,0.8,2.2"/>
-	<path id="Path_391" class="st0" d="M4.8,14.7C1.7,11.2,2,5.9,5.5,2.9c3.4-3,8.6-2.8,11.7,0.5c1.1,1.2,1.9,2.7,2.1,4.4"/>
-	<path id="Path_392" class="st0" d="M12.7,13H9.8c-1,0-1.8,0.8-1.8,1.8c0,0,0,0,0,0V15l0.3,1.6"/>
-	<circle id="Ellipse_6" class="st0" cx="11" cy="9" r="2.1"/>
+	<path id="Path_390" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M6.6,11.7C5.1,9.3,5.8,6.1,8.2,4.6s5.6-0.8,7.1,1.6c0.4,0.7,0.7,1.4,0.8,2.2"/>
+	<path id="Path_391" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M4.8,14.7C1.7,11.2,2,5.9,5.5,2.9c3.4-3,8.6-2.8,11.7,0.5c1.1,1.2,1.9,2.7,2.1,4.4"/>
+	<path id="Path_392" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M12.7,13H9.8c-1,0-1.8,0.8-1.8,1.8c0,0,0,0,0,0V15l0.3,1.6"/>
+	<circle id="Ellipse_6" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  cx="11" cy="9" r="2.1"/>
 	<g id="Group_3" transform="translate(10.129 10.098)">
-		<path id="Path_385" class="st0" d="M5.3,7.2c0.1,0.6-0.1,1.2-0.5,1.7l-1.2,1.2c-0.8,0.8-2.1,0.8-2.9,0c0,0,0,0-0.1-0.1l0,0
+		<path id="Path_385" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M5.3,7.2c0.1,0.6-0.1,1.2-0.5,1.7l-1.2,1.2c-0.8,0.8-2.1,0.8-2.9,0c0,0,0,0-0.1-0.1l0,0
 			c-0.8-0.8-0.8-2.1,0-2.9l1.2-1.2c0.5-0.4,1.1-0.6,1.7-0.5"/>
-		<path id="Path_386" class="st0" d="M7.3,5.3C7.9,5.4,8.5,5.2,9,4.8l1.2-1.2c0.8-0.9,0.7-2.2-0.1-3C9.3-0.2,8-0.2,7.2,0.6L6,1.8
+		<path id="Path_386" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M7.3,5.3C7.9,5.4,8.5,5.2,9,4.8l1.2-1.2c0.8-0.9,0.7-2.2-0.1-3C9.3-0.2,8-0.2,7.2,0.6L6,1.8
 			C5.5,2.2,5.3,2.9,5.4,3.5"/>
-		<line id="Line_104" class="st0" x1="3.4" y1="7.3" x2="7.4" y2="3.3"/>
+		<line id="Line_104" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="3.4" y1="7.3" x2="7.4" y2="3.3"/>
 	</g>
 </g>
 </svg>

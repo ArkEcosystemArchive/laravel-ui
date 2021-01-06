@@ -2,12 +2,9 @@
 <!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 18 18.7" style="enable-background:new 0 0 18 18.7;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-</style>
 <g id="text-italic" transform="translate(0.2 0.652)">
-	<line id="Line_77" class="st0" x1="16.8" y1="0.7" x2="9.3" y2="0.7"/>
-	<line id="Line_78" class="st0" x1="8.2" y1="16.7" x2="0.8" y2="16.7"/>
-	<line id="Line_79" class="st0" x1="4.5" y1="16.7" x2="13" y2="0.7"/>
+	<line id="Line_77" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="16.8" y1="0.7" x2="9.3" y2="0.7"/>
+	<line id="Line_78" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="8.2" y1="16.7" x2="0.8" y2="16.7"/>
+	<line id="Line_79" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="4.5" y1="16.7" x2="13" y2="0.7"/>
 </g>
 </svg>
