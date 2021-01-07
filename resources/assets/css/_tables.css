@@ -70,6 +70,31 @@
     @apply text-theme-secondary-500;
 }
 
+/* Table List */
+.table-list-mobile-row {
+    @apply flex flex-col w-full py-6 border-t border-theme-secondary-300 space-y-4;
+}
+.table-list-mobile-row:first-child {
+    @apply pt-0 border-t-0;
+}
+.dark .table-list-mobile-row {
+    @apply border-theme-secondary-800;
+}
+
+.table-list-mobile-row > div:not(.table-list-mobile-name) {
+    @apply flex justify-between w-full;
+}
+
+.table-list-mobile-name {
+    @apply flex space-x-2 items-center text-lg mb-2;
+}
+
+@screen md {
+    .table-list-mobile {
+        @apply hidden;
+    }
+}
+
 /* Table Scrollbar */
 .table-container .table-wrapper {
     scrollbar-color: #e5f0f8 #bad6f0;
