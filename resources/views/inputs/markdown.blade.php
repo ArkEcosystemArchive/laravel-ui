@@ -19,6 +19,10 @@ $icons = [
     'iconLink' => 'hyperlink',
     'iconCode' => 'programming-browser-1',
     'iconCodeblock' => 'programming-browser',
+    'iconYoutube' => 'social-video-youtube-clip',
+    'iconTwitter' => 'social-media-twitter',
+    'iconUndo' => 'undo',
+    'iconRedo' => 'redo',
 ]
 @endphp
 <div
