@@ -15,8 +15,8 @@ code[class*="language-"] {
     color: #bfc7d5;
     font-size: 16px;
     text-shadow: none;
-    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono",
-        "Ubuntu Mono", monospace;
+    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+        monospace;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -211,6 +211,6 @@ pre.line-numbers > code {
     display: block;
     padding-right: 0.8em;
     text-align: right;
-    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono",
-        "Ubuntu Mono", monospace;
+    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+        monospace;
 }
