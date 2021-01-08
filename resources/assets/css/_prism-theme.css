@@ -15,7 +15,7 @@ code[class*="language-"] {
     color: #bfc7d5;
     font-size: 16px;
     text-shadow: none;
-    font-family: Fira Code, Menlo, Consolas, Monaco, "Andale Mono",
+    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono",
         "Ubuntu Mono", monospace;
     direction: ltr;
     text-align: left;
@@ -187,6 +187,7 @@ pre.line-numbers > code {
     font-size: 100%;
     left: -3.8em;
     width: 3em;
+    margin-top: -6px;
     /* works for line-numbers below 1000 lines */
     letter-spacing: -1px;
     border-right: 1px solid #999;
@@ -201,6 +202,7 @@ pre.line-numbers > code {
     pointer-events: none;
     display: block;
     counter-increment: linenumber;
+    line-height: 2rem;
 }
 
 .line-numbers-rows > span:before {
@@ -209,4 +211,6 @@ pre.line-numbers > code {
     display: block;
     padding-right: 0.8em;
     text-align: right;
+    font-family: FiraMono, Menlo, Consolas, Monaco, "Andale Mono",
+        "Ubuntu Mono", monospace;
 }
