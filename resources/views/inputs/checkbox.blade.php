@@ -20,7 +20,7 @@
                 class="form-checkbox input-checkbox"
                 wire:model="{{ $model ?? $name }}"
                 @if($value) value="{{ $value }}" @endif
-                @if($disabled) checked @endif
+                @if($checked) checked @endif
                 @if($disabled) disabled @endif
             />
         </div>
