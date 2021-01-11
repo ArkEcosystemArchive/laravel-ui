@@ -50,5 +50,7 @@ $icons = [
         wire:model="{{ $model ? $model : $name }}"
     />
 
-    <div wire:ignore x-ref="editor"></div>
+    <div wire:ignore x-ref="editor">
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </div>

@@ -2,12 +2,14 @@
 
 namespace ARKEcosystem\UserInterface;
 
-use ARKEcosystem\UserInterface\Components\FlashMessage;
-use ARKEcosystem\UserInterface\Components\Toast;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+use ARKEcosystem\UserInterface\Components\Toast;
+use ARKEcosystem\UserInterface\Components\FlashMessage;
+use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
+use Illuminate\Support\Facades\Route;
 
 class UserInterfaceServiceProvider extends ServiceProvider
 {
@@ -43,6 +45,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         $this->registerLivewireComponents();
 
+        $this->registerRoutes();
+
         UI::bootErrorMessages();
     }
 
@@ -54,6 +58,18 @@ class UserInterfaceServiceProvider extends ServiceProvider
     public function registerLoaders(): void
     {
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'ui');
+    }
+
+    /**
+     * Register routes
+     *
+     * @return void
+     */
+    public function registerRoutes(): void
+    {
+        Route::group(['prefix' => 'wyswyg'], function () {
+            Route::get('twitter-embed-code', [WysiwygControlller::class, 'getTwitterEmbedCode'])->name('wysiwyg.twitter');
+        });
     }
 
     /**
