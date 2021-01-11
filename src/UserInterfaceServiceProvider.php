@@ -147,6 +147,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::tables.cell-status', 'ark-tables.cell-status');
         Blade::component('ark::tables.header', 'ark-tables.header');
         Blade::component('ark::tables.view-options', 'ark-tables.view-options');
+        Blade::component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
+        Blade::component('ark::tables.mobile.row', 'ark-tables.mobile.row');
 
         Blade::component('ark::accordion-group', 'ark-accordion-group');
         Blade::component('ark::accordion', 'ark-accordion');

@@ -17,7 +17,7 @@
                 class="flex absolute justify-center items-center w-6 h-6 text-white rounded-full transition duration-150 ease-in-out avatar-circle shadow-solid"
                 style="right: -0.5rem; bottom: 30%"
             >
-                <span :class="{ 'rotate-180': open }" class="w-2 h-2 transition duration-150 ease-in-out text-theme-primary-600">
+                <span :class="{ 'rotate-180': dropdownOpen }" class="w-2 h-2 transition duration-150 ease-in-out text-theme-primary-600">
                     @svg('chevron-down')
                 </span>
             </span>
