@@ -3,7 +3,7 @@
     'class'        => 'mt-4',
     'id'           => null,
     'model'        => null,
-    'label'        => '',
+    'label'        => null,
     'labelClasses' => '',
     'value'        => null,
     'checked'      => false,
@@ -26,8 +26,8 @@
         </div>
 
         <div class="pl-7 text-sm leading-5">
-            <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses ?? '' }}">
-                {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+            <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
+                {{ $label ? $label : trans('forms.' . $name) }}
             </label>
         </div>
     </div>
