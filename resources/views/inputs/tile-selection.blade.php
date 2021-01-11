@@ -41,7 +41,7 @@
                 x-model="allSelected"
             />
 
-            <div>Select All</div>
+            <div>@lang('ui::general.select-all')</div>
         </label>
     </div>
 
