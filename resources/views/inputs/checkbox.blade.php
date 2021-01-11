@@ -11,7 +11,7 @@
 ])
 
 <div class="{{ $class }}">
-    <div class="flex relative items-start">
+    <div class="flex relative items-center">
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
