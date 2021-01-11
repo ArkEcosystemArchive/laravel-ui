@@ -33,10 +33,10 @@
             @endif
         </div>
 
-        <label class="square-selection-select-all">
+        <label class="tile-selection-select-all">
             <input
                 type="checkbox"
-                class="form-checkbox square-selection-select-all-checkbox"
+                class="form-checkbox tile-selection-select-all-checkbox"
                 x-on:click="selectAll"
                 x-model="allSelected"
             />

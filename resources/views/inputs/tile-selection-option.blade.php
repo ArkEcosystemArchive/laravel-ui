@@ -3,12 +3,12 @@
     'option',
 ])
 
-<label class="square-selection" x-bind:class="{ 'square-selection--checked': options['{{ $option['name'] }}'].checked }">
+<label class="tile-selection" x-bind:class="{ 'tile-selection--checked': options['{{ $option['name'] }}'].checked }">
     <input
         id="{{ $id.'-'.$option['name'] }}"
         name="{{ $option['name'] }}"
         type="checkbox"
-        class="form-checkbox square-selection-checkbox"
+        class="form-checkbox tile-selection-checkbox"
         x-model="options['{{ $option['name'] }}'].checked"
     />
 
