@@ -12,7 +12,7 @@
         x-model="options['{{ $option['name'] }}'].checked"
     />
 
-    <div class="h-full flex flex-col justify-center items-center space-y-2 font-semibold">
+    <div class="flex flex-col justify-center items-center space-y-2 h-full font-semibold">
         <x-ark-icon :name="$option['icon']" size="md" />
 
         <div>{{ $option['title'] }}</div>
