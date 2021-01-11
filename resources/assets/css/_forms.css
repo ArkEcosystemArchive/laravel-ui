@@ -166,3 +166,39 @@
 .input-help--error {
     @apply mt-2 text-sm text-theme-danger-500;
 }
+
+/** Square Checkbox Selection **/
+.square-selection {
+    @apply relative border-2 rounded-lg border-theme-primary-100 h-30 select-none;
+}
+
+.square-selection-select-all {
+    @apply flex items-center md:flex-row-reverse;
+}
+
+.square-selection-checkbox,
+.square-selection-checkbox:focus,
+.square-selection-select-all-checkbox,
+.square-selection-select-all-checkbox:focus {
+    @apply border-2 border-theme-primary-100 rounded;
+}
+
+.square-selection-select-all-checkbox {
+    @apply mr-2 md:mr-0 md:ml-2;
+}
+
+.square-selection-checkbox {
+    @apply absolute top-2 right-2;
+}
+.square-selection-checkbox,
+.square-selection-checkbox:focus {
+    @apply border-theme-primary-100;
+}
+
+.square-selection--checked {
+    @apply border-theme-success-500 bg-theme-success-50;
+}
+.square-selection-select-all-checkbox:checked,
+.square-selection-checkbox:checked {
+    @apply border-theme-success-500 bg-theme-success-500;
+}
