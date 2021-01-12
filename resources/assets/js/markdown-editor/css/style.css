@@ -1,4 +1,3 @@
-
 /* purgecss start ignore */
 
 @import "codemirror/lib/codemirror.css";
@@ -1113,7 +1112,6 @@
     height: auto;
     overflow: initial;
 }
-
 
 .tui-split-scroll.scroll-sync .tui-split-scroll-content {
     overflow-y: auto;
