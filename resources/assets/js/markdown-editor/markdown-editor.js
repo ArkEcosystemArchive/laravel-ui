@@ -1,3 +1,5 @@
+import "./css/style.css";
+
 import Editor from "@toast-ui/editor";
 
 import {
@@ -12,9 +14,6 @@ import {
 } from "./plugins/index.js";
 
 import { extractTextFromHtml } from "./utils/utils.js";
-
-import "codemirror/lib/codemirror.css"; // Editor's Dependency Style
-import "./css/style.css"; // Editor's Style
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
