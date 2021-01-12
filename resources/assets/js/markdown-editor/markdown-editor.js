@@ -18,7 +18,12 @@ import "./css/style.css"; // Editor's Style
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
-const MarkdownEditor = (extraData = {}) => ({
+const MarkdownEditor = (
+    height = null,
+    toolbarItems = null,
+    plugins = null,
+    extraData = {}
+) => ({
     editor: null,
     toolbar: null,
     toolbarItems: null,
@@ -26,59 +31,67 @@ const MarkdownEditor = (extraData = {}) => ({
     charsCount: 0,
     wordsCount: 0,
     readMinutes: 0,
-    height: "600px",
-    toolbarItems: [
-        // ...Undo & redo
+    height: height !== null ? height : "600px",
+    toolbarItems:
+        toolbarItems !== null
+            ? toolbarItems
+            : [
+                  // ...Undo & redo
 
-        "divider",
+                  "divider",
 
-        "bold",
-        "italic",
-        "strike",
-        "quote",
-        "divider",
+                  "bold",
+                  "italic",
+                  "strike",
+                  "quote",
+                  "divider",
 
-        // ...Headers
+                  // ...Headers
 
-        "divider",
+                  "divider",
 
-        "ol",
-        "ul",
-        "table",
-        "image",
+                  "ol",
+                  "ul",
+                  "table",
+                  "image",
 
-        "divider",
+                  "divider",
 
-        "link",
-        "code",
-        "codeblock",
+                  "link",
+                  "code",
+                  "codeblock",
 
-        "divider",
+                  "divider",
 
-        // ...Plugins
+                  // ...Plugins
 
-        "divider",
+                  "divider",
 
-        // ...Preview, etc
-    ],
-    plugins: [
-        "preview",
-        "simplecast",
-        "twitter",
-        "youtube",
-        "heading1",
-        "heading2",
-        "heading3",
-        "heading4",
-        "heading5",
-        "heading6",
-        "underline",
-        "redo",
-        "undo",
-    ],
+                  // ...Preview, etc
+              ],
+    plugins:
+        plugins !== null
+            ? plugins
+            : [
+                  "preview",
+                  "simplecast",
+                  "twitter",
+                  "youtube",
+                  "heading1",
+                  "heading2",
+                  "heading3",
+                  "heading4",
+                  "heading5",
+                  "heading6",
+                  "underline",
+                  "redo",
+                  "undo",
+              ],
     init() {
         try {
             const { input } = this.$refs;
+
+            console.log(this.toolbarItems);
 
             this.editor = new Editor({
                 el: this.$refs.editor,
@@ -192,7 +205,6 @@ const MarkdownEditor = (extraData = {}) => ({
             { name: "italic", icon: iconItalic },
             { name: "bold", icon: iconBold },
             { name: "strike", icon: iconStrike },
-            // { name: '', icon: iconUnderline }, ??
             { name: "quote", icon: iconQuote },
             { name: "ol", icon: iconOl },
             { name: "ul", icon: iconUl },
@@ -207,7 +219,9 @@ const MarkdownEditor = (extraData = {}) => ({
             const button = this.toolbarItems.find((i) =>
                 i.className.includes(`tui-${name}`)
             );
-            button.el.innerHTML = icon.innerHTML;
+            if (button) {
+                button.el.innerHTML = icon.innerHTML;
+            }
         });
     },
     updatePreviewClasses() {
