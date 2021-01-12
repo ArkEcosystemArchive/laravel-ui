@@ -6,7 +6,7 @@
     <div class="alert-content-wrapper alert-{{ $type }}-content @if($large ?? false) alert-content-large @endif">
         @isset($title)<span class="alert-{{ $type }}-title">{{ $title }}</span>@endif
         @isset($message)
-            <span class="block break-all">{{ $message }}</span>
+            <span class="block">{{ $message }}</span>
         @else
             <span class="block">{{ $slot }}</span>
         @endif
