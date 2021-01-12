@@ -166,39 +166,3 @@
 .input-help--error {
     @apply mt-2 text-sm text-theme-danger-500;
 }
-
-/** Tile Selection Checkboxes **/
-.tile-selection {
-    @apply relative border-2 rounded-lg border-theme-primary-100 h-30 select-none;
-}
-
-.tile-selection-select-all {
-    @apply flex items-center md:flex-row-reverse;
-}
-
-.tile-selection-checkbox,
-.tile-selection-checkbox:focus,
-.tile-selection-select-all-checkbox,
-.tile-selection-select-all-checkbox:focus {
-    @apply border-2 border-theme-primary-100 rounded;
-}
-
-.tile-selection-select-all-checkbox {
-    @apply mr-2 md:mr-0 md:ml-2;
-}
-
-.tile-selection-checkbox {
-    @apply absolute top-2 right-2;
-}
-.tile-selection-checkbox,
-.tile-selection-checkbox:focus {
-    @apply border-theme-primary-100;
-}
-
-.tile-selection--checked {
-    @apply border-theme-success-500 bg-theme-success-50;
-}
-.tile-selection-select-all-checkbox:checked,
-.tile-selection-checkbox:checked {
-    @apply border-theme-success-500 bg-theme-success-500;
-}
