@@ -1,4 +1,4 @@
-import "./css/style.css";
+import "./css/style.css"; // Editor's Style
 
 import Editor from "@toast-ui/editor";
 
