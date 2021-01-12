@@ -83,6 +83,9 @@
     margin-top: 0 !important;
 }
 
+.tui-editor-contents {
+    @apply max-w-3xl mx-auto;
+}
 .te-md-container .te-preview .tui-editor-contents {
     padding-top: 8px;
 }
@@ -139,8 +142,12 @@
 }
 
 .te-ww-container > .te-editor {
-    overflow: auto;
+    @apply overflow-auto;
     height: inherit;
+}
+
+.te-ww-container > .te-editor > .documentation-content {
+    @apply px-4;
 }
 
 .te-ww-container .tui-editor-contents:focus {
@@ -283,25 +290,6 @@
     margin-right: 0;
 }
 
-/* .tui-editor-defaultUI-toolbar button.tui-scrollsync {
-   width: auto;
-   color: #777777;
-   border: 0;
- }
-
- .tui-editor-defaultUI button.tui-scrollsync:after {
-   content: 'Scroll off';
- }
-
- .tui-editor-defaultUI button.tui-scrollsync.active {
-   color: #4b96e6;
-   font-weight: bold;
- }
-
- .tui-editor-defaultUI button.tui-scrollsync.active:after {
-   content: 'Scroll on';
- } */
-
 .tui-editor-defaultUI .te-mode-switch-section {
     @apply flex bg-theme-primary-50;
     height: 40px;
@@ -320,30 +308,12 @@
 }
 
 .tui-editor-defaultUI .te-markdown-tab-section {
-    float: left;
-    height: 31px;
-    background: #fff;
+    display: none !important;
 }
 
 .te-markdown-tab-section .te-tab {
     margin: 0 -7px 0 24px;
     background: #fff;
-}
-
-.tui-editor-defaultUI .te-tab button {
-    box-sizing: border-box;
-    line-height: 100%;
-    position: relative;
-    cursor: pointer;
-    z-index: 1;
-    font-size: 13px;
-    background-color: #f9f9f9;
-    border: solid 1px #e5e5e5;
-    border-top: 0;
-    padding: 0 9px;
-    color: #777;
-    border-radius: 0;
-    outline: 0;
 }
 
 .te-markdown-tab-section .te-tab button:last-child {
@@ -380,11 +350,19 @@
     height: 100%;
 }
 
+.tui-popup-wrapper:not(.te-popup-add-table):not(.te-dropdown-toolbar) {
+    @apply p-6 shadow rounded-2xl;
+}
 .tui-popup-wrapper {
-    @apply p-6 bg-white shadow rounded-2xl;
+    @apply bg-white rounded shadow;
+    padding: 15px;
     width: 500px;
     margin-right: auto;
     z-index: 9999;
+}
+
+.tui-popup-wrapper.te-dropdown-toolbar {
+    padding: 0;
 }
 
 .tui-popup-modal-background .tui-popup-wrapper {
@@ -466,10 +444,7 @@
 }
 
 .te-popup-add-image .te-tab {
-    display: block;
-    background: none;
-    border-bottom: 1px solid #ebebeb;
-    margin-bottom: 8px;
+    @apply flex block my-4 overflow-hidden rounded shadow-sm;
 }
 
 .te-popup-add-image .te-url-type {
@@ -486,16 +461,11 @@
 }
 
 .te-popup-add-image .te-tab button {
-    border: 1px solid #ccc;
-    background: #eee;
-    min-width: 100px;
-    margin-left: -1px;
-    border-bottom: 0px;
-    border-radius: 3px 3px 0px 0px;
+    @apply inline-block w-1/2 px-4 py-2 text-base font-bold text-center transition-all text-theme-primary-500 bg-theme-primary-100;
 }
 
 .te-popup-add-image .te-tab button.te-tab-active {
-    background: #fff;
+    @apply text-white bg-theme-primary-600;
 }
 
 .te-popup-add-table .te-table-selection {
@@ -711,7 +681,7 @@
 .tui-tooltip {
     position: absolute;
     background-color: #222;
-    z-index: 999;
+    z-index: 10000;
     opacity: 0.8;
     color: #fff;
     padding: 2px 5px;
@@ -737,6 +707,10 @@
 
 .tui-editor-defaultUI-toolbar button.tui-more {
     @apply relative border-none rounded shadow-sm bg-theme-primary-200 text-theme-primary-600 top-3;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-image: url("data:image/svg+xml, %3Csvg id='chevron-down-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.25 7.311L12.53 18.03a.749.749 0 01-1.06 0L.75 7.311' fill='none' stroke='%23007dff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' fill-rule='evenodd'/%3E%3C/svg%3E");
     width: 32px;
     height: 30px;
 }
@@ -745,10 +719,10 @@
 }
 
 .tui-scrollsync,
-.tui-toolbar-divider + .tui-scrollsync,
-.tui-toolbar-icons.custom .tui-toolbar-divider,
+.tui-toolbar-divider + .tui-scrollsync
+/* .tui-toolbar-icons.custom .tui-toolbar-divider,
 .tui-editor-defaultUI-toolbar > .tui-toolbar-divider:last-child,
-.tui-editor-defaultUI-toolbar > .tui-toolbar-divider:first-child {
+.tui-editor-defaultUI-toolbar > .tui-toolbar-divider:first-child */ {
     display: none !important;
 }
 
@@ -1217,336 +1191,6 @@
     .te-dropdown-toolbar {
         max-width: none;
     }
-}
-
-@charset "utf-8";
-.tui-editor-contents {
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial",
-        "나눔바른고딕", "Nanum Barun Gothic", "맑은고딕", "Malgun Gothic",
-        sans-serif;
-}
-
-.tui-editor-contents *:not(table) {
-    line-height: 160%;
-    box-sizing: content-box;
-}
-
-.tui-editor-contents i,
-.tui-editor-contents cite,
-.tui-editor-contents em,
-.tui-editor-contents var,
-.tui-editor-contents address,
-.tui-editor-contents dfn {
-    font-style: italic;
-}
-
-.tui-editor-contents strong {
-    font-weight: bold;
-}
-
-.tui-editor-contents p {
-    margin: 10px 0;
-    color: #222;
-}
-
-.tui-editor-contents > h1:first-of-type,
-.tui-editor-contents > div > div:first-of-type h1 {
-    margin-top: 14px;
-}
-
-.tui-editor-contents h1,
-.tui-editor-contents h2,
-.tui-editor-contents h3,
-.tui-editor-contents h4,
-.tui-editor-contents h5,
-.tui-editor-contents h6 {
-    font-weight: bold;
-    color: #222;
-}
-
-.tui-editor-contents h1 {
-    font-size: 24px;
-    line-height: 28px;
-    border-bottom: 3px double #999;
-    margin: 52px 0 15px 0;
-    padding-bottom: 7px;
-}
-
-.tui-editor-contents h2 {
-    font-size: 22px;
-    line-height: 23px;
-    border-bottom: 1px solid #dbdbdb;
-    margin: 20px 0 13px 0;
-    padding-bottom: 7px;
-}
-
-.tui-editor-contents h3 {
-    font-size: 20px;
-    margin: 18px 0 2px;
-}
-
-.tui-editor-contents h4 {
-    font-size: 18px;
-    margin: 10px 0 2px;
-}
-
-.tui-editor-contents h3,
-.tui-editor-contents h4 {
-    line-height: 18px;
-}
-
-.tui-editor-contents h5 {
-    font-size: 16px;
-}
-
-.tui-editor-contents h6 {
-    font-size: 14px;
-}
-
-.tui-editor-contents h5,
-.tui-editor-contents h6 {
-    line-height: 17px;
-    margin: 9px 0 -4px;
-}
-
-.tui-editor-contents del {
-    color: #999;
-}
-
-.tui-editor-contents blockquote {
-    margin: 14px 0;
-    border-left: 4px solid #e5e5e5;
-    padding: 0 16px;
-    color: #999;
-}
-
-.tui-editor-contents blockquote p,
-.tui-editor-contents blockquote ul,
-.tui-editor-contents blockquote ol {
-    color: #999;
-}
-
-.tui-editor-contents blockquote > :first-child {
-    margin-top: 0;
-}
-
-.tui-editor-contents blockquote > :last-child {
-    margin-bottom: 0;
-}
-
-.tui-editor-contents pre,
-.tui-editor-contents code {
-    font-family: Consolas, Courier, "Apple SD 산돌고딕 Neo", -apple-system,
-        "Lucida Grande", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic",
-        "Segoe UI", "돋움", dotum, sans-serif;
-    border: 0;
-    border-radius: 0;
-}
-
-.tui-editor-contents pre {
-    margin: 2px 0 8px;
-    padding: 18px;
-    background-color: #f5f7f8;
-}
-
-.tui-editor-contents code {
-    color: #c1798b;
-    background-color: #f9f2f4;
-    padding: 2px 3px;
-    letter-spacing: -0.3px;
-    border-radius: 2px;
-}
-
-.tui-editor-contents pre code {
-    padding: 0;
-    color: inherit;
-    white-space: pre-wrap;
-    background-color: transparent;
-}
-
-.tui-editor-contents pre.addon {
-    border: 1px solid #e8ebed;
-    background-color: #fff;
-}
-
-.tui-editor-contents img {
-    margin: 4px 0 10px;
-    box-sizing: border-box;
-    vertical-align: top;
-    max-width: 100%;
-}
-
-.tui-editor-contents table {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    margin: 12px 0 14px;
-    color: #222;
-    width: auto;
-    border-collapse: collapse;
-    box-sizing: border-box;
-}
-
-.tui-editor-contents table th,
-.tui-editor-contents table td {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 5px 14px 5px 12px;
-    height: 32px;
-}
-
-.tui-editor-contents table th {
-    background-color: #555;
-    font-weight: 300;
-    color: #fff;
-    padding-top: 6px;
-}
-
-.tui-editor-contents ul,
-.tui-editor-contents menu,
-.tui-editor-contents ol,
-.tui-editor-contents dir {
-    display: block;
-    list-style-type: none;
-    padding-left: 24px;
-    margin: 6px 0 10px;
-    color: #222;
-}
-
-.tui-editor-contents ol {
-    list-style-type: none;
-    counter-reset: li;
-}
-
-.tui-editor-contents ol > li {
-    counter-increment: li;
-}
-
-.tui-editor-contents ul > li::before,
-.tui-editor-contents ol > li::before {
-    display: inline-block;
-    position: absolute;
-}
-
-.tui-editor-contents ul > li::before {
-    content: "";
-    margin-top: 6px;
-    margin-left: -17px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #ccc;
-}
-
-.tui-editor-contents ol > li::before {
-    content: "." counter(li);
-    margin-left: -28px;
-    width: 24px;
-    text-align: right;
-    direction: rtl;
-    color: #aaa;
-}
-
-.tui-editor-contents ul ul,
-.tui-editor-contents ul ol,
-.tui-editor-contents ol ol,
-.tui-editor-contents ol ul {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.tui-editor-contents ul li,
-.tui-editor-contents ol li {
-    position: relative;
-}
-
-.tui-editor-contents ul p,
-.tui-editor-contents ol p {
-    margin: 0;
-}
-
-.tui-editor-contents ul li.task-list-item::before,
-.tui-editor-contents ol li.task-list-item::before,
-.tui-editor-contents pre ul li::before {
-    content: "";
-}
-
-.tui-editor-contents th ol,
-.tui-editor-contents th ul {
-    color: #fff;
-}
-
-.tui-editor-contents hr {
-    border-top: 1px solid #eee;
-    margin: 16px 0;
-}
-
-.tui-editor-contents a {
-    text-decoration: underline;
-    color: #4b96e6;
-}
-
-.tui-editor-contents a:hover {
-    color: #1f70de;
-}
-
-.tui-editor-contents a.image-link {
-    position: relative;
-}
-
-.tui-editor-contents a.image-link::before {
-    content: "";
-    position: absolute;
-    margin: 0;
-    width: 20px;
-    height: 20px;
-    top: 2px;
-    right: 2px;
-    background-repeat: no-repeat;
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAFKADAAQAAAABAAAAFAAAAACy3fD9AAAA/0lEQVQ4Ee2UIY6FQAyG/91wAQQJDg8SSwI3QIFAcQHuwFHQoOAEEFAELB6H4wIku+9vQgIP9zLyVbTTTufLtJ3MzzRNf1AoGlmu6ypBzvOMXyWkC+QLvDTjw6VM+Xr2OA6UZYmu67Dvu2zleX6zuq7D933EcQxNuyPu3usYYXVdw/M8mKYpIMMwxEZRJHbbNsmhkySJxE71APJmhGVZhnVdURQFlmU585GmKSzLEp+570Dlz+ZxQ/aGJVNYsm3bCIJA/LZtMY4jmqbBMAwIw1DiV/UAstEUltP3vawdxxFbVZVYDoWwM1eCp+LnoErIUt7DL/Ac1edWng1/WlXyD380myY5A34sAAAAAElFTkSuQmCC");
-    cursor: pointer;
-}
-
-.tui-editor-contents .task-list-item {
-    border: 0;
-    list-style: none;
-    padding-left: 24px;
-    margin-left: -24px;
-}
-
-.tui-editor-contents .task-list-item::before {
-    background-repeat: no-repeat;
-    background-size: 18px 18px;
-    background-position: center;
-    content: "";
-    margin-left: 0;
-    margin-top: 0;
-    border-radius: 0;
-    height: 18px;
-    width: 18px;
-    position: absolute;
-    left: 0;
-    top: 1px;
-    cursor: pointer;
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEqADAAQAAAABAAAAEgAAAACaqbJVAAAAQklEQVQ4EWM8c+bMfwYqABaQGcbGxhQZdfbsWQYmikxA0jxqEFJg4GCOhhGOgEESHg0jpMDAwRx8YQQuj0DlCaUAAEdBCPJ7TaEPAAAAAElFTkSuQmCC");
-}
-
-.tui-editor-contents .task-list-item.checked::before {
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEqADAAQAAAABAAAAEgAAAACaqbJVAAAA1ElEQVQ4EWP0nvbsPwMVABMVzAAbMWoQIiT5OJgYvLS5EAJQFguGCB4BkCHt/kIM8kKsYFXbrn6DqyY6sJENefjuN8ORuz/ghoAYWA0COR2kEQbQDanc+I7h049/MGkwjVANFQYZkmXHD/YCyABiDAFpxQgjkJO9dbjA4QAKDxAAhQnIO9hcAlYAJDBcBHIySANII8gAYgwBGYZhEEgQZFjVJohhhFwCUg8CjPgyLT8nE8N/YJZGD1iIVlQSI4yQpT9+R40ZZDl0NlavoSsihj/4DAIAR+hZHUj727YAAAAASUVORK5CYII=");
-}
-
-.tui-editor-contents .task-list-item input[type="checkbox"],
-.tui-editor-contents .task-list-item .task-list-item-checkbox {
-    margin-left: -17px;
-    margin-right: 3.8px;
-    margin-top: 3px;
-}
-
-.tui-editor-contents-placeholder::before {
-    content: attr(data-placeholder);
-    color: grey;
-    line-height: 160%;
-    position: absolute;
 }
 
 .te-preview .tui-editor-contents h1 {

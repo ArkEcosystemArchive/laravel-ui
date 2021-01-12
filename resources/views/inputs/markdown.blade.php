@@ -21,14 +21,16 @@ $icons = [
     'iconCodeblock' => 'programming-browser',
     'iconYoutube' => 'social-video-youtube-clip',
     'iconTwitter' => 'social-media-twitter',
+    'iconPodcast' => 'social-music-podcast',
     'iconUndo' => 'undo',
     'iconRedo' => 'redo',
+    'iconPreview' => 'monitor',
 ]
 @endphp
 <div
     x-data="MarkdownEditor({{ $xData }})"
     x-init="init"
-    class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+    class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
 >
     <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
     <div>
@@ -39,12 +41,9 @@ $icons = [
         @endfor
         @foreach($icons as $ref => $iconName)
         <template x-ref="{{ $ref }}">
-            @svg('wyswyg.' . $iconName, 'inline h-5')
+            @svg('wyswyg.' . $iconName, 'inline h-4')
         </template>
         @endforeach
-        <template x-ref="iconChevronDrown">
-            @svg('chevron-down', 'inline h-3')
-        </template>
     </div>
 
     <input
@@ -55,10 +54,8 @@ $icons = [
         wire:model="{{ $model ? $model : $name }}"
     />
 
-    <div wire:ignore x-ref="editor">
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div wire:ignore x-ref="editor"></div>
 
-    </div>
     <div x-cloak class="flex justify-end py-3 text-xs bg-white">
         <span class="px-4 ">Words: <strong x-text="wordsCount"></strong></span>
         <span class="px-4 border-l-2 border-theme-secondary-200">Characters: <strong x-text="charsCount"></strong></span>

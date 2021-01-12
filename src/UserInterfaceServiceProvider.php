@@ -92,6 +92,10 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'pagination');
 
         $this->publishes([
+            __DIR__.'/../resources/assets/js/markdown-editor' => resource_path('js/vendor/ark/markdown-editor')
+        ], 'wysiwyg');
+
+        $this->publishes([
             __DIR__.'/../resources/assets/css' => resource_path('css/vendor/ark'),
         ], 'css');
 
