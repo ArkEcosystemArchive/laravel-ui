@@ -72,6 +72,43 @@ This file contains basic examples and explains the parameters that can be used f
 | model     | livewire model to attach to                                                      | no       |
 | default   | default toggle position, defaults to `false` = unchecked                         | no       |
 
+### Tile Selection
+
+```
+<x-ark-tile-selection
+    id="tile-selection"
+    title="Tile Selection"
+    description="Grid boxes for multi-selection"
+    :options="[
+        [
+            'name' => 'reddit',
+            'icon' => 'brands.reddit',
+            'title' => 'Reddit',
+            'checked' => true,
+        ],
+        [
+            'name' => 'youtube',
+            'icon' => 'brands.youtube',
+            'title' => 'Youtube',
+            'checked' => false,
+        ],
+        [
+            'name' => 'windows',
+            'icon' => 'brands.windows',
+            'title' => 'Windows',
+            'checked' => false,
+        ],
+    ]"
+/>
+```
+
+| Parameter   | Description                                                                 | Required |
+|-------------|-----------------------------------------------------------------------------|----------|
+| id          | ID used to identify tile selections                                         | yes      |
+| title       | title of options                                                            | yes      |
+| options     | options array to display - must contain "name", "icon", "title" & "checked" | yes      |
+| description | description of options                                                      | no       |
+
 ---
 
 ## Navigation

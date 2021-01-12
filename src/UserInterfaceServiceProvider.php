@@ -121,6 +121,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.rich-select', 'ark-rich-select');
         Blade::component('ark::inputs.markdown', 'ark-markdown');
         Blade::component('ark::inputs.switch', 'ark-switch');
+        Blade::component('ark::inputs.tile-selection', 'ark-tile-selection');
         Blade::component('ark::inputs.time', 'ark-time');
 
         Blade::component('ark::pages.contact.content', 'ark-pages-contact-content');
