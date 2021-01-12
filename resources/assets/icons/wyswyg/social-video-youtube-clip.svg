@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 24.9 20" style="enable-background:new 0 0 24.9 20;" xml:space="preserve">
-<g id="social-video-youtube-clip" transform="translate(0.3 -3)">
-	<path id="Path_393" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M21,9V7c0-1.7-1.3-3-3-3H3.9C2.2,3.9,0.8,5.3,0.7,7c0,0,0,0.1,0,0.1l0,0v8.2
-		c0,1.7,1.3,3.1,3,3.1c0,0,0,0,0,0h6.6 M8.6,14.7V7l6.1,3.9L8.6,14.7z"/>
-	<g id="Group_4" transform="translate(12.715 11.236)">
-		<path id="Path_385" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M5.4,7.3C5.5,7.9,5.3,8.6,4.8,9l-1.2,1.2c-0.8,0.8-2.1,0.8-2.9,0c0,0,0,0-0.1-0.1l0,0
-			c-0.8-0.8-0.8-2.2,0-3l1.2-1.2c0.5-0.4,1.1-0.6,1.7-0.5"/>
-		<path id="Path_386" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M7.3,5.4C7.9,5.5,8.6,5.3,9,4.8l1.2-1.2c0.8-0.9,0.7-2.2-0.1-3.1c-0.8-0.8-2.2-0.8-3,0L5.9,1.8
-			C5.5,2.3,5.3,2.9,5.4,3.5"/>
-		<line id="Line_104" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="3.3" y1="7.4" x2="7.4" y2="3.3"/>
-	</g>
-</g>
-</svg>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24.9 20" xml:space="preserve"><g id="social-video-youtube-clip" transform="translate(.3 -3)" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path id="Path_393" d="M21 9V7c0-1.7-1.3-3-3-3H3.9C2.2 3.9.8 5.3.7 7v.1h0v8.2c0 1.7 1.3 3.1 3 3.1 0 0 0 0 0 0h6.6m-1.7-3.7V7l6.1 3.9-6.1 3.8z"/><g id="Group_4" transform="translate(12.715 11.236)"><path id="Path_385" d="M5.4 7.3c.1.6-.1 1.3-.6 1.7l-1.2 1.2c-.8.8-2.1.8-2.9 0l-.1-.1h0c-.8-.8-.8-2.2 0-3l1.2-1.2c.5-.4 1.1-.6 1.7-.5"/><path id="Path_386" d="M7.3 5.4c.6.1 1.3-.1 1.7-.6l1.2-1.2c.8-.9.7-2.2-.1-3.1-.8-.8-2.2-.8-3 0L5.9 1.8c-.4.5-.6 1.1-.5 1.7"/><path id="Line_104" d="M3.3 7.4l4.1-4.1"/></g></g></svg>

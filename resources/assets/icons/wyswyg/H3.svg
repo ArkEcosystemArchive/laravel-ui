@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 17.3 18" style="enable-background:new 0 0 17.3 18;" xml:space="preserve">
-<g id="H3" transform="translate(-670.8 -133.8)">
-	<line id="Line_116" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" x1="671.8" y1="134.8" x2="671.8" y2="150.8"/>
-	<line id="Line_117" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" x1="680.7" y1="134.8" x2="680.7" y2="150.8"/>
-	<line id="Line_118" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" x1="680" y1="142.9" x2="672.5" y2="142.9"/>
-	<path id="Path_407" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M684,145.1c0.2-0.8,1.1-1.3,1.9-1s1.3,1.1,1,1.9c-0.2,0.7-0.8,1.1-1.5,1.1
-		c0.9,0,1.6,0.7,1.6,1.6s-0.7,1.6-1.6,1.6c-0.7,0-1.4-0.5-1.6-1.2"/>
-</g>
-</svg>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 17.3 18" xml:space="preserve"><g id="H3" transform="translate(-670.8 -133.8)" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"><path id="Line_116" d="M671.8 134.8v16"/><path id="Line_117" d="M680.7 134.8v16"/><path id="Line_118" d="M680 142.9h-7.5"/><path id="Path_407" stroke-linejoin="round" d="M684 145.1c.2-.8 1.1-1.3 1.9-1s1.3 1.1 1 1.9c-.2.7-.8 1.1-1.5 1.1.9 0 1.6.7 1.6 1.6s-.7 1.6-1.6 1.6c-.7 0-1.4-.5-1.6-1.2"/></g></svg>
