@@ -389,7 +389,9 @@
     background-size: 20px;
     background-position: center center;
 }
-.tui-popup-header .tui-popup-header-buttons button.tui-popup-close-button:hover {
+.tui-popup-header
+    .tui-popup-header-buttons
+    button.tui-popup-close-button:hover {
     @apply bg-theme-primary-200;
 }
 
