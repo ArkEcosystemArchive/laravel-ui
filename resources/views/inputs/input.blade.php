@@ -1,9 +1,12 @@
 <div class="{{ $class ?? '' }}">
     <div class="input-group">
-        <label for="{{ $id ?? $name }}" class="items-center input-label @error($name) input-label--error @enderror">
-            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
-            @if(isset($tooltip))<div class="input-tooltip" data-tippy-content="{{ $tooltip }}">?</div>@endif
-        </label>
+        @include('ark::inputs.includes.input-label', [
+            'name' => $name,
+            'errors' => $errors,
+            'id' => $id ?? $name,
+            'label' => $label,
+            'tooltip' => $tooltip ?? null,
+        ])
 
         <div class="input-wrapper">
             <input

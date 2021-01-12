@@ -1,9 +1,13 @@
 <div class="{{ $class ?? '' }}">
     <div class="input-group">
         @if(!($hideLabel ?? false))
-            <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
-                {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
-            </label>
+            @include('ark::inputs.includes.input-label', [
+                'name' => $name,
+                'errors' => $errors,
+                'id' => $id ?? $name,
+                'label' => $label,
+                'tooltip' => $tooltip ?? null,
+            ])
         @endif
 
         <div class="flex input-wrapper-with-icon {{ $containerClass ?? '' }}">
