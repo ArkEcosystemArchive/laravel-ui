@@ -12,17 +12,18 @@
 
         <div class="flex input-wrapper-with-icon {{ $containerClass ?? '' }}">
             <div class="flex-1">
-                <input
-                    type="{{ $type ?? 'text' }}"
-                    id="{{ $id ?? $name }}"
-                    class="{{ $inputClass ?? '' }} input-text-with-icon @error($name) input-text-with-icon--error @enderror"
-                    @unless($noModel ?? false) wire:model="{{ $model ?? $name }}" @endunless
-                    {{-- @TODO: remove --}}
-                    @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
-                    {{-- @TODO: remove --}}
-                    @isset($max) maxlength="{{ $max }}" @endisset
-                    {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'slot-class', 'type', 'wire:model', 'keydown-enter']) }}
-                />
+                @include('ark::inputs.includes.input-field', [
+                    'name'         => $name,
+                    'errors'       => $errors,
+                    'id'           => $id ?? $name,
+                    'inputClass'   => 'input-text-with-icon',
+                    'errorClass'   => 'input-text-with-icon--error',
+                    'class'        => $inputClass ?? '',
+                    'noModel'      => $noModel ?? false,
+                    'model'        => $model ?? $name,
+                    'keydownEnter' => $keydownEnter ?? null,
+                    'maxlength'    => $max ?? null,
+                ])
             </div>
 
             @if ($slot ?? false)
