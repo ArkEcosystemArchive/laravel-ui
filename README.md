@@ -135,6 +135,91 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+### WYSIWYG Markdown editor
+
+1. Install `@toast-ui/editor`
+
+```bash
+yarn add @toast-ui/editor@^2.5.1
+```
+
+2. Publish the js assets if you haven't yet
+
+```bash
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="wysiwyg"
+```
+
+3. Import the markdown script in your `resources/js/app.js` file
+
+```js
+import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
+
+window.MarkdownEditor = MarkdownEditor;
+```
+
+4. Just add the markdown component to your form
+
+```html
+<x-ark-markdown name="about" />
+```
+
+5. You can change the height, the plugins, and the default buttons like this:
+
+```html
+<x-ark-markdown name="about"
+    height="300px"
+    :toolbar-items="[
+        // ...Undo & redo placeholder
+
+        'divider',
+
+        'bold',
+        'italic',
+        'strike',
+        'quote',
+        'divider',
+
+        // ...Headers placeholder
+
+        'divider',
+
+        'ol',
+        'ul',
+        'table',
+        'image',
+
+        'divider',
+
+        'link',
+        'code',
+        'codeblock',
+
+        'divider',
+
+        // ...Plugins placeholder
+
+        'divider',
+
+        // ...Preview placeholder
+    ]"
+    :plugins="[
+        'preview',
+        'simplecast',
+        'twitter',
+        'youtube',
+        'heading1',
+        'heading2',
+        'heading3',
+        'heading4',
+        'heading5',
+        'heading6',
+        'underline',
+        'redo',
+        'undo'
+    ]"
+/>
+```
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
