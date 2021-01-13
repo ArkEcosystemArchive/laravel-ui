@@ -1,12 +1,14 @@
-<div class="{{ $class ?? '' }}" x-data="{ value: '' }">
+<div {{ $attributes->only('class') }} x-data="{ value: '' }">
     <div class="input-group">
-        @include('ark::inputs.includes.input-label', [
-            'name'    => $name,
-            'errors'  => $errors,
-            'id'      => $id ?? $name,
-            'label'   => $label,
-            'tooltip' => $tooltip ?? null,
-        ])
+        @unless ($hideLabel ?? false)
+            @include('ark::inputs.includes.input-label', [
+                'name'    => $name,
+                'errors'  => $errors,
+                'id'      => $id ?? $name,
+                'label'   => $label ?? null,
+                'tooltip' => $tooltip ?? null,
+            ])
+        @endunless
 
         <div
             class="input-wrapper input-wrapper-with-prefix"
@@ -18,16 +20,16 @@
             ])
 
             @include('ark::inputs.includes.input-field', [
-                'name'         => $name,
-                'errors'       => $errors,
-                'id'           => $id ?? $name,
-                'class'        => $inputClass ?? '',
-                'inputClass'   => 'input-text input-text-with-prefix',
-                'noModel'      => $noModel ?? false,
-                'model'        => $model ?? $name,
-                'keydownEnter' => $keydownEnter ?? null,
-                'maxlength'    => $max ?? null,
-                'attributes'   => $attributes->merge(['x-model' => 'value']),
+                'name'           => $name,
+                'errors'         => $errors,
+                'id'             => $id ?? $name,
+                'inputTypeClass' => 'input-text input-text-with-prefix',
+                'inputClass'     => $inputClass ?? '',
+                'noModel'        => $noModel ?? false,
+                'model'          => $model ?? $name,
+                'keydownEnter'   => $keydownEnter ?? null,
+                'max'            => $max ?? null,
+                'attributes'     => $attributes->merge(['x-model' => 'value']),
             ])
 
             @error($name) @include('ark::inputs.input-error') @enderror

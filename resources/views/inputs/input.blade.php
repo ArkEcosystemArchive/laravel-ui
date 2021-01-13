@@ -1,23 +1,25 @@
-<div class="{{ $class ?? '' }}">
+<div {{ $attributes->only('class') }}>
     <div class="input-group">
-        @include('ark::inputs.includes.input-label', [
-            'name' => $name,
-            'errors' => $errors,
-            'id' => $id ?? $name,
-            'label' => $label,
-            'tooltip' => $tooltip ?? null,
-        ])
+        @unless ($hideLabel ?? false)
+            @include('ark::inputs.includes.input-label', [
+                'name'    => $name,
+                'errors'  => $errors,
+                'id'      => $id ?? $name,
+                'label'   => $label ?? null,
+                'tooltip' => $tooltip ?? null,
+            ])
+        @endunless
 
         <div class="input-wrapper">
             @include('ark::inputs.includes.input-field', [
-                'name' => $name,
-                'errors' => $errors,
-                'id' => $id ?? $name,
-                'class' => $inputClass ?? '',
-                'noModel' => $noModel ?? false,
-                'model' => $model ?? $name,
+                'name'         => $name,
+                'errors'       => $errors,
+                'id'           => $id ?? $name,
+                'inputClass'   => $inputClass ?? '',
+                'noModel'      => $noModel ?? false,
+                'model'        => $model ?? $name,
                 'keydownEnter' => $keydownEnter ?? null,
-                'maxlength' => $max ?? null,
+                'max'          => $max ?? null,
             ])
 
             @error($name) @include('ark::inputs.input-error') @enderror

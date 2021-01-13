@@ -1,28 +1,28 @@
 <div class="{{ $class ?? '' }}">
     <div class="input-group">
-        @if(!($hideLabel ?? false))
+        @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
-                'name' => $name,
-                'errors' => $errors,
-                'id' => $id ?? $name,
-                'label' => $label,
+                'name'    => $name,
+                'errors'  => $errors,
+                'id'      => $id ?? $name,
+                'label'   => $label ?? null,
                 'tooltip' => $tooltip ?? null,
             ])
-        @endif
+        @endunless
 
         <div class="flex input-wrapper-with-icon {{ $containerClass ?? '' }}">
             <div class="flex-1">
                 @include('ark::inputs.includes.input-field', [
-                    'name'         => $name,
-                    'errors'       => $errors,
-                    'id'           => $id ?? $name,
-                    'inputClass'   => 'input-text-with-icon',
-                    'errorClass'   => 'input-text-with-icon--error',
-                    'class'        => $inputClass ?? '',
-                    'noModel'      => $noModel ?? false,
-                    'model'        => $model ?? $name,
-                    'keydownEnter' => $keydownEnter ?? null,
-                    'maxlength'    => $max ?? null,
+                    'name'           => $name,
+                    'errors'         => $errors,
+                    'id'             => $id ?? $name,
+                    'inputTypeClass' => 'input-text-with-icon',
+                    'errorClass'     => 'input-text-with-icon--error',
+                    'inputClass'     => $inputClass ?? '',
+                    'noModel'        => $noModel ?? false,
+                    'model'          => $model ?? $name,
+                    'keydownEnter'   => $keydownEnter ?? null,
+                    'max'            => $max ?? null,
                 ])
             </div>
 
