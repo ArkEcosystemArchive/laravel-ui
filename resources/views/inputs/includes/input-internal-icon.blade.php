@@ -12,6 +12,6 @@
     ][$position];
 @endphp
 
-<div class="flex absolute inset-y-0 items-center pointer-events-none {{ $positionClasses }} {{ $iconClass }}">
+<div class="input-icon {{ $positionClasses }} {{ $iconClass }}">
     <x-ark-icon :name="$icon" />
 </div>
