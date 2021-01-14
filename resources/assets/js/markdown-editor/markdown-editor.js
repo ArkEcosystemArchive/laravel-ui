@@ -90,8 +90,6 @@ const MarkdownEditor = (
         try {
             const { input } = this.$refs;
 
-            console.log(this.toolbarItems);
-
             this.editor = new Editor({
                 el: this.$refs.editor,
                 height: this.height,

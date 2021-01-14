@@ -113,7 +113,7 @@ const underlinePlugin = (editor, menuIndex, svgIcon) => {
 
     editor.addCommand("wysiwyg", {
         name: "underline",
-        exec: (wwe) => wwe.getEditor().underline(),
+        exec: (wysiwygEditor) => wysiwygEditor.getEditor().underline(),
     });
 
     const toolbarButton = addToolbarButton(editor, menuIndex, svgIcon);

@@ -25,12 +25,12 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
 const redoPlugin = (editor, menuIndex, svgIcon) => {
     editor.addCommand("markdown", {
         name: "redo",
-        exec: (wwe) => wwe.getEditor().redo(),
+        exec: (wysiwygEditor) => wysiwygEditor.getEditor().redo(),
     });
 
     editor.addCommand("wysiwyg", {
         name: "redo",
-        exec: (mde) => mde.getEditor().redo(),
+        exec: (markdownEditor) => markdownEditor.getEditor().redo(),
     });
 
     addToolbarButton(editor, menuIndex, svgIcon);

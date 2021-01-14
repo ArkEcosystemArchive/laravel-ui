@@ -22,7 +22,6 @@ const getAndCacheTwitterEmbedCode = (twitterID) => {
                 throw new Error(response.statusText)
             })
             .then((html) => {
-                console.log("html", html)
                 const tempWrapper = document.createElement("div");
                 tempWrapper.innerHTML = html;
                 tempWrapper.setAttribute("data-tweet-id", twitterID);
@@ -185,20 +184,20 @@ const convertMarkdownToHtml = (markdown) => {
     return replacemenent;
 };
 
-const addTwitterMarkdownCommand = (mde, code) => {
+const addTwitterMarkdownCommand = (markdownEditor, code) => {
     if (!code) {
         return;
     }
 
-    const cm = mde.getEditor();
+    const codeMirrorEditor = markdownEditor.getEditor();
 
-    const rangeFrom = cm.getCursor("from");
-    const rangeTo = cm.getCursor("to");
+    const rangeFrom = codeMirrorEditor.getCursor("from");
+    const rangeTo = codeMirrorEditor.getCursor("to");
     const text = getTwitterMarkdown(code);
 
-    cm.replaceSelection(text, "start", 0);
+    codeMirrorEditor.replaceSelection(text, "start", 0);
 
-    cm.setSelection(
+    codeMirrorEditor.setSelection(
         {
             line: rangeFrom.line,
             ch: rangeFrom.ch + text.length,
@@ -212,7 +211,7 @@ const addTwitterMarkdownCommand = (mde, code) => {
         }
     );
 
-    mde.focus();
+    markdownEditor.focus();
 };
 
 const addTwitterHtmlCommand = (wwe, code) => {

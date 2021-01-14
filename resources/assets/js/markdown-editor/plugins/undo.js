@@ -25,12 +25,12 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
 const undoPlugin = (editor, menuIndex, svgIcon) => {
     editor.addCommand("markdown", {
         name: "undo",
-        exec: (wwe) => wwe.getEditor().undo(),
+        exec: (wysiwygEditor) => wysiwygEditor.getEditor().undo(),
     });
 
     editor.addCommand("wysiwyg", {
         name: "undo",
-        exec: (mde) => mde.getEditor().undo(),
+        exec: (markdownEditor) => markdownEditor.getEditor().undo(),
     });
 
     addToolbarButton(editor, menuIndex, svgIcon);
