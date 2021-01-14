@@ -7,20 +7,29 @@ const getTwitterEmbedCode = (twitterID) => {
 };
 
 const getAndCacheTwitterEmbedCode = (twitterID) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         if (twitterEmbedCache[twitterID]) {
             resolve(twitterEmbedCache[twitterID]);
             return;
         }
 
-        return fetch(`/wyswyg/twitter-embed-code?id=${twitterID}`)
-            .then((response) => response.text())
+        return fetch(`/wysiwyg/twitter-embed-code?id=${twitterID}`)
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.text()
+                }
+
+                throw new Error(response.statusText)
+            })
             .then((html) => {
+                console.log("html", html)
                 const tempWrapper = document.createElement("div");
                 tempWrapper.innerHTML = html;
                 tempWrapper.setAttribute("data-tweet-id", twitterID);
                 twitterEmbedCache[twitterID] = tempWrapper.outerHTML;
                 resolve(html);
+            }).catch(error => {
+                reject(error)
             });
     });
 };
@@ -76,7 +85,7 @@ const createPopupContent = (editor) => {
                     editor.exec("twitter", twitterCode);
                 })
                 .catch((error) => {
-                    alert("Something went wrong!");
+                    alert("Something went wrong! Ensure you are using a valid Tweet URL");
                     console.error(error);
                 })
                 .then(() => {
@@ -133,11 +142,6 @@ const convertHtmlToMarkdown = (html) => {
     let replacemenent = validHTML;
 
     while ((matches = regex.exec(validHTML)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (matches.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-
         if (matches.length === 2) {
             const twitterCode = matches[1];
             const regexToReplace = new RegExp(
@@ -163,11 +167,6 @@ const convertMarkdownToHtml = (markdown) => {
 
     let replacemenent = markdown;
     while ((matches = regex.exec(markdown)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (matches.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-
         if (matches.length && matches.length >= 1) {
             const twitterCode = matches[1];
             const markdownTwitterId = getMarkdownTwitterId(twitterCode);

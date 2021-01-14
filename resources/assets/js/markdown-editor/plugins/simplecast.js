@@ -97,11 +97,6 @@ const convertHtmlToMarkdown = (html) => {
     let replacemenent = validHTML;
     let matches;
     while ((matches = regex.exec(validHTML)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (matches.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-
         if (matches.length && matches.length >= 1) {
             const simplecastCode = matches[1];
             const regexToReplace = new RegExp(
@@ -128,11 +123,6 @@ const convertMarkdownToHtml = (markdown) => {
 
     let replacemenent = markdown;
     while ((matches = regex.exec(markdown)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
-        if (matches.index === regex.lastIndex) {
-            regex.lastIndex++;
-        }
-
         if (matches.length && matches.length >= 1) {
             const simplecastCode = matches[1];
             const regexToReplace = new RegExp(
@@ -150,20 +140,19 @@ const convertMarkdownToHtml = (markdown) => {
     return replacemenent;
 };
 
-const addSimplecastMarkdownCommand = (mde, code) => {
+const addSimplecastMarkdownCommand = (markdownEditor, code) => {
     if (!code) {
         return;
     }
 
-    const cm = mde.getEditor();
-
-    const rangeFrom = cm.getCursor("from");
-    const rangeTo = cm.getCursor("to");
+    const codeMirrorEditor = markdownEditor.getEditor();
+    const rangeFrom = codeMirrorEditor.getCursor("from");
+    const rangeTo = codeMirrorEditor.getCursor("to");
     const text = getSimplecastMarkdown(code);
 
-    cm.replaceSelection(text, "start", 0);
+    codeMirrorEditor.replaceSelection(text, "start", 0);
 
-    cm.setSelection(
+    codeMirrorEditor.setSelection(
         {
             line: rangeFrom.line,
             ch: rangeFrom.ch + text.length,
@@ -177,16 +166,16 @@ const addSimplecastMarkdownCommand = (mde, code) => {
         }
     );
 
-    mde.focus();
+    markdownEditor.focus();
 };
 
-const addSimmplecastHtmlCommand = (wwe, code) => {
+const addSimmplecastHtmlCommand = (wysiwygEditor, code) => {
     if (!code) {
         return;
     }
 
-    const sq = wwe.getEditor();
-    sq.insertHTML(getSimpleCastEmbedCode(code));
+    const squireExtension = wysiwygEditor.getEditor();
+    squireExtension.insertHTML(getSimpleCastEmbedCode(code));
 };
 
 const simplecastPlugin = (editor, menuIndex, svgIcon) => {

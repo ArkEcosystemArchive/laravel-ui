@@ -76,11 +76,11 @@ const markIconAsActiveIfNeccesary = (editor, toolbarButton) => {
 const underlinePlugin = (editor, menuIndex, svgIcon) => {
     editor.addCommand("markdown", {
         name: "underline",
-        exec: (mde) => {
-            const cm = mde.getEditor();
-            const rangeFrom = cm.getCursor("from");
+        exec: (markdownEditor) => {
+            const codeMirrorEditor = markdownEditor.getEditor();
+            const rangeFrom = codeMirrorEditor.getCursor("from");
 
-            const selectedText = cm.getSelection();
+            const selectedText = codeMirrorEditor.getSelection();
             let text;
 
             if (
@@ -94,9 +94,9 @@ const underlinePlugin = (editor, menuIndex, svgIcon) => {
                 text = `<ins>${selectedText}</ins>`;
             }
 
-            cm.replaceSelection(text, "start", 0);
+            codeMirrorEditor.replaceSelection(text, "start", 0);
 
-            cm.setSelection(
+            codeMirrorEditor.setSelection(
                 {
                     line: rangeFrom.line,
                     ch: rangeFrom.ch,
@@ -107,7 +107,7 @@ const underlinePlugin = (editor, menuIndex, svgIcon) => {
                 }
             );
 
-            mde.focus();
+            markdownEditor.focus();
         },
     });
 

@@ -48,18 +48,18 @@ $icons = [
                     {{ $xData }}
                 )"
                 x-init="init"
-                class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+                class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
             >
                 <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
                 <div>
                     @for($i=1; $i<=6; $i++)
                     <template x-ref="iconH{{ $i }}">
-                        @svg('wyswyg.H' . $i, 'inline h-5')
+                        @svg('wysiwyg.H' . $i, 'inline h-5')
                     </template>
                     @endfor
                     @foreach($icons as $ref => $iconName)
                     <template x-ref="{{ $ref }}">
-                        @svg('wyswyg.' . $iconName, 'inline h-4')
+                        @svg('wysiwyg.' . $iconName, 'inline h-4')
                     </template>
                     @endforeach
                 </div>

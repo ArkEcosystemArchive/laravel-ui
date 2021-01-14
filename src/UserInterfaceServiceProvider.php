@@ -67,7 +67,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
      */
     public function registerRoutes(): void
     {
-        Route::group(['prefix' => 'wyswyg'], function () {
+        Route::group(['prefix' => 'wysiwyg'], function () {
             Route::get('twitter-embed-code', [WysiwygControlller::class, 'getTwitterEmbedCode'])->name('wysiwyg.twitter');
         });
     }
