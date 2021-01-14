@@ -28,11 +28,6 @@ const redoPlugin = (editor, menuIndex, svgIcon) => {
         exec: (wysiwygEditor) => wysiwygEditor.getEditor().redo(),
     });
 
-    editor.addCommand("wysiwyg", {
-        name: "redo",
-        exec: (markdownEditor) => markdownEditor.getEditor().redo(),
-    });
-
     addToolbarButton(editor, menuIndex, svgIcon);
 };
 

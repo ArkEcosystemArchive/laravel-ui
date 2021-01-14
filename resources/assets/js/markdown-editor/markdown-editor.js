@@ -11,6 +11,7 @@ import {
     underlinePlugin,
     headingPlugin,
     previewPlugin,
+    referencePlugin,
 } from "./plugins/index.js";
 
 import { extractTextFromHtml } from "./utils/utils.js";
@@ -85,6 +86,7 @@ const MarkdownEditor = (
                   "underline",
                   "redo",
                   "undo",
+                  "reference",
               ],
     init() {
         try {
@@ -95,6 +97,7 @@ const MarkdownEditor = (
                 height: this.height,
                 initialEditType: "markdown",
                 usageStatistics: false,
+                hideModeSwitch: true,
                 previewStyle: "vertical",
                 initialValue: input.value,
                 events: {
@@ -144,6 +147,8 @@ const MarkdownEditor = (
             iconUnderline,
             iconRedo,
             iconPreview,
+            iconReference,
+            iconAlert,
         } = this.$refs;
 
         const buttonIndex = this.toolbarItems.length;
@@ -151,10 +156,12 @@ const MarkdownEditor = (
         const plugins = {
             preview: (editor) =>
                 previewPlugin(editor, buttonIndex, iconPreview),
-            simplecast: (editor) =>
-                simplecastPlugin(editor, buttonIndex - 1, iconPodcast),
+            reference: (editor) =>
+                referencePlugin(editor, buttonIndex, iconReference),
             twitter: (editor) =>
                 twitterPlugin(editor, buttonIndex - 1, iconTwitter),
+            simplecast: (editor) =>
+                simplecastPlugin(editor, buttonIndex - 1, iconPodcast),
             youtube: (editor) =>
                 youtubePlugin(editor, buttonIndex - 1, iconYoutube),
             heading6: (editor) =>
@@ -226,14 +233,6 @@ const MarkdownEditor = (
 
         ui.el.querySelector(".tui-editor-contents").className =
             "tui-editor-contents documentation-content text-theme-secondary-700";
-
-        this.editor.eventManager.listen("changeModeToWysiwyg", () => {
-            this.editor.changePreviewStyle("vertical");
-            ui.el.querySelector(
-                ".tui-editor-contents:not(.documentation-content)"
-            ).className =
-                "tui-editor-contents documentation-content text-theme-secondary-700";
-        });
     },
     initOverlay() {
         this.editor.eventManager.addEventType("popupShown");

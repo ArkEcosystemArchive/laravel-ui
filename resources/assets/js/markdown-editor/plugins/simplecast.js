@@ -77,7 +77,7 @@ const initPopup = (editor, menuIndex, svgIcon) => {
     createPopup(editor, name, menuIndex, svgIcon, popupContent, title, tooltip);
 };
 
-const convertHtmlToMarkdown = (html) => {
+const convertMarkdownToHtml = (html) => {
     const regex = new RegExp(
         `<img\\s+[^>]*src="simplecast:([^"]*)"[^>]*>`,
         "gm"
@@ -114,32 +114,6 @@ const convertHtmlToMarkdown = (html) => {
     return replacemenent;
 };
 
-const convertMarkdownToHtml = (markdown) => {
-    const regex = new RegExp(
-        `<iframe[^>]*src="https?:\/\/player\.simplecast\.com\/(\\b[0-9a-f]{8}\\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\\b[0-9a-f]{12}\\b)"?[^>]*>.*?<\/iframe>`,
-        "gm"
-    );
-    let matches;
-
-    let replacemenent = markdown;
-    while ((matches = regex.exec(markdown)) !== null) {
-        if (matches.length && matches.length >= 1) {
-            const simplecastCode = matches[1];
-            const regexToReplace = new RegExp(
-                `<iframe[^>]*src="https?:\/\/player\.simplecast\.com\/(${escapeRegExp(
-                    simplecastCode
-                )})"?[^>]*>.*?<\/iframe>`,
-                "gm"
-            );
-            const code = getSimplecastMarkdown(simplecastCode);
-
-            replacemenent = replacemenent.replace(regexToReplace, code);
-        }
-    }
-
-    return replacemenent;
-};
-
 const addSimplecastMarkdownCommand = (markdownEditor, code) => {
     if (!code) {
         return;
@@ -169,23 +143,9 @@ const addSimplecastMarkdownCommand = (markdownEditor, code) => {
     markdownEditor.focus();
 };
 
-const addSimmplecastHtmlCommand = (wysiwygEditor, code) => {
-    if (!code) {
-        return;
-    }
-
-    const squireExtension = wysiwygEditor.getEditor();
-    squireExtension.insertHTML(getSimpleCastEmbedCode(code));
-};
-
 const simplecastPlugin = (editor, menuIndex, svgIcon) => {
     editor.eventManager.listen(
         "convertorAfterMarkdownToHtmlConverted",
-        convertHtmlToMarkdown
-    );
-
-    editor.eventManager.listen(
-        "convertorAfterHtmlToMarkdownConverted",
         convertMarkdownToHtml
     );
 
@@ -193,11 +153,6 @@ const simplecastPlugin = (editor, menuIndex, svgIcon) => {
         editor.addCommand("markdown", {
             name: "simplecast",
             exec: addSimplecastMarkdownCommand,
-        });
-
-        editor.addCommand("wysiwyg", {
-            name: "simplecast",
-            exec: addSimmplecastHtmlCommand,
         });
     }
 

@@ -6,3 +6,4 @@ export { default as twitterPlugin } from "./twitter";
 export { default as youtubePlugin } from "./youtube";
 export { default as simplecastPlugin } from "./simplecast";
 export { default as previewPlugin } from "./preview";
+export { default as referencePlugin } from "./reference";

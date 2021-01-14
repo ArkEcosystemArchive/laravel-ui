@@ -26,6 +26,7 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
 
 const previewPlugin = (editor, menuIndex, svgIcon) => {
     const button = addToolbarButton(editor, menuIndex, svgIcon);
+
     editor.addCommand("markdown", {
         name: "preview",
         exec: () => {
@@ -39,14 +40,6 @@ const previewPlugin = (editor, menuIndex, svgIcon) => {
                 button.el.className = `${button.el.className} current`;
                 editor.changePreviewStyle("vertical");
             }
-        },
-    });
-
-    editor.addCommand("wysiwyg", {
-        name: "preview",
-        exec: () => {
-            editor.changePreviewStyle("vertical");
-            editor.changeMode("markdown");
         },
     });
 };

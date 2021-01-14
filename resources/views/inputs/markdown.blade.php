@@ -27,6 +27,8 @@ $icons = [
     'iconYoutube' => 'social-video-youtube-clip',
     'iconTwitter' => 'social-media-twitter',
     'iconPodcast' => 'social-music-podcast',
+    'iconReference' => 'page-reference',
+    'iconAlert' => 'alert-triangle',
     'iconUndo' => 'undo',
     'iconRedo' => 'redo',
     'iconPreview' => 'monitor',
@@ -48,7 +50,7 @@ $icons = [
                     {{ $xData }}
                 )"
                 x-init="init"
-                class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+                class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
             >
                 <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
                 <div>
@@ -74,7 +76,7 @@ $icons = [
 
                 <div wire:ignore x-ref="editor"></div>
 
-                <div x-cloak class="flex justify-end py-3 text-xs bg-white">
+                <div x-cloak class="flex justify-end py-3 text-xs bg-white border-t-2 border-theme-secondary-200">
                     <span class="px-4 ">Words: <strong x-text="wordsCount"></strong></span>
                     <span class="px-4 border-l-2 border-theme-secondary-200">Characters: <strong x-text="charsCount"></strong></span>
                     <span class="px-4 border-l-2 border-theme-secondary-200">Reading time: <strong><span x-text="readMinutes"></span> min</strong></span>

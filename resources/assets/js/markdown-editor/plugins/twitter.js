@@ -123,7 +123,7 @@ const initPopup = (editor, menuIndex, svgIcon) => {
     createPopup(editor, name, menuIndex, svgIcon, popupContent, title, tooltip);
 };
 
-const convertHtmlToMarkdown = (html) => {
+const convertMarkdownToHtml = (html) => {
     const regex = new RegExp(
         `<img\\s+[^>]*src="twitter:([^"]*)"[^>]*>`,
         "gmsi"
@@ -160,33 +160,6 @@ const convertHtmlToMarkdown = (html) => {
     return replacemenent;
 };
 
-const convertMarkdownToHtml = (markdown) => {
-    const regex = new RegExp(
-        `<iframe\\s+[^>]*data-tweet-id="([^"]*)"[^>]*>.*?<\/iframe>`,
-        "gm"
-    );
-    let matches;
-
-    let replacemenent = markdown;
-    while ((matches = regex.exec(markdown)) !== null) {
-        if (matches.length && matches.length >= 1) {
-            const twitterCode = matches[1];
-            const markdownTwitterId = getMarkdownTwitterId(twitterCode);
-            const code = getTwitterMarkdown(markdownTwitterId);
-            const regexToReplace = new RegExp(
-                `<iframe\\s+[^>]*data-tweet-id="(${escapeRegExp(
-                    twitterCode
-                )})"[^>]*>.*?<\/iframe>`,
-                "gm"
-            );
-
-            replacemenent = replacemenent.replace(regexToReplace, code);
-        }
-    }
-
-    return replacemenent;
-};
-
 const addTwitterMarkdownCommand = (markdownEditor, code) => {
     if (!code) {
         return;
@@ -217,16 +190,6 @@ const addTwitterMarkdownCommand = (markdownEditor, code) => {
     markdownEditor.focus();
 };
 
-const addTwitterHtmlCommand = (wwe, code) => {
-    if (!code) {
-        return;
-    }
-
-    const embed = getTwitterEmbedCode(code);
-    const sq = wwe.getEditor();
-    sq.insertHTML(embed);
-};
-
 const appendTwitterScript = () => {
     const twitterScript = document.createElement("script");
 
@@ -242,11 +205,6 @@ const appendTwitterScript = () => {
 const twitterPlugin = (editor, menuIndex, svgIcon) => {
     editor.eventManager.listen(
         "convertorAfterMarkdownToHtmlConverted",
-        convertHtmlToMarkdown
-    );
-
-    editor.eventManager.listen(
-        "convertorAfterHtmlToMarkdownConverted",
         convertMarkdownToHtml
     );
 
@@ -274,11 +232,6 @@ const twitterPlugin = (editor, menuIndex, svgIcon) => {
         editor.addCommand("markdown", {
             name: "twitter",
             exec: addTwitterMarkdownCommand,
-        });
-
-        editor.addCommand("wysiwyg", {
-            name: "twitter",
-            exec: addTwitterHtmlCommand,
         });
     }
 

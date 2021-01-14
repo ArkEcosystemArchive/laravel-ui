@@ -28,11 +28,6 @@ const undoPlugin = (editor, menuIndex, svgIcon) => {
         exec: (wysiwygEditor) => wysiwygEditor.getEditor().undo(),
     });
 
-    editor.addCommand("wysiwyg", {
-        name: "undo",
-        exec: (markdownEditor) => markdownEditor.getEditor().undo(),
-    });
-
     addToolbarButton(editor, menuIndex, svgIcon);
 };
 

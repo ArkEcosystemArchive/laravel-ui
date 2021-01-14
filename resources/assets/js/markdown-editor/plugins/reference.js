@@ -1,32 +1,40 @@
 import { escapeRegExp, createPopup } from "../utils/utils";
 
-const getYoutubeEmbedCode = (code) => {
-    const attribs = {
-        width: "100%",
-        height: 480,
-        src: `https://www.youtube.com/embed/${code}`,
-        frameborder: 0,
-        allowfullscreen: 1,
-        showinfo: 0,
-        controls: 0,
-        autoplay: 0,
-        modestbranding: 1,
-        autohide: 1,
-    };
-
-    return `<iframe ${Object.keys(attribs)
-        .map((a) => `${a}="${attribs[a]}"`)
-        .join(" ")}></iframe>`;
+// Based on `https://github.com/ArkEcosystem/ark.dev/blob/develop/resources/views/livewire/page-reference.blade.php`
+const getPageReferenceHtml = (path) => {
+    return `<div class="flex flex-col overflow-hidden bg-white border-2 rounded-lg page-ref sm:flex-row border-theme-primary-100">
+    <div class="flex flex-col justify-between flex-1 p-8">
+        <div class="flex flex-col">
+            <div class="pb-2 border-b border-dashed border-theme-secondary-200">
+                <a href="javascript:;" class="pb-2 font-semibold link">${path}</a>
+            </div>
+            <div>
+                <h3 class="mt-2 text-xl font-semibold text-theme-secondary-900">Name of the reference placeholder</h3>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="block rounded-l-none button-secondary">
+        <div class="flex items-center justify-center h-full px-4">
+            <svg class="fill-current h-6 w-6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 13 24" xml:space="preserve"><path d="M12.2 12.5H1m7.5-3.8l3.7 3.8-3.7 3.7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+    </a>
+</div>`;
 };
 
-const getYoutubeMarkdown = (code) => {
-    return `![](youtube:${code})`;
+const getPageReferenceComponentTag = (path) => {
+    return `<livewire:page-reference page="${path}" />`
 };
 
-const extractYoutubeId = (urlOrCode) => {
-    const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    const match = urlOrCode.match(regExp);
-    return match && match[7].length == 11 ? match[7] : urlOrCode;
+const extractPathIfUrl = (urlOfPah) => {
+    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;;
+    const match = urlOfPah.match(urlRegex);
+
+    // Return only the Path
+    if (match && match.length === 1) {
+        return "/" + match[0].split('://')[1];
+    }
+
+    return  urlOfPah;
 };
 
 const createPopupContent = (editor) => {
@@ -35,7 +43,7 @@ const createPopupContent = (editor) => {
     const popupContent = document.createElement("div");
 
     popupContent.innerHTML = `
-        <label for="value">Youtube URL or Video ID</label>
+        <label for="value">Reference path or URL</label>
         <input id="value" name="value" type="text" class="te-alt-text-input" />
         <div class="te-button-section">
             <button type="button" class="te-ok-button">${i18n.get(
@@ -51,8 +59,8 @@ const createPopupContent = (editor) => {
         .querySelector("button.te-ok-button")
         .addEventListener("click", () => {
             const input = popupContent.querySelector('[name="value"]');
-            const youtubeCode = extractYoutubeId(input.value);
-            editor.exec("youtube", youtubeCode);
+            const pageReferencePath = extractPathIfUrl(input.value);
+            editor.exec("reference", pageReferencePath);
             input.value = "";
 
             editor.eventManager.emit("closeAllPopup");
@@ -74,9 +82,9 @@ const createPopupContent = (editor) => {
  * @ignore
  */
 const initPopup = (editor, menuIndex, svgIcon) => {
-    const name = "youtube";
-    const title = "Embed YouTube video";
-    const tooltip = "YouTube";
+    const name = "reference";
+    const title = "Add page reference";
+    const tooltip = "reference";
 
     const popupContent = createPopupContent(editor);
 
@@ -84,12 +92,15 @@ const initPopup = (editor, menuIndex, svgIcon) => {
 };
 
 const convertMarkdownToHtml = (html) => {
-    const regex = new RegExp(`<img\\s+[^>]*src="youtube:([^"]*)"[^>]*>`, "gm");
+    const regex = new RegExp(
+        `&lt;livewire:page-reference\\s+[^&gt;]*page="([^"]*)"[^&gt;]*&gt;`,
+        "gm"
+    );
 
     // Used to ensure that the root element is a DIV so its produce valid HTML
     // This avoid some strange behaviours on the preview
     const wrapInDivRegex = new RegExp(
-        `<([A-Z][A-Z0-9]*)[^>]*data-nodeid="([^"]*)"[^>]*>(((?!<\\1)[\\s\\S])*<img\\s+[^>]*src="youtube:[^"]*"[^>]*>.*?(<\/\\1|))<\/\\1>`,
+        `<([A-Z][A-Z0-9]*)[^>]*data-nodeid="([^"]*)"[^>]*>(((?!<\\1)[\\s\\S])*&lt;livewire:page-reference\\s+[^&gt;]*page="([^"]*)"[^&gt;]*&gt;.*?(<\/\\1|))<\/\\1>`,
         "gmsi"
     );
     const validHTML = html.replace(
@@ -101,14 +112,14 @@ const convertMarkdownToHtml = (html) => {
     let matches;
     while ((matches = regex.exec(validHTML)) !== null) {
         if (matches.length && matches.length >= 1) {
-            const youtubeCode = matches[1];
+            const pageReferencePath = matches[1];
             const regexToReplace = new RegExp(
-                `<img\\s+[^>]*src="youtube:(${escapeRegExp(
-                    youtubeCode
-                )})"[^>]*>`,
+                `&lt;livewire:page-reference\\s+[^&gt;]*page="(${escapeRegExp(
+                    pageReferencePath
+                )})"[^&gt;]*&gt;`,
                 "gm"
             );
-            const embed = getYoutubeEmbedCode(youtubeCode);
+            const embed = getPageReferenceHtml(pageReferencePath);
 
             replacemenent = replacemenent.replace(regexToReplace, embed);
         }
@@ -117,16 +128,15 @@ const convertMarkdownToHtml = (html) => {
     return replacemenent;
 };
 
-const addYoutubeMarkdownCommand = (markdownEditor, code) => {
+const addPageReferenceMarkdownCommand = (markdownEditor, code) => {
     if (!code) {
         return;
     }
 
     const codeMirrorEditor = markdownEditor.getEditor();
-
     const rangeFrom = codeMirrorEditor.getCursor("from");
     const rangeTo = codeMirrorEditor.getCursor("to");
-    const text = getYoutubeMarkdown(code);
+    const text = getPageReferenceComponentTag(code);
 
     codeMirrorEditor.replaceSelection(text, "start", 0);
 
@@ -147,7 +157,7 @@ const addYoutubeMarkdownCommand = (markdownEditor, code) => {
     markdownEditor.focus();
 };
 
-const youtubePlugin = (editor, menuIndex, svgIcon) => {
+const referencePlugin = (editor, menuIndex, svgIcon) => {
     editor.eventManager.listen(
         "convertorAfterMarkdownToHtmlConverted",
         convertMarkdownToHtml
@@ -155,12 +165,12 @@ const youtubePlugin = (editor, menuIndex, svgIcon) => {
 
     if (!editor.isViewer() && editor.getUI().name === "default") {
         editor.addCommand("markdown", {
-            name: "youtube",
-            exec: addYoutubeMarkdownCommand,
+            name: "reference",
+            exec: addPageReferenceMarkdownCommand,
         });
     }
 
     initPopup(editor, menuIndex, svgIcon);
 };
 
-export default youtubePlugin;
+export default referencePlugin;
