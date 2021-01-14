@@ -22,19 +22,19 @@ const getPageReferenceHtml = (path) => {
 };
 
 const getPageReferenceComponentTag = (path) => {
-    return `<livewire:page-reference page="${path}" />`
+    return `<livewire:page-reference page="${path}" />`;
 };
 
 const extractPathIfUrl = (urlOfPah) => {
-    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;;
+    const urlRegex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
     const match = urlOfPah.match(urlRegex);
 
     // Return only the Path
     if (match && match.length === 1) {
-        return "/" + match[0].split('://')[1];
+        return "/" + match[0].split("://")[1];
     }
 
-    return  urlOfPah;
+    return urlOfPah;
 };
 
 const createPopupContent = (editor) => {
