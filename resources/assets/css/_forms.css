@@ -33,14 +33,6 @@
     padding: 0.75rem 1rem;
 }
 
-.input-wrapper-with-icon {
-    @apply mt-2 relative rounded overflow-hidden shadow-sm text-theme-secondary-900;
-}
-
-.input-text-with-icon {
-    @apply input-text rounded-none;
-}
-
 .input-group:focus-within .input-label,
 .input-group:hover .input-label {
     @apply text-theme-primary-600;
@@ -55,6 +47,32 @@
 .input-group:focus-within .input-text:read-only,
 .input-text:read-only {
     @apply border-theme-secondary-400 bg-theme-secondary-100 cursor-not-allowed;
+}
+
+/** Input with icon button **/
+.input-wrapper-with-icon {
+    @apply mt-2 relative rounded overflow-hidden shadow-sm text-theme-secondary-900;
+}
+
+.input-text-with-icon {
+    @apply input-text rounded-none;
+}
+
+/** Input with icon prefix **/
+.input-icon {
+    @apply flex absolute inset-y-0 items-center pointer-events-none;
+}
+
+.input-text-with-prefix {
+    @apply pl-10;
+}
+
+.input-wrapper-with-prefix .input-icon {
+    @apply text-theme-secondary-500;
+}
+.input-wrapper-with-prefix--dirty .input-icon,
+.input-wrapper-with-prefix:focus-within .input-icon {
+    @apply text-theme-primary-500;
 }
 
 /* Radio buttons */

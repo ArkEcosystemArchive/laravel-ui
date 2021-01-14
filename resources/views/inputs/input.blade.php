@@ -1,22 +1,27 @@
-<div class="{{ $class ?? '' }}">
+<div {{ $attributes->only('class') }}>
     <div class="input-group">
-        <label for="{{ $id ?? $name }}" class="items-center input-label @error($name) input-label--error @enderror">
-            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
-            @if(isset($tooltip))<div class="input-tooltip" data-tippy-content="{{ $tooltip }}">?</div>@endif
-        </label>
+        @unless ($hideLabel ?? false)
+            @include('ark::inputs.includes.input-label', [
+                'name'    => $name,
+                'errors'  => $errors,
+                'id'      => $id ?? $name,
+                'label'   => $label ?? null,
+                'tooltip' => $tooltip ?? null,
+            ])
+        @endunless
 
         <div class="input-wrapper">
-            <input
-                type="{{ $type ?? 'text' }}"
-                id="{{ $id ?? $name }}"
-                class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
-                @unless($noModel ?? false) wire:model="{{ $model ?? $name }}" @endUnless
-                {{-- @TODO: remove --}}
-                @isset($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endisset
-                {{-- @TODO: remove --}}
-                @isset($max) maxlength="{{ $max }}" @endisset
-                {{ $attributes->except(['class', 'errors', 'id', 'max', 'model', 'slot', 'type', 'wire:model', 'keydown-enter']) }}
-            />
+            @include('ark::inputs.includes.input-field', [
+                'name'         => $name,
+                'errors'       => $errors,
+                'id'           => $id ?? $name,
+                'inputClass'   => $inputClass ?? '',
+                'noModel'      => $noModel ?? false,
+                'model'        => $model ?? $name,
+                'keydownEnter' => $keydownEnter ?? null,
+                'max'          => $max ?? null,
+            ])
+
             @error($name) @include('ark::inputs.input-error') @enderror
         </div>
 
