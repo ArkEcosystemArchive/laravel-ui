@@ -16,20 +16,21 @@ const getAndCacheTwitterEmbedCode = (twitterID) => {
         return fetch(`/wysiwyg/twitter-embed-code?id=${twitterID}`)
             .then((response) => {
                 if (response.status === 200) {
-                    return response.text()
+                    return response.text();
                 }
 
-                throw new Error(response.statusText)
+                throw new Error(response.statusText);
             })
             .then((html) => {
-                console.log("html", html)
+                console.log("html", html);
                 const tempWrapper = document.createElement("div");
                 tempWrapper.innerHTML = html;
                 tempWrapper.setAttribute("data-tweet-id", twitterID);
                 twitterEmbedCache[twitterID] = tempWrapper.outerHTML;
                 resolve(html);
-            }).catch(error => {
-                reject(error)
+            })
+            .catch((error) => {
+                reject(error);
             });
     });
 };
@@ -85,7 +86,9 @@ const createPopupContent = (editor) => {
                     editor.exec("twitter", twitterCode);
                 })
                 .catch((error) => {
-                    alert("Something went wrong! Ensure you are using a valid Tweet URL");
+                    alert(
+                        "Something went wrong! Ensure you are using a valid Tweet URL"
+                    );
                     console.error(error);
                 })
                 .then(() => {
