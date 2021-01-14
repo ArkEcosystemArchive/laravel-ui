@@ -17,14 +17,14 @@
             @if ($image)
                 style="background-image: url('{{ $image }}')"
             @endif
-            class="cursor-pointer bg-theme-primary-50 inline-block bg-cover bg-center bg-no-repeat rounded-xl w-full h-full hover:bg-theme-primary-100 transition-default"
+            class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl cursor-pointer bg-theme-primary-50 hover:bg-theme-primary-100 transition-default"
             @click="select()"
             role="button"
         >
             <input
                 id="photo"
                 type="file"
-                class="absolute top-0 hidden block opacity-0 cursor-pointer"
+                class="block hidden absolute top-0 opacity-0 cursor-pointer"
                 wire:model="photo"
                 accept="image/jpg,image/jpeg,image/bmp,image/png"
             />
@@ -32,7 +32,7 @@
 
         @unless ($image)
             <div
-                class="cursor-pointer flex flex-col space-y-2 items-center justify-center rounded-xl absolute top-2 right-2 bottom-2 left-2 pointer-events-none"
+                class="flex absolute top-2 right-2 bottom-2 left-2 flex-col justify-center items-center space-y-2 rounded-xl cursor-pointer pointer-events-none"
                 role="button"
             >
                 <div class="text-theme-primary-500">
@@ -55,7 +55,7 @@
                 <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
 
                 <div
-                    class="cursor-pointer absolute top-0 right-0 -mt-2 -mr-2 rounded bg-theme-danger-100 text-theme-danger-500 p-1"
+                    class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
                     wire:click="delete"
                     data-tippy-content="{{ $deleteTooltip }}"
                 >
@@ -65,7 +65,7 @@
         @endunless
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="left-0 right-0 bottom-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
         </div>
     </div>
 </div>
