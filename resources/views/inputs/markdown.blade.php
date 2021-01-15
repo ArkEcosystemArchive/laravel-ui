@@ -6,7 +6,7 @@
     'class' => '',
     'label' => '',
     'height' => null,
-    'toolbarItems' => null,
+    'toolbar' => 'basic',
     'plugins' => null,
 ])
 
@@ -27,6 +27,8 @@ $icons = [
     'iconYoutube' => 'social-video-youtube-clip',
     'iconTwitter' => 'social-media-twitter',
     'iconPodcast' => 'social-music-podcast',
+    'iconLinkcollection' => 'app-window-link',
+    'iconEmbedLink' => 'image-link',
     'iconReference' => 'page-reference',
     'iconAlert' => 'alert-triangle',
     'iconUndo' => 'undo',
@@ -45,12 +47,11 @@ $icons = [
             <div
                 x-data="MarkdownEditor(
                     @if($height)'{{ $height }}'@else null @endif,
-                    @if($toolbarItems){{ json_encode($toolbarItems) }}@else null @endif,
-                    @if($plugins){{ json_encode($plugins) }}@else null @endif,
+                    '{{ $toolbar }}',
                     {{ $xData }}
                 )"
                 x-init="init"
-                class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+                class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
             >
                 <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
                 <div>

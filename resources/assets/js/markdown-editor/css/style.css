@@ -400,7 +400,7 @@
 }
 
 .tui-editor-popup {
-    @apply absolute;
+    @apply absolute max-h-full overflow-auto;
     top: 30px;
     left: 50%;
     margin-left: -250px;
@@ -421,12 +421,21 @@
     @apply flex flex-row-reverse mt-4 justify-items-end;
 }
 
+.tui-editor-popup .tui-popup-body select,
 .tui-editor-popup .tui-popup-body input[type="text"],
 .tui-editor-popup .tui-popup-body input[type="file"] {
-    @apply block w-full bg-white border rounded form-input border-theme-secondary-400;
+    @apply block w-full bg-white border rounded border-theme-secondary-400;
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
+
+}
+.tui-editor-popup .tui-popup-body select {
+    @apply form-select;
+}
+.tui-editor-popup .tui-popup-body input[type="text"],
+.tui-editor-popup .tui-popup-body input[type="file"] {
+    @apply form-input;
 }
 
 .tui-editor-popup .tui-popup-body input[type="text"].disabled {

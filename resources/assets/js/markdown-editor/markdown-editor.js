@@ -12,6 +12,9 @@ import {
     headingPlugin,
     previewPlugin,
     referencePlugin,
+    alertPlugin,
+    linkCollectionPlugin,
+    embedLinkPlugin,
 } from "./plugins/index.js";
 
 import { extractTextFromHtml } from "./utils/utils.js";
@@ -20,8 +23,7 @@ const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
 const MarkdownEditor = (
     height = null,
-    toolbarItems = null,
-    plugins = null,
+    toolbar = 'basic',
     extraData = {}
 ) => ({
     editor: null,
@@ -32,51 +34,53 @@ const MarkdownEditor = (
     wordsCount: 0,
     readMinutes: 0,
     height: height !== null ? height : "600px",
-    toolbarItems:
-        toolbarItems !== null
-            ? toolbarItems
-            : [
-                  // ...Undo & redo
+    toolbarItems: [
+        // ...Undo & redo
 
-                  "divider",
+        "divider",
 
-                  "bold",
-                  "italic",
-                  "strike",
-                  "quote",
-                  "divider",
+        "bold",
+        "italic",
+        "strike",
+        "quote",
+        "divider",
 
-                  // ...Headers
+        // ...Headers
 
-                  "divider",
+        "divider",
 
-                  "ol",
-                  "ul",
-                  "table",
-                  "image",
+        "ol",
+        "ul",
+        "table",
+        "image",
 
-                  "divider",
+        "divider",
 
-                  "link",
-                  "code",
-                  "codeblock",
+        "link",
+        "code",
+        "codeblock",
 
-                  "divider",
+        "divider",
 
-                  // ...Plugins
+        // ...Plugins
 
-                  "divider",
+        "divider",
 
-                  // ...Preview, etc
-              ],
+        // ...Preview, etc
+    ],
     plugins:
-        plugins !== null
-            ? plugins
+        toolbar === 'basic'
+            ? [
+                "preview",
+                "redo",
+                "undo",
+            ]
             : [
                   "preview",
                   "simplecast",
                   "twitter",
                   "youtube",
+                  "linkcollection",
                   "heading1",
                   "heading2",
                   "heading3",
@@ -87,6 +91,8 @@ const MarkdownEditor = (
                   "redo",
                   "undo",
                   "reference",
+                  "alert",
+                  "embedlink",
               ],
     init() {
         try {
@@ -149,21 +155,29 @@ const MarkdownEditor = (
             iconPreview,
             iconReference,
             iconAlert,
+            iconLinkcollection,
+            iconEmbedLink
         } = this.$refs;
 
         const buttonIndex = this.toolbarItems.length;
 
         const plugins = {
+            alert: (editor) =>
+                alertPlugin(editor, buttonIndex, iconAlert),
             preview: (editor) =>
                 previewPlugin(editor, buttonIndex, iconPreview),
             reference: (editor) =>
                 referencePlugin(editor, buttonIndex, iconReference),
-            twitter: (editor) =>
-                twitterPlugin(editor, buttonIndex - 1, iconTwitter),
-            simplecast: (editor) =>
-                simplecastPlugin(editor, buttonIndex - 1, iconPodcast),
+            linkcollection: (editor) =>
+                linkCollectionPlugin(editor, buttonIndex - 1, iconLinkcollection),
             youtube: (editor) =>
                 youtubePlugin(editor, buttonIndex - 1, iconYoutube),
+            simplecast: (editor) =>
+                simplecastPlugin(editor, buttonIndex - 1, iconPodcast),
+            twitter: (editor) =>
+                twitterPlugin(editor, buttonIndex - 1, iconTwitter),
+            embedlink: (editor) =>
+                embedLinkPlugin(editor, buttonIndex - 1, iconEmbedLink),
             heading6: (editor) =>
                 headingPlugin(editor, buttonIndex - 11, iconH6, 6),
             heading5: (editor) =>

@@ -7,3 +7,6 @@ export { default as youtubePlugin } from "./youtube";
 export { default as simplecastPlugin } from "./simplecast";
 export { default as previewPlugin } from "./preview";
 export { default as referencePlugin } from "./reference";
+export { default as alertPlugin } from "./alert";
+export { default as linkCollectionPlugin } from "./link-collection";
+export { default as embedLinkPlugin } from "./embed-link";

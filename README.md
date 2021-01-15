@@ -163,62 +163,16 @@ window.MarkdownEditor = MarkdownEditor;
 <x-ark-markdown name="about" />
 ```
 
-5. You can change the height, the plugins, and the default buttons like this:
+1. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
     height="300px"
-    :toolbar-items="[
-        // ...Undo & redo placeholder
-
-        'divider',
-
-        'bold',
-        'italic',
-        'strike',
-        'quote',
-        'divider',
-
-        // ...Headers placeholder
-
-        'divider',
-
-        'ol',
-        'ul',
-        'table',
-        'image',
-
-        'divider',
-
-        'link',
-        'code',
-        'codeblock',
-
-        'divider',
-
-        // ...Plugins placeholder
-
-        'divider',
-
-        // ...Preview placeholder
-    ]"
-    :plugins="[
-        'preview',
-        'simplecast',
-        'twitter',
-        'youtube',
-        'heading1',
-        'heading2',
-        'heading3',
-        'heading4',
-        'heading5',
-        'heading6',
-        'underline',
-        'redo',
-        'undo'
-    ]"
+    toolbar="full"
 />
 ```
+
+Accepts `full` and `basic` for the toolbar
 
 #### Livewire modals
 
