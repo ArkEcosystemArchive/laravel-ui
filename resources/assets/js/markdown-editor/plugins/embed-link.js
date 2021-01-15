@@ -1,6 +1,6 @@
 import { escapeRegExp, createPopup } from "../utils/utils";
 
-// Based on `https://github.com/ArkEcosystem/ark.dev/blob/develop/resources/views/livewire/page-reference.blade.php`
+// Based on `https://github.com/ArkEcosystem/ark.dev/blob/develop/resources/views/livewire/embed-link.blade.php`
 const getEmbedLinkHtml = (url) => {
     const parser = document.createElement('a');
     parser.href = url;
