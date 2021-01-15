@@ -380,6 +380,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-radio>`
 - `<x-ark-select>`
 - `<x-ark-toggle>`
+- `<x-ark-upload-image>`
 - `<x-ark-navbar>`
 - `<x-ark-breadcrumbs>`
 - `<x-ark-accordion>`
