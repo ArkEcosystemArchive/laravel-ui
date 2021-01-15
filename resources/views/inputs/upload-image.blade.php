@@ -5,7 +5,7 @@
     'deleteTooltip' => trans('ui::forms.upload-image.delete_image'),
     'minWidth'      => 148,
     'minHeight'     => 148,
-    'maxFilesize'   => '2Mb',
+    'maxFilesize'   => '2MB',
 ])
 
 <div class="relative">
