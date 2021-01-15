@@ -9,10 +9,7 @@
 ])
 
 <div class="relative">
-    <div
-        class="rounded-xl {{ $dimensions }}
-            @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif"
-    >
+    <div class="rounded-xl {{ $dimensions }} @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
         <div
             @if ($image)
                 style="background-image: url('{{ $image }}')"
@@ -32,6 +29,7 @@
 
         @unless ($image)
             <div
+                wire:key="upload-button"
                 class="flex absolute top-2 right-2 bottom-2 left-2 flex-col justify-center items-center space-y-2 rounded-xl cursor-pointer pointer-events-none"
                 role="button"
             >
@@ -48,21 +46,24 @@
                     @lang('ui::forms.upload-image.max_filesize', [$maxFilesize])
                 </div>
             </div>
-        @else
-            <div
-                class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default {{ $dimensions }}"
-            >
-                <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
-
-                <div
-                    class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
-                    wire:click="delete"
-                    data-tippy-content="{{ $deleteTooltip }}"
-                >
-                    <x-ark-icon name="close" size="sm" />
-                </div>
-            </div>
         @endunless
+
+        <div
+            wire:key="delete-button"
+            class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default {{ $dimensions }}
+                @unless ($image) hidden @endunless"
+
+        >
+            <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
+
+            <div
+                class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
+                wire:click="delete"
+                data-tippy-hover="{{ $deleteTooltip }}"
+            >
+                <x-ark-icon name="close" size="sm" />
+            </div>
+        </div>
 
         <div x-show="isUploading" x-cloak>
             <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
