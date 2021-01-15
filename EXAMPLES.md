@@ -109,6 +109,80 @@ This file contains basic examples and explains the parameters that can be used f
 | options     | options array to display - must contain "name", "icon", "title" & "checked" | yes      |
 | description | description of options                                                      | no       |
 
+### Upload Image
+
+```
+<x-ark-upload-image
+    :image="$image"
+    dimensions="w-64 h-64"
+    upload-text="Upload Screenshot"
+    delete-tooltip="Delete Screenshot"
+    min-width="640"
+    min-height="640"
+    max-filesize="100MB"
+/>
+```
+
+| Parameter      | Description                                   | Required |
+|----------------|-----------------------------------------------|----------|
+| image          | Object with the image reference (if uploaded) | yes      |
+| dimensions     | Size of the upload component                  | no       |
+| upload-text    | Text to display when no existing image        | no       |
+| delete-tooltip | Tooltip text for the delete button            | no       |
+| min-width      | Minimum width for the image                   | no       |
+| min-height     | Minimum height for the image                  | no       |
+| max-filesize   | Maximum filesize allowed for the image        | no       |
+
+#### Backend
+
+This component requires the use of a Livewire component. There is an abstract class that can be extended to provide this functionality:
+
+```
+<?php
+
+use ARKEcosystem\UserInterface\Components\UploadImage;
+
+class UpdateScreenshot extends UploadImage
+{
+    /**
+     * Render the component.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function render()
+    {
+        return view('forms.update-screenshot-form');
+    }
+
+    /**
+     * Override default validators - 100mb
+     *
+     * @return array
+     */
+    public function validators()
+    {
+        return ['mimes:jpeg,png,bmp,jpg', 'max:102400'];
+    }
+
+    /**
+     * Store image
+     */
+    public function store()
+    {
+        //
+    }
+
+    /**
+     * Delete image
+     */
+    public function delete()
+    {
+        //
+    }
+}
+
+```
+
 ---
 
 ## Navigation
