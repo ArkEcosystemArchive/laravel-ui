@@ -6,6 +6,12 @@ tippy("[data-tippy-content]", {
     trigger: "mouseenter click",
 });
 
+tippy("[data-tippy-hover]", {
+    touch: "hold",
+    trigger: "mouseenter",
+    content: (reference) => reference.dataset.tippyHover,
+});
+
 window.initClipboard = () => {
     tippy(".clipboard", {
         trigger: "click",

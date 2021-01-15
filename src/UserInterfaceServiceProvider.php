@@ -144,6 +144,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.switch', 'ark-switch');
         Blade::component('ark::inputs.tile-selection', 'ark-tile-selection');
         Blade::component('ark::inputs.time', 'ark-time');
+        Blade::component('ark::inputs.upload-image', 'ark-upload-image');
 
         Blade::component('ark::pages.contact.content', 'ark-pages-contact-content');
         Blade::component('ark::pages.contact.header', 'ark-pages-contact-header');
