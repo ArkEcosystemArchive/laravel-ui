@@ -21,11 +21,7 @@ import { extractTextFromHtml } from "./utils/utils.js";
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
-const MarkdownEditor = (
-    height = null,
-    toolbar = 'basic',
-    extraData = {}
-) => ({
+const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     editor: null,
     toolbar: null,
     toolbarItems: null,
@@ -69,12 +65,8 @@ const MarkdownEditor = (
         // ...Preview, etc
     ],
     plugins:
-        toolbar === 'basic'
-            ? [
-                "preview",
-                "redo",
-                "undo",
-            ]
+        toolbar === "basic"
+            ? ["preview", "redo", "undo"]
             : [
                   "preview",
                   "simplecast",
@@ -156,20 +148,23 @@ const MarkdownEditor = (
             iconReference,
             iconAlert,
             iconLinkcollection,
-            iconEmbedLink
+            iconEmbedLink,
         } = this.$refs;
 
         const buttonIndex = this.toolbarItems.length;
 
         const plugins = {
-            alert: (editor) =>
-                alertPlugin(editor, buttonIndex, iconAlert),
+            alert: (editor) => alertPlugin(editor, buttonIndex, iconAlert),
             preview: (editor) =>
                 previewPlugin(editor, buttonIndex, iconPreview),
             reference: (editor) =>
                 referencePlugin(editor, buttonIndex, iconReference),
             linkcollection: (editor) =>
-                linkCollectionPlugin(editor, buttonIndex - 1, iconLinkcollection),
+                linkCollectionPlugin(
+                    editor,
+                    buttonIndex - 1,
+                    iconLinkcollection
+                ),
             youtube: (editor) =>
                 youtubePlugin(editor, buttonIndex - 1, iconYoutube),
             simplecast: (editor) =>

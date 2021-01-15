@@ -2,7 +2,7 @@ import { escapeRegExp, createPopup } from "../utils/utils";
 
 // Based on `https://github.com/ArkEcosystem/ark.dev/blob/develop/resources/views/livewire/embed-link.blade.php`
 const getEmbedLinkHtml = (url) => {
-    const parser = document.createElement('a');
+    const parser = document.createElement("a");
     parser.href = url;
 
     return `<div class="embed-link flex flex-col sm:flex-row overflow-hidden rounded-lg border-2 border-theme-primary-100 bg-white transition-default hover:size-increase hover:shadow-lg hover:border-0 cursor-pointer">
@@ -129,7 +129,7 @@ const convertMarkdownToHtml = (html) => {
     return replacemenent;
 };
 
-const addEmbedLinkMarkdownCommand = (markdownEditor, url, caption = '') => {
+const addEmbedLinkMarkdownCommand = (markdownEditor, url, caption = "") => {
     if (!url) {
         return;
     }

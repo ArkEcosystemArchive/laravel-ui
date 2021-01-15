@@ -112,9 +112,7 @@ const convertMarkdownToHtml = (html) => {
             const regexToReplace = new RegExp(
                 `<x-alert[^>]*type="(${escapeRegExp(
                     alertType
-                )})"[^>]*>(${escapeRegExp(
-                    alertText
-                )})<\/x-alert>`,
+                )})"[^>]*>(${escapeRegExp(alertText)})<\/x-alert>`,
                 "gm"
             );
             const embed = getAlertHTML(alertText, alertType);

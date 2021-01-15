@@ -428,7 +428,6 @@
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
-
 }
 .tui-editor-popup .tui-popup-body select {
     @apply form-select;
