@@ -27,7 +27,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     charsCount: 0,
     wordsCount: 0,
     readMinutes: 0,
-    height: height !== null ? height : "600px",
+    height: height || "600px",
     toolbarItems: [
         // ...Undo & redo
 
