@@ -6,6 +6,7 @@
     'viewAllUrl'      => null,
     'viewAllClass'    => '',
     'hideNavigation'  => false,
+    'hideBullets'  => false,
     'topPagination'   => false,
     'paginationClass' => '',
     'rows'            => 1,
@@ -14,6 +15,8 @@
     'spaceBetween'    => 0,
     'loop'            => false,
     'allowTouch'      => true,
+    'autoplay'   => false,
+    'autoplayDelay'   => 3000,
 ])
 
 <div class="w-full">
@@ -23,7 +26,7 @@
                 {{ $title }}
 
                 @if ($titleTooltip)
-                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                    <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
                 @endif
             </div>
 
@@ -43,13 +46,13 @@
     <div class="relative @unless($hideNavigation) px-10 @endunless">
         <div id="swiper-{{ $id }}" class="swiper-container @if ($rows > 1) slider-multirow @endif">
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="flex justify-between items-center">
+                <div class="flex items-center justify-between">
                     @if($title && !$viewAllUrl)
                         <div class="flex-1 relative {{ $titleClass }} my-4">
                             {{ $title }}
 
                             @if ($titleTooltip)
-                                <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                                <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
                             @endif
                         </div>
                     @endif
@@ -112,10 +115,17 @@
             @endif
             loop: {{ $loop ? 'true' : 'false' }},
             loopFillGroupWithBlank: true,
+            @if ($autoplay)
+            autoplay: {
+                delay: {{ $autoplayDelay }},
+            },
+            @endif
+            @unless ($hideBullets)
             pagination: {
                 el: '#swiper-{{ $id }} .swiper-pagination',
                 clickable: {{ $hideNavigation && !$topPagination ? 'false' : 'true' }}
             },
+            @endif
             @unless ($hideNavigation)
             navigation: {
                 nextEl: '.swiper-{{ $id }}-pagination.swiper-button-next',
