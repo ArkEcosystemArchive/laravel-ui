@@ -26,7 +26,7 @@
                 {{ $title }}
 
                 @if ($titleTooltip)
-                    <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
+                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
                 @endif
             </div>
 
@@ -46,13 +46,13 @@
     <div class="relative @unless($hideNavigation) px-10 @endunless">
         <div id="swiper-{{ $id }}" class="swiper-container @if ($rows > 1) slider-multirow @endif">
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="flex items-center justify-between">
+                <div class="flex justify-between items-center">
                     @if($title && !$viewAllUrl)
                         <div class="flex-1 relative {{ $titleClass }} my-4">
                             {{ $title }}
 
                             @if ($titleTooltip)
-                                <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
+                                <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
                             @endif
                         </div>
                     @endif
