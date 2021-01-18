@@ -130,10 +130,14 @@
 }
 
 .ark-markdown-editor .tui-popup-wrapper {
-    @apply p-4 bg-white border-none rounded shadow rounded-2xl;
+    @apply p-8 bg-white border-none rounded shadow rounded-2xl;
     width: 500px;
     margin-right: auto;
     z-index: 9999;
+}
+
+.ark-markdown-editor .tui-popup-header .tui-popup-header-buttons {
+    @apply -m-4;
 }
 
 .ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar,
