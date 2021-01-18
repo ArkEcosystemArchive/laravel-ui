@@ -1,4 +1,8 @@
 {
+    "scripts": {
+        "dev": "npm run development"
+
+    },
   "dependencies": {
     "@sindresorhus/slugify": "sindresorhus/slugify",
     "prettier": "^2.0.2"

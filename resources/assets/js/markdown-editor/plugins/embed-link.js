@@ -85,7 +85,7 @@ const createPopupContent = (editor) => {
 const initPopup = (editor, menuIndex, svgIcon) => {
     const name = "embedlink";
     const title = "Add Embed Link";
-    const tooltip = "embedlink";
+    const tooltip = "Embed Link";
 
     const popupContent = createPopupContent(editor);
 

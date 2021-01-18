@@ -137,19 +137,13 @@ window.Modal = Modal;
 
 ### WYSIWYG Markdown editor
 
-1. Install `@toast-ui/editor`
-
-```bash
-yarn add @toast-ui/editor@^2.5.1
-```
-
-2. Publish the js assets if you haven't yet
+1. Publish the JS assets if you haven't yet
 
 ```bash
 php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="wysiwyg"
 ```
 
-3. Import the markdown script in your `resources/js/app.js` file
+2. Import the markdown script in your `resources/js/app.js` file
 
 ```js
 import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
@@ -157,13 +151,26 @@ import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
 window.MarkdownEditor = MarkdownEditor;
 ```
 
-4. Just add the markdown component to your form
+3. Ensure you have a `scripts` stack inside the `<head>` tag of your template
+
+This is used to append the scripts needed for this component. You can also use the `scriptsStackName` prop to define a different stack name.
+
+```html
+    <!-- You should see something like this to add the stack on the layout file-->
+    </head>
+    <!-- ... -->
+    <!-- Scripts (After) -->
+        @stack('scripts')
+    </head>
+```
+
+4. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-1. You can change the height and the toolbar preset:
+5. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -172,7 +179,7 @@ window.MarkdownEditor = MarkdownEditor;
 />
 ```
 
-Accepts `full` and `basic` for the toolbar
+Accepts `full` for all the plugins and `basic` for only text related buttons.
 
 #### Livewire modals
 

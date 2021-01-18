@@ -1,7 +1,5 @@
 import "./css/style.css"; // Editor's Style
 
-import Editor from "@toast-ui/editor";
-
 import {
     simplecastPlugin,
     youtubePlugin,
@@ -90,7 +88,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         try {
             const { input } = this.$refs;
 
-            this.editor = new Editor({
+            this.editor = new toastui.Editor({
                 el: this.$refs.editor,
                 height: this.height,
                 initialEditType: "markdown",
