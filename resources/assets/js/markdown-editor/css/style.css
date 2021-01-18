@@ -1,7 +1,7 @@
 /* purgecss start ignore */
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
-.ark-markdown-editor .tui-editor .te-md-splitter{
+.ark-markdown-editor .tui-editor .te-md-splitter {
     @apply py-4;
 }
 
@@ -14,11 +14,11 @@
 }
 
 .ark-markdown-editor .tui-editor .te-md-splitter {
-    @apply  border-none;
+    @apply border-none;
 }
 
 .ark-markdown-editor .tui-editor .te-md-splitter::after {
-    content: '';
+    content: "";
     @apply block h-full border-r-2 border-theme-primary-50;
 }
 
@@ -26,12 +26,12 @@
     @apply overflow-auto;
 }
 
-.ark-markdown-editor  .te-ww-container > .te-editor > .documentation-content {
+.ark-markdown-editor .te-ww-container > .te-editor > .documentation-content {
     @apply px-4;
 }
 
 .ark-markdown-editor .tui-editor-defaultUI {
-    @apply relative h-full border-none
+    @apply relative h-full border-none;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button {
     @apply h-auto px-4 py-2 text-base font-bold text-center transition-all rounded;
@@ -72,7 +72,6 @@
     @apply h-full p-0 overflow-hidden;
 }
 
-
 .ark-markdown-editor .te-toolbar-section > .tui-editor-defaultUI-toolbar {
     @apply flex flex-wrap mx-4 overflow-visible bg-white border-b-2 border-theme-secondary-200;
     border-bottom-style: solid !important;
@@ -84,8 +83,11 @@
     height: 58px;
 }
 
-.ark-markdown-editor .te-toolbar-section > .tui-editor-defaultUI-toolbar > button {
-    @apply  border-theme-secondary-200;
+.ark-markdown-editor
+    .te-toolbar-section
+    > .tui-editor-defaultUI-toolbar
+    > button {
+    @apply border-theme-secondary-200;
 }
 
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button:hover,
@@ -95,11 +97,11 @@
     @apply border-theme-primary-600 text-theme-primary-600;
 }
 
-.ark-markdown-editor  .tui-editor-defaultUI .te-markdown-tab-section {
+.ark-markdown-editor .tui-editor-defaultUI .te-markdown-tab-section {
     display: none !important;
 }
 
-.ark-markdown-editor  .tui-editor-defaultUI .te-mode-switch-section {
+.ark-markdown-editor .tui-editor-defaultUI .te-mode-switch-section {
     @apply flex bg-theme-primary-50;
     height: 40px;
 }
@@ -147,7 +149,10 @@
     @apply relative p-0 border-none;
 }
 
-.ark-markdown-editor .tui-popup-header .tui-popup-header-buttons button.tui-popup-close-button {
+.ark-markdown-editor
+    .tui-popup-header
+    .tui-popup-header-buttons
+    button.tui-popup-close-button {
     @apply block rounded text-theme-primary-500 bg-theme-primary-100;
     width: 44px;
     height: 44px;
@@ -156,7 +161,10 @@
     background-size: 20px;
     background-position: center center;
 }
-.ark-markdown-editor .tui-popup-header .tui-popup-header-buttons button.tui-popup-close-button:hover {
+.ark-markdown-editor
+    .tui-popup-header
+    .tui-popup-header-buttons
+    button.tui-popup-close-button:hover {
     @apply bg-theme-primary-200;
 }
 
@@ -164,7 +172,7 @@
     @apply text-3xl font-bold text-theme-secondary-900;
 }
 
-.ark-markdown-editor  .tui-editor-popup {
+.ark-markdown-editor .tui-editor-popup {
     @apply absolute max-h-full overflow-auto;
     top: 30px;
     left: 50%;
@@ -197,7 +205,6 @@
 .ark-markdown-editor .tui-editor-popup .tui-popup-body input[type="file"] {
     @apply form-input;
 }
-
 
 .ark-markdown-editor .te-popup-add-image .te-tab {
     @apply flex block my-4 overflow-hidden border-none rounded shadow-sm;
