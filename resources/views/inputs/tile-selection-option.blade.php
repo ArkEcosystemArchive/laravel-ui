@@ -14,6 +14,7 @@
         type="checkbox"
         class="{{ $compact ? 'hidden' : 'form-checkbox tile-selection-checkbox' }}"
         x-model="options['{{ $option['name'] }}'].checked"
+        wire:model="{{ $wireModel }}"
     />
 
     <div class="flex flex-col justify-center items-center space-y-2 h-full font-semibold">

@@ -2,6 +2,7 @@
     'options',
     'id',
     'title',
+    'model' => null,
     'description' => null,
     'compact' => false,
     'hiddenOptions' => false,
@@ -56,6 +57,7 @@
                     'id' => $id,
                     'option' => $option,
                     'compact' => $compact,
+                    'wireModel' => ($model ?? $id).'.'.$option['name'].'.checked',
                 ])
             @endforeach
         </div>
