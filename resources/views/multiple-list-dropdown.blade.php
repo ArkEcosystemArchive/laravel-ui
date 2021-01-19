@@ -19,7 +19,7 @@
 
         <div class="multiple-list-grid">
             @foreach ($values as $value)
-                <div class="flex space-x-2 items-center">
+                <div class="flex items-center space-x-2">
                     <x-ark-icon name="checkmark-thin" class="text-theme-success-600" size="sm" />
 
                     <div>{{ $value }}</div>
