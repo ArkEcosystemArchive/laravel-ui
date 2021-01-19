@@ -348,3 +348,11 @@
 .tile-selection-checkbox:checked {
     @apply border-theme-success-500 bg-theme-success-500;
 }
+
+/** Multiple List **/
+.multiple-list-link {
+    @apply link inline cursor-pointer border-b border-dashed border-theme-primary-600;
+}
+.multiple-list-link:hover {
+    @apply no-underline;
+}
