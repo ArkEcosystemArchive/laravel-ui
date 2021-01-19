@@ -3,6 +3,7 @@
     'id',
     'title',
     'description' => null,
+    'compact' => false,
 ])
 
 <div
@@ -45,11 +46,12 @@
         </label>
     </div>
 
-    <div class="grid grid-cols-2 gap-5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8">
+    <div class="{{ $compact ? 'tile-selection-list-compact' : 'tile-selection-list' }}">
         @foreach ($options as $option)
             @include('ark::inputs.tile-selection-option', [
                 'id' => $id,
                 'option' => $option,
+                'compact' => $compact,
             ])
         @endforeach
     </div>

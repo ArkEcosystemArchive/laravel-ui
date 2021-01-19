@@ -1,14 +1,18 @@
 @props([
     'id',
     'option',
+    'compact' => 'false',
 ])
 
-<label class="tile-selection" x-bind:class="{ 'tile-selection--checked': options['{{ $option['name'] }}'].checked }">
+<label
+    class="{{ $compact ? 'tile-selection-compact' : 'tile-selection' }}"
+    x-bind:class="{ 'tile-selection--checked': options['{{ $option['name'] }}'].checked }"
+>
     <input
         id="{{ $id.'-'.$option['name'] }}"
         name="{{ $option['name'] }}"
         type="checkbox"
-        class="form-checkbox tile-selection-checkbox"
+        class="{{ $compact ? 'hidden' : 'form-checkbox tile-selection-checkbox' }}"
         x-model="options['{{ $option['name'] }}'].checked"
     />
 
