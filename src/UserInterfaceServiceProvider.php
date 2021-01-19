@@ -95,17 +95,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'wysiwyg');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/css' => resource_path('css/vendor/ark'),
-        ], 'css');
-
-        $this->publishes([
-            __DIR__.'/../resources/assets/icons' => resource_path('icons'),
-        ], 'icons');
-
-        $this->publishes([
             __DIR__.'/../resources/assets/fonts' => resource_path('fonts'),
         ], 'fonts');
-
 
         $this->publishes([
             __DIR__.'/../resources/assets/js/modal.js' => resource_path('js/vendor/ark/modal.js'),
@@ -121,9 +112,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/assets/js/tippy.js' => resource_path('js/vendor/ark/tippy.js'),
-        ], 'tippy');
-
-        $this->publishes([
             __DIR__.'/../resources/assets/js/prism-line-numbers.js' => resource_path('js/vendor/ark/prism-line-numbers.js'),
             __DIR__.'/../resources/assets/js/prism.js' => resource_path('js/vendor/ark/prism.js'),
             __DIR__.'/../resources/assets/js/clipboard.js' => resource_path('js/vendor/ark/clipboard.js'),
@@ -131,6 +119,14 @@ class UserInterfaceServiceProvider extends ServiceProvider
             __DIR__.'/../resources/assets/js/reposition-dropdown.js' => resource_path('js/vendor/ark/reposition-dropdown.js'),
             __DIR__.'/../resources/assets/js/highlightjs-copy.js' => resource_path('js/vendor/ark/highlightjs-copy.js'),
         ], 'js');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/css' => resource_path('css/vendor/ark'),
+        ], 'css');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/icons' => resource_path('icons'),
+        ], 'icons');
 
         $this->publishes([
             __DIR__.'/../resources/assets/images/components' => resource_path('images/vendor/ark'),
