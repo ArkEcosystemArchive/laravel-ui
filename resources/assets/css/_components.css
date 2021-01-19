@@ -302,12 +302,24 @@
 }
 
 /** Tile Selection Checkboxes **/
+.tile-selection-list {
+    @apply grid grid-cols-2 gap-5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8;
+}
+
+.tile-selection-list-single {
+    @apply grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6;
+}
+
 .tile-selection {
     @apply relative border-2 rounded-lg border-theme-primary-100 h-30 select-none;
 }
 
+.tile-selection-single {
+    @apply relative border-2 rounded-lg border-theme-primary-100 select-none py-4;
+}
+
 .tile-selection-select-all {
-    @apply flex items-center md:flex-row-reverse;
+    @apply flex items-center select-none md:flex-row-reverse;
 }
 
 .tile-selection-checkbox,
