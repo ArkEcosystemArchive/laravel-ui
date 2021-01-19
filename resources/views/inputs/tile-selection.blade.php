@@ -2,6 +2,7 @@
     'options',
     'id',
     'title',
+    'class' => '',
     'model' => null,
     'description' => null,
     'compact' => false,
@@ -9,7 +10,7 @@
 ])
 
 <div
-    class="space-y-6"
+    class="space-y-6 {{ $class }}"
     x-data="{
         options: {{ json_encode(collect($options)->keyBy('name')) }},
         allSelected: true,
