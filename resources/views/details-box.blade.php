@@ -1,6 +1,7 @@
 @props([
     'title',
     'class' => '',
+    'titleClass' => 'text-sm',
     'reverse' => false,
     'iconWrapper' => null,
     'iconWrapperClass' => '',
@@ -45,7 +46,7 @@
     @endif
 
     <div class="flex flex-col space-y-2">
-        <span class="text-sm font-semibold text-theme-secondary-500 dark:text-theme-secondary-700">
+        <span class="font-semibold text-theme-secondary-500 dark:text-theme-secondary-700 {{ $titleClass }}">
             {{ $title }}
         </span>
 
