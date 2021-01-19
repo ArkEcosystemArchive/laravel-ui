@@ -78,6 +78,7 @@ This file contains basic examples and explains the parameters that can be used f
 <x-ark-tile-selection
     id="tile-selection"
     title="Tile Selection"
+    model="platforms"
     description="Grid boxes for multi-selection"
     :options="[
         [
@@ -102,12 +103,43 @@ This file contains basic examples and explains the parameters that can be used f
 />
 ```
 
-| Parameter   | Description                                                                 | Required |
-|-------------|-----------------------------------------------------------------------------|----------|
-| id          | ID used to identify tile selections                                         | yes      |
-| title       | title of options                                                            | yes      |
-| options     | options array to display - must contain "name", "icon", "title" & "checked" | yes      |
-| description | description of options                                                      | no       |
+```
+<x-ark-tile-selection
+    id="categories"
+    title="Category"
+    model="category"
+    description="Grid boxes for multi-selection"
+    single
+    :options="[
+        [
+            'name' => 'reddit',
+            'title' => 'Reddit',
+            'checked' => false,
+        ],
+        [
+            'name' => 'youtube',
+            'title' => 'Youtube',
+            'checked' => false,
+        ],
+        [
+            'name' => 'windows',
+            'title' => 'Windows',
+            'checked' => false,
+        ],
+    ]"
+/>
+```
+
+| Parameter     | Description                                                                                | Required |
+|---------------|--------------------------------------------------------------------------------------------|----------|
+| id            | ID used to identify tile selections                                                        | yes      |
+| title         | title of options                                                                           | yes      |
+| options       | array to display - requires "name", "title" & "checked" ("icon" is required if not single) | yes      |
+| description   | description of options                                                                     | no       |
+| model         | associates a value with livewire component                                                 | no       |
+| single        | only allows a single option to be selected                                                 | no       |
+| hiddenOptions | used for hiding options (e.g. expanding the field)                                         | no       |
+| class         | allows additional classes for the component                                                | no       |
 
 ### Upload Image
 
