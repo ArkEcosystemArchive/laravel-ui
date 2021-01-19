@@ -8,7 +8,6 @@
     'height' => null,
     'toolbar' => 'basic',
     'plugins' => null,
-    'scriptsStackName' => 'scripts'
 ])
 
 @php
@@ -52,7 +51,7 @@ $icons = [
                     {{ $xData }}
                 )"
                 x-init="init"
-                class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+                class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
             >
                 <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
                 <div>
@@ -91,9 +90,3 @@ $icons = [
         @enderror
     </div>
 </div>
-
-@push($scriptsStackName)
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-only.min.css" />
-@endpush

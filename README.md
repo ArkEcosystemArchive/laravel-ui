@@ -151,17 +151,15 @@ import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
 window.MarkdownEditor = MarkdownEditor;
 ```
 
-3. Ensure you have a `scripts` stack inside the `<head>` tag of your template
+3. Ensure to import the following scripts inside the `<head>` tag of your template.
 
-This is used to append the scripts needed for this component. You can also use the `scriptsStackName` prop to define a different stack name.
 
 ```html
-    <!-- You should see something like this to add the stack on the layout file-->
-    </head>
-    <!-- ... -->
-    <!-- Scripts (After) -->
-        @stack('scripts')
-    </head>
+@push('scripts')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-only.min.css" />
+@endpush
 ```
 
 4. Add the markdown component to your form

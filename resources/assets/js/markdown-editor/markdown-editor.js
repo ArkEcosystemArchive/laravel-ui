@@ -85,6 +85,11 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
                   "embedlink",
               ],
     init() {
+        if (typeof toastui === 'undefined') {
+            alert('You need to add the editor scripts. See `laravel-ui` README for instructions.')
+            return;
+        }
+
         try {
             const { input } = this.$refs;
 
