@@ -356,3 +356,17 @@
 .multiple-list-link:hover {
     @apply no-underline;
 }
+
+.multiple-list-dropdown {
+    @apply absolute rounded-lg bg-white shadow-xl font-semibold p-8 mt-4 space-y-6 mx-8 left-0 right-0 md:mx-0 md:left-auto md:right-auto;
+}
+
+.multiple-list-grid {
+    @apply grid gap-x-8 gap-y-4 sm:grid-cols-3 md:grid-cols-4;
+}
+
+@media (min-width: 375px) {
+    .multiple-list-grid {
+        @apply grid-cols-2;
+    }
+}
