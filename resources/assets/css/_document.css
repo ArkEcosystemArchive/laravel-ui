@@ -152,12 +152,6 @@ code.hljs .hljs-ln-n {
     @apply pb-2;
 }
 
-.documentation-content ul > li > p:last-child,
-.documentation-content ol > li > p:last-child {
-    @apply mb-0;
-    line-height: inherit;
-}
-
 /* Divider */
 .documentation-content hr {
     @apply my-6 border-theme-secondary-200 bg-theme-secondary-200;
@@ -175,7 +169,7 @@ code.hljs .hljs-ln-n {
 
 /* Image caption */
 .documentation-content .image-caption {
-    @apply relative block w-full p-4 mx-auto mt-2 text-sm border-2 rounded-lg border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900;
+    @apply relative block w-full mx-auto p-4 mt-2 border-2 rounded-lg border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900 text-sm;
 }
 
 @screen sm {
@@ -288,7 +282,7 @@ main .documentation-content .heading-permalink:hover {
 
 /* Gallery Grid */
 .documentation-content .grid-gallery {
-    @apply grid grid-flow-row grid-cols-2 gap-4;
+    @apply grid grid-cols-2 grid-flow-row gap-4;
 }
 
 @screen sm {
