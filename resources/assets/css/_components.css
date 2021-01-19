@@ -358,7 +358,7 @@
 }
 
 .multiple-list-dropdown {
-    @apply absolute rounded-lg bg-white shadow-xl font-semibold p-8 mt-4 space-y-6 mx-8 left-0 right-0 md:mx-0 md:left-auto md:right-auto;
+    @apply absolute z-10 rounded-lg bg-white shadow-xl font-semibold p-8 mt-4 space-y-6 mx-8 left-0 right-0 md:mx-0 md:left-auto md:right-auto;
 }
 
 .multiple-list-grid {
