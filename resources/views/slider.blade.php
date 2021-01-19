@@ -6,6 +6,7 @@
     'viewAllUrl'      => null,
     'viewAllClass'    => '',
     'hideNavigation'  => false,
+    'hideBullets'     => false,
     'topPagination'   => false,
     'paginationClass' => '',
     'rows'            => 1,
@@ -14,6 +15,8 @@
     'spaceBetween'    => 0,
     'loop'            => false,
     'allowTouch'      => true,
+    'autoplay'        => false,
+    'autoplayDelay'   => 3000,
 ])
 
 <div class="w-full">
@@ -112,10 +115,17 @@
             @endif
             loop: {{ $loop ? 'true' : 'false' }},
             loopFillGroupWithBlank: true,
+            @if ($autoplay)
+            autoplay: {
+                delay: {{ $autoplayDelay }},
+            },
+            @endif
+            @unless ($hideBullets)
             pagination: {
                 el: '#swiper-{{ $id }} .swiper-pagination',
                 clickable: {{ $hideNavigation && !$topPagination ? 'false' : 'true' }}
             },
+            @endif
             @unless ($hideNavigation)
             navigation: {
                 nextEl: '.swiper-{{ $id }}-pagination.swiper-button-next',
