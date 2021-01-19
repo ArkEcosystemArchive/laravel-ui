@@ -135,6 +135,50 @@ import Modal from "./vendor/ark/modal.js";
 window.Modal = Modal;
 ```
 
+### WYSIWYG Markdown editor
+
+1. Publish the JS assets if you haven't yet
+
+```bash
+php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="wysiwyg"
+```
+
+2. Import the markdown script in your `resources/js/app.js` file
+
+```js
+import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
+
+window.MarkdownEditor = MarkdownEditor;
+```
+
+3. Ensure to import the following scripts inside the `<head>` tag of your template.
+
+
+```html
+@push('scripts')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-only.min.css" />
+@endpush
+```
+
+4. Add the markdown component to your form
+
+```html
+<x-ark-markdown name="about" />
+```
+
+5. You can change the height and the toolbar preset:
+
+```html
+<x-ark-markdown name="about"
+    height="300px"
+    toolbar="full"
+/>
+```
+
+Accepts `full` for all the plugins and `basic` for only text related buttons.
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.

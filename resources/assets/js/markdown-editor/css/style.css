@@ -1,0 +1,241 @@
+/* purgecss start ignore */
+.ark-markdown-editor .te-md-container .CodeMirror,
+.ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
+.ark-markdown-editor .tui-editor .te-md-splitter {
+    @apply py-4;
+}
+
+.ark-markdown-editor .te-md-container .CodeMirror-scroll {
+    @apply p-0 m-0;
+}
+
+.ark-markdown-editor .tui-editor-contents {
+    @apply max-w-3xl mx-auto;
+}
+
+.ark-markdown-editor .tui-editor .te-md-splitter {
+    @apply border-none;
+}
+
+.ark-markdown-editor .tui-editor .te-md-splitter::after {
+    content: "";
+    @apply block h-full border-r-2 border-theme-primary-50;
+}
+
+.ark-markdown-editor .te-ww-container > .te-editor {
+    @apply overflow-auto;
+}
+
+.ark-markdown-editor .te-ww-container > .te-editor > .documentation-content {
+    @apply px-4;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI {
+    @apply relative h-full border-none;
+}
+.ark-markdown-editor .tui-popup-body .te-button-section button {
+    @apply h-auto px-4 py-2 text-base font-bold text-center transition-all rounded;
+}
+.ark-markdown-editor .tui-popup-body .te-button-section button.te-ok-button {
+    @apply ml-3 text-white bg-theme-primary-600;
+}
+.ark-markdown-editor .tui-popup-body .te-button-section button.te-close-button {
+    @apply text-theme-primary-500 bg-theme-primary-100;
+}
+
+.ark-markdown-editor .tui-toolbar-divider {
+    @apply flex-shrink-0 bg-theme-secondary-300;
+    float: left;
+    width: 2px;
+    height: 33px;
+    margin: 13px 6px;
+}
+.ark-markdown-editor .tui-toolbar-divider + .tui-toolbar-divider {
+    display: none !important;
+}
+
+.ark-markdown-editor .CodeMirror-gutters {
+    @apply bg-white border-r border-theme-secondary-200 whitespace-nowrap;
+}
+
+.ark-markdown-editor .CodeMirror-linenumber {
+    @apply p-0 text-xs text-center text-theme-secondary-500;
+    width: 49px !important;
+}
+
+.ark-markdown-editor .te-toolbar-section {
+    @apply box-border border-none;
+    height: 60px;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI-toolbar {
+    @apply h-full p-0 overflow-hidden;
+}
+
+.ark-markdown-editor .te-toolbar-section > .tui-editor-defaultUI-toolbar {
+    @apply flex flex-wrap mx-4 overflow-visible bg-white border-b-2 border-theme-secondary-200;
+    border-bottom-style: solid !important;
+    height: 58px;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI-toolbar > button {
+    @apply float-left p-0 mx-2 my-0 leading-none bg-white border-t-0 border-b-2 border-l-0 border-r-0 border-transparent outline-none cursor-pointer text-theme-secondary-900;
+    height: 58px;
+}
+
+.ark-markdown-editor
+    .te-toolbar-section
+    > .tui-editor-defaultUI-toolbar
+    > button {
+    @apply border-theme-secondary-200;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button:hover,
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button:active,
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button.active,
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button.current {
+    @apply border-theme-primary-600 text-theme-primary-600;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI .te-markdown-tab-section {
+    display: none !important;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI .te-mode-switch-section {
+    @apply flex bg-theme-primary-50;
+    height: 40px;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI .te-mode-switch {
+    @apply flex justify-end h-full;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI .te-switch-button {
+    @apply flex items-center h-full px-4 text-xs font-bold border-b-2 border-transparent cursor-pointer text-theme-secondary-800;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI .te-switch-button.active {
+    @apply text-sm border-theme-primary-600;
+}
+
+.tui-popup-modal-background {
+    @apply bg-black bg-opacity-75;
+    position: fixed;
+    margin: 0px;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.ark-markdown-editor .tui-popup-wrapper {
+    @apply p-8 bg-white border-none rounded shadow rounded-2xl;
+    width: 500px;
+    margin-right: auto;
+    z-index: 9999;
+}
+
+.ark-markdown-editor .tui-popup-header .tui-popup-header-buttons {
+    @apply -m-4;
+}
+
+.ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar,
+.ark-markdown-editor .tui-popup-wrapper.te-popup-add-table {
+    @apply w-auto p-0 rounded;
+}
+
+.ark-markdown-editor .tui-popup-modal-background .tui-popup-wrapper {
+    @apply mx-auto;
+}
+
+.ark-markdown-editor .tui-popup-header {
+    @apply relative p-0 border-none;
+}
+
+.ark-markdown-editor
+    .tui-popup-header
+    .tui-popup-header-buttons
+    button.tui-popup-close-button {
+    @apply block rounded text-theme-primary-500 bg-theme-primary-100;
+    width: 44px;
+    height: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4.5 19.5l15-15m-15 0l15 15' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center center;
+}
+.ark-markdown-editor
+    .tui-popup-header
+    .tui-popup-header-buttons
+    button.tui-popup-close-button:hover {
+    @apply bg-theme-primary-200;
+}
+
+.ark-markdown-editor .tui-popup-header .tui-popup-title {
+    @apply text-3xl font-bold text-theme-secondary-900;
+}
+
+.ark-markdown-editor .tui-editor-popup {
+    @apply absolute max-h-full overflow-auto;
+    top: 30px;
+    left: 50%;
+    margin-left: -250px;
+}
+
+.ark-markdown-editor .tui-editor-popup .tui-popup-body {
+    @apply p-0;
+}
+
+.ark-markdown-editor .tui-editor-popup .tui-popup-body label {
+    @apply block mt-4 mb-1 text-xs font-bold text-theme-secondary-700;
+}
+
+.ark-markdown-editor .tui-editor-popup .tui-popup-body .te-button-section {
+    @apply flex flex-row-reverse mt-4 justify-items-end;
+}
+
+.ark-markdown-editor .tui-editor-popup .tui-popup-body select,
+.ark-markdown-editor .tui-editor-popup .tui-popup-body input[type="text"],
+.ark-markdown-editor .tui-editor-popup .tui-popup-body input[type="file"] {
+    @apply block w-full bg-white border rounded border-theme-secondary-400;
+
+    padding: 0.75rem 1rem;
+}
+.ark-markdown-editor .tui-editor-popup .tui-popup-body select {
+    @apply form-select;
+}
+.ark-markdown-editor .tui-editor-popup .tui-popup-body input[type="text"],
+.ark-markdown-editor .tui-editor-popup .tui-popup-body input[type="file"] {
+    @apply form-input;
+}
+
+.ark-markdown-editor .te-popup-add-image .te-tab {
+    @apply flex block my-4 overflow-hidden border-none rounded shadow-sm;
+}
+.ark-markdown-editor .te-popup-add-image .te-tab button {
+    @apply inline-block w-1/2 h-auto px-4 py-2 text-base font-bold text-center transition-all border-none rounded-none text-theme-primary-500 bg-theme-primary-100;
+}
+
+.ark-markdown-editor .te-popup-add-image .te-tab button.te-tab-active {
+    @apply text-white bg-theme-primary-600;
+}
+
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button.tui-more {
+    @apply relative border-none rounded shadow-sm bg-theme-primary-200 text-theme-primary-600 top-3;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-image: url("data:image/svg+xml, %3Csvg id='chevron-down-svg' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M23.25 7.311L12.53 18.03a.749.749 0 01-1.06 0L.75 7.311' fill='none' stroke='%23007dff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' fill-rule='evenodd'/%3E%3C/svg%3E");
+    width: 32px;
+    height: 30px;
+}
+.ark-markdown-editor .tui-editor-defaultUI-toolbar button.tui-more:hover {
+    @apply bg-theme-primary-300;
+}
+
+.ark-markdown-editor .tui-toolbar-icons {
+    @apply bg-none;
+}
+
+/* purgecss end ignore */
