@@ -306,7 +306,7 @@
     @apply grid grid-cols-2 gap-5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8;
 }
 
-.tile-selection-list-compact {
+.tile-selection-list-single {
     @apply grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6;
 }
 
@@ -314,7 +314,7 @@
     @apply relative border-2 rounded-lg border-theme-primary-100 h-30 select-none;
 }
 
-.tile-selection-compact {
+.tile-selection-single {
     @apply relative border-2 rounded-lg border-theme-primary-100 select-none py-4;
 }
 

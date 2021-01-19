@@ -5,7 +5,7 @@
     'class' => '',
     'model' => null,
     'description' => null,
-    'compact' => false,
+    'single' => false,
     'hiddenOptions' => false,
 ])
 
@@ -14,6 +14,7 @@
     class="space-y-6 {{ $class }}"
     x-data="{
         options: {{ json_encode(collect($options)->keyBy('name')) }},
+        selectedOption: null,
         allSelected: false,
         selectAll: function() {
             let checkAllValue = true;
@@ -38,7 +39,7 @@
             @endif
         </div>
 
-        @unless ($hiddenOptions)
+        @unless ($hiddenOptions || $single === false)
             <label class="tile-selection-select-all">
                 <input
                     type="checkbox"
@@ -53,13 +54,13 @@
     </div>
 
     @unless ($hiddenOptions)
-        <div class="{{ $compact ? 'tile-selection-list-compact' : 'tile-selection-list' }}">
+        <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }}">
             @foreach ($options as $option)
                 @include('ark::inputs.tile-selection-option', [
                     'id' => $id,
                     'option' => $option,
-                    'compact' => $compact,
-                    'wireModel' => ($model ?? $id).'.'.$option['name'].'.checked',
+                    'single' => $single,
+                    'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['name'].'.checked',
                 ])
             @endforeach
         </div>
