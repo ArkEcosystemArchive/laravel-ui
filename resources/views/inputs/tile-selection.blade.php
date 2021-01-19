@@ -10,10 +10,11 @@
 ])
 
 <div
+    wire:key="tile-selection-{{ $id }}"
     class="space-y-6 {{ $class }}"
     x-data="{
         options: {{ json_encode(collect($options)->keyBy('name')) }},
-        allSelected: true,
+        allSelected: false,
         selectAll: function() {
             let checkAllValue = true;
             if (this.allSelected) {
@@ -26,9 +27,9 @@
         }
     }"
 >
-    <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between md:items-end">
+    <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
         <div class="flex flex-col">
-            <div class="text-lg font-bold">
+            <div class="text-lg font-bold text-theme-secondary-900">
                 {{ $title }}
             </div>
 
