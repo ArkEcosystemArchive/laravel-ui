@@ -121,16 +121,10 @@ window.initClipboard = () => {
 yarn add body-scroll-lock
 ```
 
-2. Publish the js assets if you haven't yet
-
-```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="js"
-```
-
-3. Import the modal script in your `resources/js/app.js` file
+2. Import the modal script in your `resources/js/app.js` file
 
 ```js
-import Modal from "./vendor/ark/modal.js";
+import Modal from "@ui/js/modal";
 
 window.Modal = Modal;
 ```
@@ -146,7 +140,7 @@ php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceS
 2. Import the markdown script in your `resources/js/app.js` file
 
 ```js
-import MarkdownEditor from "./vendor/ark/markdown-editor/markdown-editor.js";
+import MarkdownEditor from "@ui/js/markdown-editor/markdown-editor.js";
 
 window.MarkdownEditor = MarkdownEditor;
 ```
@@ -256,7 +250,7 @@ Note that it is also possible to hook into the lifecycle methods of the modal. Y
 
 
 ```js
-import Modal from "./vendor/ark/modal.js";
+import Modal from "@ui/js/modal";
 
 window.Modal = Modal;
 ```
@@ -326,6 +320,7 @@ yarn add -D pikaday
 ```
 
 2. Include pikaday CSS
+
 
 ```css
 @import "../../node_modules/pikaday/css/pikaday.css";
@@ -441,7 +436,7 @@ There are also default error pages you can use for your Laravel project
 1. Add the following to `app.js` file:
 
 ```js
-import '../vendor/ark/page-scroll';
+import "@ui/js/page-scroll";
 ```
 
 2. Use the `HasPagination` trait on Livewire Components:
@@ -477,7 +472,7 @@ class Articles {
 2. Add the following to the `app.js` file:
 
 ```js
-import Pagination from "./vendor/ark/pagination";
+import Pagination from "@ui/js/pagination";
 
 window.Pagination = Pagination
 ```
