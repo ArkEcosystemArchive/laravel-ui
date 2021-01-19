@@ -319,7 +319,7 @@
 }
 
 .tile-selection-select-all {
-    @apply flex items-center md:flex-row-reverse;
+    @apply flex items-center select-none md:flex-row-reverse;
 }
 
 .tile-selection-checkbox,
