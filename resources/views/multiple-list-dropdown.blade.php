@@ -3,7 +3,7 @@
     'description' => null,
 ])
 
-<div x-data="{ showDropdown: false }">
+<div x-data="{ showDropdown: false }" x-cloak>
     <div
         class="multiple-list-link"
         @click="showDropdown = true"
