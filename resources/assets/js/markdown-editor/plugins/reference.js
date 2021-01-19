@@ -84,7 +84,7 @@ const createPopupContent = (editor) => {
 const initPopup = (editor, menuIndex, svgIcon) => {
     const name = "reference";
     const title = "Add page reference";
-    const tooltip = "reference";
+    const tooltip = "Page reference";
 
     const popupContent = createPopupContent(editor);
 
