@@ -52,7 +52,7 @@ const guessCurrentHeadingLevel = (editor) => {
         if (isAnchor) {
             i++;
         }
-    } while (isAnchor && i < 6);
+    } while (isAnchor && i < 4);
 
     return i || false;
 };

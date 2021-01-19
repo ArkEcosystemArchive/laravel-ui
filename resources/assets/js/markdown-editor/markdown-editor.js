@@ -134,8 +134,6 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
             iconH2,
             iconH3,
             iconH4,
-            iconH5,
-            iconH6,
             iconYoutube,
             iconTwitter,
             iconPodcast,
@@ -171,10 +169,6 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
                 twitterPlugin(editor, buttonIndex - 1, iconTwitter),
             embedlink: (editor) =>
                 embedLinkPlugin(editor, buttonIndex - 1, iconEmbedLink),
-            heading6: (editor) =>
-                headingPlugin(editor, buttonIndex - 11, iconH6, 6),
-            heading5: (editor) =>
-                headingPlugin(editor, buttonIndex - 11, iconH5, 5),
             heading4: (editor) =>
                 headingPlugin(editor, buttonIndex - 11, iconH4, 4),
             heading3: (editor) =>
