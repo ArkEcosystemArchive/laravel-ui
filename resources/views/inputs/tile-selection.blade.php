@@ -4,6 +4,7 @@
     'title',
     'description' => null,
     'compact' => false,
+    'hiddenOptions' => false,
 ])
 
 <div
@@ -34,25 +35,29 @@
             @endif
         </div>
 
-        <label class="tile-selection-select-all">
-            <input
-                type="checkbox"
-                class="form-checkbox tile-selection-select-all-checkbox"
-                x-on:click="selectAll"
-                x-model="allSelected"
-            />
+        @unless ($hiddenOptions)
+            <label class="tile-selection-select-all">
+                <input
+                    type="checkbox"
+                    class="form-checkbox tile-selection-select-all-checkbox"
+                    x-on:click="selectAll"
+                    x-model="allSelected"
+                />
 
-            <div>@lang('ui::general.select-all')</div>
-        </label>
+                <div>@lang('ui::general.select-all')</div>
+            </label>
+        @endunless
     </div>
 
-    <div class="{{ $compact ? 'tile-selection-list-compact' : 'tile-selection-list' }}">
-        @foreach ($options as $option)
-            @include('ark::inputs.tile-selection-option', [
-                'id' => $id,
-                'option' => $option,
-                'compact' => $compact,
-            ])
-        @endforeach
-    </div>
+    @unless ($hiddenOptions)
+        <div class="{{ $compact ? 'tile-selection-list-compact' : 'tile-selection-list' }}">
+            @foreach ($options as $option)
+                @include('ark::inputs.tile-selection-option', [
+                    'id' => $id,
+                    'option' => $option,
+                    'compact' => $compact,
+                ])
+            @endforeach
+        </div>
+    @endunless
 </div>
