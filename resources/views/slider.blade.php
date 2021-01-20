@@ -28,7 +28,7 @@
                 {{ $title }}
 
                 @if ($titleTooltip)
-                    <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
+                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
                 @endif
             </div>
 
@@ -54,12 +54,12 @@
                             {{ $title }}
 
                             @if ($titleTooltip)
-                                <x-ark-info :tooltip="$titleTooltip" class="absolute ml-2 -top-10" />
+                                <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
                             @endif
                         </div>
                     @endif
 
-                    <div class="flex items-center justify-between mb-3 space-x-4">
+                    <div class="flex justify-between items-center mb-3 space-x-4">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
