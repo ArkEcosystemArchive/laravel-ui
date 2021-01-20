@@ -99,28 +99,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'fonts');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/js/modal.js' => resource_path('js/vendor/ark/modal.js'),
-        ], 'modal');
-
-        $this->publishes([
-            __DIR__.'/../resources/assets/js/page-scroll.js' => resource_path('js/vendor/ark/page-scroll.js'),
-        ], 'page-scroll');
-
-        $this->publishes([
-            __DIR__.'/../resources/assets/js/rich-select.js' => resource_path('js/vendor/ark/rich-select.js'),
-        ], 'rich-select');
-
-        $this->publishes([
-            __DIR__.'/../resources/assets/js/tippy.js' => resource_path('js/vendor/ark/tippy.js'),
-            __DIR__.'/../resources/assets/js/prism-line-numbers.js' => resource_path('js/vendor/ark/prism-line-numbers.js'),
-            __DIR__.'/../resources/assets/js/prism.js' => resource_path('js/vendor/ark/prism.js'),
-            __DIR__.'/../resources/assets/js/clipboard.js' => resource_path('js/vendor/ark/clipboard.js'),
-            __DIR__.'/../resources/assets/js/picasso.ts' => resource_path('js/vendor/ark/picasso.ts'),
-            __DIR__.'/../resources/assets/js/reposition-dropdown.js' => resource_path('js/vendor/ark/reposition-dropdown.js'),
-            __DIR__.'/../resources/assets/js/highlightjs-copy.js' => resource_path('js/vendor/ark/highlightjs-copy.js'),
-        ], 'js');
-
-        $this->publishes([
             __DIR__.'/../resources/assets/css' => resource_path('css/vendor/ark'),
         ], 'css');
 
@@ -136,6 +114,41 @@ class UserInterfaceServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views/errors'         => resource_path('views/errors'),
             __DIR__.'/../resources/assets/images/errors' => resource_path('images/errors'),
         ], 'error-pages');
+
+        // Individual JS files
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/modal.js' => resource_path('js/vendor/ark/modal.js'),
+        ], 'modal');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/page-scroll.js' => resource_path('js/vendor/ark/page-scroll.js'),
+        ], 'page-scroll');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/rich-select.js' => resource_path('js/vendor/ark/rich-select.js'),
+        ], 'tippy');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/prism-line-numbers.js' => resource_path('js/vendor/ark/prism-line-numbers.js'),
+            __DIR__.'/../resources/assets/js/prism.js' => resource_path('js/vendor/ark/prism.js'),
+        ], 'prism');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/clipboard.js' => resource_path('js/vendor/ark/clipboard.js'),
+        ], 'clipboard');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/picasso.ts' => resource_path('js/vendor/ark/picasso.ts'),
+        ], 'picasso');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/reposition-dropdown.js' => resource_path('js/vendor/ark/reposition-dropdown.js'),
+        ], 'dropdown');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/highlightjs-copy.js' => resource_path('js/vendor/ark/highlightjs-copy.js'),
+        ], 'highlightjs');
     }
 
     /**
