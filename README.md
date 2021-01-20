@@ -22,6 +22,18 @@ Since this package relies on a few 3rd party packages, you will need to have the
 3. Import the vendor css assets in your `app.css` file
 4. Import the vendor `tailwind.config.js` file in your own tailwind config and build on top of that if you need additional changes
 5. Use the components in your project with `<x-ark-component>`
+7. Add the following snippet to your `webpack.mix.js` file to be able to use the `@ui` alias:
+
+```js
+mix.webpackConfig({
+        resolve: {
+            alias: {
+                '@ui': path.resolve(__dirname, 'vendor/arkecosystem/ui/resources/assets/')
+            }
+        }
+    })
+    ...
+```
 
 **Protip**: instead of running step 3 manually, you can add the following to your `post-autoload-dump` property in `composer.json`:
 
@@ -64,7 +76,7 @@ or to individual pages:
 3. Add to webpack mix
 
 ```js
-.ts('resources/js/vendor/ark/picasso.ts', 'public/js')
+.ts('vendor/arkecosystem/ui/resources/assets/js/picasso.ts', 'public/js')
 ```
 
 4. Pass an `$identifier` value to the navbar component be used as seed for the generation of the image
@@ -74,16 +86,10 @@ or to individual pages:
 1. Add clipboard to Laravel Mix config
 
 ```js
-.copy('resources/js/ark/vendor/clipboard.js', 'public/js/clipboard.js')
+.copy('vendor/arkecosystem/ui/resources/assets/js/clipboard.js', 'public/js/clipboard.js')
 ```
 
-2. Publish the js assets if you haven't yet
-
-```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="js"
-```
-
-3. Add clipboard to any pages that need it
+2. Add clipboard to any pages that need it
 
 ```blade
 @push('scripts')
@@ -91,13 +97,13 @@ php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceS
 @endpush
 ```
 
-4. Install `tippy.js`
+3. Install `tippy.js`
 
 ```bash
 yarn add tippy.js
 ```
 
-5. Add the following snippet to your `resources/app.js`
+4. Add the following snippet to your `resources/app.js`
 
 ```js
 window.initClipboard = () => {
@@ -131,13 +137,7 @@ window.Modal = Modal;
 
 ### WYSIWYG Markdown editor
 
-1. Publish the JS assets if you haven't yet
-
-```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="wysiwyg"
-```
-
-2. Import the markdown script in your `resources/js/app.js` file
+1. Import the markdown script in your `resources/js/app.js` file
 
 ```js
 import MarkdownEditor from "@ui/js/markdown-editor/markdown-editor.js";
@@ -145,24 +145,24 @@ import MarkdownEditor from "@ui/js/markdown-editor/markdown-editor.js";
 window.MarkdownEditor = MarkdownEditor;
 ```
 
-3. Ensure to import the following scripts inside the `<head>` tag of your template.
+2. Ensure to import the following scripts inside the `<head>` tag of your template.
 
 
 ```html
 @push('scripts')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
-<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-only.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js" defer></script>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-only.min.css" />
 @endpush
 ```
 
-4. Add the markdown component to your form
+3. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-5. You can change the height and the toolbar preset:
+4. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -263,19 +263,13 @@ window.Modal = Modal;
 yarn add tippy.js
 ```
 
-2. Publish the js assets if you haven't yet
-
-```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\ServiceProvider" --tag="js"
-```
-
-3. Add to webpack mix
+2. Add to webpack mix
 
 ```js
-.js('resources/js/vendor/ark/tippy.js', 'public/js')
+.js('vendor/arkecosystem/ui/resources/assets/js/tippy.js', 'public/js')
 ```
 
-4. Add tippy to any pages that need it
+3. Add tippy to any pages that need it
 
 ```blade
 @push('scripts')
@@ -348,16 +342,10 @@ Livewire::component('notifications-indicator', NotificationsIndicator::class);
 1. Add prism js to Laravel webpack mix
 
 ```js
-.js('resources/js/prism.js', 'public/js')
+.js('vendor/arkecosystem/ui/resources/assets/js/prism.js', 'public/js')
 ```
 
-2. Publish the js & css assets if you haven't yet
-
-```bash
-php artisan vendor:publish --provider="ARKEcosystem\UserInterface\ServiceProvider" --tag="js" --tag="css"
-```
-
-3. Add prism to any pages that need it
+2. Add prism to any pages that need it
 
 ```blade
 @push('scripts')
@@ -365,19 +353,19 @@ php artisan vendor:publish --provider="ARKEcosystem\UserInterface\ServiceProvide
 @endpush
 ```
 
-4. Include prism CSS
+3. Include prism CSS
 
 ```css
 @import "../vendor/ark/_prism-theme.css";
 ```
 
-5. Install `prism.js`
+4. Install `prism.js`
 
 ```bash
 yarn add -D prism-themes prismjs
 ```
 
-6. Add the following snippet to `resources/prism.js`
+5. Add the following snippet to `resources/prism.js`
 
 ```js
 import "../vendor/ark/prism";
