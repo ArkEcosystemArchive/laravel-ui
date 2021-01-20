@@ -25,36 +25,32 @@
             <input
                 id="photo"
                 type="file"
-                class="block hidden absolute top-0 opacity-0 cursor-pointer"
+                class="absolute top-0 hidden block opacity-0 cursor-pointer"
                 wire:model="photo"
                 accept="image/jpg,image/jpeg,image/bmp,image/png"
             />
             @endunless
         </div>
 
-        @if ($readonly)
-
-        @else
-            @unless ($image)
-                <div
-                    wire:key="upload-button"
-                    class="flex absolute top-2 right-2 bottom-2 left-2 flex-col justify-center items-center space-y-2 rounded-xl cursor-pointer pointer-events-none"
-                    role="button"
-                >
-                    <div class="text-theme-primary-500">
-                        <x-ark-icon name="upload-cloud" size="lg" />
-                    </div>
-
-                    <div class="font-semibold text-theme-secondary-900">{{ $uploadText }}</div>
-
-                    <div class="text-xs font-semibold text-theme-secondary-500">
-                        @lang('ui::forms.upload-image.min_size', [$minWidth, $minHeight])
-                    </div>
-                    <div class="text-xs font-semibold text-theme-secondary-500">
-                        @lang('ui::forms.upload-image.max_filesize', [$maxFilesize])
-                    </div>
+        @if (!$image && !$readonly)
+            <div
+                wire:key="upload-button"
+                class="absolute flex flex-col items-center justify-center space-y-2 cursor-pointer pointer-events-none top-2 right-2 bottom-2 left-2 rounded-xl"
+                role="button"
+            >
+                <div class="text-theme-primary-500">
+                    <x-ark-icon name="upload-cloud" size="lg" />
                 </div>
-            @endunless
+
+                <div class="font-semibold text-theme-secondary-900">{{ $uploadText }}</div>
+
+                <div class="text-xs font-semibold text-theme-secondary-500">
+                    @lang('ui::forms.upload-image.min_size', [$minWidth, $minHeight])
+                </div>
+                <div class="text-xs font-semibold text-theme-secondary-500">
+                    @lang('ui::forms.upload-image.max_filesize', [$maxFilesize])
+                </div>
+            </div>
         @endif
 
 
@@ -77,7 +73,7 @@
         </div>
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="bottom-0 left-0 right-0 rounded-xl" :dimensions="$dimensions" />
         </div>
         @endunless
     </div>
