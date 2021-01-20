@@ -6,6 +6,7 @@
     'minWidth'      => 148,
     'minHeight'     => 148,
     'maxFilesize'   => '2MB',
+    'readonly'      => false,
 ])
 
 <div class="relative">
@@ -14,20 +15,24 @@
             @if ($image)
                 style="background-image: url('{{ $image }}')"
             @endif
-            class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl cursor-pointer bg-theme-primary-50 hover:bg-theme-primary-100 transition-default"
-            @click="select()"
-            role="button"
+            class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50 @unless($readonly) cursor-pointer hover:bg-theme-primary-100 transition-default @endunless"
+            @unless($readonly)
+                @click="select()"
+                role="button"
+            @endunless
         >
-            <input
-                id="photo"
-                type="file"
-                class="block hidden absolute top-0 opacity-0 cursor-pointer"
-                wire:model="photo"
-                accept="image/jpg,image/jpeg,image/bmp,image/png"
-            />
+            @unless($readonly)
+                <input
+                    id="photo"
+                    type="file"
+                    class="block hidden absolute top-0 opacity-0 cursor-pointer"
+                    wire:model="photo"
+                    accept="image/jpg,image/jpeg,image/bmp,image/png"
+                />
+            @endunless
         </div>
 
-        @unless ($image)
+        @if (!$image && !$readonly)
             <div
                 wire:key="upload-button"
                 class="flex absolute top-2 right-2 bottom-2 left-2 flex-col justify-center items-center space-y-2 rounded-xl cursor-pointer pointer-events-none"
@@ -46,27 +51,30 @@
                     @lang('ui::forms.upload-image.max_filesize', [$maxFilesize])
                 </div>
             </div>
-        @endunless
+        @endif
 
-        <div
-            wire:key="delete-button"
-            class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default {{ $dimensions }}
-                @unless ($image) hidden @endunless"
 
-        >
-            <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
-
+        @unless($readonly)
             <div
-                class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
-                wire:click="delete"
-                data-tippy-hover="{{ $deleteTooltip }}"
-            >
-                <x-ark-icon name="close" size="sm" />
-            </div>
-        </div>
+                wire:key="delete-button"
+                class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default {{ $dimensions }}
+                    @unless ($image) hidden @endunless"
 
-        <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
-        </div>
+            >
+                <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
+
+                <div
+                    class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
+                    wire:click="delete"
+                    data-tippy-hover="{{ $deleteTooltip }}"
+                >
+                    <x-ark-icon name="close" size="sm" />
+                </div>
+            </div>
+
+            <div x-show="isUploading" x-cloak>
+                <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
+            </div>
+        @endunless
     </div>
 </div>

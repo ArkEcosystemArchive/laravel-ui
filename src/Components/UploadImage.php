@@ -17,6 +17,8 @@ abstract class UploadImage extends Component
 
     public $dimensions;
 
+    public $readonly = false;
+
     abstract public function render();
 
     abstract public function store();
