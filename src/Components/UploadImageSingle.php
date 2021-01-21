@@ -12,11 +12,16 @@ trait UploadImageSingle
 
     public $imageSingle;
 
-    public array $imageSingleValidators = ['mimes:jpeg,png,bmp,jpg', 'max:2048'];
+    public $readonly = false;
 
     abstract public function render();
 
     abstract public function updatedImageSingle();
 
     abstract public function deleteImageSingle();
+
+    public function imageSingleValidators(): array
+    {
+        return ['mimes:jpeg,png,bmp,jpg', 'max:2048'];
+    }
 }
