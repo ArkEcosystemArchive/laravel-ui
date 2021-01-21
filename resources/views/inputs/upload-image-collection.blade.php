@@ -16,7 +16,7 @@
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false"
-    class="relative space-y-8 z-0"
+    class="relative z-0 space-y-8"
 >
     <div class="rounded-xl p-2 border-2 border-dashed border-theme-primary-100 {{ $dimensions }}">
         <input
@@ -34,7 +34,7 @@
 
             <div class="font-semibold text-theme-secondary-900">{!! $uploadText !!}</div>
 
-            <div class="flex flex-col space-y-1 sm:flex-row sm:space-y-0 sm:space-x-1 text-center text-xs font-semibold text-theme-secondary-500 chunk-header">
+            <div class="flex flex-col space-y-1 text-xs font-semibold text-center sm:flex-row sm:space-y-0 sm:space-x-1 text-theme-secondary-500 chunk-header">
                 @lang('ui::forms.upload-image-collection.requirements', [
                     'width'    => $minWidth,
                     'height'   => $minHeight,
