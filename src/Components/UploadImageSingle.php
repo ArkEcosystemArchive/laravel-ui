@@ -12,6 +12,8 @@ trait UploadImageSingle
 
     public $imageSingle;
 
+    public $readonly = false;
+
     public array $imageSingleValidators = ['mimes:jpeg,png,bmp,jpg', 'max:2048'];
 
     abstract public function render();
