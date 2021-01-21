@@ -36,7 +36,7 @@ abstract class UploadImageCollection extends Component
     public function validators()
     {
         return [
-            'imageCollection' => ['max:8'],
+            'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
             'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
         ];
     }
