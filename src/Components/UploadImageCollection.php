@@ -16,12 +16,17 @@ abstract class UploadImageCollection extends Component
 
     public $temporaryImage;
 
+    public array $imageCollectionValidators = [
+        'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
+        'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
+    ];
+
     abstract public function saveImageCollection();
 
     // @TODO: handle removing of old/abandoned temporary files
     public function updatedTemporaryImage()
     {
-        $this->validate($this->validators());
+        $this->validate($this->imageCollectionValidators);
 
         $this->imageCollection->add([
             'photo' => $this->temporaryImage,
@@ -32,13 +37,5 @@ abstract class UploadImageCollection extends Component
     public function deleteImage(int $index): void
     {
         $this->imageCollection->forget($index);
-    }
-
-    public function validators()
-    {
-        return [
-            'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
-            'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
-        ];
     }
 }
