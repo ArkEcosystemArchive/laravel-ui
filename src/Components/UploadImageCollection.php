@@ -18,6 +18,7 @@ abstract class UploadImageCollection extends Component
 
     abstract public function saveImageCollection();
 
+    // @TODO: handle removing of old/abandoned temporary files
     public function updatedTemporaryImage()
     {
         $this->validate($this->validators());
