@@ -33,7 +33,7 @@ trait UploadImageCollection
         $this->imageCollection->forget($index);
     }
 
-    public function validators(): array
+    public function imageCollectionValidators(): array
     {
         return [
             'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
