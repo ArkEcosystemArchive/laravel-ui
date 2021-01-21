@@ -1,4 +1,5 @@
 @props([
+    'id',
     'image'         => null,
     'dimensions'    => 'w-48 h-48',
     'uploadText'    => trans('ui::forms.upload-image.upload_image'),
@@ -9,8 +10,14 @@
     'readonly'      => false,
 ])
 
-<div class="relative">
-    <div class="rounded-xl {{ $dimensions }} @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
+<div
+    x-data="{ isUploading: false, select() { document.getElementById('image-single-upload-{{ $id }}').click(); } }"
+    x-on:livewire-upload-start="isUploading = true"
+    x-on:livewire-upload-finish="isUploading = false"
+    x-on:livewire-upload-error="isUploading = false"
+    class="relative {{ $dimensions }}"
+>
+    <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
         <div
             @if ($image)
                 style="background-image: url('{{ $image }}')"
@@ -23,10 +30,10 @@
         >
             @unless($readonly)
                 <input
-                    id="photo"
+                    id="image-single-upload-{{ $id }}"
                     type="file"
                     class="block hidden absolute top-0 opacity-0 cursor-pointer"
-                    wire:model="photo"
+                    wire:model="imageSingle"
                     accept="image/jpg,image/jpeg,image/bmp,image/png"
                 />
             @endunless
@@ -57,15 +64,15 @@
         @unless($readonly)
             <div
                 wire:key="delete-button"
-                class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default {{ $dimensions }}
+                class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default w-full h-full
                     @unless ($image) hidden @endunless"
 
             >
-                <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default {{ $dimensions }}"></div>
+                <div class="absolute top-0 w-full h-full rounded-xl opacity-70 pointer-events-none border-6 border-theme-secondary-900 transition-default"></div>
 
                 <div
                     class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
-                    wire:click="delete"
+                    wire:click="deleteImageSingle"
                     data-tippy-hover="{{ $deleteTooltip }}"
                 >
                     <x-ark-icon name="close" size="sm" />
