@@ -5,21 +5,15 @@ declare(strict_types=1);
 namespace ARKEcosystem\UserInterface\Components;
 
 use Illuminate\Support\Collection;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 
-abstract class UploadImageCollection extends Component
+trait UploadImageCollection
 {
     use WithFileUploads;
 
     public Collection $imageCollection;
 
     public $temporaryImage;
-
-    public array $imageCollectionValidators = [
-        'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
-        'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
-    ];
 
     abstract public function saveImageCollection();
 
@@ -37,5 +31,13 @@ abstract class UploadImageCollection extends Component
     public function deleteImage(int $index): void
     {
         $this->imageCollection->forget($index);
+    }
+
+    public function validators(): array
+    {
+        return [
+            'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
+            'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
+        ];
     }
 }
