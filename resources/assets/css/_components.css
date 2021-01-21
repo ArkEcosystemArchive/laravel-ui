@@ -120,7 +120,7 @@
 }
 
 .link:hover {
-    @apply underline text-theme-primary-700;
+    @apply underline text-theme-primary-700 cursor-pointer
 }
 
 .link:active {
