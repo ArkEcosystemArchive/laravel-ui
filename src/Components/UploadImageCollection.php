@@ -20,7 +20,7 @@ trait UploadImageCollection
     // @TODO: handle removing of old/abandoned temporary files
     public function updatedTemporaryImage()
     {
-        $this->validate($this->imageCollectionValidators);
+        $this->validate($this->imageCollectionValidators());
 
         $this->imageCollection->add([
             'photo' => $this->temporaryImage,
