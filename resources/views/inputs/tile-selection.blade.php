@@ -13,7 +13,7 @@
     wire:key="tile-selection-{{ $id }}"
     class="space-y-6 {{ $class }}"
     x-data="{
-        options: {{ json_encode(collect($options)->keyBy('name')) }},
+        options: {{ json_encode(collect($options)->keyBy('id')) }},
         selectedOption: @if ($single) '{{ $this->{$model ?? $id} }}' @else null @endif,
         allSelected: false,
         selectAll: function() {
@@ -60,7 +60,7 @@
                     'id' => $id,
                     'option' => $option,
                     'single' => $single,
-                    'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['name'].'.checked',
+                    'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                 ])
             @endforeach
         </div>
