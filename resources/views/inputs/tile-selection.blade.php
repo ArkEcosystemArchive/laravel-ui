@@ -39,7 +39,7 @@
             @endif
         </div>
 
-        @unless ($hiddenOptions || $single === false)
+        @unless ($hiddenOptions || $single === true)
             <label class="tile-selection-select-all">
                 <input
                     type="checkbox"
