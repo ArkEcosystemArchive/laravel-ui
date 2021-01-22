@@ -54,7 +54,7 @@
             @foreach ($images as $index => $image)
                 <div class="relative {{ $imageHeight }}">
                     <div
-                        style="background-image: url('{{ $image['path'] }}')"
+                        style="background-image: url('{{ $image['url'] }}')"
                         class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
                     ></div>
 

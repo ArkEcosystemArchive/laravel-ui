@@ -11,26 +11,23 @@ trait UploadImageCollection
 {
     use WithFileUploads;
 
-    public Collection $imageCollection;
+    public array $imageCollection = [];
 
     public $temporaryImage;
 
-    abstract public function saveImageCollection();
-
-    // @TODO: handle removing of old/abandoned temporary files
     public function updatedTemporaryImage()
     {
         $this->validate($this->imageCollectionValidators());
 
-        $this->imageCollection->add([
-            'photo' => $this->temporaryImage,
-            'path'  => '/'.$this->temporaryImage->storePubliclyAs('public', $this->temporaryImage->hashName(), 'public'),
-        ]);
+        $this->imageCollection[] = [
+            'image' => $this->temporaryImage,
+            'url'   => $this->temporaryImage->temporaryUrl(),
+        ];
     }
 
     public function deleteImage(int $index): void
     {
-        $this->imageCollection->forget($index);
+        $this->imageCollection = collect($this->imageCollection)->forget($index)->toArray();
     }
 
     public function imageCollectionValidators(): array
