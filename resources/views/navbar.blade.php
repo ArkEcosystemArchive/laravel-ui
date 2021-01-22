@@ -23,6 +23,10 @@
             <div class="flex relative justify-between h-20 md:h-24">
                 @include('ark::navbar.logo')
 
+                @isset($middle)
+                    {{ $middle }}
+                @endisset
+
                 <div class="flex justify-end">
                     <div class="flex flex-1 justify-end items-center sm:items-stretch sm:justify-between">
                         @isset($desktop)
