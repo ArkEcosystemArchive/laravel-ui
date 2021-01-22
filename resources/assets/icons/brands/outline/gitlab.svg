@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 24.1 21.8" style="enable-background:new 0 0 24.1 21.8;" xml:space="preserve">
-<style type="text/css">
-	.gitlab-st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-	.gitlab-st1{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
-</style>
-<g id="icon" transform="translate(-920.3 -1222.3)">
-	<path id="Контур_3" class="gitlab-st0" d="M932,1243.1l11.4-10.2l-4.5-9.6l-6.8,18.3l-6.5-18.3l-4.3,9.6L932,1243.1z"/>
-	<path id="Контур_4" class="gitlab-st1" d="M922.3,1233.2h19.5"/>
-</g>
-</svg>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24.1 21.8" xml:space="preserve"><g id="icon" transform="translate(-920.3 -1222.3)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path id="Контур_3" d="M932 1243.1l11.4-10.2-4.5-9.6-6.8 18.3-6.5-18.3-4.3 9.6 10.7 10.2z" stroke-linejoin="round"/><path id="Контур_4" d="M922.3 1233.2h19.5"/></g></svg>

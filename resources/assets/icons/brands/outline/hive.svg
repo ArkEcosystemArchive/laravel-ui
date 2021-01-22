@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24.244" height="21.355" viewBox="0 0 24.244 21.355">
-  <g id="Hive" transform="translate(-819.581 -247.901)">
-    <path id="Фигура_720" data-name="Фигура 720" d="M0,10.6,6.169,0l6.169,10.6L6.011,21.355ZM8.7,21.2l5.378-9.333h3.48L12.181,21.2Zm5.792-.046,6.269-10.68L14.724.023h3.483l6.037,10.448-6.037,10.68ZM14.047,9.313,8.69.023h3.466l5.356,9.29Z" transform="translate(819.581 247.901)" fill="currentColor"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24.244" height="21.355"><g id="Hive" transform="translate(-819.581 -247.901)"><path id="Фигура_720" data-name="Фигура 720" d="M0 10.6L6.169 0l6.169 10.6-6.327 10.755zm8.7 10.6l5.378-9.333h3.48L12.181 21.2zm5.792-.046l6.269-10.68L14.724.023h3.483l6.037 10.448-6.037 10.68zm-.445-11.841L8.69.023h3.466l5.356 9.29z" transform="translate(819.581 247.901)" fill="currentColor"/></g></svg>
