@@ -28,7 +28,9 @@
                 {{ $title }}
 
                 @if ($titleTooltip)
-                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                    <div class="inline-flex items-end">
+                        <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-1" type="hint" large />
+                    </div>
                 @endif
             </div>
 
@@ -50,11 +52,13 @@
             @if (($title && !$viewAllUrl) || $topPagination)
                 <div class="{{ $paginationWrapperClass }}">
                     @if($title && !$viewAllUrl)
-                        <div class="flex-1 relative {{ $titleClass }} my-4">
+                        <div class="flex-1 relative {{ $titleClass }} my-4 items-end">
                             {{ $title }}
 
                             @if ($titleTooltip)
-                                <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-2" />
+                                <div class="inline-flex items-end">
+                                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-1" type="hint" large />
+                                </div>
                             @endif
                         </div>
                     @endif
