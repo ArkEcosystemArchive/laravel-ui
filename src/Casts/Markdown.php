@@ -8,6 +8,8 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 final class Markdown implements CastsAttributes
 {
+    protected array $allowedTags = ['ins'];
+
     /**
      * Cast the given value.
      *
@@ -33,8 +35,20 @@ final class Markdown implements CastsAttributes
      *
      * @return string
      */
-    public function set($model, $key, $value, $attributes)
+    public function set($model, $key, $value, $attributes): string
     {
-        return htmlentities(strip_tags($value));
+        $allowedTagsStr = '<' . implode('><', $this->allowedTags) . '>';
+
+        return $this->rollbackEncodedAllowedTags(htmlentities(strip_tags($value, $allowedTagsStr)));
+    }
+
+    private function rollbackEncodedAllowedTags(string $text): string
+    {
+        foreach ($this->allowedTags as $tag) {
+            $text = str_replace('&lt;' . $tag . '&gt;', '<' . $tag . '>', $text);
+            $text = str_replace('&lt;/' . $tag . '&gt;', '</' . $tag . '>', $text);
+        }
+
+        return $text;
     }
 }
