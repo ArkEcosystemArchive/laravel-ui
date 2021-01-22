@@ -6,31 +6,31 @@
 ])
 
 <label
-    wire:key="tile-selection-option-{{ $option['name'] }}"
+    wire:key="tile-selection-option-{{ $option['id'] }}"
     class="{{ $single ? 'tile-selection-single' : 'tile-selection' }}"
     @if ($single)
-        x-bind:class="{ 'tile-selection--checked': '{{ $option['name'] }}' === selectedOption }"
+        x-bind:class="{ 'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }"
     @else
-        x-bind:class="{ 'tile-selection--checked': options['{{ $option['name'] }}'].checked }"
+        x-bind:class="{ 'tile-selection--checked': options['{{ $option['id'] }}'].checked }"
     @endif
 >
     @if ($single)
         <input
-            id="{{ $id.'-'.$option['name'] }}"
+            id="{{ $id.'-'.$option['id'] }}"
             name="{{ $id }}"
             type="radio"
             class="hidden"
             x-model="selectedOption"
-            value="{{ $option['name'] }}"
+            value="{{ $option['id'] }}"
             wire:model="{{ $wireModel }}"
         />
     @else
         <input
-            id="{{ $id.'-'.$option['name'] }}"
-            name="{{ $option['name'] }}"
+            id="{{ $id.'-'.$option['id'] }}"
+            name="{{ $option['id'] }}"
             type="checkbox"
             class="form-checkbox tile-selection-checkbox"
-            x-model="options['{{ $option['name'] }}'].checked"
+            x-model="options['{{ $option['id'] }}'].checked"
             wire:model="{{ $wireModel }}"
         />
     @endif

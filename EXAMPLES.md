@@ -82,19 +82,19 @@ This file contains basic examples and explains the parameters that can be used f
     description="Grid boxes for multi-selection"
     :options="[
         [
-            'name' => 'reddit',
+            'id' => 'reddit',
             'icon' => 'brands.reddit',
             'title' => 'Reddit',
             'checked' => true,
         ],
         [
-            'name' => 'youtube',
+            'id' => 'youtube',
             'icon' => 'brands.youtube',
             'title' => 'Youtube',
             'checked' => false,
         ],
         [
-            'name' => 'windows',
+            'id' => 'windows',
             'icon' => 'brands.windows',
             'title' => 'Windows',
             'checked' => false,
@@ -112,17 +112,17 @@ This file contains basic examples and explains the parameters that can be used f
     single
     :options="[
         [
-            'name' => 'reddit',
+            'id' => 'reddit',
             'title' => 'Reddit',
             'checked' => false,
         ],
         [
-            'name' => 'youtube',
+            'id' => 'youtube',
             'title' => 'Youtube',
             'checked' => false,
         ],
         [
-            'name' => 'windows',
+            'id' => 'windows',
             'title' => 'Windows',
             'checked' => false,
         ],
@@ -130,16 +130,16 @@ This file contains basic examples and explains the parameters that can be used f
 />
 ```
 
-| Parameter     | Description                                                                                | Required |
-|---------------|--------------------------------------------------------------------------------------------|----------|
-| id            | ID used to identify tile selections                                                        | yes      |
-| title         | title of options                                                                           | yes      |
-| options       | array to display - requires "name", "title" & "checked" ("icon" is required if not single) | yes      |
-| description   | description of options                                                                     | no       |
-| model         | associates a value with livewire component                                                 | no       |
-| single        | only allows a single option to be selected                                                 | no       |
-| hiddenOptions | used for hiding options (e.g. expanding the field)                                         | no       |
-| class         | allows additional classes for the component                                                | no       |
+| Parameter     | Description                                                                              | Required |
+|---------------|------------------------------------------------------------------------------------------|----------|
+| id            | ID used to identify tile selections                                                      | yes      |
+| title         | title of options                                                                         | yes      |
+| options       | array to display - requires "id", "title" & "checked" ("icon" is required if not single) | yes      |
+| description   | description of options                                                                   | no       |
+| model         | associates a value with livewire component                                               | no       |
+| single        | only allows a single option to be selected                                               | no       |
+| hiddenOptions | used for hiding options (e.g. expanding the field)                                       | no       |
+| class         | allows additional classes for the component                                              | no       |
 
 ### Upload Image
 
