@@ -39,9 +39,11 @@ $icons = [
 
 <div class="ark-markdown-editor {{ $class ?? '' }}">
     <div class="input-group">
-        <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
-            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
-        </label>
+        @unless ($hideLabel ?? false)
+            <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
+                {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+            </label>
+        @endunless
 
         <div class="input-wrapper">
             <div
