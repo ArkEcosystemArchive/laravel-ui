@@ -14,7 +14,7 @@
     {{ $label ? $label : trans('forms.' . $name) }}
 
     @if ($required)
-        <div class="h-1 w-1 p-px ml-px mb-3 bg-theme-danger-400 rounded-full"></div>
+        <div class="p-px mb-3 ml-px w-1 h-1 rounded-full bg-theme-danger-400"></div>
     @endif
 
     @if ($tooltip)
