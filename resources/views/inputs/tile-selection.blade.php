@@ -14,7 +14,7 @@
     class="space-y-6 {{ $class }}"
     x-data="{
         options: {{ json_encode(collect($options)->keyBy('name')) }},
-        selectedOption: null,
+        selectedOption: @if ($single) '{{ $this->{$model ?? $id} }}' @else null @endif,
         allSelected: false,
         selectAll: function() {
             let checkAllValue = true;
