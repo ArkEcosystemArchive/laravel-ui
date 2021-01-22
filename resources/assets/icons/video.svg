@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.897" height="21.914" viewBox="0 0 20.897 21.914">
+  <g id="Video" transform="translate(-285.72 -761.544)">
+    <g id="Group_68" data-name="Group 68" transform="translate(286.72 762.75)">
+      <g id="controls-movie-next">
+        <path id="Shape_311" data-name="Shape 311" d="M305.617,768h-18.9v-3.937a1.287,1.287,0,0,1,1.26-1.312h16.378a1.287,1.287,0,0,1,1.26,1.312Z" transform="translate(-286.72 -762.75)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_312" data-name="Shape 312" d="M286.72,771.75v9.186a1.287,1.287,0,0,0,1.26,1.312h3.779" transform="translate(-286.72 -763.876)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_313" data-name="Shape 313" d="M308.32,773.062V771.75" transform="translate(-289.423 -763.876)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_314" data-name="Shape 314" d="M293.74,762.75,292.48,768" transform="translate(-287.441 -762.75)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_315" data-name="Shape 315" d="M302.38,762.75,301.12,768" transform="translate(-288.522 -762.75)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_316" data-name="Shape 316" d="M302.3,780.168l-3.862-3.017a.7.7,0,0,0-.758-.072.758.758,0,0,0-.4.675v6.034a.758.758,0,0,0,.4.675.7.7,0,0,0,.758-.071l3.862-3.017a.773.773,0,0,0,0-1.207Z" transform="translate(-288.732 -764.858)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Rectangle-path_44" data-name="Rectangle-path 44" d="M305.439,776.906a.656.656,0,0,1,.656-.656H307.3a.656.656,0,0,1,.656.656v6.562a.656.656,0,0,1-.656.656H306.1a.656.656,0,0,1-.656-.656Z" transform="translate(-289.062 -764.439)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
