@@ -139,10 +139,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'clipboard');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/js/picasso.ts' => resource_path('js/vendor/ark/picasso.ts'),
-        ], 'picasso');
-
-        $this->publishes([
             __DIR__.'/../resources/assets/js/reposition-dropdown.js' => resource_path('js/vendor/ark/reposition-dropdown.js'),
         ], 'dropdown');
 
