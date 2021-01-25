@@ -478,7 +478,7 @@ Add the following snippet to your `urls.php` lang file:
 In `config/app.php` under `aliases`, add the following entry:
 
 ```
-'DateFormat' => ARKEcosystem\UserInterface\Support\Avatar::class,
+'Avatar' => ARKEcosystem\UserInterface\Support\Avatar::class,
 ```
 
 ### Date Format
