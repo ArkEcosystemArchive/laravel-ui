@@ -29,5 +29,5 @@ it('should render the [identifier] attribute instead of the [profilePhoto] attri
             'profileMenu'  => [],
             'identifier'   => 'unicorn',
         ]))
-        ->contains('x-html="avatarImage"');
+        ->contains('avatar-wrapper');
 });

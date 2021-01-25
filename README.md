@@ -51,35 +51,9 @@ mix.webpackConfig({
 
 ### Navbar / Avatar Component
 
-The navigation bar makes use of [picasso](https://github.com/vechain/picasso) to generate a default avatar (in line with the Desktop Wallet). You will need to set this up in your project as follows:
+The navigation bar makes use of our own PHP implementation of [picasso](https://github.com/vechain/picasso) to generate a default avatar (in line with the Desktop Wallet). You will need to set this up in your project as follows:
 
-1. Install dependencies
-
-```bash
-yarn add mersenne-twister ts-loader typescript
-```
-
-2. Add the following snippet to your layout:
-
-```blade
-<script src="{{ mix('js/picasso.js') }}" defer></script>
-```
-
-or to individual pages:
-
-```blade
-@push('scripts')
-    <script src="{{ mix('js/picasso.js') }}" defer></script>
-@endpush
-```
-
-3. Add to webpack mix
-
-```js
-.ts('vendor/arkecosystem/ui/resources/assets/js/picasso.ts', 'public/js')
-```
-
-4. Pass an `$identifier` value to the navbar component be used as seed for the generation of the image
+1. Pass an `$identifier` value to the navbar component be used as seed for the generation of the image
 
 ### Clipboard
 
@@ -498,6 +472,14 @@ Add the following snippet to your `urls.php` lang file:
 - more styles, and proper configuration to define where styles are published
 
 ## Blade Support
+
+### Avatar
+
+In `config/app.php` under `aliases`, add the following entry:
+
+```
+'DateFormat' => ARKEcosystem\UserInterface\Support\Avatar::class,
+```
 
 ### Date Format
 
