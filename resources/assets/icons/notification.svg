@@ -1,10 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 20 24.5" style="enable-background:new 0 0 20 24.5;" xml:space="preserve">
-<g id="alarm-bell" transform="translate(-2 0.25)">
-	<path id="Контур_472" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M10,21.8c0.3,1.1,1.5,1.7,2.6,1.4c0.7-0.2,1.2-0.7,1.4-1.4"/>
-	<line id="Линия_132" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  x1="12" y1="3" x2="12" y2="0.8"/>
-	<path id="Контур_473" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  d="M12,3c4.1,0,7.5,3.4,7.5,7.5c0,7,1.5,8.2,1.5,8.2H3c0,0,1.5-1.9,1.5-8.2
-		C4.5,6.4,7.9,3,12,3z"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 24.5"><g id="alarm-bell" transform="translate(-2 .25)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path id="Контур_472" d="M10 21.8c.3 1.1 1.5 1.7 2.6 1.4.7-.2 1.2-.7 1.4-1.4"/><path id="Линия_132" d="M12 3V.8"/><path id="Контур_473" d="M12 3c4.1 0 7.5 3.4 7.5 7.5 0 7 1.5 8.2 1.5 8.2H3s1.5-1.9 1.5-8.2C4.5 6.4 7.9 3 12 3z"/></g></svg>
