@@ -65,5 +65,5 @@
         @endisset
     @endforeach
 
-    <div class="ml-6 h-6 border-r border-theme-secondary-100 dark:border-theme-secondary-800"></div>
+    <span class="ml-7 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
 </div>
