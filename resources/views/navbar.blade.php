@@ -19,8 +19,8 @@
     ></div>
 
     <nav class="relative z-30 bg-white shadow-header-smooth dark:shadow-none dark:bg-theme-secondary-900">
-        <div class="px-4 sm:px-6 lg:px-8">
-            <div class="flex relative justify-between h-20 md:h-24">
+        <div class="px-4 sm:px-6 lg:px-8 py-0.5">
+            <div class="flex relative justify-between h-20">
                 @include('ark::navbar.logo')
 
                 @isset($middle)

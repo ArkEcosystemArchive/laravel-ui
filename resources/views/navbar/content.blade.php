@@ -1,4 +1,8 @@
 @auth
+    @isset($navbarNotifications)
+        {{ $navbarNotifications }}
+    @endisset
+
     @isset($notifications)
         @include('ark::navbar.notifications')
     @endisset
