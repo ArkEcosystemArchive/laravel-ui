@@ -73,7 +73,7 @@
 
     @if (! $hiddenOptions && count($options) > ($mobileShowRows * 2))
         <div
-            class="text-center py-3 bg-theme-primary-100 text-theme-primary-600 font-semibold rounded sm:hidden"
+            class="py-3 font-semibold text-center rounded bg-theme-primary-100 text-theme-primary-600 sm:hidden"
             x-bind:class="{ hidden: ! mobileHidden }"
             @click="mobileHidden = false"
         >
