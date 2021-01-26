@@ -11,9 +11,12 @@
     class="{{ $single ? 'tile-selection-single' : 'tile-selection' }}"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
-        'tile-selection--checked': {{ $single ?
-                                        "'".$option['id']."' === selectedOption" :
-                                        'options["'.$option['id'].'"].checked' }},
+
+        @if ($single)
+            'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }",
+        @else
+            'tile-selection--checked': options['{{ $option['id'] }}'].checked }",
+        @endif
     }"
 >
     @if ($single)
