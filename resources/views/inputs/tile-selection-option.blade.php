@@ -2,17 +2,22 @@
     'id',
     'option',
     'wireModel',
-    'single' => 'false',
+    'single' => false,
+    'mobileHidden' => false,
 ])
 
 <label
     wire:key="tile-selection-option-{{ $option['id'] }}"
     class="{{ $single ? 'tile-selection-single' : 'tile-selection' }}"
-    @if ($single)
-        x-bind:class="{ 'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }"
-    @else
-        x-bind:class="{ 'tile-selection--checked': options['{{ $option['id'] }}'].checked }"
-    @endif
+    x-bind:class="{
+        @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
+
+        @if ($single)
+            'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }",
+        @else
+            'tile-selection--checked': options['{{ $option['id'] }}'].checked }",
+        @endif
+    }"
 >
     @if ($single)
         <input
