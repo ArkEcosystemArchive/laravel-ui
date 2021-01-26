@@ -311,7 +311,7 @@
 }
 
 .tile-selection {
-    @apply relative border-2 rounded-lg border-theme-primary-100 h-30 select-none;
+    @apply relative border-2 rounded-lg border-theme-primary-100 h-30 cursor-pointer select-none;
 }
 
 .tile-selection-single {
