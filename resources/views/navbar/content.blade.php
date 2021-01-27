@@ -4,7 +4,7 @@
     @endisset
 
     @isset($notifications)
-        @include('ark::navbar.notifications')
+        @include('ark::navbar.notifications', ['class' => 'hidden md:block'])
     @endisset
 
     @isset($profile)
@@ -13,7 +13,7 @@
         @include('ark::navbar.profile')
     @endisset
 @else
-    <div class="hidden items-center ml-3 md:flex">
+    <div class="items-center hidden ml-3 md:flex">
         @if(Route::has('login'))
             <div>
                 <a href="{{ route('login') }}" class="link">@lang('actions.sign_in')</a>
