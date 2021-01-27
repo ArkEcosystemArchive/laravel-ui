@@ -2,7 +2,6 @@
 
 namespace ARKEcosystem\UserInterface;
 
-use ARKEcosystem\UserInterface\Components\AllNotificationsIndicator;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
 use Illuminate\Support\Facades\Blade;
