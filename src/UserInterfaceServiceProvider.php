@@ -256,6 +256,5 @@ class UserInterfaceServiceProvider extends ServiceProvider
     {
         Livewire::component('flash-message', FlashMessage::class);
         Livewire::component('toast', Toast::class);
-        Livewire::component('all-notifications-indicator', AllNotificationsIndicator::class);
     }
 }

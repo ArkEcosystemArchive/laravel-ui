@@ -22,7 +22,9 @@
             <x-ark-icon name="menu-show" size="sm" />
         </span>
 
-        <livewire:all-notifications-indicator :check-invitations="true" :check-notifications="true" />
+        @isset($allNotificationsIndicator)
+        {{ $allNotificationsIndicator }}
+        @endisset
     </button>
 
     <span class="hidden h-5 border-r md:block md:ml-6 md:mr-4 border-theme-secondary-300 dark:border-theme-secondary-800"></span>
