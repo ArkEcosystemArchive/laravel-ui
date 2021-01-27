@@ -19,8 +19,8 @@
     'autoplayDelay'             => 3000,
     'afterNavigation'           => false,
     'paginationWrapperClass'    => 'flex items-center justify-between',
+    'hideViewAll'               => false,
 ])
-
 <div class="w-full">
     @if ($title && $viewAllUrl)
         <div class="flex mb-4">
@@ -34,15 +34,17 @@
                 @endif
             </div>
 
-            <div class="flex {{ $viewAllClass }}">
-                <div class="flex-1 my-auto text-sm text-right">
-                    <a href="{{ $viewAllUrl }}" class="link">
-                        @lang('ui::actions.view_all')
+            @unless($hideViewAll)
+                <div class="flex {{ $viewAllClass }}">
+                    <div class="flex-1 my-auto text-sm text-right">
+                        <a href="{{ $viewAllUrl }}" class="link">
+                            @lang('ui::actions.view_all')
 
-                        <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
-                    </a>
+                            <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endunless
         </div>
     @endif
 
@@ -52,7 +54,7 @@
             @if (($title && !$viewAllUrl) || $topPagination)
                 <div class="{{ $paginationWrapperClass }}">
                     @if($title && !$viewAllUrl)
-                        <div class="flex-1 relative {{ $titleClass }} my-4 items-end">
+                        <div class="flex-1 relative {{ $titleClass }} py-3 items-end truncate">
                             {{ $title }}
 
                             @if ($titleTooltip)
@@ -63,12 +65,12 @@
                         </div>
                     @endif
 
-                    <div class="flex justify-between items-center mb-3 space-x-4">
+                    <div class="flex justify-between items-center space-x-4">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
-                        @if($afterNavigation)
+                        @if($afterNavigation && ! $hideViewAll)
                             <div class="pl-3 leading-5 sm:border-l-2 border-theme-secondary-300">
                                 {{ $afterNavigation }}
                             </div>
