@@ -176,6 +176,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::pages.contact.content', 'ark-pages-contact-content');
         Blade::component('ark::pages.contact.header', 'ark-pages-contact-header');
 
+        Blade::component('ark::pages.includes.markdown-scripts', 'ark-pages-includes-markdown-scripts');
+
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
         Blade::component('ark::tables.cell-status', 'ark-tables.cell-status');
