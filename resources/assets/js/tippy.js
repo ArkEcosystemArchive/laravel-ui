@@ -3,7 +3,7 @@ import "tippy.js/dist/tippy.css";
 
 /** Enable tooltips for components with this data attribute, and global config options */
 tippy("[data-tippy-content]", {
-    trigger: "mouseenter click",
+    trigger: "mouseenter focus",
 });
 
 tippy("[data-tippy-hover]", {
