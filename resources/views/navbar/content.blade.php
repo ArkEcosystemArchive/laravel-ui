@@ -4,7 +4,7 @@
     @endisset
 
     @isset($notifications)
-        @include('ark::navbar.notifications')
+        @include('ark::navbar.notifications', ['class' => 'hidden md:block'])
     @endisset
 
     @isset($profile)

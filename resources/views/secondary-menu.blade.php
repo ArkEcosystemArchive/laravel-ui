@@ -3,7 +3,7 @@
         <button
             @click="open = !open"
             type="button"
-            class="inline-flex justify-start items-center py-3 px-4 w-full rounded-lg border border-theme-secondary-200"
+            class="inline-flex relative justify-start items-center py-3 px-4 w-full rounded-lg border border-theme-secondary-200"
         >
             @svg('menu-open', 'h-4 w-4 text-theme-secondary-900 mr-3')
             <span class="font-semibold text-theme-secondary-900">{{ $title }}</span>

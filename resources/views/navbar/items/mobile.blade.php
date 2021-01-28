@@ -15,6 +15,20 @@
 
 <div :class="{'block': open, 'hidden': !open}" class="border-t-2 border-theme-secondary-200 {{ $breakpointClass }}">
     <div class="pt-2 pb-4 rounded-b-lg">
+        @if(isset($navbarNotificationsMobile) || isset($notifications))
+            <div class="flex items-center justify-center px-2 py-0.5 mx-8 my-4 border rounded shadow-sm border-theme-secondary-300 md:hidden">
+                {{ $navbarNotificationsMobile }}
+
+                @if(isset($navbarNotificationsMobile) && isset($notifications))
+                    <span class="mx-4 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
+                @endif
+
+                @isset($notifications)
+                    @include('ark::navbar.notifications')
+                @endisset
+            </div>
+        @endisset
+
         @foreach ($navigation as $navItem)
             @if(isset($navItem['children']))
                 <div class="flex w-full">
