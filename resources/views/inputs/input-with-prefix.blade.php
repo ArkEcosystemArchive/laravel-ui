@@ -1,4 +1,4 @@
-<div {{ $attributes->only('class') }} x-data="{ value: '' }">
+<div {{ $attributes->only('class') }} x-data="{ isDirty: {{ !! ($value ?? false) ? 'true' : 'false' }} }">
     <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
@@ -13,7 +13,7 @@
 
         <div
             class="input-wrapper input-wrapper-with-prefix"
-            x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! value }"
+            x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
             @include('ark::inputs.includes.input-internal-icon', [
                 'icon'     => $icon,
@@ -30,7 +30,7 @@
                 'model'          => $model ?? $name,
                 'keydownEnter'   => $keydownEnter ?? null,
                 'max'            => $max ?? null,
-                'attributes'     => $attributes->merge(['x-model' => 'value']),
+                'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = true']),
             ])
 
             @error($name) @include('ark::inputs.input-error') @enderror
