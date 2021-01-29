@@ -18,7 +18,7 @@
         @isset($navItem['children'])
             <a
                 href="#"
-                class="relative inline-flex justify-center items-center px-1 pt-1 font-semibold leading-5 border-b-2 border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 focus:outline-none transition duration-150 ease-in-out h-full dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
+                class="-mb-1 relative inline-flex justify-center items-center px-1 pt-1 font-semibold leading-5 border-b-2 border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 focus:outline-none transition duration-150 ease-in-out h-full dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
                     @if(!$loop->first) ml-8 @endif"
                 @click="openDropdown = openDropdown === '{{ $navItem['label'] }}' ? null : '{{ $navItem['label'] }}'"
                 dusk='navbar-{{ Str::slug($navItem['label']) }}'
@@ -36,7 +36,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="flex flex-col flex-shrink-0 pr-8 pl-8 w-128">
+                    <div class="flex flex-col flex-shrink-0 pl-8 pr-8 w-128">
                         <img class="w-full" :src="selectedChild ? selectedChild.image : '{{ $navItem['image'] }}'" />
 
                         <template x-if="selectedChild">
@@ -49,7 +49,7 @@
         @else
             <a
                 href="{{ route($navItem['route'], $navItem['params'] ?? []) }}"
-                class="inline-flex items-center px-1 pt-1 font-semibold leading-5 border-b-2
+                class="inline-flex items-center px-1 pt-1 font-semibold leading-5 border-b-2 -mb-1
                     focus:outline-none transition duration-150 ease-in-out h-full
                     @if(optional(Route::current())->getName() === $navItem['route'])
                         border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
@@ -65,5 +65,5 @@
         @endisset
     @endforeach
 
-    <span class="ml-7 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
+    <span class="h-5 border-r ml-7 border-theme-secondary-300 dark:border-theme-secondary-800"></span>
 </div>
