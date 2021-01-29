@@ -127,7 +127,12 @@
     > tr
     > td.hoverable-cell.first-cell
     > div.table-cell-bg::before,
-.table-container table > tbody > tr > td.hoverable-cell:last-child > div.table-cell-bg:before,
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell:last-child
+    > div.table-cell-bg:before,
 .table-container
     table
     > tbody
@@ -171,7 +176,12 @@
 .table-container table > tbody > tr > td.hoverable-cell {
     @apply relative;
 }
-.table-container table > tbody > tr > td.hoverable-cell > div.table-cell-content {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell
+    > div.table-cell-content {
     @apply relative flex items-center px-3 py-4;
 }
 
@@ -179,23 +189,43 @@
     @apply absolute top-0 left-0 w-full h-full border-t-2 border-b-2 border-white;
 }
 
-.dark .table-container table > tbody > tr > td.hoverable-cell > div.table-cell-bg {
+.dark
+    .table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell
+    > div.table-cell-bg {
     @apply border-theme-secondary-900;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell.text-right > div.table-cell-content {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.text-right
+    > div.table-cell-content {
     @apply justify-end;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell.text-left > div.table-cell-content {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell.text-left
+    > div.table-cell-content {
     @apply justify-start;
 }
 
-.table-container table > tbody > tr > td.hoverable-cell > div.table-cell-bg:after {
+.table-container
+    table
+    > tbody
+    > tr
+    > td.hoverable-cell
+    > div.table-cell-bg:after {
     content: "";
     @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full border-t border-b border-transparent pointer-events-none;
 }
-
 
 .table-container
     table
@@ -221,7 +251,12 @@
     > tr:hover
     > td.hoverable-cell.last-cell
     > div.table-cell-bg::before,
-.table-container table > tbody > tr:hover > td.hoverable-cell > div.table-cell-bg{
+.table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell
+    > div.table-cell-bg {
     @apply bg-theme-secondary-100;
 }
 
@@ -319,7 +354,13 @@
     > tr:hover
     > td.hoverable-cell.last-cell
     > div.table-cell-bg::before,
-.dark .table-container table > tbody > tr:hover > td.hoverable-cell > div.table-cell-bg {
+.dark
+    .table-container
+    table
+    > tbody
+    > tr:hover
+    > td.hoverable-cell
+    > div.table-cell-bg {
     @apply bg-theme-secondary-800 !important;
 }
 
@@ -405,7 +446,12 @@
     > tr[data-warning]
     > td.hoverable-cell
     > div.table-cell-bg::before,
-.table-container table > tbody > tr[data-warning] > td.hoverable-cell > div.table-cell-bg {
+.table-container
+    table
+    > tbody
+    > tr[data-warning]
+    > td.hoverable-cell
+    > div.table-cell-bg {
     @apply bg-theme-warning-50;
 }
 
@@ -415,7 +461,12 @@
     > tr[data-danger]
     > td.hoverable-cell
     > div.table-cell-bg::before,
-.table-container table > tbody > tr[data-danger] > td.hoverable-cell > div.table-cell-bg {
+.table-container
+    table
+    > tbody
+    > tr[data-danger]
+    > td.hoverable-cell
+    > div.table-cell-bg {
     @apply bg-theme-danger-50;
 }
 
