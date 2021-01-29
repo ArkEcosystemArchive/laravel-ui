@@ -14,7 +14,7 @@
     x-data="{ isUploading: false, select() { document.getElementById('image-single-upload-{{ $id }}').click(); } }"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
-    x-on:livewire-upload-error="isUploading = false"
+    x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError');"
     class="relative {{ $dimensions }}"
 >
     <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
