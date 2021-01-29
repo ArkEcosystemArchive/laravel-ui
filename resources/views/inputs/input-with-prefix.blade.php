@@ -30,7 +30,7 @@
                 'model'          => $model ?? $name,
                 'keydownEnter'   => $keydownEnter ?? null,
                 'max'            => $max ?? null,
-                'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = true']),
+                'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
 
             @error($name) @include('ark::inputs.input-error') @enderror
