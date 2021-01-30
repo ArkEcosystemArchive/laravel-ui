@@ -31,7 +31,8 @@
 ]) }}
     @if ($colspan) colspan="{{ $colspan }}" @endif
 >
-    <div>
+    <div class="table-cell-bg"></div>
+    <div class="table-cell-content">
         {{ $slot }}
     </div>
 </td>
