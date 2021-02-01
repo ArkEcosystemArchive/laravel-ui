@@ -13,7 +13,7 @@
 
 <div x-data="{ openPanel: null }">
     <dl>
-        <div class="{{ $containerClass }} @if ($isDark === false && $border === true) border-2 border-theme-secondary-200 rounded-lg @endif">
+        <div class="{{ $containerClass }} @if ($isDark === false && $border) border-2 border-theme-secondary-200 rounded-lg @endif">
             <dt>
                 <a
                     class="text-left w-full flex justify-between items-center
