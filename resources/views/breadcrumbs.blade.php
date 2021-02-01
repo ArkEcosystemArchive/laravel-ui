@@ -1,7 +1,7 @@
 <div class="flex justify-center w-full h-16 bg-theme-secondary-100 dark:bg-black">
     <div class="flex justify-start items-center px-8 mx-auto w-full max-w-7xl h-full text-sm leading-relaxed text-theme-secondary-500">
         @foreach ($crumbs as $crumb)
-            @if(isset($crumb['route']))
+            @isset($crumb['route'])
                 <span>
                     <a
                         class="flex items-center font-semibold hover:underline transition-default @if($loop->last) text-theme-secondary-700 @endif"
@@ -16,7 +16,7 @@
                 </span>
             @else
                 <span class="font-semibold truncate @if($loop->last) text-theme-secondary-700 @endif">{{ $crumb['label'] }}</span>
-            @endif
+            @endisset
 
             @if(!$loop->last)
                 <span class="mx-3"> | </span>
