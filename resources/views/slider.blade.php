@@ -18,8 +18,8 @@
     'autoplay'                  => false,
     'autoplayDelay'             => 3000,
     'afterNavigation'           => false,
-    'paginationWrapperClass'    => 'flex items-center justify-between',
     'hideViewAll'               => false,
+    'shadowSpacing'             => false,
 ])
 <div class="w-full">
     @if ($title && $viewAllUrl)
@@ -29,7 +29,7 @@
 
                 @if ($titleTooltip)
                     <div class="inline-flex items-end">
-                        <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-1" type="hint" large />
+                        <x-ark-info :tooltip="$titleTooltip" class="absolute ml-1 -top-10" type="hint" large />
                     </div>
                 @endif
             </div>
@@ -50,22 +50,22 @@
 
     <!-- Swiper -->
     <div class="relative @unless($hideNavigation) px-10 @endunless">
-        <div id="swiper-{{ $id }}" class="swiper-container @if ($rows > 1) slider-multirow @endif">
+        <div id="swiper-{{ $id }}" class="@if($shadowSpacing) p-5 -my-5 @endif swiper-container @if ($rows > 1) slider-multirow @endif">
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="{{ $paginationWrapperClass }}">
+                <div class="flex items-center justify-between">
                     @if($title && !$viewAllUrl)
                         <div class="flex-1 relative {{ $titleClass }} py-3 items-end truncate">
                             {{ $title }}
 
                             @if ($titleTooltip)
                                 <div class="inline-flex items-end">
-                                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-1" type="hint" large />
+                                    <x-ark-info :tooltip="$titleTooltip" class="absolute ml-1 -top-10" type="hint" large />
                                 </div>
                             @endif
                         </div>
                     @endif
 
-                    <div class="flex justify-between items-center space-x-4">
+                    <div class="flex items-center justify-between space-x-4">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
@@ -79,7 +79,7 @@
                 </div>
             @endif
 
-            <div class="swiper-wrapper">
+            <div class="@if($shadowSpacing) p-5 -m-5 @endif swiper-wrapper">
                 {{ $slot }}
             </div>
 
