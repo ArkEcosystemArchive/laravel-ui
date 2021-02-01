@@ -17,9 +17,9 @@
     <div class="pt-2 pb-4 rounded-b-lg">
         @if(isset($navbarNotificationsMobile) || isset($notifications))
             <div class="flex items-center justify-center px-2 py-0.5 mx-8 my-4 border rounded shadow-sm border-theme-secondary-300 md:hidden">
-                @if(isset($navbarNotificationsMobile))
+                @isset($navbarNotificationsMobile)
                     {{ $navbarNotificationsMobile }}
-                    @endif
+                @endisset
 
                 @if(isset($navbarNotificationsMobile) && isset($notifications))
                     <span class="h-5 mx-4 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
@@ -32,7 +32,7 @@
         @endisset
 
         @foreach ($navigation as $navItem)
-            @if(isset($navItem['children']))
+            @isset($navItem['children'])
                 <div class="flex w-full">
                     <div class="z-10 w-2 -mr-1"></div>
                     <a
@@ -53,7 +53,7 @@
                 </div>
             @else
                 <x-ark-sidebar-link :route="$navItem['route']" :name="$navItem['label']" :params="$navItem['params'] ?? []" />
-            @endif
+            @endisset
         @endforeach
     </div>
 </div>
