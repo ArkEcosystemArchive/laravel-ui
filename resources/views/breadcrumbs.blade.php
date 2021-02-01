@@ -1,5 +1,5 @@
 <div class="flex justify-center w-full h-16 bg-theme-secondary-100 dark:bg-black">
-    <div class="flex items-center justify-start w-full h-full px-8 mx-auto text-sm leading-relaxed max-w-7xl text-theme-secondary-500">
+    <div class="flex justify-start items-center px-8 mx-auto w-full max-w-7xl h-full text-sm leading-relaxed text-theme-secondary-500">
         @foreach ($crumbs as $crumb)
             @isset($crumb['route'])
                 <span>
