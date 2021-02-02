@@ -18,8 +18,8 @@
     'autoplay'                  => false,
     'autoplayDelay'             => 3000,
     'afterNavigation'           => false,
-    'paginationWrapperClass'    => 'flex items-center justify-between',
     'hideViewAll'               => false,
+    'shadowSpacing'             => false,
 ])
 <div class="w-full">
     @if ($title && $viewAllUrl)
@@ -50,9 +50,9 @@
 
     <!-- Swiper -->
     <div class="relative @unless($hideNavigation) px-10 @endunless">
-        <div id="swiper-{{ $id }}" class="swiper-container @if ($rows > 1) slider-multirow @endif">
+        <div id="swiper-{{ $id }}" class="@if($shadowSpacing) p-5 -my-5 @endif swiper-container @if ($rows > 1) slider-multirow @endif">
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="{{ $paginationWrapperClass }}">
+                <div class="flex justify-between items-center">
                     @if($title && !$viewAllUrl)
                         <div class="flex-1 relative {{ $titleClass }} py-3 items-end truncate">
                             {{ $title }}
@@ -79,7 +79,7 @@
                 </div>
             @endif
 
-            <div class="swiper-wrapper">
+            <div class="@if($shadowSpacing) p-5 -m-5 @endif swiper-wrapper">
                 {{ $slot }}
             </div>
 
