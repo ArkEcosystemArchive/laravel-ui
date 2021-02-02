@@ -120,11 +120,15 @@
 }
 
 .link:hover {
-    @apply underline text-theme-primary-700 cursor-pointer;
+    @apply underline cursor-pointer text-theme-primary-700;
 }
 
 .link:active {
     @apply text-theme-primary-400;
+}
+
+.link.underline {
+    @apply underline;
 }
 
 /** Avatar **/
@@ -311,11 +315,11 @@
 }
 
 .tile-selection {
-    @apply relative border-2 rounded-lg border-theme-primary-100 h-30 cursor-pointer select-none;
+    @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30;
 }
 
 .tile-selection-single {
-    @apply relative border-2 rounded-lg border-theme-primary-100 cursor-pointer select-none py-4;
+    @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100;
 }
 
 .tile-selection-select-all {
@@ -326,7 +330,7 @@
 .tile-selection-checkbox:focus,
 .tile-selection-select-all-checkbox,
 .tile-selection-select-all-checkbox:focus {
-    @apply border-2 border-theme-primary-100 rounded;
+    @apply border-2 rounded border-theme-primary-100;
 }
 
 .tile-selection-select-all-checkbox {
