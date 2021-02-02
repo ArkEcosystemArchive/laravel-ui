@@ -1,5 +1,5 @@
-<div class="flex flex-col py-16 space-y-16 content-container md:py-24 lg:flex-row lg:space-x-8 lg:space-y-0 xl:space-x-16">
-    <div class="flex-1 space-y-8 border-theme-secondary-300 lg:border-r lg:pr-8 xl:pr-24">
+<div class="flex flex-col py-8 space-y-16 content-container lg:flex-row lg:space-y-0">
+    <div class="flex-1 space-y-8 border-theme-secondary-300 lg:border-r lg:pr-6">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
             <h3>@lang('ui::pages.contact.let_us_help.title')</h3>
 
@@ -22,7 +22,7 @@
 
                 <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
                     <div class="flex justify-center items-center space-x-2 w-full">
-                        @svg('brands.discord', 'w-5 h-5')
+                        @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
                 </a>
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col flex-1 lg:px-5" x-data="{ subject: '{{ $subject }}' }">
+    <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ $subject }}' }">
         <h3>@lang('ui::pages.contact.form.title')</h3>
         <div class="mt-4">@lang('ui::pages.contact.form.description')</div>
 
