@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\UserInterface\Components;
 
+use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
 use Livewire\WithFileUploads;
 
 trait UploadImageCollection
 {
+    use HandleUploadError;
     use WithFileUploads;
 
     public array $imageCollection = [];
@@ -17,7 +20,7 @@ trait UploadImageCollection
 
     public function updatedTemporaryImage()
     {
-        $this->validate($this->imageCollectionValidators());
+        $this->validateImageCollection();
 
         $this->imageCollection[] = [
             'image' => $this->temporaryImage,
@@ -28,6 +31,22 @@ trait UploadImageCollection
     public function deleteImage(int $index): void
     {
         $this->imageCollection = collect($this->imageCollection)->forget($index)->toArray();
+    }
+
+    public function validateImageCollection(): void
+    {
+        $validator = Validator::make([
+            'imageCollection' => $this->imageCollection,
+            'temporaryImage' => $this->temporaryImage,
+        ], $this->imageCollectionValidators());
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->all() as $error) {
+                $this->uploadError($error);
+            }
+
+            $validator->validate();
+        }
     }
 
     public function imageCollectionValidators(): array

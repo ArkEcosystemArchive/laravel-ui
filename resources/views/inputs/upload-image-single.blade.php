@@ -1,20 +1,21 @@
 @props([
     'id',
-    'image'         => null,
-    'dimensions'    => 'w-48 h-48',
-    'uploadText'    => trans('ui::forms.upload-image.upload_image'),
-    'deleteTooltip' => trans('ui::forms.upload-image.delete_image'),
-    'minWidth'      => 148,
-    'minHeight'     => 148,
-    'maxFilesize'   => '2MB',
-    'readonly'      => false,
+    'image'              => null,
+    'dimensions'         => 'w-48 h-48',
+    'uploadText'         => trans('ui::forms.upload-image.upload_image'),
+    'deleteTooltip'      => trans('ui::forms.upload-image.delete_image'),
+    'minWidth'           => 148,
+    'minHeight'          => 148,
+    'maxFilesize'        => '2MB',
+    'readonly'           => false,
+    'uploadErrorMessage' => null,
 ])
 
 <div
     x-data="{ isUploading: false, select() { document.getElementById('image-single-upload-{{ $id }}').click(); } }"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
-    x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError');"
+    x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
     class="relative {{ $dimensions }}"
 >
     <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
