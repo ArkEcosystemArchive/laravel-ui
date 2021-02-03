@@ -61,17 +61,17 @@ h1 {
 /* Heading consistency */
 h1,
 .header-1 {
-    @apply text-4xl mb-2;
+    @apply text-3xl mb-1;
 }
 
 h2,
 .header-2 {
-    @apply text-3xl mb-1;
+    @apply text-2xl mb-1;
 }
 
 h3,
 .header-3 {
-    @apply text-2xl mb-1;
+    @apply text-lg mb-1;
 }
 
 h4,
@@ -85,24 +85,24 @@ h4,
     h4,
     .header-3,
     .header-4 {
-        @apply text-2xl;
+        @apply text-xl;
     }
 }
 
 @screen md {
     h1,
     .header-1 {
-        @apply text-5xl mb-3;
+        @apply text-4xl mb-2;
     }
 
     h2,
     .header-2 {
-        @apply text-4xl;
+        @apply text-3xl;
     }
 
     h3,
     .header-3 {
-        @apply text-3xl;
+        @apply text-2xl;
     }
 }
 
