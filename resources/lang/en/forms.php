@@ -13,6 +13,7 @@ return [
         'delete_image' => 'Delete Image',
         'min_size'     => 'Min :0 x :1',
         'max_filesize' => 'Max filesize :0',
+        'upload_error' => 'Uploading error. Image size may not be greater than 2048 kilobytes and must be of type jpeg, png or svg.',
     ],
 
     'upload-image-collection' => [
