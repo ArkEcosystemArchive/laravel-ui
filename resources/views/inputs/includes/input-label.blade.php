@@ -5,7 +5,6 @@
     'label'    => null,
     'tooltip'  => null,
     'required' => false,
-    'hideRequiredIndicator' => false,
 ])
 
 <label
@@ -14,7 +13,7 @@
 >
     {{ $label ? $label : trans('forms.' . $name) }}
 
-    @if ($required && ! $hideRequiredIndicator)
+    @if ($required)
         <div class="p-px mb-3 ml-px w-1 h-1 rounded-full bg-theme-danger-400"></div>
     @endif
 

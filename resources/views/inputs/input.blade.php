@@ -8,7 +8,6 @@
                 'label'    => $label ?? null,
                 'tooltip'  => $tooltip ?? null,
                 'required' => $required ?? false,
-                'hideRequiredIndicator' => $hideRequiredIndicator ?? false,
             ])
         @endunless
 
