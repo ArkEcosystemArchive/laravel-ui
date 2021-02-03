@@ -127,10 +127,6 @@
     @apply text-theme-primary-400;
 }
 
-.link.underline {
-    @apply underline;
-}
-
 /** Avatar **/
 .avatar-wrapper .avatar-circle {
     @apply bg-theme-primary-100;
