@@ -13,23 +13,13 @@
         @include('ark::navbar.profile')
     @endisset
 @else
-    <div class="hidden items-center ml-3 md:flex">
-        @if(Route::has('login'))
-            <div>
-                <a href="{{ route('login') }}" class="link">@lang('actions.sign_in')</a>
-            </div>
-        @endif
-
+    <div class="flex items-center ml-3 space-x-4">
         @if(Route::has('register'))
-            <div>
-                <a href="{{ route('register') }}" class="ml-4 button-secondary">@lang('actions.get_started')</a>
-            </div>
+            <a href="{{ route('register') }}" class="hidden link md:block">@lang('actions.sign_up')</a>
         @endif
-    </div>
 
-    <div class="flex p-2 ml-6 md:hidden">
         @if(Route::has('login'))
-            <a href="{{ route('login') }}">@svg('sign-in', 'h-6 w-6 text-theme-secondary-900')</a>
+            <a href="{{ route('login') }}" class="button-secondary">@lang('actions.sign_in')</a>
         @endif
     </div>
 @endauth
