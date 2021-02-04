@@ -51,6 +51,7 @@
         x-cloak
     ></div>
 
+    {{-- Spacer for the sticky navbar  --}}
     <div class="h-20 mb-0.5"></div>
     <nav
         x-ref="nav"
