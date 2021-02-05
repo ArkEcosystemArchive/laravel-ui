@@ -10,7 +10,40 @@
     ][$breakpoint ?? 'md'];
 @endphp
 
-<div x-data="{ open: false, openDropdown: null, selectedChild: null }">
+<div x-data="{
+        open: false,
+        openDropdown: null,
+        selectedChild: null,
+        scrollProgress: 0,
+        nav: null,
+        init() {
+            const { nav } = this.$refs
+            this.nav = nav;
+            window.onscroll = this.onScroll.bind(this);
+            this.scrollProgress = this.getScrollProgress();
+            this.updateShadow(this.scrollProgress);
+        },
+        onScroll() {
+            const progress = this.getScrollProgress()
+            if (progress !== this.scrollProgress) {
+                this.scrollProgress = progress;
+                this.updateShadow(progress);
+            }
+        },
+        getScrollProgress() {
+            const navbarHeight = 82;
+            return Math.min(1, document.documentElement.scrollTop / navbarHeight);
+        },
+        updateShadow(progress) {
+            const maxTransparency = 0.22;
+            const shadowTransparency = Math.round(maxTransparency * progress * 100) / 100;
+            const borderTransparency =  Math.round((1 - progress) * 100) / 100;
+            this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
+            this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
+        }
+    }"
+    x-init="init"
+>
     <div
         x-show="openDropdown !== null || open"
         class="overflow-y-auto fixed inset-0 z-30 opacity-75 bg-theme-secondary-900 {{ $backdropClass }}"
@@ -18,7 +51,12 @@
         x-cloak
     ></div>
 
-    <nav class="relative z-30 bg-white shadow-header-smooth dark:shadow-none dark:bg-theme-secondary-900">
+    {{-- Spacer for the sticky navbar  --}}
+    <div class="h-20 mb-0.5"></div>
+    <nav
+        x-ref="nav"
+        class="fixed top-0 z-30 w-full bg-white border-b dark:bg-theme-secondary-900 border-theme-secondary-300"
+    >
         <div class="px-4 sm:px-6 lg:px-8 py-0.5">
             <div class="flex relative justify-between h-20">
                 @include('ark::navbar.logo')
@@ -37,7 +75,8 @@
                     </div>
 
                     <div class="flex inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
-                        @include('ark::navbar.hamburger')
+                        {{-- @TODO: remove once the new navigation is set --}}
+                        {{-- @include('ark::navbar.hamburger') --}}
 
                         @isset($content)
                             {{ $content }}
