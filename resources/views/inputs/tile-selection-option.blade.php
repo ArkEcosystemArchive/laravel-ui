@@ -8,7 +8,7 @@
 
 <label
     wire:key="tile-selection-option-{{ $option['id'] }}"
-    class="{{ $single ? 'tile-selection-single' : 'tile-selection' }}"
+    class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }}"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
 

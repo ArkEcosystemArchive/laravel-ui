@@ -310,12 +310,17 @@
     @apply grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6;
 }
 
-.tile-selection {
+.tile-selection-option {
     @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30;
 }
 
 .tile-selection-single {
     @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100;
+}
+
+.tile-selection-option:hover,
+.tile-selection-single:hover {
+    @apply shadow-lg text-theme-primary-700;
 }
 
 .tile-selection-select-all {
@@ -347,4 +352,23 @@
 .tile-selection-select-all-checkbox:checked,
 .tile-selection-checkbox:checked {
     @apply border-theme-success-500 bg-theme-success-500;
+}
+
+/** Tile Links **/
+.tile-links-list {
+    @apply grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6;
+}
+
+.tile-link {
+    @apply relative rounded-lg cursor-pointer select-none h-30;
+}
+.tile-link:hover {
+    @apply shadow-lg text-theme-primary-700;
+}
+
+.tile-links-show-more {
+    @apply tile-link font-semibold text-center rounded bg-white text-theme-primary-600 transition;
+}
+.tile-links-show-more:hover {
+    @apply bg-theme-primary-700 text-white;
 }
