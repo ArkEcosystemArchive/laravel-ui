@@ -1,7 +1,8 @@
 <?php
 
 return [
-    'or' => 'or',
+    'or'         => 'or',
     'select-all' => 'Select All',
-    'show_more' => 'Show more',
+    'show_more'  => 'Show more',
+    'hide'       => 'Hide',
 ];
