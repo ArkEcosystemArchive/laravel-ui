@@ -19,27 +19,8 @@
             @else
                 'hidden': linksHidden,
             @endif
-            {{-- 'hidden': {{ $index }} > 6,
-            'sm:hidden': {{ $index }} > 7,
-            'md:hidden': {{ $index }} > 6,
-            'lg:hidden': {{ $index }} > 8,
-            'xl:hidden': {{ $index }} > 10, --}}
         }"
     @endif
-
-    {{-- @if ($mobileHidden || $desktopHidden)
-        x-bind:class="{
-            @if ($mobileHidden && $desktopHidden)
-                'hidden': mobileHidden && desktopHidden,
-                'hidden sm:block': mobileHidden && ! desktopHidden,
-                'block sm:hidden': ! mobileHidden && desktopHidden,
-            @elseif ($mobileHidden)
-                'hidden sm:block': mobileHidden,
-            @else
-                'sm:hidden': desktopHidden,
-            @endif
-        }"
-    @endif --}}
 >
     <div class="flex flex-col justify-center items-center space-y-2 h-full font-semibold">
         @if ($option['icon'] ?? false)
