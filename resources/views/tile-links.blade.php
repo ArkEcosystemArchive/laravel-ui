@@ -3,7 +3,6 @@
     'id',
     'class'       => '',
     'title'       => '',
-    'model'       => null,
     'description' => null,
 ])
 
