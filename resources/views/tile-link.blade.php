@@ -1,11 +1,11 @@
 @props([
     'id',
-    'option',
+    'link',
 ])
 
 <a
-    wire:key="tile-link-{{ $option['id'] }}"
-    url="{{ $option['url'] ?? '' }}"
+    wire:key="tile-link-{{ $link['id'] }}"
+    url="{{ $link['url'] ?? '' }}"
     class="tile-link"
     data-index="{{ $index }}"
     @if ($index >= 7)
@@ -23,10 +23,10 @@
     @endif
 >
     <div class="flex flex-col justify-center items-center space-y-2 h-full font-semibold">
-        @if ($option['icon'] ?? false)
-            <x-ark-icon :name="$option['icon']" size="md" />
+        @if ($link['icon'] ?? false)
+            <x-ark-icon :name="$link['icon']" size="md" />
         @endif
 
-        <div>{{ $option['title'] }}</div>
+        <div>{{ $link['title'] }}</div>
     </div>
 </a>
