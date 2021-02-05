@@ -37,7 +37,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="flex flex-col flex-shrink-0 pr-8 pl-8 w-128">
+                        <div class="flex flex-col flex-shrink-0 pl-8 pr-8 w-128">
                             <img class="w-full" :src="selectedChild ? selectedChild.image : '{{ $navItem['image'] }}'" />
 
                             <template x-if="selectedChild">
@@ -66,7 +66,7 @@
             @endisset
         @endforeach
 
-        <span class="ml-7 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
+        <span class="h-5 border-r ml-7 border-theme-secondary-300 dark:border-theme-secondary-800"></span>
     </div>
 @else
     {{ $navigation }}

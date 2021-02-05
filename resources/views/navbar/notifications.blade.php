@@ -15,6 +15,6 @@
             @endif
         </x-slot>
 
-        {{ $notifications }}
+        {{ $notifications  }}
     </x-ark-dropdown>
 </div>
