@@ -47,10 +47,10 @@
 
                 <div
                     x-show="linksHidden"
-                    class="tile-links-show-more hidden sm:block"
+                    class="hidden tile-links-show-more sm:block"
                     @click="linksHidden = false"
                 >
-                    <div class="flex flex-col justify-center items-center h-full space-y-2">
+                    <div class="flex flex-col justify-center items-center space-y-2 h-full">
                         <div>
                             <div class="sm:hidden">+{{ count($links) - 7 }}</div>
                             <div class="hidden sm:block md:hidden">+{{ count($links) - 8 }}</div>
@@ -65,10 +65,10 @@
 
                 <div
                     x-show="! linksHidden"
-                    class="tile-links-show-more hidden sm:block"
+                    class="hidden tile-links-show-more sm:block"
                     @click="linksHidden = true"
                 >
-                    <div class="flex flex-col justify-center items-center h-full space-y-2">
+                    <div class="flex flex-col justify-center items-center space-y-2 h-full">
                         <x-ark-icon name="hide" size="md" />
 
                         <div>@lang('ui::general.hide')</div>
