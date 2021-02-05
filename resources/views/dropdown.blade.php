@@ -1,5 +1,5 @@
 @props([
-    'dropdownProperty',   => 'dropdownOpen',
+    'dropdownProperty'   => 'dropdownOpen',
     'buttonClassExpanded' => 'text-theme-primary-500',
     'buttonClass'         => 'text-theme-secondary-400 hover:text-theme-primary-500',
 ])
