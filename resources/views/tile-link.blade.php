@@ -4,7 +4,7 @@
 ])
 
 <a
-    wire:key="tile-link-{{ $link['id'] }}"
+    wire:key="tile-link-{{ $id }}-{{ $link['id'] }}"
     url="{{ $link['url'] ?? '' }}"
     class="tile-link"
     data-index="{{ $index }}"
