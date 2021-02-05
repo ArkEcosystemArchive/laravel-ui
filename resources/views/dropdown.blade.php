@@ -1,6 +1,8 @@
-@php($dropdownProperty = $dropdownProperty ?? 'dropdownOpen')
-@php($buttonClassExpanded = $buttonClassExpanded ?? 'text-theme-primary-500')
-@php($buttonClass = $buttonClass ?? 'text-theme-secondary-400 hover:text-theme-primary-500')
+@props([
+    'dropdownProperty',   => 'dropdownOpen',
+    'buttonClassExpanded' => 'text-theme-primary-500',
+    'buttonClass'         => 'text-theme-secondary-400 hover:text-theme-primary-500',
+])
 
 <div
     @if ($initAlpine ?? true) x-data="{ {{ $dropdownProperty }}: false }" @endif
