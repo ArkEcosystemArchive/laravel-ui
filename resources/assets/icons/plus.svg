@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 24.5 24.5" style="enable-background:new 0 0 24.5 24.5;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-</style>
-<g id="add" transform="translate(0.25 0.25)">
-	<line id="Линия_128" class="st0" x1="0.8" y1="12" x2="23.2" y2="12"/>
-	<line id="Линия_129" class="st0" x1="12" y1="0.8" x2="12" y2="23.2"/>
-</g>
-</svg>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24.5 24.5" xml:space="preserve"><style>.st0{fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}</style><g id="add" transform="translate(.25 .25)"><path id="Линия_128" class="st0" d="M.8 12h22.4"/><path id="Линия_129" class="st0" d="M12 .8v22.4"/></g></svg>
