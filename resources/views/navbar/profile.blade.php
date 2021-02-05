@@ -8,8 +8,8 @@
             @isset($identifier)
                 <x-ark-avatar
                     :identifier="$identifier"
-                    class="w-10 h-10 rounded-lg border-2 border-transparent md:h-11 md:w-11 hover:border-theme-primary-700"
-                    x-bind:class="{ 'border-theme-primary-700': dropdownOpen }"
+                    class="w-10 h-10 rounded-lg border-2 border-transparent md:h-11 md:w-11 hover:border-theme-primary-600"
+                    x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
                 <div
