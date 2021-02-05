@@ -310,12 +310,17 @@
     @apply grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6;
 }
 
-.tile-selection {
+.tile-selection-option {
     @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30;
 }
 
 .tile-selection-single {
     @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100;
+}
+
+.tile-selection-option:hover,
+.tile-selection-single:hover {
+    @apply shadow-lg text-theme-primary-700;
 }
 
 .tile-selection-select-all {
