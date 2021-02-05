@@ -23,7 +23,7 @@
         </span>
 
         @isset($allNotificationsIndicator)
-            {{ $allNotificationsIndicator }}
+        {{ $allNotificationsIndicator }}
         @endisset
     </button>
 
