@@ -28,74 +28,73 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     wordsCount: 0,
     readMinutes: 0,
     height: height || "600px",
-    toolbarItems: toolbar === "basic" ? [
-        // ...Undo & redo
-
-        "divider",
-
-        "bold",
-        "italic",
-        "divider",
-
-        // ...Headers
-
-        "divider",
-
-        "ol",
-        "ul",
-
-        "divider",
-
-        "link",
-
-        "divider",
-
-        // ...Plugins
-
-        "divider",
-
-        // ...Preview, etc
-    ]: [
-        // ...Undo & redo
-
-        "divider",
-
-        "bold",
-        "italic",
-        "strike",
-        "quote",
-        "divider",
-
-        // ...Headers
-
-        "divider",
-
-        "ol",
-        "ul",
-        "table",
-        "image",
-
-        "divider",
-
-        "link",
-        "code",
-        "codeblock",
-
-        "divider",
-
-        // ...Plugins
-
-        "divider",
-
-        // ...Preview, etc
-    ],
-    plugins:
+    toolbarItems:
         toolbar === "basic"
             ? [
-                "preview",
-                "redo",
-                "undo",
-            ]
+                  // ...Undo & redo
+
+                  "divider",
+
+                  "bold",
+                  "italic",
+                  "divider",
+
+                  // ...Headers
+
+                  "divider",
+
+                  "ol",
+                  "ul",
+
+                  "divider",
+
+                  "link",
+
+                  "divider",
+
+                  // ...Plugins
+
+                  "divider",
+
+                  // ...Preview, etc
+              ]
+            : [
+                  // ...Undo & redo
+
+                  "divider",
+
+                  "bold",
+                  "italic",
+                  "strike",
+                  "quote",
+                  "divider",
+
+                  // ...Headers
+
+                  "divider",
+
+                  "ol",
+                  "ul",
+                  "table",
+                  "image",
+
+                  "divider",
+
+                  "link",
+                  "code",
+                  "codeblock",
+
+                  "divider",
+
+                  // ...Plugins
+
+                  "divider",
+
+                  // ...Preview, etc
+              ],
+    plugins:
+        toolbar === "basic"
+            ? ["preview", "redo", "undo"]
             : [
                   "preview",
                   "simplecast",
