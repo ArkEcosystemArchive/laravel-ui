@@ -28,7 +28,34 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     wordsCount: 0,
     readMinutes: 0,
     height: height || "600px",
-    toolbarItems: [
+    toolbarItems: toolbar === "basic" ? [
+        // ...Undo & redo
+
+        "divider",
+
+        "bold",
+        "italic",
+        "divider",
+
+        // ...Headers
+
+        "divider",
+
+        "ol",
+        "ul",
+
+        "divider",
+
+        "link",
+
+        "divider",
+
+        // ...Plugins
+
+        "divider",
+
+        // ...Preview, etc
+    ]: [
         // ...Undo & redo
 
         "divider",
@@ -64,14 +91,17 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     ],
     plugins:
         toolbar === "basic"
-            ? ["preview", "redo", "undo"]
+            ? [
+                "preview",
+                "redo",
+                "undo",
+            ]
             : [
                   "preview",
                   "simplecast",
                   "twitter",
                   "youtube",
                   "linkcollection",
-                  "heading1",
                   "heading2",
                   "heading3",
                   "heading4",
@@ -101,7 +131,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
                 initialEditType: "markdown",
                 usageStatistics: false,
                 hideModeSwitch: true,
-                previewStyle: "vertical",
+                previewStyle: "",
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
