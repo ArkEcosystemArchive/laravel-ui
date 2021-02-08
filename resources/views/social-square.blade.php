@@ -13,7 +13,7 @@
         rel="noopener noreferrer"
     @endunless
 >
-    <div class="flex items-center justify-center h-full">
+    <div class="flex justify-center items-center h-full">
         <x-ark-icon :name="$icon" size="w-6 h-6 lg:w-5 lg:h-5" />
     </div>
 </a>
