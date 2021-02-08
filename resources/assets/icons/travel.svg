@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.5 24.708">
+  <g id="Travel_" data-name="Travel " transform="translate(-251.746 -95.747)">
+    <g id="Group">
+      <g id="travel-crossroad-direction-board">
+        <path id="Shape" d="M252.746,119.247a11.25,11.25,0,1,1,22.5,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_2" data-name="Shape 2" d="M260.058,119.242l-.278-1.108A1.5,1.5,0,0,0,258.325,117h-5.353" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_3" data-name="Shape 3" d="M272.981,112.5h-4.063a1.5,1.5,0,0,0-1.456,1.137l-.75,3a1.5,1.5,0,0,0,1.456,1.863h1.578l.126.753" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_4" data-name="Shape 4" d="M264,99.747v-3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_5" data-name="Shape 5" d="M259.5,99.747h9.75v4.5H259.5l-2.25-2.25,2.25-2.25Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_6" data-name="Shape 6" d="M264,108v-3.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

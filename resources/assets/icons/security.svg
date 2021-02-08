@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.232 24.909">
+  <g id="Security" transform="translate(-245 -562.823)">
+    <g id="Group_50" data-name="Group 50" transform="translate(246 563.823)">
+      <g id="protection-shield-3">
+        <path id="Shape_300" data-name="Shape 300" d="M255,563.827v22.9" transform="translate(-245.384 -563.823)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_301" data-name="Shape 301" d="M265.232,574.327H246" transform="translate(-246 -563.639)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_302" data-name="Shape 302" d="M250.5,574.327V564.321" transform="translate(-245.692 -563.823)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_303" data-name="Shape 303" d="M259.5,584.437v-10.11" transform="translate(-245.076 -563.428)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="Shape_304" data-name="Shape 304" d="M246,567.056V574.8c0,5.014,2.44,9.508,7.353,11.308l1.112.407a3.351,3.351,0,0,0,2.3,0l1.112-.407c4.913-1.8,7.353-6.295,7.353-11.308v-7.748a1.511,1.511,0,0,0-.927-1.386,21.4,21.4,0,0,0-17.377,0A1.511,1.511,0,0,0,246,567.056Z" transform="translate(-246 -563.823)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
