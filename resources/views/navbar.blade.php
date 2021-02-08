@@ -75,8 +75,9 @@
                     </div>
 
                     <div class="flex inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
-                        {{-- @TODO: remove once the new navigation is set --}}
-                        {{-- @include('ark::navbar.hamburger') --}}
+                        @if(is_array($navigation))
+                            @include('ark::navbar.hamburger')
+                        @endif
 
                         @isset($content)
                             {{ $content }}
