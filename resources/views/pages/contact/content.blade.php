@@ -33,10 +33,10 @@
             <div class="font-bold">@lang('ui::pages.contact.social.subtitle')</div>
 
             <div class="flex space-x-3">
-                <x-ark-social-square :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
-                <x-ark-social-square :url="trans('ui::urls.facebook')" icon="brands.outline.facebook" />
-                <x-ark-social-square :url="trans('ui::urls.reddit')" icon="brands.outline.reddit" />
-                <x-ark-social-square :url="trans('ui::urls.linkedin')" icon="brands.outline.linkedin" />
+                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
+                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.facebook')" icon="brands.outline.facebook" />
+                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.reddit')" icon="brands.outline.reddit" />
+                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.linkedin')" icon="brands.outline.linkedin" />
             </div>
         </div>
     </div>
