@@ -13,7 +13,7 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
     toolbar.insertItem(menuIndex, {
         type: "button",
         options: {
-            el: createButtonWithIcon(svgIcon, "custom current"),
+            el: createButtonWithIcon(svgIcon, "custom"),
             name: "preview",
             className: "tui-preview",
             command: "preview",
