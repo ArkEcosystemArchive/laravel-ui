@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.414 21.956">
-  <g id="Wallets" transform="translate(-587.75 -289.005)">
-    <g id="Group_29" data-name="Group 29" transform="translate(588.75 290.012)">
-      <g id="money-wallet">
-        <path id="Shape_185" data-name="Shape 185" d="M607.8,306.387v1.361a2.722,2.722,0,0,1-2.722,2.722H591.472a2.722,2.722,0,0,1-2.722-2.722v-9.526a2.722,2.722,0,0,1,2.722-2.722h13.609a2.722,2.722,0,0,1,2.722,2.722v1.361" transform="translate(-588.75 -290.521)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_186" data-name="Shape 186" d="M605.359,294.99l-2.113-4.225a1.36,1.36,0,0,0-1.826-.609l-9.67,4.834" transform="translate(-589.028 -290.012)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_187" data-name="Shape 187" d="M609.055,306.8a1.361,1.361,0,0,0,1.361-1.361v-4.083A1.361,1.361,0,0,0,609.055,300h-3.4a3.4,3.4,0,1,0,0,6.8Z" transform="translate(-590.002 -290.938)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_188" data-name="Shape 188" d="M605.965,303.375a.34.34,0,1,1-.34.34.34.34,0,0,1,.34-.34" transform="translate(-590.315 -291.251)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.414 21.956"><g id="Wallets" transform="translate(-587.75 -289.005)"><g id="Group_29" data-name="Group 29" transform="translate(588.75 290.012)"><g id="money-wallet" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path id="Shape_185" data-name="Shape 185" d="M607.8 306.387v1.361a2.722 2.722 0 01-2.722 2.722h-13.606a2.722 2.722 0 01-2.722-2.722v-9.526a2.722 2.722 0 012.722-2.722h13.609a2.722 2.722 0 012.722 2.722v1.361" transform="translate(-588.75 -290.521)"/><path id="Shape_186" data-name="Shape 186" d="M605.359 294.99l-2.113-4.225a1.36 1.36 0 00-1.826-.609l-9.67 4.834" transform="translate(-589.028 -290.012)"/><path id="Shape_187" data-name="Shape 187" d="M609.055 306.8a1.361 1.361 0 001.361-1.361v-4.083a1.361 1.361 0 00-1.361-1.356h-3.4a3.4 3.4 0 100 6.8z" transform="translate(-590.002 -290.938)"/><path id="Shape_188" data-name="Shape 188" d="M605.965 303.375a.34.34 0 11-.34.34.34.34 0 01.34-.34" transform="translate(-590.315 -291.251)"/></g></g></g></svg>

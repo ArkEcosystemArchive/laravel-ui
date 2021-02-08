@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.728 23.933">
-  <g id="Developer_Tools" data-name="Developer Tools" transform="translate(-439.049 -108.955)">
-    <g id="Group_6" data-name="Group 6">
-      <g id="programming-hold-code">
-        <path id="Shape_27" data-name="Shape 27" d="M452.533,125.35l7.545-.575a1.554,1.554,0,0,1,1.509,2.244h0a1.558,1.558,0,0,1-.845.76l-10.434,3.912a3,3,0,0,1-2,.037l-7.994-2.664" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_28" data-name="Shape 28" d="M445.564,126.064h5.788a1.335,1.335,0,0,0,1.266-.912h0a1.336,1.336,0,0,0-.915-1.709l-5.938-1.619a4.513,4.513,0,0,0-1.924-.1l-3.527.588" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_29" data-name="Shape 29" d="M447.73,111.966l-3.666,2.75,3.666,2.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_30" data-name="Shape 30" d="M456.9,111.966l3.667,2.75-3.667,2.75" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_31" data-name="Shape 31" d="M453.23,110.132,451.4,119.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23.728 23.933"><g id="Developer_Tools" data-name="Developer Tools" transform="translate(-439.049 -108.955)"><g id="Group_6" data-name="Group 6"><g id="programming-hold-code" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path id="Shape_27" data-name="Shape 27" d="M452.533 125.35l7.545-.575a1.554 1.554 0 011.509 2.244h0a1.558 1.558 0 01-.845.76l-10.434 3.912a3 3 0 01-2 .037l-7.994-2.664"/><path id="Shape_28" data-name="Shape 28" d="M445.564 126.064h5.788a1.335 1.335 0 001.266-.912h0a1.336 1.336 0 00-.915-1.709l-5.938-1.619a4.513 4.513 0 00-1.924-.1l-3.527.588"/><path id="Shape_29" data-name="Shape 29" d="M447.73 111.966l-3.666 2.75 3.666 2.75"/><path id="Shape_30" data-name="Shape 30" d="M456.9 111.966l3.667 2.75-3.667 2.75"/><path id="Shape_31" data-name="Shape 31" d="M453.23 110.132l-1.83 9.168"/></g></g></g></svg>

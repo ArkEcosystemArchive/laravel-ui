@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.856 23.267">
-  <g id="Exchanges" transform="translate(-446.755 -5859.539)">
-    <g id="Group_573" data-name="Group 573" transform="translate(447.755 5860.56)">
-      <g id="button-syncing">
-        <path id="Shape_2512" data-name="Shape 2512" d="M453.213,5865.054a5.927,5.927,0,0,0-5.458,5.976h0a6,6,0,0,0,6,6h6.75l-5.539,4.309a.75.75,0,0,1-1.211-.592v-3.717" transform="translate(-447.755 -5860.274)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_2513" data-name="Shape 2513" d="M464.255,5865.026v-3.716a.75.75,0,0,0-1.21-.592l-5.54,4.308h6.75a6,6,0,0,1,6,6h0A6.076,6.076,0,0,1,464.8,5877" transform="translate(-447.399 -5860.56)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.856 23.267"><g id="Exchanges" transform="translate(-446.755 -5859.539)"><g id="Group_573" data-name="Group 573" transform="translate(447.755 5860.56)"><g id="button-syncing" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path id="Shape_2512" data-name="Shape 2512" d="M453.213 5865.054a5.927 5.927 0 00-5.458 5.976h0a6 6 0 006 6h6.75l-5.539 4.309a.75.75 0 01-1.211-.592v-3.717" transform="translate(-447.755 -5860.274)"/><path id="Shape_2513" data-name="Shape 2513" d="M464.255 5865.026v-3.716a.75.75 0 00-1.21-.592l-5.54 4.308h6.75a6 6 0 016 6h0A6.076 6.076 0 01464.8 5877" transform="translate(-447.399 -5860.56)"/></g></g></g></svg>

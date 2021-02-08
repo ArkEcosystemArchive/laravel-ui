@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.511 23">
-  <g id="Storage" transform="translate(-579.75 -674.5)">
-    <g id="Group_117" data-name="Group 117">
-      <g id="folder-zip">
-        <path id="Shape_467" data-name="Shape 467" d="M601.75,683v-3a1.5,1.5,0,0,0-1.5-1.5h-12V677a1.5,1.5,0,0,0-1.5-1.5h-4.5a1.5,1.5,0,0,0-1.5,1.5v17.8a1.7,1.7,0,0,0,3.336.438l2.351-11.154A1.5,1.5,0,0,1,587.879,683H601.75a1.5,1.5,0,0,1,1.45,1.886l-2.2,10.5a1.5,1.5,0,0,1-1.45,1.114h-17.1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_468" data-name="Shape 468" d="M595.75,687.5v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_469" data-name="Shape 469" d="M594.25,690.5h3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_470" data-name="Shape 470" d="M594.25,693.5h3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        <path id="Shape_471" data-name="Shape 471" d="M597.25,686a1.5,1.5,0,0,1-3,0v-3h3Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.511 23"><g id="Storage" transform="translate(-579.75 -674.5)"><g id="Group_117" data-name="Group 117"><g id="folder-zip" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path id="Shape_467" data-name="Shape 467" d="M601.75 683v-3a1.5 1.5 0 00-1.5-1.5h-12V677a1.5 1.5 0 00-1.5-1.5h-4.5a1.5 1.5 0 00-1.5 1.5v17.8a1.7 1.7 0 003.336.438l2.351-11.154a1.5 1.5 0 011.442-1.084h13.871a1.5 1.5 0 011.45 1.886l-2.2 10.5a1.5 1.5 0 01-1.45 1.114h-17.1"/><path id="Shape_468" data-name="Shape 468" d="M595.75 687.5v9"/><path id="Shape_469" data-name="Shape 469" d="M594.25 690.5h3"/><path id="Shape_470" data-name="Shape 470" d="M594.25 693.5h3"/><path id="Shape_471" data-name="Shape 471" d="M597.25 686a1.5 1.5 0 01-3 0v-3h3z"/></g></g></g></svg>
