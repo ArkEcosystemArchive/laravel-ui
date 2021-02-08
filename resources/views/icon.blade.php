@@ -7,7 +7,7 @@
 @php
     $availableSizes = ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'base'];
 
-    if (array_key_exists($size, $availableSizes) || empty($size)) {
+    if (in_array($size, $availableSizes) || empty($size)) {
         $size = [
             '2xs'  => 'w-2 h-2 ',
             'xs'   => 'w-3 h-3 ',
