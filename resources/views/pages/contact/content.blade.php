@@ -21,7 +21,7 @@
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
                 <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
-                    <div class="flex justify-center items-center space-x-2 w-full">
+                    <div class="flex items-center justify-center w-full space-x-2">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
@@ -33,7 +33,7 @@
             <div class="font-bold">@lang('ui::pages.contact.social.subtitle')</div>
 
             <div class="flex space-x-3">
-                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" @endisset :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
+                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
                 <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.facebook')" icon="brands.outline.facebook" />
                 <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.reddit')" icon="brands.outline.reddit" />
                 <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.linkedin')" icon="brands.outline.linkedin" />
@@ -113,7 +113,7 @@
                     error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
                 }"
                 x-init="setTimeout(() => { error = false; success = false }, 10000)"
-                class="flex relative flex-col flex-1 justify-end"
+                class="relative flex flex-col justify-end flex-1"
             >
                 <div x-show.transition="success" class="absolute top-0 w-full" x-cloak>
                     <x-ark-toast
