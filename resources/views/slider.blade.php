@@ -17,7 +17,6 @@
     'allowTouch'                => true,
     'autoplay'                  => false,
     'autoplayDelay'             => 3000,
-    'afterNavigation'           => false,
     'hideViewAll'               => false,
     'shadowSpacing'             => false,
 ])
@@ -82,11 +81,15 @@
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
-                        @if($afterNavigation && ! $hideViewAll)
+                        @unless($hideViewAll)
                             <div class="leading-5">
-                                {{ $afterNavigation }}
+                                <a href="{{ $viewAllUrl }}" class="link font-semibold">
+                                    @lang('ui::actions.view_all')
+
+                                    <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
+                                </a>
                             </div>
-                        @endif
+                        @endunless
                     </div>
                 </div>
             @endif
