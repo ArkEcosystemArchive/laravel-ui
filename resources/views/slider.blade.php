@@ -54,6 +54,7 @@
             id="swiper-{{ $id }}"
             class="swiper-container
                 @unless ($topPagination) slider-pagination-bottom @endunless
+                @unless ($hideViewAll) slider-show-view-all @endunless
                 @if ($shadowSpacing) px-5 @endif
                 @if ($rows > 1) slider-multirow @endif"
         >
@@ -76,13 +77,13 @@
                         </div>
                     @endif
 
-                    <div class="flex justify-between items-center space-x-6">
+                    <div class="relative flex justify-between items-center space-x-6">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
                         @if($afterNavigation && ! $hideViewAll)
-                            <div class="pl-3 leading-5 sm:border-l-2 border-theme-secondary-300">
+                            <div class="leading-5">
                                 {{ $afterNavigation }}
                             </div>
                         @endif
