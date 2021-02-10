@@ -1,9 +1,18 @@
 .swiper-container {
-    @apply w-full h-full mx-auto;
+    @apply w-full h-full mx-auto mt-8;
+}
+.swiper-container:not(.slider-pagination-bottom) {
+    @apply mt-8;
+}
+.swiper-container.slider-pagination-bottom {
+    @apply mt-5;
 }
 
 .swiper-container.slider-pagination-bottom .swiper-wrapper {
-    margin-bottom: 20px;
+    @apply mb-5;
+}
+.swiper-container:not(.slider-pagination-bottom) .swiper-wrapper {
+    @apply mb-8;
 }
 
 .swiper-container .swiper-pagination {

@@ -53,7 +53,8 @@
         <div
             id="swiper-{{ $id }}"
             class="swiper-container
-                @if ($shadowSpacing) p-5 -my-5 @endif
+                @unless ($topPagination) slider-pagination-bottom @endunless
+                @if ($shadowSpacing) px-5 @endif
                 @if ($rows > 1) slider-multirow @endif"
         >
             @if (($title && !$viewAllUrl) || $topPagination)
@@ -89,7 +90,7 @@
                 </div>
             @endif
 
-            <div class="@if($shadowSpacing) p-5 -m-5 @endif swiper-wrapper">
+            <div class="@if($shadowSpacing) px-5 pt-5 -mx-5 -mt-5 @endif swiper-wrapper">
                 {{ $slot }}
             </div>
 
