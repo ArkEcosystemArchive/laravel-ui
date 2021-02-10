@@ -41,3 +41,7 @@ div.swiper-button-next {
 span.swiper-pagination-bullet {
     @apply bg-theme-primary-500;
 }
+
+.slider-title {
+    @apply flex-1 relative mb-0 items-end truncate;
+}
