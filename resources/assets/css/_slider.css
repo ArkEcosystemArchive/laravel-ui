@@ -17,11 +17,11 @@
 }
 
 .swiper-container .swiper-pagination {
-    @apply relative;
+    @apply relative flex items-center;
 }
 
 .swiper-container .swiper-pagination-bullets {
-    @apply space-x-1;
+    @apply space-x-3;
 }
 
 .swiper-button-next,
