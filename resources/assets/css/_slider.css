@@ -2,7 +2,7 @@
     @apply w-full h-full mx-auto;
 }
 
-.swiper-container .swiper-wrapper {
+.swiper-container.slider-pagination-bottom .swiper-wrapper {
     margin-bottom: 20px;
 }
 
