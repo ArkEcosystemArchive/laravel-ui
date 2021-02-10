@@ -50,22 +50,32 @@
 
     <!-- Swiper -->
     <div class="relative @unless($hideNavigation) px-10 @endunless">
-        <div id="swiper-{{ $id }}" class="@if($shadowSpacing) p-5 -my-5 @endif swiper-container @if ($rows > 1) slider-multirow @endif">
+        <div
+            id="swiper-{{ $id }}"
+            class="swiper-container
+                @if ($shadowSpacing) p-5 -my-5 @endif
+                @if ($rows > 1) slider-multirow @endif"
+        >
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="flex justify-between items-center">
+                <div class="flex justify-between items-center mb-6">
                     @if($title && !$viewAllUrl)
-                        <div class="flex-1 relative {{ $titleClass }} py-3 items-end truncate">
+                        <div class="slider-title {{ $titleClass }}">
                             {{ $title }}
 
                             @if ($titleTooltip)
                                 <div class="inline-flex items-end">
-                                    <x-ark-info :tooltip="$titleTooltip" class="absolute -top-10 ml-1" type="hint" large />
+                                    <x-ark-info
+                                        :tooltip="$titleTooltip"
+                                        class="absolute -top-10 ml-1"
+                                        type="hint"
+                                        large
+                                    />
                                 </div>
                             @endif
                         </div>
                     @endif
 
-                    <div class="flex justify-between items-center space-x-4">
+                    <div class="flex justify-between items-center space-x-6">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
