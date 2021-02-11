@@ -76,14 +76,14 @@
                         </div>
                     @endif
 
-                    <div class="relative flex justify-between items-center space-x-6">
+                    <div class="flex relative justify-between items-center space-x-6">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
                         @unless($hideViewAll)
                             <div class="leading-5">
-                                <a href="{{ $viewAllUrl }}" class="link font-semibold">
+                                <a href="{{ $viewAllUrl }}" class="font-semibold link">
                                     @lang('ui::actions.view_all')
 
                                     <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
