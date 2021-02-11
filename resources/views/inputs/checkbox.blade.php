@@ -1,6 +1,7 @@
 @props([
     'name',
     'class'        => 'mt-4',
+    'innerWrapper' => 'flex relative items-center',
     'id'           => null,
     'model'        => null,
     'label'        => null,
@@ -11,7 +12,7 @@
 ])
 
 <div class="{{ $class }}">
-    <div class="flex relative items-center">
+    <div class="{{ $innerWrapper }}">
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
