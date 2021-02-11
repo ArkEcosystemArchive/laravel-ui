@@ -17,7 +17,6 @@
     'allowTouch'                => true,
     'autoplay'                  => false,
     'autoplayDelay'             => 3000,
-    'afterNavigation'           => false,
     'hideViewAll'               => false,
     'shadowSpacing'             => false,
 ])
@@ -54,6 +53,7 @@
             id="swiper-{{ $id }}"
             class="swiper-container
                 @unless ($topPagination) slider-pagination-bottom @endunless
+                @unless ($hideViewAll) slider-show-view-all @endunless
                 @if ($shadowSpacing) px-5 @endif
                 @if ($rows > 1) slider-multirow @endif"
         >
@@ -76,16 +76,20 @@
                         </div>
                     @endif
 
-                    <div class="flex justify-between items-center space-x-6">
+                    <div class="relative flex justify-between items-center space-x-6">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
-                        @if($afterNavigation && ! $hideViewAll)
-                            <div class="pl-3 leading-5 sm:border-l-2 border-theme-secondary-300">
-                                {{ $afterNavigation }}
+                        @unless($hideViewAll)
+                            <div class="leading-5">
+                                <a href="{{ $viewAllUrl }}" class="link font-semibold">
+                                    @lang('ui::actions.view_all')
+
+                                    <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
+                                </a>
                             </div>
-                        @endif
+                        @endunless
                     </div>
                 </div>
             @endif
