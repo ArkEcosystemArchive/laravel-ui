@@ -58,7 +58,7 @@
                 @if ($rows > 1) slider-multirow @endif"
         >
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex flex-col mb-6 space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
                     @if($title && !$viewAllUrl)
                         <div class="slider-title {{ $titleClass }}">
                             {{ $title }}
