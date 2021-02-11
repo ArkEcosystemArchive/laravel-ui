@@ -1,17 +1,18 @@
 @props([
     'name',
-    'class'        => 'mt-4',
-    'id'           => null,
-    'model'        => null,
-    'label'        => null,
-    'labelClasses' => '',
-    'value'        => null,
-    'checked'      => false,
-    'disabled'     => false,
+    'class'                 => 'mt-4',
+    'checkboxPositionClass' => 'items-center',
+    'id'                    => null,
+    'model'                 => null,
+    'label'                 => null,
+    'labelClasses'          => '',
+    'value'                 => null,
+    'checked'               => false,
+    'disabled'              => false,
 ])
 
 <div class="{{ $class }}">
-    <div class="flex relative items-center">
+    <div class="flex relative {{ $checkboxPositionClass }}">
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
