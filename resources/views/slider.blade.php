@@ -58,7 +58,7 @@
                 @if ($rows > 1) slider-multirow @endif"
         >
             @if (($title && !$viewAllUrl) || $topPagination)
-                <div class="flex justify-between items-center mb-6">
+                <div class="flex flex-col mb-6 space-y-4 sm:space-y-0 sm:flex-row sm:justify-between sm:items-center">
                     @if($title && !$viewAllUrl)
                         <div class="slider-title {{ $titleClass }}">
                             {{ $title }}
@@ -76,14 +76,14 @@
                         </div>
                     @endif
 
-                    <div class="relative flex justify-between items-center space-x-6">
+                    <div class="flex relative justify-between items-center space-x-6">
                         @if($topPagination)
                             <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
                         @endif
 
                         @unless($hideViewAll)
                             <div class="leading-5">
-                                <a href="{{ $viewAllUrl }}" class="link font-semibold">
+                                <a href="{{ $viewAllUrl }}" class="font-semibold link">
                                     @lang('ui::actions.view_all')
 
                                     <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
