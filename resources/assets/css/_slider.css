@@ -16,7 +16,12 @@
 }
 
 .swiper-container .swiper-pagination {
+    @apply relative;
     bottom: 0;
+}
+
+.swiper-container:not(.slider-pagination-bottom) .swiper-pagination {
+    @apply flex items-center;
 }
 
 @screen xl {
