@@ -24,7 +24,7 @@ const Navbar = {
             nav: null,
 
             onScroll() {
-                const progress = this.getScrollProgress()
+                const progress = this.getScrollProgress();
                 if (progress !== this.scrollProgress) {
                     this.scrollProgress = progress;
                     this.updateShadow(progress);
@@ -33,13 +33,18 @@ const Navbar = {
 
             getScrollProgress() {
                 const navbarHeight = 82;
-                return Math.min(1, document.documentElement.scrollTop / navbarHeight);
+                return Math.min(
+                    1,
+                    document.documentElement.scrollTop / navbarHeight
+                );
             },
 
             updateShadow(progress) {
                 const maxTransparency = 0.22;
-                const shadowTransparency = Math.round(maxTransparency * progress * 100) / 100;
-                const borderTransparency =  Math.round((1 - progress) * 100) / 100;
+                const shadowTransparency =
+                    Math.round(maxTransparency * progress * 100) / 100;
+                const borderTransparency =
+                    Math.round((1 - progress) * 100) / 100;
                 this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
                 this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
             },
