@@ -1,13 +1,18 @@
 @props([
     'options',
     'id',
-    'title',
+    'title' => null,
     'class' => '',
     'model' => null,
     'description' => null,
     'single' => false,
     'hiddenOptions' => false,
     'mobileShowRows' => 3,
+    'wrapperClass' => 'space-y-6',
+    'gridWrapperClass' => null,
+    'withoutCheckbox' => false,
+    'hideSelectAll' => false,
+    'wireModel' => null,
 ])
 
 <div
@@ -30,19 +35,23 @@
         }
     }"
 >
-    <div class="space-y-6">
+    <div class="{{ $wrapperClass }}">
         <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
-            <div class="flex flex-col">
-                <div class="text-lg font-bold text-theme-secondary-900">
-                    {{ $title }}
+            @unless($title === null && $description === null)
+                <div class="flex flex-col">
+                    @if($title)
+                        <div class="text-lg font-bold text-theme-secondary-900">
+                            {{ $title }}
+                        </div>
+                    @endif
+
+                    @if ($description)
+                        <div>{{ $description }}</div>
+                    @endif
                 </div>
+            @endunless
 
-                @if ($description)
-                    <div>{{ $description }}</div>
-                @endif
-            </div>
-
-            @unless ($hiddenOptions || $single === true)
+            @unless ($hiddenOptions || $single === true || $hideSelectAll)
                 <label class="tile-selection-select-all">
                     <input
                         type="checkbox"
@@ -57,7 +66,7 @@
         </div>
 
         @unless ($hiddenOptions)
-            <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }}">
+            <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }} {{ $gridWrapperClass }}">
                 @foreach ($options as $option)
                     @include('ark::inputs.tile-selection-option', [
                         'id' => $id,
@@ -65,6 +74,8 @@
                         'single' => $single,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
+                        'withoutCheckbox' => $withoutCheckbox,
+                        'wireModel' => $wireModel,
                     ])
                 @endforeach
             </div>

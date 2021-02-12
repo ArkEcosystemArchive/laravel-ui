@@ -4,6 +4,7 @@
     'wireModel',
     'single' => false,
     'mobileHidden' => false,
+    'withoutCheckbox' => false
 ])
 
 <label
@@ -33,8 +34,12 @@
         <input
             id="{{ $id.'-'.$option['id'] }}"
             name="{{ $option['id'] }}"
-            type="checkbox"
-            class="form-checkbox tile-selection-checkbox"
+            @if($withoutCheckbox)
+                type="radio"
+            @else
+                type="checkbox"
+            @endunless
+            class="{{ $withoutCheckbox ? 'hidden' : 'form-checkbox tile-selection-checkbox' }}"
             x-model="options['{{ $option['id'] }}'].checked"
             wire:model="{{ $wireModel }}"
         />
