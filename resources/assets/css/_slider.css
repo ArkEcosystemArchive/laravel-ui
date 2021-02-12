@@ -8,9 +8,6 @@
     @apply mt-5 mb-8;
 }
 
-.swiper-container.slider-pagination-bottom .swiper-wrapper {
-    @apply mb-5;
-}
 .swiper-container:not(.slider-pagination-bottom) .swiper-wrapper {
     @apply mb-8;
 }
@@ -22,6 +19,10 @@
 
 .swiper-container:not(.slider-pagination-bottom) .swiper-pagination {
     @apply flex items-center;
+}
+
+.swiper-container.slider-pagination-bottom .swiper-pagination {
+    @apply mt-5;
 }
 
 @screen xl {

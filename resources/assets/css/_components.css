@@ -320,7 +320,7 @@
 
 .tile-selection-option:hover,
 .tile-selection-single:hover {
-    @apply shadow-lg text-theme-primary-700;
+    @apply shadow-lg text-theme-secondary-700;
 }
 
 .tile-selection-select-all {
