@@ -1,7 +1,7 @@
 @props([
     'message' => null,
     'messageClass' => null,
-    'type' => null,
+    'type' => 'info',
     'large' => false,
 ])
 
