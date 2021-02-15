@@ -36,7 +36,7 @@
 >
     <div class="{{ $wrapperClass }}">
         <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
-            @unless(! $title && ! $description)
+            @if($title || $description)
                 <div class="flex flex-col">
                     @if($title)
                         <div class="text-lg font-bold text-theme-secondary-900">
@@ -48,7 +48,7 @@
                         <div>{{ $description }}</div>
                     @endif
                 </div>
-            @endunless
+            @endif
 
             @unless ($hiddenOptions || $single === true)
                 <label class="tile-selection-select-all">
