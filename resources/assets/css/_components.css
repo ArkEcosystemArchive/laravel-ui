@@ -4,11 +4,15 @@
 }
 
 .dropdown-entry {
-    @apply flex items-center w-full px-8 py-4 font-medium leading-5 text-left transition duration-150 ease-in-out;
+    @apply block py-4 px-6 w-full font-semibold leading-5 text-left transition duration-150 ease-in-out cursor-pointer text-theme-secondary-800;
+}
+
+.dropdown-entry:focus {
+    @apply outline-none;
 }
 
 .dropdown-entry:hover {
-    @apply text-theme-secondary-900 bg-theme-secondary-100;
+    @apply text-theme-primary-600 bg-theme-primary-100;
 }
 .dark .dropdown-entry:hover {
     @apply text-white bg-theme-primary-600;
