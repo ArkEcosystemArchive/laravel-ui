@@ -22,7 +22,7 @@
     @if(!$closeButtonOnly && $wireClose)
     wire:click.self="{{ $wireClose }}"
     @endif
-    class="flex overflow-y-auto fixed inset-0 z-50 py-10 px-8"
+    class="flex overflow-y-auto fixed inset-0 z-50 pb-24 md:py-10 md:px-8"
     @if(!$closeButtonOnly && $escToClose)
     wire:keydown.escape="{{ $wireClose }}"
     tabindex="0"
