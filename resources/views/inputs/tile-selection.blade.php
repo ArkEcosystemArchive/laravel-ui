@@ -11,8 +11,9 @@
     'withoutIcon' => false,
     'wrapperClass' => 'space-y-6',
     'gridWrapperClass' => null,
+    'iconWrapper' => 'flex flex-col justify-center items-center md:space-y-2 h-full',
     'iconBreakpoints' => null,
-    'optionTitleClass' => null,
+    'optionTitleClass' => 'font-semibold',
 ])
 
 <div
@@ -68,14 +69,9 @@
             <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }} {{ $gridWrapperClass }}">
                 @foreach ($options as $option)
                     @include('ark::inputs.includes.tile-selection-option', [
-                        'id' => $id,
                         'option' => $option,
-                        'single' => $single,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
-                        'withoutIcon' => $withoutIcon,
-                        'iconBreakpoints' => $iconBreakpoints,
-                        'optionTitleClass' => $optionTitleClass,
                     ])
                 @endforeach
             </div>

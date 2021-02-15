@@ -31,13 +31,13 @@
         />
     @endif
 
-    <div class="{{ $iconWrapper ?? 'flex flex-col justify-center items-center md:space-y-2 h-full' }}">
-        @unless ($withoutIcon ?? false)
-            <div class="{{ $iconBreakpoints ?? '' }}">
+    <div class="{{ $iconWrapper }}">
+        @unless ($withoutIcon)
+            <div class="{{ $iconBreakpoints }}">
                 <x-ark-icon :name="$option['icon']" size="md" />
             </div>
         @endunless
 
-        <div class="{{ $optionTitleClass ?? 'font-semibold' }}">{{ $option['title'] }}</div>
+        <div class="{{ $optionTitleClass }}">{{ $option['title'] }}</div>
     </div>
 </label>
