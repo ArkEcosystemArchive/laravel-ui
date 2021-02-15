@@ -1,19 +1,18 @@
 @props([
     'options',
     'id',
-    'title',
+    'title' => null,
     'class' => '',
     'model' => null,
     'description' => null,
     'single' => false,
     'hiddenOptions' => false,
     'mobileShowRows' => 3,
-    'withoutTitle'  => false,
-    'withIcon' => false,
+    'withoutIcon' => false,
     'wrapperClass' => 'space-y-6',
     'gridWrapperClass' => null,
     'iconBreakpoints' => null,
-    'titleClass' => null,
+    'optionTitleClass' => null,
 ])
 
 <div
@@ -37,19 +36,19 @@
 >
     <div class="{{ $wrapperClass }}">
         <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
-            @unless($withoutTitle && ! $description)
+            @if(! $title && ! $description)
                 <div class="flex flex-col">
-                    @unless($withoutTitle)
+                    @if($title)
                         <div class="text-lg font-bold text-theme-secondary-900">
                             {{ $title }}
                         </div>
-                    @endunless
+                    @endif
 
                     @if ($description)
                         <div>{{ $description }}</div>
                     @endif
                 </div>
-            @endunless
+            @endif
 
             @unless ($hiddenOptions || $single === true)
                 <label class="tile-selection-select-all">
@@ -68,15 +67,15 @@
         @unless ($hiddenOptions)
             <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }} {{ $gridWrapperClass }}">
                 @foreach ($options as $option)
-                    @include('ark::inputs.tile-selection-option', [
+                    @include('ark::inputs.includes.tile-selection-option', [
                         'id' => $id,
                         'option' => $option,
                         'single' => $single,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
-                        'withIcon' => $withIcon,
+                        'withoutIcon' => $withoutIcon,
                         'iconBreakpoints' => $iconBreakpoints,
-                        'titleClass' => $titleClass,
+                        'optionTitleClass' => $optionTitleClass,
                     ])
                 @endforeach
             </div>

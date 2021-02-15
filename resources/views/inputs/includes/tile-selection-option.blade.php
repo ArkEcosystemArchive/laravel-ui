@@ -1,15 +1,3 @@
-@props([
-    'id',
-    'option',
-    'wireModel',
-    'single' => false,
-    'mobileHidden' => false,
-    'withIcon' => false,
-    'iconWrapper' =>  'flex flex-col justify-center items-center md:space-y-2 h-full',
-    'iconBreakpoints' => null,
-    'titleClass' => null,
-])
-
 <label
     wire:key="tile-selection-option-{{ $option['id'] }}"
     class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }}"
@@ -43,17 +31,13 @@
         />
     @endif
 
-    <div class="{{ $iconWrapper }} font-semibold">
-        @unless ($single)
-            <x-ark-icon :name="$option['icon']" size="md" />
-        @endunless
-
-        @if ($single && $withIcon)
-            <div class="{{ $iconBreakpoints }}">
+    <div class="{{ $iconWrapper ?? 'flex flex-col justify-center items-center md:space-y-2 h-full' }}">
+        @unless ($withoutIcon ?? false)
+            <div class="{{ $iconBreakpoints ?? '' }}">
                 <x-ark-icon :name="$option['icon']" size="md" />
             </div>
         @endunless
 
-        <div class="{{ $titleClass }}">{{ $option['title'] }}</div>
+        <div class="{{ $optionTitleClass ?? 'font-semibold' }}">{{ $option['title'] }}</div>
     </div>
 </label>
