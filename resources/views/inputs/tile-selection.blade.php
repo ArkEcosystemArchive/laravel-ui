@@ -1,18 +1,19 @@
 @props([
     'options',
     'id',
-    'title' => null,
+    'title',
     'class' => '',
     'model' => null,
     'description' => null,
     'single' => false,
     'hiddenOptions' => false,
     'mobileShowRows' => 3,
+    'withoutTitle'  => false,
+    'withIcon' => false,
     'wrapperClass' => 'space-y-6',
     'gridWrapperClass' => null,
-    'withoutCheckbox' => false,
-    'hideSelectAll' => false,
-    'wireModel' => null,
+    'iconBreakpoints' => null,
+    'titleClass' => null,
 ])
 
 <div
@@ -28,7 +29,6 @@
             if (this.allSelected) {
                 checkAllValue = false;
             }
-
             for (const optionKey in this.options) {
                 this.options[optionKey].checked = checkAllValue;
             }
@@ -37,13 +37,13 @@
 >
     <div class="{{ $wrapperClass }}">
         <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
-            @unless($title === null && $description === null)
+            @unless($withoutTitle && ! $description)
                 <div class="flex flex-col">
-                    @if($title)
+                    @unless($withoutTitle)
                         <div class="text-lg font-bold text-theme-secondary-900">
                             {{ $title }}
                         </div>
-                    @endif
+                    @endunless
 
                     @if ($description)
                         <div>{{ $description }}</div>
@@ -51,7 +51,7 @@
                 </div>
             @endunless
 
-            @unless ($hiddenOptions || $single === true || $hideSelectAll)
+            @unless ($hiddenOptions || $single === true)
                 <label class="tile-selection-select-all">
                     <input
                         type="checkbox"
@@ -74,8 +74,9 @@
                         'single' => $single,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
-                        'withoutCheckbox' => $withoutCheckbox,
-                        'wireModel' => $wireModel,
+                        'withIcon' => $withIcon,
+                        'iconBreakpoints' => $iconBreakpoints,
+                        'titleClass' => $titleClass,
                     ])
                 @endforeach
             </div>

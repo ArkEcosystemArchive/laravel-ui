@@ -4,7 +4,10 @@
     'wireModel',
     'single' => false,
     'mobileHidden' => false,
-    'withoutCheckbox' => false
+    'withIcon' => false,
+    'iconWrapper' =>  'flex flex-col justify-center items-center md:space-y-2 h-full',
+    'iconBreakpoints' => null,
+    'titleClass' => null,
 ])
 
 <label
@@ -12,7 +15,6 @@
     class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }}"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
-
         @if ($single)
             'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }",
         @else
@@ -34,22 +36,24 @@
         <input
             id="{{ $id.'-'.$option['id'] }}"
             name="{{ $option['id'] }}"
-            @if($withoutCheckbox)
-                type="radio"
-            @else
-                type="checkbox"
-            @endunless
-            class="{{ $withoutCheckbox ? 'hidden' : 'form-checkbox tile-selection-checkbox' }}"
+            type="checkbox"
+            class="form-checkbox tile-selection-checkbox"
             x-model="options['{{ $option['id'] }}'].checked"
             wire:model="{{ $wireModel }}"
         />
     @endif
 
-    <div class="flex flex-col justify-center items-center space-y-2 h-full font-semibold">
+    <div class="{{ $iconWrapper }} font-semibold">
         @unless ($single)
             <x-ark-icon :name="$option['icon']" size="md" />
         @endunless
 
-        <div>{{ $option['title'] }}</div>
+        @if ($single && $withIcon)
+            <div class="{{ $iconBreakpoints }}">
+                <x-ark-icon :name="$option['icon']" size="md" />
+            </div>
+        @endunless
+
+        <div class="{{ $titleClass }}">{{ $option['title'] }}</div>
     </div>
 </label>
