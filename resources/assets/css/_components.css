@@ -315,16 +315,21 @@
 }
 
 .tile-selection-option {
-    @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30;
+    @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
 }
 
 .tile-selection-single {
-    @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100;
+    @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 transition-default;
 }
 
 .tile-selection-option:hover,
 .tile-selection-single:hover {
     @apply shadow-lg text-theme-secondary-700;
+}
+
+.tile-selection-option:not(.tile-selection--checked):hover,
+.tile-selection-single:not(.tile-selection--checked):hover {
+    @apply border-transparent;
 }
 
 .tile-selection-select-all {
