@@ -13,9 +13,9 @@
     <div class="alert-content-wrapper alert-{{ $type }}-content @if($large) alert-content-large @endif">
         @isset($title)<span class="alert-{{ $type }}-title">{{ $title }}</span>@endif
         @isset($message)
-            <span class="block">{{ $message }}</span>
+            <span class="block {{ $messageClass }}">{{ $message }}</span>
         @else
-            <span class="block">{{ $slot }}</span>
+            <span class="block {{ $messageClass }}">{{ $slot }}</span>
         @endif
     </div>
 </div>
