@@ -1,9 +1,11 @@
 const Tags = (
     extraData = {},
     tags = [],
+    allowedTags = [],
     maxTags = null
 ) => ({
     onTagRemove: null,
+    onInput: null,
     onTagAdd: null,
     availableTags: tags,
     init() {
@@ -21,7 +23,24 @@ const Tags = (
 
                 this.selectTag(tag);
             },
+            onBeforeTagAdd(e, tag) {
+                if (!allowedTags.length) {
+                    return true;
+                }
 
+                // Workaround to use the tag in the correct case even if the user
+                // type it wrong
+                const allowedTag = allowedTags.find(t => {
+                    return t.toUpperCase().trim() == tag.toUpperCase().trim();
+                })
+
+                if (allowedTag && allowedTag !== tag) {
+                    taggle.add(allowedTag);
+                    return false;
+                }
+
+                return !! allowedTag;
+            },
             onTagRemove: (e, tag) => {
                 if (typeof this.onTagRemove === 'function') {
                     this.onTagRemove(e, tag);
@@ -31,6 +50,13 @@ const Tags = (
             },
         });
 
+        const taggleInput = taggle.getInput()
+
+        if (typeof this.onInput === 'function') {
+            taggleInput.addEventListener('input', (e) => {
+                this.onInput(e);
+            });
+        }
 
         this.$watch('availableTags', (availableTags) => {
             const { select } = this.$refs;

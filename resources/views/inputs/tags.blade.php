@@ -4,16 +4,17 @@
     'errors',
     'tags',
     'maxTags' => null,
+    'allowedTags' => [],
     'id' => null,
     'label' => null,
     'tooltip' => null,
     'required' => false,
-    'containerFocusClass' => 'border-theme-primary-600',
 ])
 
 <div
-    x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ $maxTags === null ? 'null' : $maxTags }})"
+    x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
+    {{ $attributes }}
 >
     <div class="input-group">
         @unless ($hideLabel ?? false)
@@ -28,7 +29,7 @@
         @endunless
 
         <div class="input-wrapper">
-            <div wire:ignore x-ref="input" class="flex w-full px-4 pt-4 pb-2 mt-6 mb-6 border-2 rounded-md md:w-2/3 border-theme-secondary-200"></div>
+            <div wire:ignore x-ref="input" class="p-4 bg-white border rounded border-theme-secondary-400"></div>
 
             {{-- Hidden select used to emulate wire:model behaviour --}}
             <select
