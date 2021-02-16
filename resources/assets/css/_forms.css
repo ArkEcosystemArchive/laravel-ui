@@ -187,6 +187,5 @@
 
 .tags-input-focus {
     @apply border-theme-primary-600;
-    outline: 1px solid var(--theme-color-primary-600);
-    outline-offset: 0;
+    box-shadow: 0 0 0 1px var(--theme-color-primary-600);
 }
