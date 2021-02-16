@@ -173,10 +173,8 @@ window.Tags = Tags;
 4. Use the component like the rest of the components. It accepts `tags` and `allowed-tags` props.
 
 ```html
-<x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="$this->availablePlatforms" />
+<x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="['taga', 'tagb']" />
 ```
-
-Accepts `full` for all the plugins and `basic` for only text related buttons.
 
 
 #### Livewire modals
