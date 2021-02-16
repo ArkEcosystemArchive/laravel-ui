@@ -1,5 +1,5 @@
 .button-generic {
-    @apply px-4 py-2 font-semibold text-center rounded transition-default;
+    @apply px-4 py-2.5 font-semibold text-center rounded transition-default;
 }
 
 .button-primary {
@@ -92,7 +92,7 @@ a.button-secondary {
 }
 
 .button-pagination-page-indicator {
-    @apply px-2 py-2 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-500;
+    @apply px-2 py-2.5 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-500;
 }
 
 .button-pagination-page-indicator:hover .button-pagination-search,
@@ -109,11 +109,11 @@ a.button-secondary {
 }
 
 .button-pagination-page-indicator--selected {
-    @apply px-2 py-2 font-semibold text-center transition-default text-theme-primary-500 bg-theme-primary-200;
+    @apply px-2 py-2.5 font-semibold text-center transition-default text-theme-primary-500 bg-theme-primary-200;
 }
 
 .dark .button-pagination-page-indicator--selected {
-    @apply px-2 py-2 font-semibold text-center transition-default bg-theme-secondary-600 text-theme-secondary-200;
+    @apply px-2 py-2.5 font-semibold text-center transition-default bg-theme-secondary-600 text-theme-secondary-200;
 }
 
 .button-pagination-page-indicator:hover {
