@@ -15,7 +15,7 @@ const Tags = (
             tags: tags,
             preserveCase: true,
             maxTags: maxTags,
-            containerFocusClass: 'tagsFocus',
+            containerFocusClass: 'tags-input-focus',
             onTagAdd: (e, tag) => {
                 if (typeof this.onTagAdd === 'function') {
                     this.onTagAdd(e, tag);
