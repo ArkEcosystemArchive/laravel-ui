@@ -42,8 +42,13 @@ a.disabled {
     @apply button-secondary;
 }
 
+.button-icon-cancel {
+    @apply button-cancel;
+}
+
 .button-icon-primary,
-.button-icon {
+.button-icon,
+.button-icon-cancel {
     @apply flex items-center justify-center p-0;
 }
 
@@ -75,7 +80,8 @@ a.disabled {
     @apply bg-theme-primary-700 shadow-button-primary;
 }
 
-.button-cancel:hover {
+.button-cancel:hover,
+.button-icon-cancel:hover {
     @apply text-white bg-theme-danger-400;
 }
 
