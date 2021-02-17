@@ -4,22 +4,22 @@
 }
 
 .input-label--toggle {
-    @apply text-base font-semibold leading-5 text-theme-secondary-700 transition-default mr-3;
+    @apply mr-3 text-base font-semibold leading-5 text-theme-secondary-700 transition-default;
 }
 
 .input-wrapper {
-    @apply mt-2 relative rounded-md shadow-sm text-theme-secondary-900;
+    @apply relative mt-2 rounded-md shadow-sm text-theme-secondary-900;
 }
 .dark .input-wrapper {
     @apply text-theme-secondary-200;
 }
 
 .input-tooltip {
-    @apply ml-2 flex items-center justify-center text-white bg-theme-secondary-700 rounded-full w-4 h-4 text-sm;
+    @apply flex items-center justify-center w-4 h-4 ml-2 text-sm text-white rounded-full bg-theme-secondary-700;
 }
 
 .input-text {
-    @apply form-input block w-full transition-default;
+    @apply block w-full form-input transition-default;
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
@@ -46,21 +46,21 @@
 .input-text-with-icon:read-only,
 .input-group:focus-within .input-text:read-only,
 .input-text:read-only {
-    @apply border-theme-secondary-400 bg-theme-secondary-100 cursor-not-allowed;
+    @apply cursor-not-allowed border-theme-secondary-400 bg-theme-secondary-100;
 }
 
 /** Input with icon button **/
 .input-wrapper-with-icon {
-    @apply mt-2 relative rounded overflow-hidden shadow-sm text-theme-secondary-900;
+    @apply relative mt-2 overflow-hidden rounded shadow-sm text-theme-secondary-900;
 }
 
 .input-text-with-icon {
-    @apply input-text rounded-none;
+    @apply rounded-none input-text;
 }
 
 /** Input with icon prefix **/
 .input-icon {
-    @apply flex absolute inset-y-0 items-center pointer-events-none;
+    @apply absolute inset-y-0 flex items-center pointer-events-none;
 }
 
 .input-text-with-prefix {
@@ -77,7 +77,7 @@
 
 /* Radio buttons */
 .input-radio {
-    @apply h-4 w-4 text-theme-success-600 transition duration-150 ease-in-out;
+    @apply w-4 h-4 transition duration-150 ease-in-out text-theme-success-600;
 }
 
 .input-radio[disabled] {
@@ -97,7 +97,7 @@
 
 /* Checkboxes */
 .input-checkbox {
-    @apply h-4 w-4 text-theme-success-600 transition duration-150 ease-in-out;
+    @apply w-4 h-4 transition duration-150 ease-in-out text-theme-success-600;
 }
 
 .input-checkbox[disabled] {
@@ -110,7 +110,7 @@
 
 /* Toggle */
 .input-toggle-slide {
-    @apply absolute h-2 w-9 mx-auto transition-colors duration-200 ease-in-out rounded-full bg-theme-secondary-300;
+    @apply absolute h-2 mx-auto transition-colors duration-200 ease-in-out rounded-full w-9 bg-theme-secondary-300;
 }
 .dark .input-toggle-slide {
     @apply bg-theme-secondary-800;
@@ -183,4 +183,9 @@
 
 .input-help--error {
     @apply mt-2 text-sm text-theme-danger-500;
+}
+
+.tags-input-focus {
+    @apply border-theme-primary-600;
+    box-shadow: 0 0 0 1px var(--theme-color-primary-600);
 }

@@ -145,6 +145,38 @@ window.MarkdownEditor = MarkdownEditor;
 
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
+### Tags input
+
+1. Add taggle dependency `yarn add taggle` and ensure to copy the scripts to the public directory:
+
+```js
+// webpack.mix.js file
+    mix.copy('node_modules/taggle/dist/taggle.min.js', 'public/js/taggle.js')
+```
+
+2. Add the Tags script to the main js file
+
+```js
+import Tags from "@ui/js/tags";
+
+window.Tags = Tags;
+```
+
+3. Ensure to import the taggle scripts
+
+```html
+@push('scripts')
+    <script src="{{ mix('js/taggle.js')}}"></script>
+@endpush
+```
+
+4. Use the component like the rest of the components. It accepts `tags` and `allowed-tags` props.
+
+```html
+<x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="['taga', 'tagb']" />
+```
+
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
@@ -388,6 +420,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-alert>`
 - `<x-ark-secondary-menu>`
 - `<x-ark-clipboard>`
+- `<x-ark-tags>`
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 

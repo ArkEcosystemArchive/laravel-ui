@@ -172,6 +172,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.time', 'ark-time');
         Blade::component('ark::inputs.upload-image-single', 'ark-upload-image-single');
         Blade::component('ark::inputs.upload-image-collection', 'ark-upload-image-collection');
+        Blade::component('ark::inputs.tags', 'ark-tags');
 
         Blade::component('ark::pages.contact.content', 'ark-pages-contact-content');
         Blade::component('ark::pages.contact.header', 'ark-pages-contact-header');
