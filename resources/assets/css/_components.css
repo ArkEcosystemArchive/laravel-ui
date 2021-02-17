@@ -380,7 +380,10 @@
 }
 
 .tile-link {
-    @apply relative rounded-lg cursor-pointer select-none bg-white text-theme-secondary-900 h-30 transition-default;
+    @apply relative rounded-lg cursor-pointer select-none bg-white h-30 transition-default;
+}
+.tile-link:not(.tile-links-show-more) {
+    @apply text-theme-secondary-900;
 }
 .tile-link:hover {
     @apply shadow-lg text-theme-primary-700 border-transparent;
@@ -394,7 +397,7 @@
 }
 
 .tile-links-show-more {
-    @apply tile-link font-semibold text-center rounded bg-white text-theme-primary-600 transition-default;
+    @apply tile-link font-semibold text-center rounded bg-white text-theme-primary-600;
 }
 .tile-links-show-more:hover {
     @apply bg-theme-primary-700 text-white;
