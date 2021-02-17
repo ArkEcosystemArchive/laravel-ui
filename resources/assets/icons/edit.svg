@@ -1,12 +1,1 @@
-
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 24.5 24.5" style="enable-background:new 0 0 24.5 24.5;" xml:space="preserve">
-<g id="pencil" transform="translate(0.25 0.25)">
-	<path id="Контур_472" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22.2,1.8c-1.4-1.4-3.7-1.4-5.1,0c0,0,0,0,0,0L2.5,16.3l-1.8,6.9l6.9-1.8L22.2,7
-		C23.6,5.6,23.6,3.3,22.2,1.8C22.2,1.8,22.2,1.8,22.2,1.8z"/>
-	<line id="Линия_136" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="16.6" y1="2.3" x2="21.7" y2="7.4"/>
-	<line id="Линия_137" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="2.5" y1="16.3" x2="7.7" y2="21.5"/>
-</g>
-</svg>
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24.5 24.5" xml:space="preserve"><g id="pencil" transform="translate(.25 .25)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path id="Контур_472" d="M22.2 1.8c-1.4-1.4-3.7-1.4-5.1 0 0 0 0 0 0 0L2.5 16.3.7 23.2l6.9-1.8L22.2 7c1.4-1.4 1.4-3.7 0-5.2 0 0 0 0 0 0z"/><path id="Линия_136" d="M16.6 2.3l5.1 5.1"/><path id="Линия_137" d="M2.5 16.3l5.2 5.2"/></g></svg>
