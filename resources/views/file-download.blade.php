@@ -1,5 +1,6 @@
 <div
     x-data="fileDownload()"
+    class="{{ $wrapperClass ?? '' }}"
 >
     <button
         type="button"
