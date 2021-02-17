@@ -6,7 +6,7 @@ window.fileDownload = () => {
             if (window.navigator.msSaveOrOpenBlob) {
                 window.navigator.msSaveBlob(blob, `${filename}.${extension}`);
             } else {
-                let elem = window.document.createElement('a');
+                let elem = window.document.createElement("a");
                 elem.href = window.URL.createObjectURL(blob);
                 elem.download = `${filename}.${extension}`;
                 document.body.appendChild(elem);
