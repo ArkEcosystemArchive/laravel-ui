@@ -145,6 +145,10 @@ class UserInterfaceServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/assets/js/highlightjs-copy.js' => resource_path('js/vendor/ark/highlightjs-copy.js'),
         ], 'highlightjs');
+
+        $this->publishes([
+            __DIR__ . '/../resources/assets/js/file-download.js' => resource_path('js/vendor/ark/file-download.js'),
+        ], 'file-download');
     }
 
     /**
