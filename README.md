@@ -448,7 +448,7 @@ class Articles {
 <div>
     ...
 
-    <x-ark-pagination :results="$articles" class="mt-8" />
+    <x-ark-pagination :paginator="$articles" class="mt-8" />
 
     <script>
         window.addEventListener('livewire:load', () => window.livewire.on('pageChanged', () => scrollToQuery('#article-list')));
