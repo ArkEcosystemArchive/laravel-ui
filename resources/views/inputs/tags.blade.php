@@ -9,10 +9,11 @@
     'label' => null,
     'tooltip' => null,
     'required' => false,
+    'placeholder' => 'Enter tags',
 ])
 
 <div
-    x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, {{ $maxTags === null ? 'null' : $maxTags }})"
+    x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
     {{ $attributes }}
 >
@@ -29,7 +30,7 @@
         @endunless
 
         <div class="input-wrapper">
-            <div wire:ignore x-ref="input" class="p-2 bg-white rounded border border-theme-secondary-400"></div>
+            <div wire:ignore x-ref="input" class="px-3 py-2 bg-white border rounded border-theme-secondary-400"></div>
 
             {{-- Hidden select used to emulate wire:model behaviour --}}
             <select

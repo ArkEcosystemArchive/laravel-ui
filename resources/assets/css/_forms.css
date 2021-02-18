@@ -189,3 +189,56 @@
     @apply border-theme-primary-600;
     box-shadow: 0 0 0 1px var(--theme-color-primary-600);
 }
+
+.taggle_list {
+    @apply flex flex-wrap -mb-1;
+}
+
+
+.taggle_list li {
+    @apply inline mb-1 mr-2 font-medium align-baseline whitespace-nowrap;
+}
+
+.taggle_list .taggle {
+    @apply flex items-center pl-2 pr-1 space-x-2 rounded bg-theme-primary-100;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+
+.taggle_list .taggle .close {
+    @apply items-center p-1 text-lg leading-3 no-underline rounded-sm cursor-pointer pointer-events-none right-2 text-theme-secondary-900 bg-theme-primary-200;
+}
+
+.taggle_list .taggle:hover {
+    @apply py-2 transition-all duration-150;
+}
+
+.taggle_list .taggle:hover > .close {
+    @apply opacity-100 pointer-events-auto;
+}
+
+.taggle_list .taggle .close:hover {
+    @apply text-theme-primary-600;
+}
+
+.taggle_placeholder {
+    @apply absolute py-1 pointer-events-none text-theme-secondary-400;
+}
+
+.taggle_input {
+    @apply max-w-full my-1 bg-none;
+}
+
+.taggle_sizer {
+    @apply absolute invisible p-0 m-0;
+    top: -500px;
+    z-index: -1;
+}
+
+.taggle_text {
+    @apply text-theme-primary-600;
+}
+
+.taggle {
+    @apply space-x-2 bg-theme-primary-100;
+}

@@ -1,4 +1,4 @@
-const Tags = (extraData = {}, tags = [], allowedTags = [], maxTags = null) => ({
+const Tags = (extraData = {}, tags = [], allowedTags = [], placeholder = 'Enter tags...', maxTags = null) => ({
     onTagRemove: null,
     onInput: null,
     onTagAdd: null,
@@ -10,6 +10,7 @@ const Tags = (extraData = {}, tags = [], allowedTags = [], maxTags = null) => ({
             tags: tags,
             preserveCase: true,
             maxTags: maxTags,
+            placeholder: placeholder,
             containerFocusClass: "tags-input-focus",
             onTagAdd: (e, tag) => {
                 if (typeof this.onTagAdd === "function") {
