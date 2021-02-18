@@ -29,7 +29,7 @@
         @endunless
 
         <div class="input-wrapper">
-            <div wire:ignore x-ref="input" class="p-4 bg-white rounded border border-theme-secondary-400"></div>
+            <div wire:ignore x-ref="input" class="p-2 bg-white rounded border border-theme-secondary-400"></div>
 
             {{-- Hidden select used to emulate wire:model behaviour --}}
             <select
