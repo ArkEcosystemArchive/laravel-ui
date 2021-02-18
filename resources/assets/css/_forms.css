@@ -206,7 +206,7 @@
 }
 
 .taggle_list .taggle .close {
-    @apply items-center p-1 text-lg leading-3 no-underline rounded-sm cursor-pointer pointer-events-none right-2 text-theme-secondary-900 bg-theme-primary-200;
+    @apply items-center p-1 text-lg leading-3 no-underline rounded-sm cursor-pointer pointer-events-none right-2 text-theme-secondary-900 bg-theme-primary-200 whitespace-nowrap;
 }
 
 .taggle_list .taggle:hover {
@@ -222,7 +222,7 @@
 }
 
 .taggle_placeholder {
-    @apply absolute py-1 pointer-events-none text-theme-secondary-400;
+    @apply absolute top-0 left-0 max-w-full p-3 truncate pointer-events-none text-theme-secondary-400;
 }
 
 .taggle_input {
