@@ -94,7 +94,7 @@
             </form>
 
             <div class="hidden px-2 rounded bg-theme-primary-100 dark:bg-theme-secondary-800 md:flex flex-inline">
-                @foreach ($elements as $element)
+                @foreach ($paginator->items() as $element)
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))
                         <button
