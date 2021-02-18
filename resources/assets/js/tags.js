@@ -1,4 +1,10 @@
-const Tags = (extraData = {}, tags = [], allowedTags = [], placeholder = 'Enter tags...', maxTags = null) => ({
+const Tags = (
+    extraData = {},
+    tags = [],
+    allowedTags = [],
+    placeholder = "Enter tags...",
+    maxTags = null
+) => ({
     onTagRemove: null,
     onInput: null,
     onTagAdd: null,
