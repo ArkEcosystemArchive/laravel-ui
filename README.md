@@ -520,6 +520,14 @@ In `config/app.php` under `aliases`, add the following entry:
 'DateFormat' => ARKEcosystem\UserInterface\Support\DateFormat::class,
 ```
 
+### Format Read Time method for blade (generally used for blog date/time output)
+
+In `config/app.php` under `providers`, add the following entry:
+
+```
+ARKEcosystem\UserInterface\Providers\FormatReadTimeServiceProvider::class,
+```
+
 ### SVG Lazy-Loading Icons
 
 In `config/app.php` under `providers`, add the following entry:
