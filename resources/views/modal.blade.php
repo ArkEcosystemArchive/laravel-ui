@@ -29,7 +29,7 @@
     @endif
 >
     <div
-        class="md:m-auto w-full {{ $class }}"
+        class="modal-content-wrapper md:m-auto w-full {{ $class }} {{ $widthClass }}"
         @if($style) style="{{ $style }}" @endif
     >
         <div class="modal-content dropdown-scrolling {{ $widthClass }}">
