@@ -220,17 +220,17 @@
 }
 
 .modal-close {
-    @apply absolute top-0 right-0 w-10 h-10 mt-4 mr-4 rounded text-theme-secondary-700 bg-theme-secondary-100 transition-default;
+    @apply absolute top-0 right-0 w-10 h-10 mt-4 mr-4 rounded text-theme-secondary-900 bg-theme-info-100 transition-default;
 }
 .dark .modal-close {
     @apply bg-theme-secondary-800 text-theme-secondary-600;
 }
 
 .modal-close:hover {
-    @apply shadow-lg bg-theme-secondary-300;
+    @apply shadow-lg bg-theme-info-300;
 }
 .dark .modal-close:hover {
-    @apply bg-theme-secondary-700 text-theme-secondary-500;
+    @apply bg-theme-secondary-700 text-theme-secondary-400;
 }
 
 @screen lg {

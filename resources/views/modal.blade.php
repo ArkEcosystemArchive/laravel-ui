@@ -39,7 +39,7 @@
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >
-                        @svg('close', 'w-4 h-4 m-auto')
+                        @svg('close', 'w-5 h-5 m-auto')
                     </button>
                 @endif
 
