@@ -2,7 +2,7 @@
     'xData' => '{}',
     'name',
     'errors',
-    'tags',
+    'tags' => [],
     'maxTags' => null,
     'allowedTags' => [],
     'id' => null,
@@ -30,7 +30,7 @@
         @endunless
 
         <div class="input-wrapper">
-            <div wire:ignore x-ref="input" class="relative py-2 px-3 bg-white rounded border border-theme-secondary-400"></div>
+            <div wire:ignore x-ref="input" class="relative px-3 py-2 bg-white border rounded border-theme-secondary-400"></div>
 
             {{-- Hidden select used to emulate wire:model behaviour --}}
             <select
