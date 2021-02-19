@@ -20,16 +20,16 @@
     x-data="Modal.livewire({{ $xData }})"
     x-init="init"
     @if(!$closeButtonOnly && $wireClose)
-    wire:click.self="{{ $wireClose }}"
+        wire:click.self="{{ $wireClose }}"
     @endif
-    class="flex overflow-y-auto fixed inset-0 z-50 py-10 px-8"
+    class="flex overflow-y-auto fixed inset-0 z-50 md:py-10 md:px-8"
     @if(!$closeButtonOnly && $escToClose)
-    wire:keydown.escape="{{ $wireClose }}"
-    tabindex="0"
+        wire:keydown.escape="{{ $wireClose }}"
+        tabindex="0"
     @endif
 >
     <div
-        class="m-auto w-full {{ $class }}"
+        class="modal-content-wrapper md:m-auto w-full {{ $class }} {{ $widthClass }}"
         @if($style) style="{{ $style }}" @endif
     >
         <div class="modal-content dropdown-scrolling {{ $widthClass }}">
@@ -39,7 +39,7 @@
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >
-                        @svg('close', 'w-4 h-4 m-auto')
+                        @svg('close', 'w-5 h-5 m-auto')
                     </button>
                 @endif
 

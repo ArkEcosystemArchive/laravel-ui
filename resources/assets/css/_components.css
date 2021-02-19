@@ -199,24 +199,42 @@
 
 /** Modal **/
 .modal-content {
-    @apply relative mx-auto bg-white rounded-lg shadow-2xl;
+    @apply relative bg-white;
 }
+
+@media screen and (max-width: 767px) {
+    /* Needed for full-screen modals */
+    .modal-content {
+        max-width: 100% !important;
+    }
+
+    .modal-content-wrapper {
+        max-width: 100% !important;
+    }
+}
+
+@screen md {
+    .modal-content {
+        @apply mx-auto rounded-lg shadow-2xl;
+    }
+}
+
 .dark .modal-content {
     @apply bg-theme-secondary-900;
 }
 
 .modal-close {
-    @apply absolute top-0 right-0 w-10 h-10 mt-4 mr-4 rounded text-theme-secondary-700 bg-theme-secondary-100 transition-default;
+    @apply absolute top-0 right-0 w-10 h-10 mt-4 mr-4 rounded text-theme-secondary-900 bg-theme-info-100 transition-default;
 }
 .dark .modal-close {
     @apply bg-theme-secondary-800 text-theme-secondary-600;
 }
 
 .modal-close:hover {
-    @apply shadow-lg bg-theme-secondary-300;
+    @apply shadow-lg bg-theme-info-300;
 }
 .dark .modal-close:hover {
-    @apply bg-theme-secondary-700 text-theme-secondary-500;
+    @apply bg-theme-secondary-700 text-theme-secondary-400;
 }
 
 @screen lg {
