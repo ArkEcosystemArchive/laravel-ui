@@ -199,8 +199,22 @@
 
 /** Modal **/
 .modal-content {
-    @apply relative mx-auto bg-white rounded-lg shadow-2xl;
+    @apply relative bg-white;
 }
+
+@media screen and (max-width: 767px) {
+    /* Needed for full-screen modals */
+    .modal-content {
+        max-width: 100% !important;
+    }
+}
+
+@screen md {
+    .modal-content {
+        @apply mx-auto rounded-lg shadow-2xl;
+    }
+}
+
 .dark .modal-content {
     @apply bg-theme-secondary-900;
 }
