@@ -1,6 +1,6 @@
 @props([
     'message' => null,
-    'messageClass' => null,
+    'messageClass' => 'text-sm',
     'type' => 'info',
     'large' => false,
 ])
