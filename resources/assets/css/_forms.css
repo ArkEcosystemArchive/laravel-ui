@@ -186,6 +186,7 @@
 }
 
 /* Tags */
+/* purgecss ignore */
 .tags-input-focus {
     @apply border-theme-primary-600;
     box-shadow: 0 0 0 1px var(--theme-color-primary-600);

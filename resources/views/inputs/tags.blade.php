@@ -2,7 +2,7 @@
     'xData' => '{}',
     'name',
     'errors',
-    'tags',
+    'tags' => [],
     'maxTags' => null,
     'allowedTags' => [],
     'id' => null,
