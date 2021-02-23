@@ -6,4 +6,6 @@ return [
     'send'          => 'Send',
     'view_all'      => 'View all',
     'save'          => 'Save',
+    'hide'          => 'Hide',
+    'show'          => 'Show',
 ];

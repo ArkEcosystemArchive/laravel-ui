@@ -7,6 +7,7 @@
     'titleClass' => '',
     'circleClass' => '',
     'circleSize' => 'sm',
+    'toggleTitle' => false,
 ])
 
 @php ($isDark = $dark)
@@ -21,9 +22,14 @@
                     :class="{ 'mb-5': openPanel }"
                     @click="openPanel = (openPanel ? null : 1)"
                 >
-                    <span class="text-lg font-semibold {{ $titleClass }}">
-                        {{ $title }}
-                    </span>
+                    <div class="text-lg font-semibold {{ $titleClass }}">
+                        @if($toggleTitle)
+                            <span x-show="openPanel">@lang('ui::actions.hide') {{ $title }}</span>
+                            <span x-show="!openPanel">@lang('ui::actions.show') {{ $title }}</span>
+                        @else
+                            <span>{{ $title }}</span>
+                        @endif
+                    </div>
 
                     <span class="flex items-center ml-6 h-7">
                         <span
