@@ -24,8 +24,8 @@
                 >
                     <div class="text-lg font-semibold {{ $titleClass }}">
                         @if($toggleTitle)
-                            <span x-show="openPanel">@lang('ui::actions.hide') {{ $title }}</span>
-                            <span x-show="!openPanel" x-cloak>@lang('ui::actions.show') {{ $title }}</span>
+                            <span x-show="openPanel" x-cloak>@lang('ui::actions.hide') {{ $title }}</span>
+                            <span x-show="!openPanel">@lang('ui::actions.show') {{ $title }}</span>
                         @else
                             <span>{{ $title }}</span>
                         @endif
