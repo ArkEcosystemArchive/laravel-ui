@@ -21,6 +21,7 @@
                 @if($placeholder ?? '') placeholder="{{ $placeholder }}" @endif
                 @if($readonly ?? '') readonly @endif
                 @if($required ?? false) required @endif
+                @if($maxlength ?? false) maxlength="{{ $maxlength }}" @endif
             >{{ $slot ?? '' }}</textarea>
         </div>
 
