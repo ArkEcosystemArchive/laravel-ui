@@ -14,6 +14,11 @@
     'iconWrapper' => 'flex flex-col justify-center items-center md:space-y-2 h-full',
     'iconBreakpoints' => null,
     'optionTitleClass' => 'font-semibold',
+    'withoutSelectAll' => false,
+    'selectionLimit' => null,
+    'selectedOptionsCount' => null,
+    'selectedOptionsTooltip' => null,
+    'disabledCheckboxTooltip' => null,
 ])
 
 <div
@@ -51,7 +56,7 @@
                 </div>
             @endif
 
-            @unless ($hiddenOptions || $single === true)
+            @unless ($hiddenOptions || $single === true || $withoutSelectAll)
                 <label class="tile-selection-select-all">
                     <input
                         type="checkbox"
@@ -63,6 +68,12 @@
                     <div>@lang('ui::general.select-all')</div>
                 </label>
             @endunless
+
+            @if($withoutSelectAll && $selectionLimit)
+                <label class="tile-selection-select-all">
+                    <div data-tippy-content="{{ $selectedOptionsTooltip }}">{{ $selectedOptionsCount }} / {{ $selectionLimit }}</div>
+                </label>
+            @endif
         </div>
 
         @unless ($hiddenOptions)
@@ -72,6 +83,8 @@
                         'option' => $option,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
+                        'isDisabled' => $withoutSelectAll ? ($selectedOptionsCount >= $selectionLimit ? true : false) : false,
+                        'disabledCheckboxTooltip' => $disabledCheckboxTooltip,
                     ])
                 @endforeach
             </div>

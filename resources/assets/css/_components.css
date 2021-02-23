@@ -462,3 +462,7 @@
         @apply block mb-2;
     }
 }
+
+.disabled-tile {
+    @apply opacity-50 border-theme-secondary-300 bg-transparent pointer-events-none	;
+}
