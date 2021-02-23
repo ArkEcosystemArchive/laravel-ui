@@ -7,7 +7,7 @@
     'titleClass' => '',
     'circleClass' => '',
     'circleSize' => 'sm',
-    'toggling' => false,
+    'toggleTitle' => false,
 ])
 
 @php ($isDark = $dark)
@@ -23,7 +23,7 @@
                     @click="openPanel = (openPanel ? null : 1)"
                 >
                     <div class="text-lg font-semibold {{ $titleClass }}">
-                        @if($toggling)
+                        @if($toggleTitle)
                             <span x-show="openPanel">@lang('ui::actions.hide') {{ $title }}</span>
                             <span x-show="!openPanel">@lang('ui::actions.show') {{ $title }}</span>
                         @else
