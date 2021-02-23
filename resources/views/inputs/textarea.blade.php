@@ -1,27 +1,47 @@
-<div class="{{ $class ?? '' }}">
+@props([
+    'name',
+    'errors',
+    'class'     => '',
+    'id'        => null,
+    'model'     => null,
+    'hideLabel' => false,
+    'label'     => null,
+    'tooltip'   => null,
+    'required'  => false,
+    'rows'      => 10,
+])
+
+<div class="{{ $class }}">
     <div class="input-group">
-        @unless ($hideLabel ?? false)
+        @unless ($hideLabel)
             @include('ark::inputs.includes.input-label', [
                 'name'     => $name,
                 'errors'   => $errors,
                 'id'       => $id ?? $name,
-                'label'    => $label ?? null,
-                'tooltip'  => $tooltip ?? null,
-                'required' => $required ?? false,
+                'label'    => $label,
+                'tooltip'  => $tooltip,
+                'required' => $required,
             ])
         @endunless
 
         <div class="input-wrapper">
-            <textarea
-                id="{{ $id ?? $name }}"
-                name="{{ $name }}"
-                rows="{{ $rows ?? '10' }}"
-                class="input-text @error($name) input-text--error @enderror"
-                wire:model="{{ $model ?? $name }}"
-                @if($placeholder ?? '') placeholder="{{ $placeholder }}" @endif
-                @if($readonly ?? '') readonly @endif
-                @if($required ?? false) required @endif
-                @if($maxlength ?? false) maxlength="{{ $maxlength }}" @endif
+            <textarea class="input-text @error($name) input-text--error @enderror"
+                {{ $attributes
+                    ->merge([
+                        'id'   => $id ?? $name,
+                        'rows' => $rows,
+                        'name' => $name,
+                        'wire:model' => $model ?? $name,
+                    ])
+                    ->except([
+                        'class',
+                        'errors',
+                        'model',
+                        'slot',
+                        'tooltip',
+                        'label',
+                        'hide-label',
+                    ]) }}
             >{{ $slot ?? '' }}</textarea>
         </div>
 
