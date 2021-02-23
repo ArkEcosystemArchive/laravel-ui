@@ -22,13 +22,13 @@ final class MarkdownParser
 
     public static function basic(string $text): string
     {
-        $markdownConverter = new self;
+        $markdownParser = new self;
 
-        $rawHTML = $markdownConverter->getMarkdownCoverter()->convertToHtml($text);
+        $rawHTML = $markdownParser->getMarkdownCoverter()->convertToHtml($text);
 
-        $rawHTMLWithTagsAsParagraphs = $markdownConverter->convertHeadersToParagraphs($rawHTML);
+        $rawHTMLWithTagsAsParagraphs = $markdownParser->convertHeadersToParagraphs($rawHTML);
 
-        return $markdownConverter->stripUnalllowedTags($rawHTMLWithTagsAsParagraphs);
+        return $markdownParser->stripUnalllowedTags($rawHTMLWithTagsAsParagraphs);
     }
 
     public static function full(string $text): string
