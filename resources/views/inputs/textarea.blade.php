@@ -1,8 +1,15 @@
 <div class="{{ $class ?? '' }}">
     <div class="input-group">
-        <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
-            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
-        </label>
+        @unless ($hideLabel ?? false)
+            @include('ark::inputs.includes.input-label', [
+                'name'     => $name,
+                'errors'   => $errors,
+                'id'       => $id ?? $name,
+                'label'    => $label ?? null,
+                'tooltip'  => $tooltip ?? null,
+                'required' => $required ?? false,
+            ])
+        @endunless
 
         <div class="input-wrapper">
             <textarea
