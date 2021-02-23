@@ -24,11 +24,11 @@ final class MarkdownParser
     {
         $markdownParser = new self;
 
-        $rawHTML = $markdownParser->getMarkdownCoverter()->convertToHtml($text);
+        $text = $markdownParser->encodeMarkdownHeaders($text);
 
-        $rawHTMLWithTagsAsParagraphs = $markdownParser->convertHeadersToParagraphs($rawHTML);
+        $html = $markdownParser->getMarkdownCoverter()->convertToHtml($text);
 
-        return $markdownParser->stripUnalllowedTags($rawHTMLWithTagsAsParagraphs);
+        return $markdownParser->stripUnalllowedTags($html);
     }
 
     public static function full(string $text): string
@@ -36,18 +36,9 @@ final class MarkdownParser
         return (new self)->getMarkdownCoverter()->convertToHtml($text);
     }
 
-    private function convertHeadersToParagraphs(string $html): string
+    private function encodeMarkdownHeaders(string $text): string
     {
-        $regex = '/<(h1|h2|h3|h4|h5|h6)\b[^>]*>(.*?)<\/\1>/mis';
-
-        $rawHTMLWithTagsAsParagraphs = preg_replace($regex, '<p>$2</p>', $html);
-
-        return $this->removeHeaderAnchors($rawHTMLWithTagsAsParagraphs);
-    }
-
-    private function removeHeaderAnchors(string $html): string
-    {
-        return preg_replace('/<a.*?\>#<\/a>/', '', $html);
+        return str_replace('#', '&#35;', $text);
     }
 
     private function stripUnalllowedTags(string $html): string
