@@ -41,7 +41,7 @@ $icons = [
 ]
 @endphp
 
-<div class="ark-markdown-editor {{ $class ?? '' }}">
+<div class="ark-markdown-editor ark-markdown-editor-{{ $toolbar }} {{ $class ?? '' }}">
     <div class="input-group">
         @unless ($hideLabel ?? false)
             <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
@@ -57,7 +57,7 @@ $icons = [
                     {{ $xData }}
                 )"
                 x-init="init"
-                class="overflow-hidden bg-white rounded border-2 border-theme-secondary-200"
+                class="overflow-hidden bg-white border-2 rounded border-theme-secondary-200"
             >
                 <div x-show="showOverlay" class="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-75" style="display: none"></div>
                 <div>
