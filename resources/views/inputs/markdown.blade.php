@@ -41,7 +41,7 @@ $icons = [
 ]
 @endphp
 
-<div class="ark-markdown-editor {{ $class ?? '' }}">
+<div class="ark-markdown-editor ark-markdown-editor-{{ $toolbar }} {{ $class ?? '' }}">
     <div class="input-group">
         @unless ($hideLabel ?? false)
             <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
