@@ -1,7 +1,8 @@
 @props([
-    'dropdownProperty'   => 'dropdownOpen',
+    'dropdownProperty'    => 'dropdownOpen',
     'buttonClassExpanded' => 'text-theme-primary-500',
     'buttonClass'         => 'text-theme-secondary-400 hover:text-theme-primary-500',
+    'fullScreen'          => false,
 ])
 
 <div
@@ -35,10 +36,10 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses ?? 'w-40' }}"
+        class="origin-top-right absolute {{ $fullScreen ? 'left-0' : '' }} right-0 mt-2 z-10 dropdown {{ $dropdownClasses ?? 'w-40' }}"
         @if ($height ?? false) data-height="{{ $height }}" @endif
     >
-        <div class="{{ $dropdownContentClasses ??  'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200' }}" x-cloak>
+        <div class="{{ $dropdownContentClasses ??  'w-full bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200' }}" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
                 {{ $slot }}
             </div>
