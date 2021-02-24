@@ -238,4 +238,10 @@
     @apply bg-none;
 }
 
+.ark-markdown-editor-basic .tui-md-heading {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
 /* purgecss end ignore */
