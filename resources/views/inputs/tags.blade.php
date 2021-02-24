@@ -10,6 +10,7 @@
     'tooltip' => null,
     'required' => false,
     'placeholder' => 'Enter tags',
+    'isDisabled' => false,
 ])
 
 <div
@@ -17,7 +18,7 @@
     x-init="init()"
     {{ $attributes }}
 >
-    <div class="input-group">
+    <div class="input-group {{ $isDisabled ? 'pointer-events-none' : '' }}">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
                 'name'     => $name,

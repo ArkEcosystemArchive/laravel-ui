@@ -22,28 +22,17 @@
         />
     @else
         {{--TODO: Present in the HTML but not displayed, maybe because of the disabled of the input ?--}}
-        @if($isDisabled && ! $option['checked'])
-            <span data-tippy-content="{{ $disabledCheckboxTooltip }}">
-                <input
-                    id="{{ $id.'-'.$option['id'] }}"
-                    name="{{ $option['id'] }}"
-                    type="checkbox"
-                    class="form-checkbox tile-selection-checkbox"
-                    x-model="options['{{ $option['id'] }}'].checked"
-                    wire:model="{{ $wireModel }}"
-                    disabled
-                />
-            </span>
-        @else
-            <input
-                id="{{ $id.'-'.$option['id'] }}"
-                name="{{ $option['id'] }}"
-                type="checkbox"
-                class="form-checkbox tile-selection-checkbox"
-                x-model="options['{{ $option['id'] }}'].checked"
-                wire:model="{{ $wireModel }}"
-            />
-        @endif
+        <input
+            id="{{ $id.'-'.$option['id'] }}"
+            name="{{ $option['id'] }}"
+            type="checkbox"
+            class="form-checkbox tile-selection-checkbox"
+            x-model="options['{{ $option['id'] }}'].checked"
+            wire:model="{{ $wireModel }}"
+            @if($isDisabled && ! $option['checked'])
+                disabled
+            @endif
+        />
     @endif
 
     <div class="{{ $iconWrapper }}">
