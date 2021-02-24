@@ -1,6 +1,6 @@
 @props([
     'title',
-    'class' => '',
+    'class' => 'items-center',
     'reverse' => false,
     'iconWrapper' => null,
     'iconWrapperClass' => '',
@@ -13,7 +13,7 @@
     'tooltip' => null,
 ])
 
-<div class="flex items-center detail-box {{ $class }} @if ($reverse) flex-row-reverse @endif">
+<div class="flex detail-box {{ $class }} @if ($reverse) flex-row-reverse @endif">
     @if ($iconWrapper)
         {{ $iconWrapper }}
     @elseif ($icon || $iconRaw)
