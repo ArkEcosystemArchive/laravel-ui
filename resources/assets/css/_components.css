@@ -462,3 +462,16 @@
         @apply block mb-2;
     }
 }
+
+/* Disabled tiles */
+.tile-link-disabled:not(.tile-links-show-more) {
+    @apply text-theme-secondary-500;
+}
+
+.tile-link-disabled {
+    @apply pointer-events-none;
+}
+
+.tile-link-disabled.tile-link-border {
+    @apply border-theme-secondary-200;
+}
