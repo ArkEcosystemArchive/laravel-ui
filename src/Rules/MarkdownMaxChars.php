@@ -59,6 +59,6 @@ class MarkdownMaxChars implements Rule
      */
     public function message()
     {
-        return trans('validation.custom.max_markdown_chars', ['max' => $this->maxChars]);
+        return trans('ui::validation.custom.max_markdown_chars', ['max' => $this->maxChars]);
     }
 }
