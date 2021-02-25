@@ -1,4 +1,7 @@
-<div {{ $attributes->only('class') }} x-data="{ isDirty: {{ !! ($value ?? false) ? 'true' : 'false' }} }">
+<div
+    x-data="{ isDirty: {{ !! ($value ?? false) ? 'true' : 'false' }} }"
+    {{ $attributes->only('class') }}
+>
     <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
@@ -33,7 +36,7 @@
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
 
-            @error($name) @include('ark::inputs.includes.input-error-tooltip') @enderror
+            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message]) @enderror
         </div>
 
         @error($name)

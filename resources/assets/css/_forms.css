@@ -60,7 +60,7 @@
 
 /** Input with icon prefix **/
 .input-icon {
-    @apply absolute inset-y-0 flex items-center pointer-events-none;
+    @apply absolute inset-y-0 flex items-center;
 }
 
 .input-text-with-prefix {
