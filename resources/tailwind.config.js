@@ -187,9 +187,7 @@ module.exports = {
                     /is-bound/,
                 ],
 
-                deep: [
-                    /tippy-/,
-                ],
+                deep: [/tippy-/],
             },
         },
     },
