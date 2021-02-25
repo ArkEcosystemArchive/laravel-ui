@@ -7,13 +7,16 @@ use ARKEcosystem\UserInterface\Support\MarkdownParser;
 
 class MarkdownMaxChars implements Rule
 {
+    private int $maxChars;
+
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(public int $maxChars)
+    public function __construct(int $maxChars)
     {
+        $this->maxChars = $maxChars;
     }
 
     /**
