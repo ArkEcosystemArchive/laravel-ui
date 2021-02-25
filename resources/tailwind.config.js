@@ -176,7 +176,6 @@ module.exports = {
                     /alert-/,
                     /swiper-/,
                     /toast-/,
-                    /tippy-/,
                     /^hljs/,
 
                     /* pikaday classes */
@@ -186,6 +185,10 @@ module.exports = {
                     /is-disabled/,
                     /is-hidden/,
                     /is-bound/,
+                ],
+
+                deep: [
+                    /tippy-/,
                 ],
             },
         },
