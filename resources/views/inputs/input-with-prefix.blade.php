@@ -38,9 +38,5 @@
 
             @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message]) @enderror
         </div>
-
-        @error($name)
-            <p class="input-help--error">{{ $message }}</p>
-        @enderror
     </div>
 </div>
