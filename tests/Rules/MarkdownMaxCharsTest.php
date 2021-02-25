@@ -65,5 +65,5 @@ HTML;
 
 it('has an error message', function () {
     $rule = new MarkdownMaxChars(30);
-    expect($rule->message())->toBe(trans('validation.custom.max_markdown_chars', ['max' => 30]));
+    expect($rule->message())->toBe(trans('ui::validation.custom.max_markdown_chars', ['max' => 30]));
 });
