@@ -23,7 +23,7 @@ class MarkdownMaxChars implements Rule
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
-     * @param  mixed  $value
+     * @param  string  $value
      * @return bool
      */
     public function passes($attribute, $value)
@@ -32,7 +32,7 @@ class MarkdownMaxChars implements Rule
         return strlen($text) <= $this->maxChars;
     }
 
-    private function getText(mixed $value): string
+    private function getText($value): string
     {
         $html = $this->getHtml($value);
 
@@ -41,13 +41,13 @@ class MarkdownMaxChars implements Rule
         return strip_tags($html);
     }
 
-    private function removeHeadersAnchors(string $html): string
+    private function removeHeadersAnchors($html): string
     {
         $regex = '/<a\s?[^>]*[^>]*>#<\/a>/siU';
         return preg_replace($regex, '', $html);
     }
 
-    private function getHtml(mixed $value): string
+    private function getHtml($value): string
     {
         return MarkdownParser::full($value);
     }
