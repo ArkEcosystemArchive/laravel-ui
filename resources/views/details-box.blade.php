@@ -24,7 +24,7 @@
         {{ $iconWrapper }}
     @elseif ($icon || $iconRaw)
         @if ($noBorder)
-            <div class="flex-shrink-0 text-theme-secondary-900 dark:text-theme-secondary-600 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
+            <div class="{{ $verticalPosition === 'top' ? 'mt-0.5' : '' }} flex-shrink-0 text-theme-secondary-900 dark:text-theme-secondary-600 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
                 @if ($icon)
                     <x-ark-icon :name="$icon" />
                 @else
@@ -32,7 +32,7 @@
                 @endif
             </div>
         @elseif ($shallow)
-            <div class="flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
+            <div class="{{ $verticalPosition === 'top' ? 'mt-0.5' : '' }} flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
                 @if ($icon)
                     <x-ark-icon :name="$icon" />
                 @else
@@ -40,7 +40,7 @@
                 @endif
             </div>
         @else
-            <div class="flex items-center justify-center p-2 rounded-full h-12 w-12 flex-shrink-0 bg-theme-secondary-200 dark:bg-theme-secondary-800 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
+            <div class="{{ $verticalPosition === 'top' ? 'mt-0.5' : '' }} flex items-center justify-center p-2 rounded-full h-12 w-12 flex-shrink-0 bg-theme-secondary-200 dark:bg-theme-secondary-800 {{ $iconWrapperClass }} @unless ($reverse) mr-5 @else ml-5 @endif">
                 @if ($icon)
                     <x-ark-icon :name="$icon" :class="$iconTextClass.' '.$iconClass" />
                 @else
