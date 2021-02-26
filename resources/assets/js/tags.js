@@ -53,6 +53,7 @@ const Tags = (
         });
 
         const taggleInput = taggle.getInput();
+        taggleInput.setAttribute("ref", "tags_input_field");
 
         if (typeof this.onInput === "function") {
             taggleInput.addEventListener("input", (e) => {

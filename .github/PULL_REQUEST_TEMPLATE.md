@@ -23,7 +23,6 @@ Please fill out the information below to expedite the review and (hopefully) mer
 -   [ ] I checked my (code) changes for obvious issues, debug statements and commented code
 -   [ ] I regenerated the `icons.html` file and checked if my newly added icon is shown correctly _(if necessary)_
 -   [ ] I added an explanation on how to use the component to the readme _(if necessary)_
-
 -   [ ] Documentation _(if necessary)_
 -   [ ] Tests _(if necessary)_
 -   [ ] Ready to be merged
