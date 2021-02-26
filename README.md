@@ -6,6 +6,8 @@
 
 > User-Interface Scaffolding for Laravel. Powered by TailwindCSS.
 
+[List of the available components](https://github.com/ArkEcosystem/laravel-ui#available-components)
+
 ## Prerequisites
 
 Since this package relies on a few 3rd party packages, you will need to have the following installed and configured in your project:
@@ -405,22 +407,23 @@ There are also default error pages you can use for your Laravel project
 
 ## Available Components
 
-- `<x-ark-input>`
-- `<x-ark-textarea>`
-- `<x-ark-checkbox>`
-- `<x-ark-radio>`
-- `<x-ark-select>`
-- `<x-ark-toggle>`
-- `<x-ark-upload-image>`
-- `<x-ark-navbar>`
-- `<x-ark-breadcrumbs>`
 - `<x-ark-accordion>`
 - `<x-ark-accordion-group>`
-- `<x-ark-sidebar-link>`
 - `<x-ark-alert>`
-- `<x-ark-secondary-menu>`
+- `<x-ark-breadcrumbs>`
+- `<x-ark-checkbox>`
 - `<x-ark-clipboard>`
+- `<x-ark-dropdown>`
+- `<x-ark-input>`
+- `<x-ark-navbar>`
+- `<x-ark-radio>`
+- `<x-ark-secondary-menu>`
+- `<x-ark-select>`
+- `<x-ark-sidebar-link>`
 - `<x-ark-tags>`
+- `<x-ark-textarea>`
+- `<x-ark-toggle>`
+- `<x-ark-upload-image>`
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 

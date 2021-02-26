@@ -333,3 +333,26 @@ You can also get an alert with more padding and large icon by specifying `large`
     </x-settings-dropdown>
 </div>
 ```
+
+### Dropdown
+
+```blade
+<x-ark-dropdown>
+    <div>content here</div>
+<x-ark-dropdown />
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| dropdownProperty | The variable name used by Alpine.js | no | 'dropdownOpen' |
+| initAlpine | Enable the dropdown functionality | no | true |
+| closeOnBlur | Enable the close-on-blur functionality | no | true |
+| closeOnClick | Enable the close-on-click functionality | no | true |
+| dusk | Apply a Dusk property for Dusk Tests | no | null |
+| button | Override the default trigger button | no | false |
+| height | Specify height for the content container | no | false |
+| fullScreen | Cover the entire horizontal viewport on smaller screen (until md) | no | false |
+| buttonClass | The class(es) applied to the trigger button | no | 'text-theme-primary-500' |
+| buttonClassExpanded | The class(es) applied to the trigger button when content is visible  | no | 'text-theme-secondary-400 hover:text-theme-primary-500' |
+| wrapperClass | The class(es) applied to the wrapper element | no | '' |
+| dropdownContentClasses | The class(es) applied to the content container | no | null |
