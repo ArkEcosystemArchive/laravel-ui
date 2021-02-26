@@ -21,7 +21,6 @@
             wire:model="{{ $wireModel }}"
         />
     @else
-        {{--TODO: Present in the HTML but not displayed, maybe because of the disabled of the input ?--}}
         <input
             id="{{ $id.'-'.$option['id'] }}"
             name="{{ $option['id'] }}"
