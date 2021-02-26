@@ -21,3 +21,25 @@ if (! function_exists('formatReadTime')) {
         );
     }
 }
+
+if (! function_exists('alertIcon')) {
+    function alertIcon(string $type, bool $rounded): string
+    {
+        if (in_array($type, ['success', 'error', 'danger', 'hint', 'warning', 'info'])) {
+            if ($rounded) {
+                return "alert-{$type}";
+            } else {
+                return [
+                    'success' => 'success',
+                    'error' => 'danger',
+                    'danger' => 'danger',
+                    'hint' => 'question-mark',
+                    'warning' => 'exclamation-mark',
+                    'info' => 'info'
+                ][$type];
+            }
+        } else {
+            return $rounded ? "alert-info" : "info";
+        }
+    }
+}
