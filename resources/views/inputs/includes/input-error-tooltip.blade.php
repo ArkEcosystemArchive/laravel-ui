@@ -4,7 +4,7 @@
 ])
 
 <div
-    class="right-0 pr-3 input-icon"
+    class="right-0 px-3 input-icon"
     data-tippy-content="{{ $error }}"
     @click="{{ $fieldRef ? 'document.querySelector("[ref='.$fieldRef.'").focus()' : '$refs.input_field.focus()' }}"
 >
