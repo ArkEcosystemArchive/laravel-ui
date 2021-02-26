@@ -31,11 +31,11 @@ if (! function_exists('alertIcon')) {
             } else {
                 return [
                     'success' => 'success',
-                    'error' => 'danger',
-                    'danger' => 'danger',
-                    'hint' => 'question-mark',
+                    'error'   => 'danger',
+                    'danger'  => 'danger',
+                    'hint'    => 'question-mark',
                     'warning' => 'exclamation-mark',
-                    'info' => 'info'
+                    'info'    => 'info'
                 ][$type];
             }
         } else {
