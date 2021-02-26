@@ -126,9 +126,9 @@ it('should render with the given pattern', function (): void {
 it('should render with the given class', function (): void {
     $this
         ->assertView('ark::inputs.input', createAttributes([
-            'class' => 'class',
+            'class' => 'test-input-class',
         ]))
-        ->contains('<div class="class">');
+        ->contains('class="test-input-class"');
 });
 
 it('should render with the given inputClass', function (): void {
@@ -180,7 +180,7 @@ it('should render an error message', function (): void {
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
-        ->contains('<p class="input-help--error">This is required.</p>');
+        ->contains('data-tippy-content="This is required."');
 });
 
 it('should render with the ID as label target', function (): void {
