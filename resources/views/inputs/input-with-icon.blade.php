@@ -36,8 +36,6 @@
             @endif
         </div>
 
-        @error($name)
-            <p class="font-semibold input-help--error">{{ $message }}</p>
-        @enderror
+        @include('ark::inputs.includes.input-error')
     </div>
 </div>
