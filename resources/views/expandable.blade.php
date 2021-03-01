@@ -30,12 +30,11 @@
         class="{{ $triggerClass }}"
         @click="expanded = !expanded"
         @isset($triggerDusk) dusk="{{ $triggerDusk }}" @endisset
-        x-cloak
     >
         <span data-collapsed class="{{ $collapsedClass }}" x-show="!expanded">
             {{ $collapsed }}
         </span>
-        <span data-expanded class="{{ $expandedClass }}" x-show="expanded">
+        <span data-expanded class="{{ $expandedClass }}" x-show="expanded" x-cloak>
             {{ $expanded }}
         </span>
     </button>
