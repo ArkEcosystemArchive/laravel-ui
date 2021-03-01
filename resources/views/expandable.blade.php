@@ -8,6 +8,7 @@
     'expanded' => null,
     'placeholder' => null,
     'placeholderCount' => 1,
+    'showMore' => false,
 ])
 
 <ol data-expandable
@@ -24,6 +25,10 @@
                 {{ $placeholder }}
             </li>
         @endfor
+    @endisset
+
+    @isset($showMore)
+        {{ $showMore }}
     @endisset
 
     <button data-trigger
