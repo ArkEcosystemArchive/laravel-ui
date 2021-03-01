@@ -1,0 +1,29 @@
+ol[data-expandable] {
+    counter-reset: total var(--expandable-total-count, 0) inc;
+}
+
+[data-expandable] li {
+    counter-increment: total -1 inc +1;
+}
+
+[data-expandable].show-all > [data-item] {
+    display: inherit !important;
+}
+
+/* show increment value on visible items */
+[data-expandable] .increment-before::before {
+    content: counter(inc);
+}
+
+[data-expandable] .increment-after::after {
+    content: counter(inc);
+}
+
+/* show total collapsed items */
+[data-expandable] .counter-before::before {
+    content: counter(total);
+}
+
+[data-expandable] .counter-after::after {
+    content: counter(total);
+}

@@ -2,14 +2,14 @@
 
 namespace ARKEcosystem\UserInterface;
 
+use ARKEcosystem\UserInterface\Components\FlashMessage;
+use ARKEcosystem\UserInterface\Components\Toast;
+use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\ServiceProvider;
-use ARKEcosystem\UserInterface\Components\Toast;
-use ARKEcosystem\UserInterface\Components\FlashMessage;
-use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
-use Illuminate\Support\Facades\Route;
 
 class UserInterfaceServiceProvider extends ServiceProvider
 {
@@ -61,7 +61,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register routes
+     * Register routes.
      *
      * @return void
      */
@@ -91,7 +91,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'pagination');
 
         $this->publishes([
-            __DIR__.'/../resources/assets/js/markdown-editor' => resource_path('js/vendor/ark/markdown-editor')
+            __DIR__.'/../resources/assets/js/markdown-editor' => resource_path('js/vendor/ark/markdown-editor'),
         ], 'wysiwyg');
 
         $this->publishes([
@@ -131,7 +131,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/assets/js/prism-line-numbers.js' => resource_path('js/vendor/ark/prism-line-numbers.js'),
-            __DIR__.'/../resources/assets/js/prism.js' => resource_path('js/vendor/ark/prism.js'),
+            __DIR__.'/../resources/assets/js/prism.js'              => resource_path('js/vendor/ark/prism.js'),
         ], 'prism');
 
         $this->publishes([
@@ -147,7 +147,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         ], 'highlightjs');
 
         $this->publishes([
-            __DIR__ . '/../resources/assets/js/file-download.js' => resource_path('js/vendor/ark/file-download.js'),
+            __DIR__.'/../resources/assets/js/file-download.js' => resource_path('js/vendor/ark/file-download.js'),
         ], 'file-download');
     }
 
@@ -206,6 +206,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::details-box', 'ark-details-box');
         Blade::component('ark::details-box-mobile', 'ark-details-box-mobile');
         Blade::component('ark::dropdown', 'ark-dropdown');
+        Blade::component('ark::expandable', 'ark-expandable');
+        Blade::component('ark::expandable-item', 'ark-expandable-item');
         Blade::component('ark::external-link', 'ark-external-link');
         Blade::component('ark::flash', 'ark-flash');
         Blade::component('ark::footer-bar-desktop', 'ark-footer-bar-desktop');
