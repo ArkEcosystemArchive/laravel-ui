@@ -187,10 +187,7 @@ module.exports = {
                     /is-bound/,
                 ],
 
-                deep: [
-                    /tippy-/,
-                    /\[data-expandable\]/,
-                ],
+                deep: [/tippy-/, /\[data-expandable\]/],
             },
         },
     },
