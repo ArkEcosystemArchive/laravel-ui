@@ -34,9 +34,9 @@
         'emergency' => 'cross',
         'alert'     => 'cross',
         'critical'  => 'cross',
-        'warning'   => 'alert-warning',
-        'notice'    => 'alert-hint',
-        'info'      => 'alert-info',
+        'warning'   => 'exclamation-mark',
+        'notice'    => 'question-mark',
+        'info'      => 'info',
         'undefined' => 'undefined',
     ], $type, 'undefined');
 
