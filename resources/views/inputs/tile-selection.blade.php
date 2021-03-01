@@ -83,7 +83,7 @@
                         'option' => $option,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
-                        'isDisabled' => $withoutSelectAll ? ($selectedOptionsCount >= $selectionLimit ? true : false) : false,
+                        'isDisabled' => $withoutSelectAll ? ($selectedOptionsCount >= $selectionLimit) : false,
                         'disabledCheckboxTooltip' => $disabledCheckboxTooltip,
                     ])
                 @endforeach
