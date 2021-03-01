@@ -177,6 +177,7 @@ module.exports = {
                     /swiper-/,
                     /toast-/,
                     /^hljs/,
+                    /^media-library/,
 
                     /* pikaday classes */
                     /^pika-/,
