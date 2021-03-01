@@ -10,6 +10,7 @@
     'tooltip' => null,
     'required' => false,
     'placeholder' => 'Enter tags',
+    'isDisabled' => false,
 ])
 
 <div
@@ -17,7 +18,7 @@
     x-init="init()"
     {{ $attributes }}
 >
-    <div class="input-group">
+    <div class="input-group {{ $isDisabled ? 'pointer-events-none' : '' }}">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
                 'name'     => $name,
@@ -30,7 +31,12 @@
         @endunless
 
         <div class="input-wrapper">
-            <div wire:ignore x-ref="input" class="relative py-2 px-3 bg-white rounded border border-theme-secondary-400"></div>
+            <div
+                wire:ignore
+                x-ref="input"
+                class="relative py-2 px-3 bg-white rounded border border-theme-secondary-400"
+            >
+            </div>
 
             {{-- Hidden select used to emulate wire:model behaviour --}}
             <select

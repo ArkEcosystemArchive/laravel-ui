@@ -1,6 +1,6 @@
 <label
     wire:key="tile-selection-option-{{ $option['id'] }}"
-    class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }}"
+    class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
         @if ($single)
@@ -28,6 +28,9 @@
             class="form-checkbox tile-selection-checkbox"
             x-model="options['{{ $option['id'] }}'].checked"
             wire:model="{{ $wireModel }}"
+            @if($isDisabled && ! $option['checked'])
+                disabled
+            @endif
         />
     @endif
 

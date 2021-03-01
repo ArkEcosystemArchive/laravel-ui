@@ -464,6 +464,10 @@
 }
 
 /* Disabled tiles */
+.disabled-tile {
+    @apply opacity-50 border-theme-secondary-300 bg-transparent pointer-events-none;
+}
+
 .tile-link-disabled:not(.tile-links-show-more) {
     @apply text-theme-secondary-500;
 }
