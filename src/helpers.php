@@ -27,7 +27,7 @@ if (! function_exists('alertIcon')) {
     {
         if (in_array($type, ['success', 'error', 'danger', 'hint', 'warning', 'info'])) {
             return [
-                'success' => 'success',
+                'success' => 'checkmark-smooth',
                 'error' => 'danger',
                 'danger' => 'danger',
                 'hint' => 'question-mark',
