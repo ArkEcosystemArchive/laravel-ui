@@ -21,8 +21,8 @@ $icons = [
     'iconStrike' => 'text-strike-through',
     'iconUnderline' => 'text-underline',
     'iconQuote' => 'open-quote',
-    'iconUl' => 'list-numbers',
-    'iconOl' => 'list-bullets',
+    'iconUl' => 'list-bullets',
+    'iconOl' => 'list-numbers',
     'iconTable' => 'table',
     'iconImage' => 'image-file-landscape',
     'iconLink' => 'hyperlink',
@@ -41,7 +41,7 @@ $icons = [
 ]
 @endphp
 
-<div class="ark-markdown-editor {{ $class ?? '' }}">
+<div class="ark-markdown-editor ark-markdown-editor-{{ $toolbar }} {{ $class ?? '' }}">
     <div class="input-group">
         @unless ($hideLabel ?? false)
             <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
@@ -102,8 +102,6 @@ $icons = [
             </div>
         </div>
 
-        @error($name)
-            <p class="input-help--error">{{ $message }}</p>
-        @enderror
+        @include('ark::inputs.includes.input-error')
     </div>
 </div>

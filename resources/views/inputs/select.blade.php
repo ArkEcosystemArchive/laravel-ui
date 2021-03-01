@@ -17,8 +17,7 @@
                 {{ $slot }}
             </select>
         </div>
-        @error($name)
-            <p class="input-help--error">{{ $message }}</p>
-        @enderror
+
+        @include('ark::inputs.includes.input-error')
     </div>
 </div>

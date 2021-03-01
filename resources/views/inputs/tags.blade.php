@@ -52,11 +52,12 @@
                 </template>
             </select>
 
-            @error($name) @include('ark::inputs.input-error') @enderror
+            @error($name)
+                @include('ark::inputs.includes.input-error-tooltip', [
+                    'error'    => $message,
+                    'fieldRef' => 'tags_input_field',
+                ])
+            @enderror
         </div>
-
-        @error($name)
-            <p class="input-help--error">{{ $message }}</p>
-        @enderror
     </div>
 </div>

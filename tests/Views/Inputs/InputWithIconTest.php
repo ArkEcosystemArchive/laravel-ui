@@ -190,7 +190,7 @@ it('should render an error message', function (): void {
             'errors'     => $errors,
             'inputClass' => 'inputClass',
         ]))
-        ->contains('<p class="font-semibold input-help--error">This is required.</p>');
+        ->contains('<p class="input-help--error">This is required.</p>');
 });
 
 it('should render with the given slot', function (): void {

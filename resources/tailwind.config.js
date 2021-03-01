@@ -176,8 +176,8 @@ module.exports = {
                     /alert-/,
                     /swiper-/,
                     /toast-/,
-                    /tippy-/,
                     /^hljs/,
+                    /^media-library/,
 
                     /* pikaday classes */
                     /^pika-/,
@@ -187,6 +187,8 @@ module.exports = {
                     /is-hidden/,
                     /is-bound/,
                 ],
+
+                deep: [/tippy-/],
             },
         },
     },
