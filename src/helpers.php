@@ -28,11 +28,11 @@ if (! function_exists('alertIcon')) {
         if (in_array($type, ['success', 'error', 'danger', 'hint', 'warning', 'info'])) {
             return [
                 'success' => 'checkmark-smooth',
-                'error' => 'danger',
-                'danger' => 'danger',
-                'hint' => 'question-mark',
+                'error'   => 'cross',
+                'danger'  => 'cross',
+                'hint'    => 'question-mark',
                 'warning' => 'exclamation-mark',
-                'info' => 'info'
+                'info'    => 'info'
             ][$type];
         }
 
