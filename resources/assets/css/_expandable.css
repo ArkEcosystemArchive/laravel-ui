@@ -3,7 +3,7 @@ ol[data-expandable] {
 }
 
 [data-expandable] li {
-    counter-increment: total -1 inc + 1;
+    counter-increment: total -1 inc;
 }
 
 [data-expandable].show-all > [data-item] {
