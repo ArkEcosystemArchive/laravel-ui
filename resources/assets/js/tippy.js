@@ -25,3 +25,19 @@ window.initClipboard = () => {
         },
     });
 };
+
+if (typeof Livewire !== 'undefined') {
+    Livewire.hook('message.processed', (message, component) => {
+        tippy(component.el.querySelectorAll('[data-tippy-content]'), {
+            trigger: "mouseenter focus",
+            duration: 0,
+        });
+
+        tippy(component.el.querySelectorAll('[data-tippy-hover]'), {
+            touch: "hold",
+            trigger: "mouseenter",
+            content: (reference) => reference.dataset.tippyHover,
+            duration: 0,
+        });
+    });
+}
