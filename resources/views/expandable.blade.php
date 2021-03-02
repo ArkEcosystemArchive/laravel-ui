@@ -8,7 +8,7 @@
     'expanded' => null,
     'placeholder' => null,
     'placeholderCount' => 1,
-    'showMore' => false,
+    'showMore' => null,
 ])
 
 <ol data-expandable
