@@ -31,16 +31,21 @@
         {{ $showMore }}
     @endisset
 
-    <button data-trigger
-        class="{{ $triggerClass }}"
-        @click="expanded = !expanded"
-        @isset($triggerDusk) dusk="{{ $triggerDusk }}" @endisset
-    >
-        <span data-collapsed class="{{ $collapsedClass }}" x-show="!expanded">
-            {{ $collapsed }}
-        </span>
-        <span data-expanded class="{{ $expandedClass }}" x-show="expanded" x-cloak>
-            {{ $expanded }}
-        </span>
-    </button>
+    @empty($showMore)
+        <button
+            data-trigger class="{{ $triggerClass }}"
+            @click="expanded = !expanded"
+            @isset($triggerDusk)
+                dusk="{{ $triggerDusk }}"
+            @endisset
+        >
+            <span data-collapsed class="{{ $collapsedClass }}" x-show="!expanded">
+                {{ $collapsed }}
+            </span>
+
+            <span data-expanded class="{{ $expandedClass }}" x-show="expanded" x-cloak>
+                {{ $expanded }}
+            </span>
+        </button>
+    @endempty
 </ol>
