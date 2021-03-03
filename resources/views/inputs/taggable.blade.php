@@ -30,9 +30,10 @@
             ])
         @endunless
 
-        <div class="input-wrapper" wire:ignore>
+        <div class="input-wrapper" >
             <input x-ref="input" type="hidden" id="{{ $id ?? $name }}" wire:model="{{ $model ?? $name }}" name="{{ $name }}" />
             <div
+                wire:ignore
                 x-ref="editor"
                 style="min-height: {{ $rows * 30 }}px"
                 class="input-text @error($name) input-text--error @enderror"
