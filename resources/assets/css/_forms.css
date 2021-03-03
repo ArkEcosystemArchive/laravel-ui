@@ -223,7 +223,7 @@
 }
 
 .taggle_placeholder {
-    @apply absolute top-0 left-0 max-w-full p-3 truncate pointer-events-none text-theme-secondary-400;
+    @apply absolute top-0 left-0 max-w-full p-3 truncate pointer-events-none text-theme-secondary-400 rounded;
 }
 
 .taggle_input {
@@ -242,4 +242,15 @@
 
 .taggle {
     @apply space-x-2 bg-theme-primary-100;
+}
+
+.disabled-input .taggle > .close {
+    pointer-events: all;
+}
+
+.disabled-input .taggle_input,
+.disabled-input .taggle_list,
+.disabled-input .taggle_placeholder,
+.disabled-input > div {
+    @apply bg-theme-secondary-100;
 }
