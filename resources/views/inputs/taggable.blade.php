@@ -8,13 +8,14 @@
     'label'     => null,
     'tooltip'   => null,
     'required'  => false,
+    'maxlength' => null,
     'rows'      => 10,
     'usersInContext' => [],
     'placeholder' => ''
 ])
 
 <div
-    x-data="Taggable({{ json_encode($usersInContext) }})"
+    x-data="Taggable({{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
     x-init="init"
     class="{{ $class }}"
 >
@@ -38,7 +39,7 @@
                 style="min-height: {{ $rows * 30 }}px"
                 class="input-text @error($name) input-text--error @enderror"
                 data-placeholder="{{ $placeholder }}"
-            ></div>
+            >{{ $slot ?? '' }}</div>
         </div>
 
         @include('ark::inputs.includes.input-error')
