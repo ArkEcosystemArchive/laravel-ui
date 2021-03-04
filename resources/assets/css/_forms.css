@@ -244,13 +244,13 @@
     @apply space-x-2 bg-theme-primary-100;
 }
 
-.disabled-input .taggle > .close {
+.disabled-tags-input .taggle > .close {
     pointer-events: all;
 }
 
-.disabled-input .taggle_input,
-.disabled-input .taggle_list,
-.disabled-input .taggle_placeholder,
-.disabled-input > div {
+.disabled-tags-input .taggle_input,
+.disabled-tags-input .taggle_list,
+.disabled-tags-input .taggle_placeholder,
+.disabled-tags-input > div {
     @apply bg-theme-secondary-100;
 }
