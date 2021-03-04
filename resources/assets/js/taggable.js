@@ -81,6 +81,8 @@ window.Taggable = (contextUsers, maxLength = null) => {
 
             const value = this.getRawValue(e);
 
+            console.log(e.target.innerHTML, value)
+
             if (maxLength !== null) {
                 if (value.length > maxLength) {
                     editor.innerHTML = this.latestValue;
@@ -103,9 +105,10 @@ window.Taggable = (contextUsers, maxLength = null) => {
         },
         getRawValue(e) {
             return String(e.target.innerHTML)
-                .replace(/<div>/gi, "\n\n")
+                .replace(/<div><br>/gi, "\n")
+                .replace(/<div>/gi, "\n")
                 .replace(/<\/div>/gi, "")
-                .replaceAll("<br>", "\n");
+                .replaceAll(/<br>/gi, "\n");
         },
         init() {
             const { editor } = this.$refs;
