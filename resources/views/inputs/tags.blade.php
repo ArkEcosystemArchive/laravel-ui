@@ -30,7 +30,7 @@
             ])
         @endunless
 
-        <div class="input-wrapper">
+        <div class="input-wrapper {{ $isDisabled ? 'disabled-tags-input' : '' }}">
             <div
                 wire:ignore
                 x-ref="input"
