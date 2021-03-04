@@ -14,7 +14,6 @@
 
 <div
     x-ref="modal"
-    x-show="shown"
     data-modal
     x-cloak
     @if($init)
@@ -25,10 +24,12 @@
     @keydown.escape="hide"
     tabindex="0"
     @endif
+    x-show="shown"
+    class="fixed inset-0 z-50 "
 >
-    <div class="fixed inset-0 z-40 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
+    <div class="fixed inset-0 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
-    <div class="flex overflow-y-auto fixed inset-0 z-50 py-10 px-5">
+    <div class="fixed inset-0 flex px-5 py-10 overflow-y-auto">
         <div
             class="m-auto w-full {{ $class }}"
             @if(!$closeButtonOnly)
