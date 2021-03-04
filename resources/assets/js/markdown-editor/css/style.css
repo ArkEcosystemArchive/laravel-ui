@@ -254,7 +254,7 @@
     @apply border-b border-dotted border-theme-secondary-300;
 }
 
-.UserTagger > ul > li.highlighted{
+.UserTagger > ul > li.highlighted {
     @apply px-6 mx-0 border-transparent bg-theme-primary-100;
 }
 
