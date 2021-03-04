@@ -11,12 +11,14 @@
     'required' => false,
     'placeholder' => 'Enter tags',
     'isDisabled' => false,
+    'disabledInputTooltip' => null,
 ])
 
 <div
     x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
     {{ $attributes }}
+    @if($isDisabled) data-tippy-content="{{ $disabledInputTooltip }}" @endif
 >
     <div class="input-group {{ $isDisabled ? 'pointer-events-none' : '' }}">
         @unless ($hideLabel ?? false)
