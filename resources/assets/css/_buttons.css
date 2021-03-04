@@ -10,6 +10,11 @@
     @apply bg-theme-primary-700 shadow-button-primary;
 }
 
+.button-tag {
+    @apply button-secondary;
+    @apply py-0.5 px-3 !important;
+}
+
 .button-primary:disabled,
 .button-secondary:disabled,
 .button-cancel:disabled,
@@ -61,18 +66,21 @@ a.disabled {
 }
 .dark .button-icon,
 .dark .button-icon-rounded,
-.dark .button-secondary {
+.dark .button-secondary,
+.dark .button-tag {
     @apply bg-theme-secondary-800 text-theme-secondary-200;
 }
 
 .button-icon:hover,
 .button-secondary:hover,
-.button-icon-rounded:hover {
+.button-icon-rounded:hover,
+.button-tag:hover {
     @apply text-white bg-theme-primary-700 shadow-button-secondary;
 }
 .dark .button-icon:hover,
 .dark .button-icon-rounded:hover,
-.dark .button-secondary:hover {
+.dark .button-secondary:hover,
+.dark .button-tag:hover {
     @apply bg-theme-primary-700 text-theme-secondary-200;
 }
 
