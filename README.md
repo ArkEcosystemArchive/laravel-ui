@@ -178,6 +178,31 @@ window.Tags = Tags;
 <x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="['taga', 'tagb']" />
 ```
 
+### Taggable input
+
+1. Add tributejs dependency `yarn add tributejs` 
+
+
+2. Import the taggable script into the main js file
+
+```js
+import "@ui/js/taggable.js";
+```
+
+1. Use the component like you use the textarea input
+
+```html
+<x-ark-taggable
+    name="body"
+    :placeholder="trans('forms.review.create_message_length')"
+    rows="5"
+    wire:model="body"
+    maxlength="1000"
+    required
+    hide-label
+>{{ $body }}</x-ark-taggable>
+```
+
 
 #### Livewire modals
 
