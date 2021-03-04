@@ -362,15 +362,31 @@ Displays a defined number of items and hides the rest, showing a button to show/
 It's possible to add placeholders and define when to show/hide them via css.
 The remaining items counter is automatically generated and can be displayed by adding a helper css class (2 helpers available).
 - `counter-before` prepends the counter inside the element.
-  _E.g. if the remainig items are 3 `<span class="counter-before">+</span>` outputs `<span class="counter-before">3+</span>`_
+  _E.g. if the remaining items are 7_ ```blade
+  <span class="counter-before">+</span>
+  <!-- outputs -->
+  <span class="counter-before">7+</span>
+  ```
 - `counter-after` appends the counter inside the element.
-  _E.g. if the remainig items are 3 `<span class="counter-after">+</span>` outputs `<span class="counter-after">+3</span>`_
+  _E.g. if the remaining items are 7_ ```blade
+  <span class="counter-after">+</span>
+  <!-- outputs -->
+  <span class="counter-after">+7</span>
+  ```
 
 As optional, an increment counter is automatically generated too and can be displayed by adding a helper css class (2 helpers available).
 - `increment-before` prepends the increment inside the element.
-  _E.g. for the 3rd item `<span class="increment-before">.</span>` outputs `<span class="increment-before">3.</span>`_
+  _E.g. for the 3rd item_ ```blade
+  <span class="increment-before">.</span>
+  <!-- outputs -->
+  <span class="increment-before">3.</span>
+  ```
 - `increment-after` appends the increment inside the element.
-  _E.g. for the 3rd item `<span class="increment-after">.</span>` outputs `<span class="increment-after">.3</span>`_
+  _E.g. for the 3rd ite_m ```blade
+  <span class="increment-after">.</span>
+  <!-- outputs -->
+  <span class="increment-after">.3</span>
+  ```
 
 > Remember to wrap the items in `<x-ark-expandable-item>...</x-ark-expandable-item>` component.
 
@@ -378,8 +394,8 @@ As optional, an increment counter is automatically generated too and can be disp
 <x-ark-expandable total="12">
     @foreach($items as $item)
         <x-ark-expandable-item>
-            {{ $item }}
-        <x-ark-expandable-item />
+            ...
+        </x-ark-expandable-item>
     @endforeach
 
     <x-slot name="placeholder">
@@ -397,17 +413,19 @@ As optional, an increment counter is automatically generated too and can be disp
     <x-slot name="expanded">
         <span>hide</span>
     </x-slot>
-<x-ark-expandable />
+</x-ark-expandable>
 ```
 
 | Parameter | Description | Required | Default Value |
 |---|---|---|---|
 | total | Total count of items in the collection | yes | |
-| triggerDusk | Specify a trigger name used by Dusk | no | '' |
+| triggerDusk | Specify a trigger name used by Dusk | no | null |
 | triggerClass | The class(es) applied to the trigger element | no | '' |
 | collapsedClass | The class(es) applied to the collepsed element | no | '' |
 | expandedClass | The class(es) applied to the expanded element | no | '' |
 | collapsed | The collapsed element | no | null |
-| expanded | The expanded element | no | false |
-| placeholder | The placeholder element | no | false |
+| expanded | The expanded element | no | null |
+| placeholder | The placeholder element | no | null |
 | placeholderCount | Total copy of placeholder | no | 1 |
+| showMore | Implement your own show/hide system | no | null |
+| style | Useful to inject css variable(s) | no | '' |

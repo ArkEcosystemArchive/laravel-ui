@@ -414,7 +414,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-checkbox>`
 - `<x-ark-clipboard>`
 - `<x-ark-dropdown>`
-- `<x-ark-expandable>`
+- [`<x-ark-expandable>`](EXAMPLES.md#expandable)
 - `<x-ark-input>`
 - `<x-ark-navbar>`
 - `<x-ark-radio>`
