@@ -244,4 +244,23 @@
     color: inherit;
 }
 
+.UserTagger .highlighted .UserTagger--username {
+    @apply text-theme-primary-600;
+}
+.UserTagger > ul > li {
+    @apply mx-6;
+}
+.UserTagger > ul > li:not(:last-child) {
+    @apply border-b border-dotted border-theme-secondary-300;
+}
+
+.UserTagger > ul > li.highlighted{
+    @apply px-6 mx-0 border-transparent bg-theme-primary-100;
+}
+
+[contenteditable="true"]:empty:before {
+    @apply text-theme-secondary-400;
+    content: attr(data-placeholder);
+}
+
 /* purgecss end ignore */
