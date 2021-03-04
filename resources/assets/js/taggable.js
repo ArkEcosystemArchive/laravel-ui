@@ -5,7 +5,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
             "UserTagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
         noMatchTemplate: () => '<span class="hidden"></span>',
         selectTemplate(item) {
-            return `<span contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</span>`;
+            return `<a data-username="${item.original.username}" href="#" contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</a>`;
         },
         menuItemTemplate(item) {
             const hasAvatar = !item.original.avatar.startsWith("<svg");
@@ -37,8 +37,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 clearTimeout(this.fetchThrottlingTimeout);
             }
 
-            // Workaround to reduce the amount of request made to the
-            // api while user is typing
+            // Workaround to reduce the amount of request while using is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
                 if (this.latestFethController) {
                     this.latestFethController.abort();
@@ -80,11 +79,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
         updateValue(e) {
             const { input, editor } = this.$refs;
 
-            const html = this.getRawValue(e);
-
-            let tmp = document.createElement("DIV");
-            tmp.innerHTML = html;
-            const value = tmp.textContent || tmp.innerText || "";
+            const value = this.getRawValue(e);
 
             if (maxLength !== null) {
                 if (value.length > maxLength) {
@@ -95,7 +90,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 }
 
                 // Store the latest value in case we need to rollback the
-                // input value if the user reaches the maxLength
+                // input value the users reaches the maxLength
                 this.latestValue = e.target.innerHTML;
             }
 
