@@ -9,12 +9,13 @@
     'placeholder' => null,
     'placeholderCount' => 1,
     'showMore' => null,
+    'style' => '',
 ])
 
 <ol data-expandable
     x-data="{ expanded: false }"
     :class="{ 'show-all': expanded }"
-    style="--expandable-total-count: {{ $total }};"
+    style="--expandable-total-count: {{ $total }};{{ $style }}"
     {{ $attributes }}
 >
     {{ $slot }}
