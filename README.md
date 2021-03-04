@@ -180,8 +180,12 @@ window.Tags = Tags;
 
 ### Taggable input
 
-1. Add tributejs dependency `yarn add tributejs` 
+1. Add tributejs dependency `yarn add tributejs`  and ensure to copy the scripts to the public directory:
 
+```js
+// webpack.mix.js file
+    mix.copy('node_modules/tributejs/dist/tribute.min.js', 'public/js/tribute.js')
+```
 
 2. Import the taggable script into the main js file
 
@@ -189,7 +193,15 @@ window.Tags = Tags;
 import "@ui/js/taggable.js";
 ```
 
-1. Use the component like you use the textarea input
+3. Ensure to import the tributejs scripts in the placed where the component will be used
+
+```html
+@push('scripts')
+    <script src="{{ mix('js/tribute.js')}}"></script>
+@endpush
+```
+
+4. Use the component like you use the textarea input
 
 ```html
 <x-ark-taggable

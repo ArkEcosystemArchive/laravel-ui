@@ -1,5 +1,3 @@
-import Tribute from "tributejs";
-
 window.Taggable = (contextUsers, maxLength = null) => {
     const tribute = new Tribute({
         selectClass: "highlighted",
