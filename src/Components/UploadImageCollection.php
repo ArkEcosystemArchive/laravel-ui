@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace ARKEcosystem\UserInterface\Components;
 
 use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Livewire\WithFileUploads;
 

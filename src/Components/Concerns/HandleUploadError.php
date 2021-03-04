@@ -13,5 +13,7 @@ trait HandleUploadError
         }
 
         $this->toast($message, 'error');
+
+        $this->resetErrorBag('temporaryImage');
     }
 }
