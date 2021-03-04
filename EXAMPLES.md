@@ -382,7 +382,7 @@ As optional, an increment counter is automatically generated too and can be disp
   <span class="increment-before">3.</span>
   ```
 - `increment-after` appends the increment inside the element.
-  _E.g. for the 3rd ite_m ```blade
+  _E.g. for the 3rd item_ ```blade
   <span class="increment-after">.</span>
   <!-- outputs -->
   <span class="increment-after">.3</span>
