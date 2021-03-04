@@ -37,7 +37,8 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 clearTimeout(this.fetchThrottlingTimeout);
             }
 
-            // Workaround to reduce the amount of request while using is typing
+            // Workaround to reduce the amount of request made to the 
+            // api while user is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
                 if (this.latestFethController) {
                     this.latestFethController.abort();
@@ -94,7 +95,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 }
 
                 // Store the latest value in case we need to rollback the
-                // input value the users reaches the maxLength
+                // input value if the user reaches the maxLength
                 this.latestValue = e.target.innerHTML;
             }
 
