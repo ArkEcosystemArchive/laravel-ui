@@ -193,7 +193,7 @@ window.Tags = Tags;
 import "@ui/js/taggable.js";
 ```
 
-3. Ensure to import the tributejs scripts in the placed where the component will be used
+3. Ensure to import the tributejs scripts in the places where the component will be used
 
 ```html
 @push('scripts')
