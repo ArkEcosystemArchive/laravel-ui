@@ -37,7 +37,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 clearTimeout(this.fetchThrottlingTimeout);
             }
 
-            // Workaround to reduce the amount of request made to the 
+            // Workaround to reduce the amount of request made to the
             // api while user is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
                 if (this.latestFethController) {
