@@ -244,6 +244,11 @@
     @apply space-x-2 bg-theme-primary-100;
 }
 
+.disabled-tags-input .tags-input-focus {
+    @apply border-theme-secondary-200;
+    box-shadow: 0 0 0 1px var(--theme-color-secondary-200);
+}
+
 .disabled-tags-input .taggle > .close {
     pointer-events: all;
 }
