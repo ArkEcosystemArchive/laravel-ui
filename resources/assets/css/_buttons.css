@@ -15,6 +15,15 @@
     @apply py-0.5 px-3 !important;
 }
 
+.button-outline {
+    @apply button-generic border-2 border-theme-primary-100 text-theme-primary-600;
+}
+
+.button-tag-outline {
+    @apply button-outline;
+    @apply py-0.5 px-3 !important;
+}
+
 .button-primary:disabled,
 .button-secondary:disabled,
 .button-cancel:disabled,
@@ -25,6 +34,13 @@ a.disabled {
     @apply shadow-none cursor-not-allowed pointer-events-none bg-theme-secondary-200 text-theme-secondary-400;
 }
 
+.button-outline:disabled,
+.button-outline.button-disabled,
+.button-tag-outline:disabled,
+.button-tag-outline.button-disabled {
+    @apply border-theme-secondary-200 text-theme-secondary-400 shadow-none cursor-not-allowed pointer-events-none;
+}
+
 .dark .button-primary:disabled,
 .dark .button-secondary:disabled,
 .dark .button-cancel:disabled,
@@ -33,6 +49,13 @@ a.disabled {
 .dark .button-disabled,
 .dark a.disabled {
     @apply bg-theme-secondary-800 text-theme-secondary-700;
+}
+
+.dark .button-outline:disabled,
+.dark .button-outline.button-disabled,
+.dark .button-tag-outline:disabled,
+.dark .button-tag-outline.button-disabled {
+    @apply border-theme-secondary-800 text-theme-secondary-700;
 }
 
 .button-secondary {
@@ -71,17 +94,33 @@ a.disabled {
     @apply bg-theme-secondary-800 text-theme-secondary-200;
 }
 
+.dark .button-outline,
+.dark .button-tag-outline {
+    @apply border-theme-secondary-800 text-theme-secondary-200;
+}
+
 .button-icon:hover,
 .button-secondary:hover,
 .button-icon-rounded:hover,
 .button-tag:hover {
     @apply text-white bg-theme-primary-700 shadow-button-secondary;
 }
+
+.button-outline:hover,
+.button-tag-outline:hover {
+    @apply text-white bg-theme-primary-700 border-transparent shadow-button-secondary;
+}
+
 .dark .button-icon:hover,
 .dark .button-icon-rounded:hover,
 .dark .button-secondary:hover,
 .dark .button-tag:hover {
     @apply bg-theme-primary-700 text-theme-secondary-200;
+}
+
+.dark .button-outline:hover,
+.dark .button-tag-outline:hover {
+    @apply border-theme-primary-700 text-theme-secondary-200;
 }
 
 .button-icon-primary:hover {
