@@ -1,9 +1,4 @@
-<div
-    @if($initAlpine ?? false)
-        x-data="{}"
-    @endif
-    {{ $attributes->only('class') }}
->
+<div {{ $attributes->only('class') }} >
     <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
