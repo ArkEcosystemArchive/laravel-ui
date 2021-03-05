@@ -23,12 +23,12 @@
         <input
             id="image-collection-upload-{{ $id }}"
             type="file"
-            class="absolute top-0 hidden block opacity-0 cursor-pointer"
+            class="block hidden absolute top-0 opacity-0 cursor-pointer"
             wire:model="temporaryImage"
             accept="image/jpg,image/jpeg,image/bmp,image/png"
         />
 
-        <div class="flex flex-col items-center justify-center w-full h-full space-y-2 rounded-xl bg-theme-primary-50">
+        <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-xl bg-theme-primary-50">
             <div class="text-theme-primary-500">
                 <x-ark-icon name="upload-cloud" size="lg" />
             </div>
@@ -46,7 +46,7 @@
         </div>
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="bottom-0 left-0 right-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
         </div>
     </div>
 
@@ -56,7 +56,7 @@
                 <div class="relative {{ $imageHeight }}">
                     <div
                         style="background-image: url('{{ $image['url'] }}')"
-                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover border rounded-xl border-theme-secondary-300"
+                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
                     ></div>
 
                     <div
