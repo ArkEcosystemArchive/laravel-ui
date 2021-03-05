@@ -19,8 +19,7 @@
             </div>
         @endif
 
-        <div class="flex relative justify-between items-center space-x-6"
-        >
+        <div class="flex relative justify-between items-center space-x-6">
             @if ($topPagination)
                 <div class="swiper-pagination text-right {{ $paginationClass }}"></div>
             @endif
