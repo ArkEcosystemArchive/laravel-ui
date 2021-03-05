@@ -35,6 +35,7 @@ module.exports = {
                 "2/3": "66%",
             },
             height: {
+                "22": "5.5rem",
                 "30": "7.5rem",
             },
             opacity: {
