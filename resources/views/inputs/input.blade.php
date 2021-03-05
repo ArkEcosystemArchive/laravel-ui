@@ -1,5 +1,7 @@
 <div
-    x-data="{}"
+    @if($initAlpine ?? false)
+        x-data="{}"
+    @endif
     {{ $attributes->only('class') }}
 >
     <div class="input-group">
