@@ -22,7 +22,7 @@ final class Markdown implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return html_entity_decode($value);
+        return $value;
     }
 
     /**
@@ -39,7 +39,7 @@ final class Markdown implements CastsAttributes
     {
         $allowedTagsStr = '<' . implode('><', $this->allowedTags) . '>';
 
-        return $this->rollbackEncodedAllowedTags(htmlentities(strip_tags($value, $allowedTagsStr)));
+        return $this->rollbackEncodedAllowedTags(strip_tags($value, $allowedTagsStr));
     }
 
     private function rollbackEncodedAllowedTags(string $text): string
