@@ -11,11 +11,12 @@
     'maxlength' => null,
     'rows'      => 10,
     'usersInContext' => [],
+    'endpoint' => '/api/users/autocomplete',
     'placeholder' => ''
 ])
 
 <div
-    x-data="UserTagger({{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
+    x-data="UserTagger('{{ $endpoint }}', {{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
     x-init="init"
     class="{{ $class }} UserTagger--input"
 >

@@ -1,4 +1,4 @@
-window.UserTagger = (contextUsers, maxLength = null) => {
+window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
     const tribute = new Tribute({
         selectClass: "highlighted",
         containerClass:
@@ -51,7 +51,7 @@ window.UserTagger = (contextUsers, maxLength = null) => {
                     query = `${query}&context=${contextUsers.join(",")}`;
                 }
 
-                fetch(`/api/users/autocomplete${query}`, { signal })
+                fetch(`${endpoint}${query}`, { signal })
                     .then((response) => response.json())
                     .then((data) => cb(data))
                     .catch((error) => {
