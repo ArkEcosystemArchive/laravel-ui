@@ -37,7 +37,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 clearTimeout(this.fetchThrottlingTimeout);
             }
 
-            // Workaround to reduce the amount of request while using is typing
+            // Workaround to reduce the amount of request while user is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
                 if (this.latestFethController) {
                     this.latestFethController.abort();
