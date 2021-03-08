@@ -22,7 +22,7 @@ $initialText = $grouped
 <div class="w-full input-group">
     @if($label ?? false)
         <label
-            :for="$name ?? ''"
+            for="{{ $name ?? '' }}"
             class="input-label @if ($name ?? false) @error($name) input-label--error @enderror @endif"
         >
             {{ $label }}
@@ -108,14 +108,14 @@ $initialText = $grouped
                                 'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
                                 'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === index && value !== optionValue,
                             }"
-                            class="py-4 px-8 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                            class="px-8 py-4 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                             x-text="options[optionValue]"
                         ></div>
                     </template>
                     @else
                     <template x-for="(groupName, index) in Object.keys(options)" :key="index">
                         <div>
-                            <span x-show="groupName" class="flex items-center px-8 pt-8 w-full text-sm font-bold leading-5 text-left text-theme-secondary-500" x-text="groupName"></span>
+                            <span x-show="groupName" class="flex items-center w-full px-8 pt-8 text-sm font-bold leading-5 text-left text-theme-secondary-500" x-text="groupName"></span>
 
                             <template x-for="(optionValue, index2) in Object.keys(options[groupName])" :key="`${index}-${index2}`">
                                 <div
@@ -133,7 +133,7 @@ $initialText = $grouped
                                         'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
                                         'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === getOptionIndex(index, index2) && value !== optionValue,
                                     }"
-                                    class="py-4 px-8 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                                    class="px-8 py-4 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
                                     x-text="options[groupName][optionValue]"
                                 ></div>
                             </template>
