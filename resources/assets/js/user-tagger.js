@@ -81,8 +81,6 @@ window.UserTagger = (contextUsers, maxLength = null) => {
 
             const value = this.getRawValue(e);
 
-            console.log(e.target.innerHTML, value);
-
             if (maxLength !== null) {
                 if (value.length > maxLength) {
                     editor.innerHTML = this.latestValue;
