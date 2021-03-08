@@ -89,8 +89,12 @@ window.UserTagger = (contextUsers, maxLength = null) => {
                     return;
                 }
 
-                // Store the latest value in case we need to rollback the
-                // input value the users reaches the maxLength
+                // Since the content of the `contenteditable` field contains HTML,
+                // I cant remove the last character (used to emulate the max length behavior)
+                // because I can potentially break the HTML content.
+                // As a workaround, I'm using this variable to store the latest valid content.
+                // If the user passes the maxLength, I can rollback to this value and prevent
+                // texts longer than the maxLength.
                 this.latestValue = e.target.innerHTML;
             }
 
