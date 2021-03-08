@@ -215,6 +215,27 @@ import "@ui/js/user-tagger.js";
 >{{ $body }}</x-ark-user-tagger>
 ```
 
+5. This component makes a GET request to the `/api/users/autocomplete` endpoint with the query as `q`, that query should be used to search the users and should return them in the following format:
+
+Note: You can change the the URL by using the `endpoint` prop.
+
+```json
+[
+    {
+        "name":"Foo Bar",
+        "username":"foo.bar",
+        "avatar":"SVG AVATAR OR URL"
+    },
+    {
+        "name":"Other user",
+        "username":"user_name",
+        "avatar":"SVG AVATAR OR URL"
+    },
+    // ....
+]
+```
+
+1. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
 
 #### Livewire modals
 
