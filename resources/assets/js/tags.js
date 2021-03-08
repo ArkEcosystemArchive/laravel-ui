@@ -1,5 +1,6 @@
 const Tags = (
     extraData = {},
+    id,
     tags = [],
     allowedTags = [],
     placeholder = "Enter tags...",
@@ -53,7 +54,7 @@ const Tags = (
         });
 
         const taggleInput = taggle.getInput();
-        taggleInput.setAttribute("ref", "tags_input_field");
+        taggleInput.setAttribute("id", id);
 
         if (typeof this.onInput === "function") {
             taggleInput.addEventListener("input", (e) => {
