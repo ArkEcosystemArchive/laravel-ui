@@ -1,4 +1,4 @@
-<div class="relative flex flex-col">
+<div class="flex relative flex-col">
     @if($isDisabled && ! $option['checked'])
         <div data-tippy-content="{{ $disabledCheckboxTooltip }}" class="absolute inset-0"></div>
     @endif
