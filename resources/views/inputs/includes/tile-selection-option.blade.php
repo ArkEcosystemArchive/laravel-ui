@@ -1,9 +1,7 @@
-<div
-    class="flex flex-col"
+<div class="relative flex flex-col">
     @if($isDisabled && ! $option['checked'])
-        data-tippy-content="{{ $disabledCheckboxTooltip }}"
+        <div data-tippy-content="{{ $disabledCheckboxTooltip }}" class="absolute inset-0"></div>
     @endif
->
     <label
         wire:key="tile-selection-option-{{ $option['id'] }}"
         class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
