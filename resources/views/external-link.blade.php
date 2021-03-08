@@ -5,10 +5,11 @@
     'inline'    => false,
     'allowWrap' => false,
     'small'     => false,
+    'readOnly'  => false,
 ])
 
 <a
-    href="{{ $url }}"
+    href="{{ ! $readOnly ? $url : 'javascript:void(0)' }}"
     class="{{ $class }} {{ $inline ? 'inline space-x-1' : 'flex items-center space-x-2' }} {{ $allowWrap ? '' : 'whitespace-nowrap' }}"
     target="_blank"
     rel="noopener nofollow noreferrer"
