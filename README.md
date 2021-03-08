@@ -178,7 +178,7 @@ window.Tags = Tags;
 <x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="['taga', 'tagb']" />
 ```
 
-### Taggable input
+### User tagger input
 
 1. Add tributejs dependency `yarn add tributejs`  and ensure to copy the scripts to the public directory:
 
@@ -187,10 +187,10 @@ window.Tags = Tags;
     mix.copy('node_modules/tributejs/dist/tribute.min.js', 'public/js/tribute.js')
 ```
 
-2. Import the taggable script into the main js file
+2. Import the user tagger script into the main js file
 
 ```js
-import "@ui/js/taggable.js";
+import "@ui/js/user-tagger.js";
 ```
 
 3. Ensure to import the tributejs scripts in the places where the component will be used
@@ -204,7 +204,7 @@ import "@ui/js/taggable.js";
 4. Use the component like you use the textarea input
 
 ```html
-<x-ark-taggable
+<x-ark-user-tagger
     name="body"
     :placeholder="trans('forms.review.create_message_length')"
     rows="5"
@@ -212,7 +212,7 @@ import "@ui/js/taggable.js";
     maxlength="1000"
     required
     hide-label
->{{ $body }}</x-ark-taggable>
+>{{ $body }}</x-ark-user-tagger>
 ```
 
 

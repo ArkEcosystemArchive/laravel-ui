@@ -1,4 +1,4 @@
-window.Taggable = (contextUsers, maxLength = null) => {
+window.UserTagger = (contextUsers, maxLength = null) => {
     const tribute = new Tribute({
         selectClass: "highlighted",
         containerClass:
@@ -46,7 +46,7 @@ window.Taggable = (contextUsers, maxLength = null) => {
                 this.latestFethController = new AbortController();
                 const { signal } = this.latestFethController;
 
-                const query = `?q=${text}`;
+                let query = `?q=${text}`;
                 if (Array.isArray(contextUsers) && contextUsers.length) {
                     query = `${query}&context=${contextUsers.join(",")}`;
                 }

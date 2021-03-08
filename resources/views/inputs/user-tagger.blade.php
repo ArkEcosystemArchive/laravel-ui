@@ -15,9 +15,9 @@
 ])
 
 <div
-    x-data="Taggable({{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
+    x-data="UserTagger({{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
     x-init="init"
-    class="{{ $class }}"
+    class="{{ $class }} UserTagger--input"
 >
     <div class="input-group">
         @unless ($hideLabel)
