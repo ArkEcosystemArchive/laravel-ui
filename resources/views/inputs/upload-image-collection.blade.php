@@ -60,7 +60,7 @@
                     ></div>
 
                     <div
-                        wire:key="delete-button"
+                        wire:key="delete-button-{{ $id }}"
                         class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}"
                     >
                         <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default w-full {{ $imageHeight }}"></div>

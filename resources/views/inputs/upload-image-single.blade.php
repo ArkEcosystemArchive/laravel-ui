@@ -64,7 +64,7 @@
 
         @unless($readonly)
             <div
-                wire:key="delete-button"
+                wire:key="delete-button-{{ $id }}"
                 class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default w-full h-full
                     @unless ($image) hidden @endunless"
 
