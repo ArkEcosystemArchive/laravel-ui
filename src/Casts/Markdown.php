@@ -22,7 +22,7 @@ final class Markdown implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return $value;
+        return html_entity_decode($value);
     }
 
     /**
