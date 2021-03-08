@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .UserTagger .highlighted .UserTagger--username {
     @apply text-theme-primary-600;
 }
@@ -16,3 +17,4 @@
     @apply text-theme-secondary-400;
     content: attr(data-placeholder);
 }
+/* purgecss end ignore */
