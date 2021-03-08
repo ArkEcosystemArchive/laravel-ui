@@ -2,7 +2,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
     const tribute = new Tribute({
         selectClass: "highlighted",
         containerClass:
-            "UserTagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
+            "ark-user-tagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
         noMatchTemplate: () => '<span class="hidden"></span>',
         selectTemplate(item) {
             return `<a data-username="${item.original.username}" href="#" contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</a>`;
@@ -22,7 +22,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
                         ${avatar}
                     </div>
                 </div>
-                <span class="UserTagger--username font-semibold text-theme-secondary-800">${
+                <span class="ark-user-tagger--username font-semibold text-theme-secondary-800">${
                     item.original.username
                 }</span>
                 <span class="text-sm text-theme-secondary-500">${

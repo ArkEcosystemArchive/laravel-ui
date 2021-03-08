@@ -1,19 +1,19 @@
 /* purgecss start ignore */
-.UserTagger .highlighted .UserTagger--username {
+.ark-user-tagger .highlighted .ark-user-tagger--username {
     @apply text-theme-primary-600;
 }
-.UserTagger > ul > li {
+.ark-user-tagger > ul > li {
     @apply mx-6;
 }
-.UserTagger > ul > li:not(:last-child) {
+.ark-user-tagger > ul > li:not(:last-child) {
     @apply border-b border-dotted border-theme-secondary-300;
 }
 
-.UserTagger > ul > li.highlighted {
+.ark-user-tagger > ul > li.highlighted {
     @apply px-6 mx-0 border-transparent bg-theme-primary-100;
 }
 
-.UserTagger--input [contenteditable="true"]:empty:before {
+.ark-user-tagger--input [contenteditable="true"]:empty:before {
     @apply text-theme-secondary-400;
     content: attr(data-placeholder);
 }

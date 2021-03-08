@@ -18,7 +18,7 @@
 <div
     x-data="UserTagger('{{ $endpoint }}', {{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
     x-init="init"
-    class="{{ $class }} UserTagger--input"
+    class="{{ $class }} ark-user-tagger--input"
 >
     <div class="input-group">
         @unless ($hideLabel)
