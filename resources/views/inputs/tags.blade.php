@@ -15,7 +15,7 @@
 ])
 
 <div
-    x-data="Tags({{ $xData }}, {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
+    x-data="Tags({{ $xData }}, '{{ $id ?? $name }}', {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
     {{ $attributes }}
     @if($isDisabled) data-tippy-content="{{ $disabledInputTooltip }}" @endif
@@ -56,8 +56,8 @@
 
             @error($name)
                 @include('ark::inputs.includes.input-error-tooltip', [
-                    'error'    => $message,
-                    'fieldRef' => 'tags_input_field',
+                    'error' => $message,
+                    'id'    => $id ?? $name,
                 ])
             @enderror
         </div>

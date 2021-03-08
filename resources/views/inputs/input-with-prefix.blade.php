@@ -36,7 +36,7 @@
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
 
-            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message]) @enderror
+            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message, 'id' => $id ?? $name]) @enderror
         </div>
     </div>
 </div>

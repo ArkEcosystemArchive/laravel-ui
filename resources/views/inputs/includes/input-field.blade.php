@@ -14,7 +14,6 @@
 ])
 
 <input
-    x-ref="input_field"
     type="{{ $type }}"
     id="{{ $id ?? $name }}"
     name="{{ $name }}"

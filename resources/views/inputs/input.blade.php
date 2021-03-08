@@ -1,7 +1,4 @@
-<div
-    x-data="{}"
-    {{ $attributes->only('class') }}
->
+<div {{ $attributes->only('class') }} >
     <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
@@ -26,7 +23,7 @@
                 'max'          => $max ?? null,
             ])
 
-            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message]) @enderror
+            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message, 'id' => $id ?? $name]) @enderror
         </div>
     </div>
 </div>
