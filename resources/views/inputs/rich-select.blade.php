@@ -22,7 +22,7 @@ $initialText = $grouped
 <div class="w-full input-group">
     @if($label ?? false)
         <label
-            :for="$name ?? ''"
+            for="{{ $name ?? '' }}"
             class="input-label @if ($name ?? false) @error($name) input-label--error @enderror @endif"
         >
             {{ $label }}
