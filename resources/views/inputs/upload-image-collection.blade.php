@@ -23,7 +23,7 @@
         <input
             id="image-collection-upload-{{ $id }}"
             type="file"
-            class="absolute top-0 hidden block opacity-0 cursor-pointer"
+            class="absolute w-full h-full opacity-0 cursor-pointer"
             wire:model="temporaryImages"
             accept="image/jpg,image/jpeg,image/bmp,image/png"
             multiple
