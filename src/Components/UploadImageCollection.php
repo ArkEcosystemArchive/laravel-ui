@@ -15,16 +15,16 @@ trait UploadImageCollection
 
     public array $imageCollection = [];
 
-    public $temporaryImage;
+    public $temporaryImages = [];
 
-    public function updatedTemporaryImage()
+    public function updatedTemporaryImages()
     {
         $this->validateImageCollection();
 
-        $this->imageCollection[] = [
-            'image' => $this->temporaryImage,
-            'url'   => $this->temporaryImage->temporaryUrl(),
-        ];
+        $this->imageCollection = array_merge($this->imageCollection, array_map(fn($image) => [
+            'image' => $image,
+            'url'   => $image->temporaryUrl(),
+        ], $this->temporaryImages));
     }
 
     public function deleteImage(int $index): void
@@ -36,7 +36,7 @@ trait UploadImageCollection
     {
         $validator = Validator::make([
             'imageCollection' => $this->imageCollection,
-            'temporaryImage' => $this->temporaryImage,
+            'temporaryImages' => $this->temporaryImages,
         ], $this->imageCollectionValidators());
 
         if ($validator->fails()) {
@@ -52,7 +52,7 @@ trait UploadImageCollection
     {
         return [
             'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
-            'temporaryImage'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
+            'temporaryImages.*'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
         ];
     }
 }
