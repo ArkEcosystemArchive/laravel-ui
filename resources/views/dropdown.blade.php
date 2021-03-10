@@ -3,6 +3,7 @@
     'buttonClassExpanded' => 'text-theme-primary-500',
     'buttonClass'         => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'fullScreen'          => false,
+    'dusk'                => false,
 ])
 
 <div
@@ -12,7 +13,7 @@
         @click.away="{{ $dropdownProperty }} = false"
     @endif
     class="{{ $wrapperClass ?? '' ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
-    @isset($dusk) dusk="{{ $dusk }}" @endisset
+    @if($dusk) dusk="{{ $dusk }}" @endif
 >
     <div>
         <button
