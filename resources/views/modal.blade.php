@@ -39,7 +39,7 @@
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >
-                        @svg('close', 'w-6 h-6 m-auto')
+                        <x-ark-icon name="close" size="md" class="m-auto" />
                     </button>
                 @endif
 
