@@ -19,7 +19,7 @@ trait UploadImageCollection
 
     public function getImageCollectionMaxQuantity(): int
     {
-        return 0;
+        return 8;
     }
 
     public function updatedTemporaryImages()
@@ -62,13 +62,9 @@ trait UploadImageCollection
     public function imageCollectionValidators(): array
     {
         return [
-            'imageCollection' => ['array', $this->getImageCollectionMaxQuantity() > 0 ? ('max:' . $this->getImageCollectionMaxQuantity()) : ''], // max 8 entries as we validate before adding to array
+            'imageCollection' => ['array', 'max:' . $this->getImageCollectionMaxQuantity()],
             'temporaryImages'  => function ($attribute, $value, $fail) {
                 $max = $this->getImageCollectionMaxQuantity();
-
-                if ($max <= 0) {
-                    return;
-                }
 
                 if (count($value) + count($this->imageCollection) > $max) {
                     $fail(trans('validation.max.array', [

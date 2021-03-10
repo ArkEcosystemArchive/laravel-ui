@@ -28,7 +28,7 @@
             multiple
         />
 
-        <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-xl bg-theme-primary-50">
+        <div class="flex flex-col items-center justify-center w-full h-full space-y-2 rounded-xl bg-theme-primary-50">
             <div class="text-theme-primary-500">
                 <x-ark-icon name="upload-cloud" size="lg" />
             </div>
@@ -36,25 +36,17 @@
             <div class="font-semibold text-theme-secondary-900">{!! $uploadText !!}</div>
 
             <div class="flex flex-col space-y-1 text-xs font-semibold text-center sm:flex-row sm:space-y-0 sm:space-x-1 text-theme-secondary-500 chunk-header">
-                @if($this->getImageCollectionMaxQuantity() > 0)
-                    @lang('ui::forms.upload-image-collection.requirements', [
-                        'width'    => $minWidth,
-                        'height'   => $minHeight,
-                        'filesize' => $maxFilesize,
-                        'quantity' => $this->getImageCollectionMaxQuantity(),
-                    ])
-                @else
-                    @lang('ui::forms.upload-image-collection.requirements_no_max', [
-                        'width'    => $minWidth,
-                        'height'   => $minHeight,
-                        'filesize' => $maxFilesize
-                    ])
-                @endif
+                @lang('ui::forms.upload-image-collection.requirements', [
+                    'width'    => $minWidth,
+                    'height'   => $minHeight,
+                    'filesize' => $maxFilesize,
+                    'quantity' => $this->getImageCollectionMaxQuantity(),
+                ])
             </div>
         </div>
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="bottom-0 left-0 right-0 rounded-xl" :dimensions="$dimensions" />
         </div>
     </div>
 
@@ -64,7 +56,7 @@
                 <div class="relative {{ $imageHeight }}">
                     <div
                         style="background-image: url('{{ $image['url'] }}')"
-                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
+                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover border rounded-xl border-theme-secondary-300"
                     ></div>
 
                     <div
