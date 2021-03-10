@@ -178,6 +178,68 @@ window.Tags = Tags;
 <x-ark-tags :tags="['tag1', 'tag2']" name="tags" :allowed-tags="['taga', 'tagb']" />
 ```
 
+### User tagger input
+
+1. Add tributejs dependency `yarn add tributejs`  and ensure to copy the scripts to the public directory:
+
+```js
+// webpack.mix.js file
+    mix.copy('node_modules/tributejs/dist/tribute.min.js', 'public/js/tribute.js')
+```
+
+2. Import the user tagger script into the main js file and import the styles in your css file
+
+```js
+import "@ui/js/user-tagger.js";
+```
+
+```css
+@import "../../vendor/arkecosystem/ui/resources/assets/css/_user_tagger.css";
+```
+
+3. Ensure to import the tributejs scripts in the places where the component will be used
+
+```html
+@push('scripts')
+    <script src="{{ mix('js/tribute.js')}}"></script>
+@endpush
+```
+
+4. Use the component like you use the textarea input
+
+```html
+<x-ark-user-tagger
+    name="body"
+    :placeholder="trans('forms.review.create_message_length')"
+    rows="5"
+    wire:model="body"
+    maxlength="1000"
+    required
+    hide-label
+>{{ $body }}</x-ark-user-tagger>
+```
+
+5. This component makes a GET request to the `/api/users/autocomplete` endpoint with the query as `q`, that query should be used to search the users and should return them in the following format:
+
+Note: You can change the the URL by using the `endpoint` prop.
+
+```json
+[
+    {
+        "name":"Foo Bar",
+        "username":"foo.bar",
+        "avatar":"SVG AVATAR OR URL"
+    },
+    {
+        "name":"Other user",
+        "username":"user_name",
+        "avatar":"SVG AVATAR OR URL"
+    },
+    ...
+]
+```
+
+6. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
 
 #### Livewire modals
 

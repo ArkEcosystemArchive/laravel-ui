@@ -1,0 +1,20 @@
+/* purgecss start ignore */
+.ark-user-tagger .highlighted .ark-user-tagger--username {
+    @apply text-theme-primary-600;
+}
+.ark-user-tagger > ul > li {
+    @apply mx-6;
+}
+.ark-user-tagger > ul > li:not(:last-child) {
+    @apply border-b border-dotted border-theme-secondary-300;
+}
+
+.ark-user-tagger > ul > li.highlighted {
+    @apply px-6 mx-0 border-transparent bg-theme-primary-100;
+}
+
+.ark-user-tagger--input [contenteditable="true"]:empty:before {
+    @apply text-theme-secondary-400;
+    content: attr(data-placeholder);
+}
+/* purgecss end ignore */
