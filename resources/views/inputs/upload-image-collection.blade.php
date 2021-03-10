@@ -23,9 +23,10 @@
         <input
             id="image-collection-upload-{{ $id }}"
             type="file"
-            class="block hidden absolute top-0 opacity-0 cursor-pointer"
-            wire:model="temporaryImage"
+            class="absolute w-full h-full opacity-0 cursor-pointer"
+            wire:model="temporaryImages"
             accept="image/jpg,image/jpeg,image/bmp,image/png"
+            multiple
         />
 
         <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-xl bg-theme-primary-50">
