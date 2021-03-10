@@ -33,13 +33,13 @@
         @if($style) style="{{ $style }}" @endif
     >
         <div class="modal-content dropdown-scrolling {{ $widthClass }}">
-            <div class="p-6 sm:p-12">
+            <div class="p-8 sm:p-10">
                 @if($wireClose)
                     <button
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >
-                        @svg('close', 'w-5 h-5 m-auto')
+                        @svg('close', 'w-6 h-6 m-auto')
                     </button>
                 @endif
 
