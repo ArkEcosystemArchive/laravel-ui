@@ -362,31 +362,41 @@ Displays a defined number of items and hides the rest, showing a button to show/
 It's possible to add placeholders and define when to show/hide them via css.
 The remaining items counter is automatically generated and can be displayed by adding a helper css class (2 helpers available).
 - `counter-before` prepends the counter inside the element.
-  _E.g. if the remaining items are 7_ ```blade
-  <span class="counter-before">+</span>
-  <!-- outputs -->
-  <span class="counter-before">7+</span>
-  ```
+  _E.g. if the remaining items are 7_
+
+```blade
+<span class="counter-before">+</span>
+<!-- outputs -->
+<span class="counter-before">7+</span>
+```
+
 - `counter-after` appends the counter inside the element.
-  _E.g. if the remaining items are 7_ ```blade
-  <span class="counter-after">+</span>
-  <!-- outputs -->
-  <span class="counter-after">+7</span>
-  ```
+  _E.g. if the remaining items are 7_
+
+```blade
+<span class="counter-after">+</span>
+<!-- outputs -->
+<span class="counter-after">+7</span>
+```
 
 As optional, an increment counter is automatically generated too and can be displayed by adding a helper css class (2 helpers available).
 - `increment-before` prepends the increment inside the element.
-  _E.g. for the 3rd item_ ```blade
-  <span class="increment-before">.</span>
-  <!-- outputs -->
-  <span class="increment-before">3.</span>
-  ```
+  _E.g. for the 3rd item_
+
+```blade
+<span class="increment-before">.</span>
+<!-- outputs -->
+<span class="increment-before">3.</span>
+```
+
 - `increment-after` appends the increment inside the element.
-  _E.g. for the 3rd item_ ```blade
-  <span class="increment-after">.</span>
-  <!-- outputs -->
-  <span class="increment-after">.3</span>
-  ```
+  _E.g. for the 3rd item_
+
+```blade
+<span class="increment-after">.</span>
+<!-- outputs -->
+<span class="increment-after">.3</span>
+```
 
 > Remember to wrap the items in `<x-ark-expandable-item>...</x-ark-expandable-item>` component.
 

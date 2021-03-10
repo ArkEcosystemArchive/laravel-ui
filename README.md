@@ -187,10 +187,14 @@ window.Tags = Tags;
     mix.copy('node_modules/tributejs/dist/tribute.min.js', 'public/js/tribute.js')
 ```
 
-2. Import the user tagger script into the main js file
+2. Import the user tagger script into the main js file and import the styles in your css file
 
 ```js
 import "@ui/js/user-tagger.js";
+```
+
+```css
+@import "../../vendor/arkecosystem/ui/resources/assets/css/_user_tagger.css";
 ```
 
 3. Ensure to import the tributejs scripts in the places where the component will be used
@@ -231,11 +235,11 @@ Note: You can change the the URL by using the `endpoint` prop.
         "username":"user_name",
         "avatar":"SVG AVATAR OR URL"
     },
-    // ....
+    ...
 ]
 ```
 
-1. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
+6. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
 
 #### Livewire modals
 

@@ -3,10 +3,13 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
         selectClass: "highlighted",
         containerClass:
             "ark-user-tagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
+
         noMatchTemplate: () => '<span class="hidden"></span>',
+
         selectTemplate(item) {
             return `<a data-username="${item.original.username}" href="#" contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</a>`;
         },
+
         menuItemTemplate(item) {
             const hasAvatar = !item.original.avatar.startsWith("<svg");
 
@@ -30,8 +33,10 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
                 }</span>
             </div>`;
         },
+
         latestFethController: null,
         fetchThrottlingTimeout: null,
+
         values(text, cb) {
             if (this.fetchThrottlingTimeout) {
                 clearTimeout(this.fetchThrottlingTimeout);
@@ -63,11 +68,13 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
                 this.fetchThrottlingTimeout = null;
             }, 100);
         },
+
         lookup: (item) => item.name,
     });
 
     return {
         latestValue: "",
+
         moveCursorToTheEndOfTheEditor(editor) {
             const range = document.createRange();
             range.selectNodeContents(editor);
@@ -76,6 +83,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             selection.removeAllRanges();
             selection.addRange(range);
         },
+
         updateValue(e) {
             const { input, editor } = this.$refs;
 
@@ -105,6 +113,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             });
             input.dispatchEvent(event);
         },
+
         getRawValue(e) {
             return String(e.target.innerHTML)
                 .replace(/<div><br>/gi, "\n")
@@ -112,6 +121,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
                 .replace(/<\/div>/gi, "")
                 .replaceAll(/<br>/gi, "\n");
         },
+
         init() {
             const { editor } = this.$refs;
 
