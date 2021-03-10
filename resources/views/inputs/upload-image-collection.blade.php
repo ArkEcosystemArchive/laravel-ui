@@ -8,7 +8,6 @@
     'minWidth'           => 148,
     'minHeight'          => 148,
     'maxFilesize'        => '2MB',
-    'maxQuantity'        => 8,
     'uploadErrorMessage' => null,
 ])
 
@@ -41,7 +40,7 @@
                     'width'    => $minWidth,
                     'height'   => $minHeight,
                     'filesize' => $maxFilesize,
-                    'quantity' => $maxQuantity,
+                    'quantity' => $this->getImageCollectionMaxQuantity(),
                 ])
             </div>
         </div>
