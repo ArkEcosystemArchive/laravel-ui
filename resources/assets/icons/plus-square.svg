@@ -3,16 +3,16 @@
 <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 23 23" style="enable-background:new 0 0 23 23;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+	.plus-square-st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 <g id="How_do_I_register_a_project_in_MarketSquare_" transform="translate(-446.321 -4966.714)">
-	<path id="Rectangle-path_188" class="st0" d="M447.3,4969.2c0-0.8,0.7-1.5,1.5-1.5h18c0.8,0,1.5,0.7,1.5,1.5v18
+	<path id="Rectangle-path_188" class="plus-square-st0" d="M447.3,4969.2c0-0.8,0.7-1.5,1.5-1.5h18c0.8,0,1.5,0.7,1.5,1.5v18
 		c0,0.8-0.7,1.5-1.5,1.5h-18c-0.8,0-1.5-0.7-1.5-1.5V4969.2z"/>
 	<g id="Interface-Essential_Remove_Add_add" transform="translate(-42.447 -986.05)">
 		<g id="Group_583" transform="translate(495.755 5959.75)">
 			<g id="add">
-				<path id="Shape_2533" class="st0" d="M0,4.5h9"/>
-				<path id="Shape_2534" class="st0" d="M4.5,0v9"/>
+				<path id="Shape_2533" class="plus-square-st0" d="M0,4.5h9"/>
+				<path id="Shape_2534" class="plus-square-st0" d="M4.5,0v9"/>
 			</g>
 		</g>
 	</g>
