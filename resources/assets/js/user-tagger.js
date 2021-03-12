@@ -107,10 +107,12 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             }
 
             input.value = value;
+
             var event = new Event("input", {
                 bubbles: true,
                 cancelable: true,
             });
+
             input.dispatchEvent(event);
         },
 
@@ -123,7 +125,10 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
         },
 
         init() {
-            const { editor } = this.$refs;
+            const { input, editor } = this.$refs;
+
+            editor.innerHTML = input.value;
+            this.latestValue = input.value;
 
             tribute.attach(editor);
 
