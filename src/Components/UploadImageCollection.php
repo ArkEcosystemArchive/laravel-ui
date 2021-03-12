@@ -17,9 +17,16 @@ trait UploadImageCollection
 
     public $temporaryImages = [];
 
+    public function getImageCollectionMaxQuantity(): int
+    {
+        return 8;
+    }
+
     public function updatedTemporaryImages()
     {
-        $this->validateImageCollection();
+        if (!$this->validateImageCollection()) {
+            return;
+        }
 
         $this->imageCollection = array_merge($this->imageCollection, array_map(fn($image) => [
             'image' => $image,
@@ -32,7 +39,7 @@ trait UploadImageCollection
         $this->imageCollection = collect($this->imageCollection)->forget($index)->toArray();
     }
 
-    public function validateImageCollection(): void
+    public function validateImageCollection(): bool
     {
         $validator = Validator::make([
             'imageCollection' => $this->imageCollection,
@@ -45,14 +52,31 @@ trait UploadImageCollection
             }
 
             $validator->validate();
+
+            return false;
         }
+
+        return true;
     }
 
     public function imageCollectionValidators(): array
     {
         return [
-            'imageCollection' => ['array', 'max:7'], // max 8 entries as we validate before adding to array
-            'temporaryImages.*'  => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
+            'imageCollection' => ['array', 'max:' . $this->getImageCollectionMaxQuantity()],
+            'temporaryImages'  => function ($attribute, $value, $fail) {
+                $max = $this->getImageCollectionMaxQuantity();
+
+                if (count($value) + count($this->imageCollection) > $max) {
+                    $fail(trans('validation.max.array', [
+                        'max' => $max,
+                        'attribute' => 'image collection',
+                    ]));
+                }
+            },
+            'temporaryImages.*'  => [
+                'mimes:jpeg,png,bmp,jpg',
+                'max:2048',
+            ],
         ];
     }
 }

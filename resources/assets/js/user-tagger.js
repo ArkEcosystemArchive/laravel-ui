@@ -128,7 +128,6 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             tribute.attach(editor);
 
             editor.addEventListener("input", (e) => {
-                console.log(e);
                 this.updateValue(e);
             });
 
