@@ -62,16 +62,25 @@ const Tags = (
             });
         }
 
+        Livewire.on("selectedTagRemoved", (tag) => {
+            taggle.remove(tag);
+        });
+
         this.$watch("availableTags", (availableTags) => {
             const { select } = this.$refs;
 
             this.setTaggleTags(taggle, availableTags);
+
             this.$nextTick(() => {
-                const options = Array.from(select.querySelectorAll("option"));
-                options.forEach((o) => {
-                    o.selected = true;
-                });
-                select.dispatchEvent(new Event("change"));
+                if (select) {
+                    const options = Array.from(
+                        select.querySelectorAll("option")
+                    );
+                    options.forEach((o) => {
+                        o.selected = true;
+                    });
+                    select.dispatchEvent(new Event("change"));
+                }
             });
         });
     },
