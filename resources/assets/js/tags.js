@@ -73,7 +73,9 @@ const Tags = (
 
             this.$nextTick(() => {
                 if (select) {
-                    const options = Array.from(select.querySelectorAll("option"));
+                    const options = Array.from(
+                        select.querySelectorAll("option")
+                    );
                     options.forEach((o) => {
                         o.selected = true;
                     });
