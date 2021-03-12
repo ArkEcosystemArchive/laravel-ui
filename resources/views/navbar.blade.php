@@ -10,7 +10,7 @@
     ][$breakpoint ?? 'md'];
 @endphp
 
-<div x-data="Navbar.dropdown()" x-init="init">
+<header x-data="Navbar.dropdown()" x-init="init">
     <div
         x-show="openDropdown !== null || open"
         class="overflow-y-auto fixed inset-0 z-30 opacity-75 bg-theme-secondary-900 {{ $backdropClass }}"
@@ -21,8 +21,10 @@
     {{-- Spacer for the sticky navbar  --}}
     <div class="h-20 mb-0.5"></div>
     <nav
+        aria-label="{{ trans('ark::general.primary_navigation') }}"
         x-ref="nav"
         class="fixed top-0 z-30 w-full bg-white border-b dark:bg-theme-secondary-900 border-theme-secondary-300"
+        dusk="navigation-bar"
     >
         <div class="px-4 sm:px-6 lg:px-8 py-0.5">
             <div class="flex relative justify-between h-20">
@@ -62,4 +64,4 @@
             @include('ark::navbar.items.mobile')
         @endisset
     </nav>
-</div>
+</header>

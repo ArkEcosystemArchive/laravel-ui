@@ -1,5 +1,5 @@
 <div class="flex flex-shrink-0 items-center">
-    <a class="flex items-center" href="{{ route('home') }}">
+    <a class="flex items-center" href="{{ route('home') }}" dusk="navigation-logo-link">
         @isset($logo)
             {{ $logo }}
         @else
