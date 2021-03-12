@@ -1,7 +1,7 @@
 <x-ark-dropdown
     wrapper-class="relative ml-3 whitespace-nowrap"
     :dropdown-classes="$profileMenuClass ?? null"
-    dusk="profile-dropdown"
+    dusk="navbar-profile-dropdown"
 >
     <x-slot name="button">
         <span class="inline-block relative avatar-wrapper">
@@ -29,6 +29,7 @@
                 <button
                     type="submit"
                     class="dropdown-entry"
+                    dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
                 >
                     @if($menuItem['icon'] ?? false)
                         @svg($menuItem['icon'], 'inline w-5 mr-4')
@@ -41,6 +42,7 @@
             <a
                 href="{{ route($menuItem['route']) }}"
                 class="dropdown-entry"
+                dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
             >
                 @if($menuItem['icon'] ?? false)
                     @svg($menuItem['icon'], 'inline w-5 mr-4')
