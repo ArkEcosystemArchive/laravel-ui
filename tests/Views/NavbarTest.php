@@ -1,13 +1,15 @@
 <?php
 
+use Tests\Mocks\MediaMock;
+use function Tests\createAttributes;
+
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
-
-use function Tests\createAttributes;
 
 it('should render the component', function (): void {
     Route::view('/', 'ark::navbar.hamburger')->name('home');
     Route::view('/post', 'ark::navbar.hamburger')->name('post');
+
 
     $this
         ->actingAs(new User())
@@ -23,7 +25,7 @@ it('should render the component', function (): void {
                     ],
                 ],
             ],
-            'profilePhoto'     => 'https://imgur.com/abc123',
+            'profilePhoto'     => new MediaMock('https://imgur.com/abc123'),
             'profileMenu'      => [],
             'profileMenuClass' => 'unicorn',
         ]))
