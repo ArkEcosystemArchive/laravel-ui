@@ -16,6 +16,13 @@
     x-data="{ expanded: false }"
     :class="{ 'show-all': expanded }"
     style="--expandable-total-count: {{ $total }};{{ $style }}"
+    x-init="$watch('expanded', (expanded) => {
+        if (expanded) {
+            $nextTick(() => {
+                $el.querySelectorAll('img[onload]').forEach(img => img.onload())
+            })
+        }
+    })"
     {{ $attributes }}
 >
     {{ $slot }}
