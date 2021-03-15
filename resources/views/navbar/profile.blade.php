@@ -12,8 +12,8 @@
                     x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
-                <div class="w-10 h-10 border-2 border-transparent rounded-lg md:h-11 md:w-11 hover:border-theme-primary-600">
-                    {{ $profilePhoto->img('', ['class' => 'object-cover w-full h-full rounded-lg', 'alt' => 'Profile Avatar']) }}
+                <div class="w-10 h-10 overflow-hidden border-2 border-transparent rounded-lg md:h-11 md:w-11 hover:border-theme-primary-600">
+                    {{ $profilePhoto->img('', ['class' => 'object-cover w-full h-full', 'alt' => 'Profile Avatar']) }}
                 </div>
             @endisset
         </span>
