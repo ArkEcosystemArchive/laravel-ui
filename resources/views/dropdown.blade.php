@@ -7,7 +7,16 @@
 ])
 
 <div
-    @if ($initAlpine ?? true) x-data="{ {{ $dropdownProperty }}: false }" @endif
+    @if ($initAlpine ?? true)
+        x-data="{ {{ $dropdownProperty }}: false }"
+        x-init="$watch('{{ $dropdownProperty }}', (expanded) => {
+            if (expanded) {
+                $nextTick(() => {
+                    $el.querySelectorAll('img[onload]').forEach(img => img.onload())
+                })
+            }
+        })"
+    @endif
     @if($closeOnBlur ?? true)
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
