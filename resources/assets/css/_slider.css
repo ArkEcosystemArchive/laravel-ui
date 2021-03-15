@@ -8,6 +8,12 @@
     @apply mt-5 mb-8;
 }
 
+/* Required for shadow hover */
+.swiper-container:not(.slider-pagination-bottom) {
+    @apply -mb-8;
+}
+
+/* Required for shadow hover */
 .swiper-container:not(.slider-pagination-bottom) .swiper-wrapper {
     @apply mb-8;
 }
