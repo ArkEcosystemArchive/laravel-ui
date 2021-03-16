@@ -69,7 +69,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             }, 100);
         },
 
-        lookup: (item) => item.name,
+        lookup: (item) => item.name + item.username,
     });
 
     return {
