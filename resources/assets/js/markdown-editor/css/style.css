@@ -1,4 +1,6 @@
 /* purgecss start ignore */
+
+
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
@@ -11,6 +13,13 @@
 
 .ark-markdown-editor .tui-editor-contents {
     @apply max-w-3xl mx-auto;
+}
+
+.ark-markdown-editor .tui-editor-contents pre{
+    @apply p-4 mb-6 overflow-x-auto rounded-lg bg-theme-secondary-800;
+}
+.ark-markdown-editor .tui-editor-contents pre > code {
+    @apply block w-full overflow-auto bg-transparent text-theme-secondary-200;
 }
 
 .ark-markdown-editor .tui-editor .te-md-splitter {
@@ -46,9 +55,9 @@
 .ark-markdown-editor .tui-toolbar-divider {
     @apply flex-shrink-0 bg-theme-secondary-300;
     float: left;
-    width: 2px;
-    height: 33px;
-    margin: 13px 6px;
+    width: 1px;
+    height: 16px;
+    margin: 21px 6px;
 }
 .ark-markdown-editor .tui-toolbar-divider + .tui-toolbar-divider {
     display: none !important;
@@ -130,7 +139,8 @@
 }
 
 .ark-markdown-editor .tui-popup-wrapper {
-    @apply p-8 bg-white border-none rounded shadow rounded-2xl;
+    @apply p-8 overflow-hidden bg-white border-none shadow-lg;
+    border-radius: 0.25rem !important;
     width: 500px;
     margin-right: auto;
     z-index: 9999;
@@ -143,6 +153,15 @@
 .ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar,
 .ark-markdown-editor .tui-popup-wrapper.te-popup-add-table {
     @apply w-auto p-0 rounded;
+}
+
+.ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar .tui-editor-defaultUI-toolbar {
+    @apply flex flex-wrap px-4;
 }
 
 .ark-markdown-editor .tui-popup-modal-background .tui-popup-wrapper {
@@ -223,6 +242,8 @@
 
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.tui-more {
     @apply relative border-none rounded shadow-sm bg-theme-primary-200 text-theme-primary-600 top-3;
+    margin-left: auto !important;
+    margin-right: 0 !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 14px;
@@ -243,4 +264,30 @@
     font-weight: inherit;
     color: inherit;
 }
+
+@media (max-width: 768px) {
+    .ark-markdown-editor .te-md-container {
+        @apply flex flex-col;
+    }
+
+    .ark-markdown-editor     .CodeMirror {
+        @apply h-full p-0;
+        min-height: inherit !important;
+    }
+
+    .ark-markdown-editor .tui-editor .te-preview-style-vertical .te-editor,
+    .ark-markdown-editor .tui-editor .te-preview-style-vertical .te-preview {
+        @apply relative w-full;
+        height: 50%;
+        min-height: inherit !important;
+    }
+    .ark-markdown-editor .tui-editor .te-preview-style-vertical .te-preview {
+        @apply z-10 pt-4 bg-white border-t-2 border-theme-secondary-200;
+    }
+
+    .ark-markdown-editor .tui-editor .te-md-splitter {
+        display: none !important;
+   }
+}
+
 /* purgecss end ignore */
