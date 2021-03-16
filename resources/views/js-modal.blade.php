@@ -25,7 +25,7 @@
     tabindex="0"
     @endif
     x-show="shown"
-    class="fixed inset-0 z-50 flex overflow-y-auto md:py-10 md:px-8"
+    class="flex overflow-y-auto fixed inset-0 z-50 md:py-10 md:px-8"
 >
     <div class="fixed inset-0 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
