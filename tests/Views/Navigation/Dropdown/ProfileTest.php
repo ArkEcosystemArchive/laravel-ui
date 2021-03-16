@@ -1,11 +1,12 @@
 <?php
 
+use Tests\Mocks\MediaMock;
 use function Tests\createAttributes;
 
 it('should render the component', function (): void {
     $this
         ->assertView('ark::navbar.profile', createAttributes([
-            'profilePhoto'     => 'https://imgur.com/abc123',
+            'profilePhoto'     => new MediaMock('https://imgur.com/abc123'),
             'profileMenu'      => [],
         ]))
         ->contains('src="https://imgur.com/abc123"');
@@ -14,7 +15,7 @@ it('should render the component', function (): void {
 it('should render the [profileMenuClass] attribute', function (): void {
     $this
         ->assertView('ark::navbar.profile', createAttributes([
-            'profilePhoto'     => 'https://imgur.com/abc123',
+            'profilePhoto'     => new MediaMock('https://imgur.com/abc123'),
             'profileMenu'      => [],
             'profileMenuClass' => 'unicorn',
         ]))
@@ -25,7 +26,7 @@ it('should render the [profileMenuClass] attribute', function (): void {
 it('should render the [identifier] attribute instead of the [profilePhoto] attribute', function (): void {
     $this
         ->assertView('ark::navbar.profile', createAttributes([
-            'profilePhoto' => 'https://imgur.com/abc123',
+            'profilePhoto' => new MediaMock('https://imgur.com/abc123'),
             'profileMenu'  => [],
             'identifier'   => 'unicorn',
         ]))
