@@ -24,7 +24,7 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
     return toolbar.getItem(menuIndex);
 };
 
-const previewPlugin = (editor, menuIndex, svgIcon, height = '600px') => {
+const previewPlugin = (editor, menuIndex, svgIcon, height = "600px") => {
     const button = addToolbarButton(editor, menuIndex, svgIcon);
 
     editor.addCommand("markdown", {
@@ -51,8 +51,6 @@ const previewPlugin = (editor, menuIndex, svgIcon, height = '600px') => {
             }
         },
     });
-
-
 };
 
 export default previewPlugin;

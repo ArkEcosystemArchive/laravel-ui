@@ -1,6 +1,5 @@
 /* purgecss start ignore */
 
-
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
@@ -15,7 +14,7 @@
     @apply max-w-3xl mx-auto;
 }
 
-.ark-markdown-editor .tui-editor-contents pre{
+.ark-markdown-editor .tui-editor-contents pre {
     @apply p-4 mb-6 overflow-x-auto rounded-lg bg-theme-secondary-800;
 }
 .ark-markdown-editor .tui-editor-contents pre > code {
@@ -160,7 +159,9 @@
     right: 0 !important;
 }
 
-.ark-markdown-editor .tui-popup-wrapper.te-dropdown-toolbar .tui-editor-defaultUI-toolbar {
+.ark-markdown-editor
+    .tui-popup-wrapper.te-dropdown-toolbar
+    .tui-editor-defaultUI-toolbar {
     @apply flex flex-wrap px-4;
 }
 
@@ -270,7 +271,7 @@
         @apply flex flex-col;
     }
 
-    .ark-markdown-editor     .CodeMirror {
+    .ark-markdown-editor .CodeMirror {
         @apply h-full p-0;
         min-height: inherit !important;
     }
@@ -287,7 +288,7 @@
 
     .ark-markdown-editor .tui-editor .te-md-splitter {
         display: none !important;
-   }
+    }
 }
 
 /* purgecss end ignore */

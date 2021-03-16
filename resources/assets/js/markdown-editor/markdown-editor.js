@@ -167,8 +167,8 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         }
     },
     adjustHeight() {
-        console.log(this.editor.getCurrentPreviewStyle())
-        const hasPreview = this.editor.getCurrentPreviewStyle() === 'vertical';
+        console.log(this.editor.getCurrentPreviewStyle());
+        const hasPreview = this.editor.getCurrentPreviewStyle() === "vertical";
         const pageWidth = document.documentElement.clientWidth;
 
         if (pageWidth <= 768 && hasPreview) {
@@ -178,7 +178,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         }
     },
     hideAllTooltips() {
-        this.toolbar.getItems().forEach(i => i._onOut && i._onOut());
+        this.toolbar.getItems().forEach((i) => i._onOut && i._onOut());
     },
     removeScrollSyncButton() {
         const scrollButton = this.editor
