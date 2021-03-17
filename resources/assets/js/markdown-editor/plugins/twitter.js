@@ -61,7 +61,7 @@ const createPopupContent = (editor) => {
     const popupContent = document.createElement("div");
 
     popupContent.innerHTML = `
-        <label for="value">Tweet URL or ID</label>
+        <label for="value">Tweet URL</label>
         <input id="value" name="value" type="text" class="te-alt-text-input" />
         <div class="te-button-section">
             <button type="button" class="te-ok-button">${i18n.get(
