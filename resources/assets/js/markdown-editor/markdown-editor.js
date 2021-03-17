@@ -126,11 +126,10 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
 
             this.editor = new toastui.Editor({
                 el: this.$refs.editor,
-                height: this.height,
                 initialEditType: "markdown",
                 usageStatistics: false,
                 hideModeSwitch: true,
-                previewStyle: "",
+                previewStyle: "tab",
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
@@ -152,10 +151,33 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
             this.updatePreviewClasses();
 
             this.removeScrollSyncButton();
+
+            this.editor.eventManager.listen("openDropdownToolbar", (e) => {
+                this.hideAllTooltips();
+            });
+
+            this.adjustHeight();
+
+            window.onresize = () => {
+                this.adjustHeight();
+            };
         } catch (error) {
             alert("Something went wrong!");
             console.error(error);
         }
+    },
+    adjustHeight() {
+        const hasPreview = this.editor.getCurrentPreviewStyle() === "vertical";
+        const pageWidth = document.documentElement.clientWidth;
+
+        if (pageWidth <= 768 && hasPreview) {
+            this.editor.height(`${parseInt(this.height, 10) * 2}px`);
+        } else {
+            this.editor.height(this.height);
+        }
+    },
+    hideAllTooltips() {
+        this.toolbar.getItems().forEach((i) => i._onOut && i._onOut());
     },
     removeScrollSyncButton() {
         const scrollButton = this.editor
@@ -188,7 +210,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         const plugins = {
             alert: (editor) => alertPlugin(editor, buttonIndex, iconAlert),
             preview: (editor) =>
-                previewPlugin(editor, buttonIndex, iconPreview),
+                previewPlugin(editor, buttonIndex, iconPreview, this.height),
             reference: (editor) =>
                 referencePlugin(editor, buttonIndex, iconReference),
             linkcollection: (editor) =>
@@ -295,6 +317,8 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         });
     },
     onChangeHandler() {
+        this.hideAllTooltips();
+
         const { input } = this.$refs;
 
         input.value = this.editor.getMarkdown();

@@ -17,7 +17,7 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
             name: "underline",
             className: "tui-underline",
             command: "underline",
-            tooltip: "underline",
+            tooltip: "Underline",
         },
     });
 
