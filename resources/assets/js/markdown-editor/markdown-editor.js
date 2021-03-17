@@ -169,6 +169,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}, csrfTo
                 }
             });
 
+            this.editor.getCodeMirror().setOption("lineNumbers", true);
 
             this.toolbar = this.editor.getUI().getToolbar();
 
