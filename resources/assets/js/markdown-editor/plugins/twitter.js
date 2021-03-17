@@ -62,7 +62,13 @@ const createPopupContent = (editor) => {
 
     popupContent.innerHTML = `
         <label for="value">Tweet URL</label>
-        <input id="value" name="value" type="text" class="te-alt-text-input" />
+        <input
+            id="value"
+            name="value"
+            type="text"
+            class="te-alt-text-input"
+            placeholder="https://twitter.com/arkecosystem/status/20"
+        />
         <div class="te-button-section">
             <button type="button" class="te-ok-button">${i18n.get(
                 "OK"
