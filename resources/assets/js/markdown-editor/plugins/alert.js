@@ -78,7 +78,7 @@ const createPopupContent = (editor) => {
  */
 const initPopup = (editor, menuIndex, svgIcon) => {
     const name = "alert";
-    const title = "Add alert";
+    const title = "Add Alert";
     const tooltip = "Alert";
 
     const popupContent = createPopupContent(editor);

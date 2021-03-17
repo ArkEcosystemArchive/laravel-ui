@@ -24,7 +24,7 @@ const addToolbarButton = (editor, menuIndex, svgIcon) => {
     return toolbar.getItem(menuIndex);
 };
 
-const previewPlugin = (editor, menuIndex, svgIcon) => {
+const previewPlugin = (editor, menuIndex, svgIcon, height = "600px") => {
     const button = addToolbarButton(editor, menuIndex, svgIcon);
 
     editor.addCommand("markdown", {
@@ -36,9 +36,18 @@ const previewPlugin = (editor, menuIndex, svgIcon) => {
                     "current",
                     ""
                 );
+                editor.height(height);
             } else {
                 button.el.className = `${button.el.className} current`;
                 editor.changePreviewStyle("vertical");
+
+                const pageWidth = document.documentElement.clientWidth;
+
+                if (pageWidth <= 768) {
+                    editor.height(`${parseInt(height, 10) * 2}px`);
+                } else {
+                    editor.height(height);
+                }
             }
         },
     });
