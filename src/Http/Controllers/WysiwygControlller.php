@@ -30,4 +30,21 @@ final class WysiwygControlller extends Controller
             'chrome'      => 'nofooter',
         ])->json()['html']);
     }
+
+    public function uploadImage(Request $request): array
+    {
+        $this->validate($request, [
+            'image' => 'required|image',
+        ]);
+
+        $file = $request->file('image');
+
+        $path = $file->storePubliclyAs(
+            'wysiwyg',
+            $file->hashName(),
+            'public'
+        );
+
+        return ['url' => asset($path)];
+    }
 }
