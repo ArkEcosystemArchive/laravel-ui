@@ -167,7 +167,6 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         }
     },
     adjustHeight() {
-        console.log(this.editor.getCurrentPreviewStyle());
         const hasPreview = this.editor.getCurrentPreviewStyle() === "vertical";
         const pageWidth = document.documentElement.clientWidth;
 
