@@ -36,13 +36,13 @@
         @endif
     >
         <div class="modal-content dropdown-scrolling {{ $widthClass }}">
-            <div class="p-6 sm:p-12">
+            <div class="p-8 sm:p-10">
                 @if(!$closeButtonOnly)
                 <button
                     class="modal-close"
                     @click="hide"
                 >
-                    @svg('close', 'w-4 h-4 m-auto')
+                    <x-ark-icon name="close" size="md" class="m-auto" />
                 </button>
                 @endif
 
