@@ -1,4 +1,6 @@
-<div class="flex relative flex-col">
+<div
+    class="flex relative flex-col {{ $mobileHidden ? 'hidden sm:block' : '' }}"
+>
     @if($isDisabled && ! $option['checked'])
         <div data-tippy-content="{{ $disabledCheckboxTooltip }}" class="absolute inset-0"></div>
     @endif
