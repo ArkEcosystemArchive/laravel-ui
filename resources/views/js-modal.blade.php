@@ -25,42 +25,40 @@
     tabindex="0"
     @endif
     x-show="shown"
-    class="fixed inset-0 z-50 "
+    class="flex overflow-y-auto fixed inset-0 z-50 md:py-10 md:px-8"
 >
     <div class="fixed inset-0 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
 
-    <div class="flex overflow-y-auto fixed inset-0 py-10 px-5">
-        <div
-            class="m-auto w-full {{ $class }}"
-            @if(!$closeButtonOnly)
-            @click.away="hide"
-            @endif
-        >
-            <div class="modal-content dropdown-scrolling {{ $widthClass }}">
-                <div class="p-6 sm:p-12">
-                    @if(!$closeButtonOnly)
-                    <button
-                        class="modal-close"
-                        @click="hide"
-                    >
-                        @svg('close', 'w-4 h-4 m-auto')
-                    </button>
-                    @endif
+    <div
+        class="modal-content-wrapper md:m-auto w-full {{ $class }} {{ $widthClass }}"
+        @if(!$closeButtonOnly)
+        @click.away="hide"
+        @endif
+    >
+        <div class="modal-content dropdown-scrolling {{ $widthClass }}">
+            <div class="p-8 sm:p-10">
+                @if(!$closeButtonOnly)
+                <button
+                    class="modal-close"
+                    @click="hide"
+                >
+                    <x-ark-icon name="close" size="md" class="m-auto" />
+                </button>
+                @endif
 
-                    @if ($title)
-                        <h1 class="{{ $titleClass }}">
-                            {{ $title }}
-                        </h1>
-                    @endif
+                @if ($title)
+                    <h1 class="{{ $titleClass }}">
+                        {{ $title }}
+                    </h1>
+                @endif
 
-                    {{ $description }}
+                {{ $description }}
 
-                    @if($buttons)
-                        <div class="mt-8 text-right {{ $buttonsStyle }}">
-                            {{ $buttons }}
-                        </div>
-                    @endif
-                </div>
+                @if($buttons)
+                    <div class="mt-8 text-right {{ $buttonsStyle }}">
+                        {{ $buttons }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
