@@ -83,6 +83,14 @@ class UserInterfaceServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ark');
 
         $this->publishes([
+            __DIR__.'/../config/ui.php' => config_path('ui.php'),
+        ], 'config');
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/ui.php', 'ui'
+        );
+
+        $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/ark'),
         ], 'views');
 

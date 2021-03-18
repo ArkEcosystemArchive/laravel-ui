@@ -40,9 +40,9 @@ final class WysiwygControlller extends Controller
         $file = $request->file('image');
 
         $path = $file->storePubliclyAs(
-            'wysiwyg',
+            config('ui.wysiwyg.folder'),
             $file->hashName(),
-            'public'
+            config('ui.wysiwyg.disk')
         );
 
         return ['url' => asset($path)];
