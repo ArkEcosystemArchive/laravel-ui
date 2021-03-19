@@ -45,10 +45,16 @@
     @apply h-auto px-4 py-2 text-base font-bold text-center transition-all rounded;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-ok-button {
-    @apply ml-3 text-white bg-theme-primary-600;
+    @apply ml-3 text-white bg-theme-primary-600 px-4 py-2.5 font-semibold text-center rounded;
+    transition: all 0.1s ease-in;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-close-button {
-    @apply text-theme-primary-500 bg-theme-primary-100;
+    @apply px-4 py-2.5 font-semibold text-center rounded  bg-theme-primary-100 text-theme-primary-600;
+    transition: all 0.1s ease-in;
+}
+.ark-markdown-editor .tui-popup-body .te-button-section button.te-ok-button:hover,
+.ark-markdown-editor .tui-popup-body .te-button-section button.te-close-button:hover {
+    @apply text-white bg-theme-primary-700 shadow-button-primary;
 }
 
 .ark-markdown-editor .tui-toolbar-divider {
