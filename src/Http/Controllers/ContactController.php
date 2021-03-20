@@ -6,6 +6,7 @@ namespace ARKEcosystem\UserInterface\Http\Controllers;
 
 use ARKEcosystem\UserInterface\Mail\ContactFormSubmitted;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +48,7 @@ final class ContactController extends Controller
             'attachment' => ['mimes:pdf'],
         ]);
 
-        $mail = new ContactFormSubmitted($data);
+        $mail = new ContactFormSubmitted(Arr::except($data, ['attachment']));
 
         if ('job_application' === $data['subject']) {
             if ($request->has('attachment')) {
