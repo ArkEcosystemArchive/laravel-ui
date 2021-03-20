@@ -53,7 +53,7 @@ final class ContactController extends Controller
             if ($request->has('attachment')) {
                 $attachment = $request->file('attachment');
 
-                $mail->attach($attachment, [
+                $mail->attach($attachment->getRealPath(), [
                     'as'   => $attachment->getClientOriginalName(),
                     'mime' => 'application/pdf',
                 ]);
