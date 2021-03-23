@@ -232,7 +232,7 @@ body {
 
 /* Child text wrapping */
 @variants responsive {
-    .no-wrap-children > span {
+    .no-wrap-span-children > span {
         @apply whitespace-nowrap;
     }
 }
