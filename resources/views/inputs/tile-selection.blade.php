@@ -14,7 +14,6 @@
     'iconWrapper' => 'flex flex-col justify-center items-center md:space-y-2 h-full',
     'iconBreakpoints' => null,
     'optionTitleClass' => 'font-semibold',
-    'withoutSelectAll' => false,
     'selectionLimit' => null,
     'selectedOptionsCount' => null,
     'selectedOptionsTooltip' => null,
@@ -25,19 +24,8 @@
     wire:key="tile-selection-{{ $id }}"
     class="space-y-4 {{ $class }}"
     x-data="{
-        options: {{ json_encode(collect($options)->keyBy('id')) }},
         selectedOption: @if ($single) '{{ $this->{$model ?? $id} }}' @else null @endif,
-        allSelected: false,
         mobileHidden: true,
-        selectAll: function() {
-            let checkAllValue = true;
-            if (this.allSelected) {
-                checkAllValue = false;
-            }
-            for (const optionKey in this.options) {
-                this.options[optionKey].checked = checkAllValue;
-            }
-        }
     }"
 >
     <div class="{{ $wrapperClass }}">
@@ -56,20 +44,7 @@
                 </div>
             @endif
 
-            @unless ($hiddenOptions || $single === true || $withoutSelectAll)
-                <label class="tile-selection-select-all">
-                    <input
-                        type="checkbox"
-                        class="form-checkbox tile-selection-select-all-checkbox"
-                        x-on:click="selectAll"
-                        x-model="allSelected"
-                    />
-
-                    <div>@lang('ui::general.select-all')</div>
-                </label>
-            @endunless
-
-            @if($withoutSelectAll && $selectionLimit)
+            @if($selectionLimit)
                 <label class="tile-selection-select-all">
                     <div data-tippy-content="{{ $selectedOptionsTooltip }}">{{ $selectedOptionsCount }} / {{ $selectionLimit }}</div>
                 </label>
@@ -83,7 +58,7 @@
                         'option' => $option,
                         'wireModel' => $single ? ($model ?? $id) : ($model ?? $id).'.'.$option['id'].'.checked',
                         'mobileHidden' => $loop->index >= ($mobileShowRows * 2),
-                        'isDisabled' => $withoutSelectAll ? ($selectedOptionsCount >= $selectionLimit) : false,
+                        'isDisabled' => $selectionLimit ? ($selectedOptionsCount >= $selectionLimit) : false,
                         'disabledCheckboxTooltip' => $disabledCheckboxTooltip,
                     ])
                 @endforeach
