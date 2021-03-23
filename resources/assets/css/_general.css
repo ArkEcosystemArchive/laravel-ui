@@ -230,8 +230,9 @@ body {
     width: 100%;
 }
 
-@screen lg {
-    .responsive-no-wrap > span {
+/* Child text wrapping */
+@variants responsive {
+    .no-wrap-children > span {
         @apply whitespace-nowrap;
     }
 }
