@@ -1,5 +1,5 @@
 <div
-    class="relative flex flex-col"
+    class="flex relative flex-col"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:flex': mobileHidden, @endif
     }"
