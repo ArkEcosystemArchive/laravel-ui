@@ -229,3 +229,9 @@ body {
     top: 0;
     width: 100%;
 }
+
+@screen lg {
+    .responsive-no-wrap > span {
+        @apply whitespace-nowrap;
+    }
+}
