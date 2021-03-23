@@ -26,6 +26,8 @@
 
     {{ $attributes->except([
         'class',
+        'container-class',
+        'hide-label',
         'errors',
         'id',
         'max',
@@ -33,6 +35,6 @@
         'slot',
         'type',
         'wire:model',
-        'keydown-enter'
+        'keydown-enter',
     ]) }}
 />
