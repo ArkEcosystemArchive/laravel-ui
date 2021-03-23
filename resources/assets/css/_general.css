@@ -229,3 +229,10 @@ body {
     top: 0;
     width: 100%;
 }
+
+/* Child text wrapping */
+@variants responsive {
+    .no-wrap-span-children > span {
+        @apply whitespace-nowrap;
+    }
+}

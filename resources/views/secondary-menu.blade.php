@@ -17,7 +17,7 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="absolute right-0 z-10 mt-2 w-full rounded-md shadow-lg origin-top"
+        class="absolute right-0 z-10 mt-2 w-full max-w-full rounded-md shadow-lg origin-top"
         x-cloak
     >
         <div class="w-full py-4 bg-white rounded-md shadow-lg {{ $navigationClass ?? '' }}">

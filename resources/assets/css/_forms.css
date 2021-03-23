@@ -55,7 +55,8 @@
 }
 
 .input-text-with-icon {
-    @apply rounded-none input-text;
+    @apply input-text;
+    @apply rounded-none !important;
 }
 
 /** Input with icon prefix **/
