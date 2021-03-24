@@ -1,5 +1,3 @@
-import "./css/style.css"; // Editor's Style
-
 import {
     simplecastPlugin,
     youtubePlugin,
@@ -18,6 +16,27 @@ import {
 import { extractTextFromHtml } from "./utils/utils.js";
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
+
+toastui.Editor.setLanguage(["en", "en-US"], {
+    "Unordered list": "Unordered List",
+    "Ordered list": "Ordered List",
+    "Insert link": "Insert link",
+    "Insert CodeBlock": "Insert Code Block",
+    "Insert table": "Insert Table",
+    "Insert image": "Insert Image",
+    "Link text": "Link Text",
+    "Add row": "Add Row",
+    "Add col": "Add Col",
+    "Remove row": "Remove Row",
+    "Remove col": "Remove Col",
+    "Align left": "Align Left",
+    "Align center": "Align Center",
+    "Align right": "Align Right",
+    "Remove table": "Remove Table",
+    "Text color": "Text Color",
+    "Auto scroll enabled": "Auto Scroll Enabled",
+    "Auto scroll disabled": "Auto Scroll Disabled",
+});
 
 const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     editor: null,

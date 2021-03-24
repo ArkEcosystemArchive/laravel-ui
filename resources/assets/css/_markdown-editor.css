@@ -1,5 +1,4 @@
 /* purgecss start ignore */
-
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
@@ -45,10 +44,20 @@
     @apply h-auto px-4 py-2 text-base font-bold text-center transition-all rounded;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-ok-button {
-    @apply ml-3 text-white bg-theme-primary-600;
+    @apply ml-3 button-primary;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-close-button {
-    @apply text-theme-primary-500 bg-theme-primary-100;
+    @apply button-secondary;
+}
+.ark-markdown-editor
+    .tui-popup-body
+    .te-button-section
+    button.te-ok-button:hover,
+.ark-markdown-editor
+    .tui-popup-body
+    .te-button-section
+    button.te-close-button:hover {
+    @apply text-white bg-theme-primary-700 shadow-button-primary;
 }
 
 .ark-markdown-editor .tui-toolbar-divider {
@@ -102,7 +111,7 @@
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button:active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.current {
-    @apply border-theme-primary-600 text-theme-primary-600;
+    @apply border-t-0 border-b-2 border-l-0 border-r-0 border-theme-primary-600 text-theme-primary-600;
 }
 
 .ark-markdown-editor .tui-editor-defaultUI .te-markdown-tab-section {
@@ -197,7 +206,7 @@
 }
 
 .ark-markdown-editor .tui-editor-popup {
-    @apply absolute max-h-full overflow-auto;
+    @apply absolute overflow-auto;
     top: 30px;
     left: 50%;
     margin-left: -250px;
