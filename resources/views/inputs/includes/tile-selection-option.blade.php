@@ -12,9 +12,9 @@
         class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
         x-bind:class="{
             @if ($single)
-                'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }",
+                'tile-selection--checked': '{{ $option['id'] }}' === selectedOption,
             @else
-                'tile-selection--checked': options['{{ $option['id'] }}'].checked }",
+                'tile-selection--checked': {{ $option['checked'] ? 'true' : 'false' }},
             @endif
         }"
     >
@@ -34,8 +34,8 @@
                 name="{{ $option['id'] }}"
                 type="checkbox"
                 class="form-checkbox tile-selection-checkbox"
-                x-model="options['{{ $option['id'] }}'].checked"
                 wire:model="{{ $wireModel }}"
+                wire:key="{{ $option['id'] }}"
                 @if($isDisabled && ! $option['checked'])
                     disabled
                 @endif
