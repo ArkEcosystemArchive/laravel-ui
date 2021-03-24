@@ -111,7 +111,7 @@
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button:active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.current {
-    @apply border-t-0 border-b-2 border-l-0 border-r-0 border-theme-primary-600 text-theme-primary-600 ;
+    @apply border-t-0 border-b-2 border-l-0 border-r-0 border-theme-primary-600 text-theme-primary-600;
 }
 
 .ark-markdown-editor .tui-editor-defaultUI .te-markdown-tab-section {
