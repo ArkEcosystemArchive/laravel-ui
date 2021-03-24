@@ -41,7 +41,7 @@ trait UploadImageSingle
     public function imageSingleValidators(): array
     {
         return [
-            'imageSingle' => ['mimes:jpeg,png,bmp,jpg', 'max:2048'],
+            'imageSingle' => ['mimes:jpeg,png,bmp,jpg', 'max:2048', 'dimensions:min_width=148,min_height=148'],
         ];
     }
 }
