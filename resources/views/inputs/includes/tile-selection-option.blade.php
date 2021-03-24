@@ -1,5 +1,8 @@
 <div
-    class="flex relative flex-col {{ $mobileHidden ? 'hidden sm:block' : '' }}"
+    class="flex relative flex-col"
+    x-bind:class="{
+        @if ($mobileHidden) 'hidden sm:flex': mobileHidden, @endif
+    }"
 >
     @if($isDisabled && ! $option['checked'])
         <div data-tippy-content="{{ $disabledCheckboxTooltip }}" class="absolute inset-0"></div>
@@ -8,7 +11,6 @@
         wire:key="tile-selection-option-{{ $option['id'] }}"
         class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
         x-bind:class="{
-            @if ($mobileHidden) 'hidden sm:block': mobileHidden, @endif
             @if ($single)
                 'tile-selection--checked': '{{ $option['id'] }}' === selectedOption }",
             @else
