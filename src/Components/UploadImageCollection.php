@@ -76,6 +76,7 @@ trait UploadImageCollection
             'temporaryImages.*'  => [
                 'mimes:jpeg,png,bmp,jpg',
                 'max:2048',
+                'dimensions:min_width=148,min_height=148',
             ],
         ];
     }

@@ -63,6 +63,23 @@ HTML;
     $this->assertFalse($rule->passes('markdown', $text));
 });
 
+
+it('validates unicode text correctly', function () {
+    $text = '⡷⡷⡷';
+
+    $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) {
+        $mock->shouldReceive('convertToHtml')
+            ->andReturn('⡷⡷⡷');
+    });
+
+    $rule = new MarkdownMaxChars(3);
+    $this->assertTrue($rule->passes('markdown', $text));
+
+    $rule = new MarkdownMaxChars(2);
+    $this->assertFalse($rule->passes('markdown', $text));
+});
+
+
 it('has an error message', function () {
     $rule = new MarkdownMaxChars(30);
     expect($rule->message())->toBe(trans('ui::validation.custom.max_markdown_chars', ['max' => 30]));
