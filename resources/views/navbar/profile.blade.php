@@ -1,6 +1,7 @@
 <x-ark-dropdown
     wrapper-class="relative ml-3 whitespace-nowrap"
     :dropdown-classes="$profileMenuClass ?? null"
+    button-class="border-2 border-transparent hover:border-theme-primary-600 rounded-lg overflow-hidden"
     dusk="navbar-profile-dropdown"
 >
     <x-slot name="button">
@@ -8,7 +9,7 @@
             @isset($identifier)
                 <x-ark-avatar
                     :identifier="$identifier"
-                    class="w-10 h-10 rounded-lg border-2 border-transparent md:h-11 md:w-11 hover:border-theme-primary-600"
+                    class="w-10 h-10 md:h-11 md:w-11"
                     x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
