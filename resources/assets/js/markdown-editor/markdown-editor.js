@@ -1,5 +1,3 @@
-import "./css/style.css"; // Editor's Style
-
 import {
     simplecastPlugin,
     youtubePlugin,

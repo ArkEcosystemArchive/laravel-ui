@@ -130,13 +130,18 @@ window.MarkdownEditor = MarkdownEditor;
 @endpush
 ```
 
-3. Add the markdown component to your form
+3. Import the markdown css file in your main file.
+```css
+@import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
+```
+
+4. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-4. You can change the height and the toolbar preset:
+5. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
