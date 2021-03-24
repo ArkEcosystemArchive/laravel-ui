@@ -1,7 +1,7 @@
 <x-ark-dropdown
     wrapper-class="relative ml-3 whitespace-nowrap"
     :dropdown-classes="$profileMenuClass ?? null"
-    button-class="border-2 border-transparent hover:border-theme-primary-600 rounded-lg overflow-hidden"
+    button-class="overflow-hidden rounded-lg border-2 border-transparent hover:border-theme-primary-600"
     dusk="navbar-profile-dropdown"
 >
     <x-slot name="button">
