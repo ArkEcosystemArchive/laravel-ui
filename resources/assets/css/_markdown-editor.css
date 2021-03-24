@@ -1,5 +1,4 @@
 /* purgecss start ignore */
-
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
@@ -45,12 +44,10 @@
     @apply h-auto px-4 py-2 text-base font-bold text-center transition-all rounded;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-ok-button {
-    @apply ml-3 text-white bg-theme-primary-600 px-4 py-2.5 font-semibold text-center rounded;
-    transition: all 0.1s ease-in;
+    @apply ml-3 button-primary;
 }
 .ark-markdown-editor .tui-popup-body .te-button-section button.te-close-button {
-    @apply px-4 py-2.5 font-semibold text-center rounded  bg-theme-primary-100 text-theme-primary-600;
-    transition: all 0.1s ease-in;
+    @apply button-secondary;
 }
 .ark-markdown-editor
     .tui-popup-body
@@ -114,7 +111,7 @@
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button:active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.active,
 .ark-markdown-editor .tui-editor-defaultUI-toolbar button.current {
-    @apply border-theme-primary-600 text-theme-primary-600;
+    @apply border-t-0 border-b-2 border-l-0 border-r-0 border-theme-primary-600 text-theme-primary-600 ;
 }
 
 .ark-markdown-editor .tui-editor-defaultUI .te-markdown-tab-section {
@@ -209,7 +206,7 @@
 }
 
 .ark-markdown-editor .tui-editor-popup {
-    @apply absolute max-h-full overflow-auto;
+    @apply absolute overflow-auto;
     top: 30px;
     left: 50%;
     margin-left: -250px;
