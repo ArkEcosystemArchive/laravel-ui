@@ -135,11 +135,11 @@ window.MarkdownEditor = MarkdownEditor;
 @import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
 ```
 
-4. Compile the markdown scripts into the public folder:
+4. Copy the markdown scripts into the public folder:
 
 ```js
 mix
-    .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
+    .copy('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
 ```
 
 5. Add the markdown component to your form
