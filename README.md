@@ -115,7 +115,6 @@ window.Modal = Modal;
 
 1. Ensure to import the following scripts inside the `<head>` tag of your template.
 
-
 ```html
 @push('scripts')
     <x-ark-pages-includes-markdown-scripts />
