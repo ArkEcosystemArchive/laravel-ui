@@ -487,6 +487,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-textarea>`
 - `<x-ark-toggle>`
 - `<x-ark-upload-image>`
+- [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 

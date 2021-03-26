@@ -439,3 +439,29 @@ As optional, an increment counter is automatically generated too and can be disp
 | placeholderCount | Total copy of placeholder | no | 1 |
 | showMore | Implement your own show/hide system | no | null |
 | style | Useful to inject css variable(s) | no | '' |
+
+
+### Font Loader
+Improve font loading times.  
+> This component is inspired by [Harry Roberts' article](https://csswizardry.com/2020/05/the-fastest-google-fonts/).
+
+Here follow you can see an example on how to use it:
+```blade
+{{-- an example with a custom font --}}
+<x-ark-font-loader src="https://rsms.me/inter/inter.css">
+```
+ 
+```blade
+{{-- an example with a google font --}}
+<x-ark-font-loader src="https://fonts.googleapis.com/css2?family=Inter&display=swap" preconnect="https://fonts.gstatic.com">
+```
+
+```blade
+{{-- an example with a google font, omitting the `&display=swap`. It'll be appended automatically for Google Fonts! --}}
+<x-ark-font-loader src="https://fonts.googleapis.com/css2?family=Inter" preconnect="https://fonts.gstatic.com">
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| src | The source of the font file | yes | |
+| preconnect | The source of the css file linked to the font itself. Can be different from the font source. | no | null |
