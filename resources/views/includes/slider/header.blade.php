@@ -26,7 +26,7 @@
 
             @if ($hasViewAll)
                 <div class="leading-5">
-                    <a href="{{ $viewAllUrl }}" class="font-semibold rounded link">
+                    <a href="{{ $viewAllUrl }}" class="font-semibold link">
                         @lang('ui::actions.view_all')
 
                         <x-ark-icon class="inline-block" name="chevron-right" size="2xs" />
