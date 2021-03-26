@@ -23,7 +23,7 @@
                 id="{{ $id.'-'.$option['id'] }}"
                 name="{{ $id }}"
                 type="radio"
-                class="hidden"
+                class="sr-only"
                 x-model="selectedOption"
                 value="{{ $option['id'] }}"
                 wire:model="{{ $wireModel }}"
