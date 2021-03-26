@@ -1,6 +1,6 @@
 <x-ark-dropdown
     wrapper-class="relative ml-3 whitespace-nowrap"
-    :dropdown-classes="$profileMenuClass ?? null"
+    :dropdown-classes="'mt-4 '.($profileMenuClass ?? null)"
     dusk="navbar-profile-dropdown"
 >
     <x-slot name="button">
