@@ -4,7 +4,8 @@ const Tags = (
     tags = [],
     allowedTags = [],
     placeholder = "Enter tags...",
-    maxTags = null
+    maxTags = null,
+    preserveCase = false
 ) => ({
     onTagRemove: null,
     onInput: null,
@@ -14,10 +15,10 @@ const Tags = (
         const { input } = this.$refs;
 
         const taggle = new Taggle(input, {
-            tags: tags,
-            preserveCase: true,
-            maxTags: maxTags,
-            placeholder: placeholder,
+            tags,
+            preserveCase,
+            maxTags,
+            placeholder,
             containerFocusClass: "tags-input-focus",
             onTagAdd: (e, tag) => {
                 if (typeof this.onTagAdd === "function") {
