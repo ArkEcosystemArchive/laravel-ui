@@ -361,4 +361,4 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     ...extraData,
 });
 
-export default MarkdownEditor;
+window.MarkdownEditor = MarkdownEditor;

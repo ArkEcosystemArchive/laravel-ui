@@ -113,16 +113,7 @@ window.Modal = Modal;
 
 ### WYSIWYG Markdown editor
 
-1. Import the markdown script in your `resources/js/app.js` file
-
-```js
-import MarkdownEditor from "@ui/js/markdown-editor/markdown-editor.js";
-
-window.MarkdownEditor = MarkdownEditor;
-```
-
-2. Ensure to import the following scripts inside the `<head>` tag of your template.
-
+1. Ensure to import the following scripts inside the `<head>` tag of your template.
 
 ```html
 @push('scripts')
@@ -130,9 +121,19 @@ window.MarkdownEditor = MarkdownEditor;
 @endpush
 ```
 
-3. Import the markdown css file in your main file.
+Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
+
+2. Import the markdown css file in your main file.
+
 ```css
 @import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
+```
+
+3. Compile the markdown scripts into the public folder:
+
+```js
+mix
+    .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
 ```
 
 4. Add the markdown component to your form
