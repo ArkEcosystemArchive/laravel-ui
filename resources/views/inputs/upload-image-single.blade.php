@@ -33,7 +33,7 @@
                 <input
                     id="image-single-upload-{{ $id }}"
                     type="file"
-                    class="block hidden absolute top-0 opacity-0 cursor-pointer"
+                    class="block sr-only absolute top-0 opacity-0 cursor-pointer"
                     wire:model="imageSingle"
                     accept="image/jpg,image/jpeg,image/bmp,image/png"
                 />
