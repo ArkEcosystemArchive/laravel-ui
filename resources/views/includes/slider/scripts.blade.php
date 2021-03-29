@@ -93,6 +93,9 @@
             slideChangeTransitionEnd: function () {
                 disableTabIndexOfInvisibleElements(this.$el[0], this.slides);
             },
+            snapGridLengthChange: function () {
+                disableTabIndexOfInvisibleElements(this.$el[0], this.slides);
+            },
         }
     });
 </script>
