@@ -159,15 +159,6 @@ Accepts `full` for all the plugins and `basic` for only text related buttons.
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ```
 
-Or as an alternative you can add the csrfToken as a parameter in the component:
-
-```html
-<x-ark-markdown name="about"
-    height="300px"
-    toolbar="full"
-    :csrf-token="csrf_token()"
-/>
-
 ### Tags input
 
 1. Add taggle dependency `yarn add taggle` and ensure to copy the scripts to the public directory:

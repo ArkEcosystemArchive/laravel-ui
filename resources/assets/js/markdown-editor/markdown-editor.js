@@ -43,10 +43,7 @@ const MarkdownEditor = (
     height = null,
     toolbar = "basic",
     extraData = {},
-    csrfToken = ""
 ) => ({
-    csrfToken:
-        csrfToken || document.querySelector('meta[name="csrf-token"]').content,
     editor: null,
     toolbar: null,
     toolbarItems: null,
@@ -172,7 +169,9 @@ const MarkdownEditor = (
                         const loadingLabel = `Uploading ${blob.name}…`;
                         const loadingPlaceholder = `![${loadingLabel}]()`;
 
-                        if (!this.csrfToken) {
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+
+                        if (!csrfToken) {
                             throw new Error(
                                 "We were unable to get the csrfToken for this request"
                             );
@@ -181,7 +180,7 @@ const MarkdownEditor = (
                         // Show a loading message while the image is uploaded
                         callback("", loadingLabel);
 
-                        uploadImage(blob, this.csrfToken).then((response) => {
+                        uploadImage(blob, csrfToken).then((response) => {
                             if (!response.url) {
                                 throw new Error("Received invalid response");
                             }
