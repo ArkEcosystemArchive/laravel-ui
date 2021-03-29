@@ -28,6 +28,23 @@ const Tags = (
                 this.selectTag(tag);
             },
             onBeforeTagAdd(e, tag) {
+                // Validates:
+                // - 3 TO 30 Chars
+                // - Not start with a number
+                // - Only allows a-ZA-Z0-9 characters
+                const regex = /^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/gm;
+
+                if (!regex.test(tag)) {
+                    if (typeof livewire !== 'undefined') {
+                        if (tag.length < 3 || tag.length > 30) {
+                            livewire.emit('toastMessage', ['The tag must be between 3 and 30 characters.', 'warning'])
+                        } else {
+                            livewire.emit('toastMessage', ['Only letters and numbers are allowed and the tag must start with a letter.', 'warning'])
+                        }
+                    }
+                    return false;
+                }
+
                 if (!allowedTags.length) {
                     return true;
                 }
