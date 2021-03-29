@@ -38,7 +38,6 @@ toastui.Editor.setLanguage(["en", "en-US"], {
     "Auto scroll disabled": "Auto Scroll Disabled",
 });
 
-
 const MarkdownEditor = (
     height = null,
     toolbar = "basic",
