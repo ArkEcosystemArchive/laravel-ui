@@ -38,11 +38,7 @@ toastui.Editor.setLanguage(["en", "en-US"], {
     "Auto scroll disabled": "Auto Scroll Disabled",
 });
 
-const MarkdownEditor = (
-    height = null,
-    toolbar = "basic",
-    extraData = {},
-) => ({
+const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
     editor: null,
     toolbar: null,
     toolbarItems: null,
@@ -168,7 +164,9 @@ const MarkdownEditor = (
                         const loadingLabel = `Uploading ${blob.name}…`;
                         const loadingPlaceholder = `![${loadingLabel}]()`;
 
-                        const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+                        const csrfToken = document.querySelector(
+                            'meta[name="csrf-token"]'
+                        ).content;
 
                         if (!csrfToken) {
                             throw new Error(
