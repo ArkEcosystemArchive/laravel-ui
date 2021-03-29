@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22.711" height="17.549" viewBox="0 0 22.711 17.549">
-  <g id="Group_9" data-name="Group 9" transform="translate(-246.89 -225.75)">
-    <g id="read-email-circle" transform="translate(248.25 226.75)">
-      <path id="Rectangle-path_2" data-name="Rectangle-path 2" d="M248.25,228.971a2.222,2.222,0,0,1,2.221-2.221H266.02a2.222,2.222,0,0,1,2.221,2.221v11.106a2.222,2.222,0,0,1-2.221,2.221H250.471a2.222,2.222,0,0,1-2.221-2.221Z" transform="translate(-248.25 -226.75)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-      <path id="Shape_29" data-name="Shape 29" d="M248.25,228.25l10,5.553,10-5.553" transform="translate(-248.25 -226.029)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="22.711" height="17.549"><g id="Group_9" data-name="Group 9" transform="translate(-246.89 -225.75)"><g id="read-email-circle" transform="translate(248.25 226.75)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path id="Rectangle-path_2" data-name="Rectangle-path 2" d="M248.25 228.971a2.222 2.222 0 012.221-2.221h15.549a2.222 2.222 0 012.221 2.221v11.106a2.222 2.222 0 01-2.221 2.221h-15.549a2.222 2.222 0 01-2.221-2.221z" transform="translate(-248.25 -226.75)"/><path id="Shape_29" data-name="Shape 29" d="M248.25 228.25l10 5.553 10-5.553" transform="translate(-248.25 -226.029)"/></g></g></svg>
