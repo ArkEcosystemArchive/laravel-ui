@@ -3,13 +3,12 @@
 namespace ARKEcosystem\UserInterface\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Lang;
 
 class Tag implements Rule
 {
     public function passes($attribute, $value): bool
     {
-        $regex = '/^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/sm';
+        $regex = '/^(?=.{3,30}$)(?![0-9])[A-Za-z0-9]+$/sm';
         return preg_match($regex, $value);
     }
 

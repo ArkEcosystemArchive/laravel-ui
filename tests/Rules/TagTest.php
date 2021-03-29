@@ -10,6 +10,12 @@ it('accepts a simple word', function () {
     $this->assertTrue($rule->passes('tag', $tag));
 });
 
+it('accepts a simple word with uppercase letters', function () {
+    $rule = new Tag();
+    $tag = 'Hello';
+    $this->assertTrue($rule->passes('tag', $tag));
+});
+
 it('accepts a word with numbers', function () {
     $rule = new Tag();
     $tag = 'hello123';
