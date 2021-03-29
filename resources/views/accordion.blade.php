@@ -16,8 +16,8 @@
     <dl>
         <div class="{{ $containerClass }} @if ($isDark === false && $border) border-2 border-theme-secondary-200 rounded-lg @endif">
             <dt>
-                <a
-                    class="text-left w-full flex justify-between items-center
+                <button
+                    class="text-left w-full flex justify-between items-center rounded
                         {{ $isDark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
                     @click="openPanel = (openPanel ? null : 1)"
@@ -39,7 +39,7 @@
                             <x-ark-icon name="chevron-down" :size="$circleSize" />
                         </span>
                     </span>
-                </a>
+                </button>
             </dt>
 
             <dd class="mt-2 @if($isDark) border-l border-theme-secondary-800 pl-8 @endif" x-show.transition.opacity="openPanel" x-cloak>

@@ -1,9 +1,9 @@
 .alert-wrapper {
-    @apply flex flex-col rounded-lg bg-theme-secondary-100 p-4;
+    @apply flex flex-col items-center rounded-lg bg-theme-secondary-100 p-4;
 }
 
 .alert-icon-wrapper {
-    @apply flex w-11 h-11 items-center justify-center p-2 rounded-md;
+    @apply flex w-11 h-11 items-center justify-center rounded-md;
 }
 
 .alert-content-wrapper {
@@ -151,7 +151,7 @@
 
 /** Larger sized alerts **/
 .alert-icon-large {
-    @apply px-8 py-6 text-white w-auto h-auto;
+    @apply px-8 py-6 text-white h-10 w-10;
 }
 
 .alert-content-large {

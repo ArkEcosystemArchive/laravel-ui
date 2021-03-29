@@ -51,12 +51,11 @@
 
 /** Input with icon button **/
 .input-wrapper-with-icon {
-    @apply relative mt-2 overflow-hidden rounded shadow-sm text-theme-secondary-900;
+    @apply relative mt-2 shadow-sm text-theme-secondary-900;
 }
 
 .input-text-with-icon {
     @apply input-text;
-    @apply rounded-none !important;
 }
 
 /** Input with icon prefix **/

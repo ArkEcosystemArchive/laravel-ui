@@ -17,8 +17,7 @@
 <div
     x-data="Tags({{ $xData }}, '{{ $id ?? $name }}', {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
-    {{ $attributes }}
-    @if($isDisabled) data-tippy-content="{{ $disabledInputTooltip }}" @endif
+    {{ $attributes->merge(['class' => 'relative']) }}
 >
     <div class="input-group {{ $isDisabled ? 'pointer-events-none' : '' }}">
         @unless ($hideLabel ?? false)
@@ -62,4 +61,8 @@
             @enderror
         </div>
     </div>
+
+    @if($isDisabled)
+        <div data-tippy-content="{{ $disabledInputTooltip }}" class="absolute inset-0"></div>
+    @endif
 </div>
