@@ -29,7 +29,7 @@
 
             @if ($slot ?? false)
                 <div>
-                    <div class="flex {{ $slotClass ?? 'h-full bg-white' }}">
+                    <div class="flex {{ $slotClass ?? 'h-full' }}">
                         {{ $slot }}
                     </div>
                 </div>

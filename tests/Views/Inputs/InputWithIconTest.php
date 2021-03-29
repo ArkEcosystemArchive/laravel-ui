@@ -217,7 +217,7 @@ it('should render a default slotClass', function (): void {
             'slot' => 'Hello World',
         ]))
         ->contains('Hello World')
-        ->contains('h-full bg-white');
+        ->contains('h-full');
 });
 
 it('should render with the ID as label target', function (): void {

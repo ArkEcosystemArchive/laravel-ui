@@ -34,7 +34,7 @@
         <button
             @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
-            class="flex items-center focus:outline-none p-3 dropdown-button transition-default {{ $buttonClass }}"
+            class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
         >
             @if($button ?? false)
                 {{ $button }}
