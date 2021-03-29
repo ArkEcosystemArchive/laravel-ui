@@ -190,3 +190,17 @@ it('should render with the ID as label target', function (): void {
         ]))
         ->contains('for="id"');
 });
+
+it('should render with default autocapitalize to none', function (): void {
+    $this
+        ->assertView('ark::inputs.input', createAttributes([]))
+        ->contains('autocapitalize="none"');
+});
+
+it('should render with the given autocapitalize', function (): void {
+    $this
+        ->assertView('ark::inputs.input', createAttributes([
+            'autocapitalize' => 'sentences',
+        ]))
+        ->contains('autocapitalize="sentences"');
+});
