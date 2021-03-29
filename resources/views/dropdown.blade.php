@@ -1,9 +1,12 @@
 @props([
-    'dropdownProperty'    => 'dropdownOpen',
-    'buttonClassExpanded' => 'text-theme-primary-500',
-    'buttonClass'         => 'text-theme-secondary-400 hover:text-theme-primary-500',
-    'fullScreen'          => false,
-    'dusk'                => false,
+    'dropdownProperty'       => 'dropdownOpen',
+    'dropdownContentClasses' => 'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
+    'buttonClassExpanded'    => 'text-theme-primary-500',
+    'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
+    'dropdownClasses'        => 'w-40',
+    'wrapperClass'           => '',
+    'fullScreen'             => false,
+    'dusk'                   => false,
 ])
 
 <div
@@ -24,7 +27,7 @@
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
     @endif
-    class="{{ $wrapperClass ?? '' ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
+    class="{{ $wrapperClass ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
     @if($dusk) dusk="{{ $dusk }}" @endif
 >
     <div>
@@ -49,10 +52,10 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses ?? 'w-40' }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
+        class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
         @if ($height ?? false) data-height="{{ $height }}" @endif
     >
-        <div class="{{ $dropdownContentClasses ??  'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200' }}" x-cloak>
+        <div class="{{ $dropdownContentClasses }}" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
                 {{ $slot }}
             </div>

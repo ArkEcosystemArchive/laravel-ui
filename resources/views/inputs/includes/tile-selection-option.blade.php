@@ -8,6 +8,7 @@
         <div data-tippy-content="{{ $disabledCheckboxTooltip }}" class="absolute inset-0"></div>
     @endif
     <label
+        dusk="tile-selection-label-{{ $option['id'] }}"
         wire:key="tile-selection-option-{{ $option['id'] }}"
         class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
         x-bind:class="{
@@ -27,6 +28,7 @@
                 x-model="selectedOption"
                 value="{{ $option['id'] }}"
                 wire:model="{{ $wireModel }}"
+                :checked="'{{ $option['id'] }}' === selectedOption"
             />
         @else
             <input
