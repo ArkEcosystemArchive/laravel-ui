@@ -11,6 +11,8 @@
     'grouped' => false,
     'label' => null,
     'xData' => '{}',
+    'name' => null,
+    'errors' => [],
 ])
 
 @php
