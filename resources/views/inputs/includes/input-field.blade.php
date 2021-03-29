@@ -11,6 +11,7 @@
     'keydownEnter'   => null,
     'max'            => null,
     'attributes'     => $attributes,
+    'autocapitalize' => 'none',
 ])
 
 <input
@@ -23,8 +24,10 @@
     @if ($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endif
     {{-- @TODO: remove --}}
     @if ($max) maxlength="{{ $max }}" @endif
+    autocapitalize="{{ $autocapitalize }}"
 
     {{ $attributes->except([
+        'autocapitalize',
         'class',
         'container-class',
         'hide-label',
