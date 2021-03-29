@@ -16,3 +16,10 @@ function createAttributes(array $attributes): array
         'attributes' => new ComponentAttributeBag(array_merge($defaults, $attributes)),
     ], $defaults, $attributes);
 }
+
+function createViewAttributes(array $attributes): array
+{
+    return array_merge([
+        'attributes' => new ComponentAttributeBag($attributes),
+    ], $attributes);
+}
