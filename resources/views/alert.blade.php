@@ -18,7 +18,7 @@
         ])
 }}>
     <div class="alert-icon-wrapper alert-{{ $type }}-icon @if($large) alert-icon-large @endif">
-        <div class="rounded-full border-2 border-white p-1">
+        <div class="p-1 rounded-full border-2 border-white">
             <x-ark-icon
                 :name="alertIcon($type)"
                 :size="$large ? 'md' : 'xs'"
