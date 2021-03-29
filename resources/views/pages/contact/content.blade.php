@@ -1,3 +1,16 @@
+@props([
+    'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
+    'discordUrl' => trans('ui::urls.discord'),
+    'subject' => null,
+    'message' => null,
+    'contactNetworks' => [
+        'twitter' => trans('ui::urls.twitter'),
+        'facebook' => trans('ui::urls.facebook'),
+        'reddit' => trans('ui::urls.reddit'),
+        'linkedin' => trans('ui::urls.linkedin'),
+    ],
+])
+
 <div class="flex flex-col py-8 space-y-16 content-container lg:flex-row lg:space-y-0">
     <div class="flex-1 space-y-8 lg:w-1/2 border-theme-secondary-300 lg:border-r lg:pr-6">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
@@ -20,7 +33,7 @@
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
-                <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
+                <a href="{{ $discordUrl}}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
                     <div class="flex items-center justify-center w-full space-x-2">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
@@ -33,14 +46,9 @@
             <div class="font-bold">@lang('ui::pages.contact.social.subtitle')</div>
 
             <div class="flex space-x-3">
-                @isset($social)
-                    {{ $social }}
-                @else
-                    <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
-                    <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.facebook')" icon="brands.outline.facebook" />
-                    <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.reddit')" icon="brands.outline.reddit" />
-                    <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.linkedin')" icon="brands.outline.linkedin" />
-                @endisset
+                @foreach($contactNetworks as $name => $url)
+                    <x-ark-social-square hover-class="{{ $socialIconHoverClass }}" :url="$url" :icon="'brands.outline.' . $name" />
+                @endforeach
             </div>
         </div>
     </div>
