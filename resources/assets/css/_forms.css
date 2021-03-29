@@ -242,7 +242,7 @@
 }
 
 .taggle {
-    @apply space-x-2 bg-theme-primary-100;
+    @apply space-x-2 bg-theme-primary-100 overflow-clip overflow-hidden;
 }
 
 .disabled-tags-input .tags-input-focus {

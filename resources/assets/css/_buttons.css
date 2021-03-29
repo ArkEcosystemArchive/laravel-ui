@@ -11,7 +11,7 @@
 }
 
 .button-tag {
-    @apply button-secondary;
+    @apply button-secondary break-all;
     @apply py-0.5 px-3 !important;
 }
 
