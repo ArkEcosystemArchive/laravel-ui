@@ -13,7 +13,7 @@
     }
 
     function disableTabIndexOfInvisibleElements (sliderWrapper, slides) {
-        var visibleSlides = slides.filter(slide => {
+        slides.forEach(slide => {
             if (elementIsVisibleIn(sliderWrapper, slide)) {
                 const elements = slide.querySelectorAll('[data-custom-tabindex]')
                 elements.forEach(function(el) {
