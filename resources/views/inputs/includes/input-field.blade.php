@@ -27,6 +27,7 @@
     autocapitalize="{{ $autocapitalize }}"
 
     {{ $attributes->except([
+        'autocapitalize',
         'class',
         'container-class',
         'hide-label',
