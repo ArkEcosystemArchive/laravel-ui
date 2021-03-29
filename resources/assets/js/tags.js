@@ -35,11 +35,17 @@ const Tags = (
                 const regex = /^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/gm;
 
                 if (!regex.test(tag)) {
-                    if (typeof livewire !== 'undefined') {
+                    if (typeof livewire !== "undefined") {
                         if (tag.length < 3 || tag.length > 30) {
-                            livewire.emit('toastMessage', ['The tag must be between 3 and 30 characters.', 'warning'])
+                            livewire.emit("toastMessage", [
+                                "The tag must be between 3 and 30 characters.",
+                                "warning",
+                            ]);
                         } else {
-                            livewire.emit('toastMessage', ['Only letters and numbers are allowed and the tag must start with a letter.', 'warning'])
+                            livewire.emit("toastMessage", [
+                                "Only letters and numbers are allowed and the tag must start with a letter.",
+                                "warning",
+                            ]);
                         }
                     }
                     return false;
