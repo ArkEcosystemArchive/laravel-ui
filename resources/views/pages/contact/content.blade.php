@@ -3,6 +3,12 @@
     'discordUrl' => trans('ui::urls.discord'),
     'subject' => null,
     'message' => null,
+    'helpTitle' => trans('ui::pages.contact.let_us_help.title'),
+    'helpDescription' => trans('ui::pages.contact.let_us_help.description'),
+    'additionalTitle' => trans('ui::pages.contact.additional_support.title'),
+    'additionalDescription' => trans('ui::pages.contact.additional_support.description'),
+    'formTitle' => trans('ui::pages.contact.form.title'),
+    'formDescription' => trans('ui::pages.contact.form.description'),
     'contactNetworks' => [
         'twitter' => trans('ui::urls.twitter'),
         'facebook' => trans('ui::urls.facebook'),
@@ -14,18 +20,18 @@
 <div class="flex flex-col py-8 space-y-16 content-container lg:flex-row lg:space-y-0">
     <div class="flex-1 space-y-8 lg:w-1/2 border-theme-secondary-300 lg:border-r lg:pr-6">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
-            <h3>@lang('ui::pages.contact.let_us_help.title')</h3>
+            <h3>{{ $helpTitle }}</h3>
 
             <div class="mt-4 paragraph-description">
-                @lang('ui::pages.contact.let_us_help.description')
+                {{ $helpDescription }}
             </div>
         </div>
 
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
-            <h3>@lang('ui::pages.contact.additional_support.title')</h3>
+            <h3>{{ $additionalTitle }}</h3>
 
             <div class="mt-4 paragraph-description">
-                @lang('ui::pages.contact.additional_support.description')
+                {{ $additionalDescription }}
             </div>
 
             <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:space-x-2 sm:space-y-0 sm:items-center">
@@ -54,8 +60,8 @@
     </div>
 
     <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ $subject }}' }">
-        <h3>@lang('ui::pages.contact.form.title')</h3>
-        <div class="mt-4">@lang('ui::pages.contact.form.description')</div>
+        <h3>{{ $formTitle }}</h3>
+        <div class="mt-4">{{ $formDescription }}</div>
 
         <form id="contact-form" method="POST" action="{{ route('contact') }}#contact-form" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
             @csrf
