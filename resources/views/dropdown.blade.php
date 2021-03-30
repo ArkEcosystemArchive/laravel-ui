@@ -7,6 +7,7 @@
     'wrapperClass'           => '',
     'fullScreen'             => false,
     'dusk'                   => false,
+    'buttonTooltip'          => null,
 ])
 
 <div
@@ -37,6 +38,9 @@
             @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
+            @if($buttonTooltip)
+                data-tippy-content="{{ $buttonTooltip }}"
+            @endif
         >
             @if($button ?? false)
                 {{ $button }}
