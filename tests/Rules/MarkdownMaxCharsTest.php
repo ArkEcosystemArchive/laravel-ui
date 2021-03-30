@@ -47,22 +47,55 @@ digitos Clanis in arces si quodam barbare aut dicta.</p>
 <p>Animi verecundo gentes adversaque vultum equos maduere; terra petit solebas, et,
 iam <em>amnis</em> promissa miluus! Diomedeos ira atque facinus deus magnum legit
 <em>pariter</em>!</p>
-
 HTML;
-
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($html) {
         $mock->shouldReceive('convertToHtml')
             ->andReturn($html);
     });
 
-    $rule = new MarkdownMaxChars(763);
+    $rule = new MarkdownMaxChars(762);
     $this->assertTrue($rule->passes('markdown', $text));
 
-    $rule = new MarkdownMaxChars(762);
+    $rule = new MarkdownMaxChars(761);
     $this->assertFalse($rule->passes('markdown', $text));
 });
 
+it('accepts the exact number of chars on the parameter', function () {
+    $text = str_repeat('a', 100);
+
+    $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
+        $mock->shouldReceive('convertToHtml')
+            ->andReturn($text);
+    });
+
+    $rule = new MarkdownMaxChars(100);
+    $this->assertTrue($rule->passes('markdown', $text));
+});
+
+it('trims the whitespaces for counting', function () {
+    $text = str_repeat('a', 100);
+
+    $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
+        $mock->shouldReceive('convertToHtml')
+            ->andReturn($text . "\n");
+    });
+
+    $rule = new MarkdownMaxChars(100);
+    $this->assertTrue($rule->passes('markdown', $text));
+});
+
+it('doesnt accepts on extra chars from the parameter', function () {
+    $text = str_repeat('a', 11);
+
+    $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
+        $mock->shouldReceive('convertToHtml')
+            ->andReturn($text);
+    });
+
+    $rule = new MarkdownMaxChars(10);
+    $this->assertFalse($rule->passes('markdown', $text));
+});
 
 it('validates unicode text correctly', function () {
     $text = '⡷⡷⡷';
