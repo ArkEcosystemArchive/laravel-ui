@@ -85,7 +85,7 @@ it('trims the whitespaces for counting', function () {
     $this->assertTrue($rule->passes('markdown', $text));
 });
 
-it('doesnt accepts on extra chars from the parameter', function () {
+it('doesnt accepts more characters than the limit', function () {
     $text = str_repeat('a', 11);
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
