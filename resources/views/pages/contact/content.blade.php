@@ -1,4 +1,5 @@
 @props([
+    'projectName' => 'ark',
     'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
     'discordUrl' => trans('ui::urls.discord'),
     'subject' => null,
@@ -17,7 +18,7 @@
             <h3>@lang('ui::pages.contact.let_us_help.title')</h3>
 
             <div class="mt-4 paragraph-description">
-                @lang('ui::pages.contact.let_us_help.description')
+                @lang("ui::pages.contact.let_us_help.description.{$projectName}")
             </div>
         </div>
 
