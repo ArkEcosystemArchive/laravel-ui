@@ -11,7 +11,7 @@ return [
         ],
         'let_us_help' => [
             'title'       => 'Let Us Help!',
-            'description' => 'Whether you want to learn more about ARK, need help with your Blockchain, or just want to know how ARK technology could work for you, get in touch and a member of the team will follow up with you.',
+            'description' => 'Do you need help with your account? Looking for best practices for your project\'s profile? We can help! Use our contact form to get in touch with the MarketSquare team, and we will do everything we can to get the ball rolling.',
         ],
         'additional_support' => [
             'title'       => 'Additional Support',
