@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ $subject }}' }">
+    <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ old('subject', $subject) }}' }">
         <h3>{{ $formTitle }}</h3>
         <div class="mt-4">{{ $formDescription }}</div>
 
