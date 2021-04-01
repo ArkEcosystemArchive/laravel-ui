@@ -7,6 +7,7 @@
     'wrapperClass'           => '',
     'fullScreen'             => false,
     'dusk'                   => false,
+    'buttonTooltip'          => null,
 ])
 
 <div
@@ -16,8 +17,10 @@
             if (expanded) {
                 $nextTick(() => {
                     $el.querySelectorAll('img[onload]').forEach(img => {
-                        img.onload();
-                        img.removeAttribute('onload');
+                        if (img.onload) {
+                            img.onload();
+                            img.removeAttribute('onload');
+                        }
                     });
                 })
             }
@@ -35,6 +38,9 @@
             @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
+            @if($buttonTooltip)
+                data-tippy-content="{{ $buttonTooltip }}"
+            @endif
         >
             @if($button ?? false)
                 {{ $button }}

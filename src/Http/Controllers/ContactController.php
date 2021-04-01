@@ -45,7 +45,7 @@ final class ContactController extends Controller
             'email'      => ['required', 'email'],
             'subject'    => ['required', 'string', Rule::in($this->getSubjects())],
             'message'    => ['required', 'max:2048'],
-            'attachment' => ['mimes:pdf'],
+            'attachment' => ['mimes:pdf', 'max:1024'],
         ]);
 
         $mail = new ContactFormSubmitted(Arr::except($data, ['attachment']));

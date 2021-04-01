@@ -356,6 +356,7 @@ You can also get an alert with more padding and large icon by specifying `large`
 | buttonClassExpanded | The class(es) applied to the trigger button when content is visible  | no | 'text-theme-secondary-400 hover:text-theme-primary-500' |
 | wrapperClass | The class(es) applied to the wrapper element | no | '' |
 | dropdownContentClasses | The class(es) applied to the content container | no | null |
+| buttonTooltip | Apply the given text as button tooltip | no | null |
 
 ### Expandable
 Displays a defined number of items and hides the rest, showing a button to show/hide the hidden items.
@@ -442,7 +443,7 @@ As optional, an increment counter is automatically generated too and can be disp
 
 
 ### Font Loader
-Improve font loading times.  
+Improve font loading times.
 > This component is inspired by [Harry Roberts' article](https://csswizardry.com/2020/05/the-fastest-google-fonts/).
 
 Here follow you can see an example on how to use it:
@@ -450,7 +451,7 @@ Here follow you can see an example on how to use it:
 {{-- an example with a custom font --}}
 <x-ark-font-loader src="https://rsms.me/inter/inter.css">
 ```
- 
+
 ```blade
 {{-- an example with a google font --}}
 <x-ark-font-loader src="https://fonts.googleapis.com/css2?family=Inter&display=swap" preconnect="https://fonts.gstatic.com">
