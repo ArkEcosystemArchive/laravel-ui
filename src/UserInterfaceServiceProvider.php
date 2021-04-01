@@ -69,6 +69,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
     {
         Route::group(['prefix' => 'wysiwyg'], function () {
             Route::get('twitter-embed-code', [WysiwygControlller::class, 'getTwitterEmbedCode'])->name('wysiwyg.twitter');
+            Route::post('upload-image', [WysiwygControlller::class, 'uploadImage'])->name('wysiwyg.upload-image')->middleware(['web', 'auth']);
         });
     }
 
@@ -80,6 +81,14 @@ class UserInterfaceServiceProvider extends ServiceProvider
     private function registerPublishers(): void
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'ark');
+
+        $this->publishes([
+            __DIR__.'/../config/ui.php' => config_path('ui.php'),
+        ], 'config');
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/ui.php', 'ui'
+        );
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/ark'),

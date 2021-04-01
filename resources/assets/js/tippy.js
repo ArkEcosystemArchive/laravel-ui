@@ -41,3 +41,5 @@ if (typeof Livewire !== "undefined") {
         });
     });
 }
+
+window.tippy = tippy;

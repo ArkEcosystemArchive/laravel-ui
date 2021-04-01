@@ -20,8 +20,10 @@
         if (expanded) {
             $nextTick(() => {
                 $el.querySelectorAll('img[onload]').forEach(img => {
-                    img.onload();
-                    img.removeAttribute('onload');
+                    if (img.onload) {
+                        img.onload();
+                        img.removeAttribute('onload');
+                    }
                 });
             })
         }

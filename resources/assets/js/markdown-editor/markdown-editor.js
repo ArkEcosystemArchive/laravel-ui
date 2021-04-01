@@ -13,7 +13,7 @@ import {
     embedLinkPlugin,
 } from "./plugins/index.js";
 
-import { extractTextFromHtml } from "./utils/utils.js";
+import { extractTextFromHtml, uploadImage } from "./utils/utils.js";
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
@@ -155,6 +155,49 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
                 },
                 toolbarItems: this.toolbarItems,
                 plugins: this.getPlugins(),
+                hooks: {
+                    addImageBlobHook: (blob, callback) => {
+                        const alt =
+                            document.querySelector("input.te-alt-text-input")
+                                .value || blob.name;
+                        const markdownEditor = this.editor.mdEditor.getEditor();
+                        const loadingLabel = `Uploading ${blob.name}…`;
+                        const loadingPlaceholder = `![${loadingLabel}]()`;
+
+                        const csrfToken = document.querySelector(
+                            'meta[name="csrf-token"]'
+                        ).content;
+
+                        if (!csrfToken) {
+                            throw new Error(
+                                "We were unable to get the csrfToken for this request"
+                            );
+                        }
+
+                        // Show a loading message while the image is uploaded
+                        callback("", loadingLabel);
+
+                        uploadImage(blob, csrfToken).then((response) => {
+                            if (!response.url) {
+                                throw new Error("Received invalid response");
+                            }
+
+                            const currentCursor = markdownEditor.getCursor();
+                            markdownEditor.setValue(
+                                markdownEditor
+                                    .getValue()
+                                    .replace(loadingPlaceholder, "")
+                            );
+                            currentCursor.ch =
+                                currentCursor.ch - loadingPlaceholder.length;
+                            markdownEditor.setCursor(currentCursor);
+
+                            callback(response.url, alt);
+                        });
+
+                        return true;
+                    },
+                },
             });
 
             this.editor.getCodeMirror().setOption("lineNumbers", true);

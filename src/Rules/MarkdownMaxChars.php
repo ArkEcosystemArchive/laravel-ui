@@ -39,7 +39,7 @@ class MarkdownMaxChars implements Rule
 
         $html = $this->removeHeadersAnchors($html);
 
-        return strip_tags($html);
+        return trim(strip_tags($html));
     }
 
     private function removeHeadersAnchors($html): string

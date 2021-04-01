@@ -1,18 +1,37 @@
+@props([
+    'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
+    'discordUrl' => trans('ui::urls.discord'),
+    'subject' => null,
+    'message' => null,
+    'helpTitle' => trans('ui::pages.contact.let_us_help.title'),
+    'helpDescription' => trans('ui::pages.contact.let_us_help.description'),
+    'additionalTitle' => trans('ui::pages.contact.additional_support.title'),
+    'additionalDescription' => trans('ui::pages.contact.additional_support.description'),
+    'formTitle' => trans('ui::pages.contact.form.title'),
+    'formDescription' => trans('ui::pages.contact.form.description'),
+    'contactNetworks' => [
+        'twitter' => trans('ui::urls.twitter'),
+        'facebook' => trans('ui::urls.facebook'),
+        'reddit' => trans('ui::urls.reddit'),
+        'linkedin' => trans('ui::urls.linkedin'),
+    ],
+])
+
 <div class="flex flex-col py-8 space-y-16 content-container lg:flex-row lg:space-y-0">
-    <div class="flex-1 space-y-8 border-theme-secondary-300 lg:border-r lg:pr-6">
+    <div class="flex-1 space-y-8 lg:w-1/2 border-theme-secondary-300 lg:border-r lg:pr-6">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
-            <h3>@lang('ui::pages.contact.let_us_help.title')</h3>
+            <h3>{{ $helpTitle }}</h3>
 
             <div class="mt-4 paragraph-description">
-                @lang('ui::pages.contact.let_us_help.description')
+                {{ $helpDescription }}
             </div>
         </div>
 
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
-            <h3>@lang('ui::pages.contact.additional_support.title')</h3>
+            <h3>{{ $additionalTitle }}</h3>
 
             <div class="mt-4 paragraph-description">
-                @lang('ui::pages.contact.additional_support.description')
+                {{ $additionalDescription }}
             </div>
 
             <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:space-x-2 sm:space-y-0 sm:items-center">
@@ -20,7 +39,7 @@
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
-                <a href="{{ $discordUrl ?? trans('ui::urls.discord') }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
+                <a href="{{ $discordUrl}}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
                     <div class="flex justify-center items-center space-x-2 w-full">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
@@ -33,17 +52,16 @@
             <div class="font-bold">@lang('ui::pages.contact.social.subtitle')</div>
 
             <div class="flex space-x-3">
-                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.twitter')" icon="brands.outline.twitter" />
-                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.facebook')" icon="brands.outline.facebook" />
-                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.reddit')" icon="brands.outline.reddit" />
-                <x-ark-social-square hover-class="{{ $socialIconHoverClass ?? 'hover:bg-theme-danger-400 hover:text-white' }}" :url="trans('ui::urls.linkedin')" icon="brands.outline.linkedin" />
+                @foreach($contactNetworks as $name => $url)
+                    <x-ark-social-square hover-class="{{ $socialIconHoverClass }}" :url="$url" :icon="'brands.outline.' . $name" />
+                @endforeach
             </div>
         </div>
     </div>
 
-    <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ $subject }}' }">
-        <h3>@lang('ui::pages.contact.form.title')</h3>
-        <div class="mt-4">@lang('ui::pages.contact.form.description')</div>
+    <div class="flex flex-col flex-1 lg:pl-6" x-data="{ subject: '{{ old('subject', $subject) }}' }">
+        <h3>{{ $formTitle }}</h3>
+        <div class="mt-4">{{ $formDescription }}</div>
 
         <form id="contact-form" method="POST" action="{{ route('contact') }}#contact-form" class="flex flex-col flex-1 space-y-8" enctype="multipart/form-data">
             @csrf
