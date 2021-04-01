@@ -13,6 +13,7 @@
 .button-tag {
     @apply button-secondary;
     @apply py-0.5 px-3 !important;
+    @apply text-left !important;
 }
 
 .button-outline {
