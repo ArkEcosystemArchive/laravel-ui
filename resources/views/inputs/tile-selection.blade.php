@@ -26,6 +26,14 @@
     x-data="{
         selectedOption: @if ($single) '{{ $this->{$model ?? $id} }}' @else null @endif,
         mobileHidden: true,
+        currrentScroll: null,
+        showMore() {
+            this.currrentScroll = document.documentElement.scrollTop;
+            this.mobileHidden = false;
+            this.$nextTick(() => {
+                document.scrollTo(0, this.currrentScroll);
+            });
+        }
     }"
 >
     <div class="{{ $wrapperClass }}">
@@ -70,7 +78,7 @@
         <div
             class="py-3 font-semibold text-center rounded bg-theme-primary-100 text-theme-primary-600 sm:hidden"
             x-bind:class="{ hidden: ! mobileHidden }"
-            @click="mobileHidden = false"
+            @click="showMore"
         >
             @lang('ui::general.show_more')
         </div>
