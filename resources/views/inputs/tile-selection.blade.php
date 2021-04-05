@@ -31,7 +31,7 @@
             this.currrentScroll = document.documentElement.scrollTop;
             this.mobileHidden = false;
             this.$nextTick(() => {
-                document.scrollTo(0, this.currrentScroll);
+                window.scrollTo(0, this.currrentScroll);
             });
         }
     }"
