@@ -54,6 +54,7 @@ $icons = [
                 x-data="MarkdownEditor(
                     @if($height)'{{ $height }}'@else null @endif,
                     '{{ $toolbar }}',
+                    '{{ (int) $charsLimit }}',
                     {{ $xData }}
                 )"
                 x-init="init"

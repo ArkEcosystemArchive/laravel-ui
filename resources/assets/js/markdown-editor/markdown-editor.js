@@ -38,11 +38,11 @@ toastui.Editor.setLanguage(["en", "en-US"], {
     "Auto scroll disabled": "Auto Scroll Disabled",
 });
 
-const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
+const MarkdownEditor = (height = null, toolbar = "basic", charsLimit = '0', extraData = {}) => ({
     editor: null,
     toolbar: null,
-    toolbarItems: null,
     showOverlay: false,
+    charsLimit: parseInt(charsLimit),
     charsCount: 0,
     wordsCount: 0,
     readMinutes: 0,
@@ -392,6 +392,26 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
         this.readMinutes = Math.round(
             this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
         );
+
+        if (this.charsLimit < this.charsCount) {
+            this.editor.mdEditor.moveCursorToEnd();
+
+            const markdownEditor = this.editor.mdEditor.getEditor();
+
+            const currentCursor = markdownEditor.getCursor();
+            currentCursor.ch = currentCursor.ch - (this.charsCount - this.charsLimit);
+            markdownEditor.setCursor(currentCursor);
+
+            this.editor.mdEditor.moveCursorToEnd();
+            const endCursor = markdownEditor.getCursor();
+
+            markdownEditor.setSelection(currentCursor, endCursor);
+            this.editor.getTextObject().deleteContent();
+
+            this.editor.mdEditor.moveCursorToEnd();
+
+            return false;
+        }
 
         const event = new Event("input", {
             bubbles: true,
