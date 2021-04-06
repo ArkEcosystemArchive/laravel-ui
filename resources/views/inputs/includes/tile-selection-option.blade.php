@@ -1,5 +1,5 @@
 <div
-    class="flex relative flex-col"
+    class="relative flex flex-col"
     x-bind:class="{
         @if ($mobileHidden) 'hidden sm:flex': mobileHidden, @endif
     }"
@@ -9,11 +9,12 @@
     @endif
     <label
         dusk="tile-selection-label-{{ $option['id'] }}"
-        wire:key="tile-selection-option-{{ $option['id'] }}"
+        for="{{ $id.'-'.$option['id'] }}"
+        wire:key="tile-selection-option-{{ $id.'-'.$option['id'] }}"
         class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
         x-bind:class="{
             @if ($single)
-                'tile-selection--checked': '{{ $option['id'] }}' === selectedOption,
+                'tile-selection--checked': {{ $this->{$wireModel ?? $id} === $option['id'] ? 'true': 'false' }},
             @else
                 'tile-selection--checked': {{ $option['checked'] ? 'true' : 'false' }},
             @endif
@@ -25,10 +26,11 @@
                 name="{{ $id }}"
                 type="radio"
                 class="sr-only"
-                x-model="selectedOption"
                 value="{{ $option['id'] }}"
                 wire:model="{{ $wireModel }}"
-                :checked="'{{ $option['id'] }}' === selectedOption"
+                @if($this->{$wireModel ?? $id} === $option['id'])
+                    checked="checked"
+                @endif
             />
         @else
             <input
