@@ -16,7 +16,9 @@ const Tags = (
 
         const taggle = new Taggle(input, {
             tags,
-            preserveCase,
+            // If we have a list of allowed tags we are preserving the case
+            // since the valid options are handled by the array.
+            preserveCase: preserveCase || allowedTags.length > 0,
             maxTags,
             placeholder,
             containerFocusClass: "tags-input-focus",
