@@ -38,7 +38,12 @@ toastui.Editor.setLanguage(["en", "en-US"], {
     "Auto scroll disabled": "Auto Scroll Disabled",
 });
 
-const MarkdownEditor = (height = null, toolbar = "basic", charsLimit = '0', extraData = {}) => ({
+const MarkdownEditor = (
+    height = null,
+    toolbar = "basic",
+    charsLimit = "0",
+    extraData = {}
+) => ({
     editor: null,
     toolbar: null,
     showOverlay: false,
@@ -399,7 +404,8 @@ const MarkdownEditor = (height = null, toolbar = "basic", charsLimit = '0', extr
             const markdownEditor = this.editor.mdEditor.getEditor();
 
             const currentCursor = markdownEditor.getCursor();
-            currentCursor.ch = currentCursor.ch - (this.charsCount - this.charsLimit);
+            currentCursor.ch =
+                currentCursor.ch - (this.charsCount - this.charsLimit);
             markdownEditor.setCursor(currentCursor);
 
             this.editor.mdEditor.moveCursorToEnd();
