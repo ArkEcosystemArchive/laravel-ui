@@ -7,7 +7,7 @@ const Tags = (
     isDisabled = false,
     addDisabled = false,
     removeDisabled = false,
-    disabledInputTooltip = '',
+    disabledInputTooltip = "",
     maxTags = null,
     preserveCase = false
 ) => ({
@@ -20,7 +20,7 @@ const Tags = (
     removeDisabled: removeDisabled,
     disabledInputTooltip: disabledInputTooltip,
     init() {
-        console.log("Init")
+        console.log("Init");
         const { input } = this.$refs;
 
         const taggle = new Taggle(input, {
@@ -85,7 +85,7 @@ const Tags = (
 
                 return !!allowedTag;
             },
-            onBeforeTagRemove: () => ! this.removeDisabled,
+            onBeforeTagRemove: () => !this.removeDisabled,
             onTagRemove: (e, tag) => {
                 if (typeof this.onTagRemove === "function") {
                     this.onTagRemove(e, tag);
@@ -106,7 +106,7 @@ const Tags = (
             });
         }
 
-        this.$watch('isDisabled', () => {
+        this.$watch("isDisabled", () => {
             if (isDisabled) {
                 taggle.disable();
             } else {
@@ -116,7 +116,7 @@ const Tags = (
             this.initTooltip();
         });
 
-        this.$watch('addDisabled', () => {
+        this.$watch("addDisabled", () => {
             this.initTooltip();
         });
 
@@ -161,7 +161,7 @@ const Tags = (
             this.tooltipInstance = tippy(this.$el, {
                 trigger: "mouseenter focus",
                 duration: 0,
-                content: this.disabledInputTooltip
+                content: this.disabledInputTooltip,
             });
         }
     },
