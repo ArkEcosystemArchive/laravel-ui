@@ -11,15 +11,17 @@
     'required' => false,
     'placeholder' => 'Enter tags',
     'isDisabled' => false,
-    'disabledInputTooltip' => null,
+    'addDisabled' => false,
+    'removeDisabled' => false,
+    'disabledInputTooltip' => '',
 ])
 
 <div
-    x-data="Tags({{ $xData }}, '{{ $id ?? $name }}', {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $maxTags === null ? 'null' : $maxTags }})"
+    x-data="Tags({{ $xData }}, '{{ $id ?? $name }}', {{ json_encode($tags) }}, {{ json_encode($allowedTags) }}, '{{ $placeholder }}', {{ $isDisabled ? 'true' : 'false' }}, {{ $addDisabled ? 'true' : 'false' }}, {{ $removeDisabled ? 'true' : 'false' }}, '{{ $disabledInputTooltip }}', {{ $maxTags === null ? 'null' : $maxTags }})"
     x-init="init()"
     {{ $attributes->merge(['class' => 'relative']) }}
 >
-    <div class="input-group {{ $isDisabled ? 'pointer-events-none' : '' }}">
+    <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
                 'name'     => $name,
@@ -31,11 +33,11 @@
             ])
         @endunless
 
-        <div class="input-wrapper {{ $isDisabled ? 'disabled-tags-input' : '' }}">
+        <div class="input-wrapper {{ ($isDisabled || $addDisabled) ? 'disabled-tags-input' : '' }} {{ ($addDisabled) ? 'disabled-tags-input-add' : '' }}">
             <div
                 wire:ignore
                 x-ref="input"
-                class="relative py-2 px-3 bg-white rounded border border-theme-secondary-400"
+                class="relative px-3 py-2 bg-white border rounded border-theme-secondary-400"
             >
             </div>
 
@@ -61,8 +63,4 @@
             @enderror
         </div>
     </div>
-
-    @if($isDisabled)
-        <div data-tippy-content="{{ $disabledInputTooltip }}" class="absolute inset-0"></div>
-    @endif
 </div>
