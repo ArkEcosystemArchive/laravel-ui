@@ -69,13 +69,7 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
 
                   "link",
 
-                  "divider",
-
-                  // ...Plugins
-
-                  "divider",
-
-                  // ...Preview, etc
+                  // ...Plugins, etc
               ]
             : [
                   // ...Undo & redo
@@ -105,17 +99,14 @@ const MarkdownEditor = (height = null, toolbar = "basic", extraData = {}) => ({
 
                   "divider",
 
-                  // ...Plugins
-
                   "divider",
 
-                  // ...Preview, etc
+                  // ...Plugins, etc
               ],
     plugins:
         toolbar === "basic"
-            ? ["preview", "redo", "undo"]
+            ? ["redo", "undo"]
             : [
-                  "preview",
                   "simplecast",
                   "twitter",
                   "youtube",
