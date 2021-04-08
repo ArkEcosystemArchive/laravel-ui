@@ -235,6 +235,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::logo-simple', 'ark-logo-simple');
         Blade::component('ark::loading-spinner', 'ark-loading-spinner');
         Blade::component('ark::message', 'ark-message');
+        Blade::component('ark::metadata', 'ark-metadata');
         Blade::component('ark::metadata-tags', 'ark-metadata-tags');
         Blade::component('ark::modal', 'ark-modal');
         Blade::component('ark::no-results', 'ark-no-results');
