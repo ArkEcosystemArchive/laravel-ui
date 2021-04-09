@@ -290,11 +290,8 @@
     @apply bg-theme-secondary-100;
 }
 
-.table-container
-    table
-    > tbody
-    > tr:focus {
-        @apply outline-none;
+.table-container table > tbody > tr:focus {
+    @apply outline-none;
 }
 
 .table-container
@@ -390,7 +387,7 @@
     > tr[data-warning]:hover
     > td.hoverable-cell
     > div.table-cell-bg,
-    .table-container
+.table-container
     table
     > tbody
     > tr[data-warning]:focus
@@ -458,7 +455,7 @@
     > tr:hover
     > td.hoverable-cell
     > div.table-cell-bg,
-    .dark
+.dark
     .table-container
     table
     > tbody
