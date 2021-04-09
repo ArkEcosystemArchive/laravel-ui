@@ -5,6 +5,7 @@
     'label'    => null,
     'tooltip'  => null,
     'required' => false,
+    'optional' => false,
 ])
 
 <label
@@ -12,6 +13,10 @@
     class="items-center input-label @error($name) input-label--error @enderror"
 >
     {{ $label ? $label : trans('forms.' . $name) }}
+
+    @if ($optional && $required === false)
+        <span class="text-theme-secondary-400">{{ $optional }}</span>
+    @endif
 
     @if ($required)
         <div class="p-px mb-3 ml-px w-1 h-1 rounded-full bg-theme-danger-400"></div>
