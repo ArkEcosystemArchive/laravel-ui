@@ -9,6 +9,7 @@
     'tooltip'   => null,
     'required'  => false,
     'rows'      => 10,
+    'optional'  => false,
 ])
 
 <div class="{{ $class }}">
@@ -21,6 +22,7 @@
                 'label'    => $label,
                 'tooltip'  => $tooltip,
                 'required' => $required,
+                'optional' => $optional,
             ])
         @endunless
 
