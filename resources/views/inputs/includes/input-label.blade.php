@@ -15,7 +15,7 @@
     {{ $label ? $label : trans('forms.' . $name) }}
 
     @if ($optional && !$required)
-        <span class="text-theme-secondary-400 ml-1">{{ $optional }}</span>
+        <span class="ml-1 text-theme-secondary-400">{{ $optional }}</span>
     @endif
 
     @if ($required)
