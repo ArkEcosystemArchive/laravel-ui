@@ -219,6 +219,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::expandable', 'ark-expandable');
         Blade::component('ark::expandable-item', 'ark-expandable-item');
         Blade::component('ark::external-link', 'ark-external-link');
+        Blade::component('ark::external-link-confirm', 'ark-external-link-confirm');
         Blade::component('ark::flash', 'ark-flash');
         Blade::component('ark::footer-bar-desktop', 'ark-footer-bar-desktop');
         Blade::component('ark::footer-bar-mobile', 'ark-footer-bar-mobile');
@@ -235,7 +236,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::logo-simple', 'ark-logo-simple');
         Blade::component('ark::loading-spinner', 'ark-loading-spinner');
         Blade::component('ark::message', 'ark-message');
-        Blade::component('ark::metatags', 'ark-metatags');
+        Blade::component('ark::metadata', 'ark-metadata');
+        Blade::component('ark::metadata-tags', 'ark-metadata-tags');
         Blade::component('ark::modal', 'ark-modal');
         Blade::component('ark::no-results', 'ark-no-results');
         Blade::component('ark::outgoing-link', 'ark-outgoing-link');
