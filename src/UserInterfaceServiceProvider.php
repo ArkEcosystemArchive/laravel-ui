@@ -219,6 +219,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::expandable', 'ark-expandable');
         Blade::component('ark::expandable-item', 'ark-expandable-item');
         Blade::component('ark::external-link', 'ark-external-link');
+        Blade::component('ark::external-link-confirm', 'ark-external-link-confirm');
         Blade::component('ark::flash', 'ark-flash');
         Blade::component('ark::footer-bar-desktop', 'ark-footer-bar-desktop');
         Blade::component('ark::footer-bar-mobile', 'ark-footer-bar-mobile');
