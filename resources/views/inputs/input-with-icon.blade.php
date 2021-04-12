@@ -8,7 +8,7 @@
                 'label'          => $label ?? null,
                 'tooltip'        => $tooltip ?? null,
                 'required'       => $required ?? false,
-                'auxiliaryTitle' => $auxiliaryText ?? '',
+                'auxiliaryTitle' => $auxiliaryTitle ?? '',
             ])
         @endunless
 
