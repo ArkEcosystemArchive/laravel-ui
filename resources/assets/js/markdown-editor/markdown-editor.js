@@ -389,26 +389,7 @@ const MarkdownEditor = (
             this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
         );
 
-        if (this.charsLimit < this.charsCount) {
-            this.editor.mdEditor.moveCursorToEnd();
-
-            const markdownEditor = this.editor.mdEditor.getEditor();
-
-            const currentCursor = markdownEditor.getCursor();
-            currentCursor.ch =
-                currentCursor.ch - (this.charsCount - this.charsLimit);
-            markdownEditor.setCursor(currentCursor);
-
-            this.editor.mdEditor.moveCursorToEnd();
-            const endCursor = markdownEditor.getCursor();
-
-            markdownEditor.setSelection(currentCursor, endCursor);
-            this.editor.getTextObject().deleteContent();
-
-            this.editor.mdEditor.moveCursorToEnd();
-
-            return false;
-        }
+        this.preventCharsLimit();
 
         const event = new Event("input", {
             bubbles: true,
@@ -416,6 +397,18 @@ const MarkdownEditor = (
         });
 
         input.dispatchEvent(event);
+    },
+    preventCharsLimit() {
+        if (this.charsLimit < this.charsCount) {
+            const markdownEditor = this.editor.mdEditor.getEditor();
+
+            const initialPosition = markdownEditor.getCursor().ch;
+            let cursor = markdownEditor.getCursor().ch;
+            cursor = cursor - (this.charsCount - this.charsLimit);
+
+            markdownEditor.setSelection({ch: cursor, line: 0}, {ch: initialPosition, line: 0});
+            this.editor.getTextObject().deleteContent();
+        }
     },
 
     ...extraData,
