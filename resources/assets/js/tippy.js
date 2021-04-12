@@ -10,13 +10,13 @@ const tooltipSettings = {
     onShown: (instance) => {
         visibleTooltips.push(instance);
     },
-    onHidden: (instance,e) => {
-        const index = visibleTooltips.findIndex(i => i.id === instance.id);
+    onHidden: (instance, e) => {
+        const index = visibleTooltips.findIndex((i) => i.id === instance.id);
         if (index >= 0) {
             visibleTooltips.splice(index, 1);
         }
-    }
-}
+    },
+};
 
 tippy("[data-tippy-content]", tooltipSettings);
 
@@ -27,7 +27,9 @@ tippy("[data-tippy-hover]", {
     content: (reference) => reference.dataset.tippyHover,
 });
 
-document.addEventListener('scroll', () => visibleTooltips.forEach((instance) => instance.hide(0)));
+document.addEventListener("scroll", () =>
+    visibleTooltips.forEach((instance) => instance.hide(0))
+);
 
 window.initClipboard = () => {
     tippy(".clipboard", {
