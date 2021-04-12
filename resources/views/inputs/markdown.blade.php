@@ -92,7 +92,11 @@ $icons = [
                         @if($showCharsCount)
                             <span class="px-4 border-l-2 border-theme-secondary-200">
                                 {{ trans('ui::forms.wysiwyg.characters') }}:
-                                <strong x-text="charsCount"></strong>@if($charsLimit)/<strong>{{ $charsLimit }}</strong>@endif
+                                <strong x-text="charsCount" :class="{ 'text-theme-danger-600': charsLimit === charsCount }"></strong>
+                                @if($charsLimit)
+                                    <span>/</span>
+                                    <strong x-text="charsLimit" :class="{ 'text-theme-danger-600': charsLimit === charsCount }"></strong>
+                                @endif
                             </span>
                         @endif
                         @if($showReadingTime)
