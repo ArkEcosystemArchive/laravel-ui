@@ -13,7 +13,7 @@
             Livewire.emit('openModal', '{{ $identifier }}')
         }
     }"
-    class="inline-flex items-center space-x-2 font-semibold cursor-pointer whitespace-nowrap link"
+    class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
     @click="openModal"
 >
     <span>{{ $text ?? $slot ?? '' }}</span>
