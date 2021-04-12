@@ -1,11 +1,11 @@
 @props([
     'name',
     'errors',
-    'id'       => null,
-    'label'    => null,
-    'tooltip'  => null,
-    'required' => false,
-    'optional' => false,
+    'id'             => null,
+    'label'          => null,
+    'tooltip'        => null,
+    'required'       => false,
+    'auxiliaryTitle' => '',
 ])
 
 <label
@@ -14,8 +14,8 @@
 >
     {{ $label ? $label : trans('forms.' . $name) }}
 
-    @if ($optional && !$required)
-        <span class="ml-1 text-theme-secondary-400">{{ $optional }}</span>
+    @if (!empty($auxiliaryTitle) && !$required)
+        <span class="ml-1 text-theme-secondary-400">{{ $auxiliaryTitle }}</span>
     @endif
 
     @if ($required)

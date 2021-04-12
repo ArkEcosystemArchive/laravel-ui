@@ -1,28 +1,28 @@
 @props([
     'name',
     'errors',
-    'class'     => '',
-    'id'        => null,
-    'model'     => null,
-    'hideLabel' => false,
-    'label'     => null,
-    'tooltip'   => null,
-    'required'  => false,
-    'rows'      => 10,
-    'optional'  => false,
+    'class'           => '',
+    'id'              => null,
+    'model'           => null,
+    'hideLabel'       => false,
+    'label'           => null,
+    'tooltip'         => null,
+    'required'        => false,
+    'rows'            => 10,
+    'auxiliaryTitle'  => '',
 ])
 
 <div class="{{ $class }}">
     <div class="input-group">
         @unless ($hideLabel)
             @include('ark::inputs.includes.input-label', [
-                'name'     => $name,
-                'errors'   => $errors,
-                'id'       => $id ?? $name,
-                'label'    => $label,
-                'tooltip'  => $tooltip,
-                'required' => $required,
-                'optional' => $optional,
+                'name'           => $name,
+                'errors'         => $errors,
+                'id'             => $id ?? $name,
+                'label'          => $label,
+                'tooltip'        => $tooltip,
+                'required'       => $required,
+                'auxiliaryTitle' => $auxiliaryTitle,
             ])
         @endunless
 
