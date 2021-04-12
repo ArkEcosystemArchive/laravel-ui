@@ -406,7 +406,10 @@ const MarkdownEditor = (
             let cursor = markdownEditor.getCursor().ch;
             cursor = cursor - (this.charsCount - this.charsLimit);
 
-            markdownEditor.setSelection({ch: cursor, line: 0}, {ch: initialPosition, line: 0});
+            markdownEditor.setSelection(
+                { ch: cursor, line: 0 },
+                { ch: initialPosition, line: 0 }
+            );
             this.editor.getTextObject().deleteContent();
         }
     },
