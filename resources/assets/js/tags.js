@@ -20,7 +20,6 @@ const Tags = (
     removeDisabled: removeDisabled,
     disabledInputTooltip: disabledInputTooltip,
     init() {
-        console.log("Init");
         const { input } = this.$refs;
 
         const taggle = new Taggle(input, {
