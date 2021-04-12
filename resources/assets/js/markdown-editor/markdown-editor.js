@@ -74,13 +74,7 @@ const MarkdownEditor = (
 
                   "link",
 
-                  "divider",
-
-                  // ...Plugins
-
-                  "divider",
-
-                  // ...Preview, etc
+                  // ...Plugins, etc
               ]
             : [
                   // ...Undo & redo
@@ -110,17 +104,14 @@ const MarkdownEditor = (
 
                   "divider",
 
-                  // ...Plugins
-
                   "divider",
 
-                  // ...Preview, etc
+                  // ...Plugins, etc
               ],
     plugins:
         toolbar === "basic"
-            ? ["preview", "redo", "undo"]
+            ? ["redo", "undo"]
             : [
-                  "preview",
                   "simplecast",
                   "twitter",
                   "youtube",

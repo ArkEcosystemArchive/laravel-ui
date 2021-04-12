@@ -24,7 +24,6 @@
     wire:key="tile-selection-{{ $id }}"
     class="space-y-4 {{ $class }}"
     x-data="{
-        selectedOption: @if ($single) '{{ $this->{$model ?? $id} }}' @else null @endif,
         mobileHidden: true,
     }"
 >
