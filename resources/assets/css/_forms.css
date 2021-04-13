@@ -223,7 +223,7 @@
 }
 
 .taggle_placeholder {
-    @apply absolute top-0 left-0 max-w-full p-3 truncate pointer-events-none text-theme-secondary-400 rounded;
+    @apply absolute top-0 left-0 max-w-full p-3 truncate rounded pointer-events-none text-theme-secondary-400;
 }
 
 .taggle_input {
@@ -258,4 +258,13 @@
 .disabled-tags-input .taggle_placeholder,
 .disabled-tags-input > div {
     @apply bg-theme-secondary-100;
+}
+
+.disabled-tags-input:not(.disabled-tags-input-add) .taggle_list .taggle {
+    @apply pr-2;
+}
+
+.disabled-tags-input .taggle_input,
+.disabled-tags-input:not(.disabled-tags-input-add) .taggle > .close {
+    @apply hidden;
 }

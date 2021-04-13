@@ -4,6 +4,10 @@ const Tags = (
     tags = [],
     allowedTags = [],
     placeholder = "Enter tags...",
+    isDisabled = false,
+    addDisabled = false,
+    removeDisabled = false,
+    disabledInputTooltip = "",
     maxTags = null,
     preserveCase = false
 ) => ({
@@ -11,6 +15,10 @@ const Tags = (
     onInput: null,
     onTagAdd: null,
     availableTags: tags,
+    isDisabled: isDisabled,
+    addDisabled: addDisabled,
+    removeDisabled: removeDisabled,
+    disabledInputTooltip: disabledInputTooltip,
     init() {
         const { input } = this.$refs;
 
@@ -28,32 +36,38 @@ const Tags = (
                 }
 
                 this.selectTag(tag);
-            },
-            onBeforeTagAdd(e, tag) {
-                // Validates:
-                // - 3 TO 30 Chars
-                // - Not start with a number
-                // - Only allows a-ZA-Z0-9 characters
-                const regex = /^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/gm;
 
-                if (!regex.test(tag)) {
-                    if (typeof livewire !== "undefined") {
-                        if (tag.length < 3 || tag.length > 30) {
-                            livewire.emit("toastMessage", [
-                                "The tag must be between 3 and 30 characters.",
-                                "warning",
-                            ]);
-                        } else {
-                            livewire.emit("toastMessage", [
-                                "Only letters and numbers are allowed and the tag must start with a letter.",
-                                "warning",
-                            ]);
-                        }
-                    }
+                this.hideTooltip();
+            },
+            onBeforeTagAdd: (e, tag) => {
+                if (this.addDisabled) {
                     return false;
                 }
 
                 if (!allowedTags.length) {
+                    // Validates:
+                    // - 3 TO 30 Chars
+                    // - Not start with a number
+                    // - Only allows a-ZA-Z0-9 characters
+                    const regex = /^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/gm;
+
+                    if (!regex.test(tag)) {
+                        if (typeof livewire !== "undefined") {
+                            if (tag.length < 3 || tag.length > 30) {
+                                livewire.emit("toastMessage", [
+                                    "The tag must be between 3 and 30 characters.",
+                                    "warning",
+                                ]);
+                            } else {
+                                livewire.emit("toastMessage", [
+                                    "Only letters and numbers are allowed and the tag must start with a letter.",
+                                    "warning",
+                                ]);
+                            }
+                        }
+                        return false;
+                    }
+
                     return true;
                 }
 
@@ -70,12 +84,15 @@ const Tags = (
 
                 return !!allowedTag;
             },
+            onBeforeTagRemove: () => !this.removeDisabled,
             onTagRemove: (e, tag) => {
                 if (typeof this.onTagRemove === "function") {
                     this.onTagRemove(e, tag);
                 }
 
                 this.unselectTag(tag);
+
+                this.hideTooltip();
             },
         });
 
@@ -87,6 +104,22 @@ const Tags = (
                 this.onInput(e);
             });
         }
+
+        this.$watch("isDisabled", () => {
+            if (isDisabled) {
+                taggle.disable();
+            } else {
+                taggle.enable();
+            }
+
+            this.initTooltip();
+        });
+
+        this.$watch("addDisabled", () => {
+            this.initTooltip();
+        });
+
+        this.initTooltip();
 
         Livewire.on("selectedTagRemoved", (tag) => {
             taggle.remove(tag);
@@ -109,6 +142,27 @@ const Tags = (
                 }
             });
         });
+    },
+    hideTooltip() {
+        if (this.tooltipInstance) {
+            this.tooltipInstance.destroy();
+            this.tooltipInstance = null;
+        }
+    },
+    initTooltip() {
+        if (!this.disabledInputTooltip) {
+            return;
+        }
+
+        this.hideTooltip();
+
+        if (this.isDisabled || this.addDisabled || this.removeDisabled) {
+            this.tooltipInstance = tippy(this.$el, {
+                trigger: "mouseenter focus",
+                duration: 0,
+                content: this.disabledInputTooltip,
+            });
+        }
     },
     selectTag(tag) {
         const availableTag = this.availableTags.find((t) => t === tag);
