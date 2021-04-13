@@ -39,3 +39,10 @@ if (! function_exists('alertIcon')) {
         return "info";
     }
 }
+
+if (! function_exists('clearZalgoText')) {
+    function clearZalgoText(string $zalgo): string
+    {
+        return preg_replace("|[\p{M}]|uis","", $zalgo);
+    }
+}
