@@ -54,6 +54,7 @@ $icons = [
                 x-data="MarkdownEditor(
                     @if($height)'{{ $height }}'@else null @endif,
                     '{{ $toolbar }}',
+                    '{{ $charsLimit }}',
                     {{ $xData }}
                 )"
                 x-init="init"
@@ -91,7 +92,9 @@ $icons = [
                         @if($showCharsCount)
                             <span class="px-4 border-l-2 border-theme-secondary-200">
                                 {{ trans('ui::forms.wysiwyg.characters') }}:
-                                <strong x-text="charsCount"></strong>@if($charsLimit)/<strong>{{ $charsLimit }}</strong>@endif
+                                <strong x-text="charsCount" :class="{ 'text-theme-danger-500': charsLimit < charsCount }"></strong>
+                                <span :class="{ 'inline': charsLimit, 'hidden': !charsLimit }">/</span>
+                                <strong x-text="charsLimit" :class="{ 'inline': charsLimit, 'hidden': !charsLimit, 'text-theme-danger-500': charsLimit < charsCount }"></strong>
                             </span>
                         @endif
                         @if($showReadingTime)

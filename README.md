@@ -151,9 +151,17 @@ mix
 />
 ```
 
+6. You can choose to limit the characters to be inserted:
+
+```html
+<x-ark-markdown name="about"
+    chars-limit="1000"
+/>
+```
+
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
-5. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
+7. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
 
 ```html
 <meta name="csrf-token" content="{{ csrf_token() }}">
