@@ -218,7 +218,7 @@
 
 @screen md {
     .modal-content {
-        @apply mx-auto rounded-2xl shadow-2xl;
+        @apply mx-auto rounded-lg shadow-2xl;
     }
 }
 
