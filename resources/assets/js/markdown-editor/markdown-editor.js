@@ -389,29 +389,12 @@ const MarkdownEditor = (
             this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
         );
 
-        this.preventCharsLimit();
-
         const event = new Event("input", {
             bubbles: true,
             cancelable: true,
         });
 
         input.dispatchEvent(event);
-    },
-    preventCharsLimit() {
-        if (this.charsLimit < this.charsCount) {
-            const markdownEditor = this.editor.mdEditor.getEditor();
-
-            const initialPosition = markdownEditor.getCursor().ch;
-            let cursor = markdownEditor.getCursor().ch;
-            cursor = cursor - (this.charsCount - this.charsLimit);
-
-            markdownEditor.setSelection(
-                { ch: cursor, line: 0 },
-                { ch: initialPosition, line: 0 }
-            );
-            this.editor.getTextObject().deleteContent();
-        }
     },
 
     ...extraData,
