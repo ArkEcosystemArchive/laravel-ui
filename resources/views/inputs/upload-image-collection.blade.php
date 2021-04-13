@@ -18,7 +18,7 @@
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
     class="relative z-0 space-y-8"
 >
-    <div class="rounded-xl p-2 border-2 border-dashed border-theme-primary-100 relative {{ $dimensions }}">
+    <div class="rounded-2xl p-2 border-2 border-dashed border-theme-primary-100 relative {{ $dimensions }}">
         <input
             id="image-collection-upload-{{ $id }}"
             type="file"
@@ -28,7 +28,7 @@
             multiple
         />
 
-        <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-xl bg-theme-primary-50">
+        <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-2xl bg-theme-primary-50">
             <div class="text-theme-primary-500">
                 <x-ark-icon name="upload-cloud" size="lg" />
             </div>
@@ -46,7 +46,7 @@
         </div>
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-2xl" :dimensions="$dimensions" />
         </div>
     </div>
 
@@ -56,14 +56,14 @@
                 <div class="relative {{ $imageHeight }}">
                     <div
                         style="background-image: url('{{ $image['url'] }}')"
-                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
+                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-2xl border border-theme-secondary-300"
                     ></div>
 
                     <div
                         wire:key="delete-button-{{ $id }}"
                         class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}"
                     >
-                        <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default w-full {{ $imageHeight }}"></div>
+                        <div class="pointer-events-none rounded-2xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default w-full {{ $imageHeight }}"></div>
 
                         <div
                             class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"

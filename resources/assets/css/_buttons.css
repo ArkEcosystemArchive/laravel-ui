@@ -86,7 +86,7 @@ a.disabled {
 }
 
 .button-icon-rounded {
-    @apply button-icon rounded-xl;
+    @apply button-icon rounded-2xl;
 }
 .dark .button-icon,
 .dark .button-icon-rounded,
