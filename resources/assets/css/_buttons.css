@@ -11,9 +11,8 @@
 }
 
 .button-tag {
-    @apply button-secondary;
-    @apply py-0.5 px-3 !important;
-    @apply text-left !important;
+    @apply button-secondary break-all;
+    @apply py-0.5 px-3 text-left !important;
 }
 
 .button-outline {
