@@ -19,12 +19,12 @@
             class="input-wrapper input-wrapper-with-prefix"
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
-            @if ($icon)
+            @if ($icon ?? false)
                 @include('ark::inputs.includes.input-internal-icon', [
                     'icon'     => $icon,
                     'position' => 'left',
                 ])
-            @elseif($prefix)
+            @elseif($prefix ?? false)
                 <div class="input-prefix">
                     {{ $prefix }}
                 </div>
