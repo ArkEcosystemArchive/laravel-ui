@@ -50,7 +50,7 @@ const Navbar = {
             },
 
             init() {
-                const { nav } = this.$refs;
+                const { nav, scrollable } = this.$refs;
                 this.nav = nav;
                 window.onscroll = this.onScroll.bind(this);
                 this.scrollProgress = this.getScrollProgress();
@@ -59,15 +59,15 @@ const Navbar = {
                 this.$watch("open", (open) => {
                     this.$nextTick(() => {
                         if (open) {
-                            onNavbarOpened(nav);
+                            onNavbarOpened(scrollable || nav);
                         } else {
-                            onNavbarClosed(nav);
+                            onNavbarClosed(scrollable || nav);
                         }
                     });
                 });
 
                 if (this.open) {
-                    onNavbarOpened(nav);
+                    onNavbarOpened(scrollable || nav);
                 }
             },
             hide() {
