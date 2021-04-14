@@ -24,7 +24,12 @@
                 'max'          => $max ?? null,
             ])
 
-            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message, 'id' => $id ?? $name]) @enderror
+            @error($name)
+                @include('ark::inputs.includes.input-error-tooltip', [
+                    'error' => $message,
+                    'id' => $id ?? $name,
+                ])
+            @enderror
         </div>
     </div>
 </div>

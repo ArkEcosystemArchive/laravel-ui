@@ -1,23 +1,5 @@
-@props([
-    'name',
-    'errors',
-    'value' => null,
-    'id' => null,
-    'label' => null,
-    'tooltip' => null,
-    'required' => false,
-    'auxiliaryTitle' => null,
-    'icon' => null,
-    'prefix' => null,
-    'inputClass' => '',
-    'noModel' => false,
-    'model' => $name,
-    'keydownEnter' => null,
-    'max' => null,
-])
-
 <div
-    x-data="{ isDirty: {{ $value ? 'true' : 'false' }} }"
+    x-data="{ isDirty: {{ !! ($value ?? false) ? 'true' : 'false' }} }"
     {{ $attributes->only('class') }}
 >
     <div class="input-group">
@@ -26,10 +8,10 @@
                 'name'           => $name,
                 'errors'         => $errors,
                 'id'             => $id ?? $name,
-                'label'          => $label,
-                'tooltip'        => $tooltip,
-                'required'       => $required,
-                'auxiliaryTitle' => $auxiliaryTitle,
+                'label'          => $label ?? null,
+                'tooltip'        => $tooltip ?? null,
+                'required'       => $required ?? false,
+                'auxiliaryTitle' => $auxiliaryTitle ?? '',
             ])
         @endunless
 
@@ -52,12 +34,12 @@
                 'name'           => $name,
                 'errors'         => $errors,
                 'id'             => $id ?? $name,
-                'inputTypeClass' => 'input-text-with-prefix',
-                'inputClass'     => $inputClass,
-                'noModel'        => $noModel,
-                'model'          => $model,
-                'keydownEnter'   => $keydownEnter,
-                'max'            => $max,
+                'inputTypeClass' => 'input-text input-text-with-prefix',
+                'inputClass'     => $inputClass ?? '',
+                'noModel'        => $noModel ?? false,
+                'model'          => $model ?? $name,
+                'keydownEnter'   => $keydownEnter ?? null,
+                'max'            => $max ?? null,
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
 
