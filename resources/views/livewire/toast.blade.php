@@ -5,6 +5,7 @@
             x-data="{ dismiss() { livewire.emit('dismissToast', '{{ $key }}' ) } }"
             x-init="() => setTimeout(() => dismiss(), 5000);"
             @click="dismiss()"
+            wire:key="{{ $key }}"
         >
             <x-ark-toast :type="$toast['type']" wire-close="dismissToast('{{ $key }}')">
                 <x-slot name='message'>
