@@ -1,4 +1,4 @@
-<div class="{{ $class ?? ''}}" @click="livewire.emit('markNotificationsAsSeen')">
+<div class="{{ $class ?? ''}}" @click="livewire.emit('markNotificationsAsSeen')" dusk="navigation-notifications-icon">
     <x-ark-dropdown
         wrapper-class="mx-1 md:relative"
         dropdown-classes="mt-8 md:px-0 px-8 {{ $dropdownClasses ?? '' }}"
