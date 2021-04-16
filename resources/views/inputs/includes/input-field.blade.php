@@ -1,6 +1,6 @@
 @props([
     'name',
-    'errors',
+    'errors'         => null,
     'type'           => 'text',
     'id'             => null,
     'inputClass'     => '',
@@ -18,7 +18,7 @@
     type="{{ $type }}"
     id="{{ $id ?? $name }}"
     name="{{ $name }}"
-    class="{{ $inputClass }} {{ $inputTypeClass }} @error($name) {{ $errorClass }} @enderror"
+    class="{{ $inputClass }} {{ $inputTypeClass }} @if ($errors) @error($name) {{ $errorClass }} @enderror @endif"
     @unless ($noModel) wire:model="{{ $model ?? $name }}" @endUnless
     {{-- @TODO: remove --}}
     @if ($keydownEnter) wire:keydown.enter="{{ $keydownEnter }}" @endif
