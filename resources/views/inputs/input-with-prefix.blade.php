@@ -20,7 +20,7 @@
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
             @if ($icon ?? false)
-                @include('ark::inputs.includes.input-internal-icon', [
+                @include('ark::inputs.includes.input-prefix-icon', [
                     'icon'     => $icon,
                     'position' => 'left',
                 ])

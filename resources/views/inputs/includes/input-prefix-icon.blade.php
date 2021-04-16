@@ -12,6 +12,6 @@
     ][$position];
 @endphp
 
-<div class="input-icon {{ $positionClasses }} {{ $iconClass }}">
+<div class="input-prefix-icon {{ $positionClasses }} {{ $iconClass }}">
     <x-ark-icon :name="$icon" />
 </div>

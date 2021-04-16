@@ -60,8 +60,13 @@
     @apply input-text;
 }
 
+/** Input icon */
+.input-icon {
+    @apply absolute inset-y-0 flex items-center;
+}
+
 /** Input with icon prefix **/
-.input-icon,
+.input-prefix-icon,
 .input-prefix {
     @apply flex items-center rounded-l;
 }
@@ -80,11 +85,11 @@
     @apply flex rounded border border-theme-secondary-300 bg-white;
 }
 
-.input-wrapper-with-prefix .input-icon {
+.input-wrapper-with-prefix .input-prefix-icon {
     @apply text-theme-secondary-500;
 }
-.input-wrapper-with-prefix--dirty .input-icon,
-.input-wrapper-with-prefix:focus-within .input-icon {
+.input-wrapper-with-prefix--dirty .input-prefix-icon,
+.input-wrapper-with-prefix:focus-within .input-prefix-icon {
     @apply text-theme-primary-500;
 }
 
