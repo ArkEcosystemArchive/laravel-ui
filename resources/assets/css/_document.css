@@ -240,13 +240,13 @@ code.hljs .hljs-ln-n {
 }
 
 .documentation-content .table-wrapper::-webkit-scrollbar {
-    @apply rounded-xl bg-theme-primary-100;
+    @apply rounded bg-theme-primary-100;
     width: 6px;
     height: 6px;
 }
 
 .documentation-content .table-wrapper::-webkit-scrollbar-thumb {
-    @apply rounded-xl bg-theme-primary-200;
+    @apply rounded bg-theme-primary-200;
 }
 
 /* Documentation Sidebar */

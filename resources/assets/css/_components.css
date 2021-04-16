@@ -1,6 +1,6 @@
 /** Dropdowns **/
 .dropdown-button-outline {
-    @apply bg-transparent border border-solid rounded-xl border-theme-secondary-200;
+    @apply bg-transparent border border-solid rounded border-theme-secondary-200;
 }
 
 .dropdown-entry {
@@ -27,7 +27,7 @@
 
 /** Dropdown Scrollbar **/
 .dropdown-scrolling::-webkit-scrollbar {
-    @apply rounded-xl;
+    @apply rounded;
     width: 6px;
     height: 4px;
 }
@@ -37,7 +37,7 @@
 }
 
 .dropdown-scrolling::-webkit-scrollbar-thumb {
-    @apply rounded-xl bg-theme-primary-200;
+    @apply rounded bg-theme-primary-200;
 }
 
 .dropdown-scrolling {
@@ -159,7 +159,7 @@
 }
 
 .pagination-pages-mobile {
-    @apply flex justify-center px-2 mb-3 rounded-xl bg-theme-primary-100;
+    @apply flex justify-center px-2 mb-3 rounded bg-theme-primary-100;
 }
 
 .pagination-button-mobile {
@@ -167,7 +167,7 @@
 }
 
 .pagination-pages {
-    @apply hidden px-2 rounded-xl bg-theme-primary-100;
+    @apply hidden px-2 rounded bg-theme-primary-100;
 }
 
 .dark .pagination-pages-mobile {

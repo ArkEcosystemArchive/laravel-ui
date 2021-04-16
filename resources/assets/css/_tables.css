@@ -101,13 +101,13 @@
 }
 
 .table-container .table-wrapper::-webkit-scrollbar {
-    @apply rounded-xl bg-theme-primary-100;
+    @apply rounded bg-theme-primary-100;
     width: 6px;
     height: 6px;
 }
 
 .table-container .table-wrapper::-webkit-scrollbar-thumb {
-    @apply rounded-xl bg-theme-primary-200;
+    @apply rounded bg-theme-primary-200;
 }
 
 /* Table highlight & hover effect (requires to use `<x-ark-tables.cell` instead of a `td`) */
