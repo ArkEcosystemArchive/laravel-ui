@@ -1,7 +1,7 @@
 <div x-data="{ openPanel: null }">
     <dl>
         @for($i = 0; $i < $slots; $i++)
-            <div class="border border-theme-secondary-200 rounded-lg p-6 @if($i > 0) mt-5 @endif">
+            <div class="border border-theme-secondary-200 rounded-xl p-6 @if($i > 0) mt-5 @endif">
                 <dt>
                     <button
                         type="button"

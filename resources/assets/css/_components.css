@@ -46,7 +46,7 @@
 
 /** Tabs **/
 .tabs {
-    @apply px-8 mb-8 font-semibold rounded-lg select-none bg-theme-secondary-100;
+    @apply px-8 mb-8 font-semibold rounded-xl select-none bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
@@ -83,7 +83,7 @@
 }
 
 .tabs-wrapper {
-    @apply flex items-center px-4 mt-3 rounded-lg bg-theme-secondary-100 text-theme-secondary-500;
+    @apply flex items-center px-4 mt-3 rounded-xl bg-theme-secondary-100 text-theme-secondary-500;
 }
 
 @screen sm {
@@ -111,7 +111,7 @@
 
 /** Tab Badge **/
 .info-badge {
-    @apply ml-1 text-sm rounded bg-theme-primary-100;
+    @apply ml-1 text-sm rounded-xl bg-theme-primary-100;
     padding: 2px 6px;
 }
 .dark .info-badge {
@@ -266,7 +266,7 @@
 
 /** Link Description Block **/
 .description-block {
-    @apply flex flex-col p-10 border-2 rounded-lg border-theme-secondary-200 transition-default;
+    @apply flex flex-col p-10 border-2 rounded-xl border-theme-secondary-200 transition-default;
 }
 
 .description-block-link:hover {
@@ -336,11 +336,11 @@
 }
 
 .tile-selection-option {
-    @apply relative border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
+    @apply relative border-2 rounded cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
 }
 
 .tile-selection-single {
-    @apply relative py-4 border-2 rounded-lg cursor-pointer select-none border-theme-primary-100 transition-default;
+    @apply relative py-4 border-2 rounded cursor-pointer select-none border-theme-primary-100 transition-default;
 }
 
 .tile-selection-option:hover,
@@ -401,7 +401,7 @@
 }
 
 .tile-link {
-    @apply relative bg-white rounded-lg cursor-pointer select-none h-30 transition-default;
+    @apply relative bg-white rounded-xl cursor-pointer select-none h-30 transition-default;
 }
 .tile-link:not(.tile-link-disabled) {
     @apply cursor-pointer;

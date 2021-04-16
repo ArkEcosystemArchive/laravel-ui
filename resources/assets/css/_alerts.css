@@ -1,9 +1,9 @@
 .alert-wrapper {
-    @apply flex flex-col items-center rounded-lg bg-theme-secondary-100 p-4;
+    @apply flex flex-col items-center rounded-xl bg-theme-secondary-100 p-4;
 }
 
 .alert-icon-wrapper {
-    @apply flex w-11 h-11 items-center justify-center rounded-md;
+    @apply flex w-11 h-11 items-center justify-center rounded;
 }
 
 .alert-content-wrapper {
@@ -160,7 +160,7 @@
 
 /** Simple alerts **/
 .alert-simple {
-    @apply text-sm select-none p-4 rounded;
+    @apply text-sm select-none p-4 rounded-xl;
 }
 
 .alert-simple-info {

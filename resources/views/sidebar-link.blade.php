@@ -1,7 +1,7 @@
 @php ($route = route($route, empty($params) ? [] : $params))
 @php ($isCurrent = url()->full() === $route)
 <div class="flex">
-    <div class="@if($isCurrent) bg-theme-primary-600 rounded-lg @endif w-2 -mr-1 z-10"></div>
+    <div class="@if($isCurrent) bg-theme-primary-600 rounded-xl @endif w-2 -mr-1 z-10"></div>
 
     <a
         href="{{ $route }}"

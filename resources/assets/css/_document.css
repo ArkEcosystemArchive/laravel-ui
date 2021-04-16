@@ -1,6 +1,6 @@
 /* highlight.js tweaks */
 code.hljs {
-    @apply px-8 py-6 rounded-lg font-code;
+    @apply px-8 py-6 rounded-xl font-code;
 }
 
 code.hljs .hljs-ln-n {
@@ -164,12 +164,12 @@ code.hljs .hljs-ln-n {
 
 .documentation-content img,
 .documentation-content .image-container iframe {
-    @apply border-2 rounded-lg border-theme-secondary-300;
+    @apply border-2 rounded-xl border-theme-secondary-300;
 }
 
 /* Image caption */
 .documentation-content .image-caption {
-    @apply relative block w-full mx-auto p-4 mt-2 border-2 rounded-lg border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900 text-sm;
+    @apply relative block w-full mx-auto p-4 mt-2 border-2 rounded-xl border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900 text-sm;
 }
 
 @screen sm {
@@ -297,7 +297,7 @@ main .documentation-content .heading-permalink:hover {
 
 /* Code Block */
 .custom-code-block {
-    @apply p-8 mb-6 overflow-hidden rounded-lg bg-theme-secondary-800;
+    @apply p-8 mb-6 overflow-hidden rounded-xl bg-theme-secondary-800;
 }
 
 .custom-code-block .hljs {

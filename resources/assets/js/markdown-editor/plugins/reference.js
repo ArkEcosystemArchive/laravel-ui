@@ -2,7 +2,7 @@ import { escapeRegExp, createPopup } from "../utils/utils";
 
 // Based on `https://github.com/ArkEcosystem/ark.dev/blob/develop/resources/views/livewire/page-reference.blade.php`
 const getPageReferenceHtml = (path) => {
-    return `<div class="flex flex-col overflow-hidden bg-white border-2 rounded-lg page-ref sm:flex-row border-theme-primary-100">
+    return `<div class="flex flex-col overflow-hidden bg-white border-2 rounded-xl page-ref sm:flex-row border-theme-primary-100">
     <div class="flex flex-col justify-between flex-1 p-8">
         <div class="flex flex-col">
             <div class="pb-2 border-b border-dashed border-theme-secondary-200">
