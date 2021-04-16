@@ -5,7 +5,7 @@ const getEmbedLinkHtml = (url) => {
     const parser = document.createElement("a");
     parser.href = url;
 
-    return `<div class="embed-link flex flex-col sm:flex-row overflow-hidden rounded-lg border-2 border-theme-primary-100 bg-white transition-default hover:size-increase hover:shadow-lg hover:border-0 cursor-pointer">
+    return `<div class="embed-link flex flex-col sm:flex-row overflow-hidden rounded-xl border-2 border-theme-primary-100 bg-white transition-default hover:size-increase hover:shadow-lg hover:border-0 cursor-pointer">
     <div class="flex flex-col justify-between flex-1 p-8">
         <div class="flex flex-col">
             <span class="text-sm border-b border-dashed border-theme-primary-100 pb-2">

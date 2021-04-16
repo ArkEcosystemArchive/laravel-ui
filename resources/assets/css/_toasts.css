@@ -1,5 +1,5 @@
 .toast {
-    @apply text-sm text-theme-secondary-900 select-none p-4 rounded;
+    @apply text-sm text-theme-secondary-900 select-none p-4 rounded-xl;
 }
 
 .toast-info {

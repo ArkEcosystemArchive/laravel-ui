@@ -14,7 +14,7 @@
 }
 
 .ark-markdown-editor .tui-editor-contents pre {
-    @apply p-4 mb-6 overflow-x-auto rounded-lg bg-theme-secondary-800;
+    @apply p-4 mb-6 overflow-x-auto rounded bg-theme-secondary-800;
 }
 .ark-markdown-editor .tui-editor-contents pre > code {
     @apply block w-full overflow-auto bg-transparent text-theme-secondary-200;

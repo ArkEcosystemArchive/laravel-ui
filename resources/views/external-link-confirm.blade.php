@@ -26,7 +26,7 @@
 @push('footer')
     <x-ark-js-modal
         :name="$identifier"
-        class="w-full max-w-2xl text-left rounded-lg"
+        class="w-full max-w-2xl text-left rounded-xl"
         title-class="header-2"
         buttons-style="flex justify-end space-x-3"
         init

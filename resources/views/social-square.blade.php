@@ -7,7 +7,7 @@
 
 <a
     href="{{ $url }}"
-    class="block w-16 border rounded-lg cursor-pointer h-14 border-theme-secondary-300 lg:w-14 lg:h-12 transition-default {{ $hoverClass }}"
+    class="block w-16 border rounded-xl cursor-pointer h-14 border-theme-secondary-300 lg:w-14 lg:h-12 transition-default {{ $hoverClass }}"
     @unless($internal)
         target="_blank"
         rel="noopener noreferrer"

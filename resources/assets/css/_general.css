@@ -162,7 +162,7 @@ body {
 
 /* Image Tile */
 .image-tile {
-    @apply flex flex-col items-center justify-between p-8 border rounded-lg border-theme-primary-100 transition-default;
+    @apply flex flex-col items-center justify-between p-8 border rounded-xl border-theme-primary-100 transition-default;
 }
 .image-tile:hover {
     @apply border-transparent bg-white shadow-lg size-increase;
