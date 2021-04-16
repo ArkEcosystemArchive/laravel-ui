@@ -10,7 +10,7 @@
             @isset($identifier)
                 <x-ark-avatar
                     :identifier="$identifier"
-                    class="w-10 h-10 rounded-xl md:h-11 md:w-11"
+                    class="w-12 h-12 rounded-xl md:h-13 md:w-13 -m-1"
                     x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
