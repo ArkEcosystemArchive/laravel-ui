@@ -148,6 +148,8 @@ const MarkdownEditor = (
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
+                    blur: this.onBlur,
+                    focus: this.onFocus,
                 },
                 toolbarItems: this.toolbarItems,
                 plugins: this.getPlugins(),
@@ -395,6 +397,14 @@ const MarkdownEditor = (
         });
 
         input.dispatchEvent(event);
+    },
+
+    onBlur: () => {
+        // Nothing to do, used to be overriden with the x-data
+    },
+
+    onFocus: () => {
+        // Nothing to do, used to be overriden with the x-data
     },
 
     ...extraData,
