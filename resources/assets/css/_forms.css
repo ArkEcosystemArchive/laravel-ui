@@ -38,10 +38,12 @@
     @apply text-theme-primary-600;
 }
 
+.input-group:focus-within .input-wrapper-with-prefix,
 .input-group:focus-within .input-text {
     @apply border-theme-primary-600;
 }
 
+.input-group:focus-within .input-text-with-prefix:read-only,
 .input-group:focus-within .input-text-with-icon:read-only,
 .input-text-with-icon:read-only,
 .input-group:focus-within .input-text:read-only,
@@ -59,12 +61,23 @@
 }
 
 /** Input with icon prefix **/
-.input-icon {
-    @apply absolute inset-y-0 flex items-center;
+.input-icon,
+.input-prefix {
+    @apply flex items-center rounded-l;
+}
+.input-prefix {
+    @apply px-4;
 }
 
 .input-text-with-prefix {
-    @apply pl-10;
+    @apply block w-full transition-default rounded appearance-none border-0 border-theme-danger-500 outline-none;
+
+    /* Note: need this to override form-input padding */
+    padding: 0.75rem 1rem;
+}
+
+.input-wrapper-with-prefix {
+    @apply flex rounded border border-theme-secondary-300 bg-white;
 }
 
 .input-wrapper-with-prefix .input-icon {
@@ -73,6 +86,10 @@
 .input-wrapper-with-prefix--dirty .input-icon,
 .input-wrapper-with-prefix:focus-within .input-icon {
     @apply text-theme-primary-500;
+}
+
+.input-wrapper-with-prefix .input-prefix {
+    @apply bg-theme-primary-50 text-theme-secondary-500 border-r border-theme-secondary-300 select-none;
 }
 
 /* Radio buttons */

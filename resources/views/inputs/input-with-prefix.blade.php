@@ -19,10 +19,16 @@
             class="input-wrapper input-wrapper-with-prefix"
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
-            @include('ark::inputs.includes.input-internal-icon', [
-                'icon'     => $icon,
-                'position' => 'left',
-            ])
+            @if ($icon ?? false)
+                @include('ark::inputs.includes.input-internal-icon', [
+                    'icon'     => $icon,
+                    'position' => 'left',
+                ])
+            @elseif($prefix ?? false)
+                <div class="input-prefix">
+                    {{ $prefix }}
+                </div>
+            @endif
 
             @include('ark::inputs.includes.input-field', [
                 'name'           => $name,
@@ -37,7 +43,12 @@
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
 
-            @error($name) @include('ark::inputs.includes.input-error-tooltip', ['error' => $message, 'id' => $id ?? $name]) @enderror
+            @error($name)
+                @include('ark::inputs.includes.input-error-tooltip', [
+                    'error' => $message,
+                    'id' => $id ?? $name
+                ])
+            @enderror
         </div>
     </div>
 </div>
