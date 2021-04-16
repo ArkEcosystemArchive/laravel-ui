@@ -51,6 +51,8 @@ trait UploadImageCollection
                 $this->uploadError($error);
             }
 
+            $this->temporaryImages = [];
+
             $validator->validate();
 
             return false;
