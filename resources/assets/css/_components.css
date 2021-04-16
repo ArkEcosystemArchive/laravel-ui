@@ -27,7 +27,7 @@
 
 /** Dropdown Scrollbar **/
 .dropdown-scrolling::-webkit-scrollbar {
-    @apply rounded;
+    @apply rounded-lg;
     width: 6px;
     height: 4px;
 }
@@ -37,7 +37,7 @@
 }
 
 .dropdown-scrolling::-webkit-scrollbar-thumb {
-    @apply rounded bg-theme-primary-200;
+    @apply rounded-lg bg-theme-primary-200;
 }
 
 .dropdown-scrolling {
