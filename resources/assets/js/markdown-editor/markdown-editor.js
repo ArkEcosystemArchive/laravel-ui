@@ -148,6 +148,8 @@ const MarkdownEditor = (
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
+                    blur: this.onBlur,
+                    focus: this.onFocus,
                 },
                 toolbarItems: this.toolbarItems,
                 plugins: this.getPlugins(),
@@ -396,6 +398,10 @@ const MarkdownEditor = (
 
         input.dispatchEvent(event);
     },
+
+    // Default handlers
+    onBlur: () => {},
+    onFocus: () => {},
 
     ...extraData,
 });
