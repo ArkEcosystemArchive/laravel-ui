@@ -399,13 +399,9 @@ const MarkdownEditor = (
         input.dispatchEvent(event);
     },
 
-    onBlur: () => {
-        // Nothing to do, used to be overriden with the x-data
-    },
-
-    onFocus: () => {
-        // Nothing to do, used to be overriden with the x-data
-    },
+    // Default handlers
+    onBlur: () => {},
+    onFocus: () => {},
 
     ...extraData,
 });
