@@ -106,7 +106,7 @@ const Tags = (
         }
 
         this.$watch("isDisabled", () => {
-            if (isDisabled) {
+            if (this.isDisabled) {
                 taggle.disable();
             } else {
                 taggle.enable();
