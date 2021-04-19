@@ -336,11 +336,11 @@
 }
 
 .tile-selection-option {
-    @apply relative border-2 rounded cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
+    @apply relative border-2 rounded-xl cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
 }
 
 .tile-selection-single {
-    @apply relative py-4 border-2 rounded cursor-pointer select-none border-theme-primary-100 transition-default;
+    @apply relative py-4 border-2 rounded-xl cursor-pointer select-none border-theme-primary-100 transition-default;
 }
 
 .tile-selection-option:hover,
@@ -421,7 +421,7 @@
 }
 
 .tile-links-show-more {
-    @apply font-semibold text-center bg-white rounded tile-link text-theme-primary-600;
+    @apply font-semibold text-center bg-white rounded-xl tile-link text-theme-primary-600;
 }
 .tile-links-show-more:hover {
     @apply text-white bg-theme-primary-700;
