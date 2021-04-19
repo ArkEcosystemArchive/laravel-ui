@@ -75,14 +75,14 @@
 }
 
 .input-text-with-prefix {
-    @apply block w-full transition-default rounded appearance-none border-0 border-theme-danger-500 outline-none;
+    @apply block w-full border-0 rounded outline-none appearance-none transition-default border-theme-danger-500;
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
 }
 
 .input-wrapper-with-prefix {
-    @apply flex rounded border border-theme-secondary-300 bg-white;
+    @apply flex bg-white border rounded border-theme-secondary-300;
 }
 
 .input-wrapper-with-prefix .input-prefix-icon {
@@ -94,7 +94,7 @@
 }
 
 .input-wrapper-with-prefix .input-prefix {
-    @apply bg-theme-primary-50 text-theme-secondary-500 border-r border-theme-secondary-300 select-none;
+    @apply border-r select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
 }
 
 /* Radio buttons */
@@ -223,7 +223,7 @@
 }
 
 .taggle_list .taggle {
-    @apply flex items-center pl-2 pr-1 space-x-2 rounded bg-theme-primary-100;
+    @apply flex items-center pl-2 pr-1 space-x-2 overflow-auto rounded bg-theme-primary-100;
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
 }
@@ -259,7 +259,7 @@
 }
 
 .taggle_text {
-    @apply text-theme-primary-600;
+    @apply truncate text-theme-primary-600;
 }
 
 .taggle {
