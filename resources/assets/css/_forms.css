@@ -286,7 +286,6 @@
     @apply pr-2;
 }
 
-.disabled-tags-input .taggle_input,
 .disabled-tags-input:not(.disabled-tags-input-add) .taggle > .close {
     @apply hidden;
 }
