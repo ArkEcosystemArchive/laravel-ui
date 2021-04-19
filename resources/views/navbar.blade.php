@@ -23,10 +23,18 @@
     <nav
         aria-label="{{ trans('ark::general.primary_navigation') }}"
         x-ref="nav"
-        class="fixed top-0 z-30 w-full bg-white border-b dark:bg-theme-secondary-900 border-theme-secondary-300"
+        class="fixed top-0 z-30 w-full bg-white dark:bg-theme-secondary-900 border-theme-secondary-300"
+        :class="{
+            'border-b': !open
+        }"
         dusk="navigation-bar"
     >
-        <div class="px-4 sm:px-6 lg:px-8 py-0.5">
+        <div
+            class="px-4 sm:px-6 lg:px-8 py-0.5 relative z-10 bg-white border-theme-secondary-300 md:border-none"
+            :class="{
+                'border-b': open
+            }"
+        >
             <div class="flex relative justify-between h-20">
                 @include('ark::navbar.logo')
 
