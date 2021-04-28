@@ -146,7 +146,7 @@
     @apply translate-x-5 bg-theme-primary-600;
 }
 .input-toggle-button-active:hover {
-    @apply shadow-outline;
+    @apply ring;
 }
 
 .input-toggle-button-inactive {
@@ -167,7 +167,7 @@
 
 .input-switch-button-left:hover,
 .input-switch-button-right:hover {
-    @apply shadow-outline;
+    @apply ring;
 }
 
 /* Errors */
@@ -195,7 +195,7 @@
 .input-text-with-icon--error:focus,
 .input-group:focus-within .input-text--error,
 .input-text--error:focus {
-    @apply border-theme-danger-300 shadow-outline-red;
+    @apply border-theme-danger-300 ring-theme-danger-300;
 }
 
 .input-text-with-icon--error::placeholder,

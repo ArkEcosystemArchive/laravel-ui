@@ -9,7 +9,7 @@
             <select
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
-                class="form-select block w-full pl-4 pr-8 py-3 @error($name) border-theme-danger-500 focus:border-theme-danger-300 focus:shadow-outline-red @enderror"
+                class="form-select block w-full pl-4 pr-8 py-3 @error($name) border-theme-danger-500 focus:border-theme-danger-300 focus:ring focus:ring-theme-danger-300 @enderror"
                 @if(! isset($noModel)) wire:model="{{ $model ?? $name }}" @endif
                 @if($onChange ?? false) x-on:change="{{ $onChange }}" @endif
                 @if($disabled ?? '') disabled @endif
