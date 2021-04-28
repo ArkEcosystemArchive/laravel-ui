@@ -385,7 +385,7 @@ const MarkdownEditor = (
 
         const text = extractTextFromHtml(this.editor.getHtml());
 
-        this.charsCount = text.length;
+        this.charsCount = text.trimEnd().length;
         this.wordsCount = text.trim().split(/\s+/).length;
         this.readMinutes = Math.round(
             this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
