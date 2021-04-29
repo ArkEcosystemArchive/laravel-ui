@@ -57,32 +57,45 @@ const Tags = (
                     const minimumCharacters = 3;
                     const maximumCharaters = 30;
 
-                    if (tag.length < minimumCharacters || tag.length > maximumCharaters) {
-                        this.displayLivewireToast("The tag must be between 3 and 30 characters.");
+                    if (
+                        tag.length < minimumCharacters ||
+                        tag.length > maximumCharaters
+                    ) {
+                        this.displayLivewireToast(
+                            "The tag must be between 3 and 30 characters."
+                        );
 
                         return false;
                     }
 
                     if (withSpecialCharsAtStart.test(tag)) {
-                        this.displayLivewireToast("The tag must start with a letter.");
+                        this.displayLivewireToast(
+                            "The tag must start with a letter."
+                        );
 
                         return false;
                     }
 
                     if (withSpecialCharsAtEnd.test(tag)) {
-                        this.displayLivewireToast("The tag must end with a letter.");
+                        this.displayLivewireToast(
+                            "The tag must end with a letter."
+                        );
 
                         return false;
                     }
 
                     if (withConsecutiveSpecialChars.test(tag)) {
-                        this.displayLivewireToast("The tag must not contain consecutive special characters.");
+                        this.displayLivewireToast(
+                            "The tag must not contain consecutive special characters."
+                        );
 
                         return false;
                     }
 
                     if (!allowedCharacters.test(tag)) {
-                        this.displayLivewireToast("The tag contains forbidden special characters.");
+                        this.displayLivewireToast(
+                            "The tag contains forbidden special characters."
+                        );
 
                         return false;
                     }
@@ -165,10 +178,7 @@ const Tags = (
 
     displayLivewireToast(validationMessage) {
         if (typeof livewire !== "undefined") {
-            livewire.emit("toastMessage", [
-                validationMessage,
-                "warning",
-            ]);
+            livewire.emit("toastMessage", [validationMessage, "warning"]);
         }
     },
 
