@@ -3,70 +3,80 @@
 declare(strict_types=1);
 
 use ARKEcosystem\UserInterface\Rules\Tag;
+use ARKEcosystem\UserInterface\Support\Enums\Constants;
 
-it('accepts a simple word', function () {
-    $rule = new Tag();
-    $tag = 'hello';
-    $this->assertTrue($rule->passes('tag', $tag));
+beforeEach(function () {
+    $this->subject = new Tag();
 });
 
-it('accepts a simple word with uppercase letters', function () {
-    $rule = new Tag();
-    $tag = 'Hello';
-    $this->assertTrue($rule->passes('tag', $tag));
+it('handle null values', function () {
+    expect($this->subject->passes('tag', null))->toBeFalse();
+});
+
+it('accepts a word', function () {
+    expect($this->subject->passes('tag', 'hello'))->toBeTrue();
+});
+
+it('accepts a word with uppercase letters', function () {
+    expect($this->subject->passes('tag', 'Hello'))->toBeTrue();
+    expect($this->subject->passes('tag', 'hellO'))->toBeTrue();
+});
+
+it('accepts a word with - or . special characters', function () {
+    expect($this->subject->passes('tag', 'hello-world'))->toBeTrue();
+    expect($this->subject->passes('tag', 'hello.world'))->toBeTrue();
 });
 
 it('accepts a word with numbers', function () {
-    $rule = new Tag();
-    $tag = 'hello123';
-    $this->assertTrue($rule->passes('tag', $tag));
+    expect($this->subject->passes('tag', 'hello123world'))->toBeTrue();
+});
+
+it('accepts a word with a space', function () {
+    expect($this->subject->passes('tag', 'hello world'))->toBeTrue();
+});
+
+it('accepts a three character word', function () {
+    expect($this->subject->passes('tag', 'foo'))->toBeTrue();
+});
+
+it('accepts a thirty character word', function () {
+    expect($this->subject->passes('tag', str_repeat('a', Constants::MAX_TAG_LENGTH)))->toBeTrue();
+});
+
+it('does not accept a two characters word', function () {
+    expect($this->subject->passes('tag', 'fo'))->toBeFalse();
+
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.min_length'));
+});
+
+it('does not accept a thirty one characters word', function () {
+    expect($this->subject->passes('tag', str_repeat('a', Constants::MAX_TAG_LENGTH + 1)))->toBeFalse();
+
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.max_length'));
 });
 
 it('does not accept a word that starts with a number', function () {
-    $rule = new Tag();
-    $tag = '2hello';
-    $this->assertFalse($rule->passes('tag', $tag));
+    expect($this->subject->passes('tag', '2hello'))->toBeFalse();
+
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.special_character_start'));
 });
 
-it('does not accept a word with a space', function () {
-    $rule = new Tag();
-    $tag = 'hello world';
-    $this->assertFalse($rule->passes('tag', $tag));
+it('does not accept a word that ends with a number', function () {
+    expect($this->subject->passes('tag', 'hello2'))->toBeFalse();
+
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.special_character_end'));
 });
 
-it('does not accept a word with a special char', function () {
-    $rule = new Tag();
-    $tag = '#hello';
-    $this->assertFalse($rule->passes('tag', $tag));
-});
+it('does not accept a word with a special character other than - or .', function () {
+    expect($this->subject->passes('tag', '#hello'))->toBeFalse();
+    expect($this->subject->passes('tag', 'hello#'))->toBeFalse();
+    expect($this->subject->passes('tag', '_hello'))->toBeFalse();
+    expect($this->subject->passes('tag', 'hello_'))->toBeFalse();
 
-it('accepts a 3 character word', function () {
-    $rule = new Tag();
-    $tag = 'hel';
-    $this->assertTrue($rule->passes('tag', $tag));
-});
-
-it('does not accept a 2 character word', function () {
-    $rule = new Tag();
-    $tag = 'he';
-    $this->assertFalse($rule->passes('tag', $tag));
-});
-
-it('accepts a 30 character word', function () {
-    $rule = new Tag();
-    $tag = str_repeat('a', 30);
-    $this->assertTrue($rule->passes('tag', $tag));
-});
-
-it('does not accept a 31 character word', function () {
-    $rule = new Tag();
-    $tag = str_repeat('a', 31);
-    $this->assertFalse($rule->passes('tag', $tag));
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.forbidden_special_characters'));
 });
 
 it('has an error message', function () {
     $rule = new Tag();
-    expect($rule->message())->toBe(trans('ui::validation.custom.invalid_tag'));
+    expect($rule->message())->toBe(trans('ui::validation.tag.min_length'));
 });
-
-
