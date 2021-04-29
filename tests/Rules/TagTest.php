@@ -74,6 +74,13 @@ it('does not accept a word with a special character other than -', function () {
     expect($this->subject->message())->toBe(trans('ui::validation.tag.forbidden_special_characters'));
 });
 
+it('does not accept a word consecutive authorized special character', function () {
+    expect($this->subject->passes('tag', 'hello--world'))->toBeFalse();
+    expect($this->subject->passes('tag', 'hello  world'))->toBeFalse();
+
+    expect($this->subject->message())->toBe(trans('ui::validation.tag.consecutive_special_characters'));
+});
+
 it('has an error message', function () {
     $rule = new Tag();
     expect($rule->message())->toBe(trans('ui::validation.tag.min_length'));
