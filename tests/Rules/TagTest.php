@@ -22,9 +22,8 @@ it('accepts a word with uppercase letters', function () {
     expect($this->subject->passes('tag', 'hellO'))->toBeTrue();
 });
 
-it('accepts a word with - or . special characters', function () {
+it('accepts a word with -', function () {
     expect($this->subject->passes('tag', 'hello-world'))->toBeTrue();
-    expect($this->subject->passes('tag', 'hello.world'))->toBeTrue();
 });
 
 it('accepts a word with numbers', function () {
@@ -67,11 +66,10 @@ it('does not accept a word that ends with a number', function () {
     expect($this->subject->message())->toBe(trans('ui::validation.tag.special_character_end'));
 });
 
-it('does not accept a word with a special character other than - or .', function () {
-    expect($this->subject->passes('tag', '#hello'))->toBeFalse();
-    expect($this->subject->passes('tag', 'hello#'))->toBeFalse();
-    expect($this->subject->passes('tag', '_hello'))->toBeFalse();
-    expect($this->subject->passes('tag', 'hello_'))->toBeFalse();
+it('does not accept a word with a special character other than -', function () {
+    expect($this->subject->passes('tag', 'hello#world'))->toBeFalse();
+    expect($this->subject->passes('tag', 'hello_world'))->toBeFalse();
+    expect($this->subject->passes('tag', 'hello.world'))->toBeFalse();
 
     expect($this->subject->message())->toBe(trans('ui::validation.tag.forbidden_special_characters'));
 });

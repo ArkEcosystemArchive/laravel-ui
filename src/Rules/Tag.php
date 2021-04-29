@@ -110,17 +110,17 @@ class Tag implements Rule
 
     public function withForbiddenSpecialChars(string $value): bool
     {
-        return preg_match('/^[A-Za-z0-9.-\/-\/ ]*$/', $value) === 0;
+        return preg_match('/^[A-Za-z0-9 -]*$/', $value) === 0;
     }
 
     public function withSpecialCharAtTheStart(string $value): bool
     {
-        return preg_match('/^\W|^[-|\.]|^[0-9]/', $value) === 1;
+        return preg_match('/^\W|^[_|\.|0-9]/', $value) === 1;
     }
 
     public function withSpecialCharAtTheEnd(string $value): bool
     {
-        return preg_match('/\W$|[-|\.]|[0-9]$/', $value) === 1;
+        return preg_match('/\W$|[_|\.|0-9]$/', $value) === 1;
     }
 
     public function withConsecutiveSpecialChars(string $value): bool
