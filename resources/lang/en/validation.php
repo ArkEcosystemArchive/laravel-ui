@@ -15,6 +15,6 @@ return [
         'min_length'                     => 'The tag must be between 3 and 30 characters.',
         'max_length'                     => 'The tag must be between 3 and 30 characters.',
         'lowercase_only'                 => 'The tag must be lowercased.',
-        'forbidden_special_characters'   => 'The tag contains forbidden special characters.'
+        'forbidden_special_characters'   => 'The tag must only contain letters, numbers, spaces and -'
     ],
 ];
