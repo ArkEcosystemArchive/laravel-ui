@@ -46,25 +46,57 @@ const Tags = (
 
                 if (!allowedTags.length) {
                     // Validates:
-                    // - 3 TO 30 Chars
-                    // - Not start with a number
-                    // - Only allows a-ZA-Z0-9 characters
-                    const regex = /^(?=.{3,30}$)(?![0-9])[a-z0-9]+$/gm;
+                    // - 3 TO 30 characters
+                    // - Don't start or end with a number or a special character
+                    // - Only allows a-ZA-Z0-9 and - characters
+                    // - No consecutives special characters
+                    const allowedCharacters = /^[A-Za-z0-9 -]*$/gm;
+                    const withSpecialCharsAtStart = /^[^A-Za-z]/;
+                    const withSpecialCharsAtEnd = /[^A-Za-z]$/;
+                    const withConsecutiveSpecialChars = /[ -]{2}/;
+                    const minimumCharacters = 3;
+                    const maximumCharaters = 30;
 
-                    if (!regex.test(tag)) {
-                        if (typeof livewire !== "undefined") {
-                            if (tag.length < 3 || tag.length > 30) {
-                                livewire.emit("toastMessage", [
-                                    "The tag must be between 3 and 30 characters.",
-                                    "warning",
-                                ]);
-                            } else {
-                                livewire.emit("toastMessage", [
-                                    "Only letters and numbers are allowed and the tag must start with a letter.",
-                                    "warning",
-                                ]);
-                            }
-                        }
+                    if (
+                        tag.length < minimumCharacters ||
+                        tag.length > maximumCharaters
+                    ) {
+                        this.displayLivewireToast(
+                            "The tag must be between 3 and 30 characters."
+                        );
+
+                        return false;
+                    }
+
+                    if (withSpecialCharsAtStart.test(tag)) {
+                        this.displayLivewireToast(
+                            "The tag must start with a letter."
+                        );
+
+                        return false;
+                    }
+
+                    if (withSpecialCharsAtEnd.test(tag)) {
+                        this.displayLivewireToast(
+                            "The tag must end with a letter."
+                        );
+
+                        return false;
+                    }
+
+                    if (withConsecutiveSpecialChars.test(tag)) {
+                        this.displayLivewireToast(
+                            "The tag must not contain consecutive special characters."
+                        );
+
+                        return false;
+                    }
+
+                    if (!allowedCharacters.test(tag)) {
+                        this.displayLivewireToast(
+                            "The tag contains forbidden special characters."
+                        );
+
                         return false;
                     }
 
@@ -143,6 +175,13 @@ const Tags = (
             });
         });
     },
+
+    displayLivewireToast(validationMessage) {
+        if (typeof livewire !== "undefined") {
+            livewire.emit("toastMessage", [validationMessage, "warning"]);
+        }
+    },
+
     hideTooltip() {
         if (this.tooltipInstance) {
             this.tooltipInstance.destroy();
