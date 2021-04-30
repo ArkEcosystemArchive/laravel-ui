@@ -51,8 +51,8 @@ const Tags = (
                     // - Only allows a-ZA-Z0-9 and - characters
                     // - No consecutives special characters
                     const allowedCharacters = /^[A-Za-z0-9 -]*$/gm;
-                    const withSpecialCharsAtStart = /^[A-Za-z]/;
-                    const withSpecialCharsAtEnd = /[A-Za-z]$/;
+                    const withSpecialCharsAtStart = /^[^A-Za-z]/;
+                    const withSpecialCharsAtEnd = /[^A-Za-z]$/;
                     const withConsecutiveSpecialChars = /[ -]{2}/;
                     const minimumCharacters = 3;
                     const maximumCharaters = 30;
