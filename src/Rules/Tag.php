@@ -115,17 +115,17 @@ class Tag implements Rule
 
     public function withSpecialCharAtTheStart(string $value): bool
     {
-        return preg_match('/^\W|^[_|\.|0-9]/', $value) === 1;
+        return preg_match('/^[A-Za-z]/', $value) === 0;
     }
 
     public function withSpecialCharAtTheEnd(string $value): bool
     {
-        return preg_match('/\W$|[_|\.|0-9]$/', $value) === 1;
+        return preg_match('/[A-Za-z]$/', $value) === 0;
     }
 
     public function withConsecutiveSpecialChars(string $value): bool
     {
-        return preg_match('/^[^a-zA-Z0-9]?(?>[a-zA-Z0-9]+[^a-zA-Z0-9])*[a-zA-Z0-9]*$/', $value) === 0;
+        return preg_match('/[ -]{2,}/', $value) === 1;
     }
 
     public function needsMinimumLength(string $value): bool
