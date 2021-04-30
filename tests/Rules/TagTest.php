@@ -97,7 +97,7 @@ it('does not accept a word an accepted special character at the end', function (
     expect($this->subject->message())->toBe(trans('ui::validation.tag.special_character_end'));
 });
 
-it('does not accept a word consecutive authorized special character', function () {
+it('does not accept a word with consecutive allowed special characters', function () {
     expect($this->subject->passes('tag', 'hello--world'))->toBeFalse();
     expect($this->subject->passes('tag', 'hello  world'))->toBeFalse();
     expect($this->subject->passes('tag', 'hello -world'))->toBeFalse();
