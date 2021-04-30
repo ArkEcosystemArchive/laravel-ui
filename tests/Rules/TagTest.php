@@ -42,7 +42,7 @@ it('accepts a thirty character word', function () {
     expect($this->subject->passes('tag', str_repeat('a', Constants::MAX_TAG_LENGTH)))->toBeTrue();
 });
 
-it('does not accept a two characters word', function () {
+it('does not accept a two character word', function () {
     expect($this->subject->passes('tag', 'fo'))->toBeFalse();
 
     expect($this->subject->message())->toBe(trans('ui::validation.tag.min_length'));
