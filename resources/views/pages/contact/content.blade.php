@@ -40,7 +40,7 @@
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
                 <a href="{{ $discordUrl}}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
-                    <div class="flex justify-center items-center space-x-2 w-full">
+                    <div class="flex items-center justify-center w-full space-x-2">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
@@ -125,33 +125,20 @@
                 />
             </div>
 
-            <div
-                x-data="{
-                    success: {{ (flash()->level === 'success') ? 'true' : 'false' }},
-                    error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
-                }"
-                x-init="setTimeout(() => { error = false; success = false }, 10000)"
-                class="flex relative flex-col flex-1 justify-end"
-            >
-                <div x-show.transition="success" class="absolute top-0 w-full" x-cloak>
-                    <x-ark-toast
-                        type="success"
-                        :message="flash()->message"
-                        alpineClose="success = false"
-                        class="text-center"
-                    />
-                </div>
-
-                <div x-show.transition="error" class="absolute top-0 w-full" x-cloak>
-                    <x-ark-toast
-                        type="error"
-                        :message="flash()->message"
-                        alpineClose="error = false"
-                        class="text-center"
-                    />
-                </div>
-
-                <button x-bind.transition:class="{ invisible: success || error }" type="submit" class="button-primary" x-cloak>
+            <div class="relative flex flex-col justify-end flex-1">
+                <button
+                    type="submit"
+                    x-data="{
+                        success: {{ (flash()->level === 'success') ? 'true' : 'false' }},
+                        error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
+                    }"
+                    x-bind.transition:class="{ invisible: success || error }"
+                    @if(flash()->message)
+                        x-init="livewire.emit('toastMessage', ['{{ flash()->message }}', '{{ flash()->level }}'])"
+                    @endif
+                    x-cloak
+                    class="button-primary"
+                >
                     @lang('ui::actions.send')
                 </button>
             </div>
