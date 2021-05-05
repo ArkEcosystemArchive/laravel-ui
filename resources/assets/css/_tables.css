@@ -490,7 +490,7 @@
     > tr:focus
     > td.hoverable-cell
     > div.table-cell-bg {
-    @apply bg-theme-secondary-800 !important;
+    @apply bg-black !important;
 }
 
 @screen sm {
