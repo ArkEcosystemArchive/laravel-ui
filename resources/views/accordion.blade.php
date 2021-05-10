@@ -4,7 +4,7 @@
     'dark' => false,
     'border' => true,
     'containerClass' => 'p-6',
-    'titleClass' => '',
+    'titleClass' => 'text-lg font-semibold',
     'circleClass' => '',
     'circleSize' => 'sm',
     'toggleTitle' => false,
@@ -22,7 +22,7 @@
                     :class="{ 'mb-5': openPanel }"
                     @click="openPanel = (openPanel ? null : 1)"
                 >
-                    <div class="text-lg font-semibold {{ $titleClass }}">
+                    <div class="{{ $titleClass }}">
                         @if($toggleTitle)
                             <span x-show="openPanel" x-cloak>@lang('ui::actions.hide') {{ $title }}</span>
                             <span x-show="!openPanel">@lang('ui::actions.show') {{ $title }}</span>
