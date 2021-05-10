@@ -9,7 +9,7 @@
 
 @screen sm {
     .content-container {
-        @apply px-8;
+        @apply px-10;
     }
 }
 
