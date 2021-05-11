@@ -30,12 +30,12 @@
         dusk="navigation-bar"
     >
         <div
-            class="px-8 md:px-10 py-0.5 relative z-10 bg-white border-theme-secondary-300 md:border-none"
+            class="px-8 sm:px-10 py-0.5 relative z-10 bg-white border-theme-secondary-300 md:border-none"
             :class="{
                 'border-b': open
             }"
         >
-            <div class="flex relative justify-between h-20">
+            <div class="relative flex justify-between h-20">
                 @include('ark::navbar.logo')
 
                 @isset($middle)
@@ -43,7 +43,7 @@
                 @endisset
 
                 <div class="flex justify-end">
-                    <div class="flex flex-1 justify-end items-center sm:items-stretch sm:justify-between">
+                    <div class="flex items-center justify-end flex-1 sm:items-stretch sm:justify-between">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
@@ -51,7 +51,7 @@
                         @endisset
                     </div>
 
-                    <div class="flex inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
+                    <div class="inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-4">
                         @if(is_array($navigation))
                             @include('ark::navbar.hamburger')
                         @endif
