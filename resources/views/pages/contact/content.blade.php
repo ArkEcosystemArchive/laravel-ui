@@ -125,33 +125,20 @@
                 />
             </div>
 
-            <div
-                x-data="{
-                    success: {{ (flash()->level === 'success') ? 'true' : 'false' }},
-                    error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
-                }"
-                x-init="setTimeout(() => { error = false; success = false }, 10000)"
-                class="flex relative flex-col flex-1 justify-end"
-            >
-                <div x-show.transition="success" class="absolute top-0 w-full" x-cloak>
-                    <x-ark-toast
-                        type="success"
-                        :message="flash()->message"
-                        alpineClose="success = false"
-                        class="text-center"
-                    />
-                </div>
-
-                <div x-show.transition="error" class="absolute top-0 w-full" x-cloak>
-                    <x-ark-toast
-                        type="error"
-                        :message="flash()->message"
-                        alpineClose="error = false"
-                        class="text-center"
-                    />
-                </div>
-
-                <button x-bind.transition:class="{ invisible: success || error }" type="submit" class="button-primary" x-cloak>
+            <div class="flex relative flex-col flex-1 justify-end">
+                <button
+                    type="submit"
+                    x-data="{
+                        success: {{ (flash()->level === 'success') ? 'true' : 'false' }},
+                        error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
+                    }"
+                    x-bind.transition:class="{ invisible: success || error }"
+                    @if(flash()->message)
+                        x-init="livewire.emit('toastMessage', ['{{ flash()->message }}', '{{ flash()->level }}'])"
+                    @endif
+                    x-cloak
+                    class="button-primary"
+                >
                     @lang('ui::actions.send')
                 </button>
             </div>
