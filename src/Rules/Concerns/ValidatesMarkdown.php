@@ -23,13 +23,11 @@ trait ValidatesMarkdown
 
     private function singleLineListItemHtml($html): string
     {
-        return preg_replace([
-            '/(<(li|ol)( .*?)?>)\n(<)/',
-            '/(>)\n(<\/(li|ol)>)/',
-        ], [
-            '$1$4',
-            '$1$3',
-        ], $html);
+        $regex = '/<(li)([^>]*)>(\n\r*)(.+?)(\n\r*)<\/\1>/mis';
+        $substitution = '<$1$2>$4<\\/$1>';
+
+        return preg_replace($regex, $substitution, $html);
+
     }
 
     private function getHtml($value): string
