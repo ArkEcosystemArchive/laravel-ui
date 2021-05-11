@@ -24,8 +24,8 @@ trait ValidatesMarkdown
     private function singleLineListItemHtml($html): string
     {
         return preg_replace([
-            '/(<(li|ol)( .*?)?>)+\n(<)/',
-            '/(<\/(li|ol)>)+\n(<)/',
+            '/(<(li|ol)( .*?)?>)\n(<)/',
+            '/(>)\n(<\/(li|ol)>)/',
         ], [
             '$1$4',
             '$1$3',
