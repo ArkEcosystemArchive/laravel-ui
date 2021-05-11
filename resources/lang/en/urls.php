@@ -16,4 +16,5 @@ return [
     'deployer'      => 'https://deployer.io/',
     'nodem'         => 'https://nodem.io/',
     'protokol'      => 'https://www.protokol.com/',
+    'marketsquare'  => 'https://marketsquare.io/',
 ];
