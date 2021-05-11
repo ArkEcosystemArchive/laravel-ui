@@ -7,7 +7,7 @@
     @apply flex mx-auto;
 }
 
-@screen md {
+@screen sm {
     .content-container {
         @apply px-10;
     }
