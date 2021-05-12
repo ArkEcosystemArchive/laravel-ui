@@ -20,6 +20,17 @@
     }
 }
 
+/* Navbar container */
+.navbar-container {
+    @apply px-8 py-0.5;
+}
+
+@screen sm {
+    .navbar-container {
+        @apply px-10;
+    }
+}
+
 /** Headings with H **/
 h1,
 h2,

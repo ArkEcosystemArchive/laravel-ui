@@ -30,7 +30,7 @@
         dusk="navigation-bar"
     >
         <div
-            class="px-8 sm:px-10 py-0.5 relative z-10 bg-white border-theme-secondary-300 md:border-none"
+            class="navbar-container relative z-10 bg-white border-theme-secondary-300 md:border-none"
             :class="{
                 'border-b': open
             }"
