@@ -112,8 +112,50 @@ it('validates unicode text correctly', function () {
     $this->assertFalse($rule->passes('markdown', $text));
 });
 
-
 it('has an error message', function () {
     $rule = new MarkdownMaxChars(30);
     expect($rule->message())->toBe(trans('ui::validation.custom.max_markdown_chars', ['max' => 30]));
+});
+
+
+it('handles the characters count when we have lists', function () {
+    $markdown = <<<EOT
+I have been involved in the Blockchain and crypto industries for years. I started getting more active after discovering ARK and began collaborating with others in the ARK community:
+
+Delegate Cam’s Yellow Jacket for ArkLogoWorks
+BroadcastJunkie for ArkForIT
+Delegate Cryptology for ArkTippr
+Jorma for ArkDirectory
+
+I launched a community service of my own under the name ARKStickers where I began shipping ARK sticker packs all over the world in exchange for ARK coins. Shortly thereafter, I helped write docs for the ARK Team. I founded the ARK Community Committee to make cool ARK stuff with other people, like ARKTimeline. I was hired to the team in 2018, and have since produced over 100 podcast episodes under The ARK Crypto Podcast. I attended and spoke at Blockchain conferences such as Consensus NYC 2019, WorldCryptoCon, Hivefest, DYGYCON, and others. I have been interviewed by BlockTV, Cointelegraph, and other media outlets. I now serve as Senior Brand Manager for ARK and its products.
+EOT;
+
+    $html = <<<HTML
+<p>I have been involved in the Blockchain and crypto industries for years. I started getting more active after discovering ARK and began collaborating with others in the ARK community:</p>
+<ul>
+<li>
+<strong>Delegate Cam’s Yellow Jacket</strong> for <em>ArkLogoWorks</em>
+</li>
+<li>
+<strong>BroadcastJunkie</strong> for <em>ArkForIT</em>
+</li>
+<li>
+<strong>Delegate Cryptology</strong> for <em>ArkTippr</em>
+</li>
+<li>
+<strong>Jorma</strong> for <em>ArkDirectory</em>
+</li>
+</ul>
+<p>I launched a community service of my own under the name <em>ARKStickers</em> where I began shipping ARK sticker packs all over the world in exchange for ARK coins. Shortly thereafter, I helped write docs for the ARK Team. I founded the ARK Community Committee to make cool ARK stuff with other people, like ARKTimeline. I was hired to the team in 2018, and have since produced over 100 podcast episodes under <em>The ARK Crypto Podcast.</em> I attended and spoke at Blockchain conferences such as Consensus NYC 2019, WorldCryptoCon, Hivefest, DYGYCON, and others. I have been interviewed by BlockTV, Cointelegraph, and other media outlets. I now serve as Senior Brand Manager for ARK and its products.</p>
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($html);
+
+    $rule = new MarkdownMaxChars(998);
+    $this->assertTrue($rule->passes('markdown', $markdown));
+
+    $rule = new MarkdownMaxChars(997);
+    $this->assertFalse($rule->passes('markdown', $markdown));
 });

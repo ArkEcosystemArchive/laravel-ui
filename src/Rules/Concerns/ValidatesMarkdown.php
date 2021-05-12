@@ -9,7 +9,7 @@ trait ValidatesMarkdown
     private function getText($value): string
     {
         $html = $this->getHtml($value);
-
+        $html = $this->removeExtraLineBreakInListItems($html);
         $html = $this->removeHeadersAnchors($html);
 
         return trim(strip_tags($html));
@@ -19,6 +19,15 @@ trait ValidatesMarkdown
     {
         $regex = '/<a\s?[^>]*[^>]*>#<\/a>/siU';
         return preg_replace($regex, '', $html);
+    }
+
+    private function removeExtraLineBreakInListItems($html): string
+    {
+        $regex = '/<(li)([^>]*)>(\n\r*)(.+?)(\n\r*)<\/\1>/mis';
+        $substitution = '<$1$2>$4<\\/$1>';
+
+        return preg_replace($regex, $substitution, $html);
+
     }
 
     private function getHtml($value): string
