@@ -30,12 +30,12 @@
             class="swiper-container
                 @unless ($topPagination) slider-pagination-bottom @endunless
                 @if ($hasViewAll) slider-show-view-all @endif
-                @if ($shadowSpacing) px-8 sm:px-10 @endif
+                @if ($shadowSpacing) px-5 @endif
                 @if ($rows > 1) slider-multirow @endif"
         >
             @include('ark::includes.slider.header')
 
-            <div class="@if($shadowSpacing) px-8 sm:px-10 pt-5 -mx-8 sm:-mx-10 -mt-5 @endif swiper-wrapper">
+            <div class="@if($shadowSpacing) px-5 pt-5 -mx-5 -mt-5 @endif swiper-wrapper">
                 {{ $slot }}
             </div>
 
