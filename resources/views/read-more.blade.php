@@ -18,7 +18,7 @@
         >
             <div
                 x-show="showMore"
-                class="read-more-collapse link border-b border-dashed mt-2"
+                class="mt-2 border-b border-dashed read-more-collapse link"
                 @click="showMore = false && hideOptionAndTruncate()"
             >
                 @lang('ui::actions.show_less')
@@ -26,7 +26,7 @@
 
             <div
                 x-show="! showMore && showExpand"
-                class="read-more-expand link border-b border-dashed ml-2"
+                class="ml-2 border-b border-dashed read-more-expand link"
                 @click="showAll"
             >
                 @lang('ui::actions.read_more')
