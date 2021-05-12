@@ -2,7 +2,7 @@
     href="{{ $url ?? '#' }}"
     target="_blank"
     rel="noopener noreferrer"
-    class="logo-simple"
+    class="logo-simple {{ $linkClass ?? '' }}"
 >
     <div class="relative transition-default">
         <img src="{{ $image }}" class="logo-simple-image {{ $class ?? '' }}" />
