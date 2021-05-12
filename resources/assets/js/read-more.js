@@ -40,7 +40,6 @@ const ReadOnly = ({ value }) => ({
         this.truncate();
     },
     hasOverflow(el) {
-        console.log({ el, offsetWidth: el.offsetWidth, scrollWidth: el.scrollWidth, })
         return el.offsetWidth < el.scrollWidth;
     },
 });
