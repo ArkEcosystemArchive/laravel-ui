@@ -244,6 +244,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::outgoing-link', 'ark-outgoing-link');
         Blade::component('ark::pagination', 'ark-pagination');
         Blade::component('ark::pagination-url', 'ark-pagination-url');
+        Blade::component('ark::read-more', 'ark-read-more');
         Blade::component('ark::secondary-menu', 'ark-secondary-menu');
         Blade::component('ark::sidebar-link', 'ark-sidebar-link');
         Blade::component('ark::simple-footer', 'ark-simple-footer');
