@@ -571,64 +571,65 @@
 /* Table with sticky headers you will need to manually override the `top` property for `.table-container table.sticky-headers th` according to your needs */
 
 .table-container table.sticky-headers th {
-    @apply sticky z-10 bg-white;
+    @apply sticky z-10 bg-white bg-clip-padding;
+    box-shadow: inset 0 -1px 0 var(--theme-color-secondary-300);
     /* Define this on your local project CSS file */
     /* top: 80px; */
 }
 
-.table-container table.sticky-headers th:before {
-    @apply absolute bottom-0 left-0 w-full border-b border-theme-secondary-300;
-    content: "";
+.dark .table-container table.sticky-headers th {
+    box-shadow: inset 0 -1px 0 var(--theme-color-secondary-800);
 }
 
-.table-container table.sticky-headers th:first-child:after,
-.table-container table.sticky-headers th:last-child:after,
-.table-container table.sticky-headers th.last-cell:after {
+
+.table-container table.sticky-headers th:first-child:before,
+.table-container table.sticky-headers th:last-child:before,
+.table-container table.sticky-headers th.last-cell:before {
     content: "";
     @apply absolute top-0 w-4 h-full bg-white border-0 border-theme-secondary-300;
 }
-.dark .table-container table.sticky-headers th:first-child:after,
-.dark .table-container table.sticky-headers th:last-child:after {
+.dark .table-container table.sticky-headers th:first-child:before,
+.dark .table-container table.sticky-headers th:last-child:before {
     @apply bg-theme-secondary-900 border-theme-secondary-800;
 }
 
-.table-container table.sticky-headers th:first-child:after,
-.table-container table.sticky-headers th.first-cell:after {
+.table-container table.sticky-headers th:first-child:before,
+.table-container table.sticky-headers th.first-cell:before {
     @apply left-0 -ml-4;
 }
 
-.table-container table.sticky-headers th:last-child:after,
-.table-container table.sticky-headers th.last-cell:after {
+.table-container table.sticky-headers th:last-child:before,
+.table-container table.sticky-headers th.last-cell:before {
     @apply right-0 -mr-4;
 }
 
-.dark .table-container table.sticky-headers th.last-cell:after {
+.dark .table-container table.sticky-headers th.last-cell:before {
     @apply bg-theme-secondary-900;
 }
 
 @screen xl {
-    .table-container table.sticky-headers th.last-cell-xl:after {
+    .table-container table.sticky-headers th.last-cell-xl:before {
         height: 50%;
         @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
     }
 }
 
 @screen lg {
-    .table-container table.sticky-headers th.last-cell-lg:after {
+    .table-container table.sticky-headers th.last-cell-lg:before {
         height: 50%;
         @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
     }
 }
 
 @screen md {
-    .table-container table.sticky-headers th.last-cell-md:after {
+    .table-container table.sticky-headers th.last-cell-md:before {
         height: 50%;
         @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
     }
 }
 
 @screen sm {
-    .table-container table.sticky-headers th.last-cell-sm:after {
+    .table-container table.sticky-headers th.last-cell-sm:before {
         height: 50%;
         @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
     }
@@ -636,10 +637,6 @@
 
 .dark .table-container table.sticky-headers th {
     @apply bg-theme-secondary-900;
-}
-
-.dark .table-container table.sticky-headers th:before {
-    @apply border-theme-secondary-800;
 }
 
 .table-container table.sticky-headers thead tr {
