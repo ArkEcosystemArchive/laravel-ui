@@ -30,9 +30,9 @@
         . ($firstOn === 'xl' ? ' first-cell first-cell-xl' : '')
         . ' ' . $class
 ]) }}>
-    @isset ($slot)
-        {{ $slot }}
-    @else
+    @if ($name != '')
         @lang($name)
-    @endisset
+    @else
+        {{ $slot }}
+    @endif
 </th>
