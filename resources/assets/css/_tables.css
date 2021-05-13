@@ -115,7 +115,6 @@
     @apply px-0 py-0.5;
 }
 
-
 .table-container
     table
     > tbody
@@ -185,7 +184,6 @@
     > div.table-cell-content {
     @apply relative flex items-center px-3 py-4;
 }
-
 
 .table-container table > tbody > tr > td.hoverable-cell > div.table-cell-bg {
     @apply absolute top-0 left-0 w-full h-full border-t-2 border-b-2 border-white;
@@ -371,12 +369,12 @@
 .table-container table thead th.last-until-lg,
 .table-container table thead th.last-until-md,
 .table-container table thead th.last-until-sm,
-.table-container table tbody td.hoverable-cell:last-child .table-cell-content{
+.table-container table tbody td.hoverable-cell:last-child .table-cell-content {
     @apply pr-0;
 }
 
 .table-container table thead th:first-child,
-.table-container table tbody td.hoverable-cell:first-child .table-cell-content{
+.table-container table tbody td.hoverable-cell:first-child .table-cell-content {
     @apply pl-0;
 }
 
@@ -567,7 +565,6 @@
     @apply bg-transparent;
 }
 
-
 /* Table with sticky headers you will need to manually override the `top` property for `.table-container table.sticky-headers th` according to your needs */
 
 .table-container table.sticky-headers th {
@@ -580,7 +577,6 @@
 .dark .table-container table.sticky-headers th {
     box-shadow: inset 0 -1px 0 var(--theme-color-secondary-800);
 }
-
 
 .table-container table.sticky-headers th:first-child:before,
 .table-container table.sticky-headers th:last-child:before,
