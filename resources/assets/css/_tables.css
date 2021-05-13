@@ -115,6 +115,7 @@
     @apply px-0 py-0.5;
 }
 
+
 .table-container
     table
     > tbody
@@ -140,7 +141,7 @@
     > td.hoverable-cell.last-cell
     > div.table-cell-bg::before {
     content: "";
-    @apply absolute top-0 block w-2 h-full border-t border-b border-transparent;
+    @apply absolute top-0 block w-4 h-full border-t border-b border-transparent;
 }
 
 .table-container
@@ -155,7 +156,7 @@
     > tr
     > td.hoverable-cell.first-cell
     > div.table-cell-bg::before {
-    @apply left-0 -ml-2 border-l rounded-l-xl;
+    @apply left-0 -ml-4 border-l rounded-l-md;
 }
 
 .table-container
@@ -170,7 +171,7 @@
     > tr
     > td.hoverable-cell.last-cell
     > div.table-cell-bg::before {
-    @apply right-0 -mr-2 border-r rounded-r-xl;
+    @apply right-0 -mr-4 border-r rounded-r-md;
 }
 
 .table-container table > tbody > tr > td.hoverable-cell {
@@ -184,6 +185,7 @@
     > div.table-cell-content {
     @apply relative flex items-center px-3 py-4;
 }
+
 
 .table-container table > tbody > tr > td.hoverable-cell > div.table-cell-bg {
     @apply absolute top-0 left-0 w-full h-full border-t-2 border-b-2 border-white;
@@ -256,44 +258,10 @@
     > tbody
     > tr:hover
     > td.hoverable-cell
-    > div.table-cell-bg,
-.table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell:first-child
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell.first-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell:last-child
-    > div.table-cell-bg:before,
-.table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell.last-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell
     > div.table-cell-bg {
     @apply bg-theme-secondary-100;
 }
 
-.table-container table > tbody > tr:focus {
-    @apply outline-none;
-}
-
 .table-container
     table
     > tbody
@@ -322,36 +290,6 @@
     table
     > tbody
     > tr[data-danger]:hover
-    > td.hoverable-cell
-    > div.table-cell-bg,
-.table-container
-    table
-    > tbody
-    > tr[data-danger]:focus
-    > td.hoverable-cell:first-child
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-danger]:focus
-    > td.hoverable-cell.first-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-danger]:focus
-    > td.hoverable-cell:last-child
-    > div.table-cell-bg:before,
-.table-container
-    table
-    > tbody
-    > tr[data-danger]:focus
-    > td.hoverable-cell.last-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-danger]:focus
     > td.hoverable-cell
     > div.table-cell-bg {
     @apply bg-theme-danger-100;
@@ -385,36 +323,6 @@
     table
     > tbody
     > tr[data-warning]:hover
-    > td.hoverable-cell
-    > div.table-cell-bg,
-.table-container
-    table
-    > tbody
-    > tr[data-warning]:focus
-    > td.hoverable-cell:first-child
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-warning]:focus
-    > td.hoverable-cell.first-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-warning]:focus
-    > td.hoverable-cell:last-child
-    > div.table-cell-bg:before,
-.table-container
-    table
-    > tbody
-    > tr[data-warning]:focus
-    > td.hoverable-cell.last-cell
-    > div.table-cell-bg::before,
-.table-container
-    table
-    > tbody
-    > tr[data-warning]:focus
     > td.hoverable-cell
     > div.table-cell-bg {
     @apply bg-theme-warning-100;
@@ -454,43 +362,22 @@
     > tbody
     > tr:hover
     > td.hoverable-cell
-    > div.table-cell-bg,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell:first-child
-    > div.table-cell-bg::before,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell.first-cell
-    > div.table-cell-bg::before,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell:last-child
-    > div.table-cell-bg:before,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell.last-cell
-    > div.table-cell-bg::before,
-.dark
-    .table-container
-    table
-    > tbody
-    > tr:focus
-    > td.hoverable-cell
     > div.table-cell-bg {
-    @apply bg-black !important;
+    @apply bg-theme-secondary-800 !important;
+}
+
+.table-container table thead th:last-child,
+.table-container table thead th.last-until-xl,
+.table-container table thead th.last-until-lg,
+.table-container table thead th.last-until-md,
+.table-container table thead th.last-until-sm,
+.table-container table tbody td.hoverable-cell:last-child .table-cell-content{
+    @apply pr-0;
+}
+
+.table-container table thead th:first-child,
+.table-container table tbody td.hoverable-cell:first-child .table-cell-content{
+    @apply pl-0;
 }
 
 @screen sm {
@@ -509,6 +396,10 @@
         > td.hoverable-cell.first-cell-sm
         > div.table-cell-bg::before {
         content: none;
+    }
+
+    .table-container table thead th.last-until-sm {
+        @apply pr-3;
     }
 }
 
@@ -529,6 +420,10 @@
         > div.table-cell-bg::before {
         content: none;
     }
+
+    .table-container table thead th.last-until-md {
+        @apply pr-3;
+    }
 }
 
 @screen lg {
@@ -548,6 +443,10 @@
         > div.table-cell-bg::before {
         content: none;
     }
+
+    .table-container table thead th.last-until-lg {
+        @apply pr-3;
+    }
 }
 
 @screen xl {
@@ -566,6 +465,10 @@
         > td.hoverable-cell.first-cell-xl
         > div.table-cell-bg::before {
         content: none;
+    }
+
+    .table-container table thead th.last-until-xl {
+        @apply pr-3;
     }
 }
 
@@ -662,4 +565,83 @@
     > td.hoverable-cell
     > div.table-cell-bg::before {
     @apply bg-transparent;
+}
+
+
+/* Table with sticky headers you will need to manually override the `top` property for `.table-container table.sticky-headers th` according to your needs */
+
+.table-container table.sticky-headers th {
+    @apply sticky z-10 bg-white;
+    /* Define this on your local project CSS file */
+    /* top: 80px; */
+}
+
+.table-container table.sticky-headers th:before {
+    @apply absolute bottom-0 left-0 w-full border-b border-theme-secondary-300;
+    content: "";
+}
+
+.table-container table.sticky-headers th:first-child:after,
+.table-container table.sticky-headers th:last-child:after,
+.table-container table.sticky-headers th.last-cell:after {
+    content: "";
+    @apply absolute top-0 w-4 h-full bg-white border-0 border-theme-secondary-300;
+}
+.dark .table-container table.sticky-headers th:first-child:after,
+.dark .table-container table.sticky-headers th:last-child:after {
+    @apply bg-theme-secondary-900 border-theme-secondary-800;
+}
+
+.table-container table.sticky-headers th:first-child:after,
+.table-container table.sticky-headers th.first-cell:after {
+    @apply left-0 -ml-4;
+}
+
+.table-container table.sticky-headers th:last-child:after,
+.table-container table.sticky-headers th.last-cell:after {
+    @apply right-0 -mr-4;
+}
+
+.dark .table-container table.sticky-headers th.last-cell:after {
+    @apply bg-theme-secondary-900;
+}
+
+@screen xl {
+    .table-container table.sticky-headers th.last-cell-xl:after {
+        height: 50%;
+        @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
+    }
+}
+
+@screen lg {
+    .table-container table.sticky-headers th.last-cell-lg:after {
+        height: 50%;
+        @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
+    }
+}
+
+@screen md {
+    .table-container table.sticky-headers th.last-cell-md:after {
+        height: 50%;
+        @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
+    }
+}
+
+@screen sm {
+    .table-container table.sticky-headers th.last-cell-sm:after {
+        height: 50%;
+        @apply absolute right-0 w-auto mr-0 border-l border-r-0 top-1/4;
+    }
+}
+
+.dark .table-container table.sticky-headers th {
+    @apply bg-theme-secondary-900;
+}
+
+.dark .table-container table.sticky-headers th:before {
+    @apply border-theme-secondary-800;
+}
+
+.table-container table.sticky-headers thead tr {
+    @apply border-none;
 }
