@@ -1,23 +1,10 @@
 /* Custom content container */
 .content-container {
-    @apply flex px-8 mx-auto;
+    @apply flex px-8 mx-auto sm:px-10 lg:max-w-7xl;
 }
 
 .content-container-full-width {
-    @apply flex mx-auto;
-}
-
-@screen sm {
-    .content-container {
-        @apply px-10;
-    }
-}
-
-@screen lg {
-    .content-container-full-width,
-    .content-container {
-        @apply max-w-7xl;
-    }
+    @apply flex mx-auto lg:max-w-7xl;
 }
 
 /* Navbar container */
