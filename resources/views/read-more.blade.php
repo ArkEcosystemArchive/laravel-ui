@@ -3,7 +3,7 @@
         x-data="ReadMore({ value: '{{ $content }}'})"
         :class="{ 'flex': ! showMore }"
         x-init="truncate"
-        x-on:resize.window="hideAndTruncate"
+        x-on:resize.window="hideOptionAndTruncate"
         x-cloak
     >
         <div
