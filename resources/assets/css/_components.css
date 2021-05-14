@@ -481,3 +481,12 @@
 .tile-link-disabled.tile-link-border {
     @apply border-theme-secondary-200;
 }
+
+/* Contact components */
+.contact-header {
+    @apply py-8 content-container;
+}
+
+.contact-content {
+    @apply py-8 content-container;
+}

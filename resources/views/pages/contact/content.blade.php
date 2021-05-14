@@ -17,7 +17,7 @@
     ],
 ])
 
-<div class="flex flex-col py-8 space-y-16 content-container lg:flex-row lg:space-y-0">
+<div class="flex flex-col space-y-16 lg:flex-row lg:space-y-0 contact-content">
     <div class="flex-1 space-y-8 lg:w-1/2 border-theme-secondary-300 lg:border-r lg:pr-6">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
             <h3>{{ $helpTitle }}</h3>
