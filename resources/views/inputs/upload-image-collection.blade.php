@@ -9,6 +9,7 @@
     'minHeight'          => 148,
     'maxFilesize'        => '2MB',
     'uploadErrorMessage' => null,
+    'sortable'           => false,
 ])
 
 <div
@@ -51,9 +52,9 @@
     </div>
 
     @if (count($images) > 0)
-        <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" @if($sortable)wire:sortable="updateImageOrder"@endif>
             @foreach ($images as $index => $image)
-                <div class="relative {{ $imageHeight }}">
+                <div class="relative {{ $imageHeight }}" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
                     <div
                         style="background-image: url('{{ $image['url'] }}')"
                         class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
