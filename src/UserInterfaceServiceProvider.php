@@ -4,6 +4,7 @@ namespace ARKEcosystem\UserInterface;
 
 use ARKEcosystem\UserInterface\Components\FlashMessage;
 use ARKEcosystem\UserInterface\Components\Toast;
+use ARKEcosystem\UserInterface\Http\Controllers\ImageCropController;
 use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +72,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
             Route::get('twitter-embed-code', [WysiwygControlller::class, 'getTwitterEmbedCode'])->name('wysiwyg.twitter');
             Route::post('upload-image', [WysiwygControlller::class, 'uploadImage'])->name('wysiwyg.upload-image')->middleware(['web', 'auth']);
         });
+
+        Route::post('cropper/upload-image', [ImageCropController::class])->name('cropper.upload-image')->middleware(['web', 'auth']);
     }
 
     /**
@@ -158,6 +161,10 @@ class UserInterfaceServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/assets/js/file-download.js' => resource_path('js/vendor/ark/file-download.js'),
         ], 'file-download');
+
+        $this->publishes([
+            __DIR__.'/../resources/assets/js/utils.js' => resource_path('js/vendor/ark/utils.js'),
+        ], 'utils');
     }
 
     /**

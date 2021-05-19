@@ -5,4 +5,8 @@ return [
         'folder' => 'wysiwyg',
         'disk' => 'public',
     ],
+
+    'image-cropper' => [
+        'validation' => ['required', 'image'],
+    ],
 ];
