@@ -269,6 +269,9 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');
+
+        // Modals
+        Blade::component('ark::modals.crop-image', 'ark-modals-crop-image');
     }
 
     /**
