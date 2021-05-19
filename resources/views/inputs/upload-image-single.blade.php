@@ -173,7 +173,7 @@
                     </div>
                 @endif
 
-                <div class="mt-8 sm:mt-10 -mx-8 sm:-mx-10" style="margin-left: -2.5rem; margin-right: -2.5rem;">
+                <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10" style="margin-left: -2.5rem; margin-right: -2.5rem;">
                     <img id="image-single-crop-{{ $id }}" src="" alt="">
                 </div>
             @endslot
