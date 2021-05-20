@@ -6,6 +6,10 @@
     'deleteTooltip'         => trans('ui::forms.upload-image.delete_image'),
     'minWidth'              => 148,
     'minHeight'             => 148,
+    'maxWidth'              => null,
+    'maxHeight'             => null,
+    'width'                 => null,
+    'height'                => null,
     'maxFilesize'           => '2MB',
     'readonly'              => false,
     'uploadErrorMessage'    => null,
@@ -16,8 +20,8 @@
     'cropModalWidth'        => 'max-w-xl',
     'cropCancelButton'      => trans('ui::actions.back'),
     'cropSaveButton'        => trans('ui::actions.save'),
-    'cropCancelButtonClass' => 'button-secondary flex items-center',
-    'cropSaveButtonClass'   => 'button-primary flex items-center',
+    'cropCancelButtonClass' => 'button-secondary flex items-center text-center',
+    'cropSaveButtonClass'   => 'button-primary flex items-center text-center',
     'cropSaveIcon'          => false,
 ])
 
@@ -30,8 +34,12 @@
         'image-single-crop-{{ $id }}',
         'save-crop-button-{{ $id }}',
         'cancel-crop-button-{{ $id }}',
-        {{ $minWidth }},
-        {{ $minHeight }}
+        {{ $minWidth ?? 148 }},
+        {{ $minHeight ?? 148 }},
+        {{ $maxWidth ?? 1000 }},
+        {{ $maxHeight ?? 1000 }},
+        {{ $width ?? 800 }},
+        {{ $height ?? 800 }},
     )"
     x-init="init"
     @else
@@ -129,7 +137,7 @@
                     </div>
                 @endif
 
-                <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10">
+                <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10 h-75">
                     <img id="image-single-crop-{{ $id }}" src="" alt="">
                 </div>
             @endslot

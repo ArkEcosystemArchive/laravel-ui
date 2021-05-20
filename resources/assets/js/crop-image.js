@@ -9,6 +9,10 @@ const CropImage = (
     $cancelCropButton = null,
     $minWidth = 148,
     $minHeight = 148,
+    $maxWidth = 1000,
+    $maxHeight = 1000,
+    $width = 800,
+    $height = 800,
     $fillColor = "#fff",
     $imageSmoothingEnabled = true,
     $imageSmoothingQuality = "high",
@@ -42,8 +46,12 @@ const CropImage = (
     saveCroppedImage() {
         this.cropper
             .getCroppedCanvas({
-                width: $minWidth,
-                height: $minHeight,
+                minWidth: $minWidth,
+                minHeight: $minHeight,
+                maxWidth: $maxWidth,
+                maxHeight: $maxHeight,
+                width: $width,
+                height: $height,
                 fillColor: $fillColor,
                 imageSmoothingEnabled: $imageSmoothingEnabled,
                 imageSmoothingQuality: $imageSmoothingQuality,
@@ -68,6 +76,7 @@ const CropImage = (
         document.getElementById($cropID).src = null;
 
         this.cropper.destroy();
+        this.cropper = null;
     },
     openCropModal() {
         this.isCropping = true;
