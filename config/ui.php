@@ -8,5 +8,7 @@ return [
 
     'crop-image' => [
         'validation' => ['required', 'image'],
+        'folder' => 'crop_image',
+        'disk' => 'public',
     ],
 ];
