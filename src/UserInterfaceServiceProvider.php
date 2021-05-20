@@ -73,7 +73,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
             Route::post('upload-image', [WysiwygControlller::class, 'uploadImage'])->name('wysiwyg.upload-image')->middleware(['web', 'auth']);
         });
 
-        Route::post('cropper/upload-image', [ImageCropController::class])->name('cropper.upload-image')->middleware(['web', 'auth']);
+        Route::post('cropper/upload-image', ImageCropController::class)->name('cropper.upload-image')->middleware(['web', 'auth']);
     }
 
     /**
@@ -199,6 +199,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::pages.contact.header', 'ark-pages-contact-header');
 
         Blade::component('ark::pages.includes.markdown-scripts', 'ark-pages-includes-markdown-scripts');
+        Blade::component('ark::pages.includes.crop-image-scripts', 'ark-pages-includes-crop-image-scripts');
 
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
@@ -276,9 +277,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');
-
-        // Modals
-        Blade::component('ark::modals.crop-image', 'ark-modals-crop-image');
     }
 
     /**

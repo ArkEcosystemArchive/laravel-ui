@@ -26,7 +26,7 @@ class ImageCropController extends Controller
         return ['url' => asset($path)];
 
 //        $this->validate($request, [
-//            'image' => (array) config('ui.image-cropper.validation', ['required', 'image']),
+//            'image' => (array) config('ui.crop-image.validation', ['required', 'image']),
 //        ]);
 
 //        $file = $request->file('image');

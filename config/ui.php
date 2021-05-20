@@ -6,7 +6,7 @@ return [
         'disk' => 'public',
     ],
 
-    'image-cropper' => [
+    'crop-image' => [
         'validation' => ['required', 'image'],
     ],
 ];

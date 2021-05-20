@@ -152,18 +152,32 @@ This file contains basic examples and explains the parameters that can be used f
     min-width="640"
     min-height="640"
     max-filesize="100MB"
+    with-crop
+    cropOptions="{ aspectRatio: 1 / 1 }"
+    cropTitle="Crop Image"
+    cropMessage="Select the area of the image you want to use."
 />
 ```
 
-| Parameter      | Description                                   | Required |
-|----------------|-----------------------------------------------|----------|
-| image          | Object with the image reference (if uploaded) | yes      |
-| dimensions     | Size of the upload component                  | no       |
-| upload-text    | Text to display when no existing image        | no       |
-| delete-tooltip | Tooltip text for the delete button            | no       |
-| min-width      | Minimum width for the image                   | no       |
-| min-height     | Minimum height for the image                  | no       |
-| max-filesize   | Maximum filesize allowed for the image        | no       |
+| Parameter                | Description                                              | Required |
+|--------------------------|----------------------------------------------------------|----------|
+| image                    | Object with the image reference (if uploaded)            | yes      |
+| dimensions               | Size of the upload component                             | no       |
+| upload-text              | Text to display when no existing image                   | no       |
+| delete-tooltip           | Tooltip text for the delete button                       | no       |
+| min-width                | Minimum width for the image                              | no       |
+| min-height               | Minimum height for the image                             | no       |
+| max-filesize             | Maximum filesize allowed for the image                   | no       |
+| with-crop                | Enable the crop functionality                            | no       |
+| crop-options             | The options for cropping                                 | no       |
+| crop-title               | Crop modal title                                         | no       |
+| crop-message             | Crop modal message                                       | no       |
+| crop-modal-width         | Crop modal max width                                     | no       |
+| crop-cancel-button       | ID of the crop modal cancel button                       | no       |
+| crop-save-button         | ID of the crop modal save button                         | no       |
+| crop-cancel-button-class | class of the crop modal cancel button                    | no       |
+| crop-save-button-class   | class of the crop modal save button                      | no       |
+| crop-save-icon           | wheter to show or not the icon on crop modal save button | no       |
 
 #### Backend
 
