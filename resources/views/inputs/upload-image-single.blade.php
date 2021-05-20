@@ -11,11 +11,11 @@
     'uploadErrorMessage'    => null,
     'withCrop'              => false,
     'cropOptions'           => "{}",
-    'cropTitle'             => trans('modals.crop-image.title'),
-    'cropMessage'           => trans('modals.crop-image.message'),
+    'cropTitle'             => trans('ui::modals.crop-image.title'),
+    'cropMessage'           => trans('ui::modals.crop-image.message'),
     'cropModalWidth'        => 'max-w-xl',
-    'cropCancelButton'      => trans('actions.back'),
-    'cropSaveButton'        => trans('actions.save'),
+    'cropCancelButton'      => trans('ui::actions.back'),
+    'cropSaveButton'        => trans('ui::actions.save'),
     'cropCancelButtonClass' => 'button-secondary flex items-center',
     'cropSaveButtonClass'   => 'button-primary flex items-center',
     'cropSaveIcon'          => false,
@@ -117,7 +117,7 @@
 
     @if($withCrop)
     <div x-show="isCropping">
-        <x-ark-modal wire-close title-class="header-2" :width-class="$cropModalWidth">
+        <x-ark-modal title-class="header-2" :width-class="$cropModalWidth">
             @slot('title')
                 {{ $cropTitle }}
             @endslot
