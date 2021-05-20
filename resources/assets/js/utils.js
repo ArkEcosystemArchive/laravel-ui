@@ -7,7 +7,7 @@
  * @param fieldName  (optional) The request file name.
  * @returns {Promise<Response>}
  */
-export const uploadImage = (blob, url, csrfToken, fieldName = 'image') => {
+export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
     const formData = new FormData();
     formData.append(fieldName, blob);
 
@@ -20,12 +20,14 @@ export const uploadImage = (blob, url, csrfToken, fieldName = 'image') => {
         },
     })
         .then((response) => {
-            const {status} = response;
+            const { status } = response;
             if (status === 200) {
                 return response.json();
             } else if (status === 419) {
                 // Means the CSRF Token is no longer valid
-                alert("Session expired. You will need to refresh the browser to continue uploading images.");
+                alert(
+                    "Session expired. You will need to refresh the browser to continue uploading images."
+                );
             } else {
                 throw new Error(response);
             }

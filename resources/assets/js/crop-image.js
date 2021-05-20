@@ -10,10 +10,10 @@ const CropImage = (
     $cancelCropButton = null,
     $minWidth = 148,
     $minHeight = 148,
-    $fillColor = '#fff',
+    $fillColor = "#fff",
     $imageSmoothingEnabled = true,
-    $imageSmoothingQuality = 'high',
-    $endpoint = '/cropper/upload-image',
+    $imageSmoothingQuality = "high",
+    $endpoint = "/cropper/upload-image"
 ) => ({
     model: $model,
     cropper: null,
@@ -41,24 +41,25 @@ const CropImage = (
         }
     },
     saveCroppedImage() {
-        this.cropper.getCroppedCanvas({
-            width: $minWidth,
-            height: $minHeight,
-            fillColor: $fillColor,
-            imageSmoothingEnabled: $imageSmoothingEnabled,
-            imageSmoothingQuality: $imageSmoothingQuality,
-        }).toBlob((blob) => {
-            const csrfToken = this.getCsrfToken();
+        this.cropper
+            .getCroppedCanvas({
+                width: $minWidth,
+                height: $minHeight,
+                fillColor: $fillColor,
+                imageSmoothingEnabled: $imageSmoothingEnabled,
+                imageSmoothingQuality: $imageSmoothingQuality,
+            })
+            .toBlob((blob) => {
+                const csrfToken = this.getCsrfToken();
 
-            uploadImage(blob, $endpoint, csrfToken)
-                .then((response) => {
+                uploadImage(blob, $endpoint, csrfToken).then((response) => {
                     if (!response.url) {
-                        throw new Error('Received invalid response');
+                        throw new Error("Received invalid response");
                     }
 
                     this.model = response.url;
                 });
-        });
+            });
 
         this.discardImage();
     },
@@ -77,14 +78,18 @@ const CropImage = (
         this.isCropping = false;
     },
     getCsrfToken() {
-        return document.querySelector('meta[name=csrf-token]').content;
+        return document.querySelector("meta[name=csrf-token]").content;
     },
     init() {
-        document.getElementById($saveCropButton).addEventListener('click', () => this.saveCroppedImage());
-        document.getElementById($cancelCropButton).addEventListener('click', () => this.discardImage());
+        document
+            .getElementById($saveCropButton)
+            .addEventListener("click", () => this.saveCroppedImage());
+        document
+            .getElementById($cancelCropButton)
+            .addEventListener("click", () => this.discardImage());
 
         setTimeout(() => clearAllBodyScrollLocks(), 100);
-    }
+    },
 });
 
 window.CropImage = CropImage;
