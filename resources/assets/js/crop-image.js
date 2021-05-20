@@ -1,4 +1,4 @@
-import {uploadImage} from "./utils";
+import { uploadImage } from "./utils";
 
 const CropImage = (
     $cropOptions = {},
@@ -51,14 +51,13 @@ const CropImage = (
             .toBlob((blob) => {
                 const csrfToken = this.getCsrfToken();
 
-                uploadImage(blob, $endpoint, csrfToken)
-                    .then((response) => {
-                        if (!response.url) {
-                            throw new Error("Received invalid response");
-                        }
+                uploadImage(blob, $endpoint, csrfToken).then((response) => {
+                    if (!response.url) {
+                        throw new Error("Received invalid response");
+                    }
 
-                        this.model = response.url;
-                    });
+                    this.model = response.url;
+                });
             });
 
         this.discardImage();
@@ -96,7 +95,7 @@ const CropImage = (
         return document.querySelector("meta[name=csrf-token]").content;
     },
     init() {
-        document.body.style.removeProperty('overflow');
+        document.body.style.removeProperty("overflow");
     },
 });
 
