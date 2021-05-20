@@ -116,7 +116,7 @@
     </div>
 
     @if($withCrop)
-    <div x-show="cropping">
+    <div x-show="isCropping">
         <x-ark-modal wire-close title-class="header-2" :width-class="$cropModalWidth">
             @slot('title')
                 {{ $cropTitle }}

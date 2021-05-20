@@ -3,12 +3,12 @@
 return [
     'wysiwyg' => [
         'folder' => 'wysiwyg',
-        'disk' => 'public',
+        'disk'   => 'public',
     ],
 
     'crop-image' => [
         'validation' => ['required', 'image'],
-        'folder' => 'crop_image',
-        'disk' => 'public',
+        'folder'     => 'livewire-tmp',
+        'disk'       => 'local',
     ],
 ];
