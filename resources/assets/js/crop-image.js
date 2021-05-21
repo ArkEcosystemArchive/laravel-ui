@@ -55,8 +55,14 @@ const CropImage = (
 
     loadCropper() {
         if (this.uploadEl.files.length) {
-            const reader = new FileReader();
+            try {
+                this.validation(this.uploadEl.files[0]);
+            } catch (err) {
+                // @TODO: handle errors and stop execution
+                console.error(err.name, err.message, err.stack)
+            }
 
+            const reader = new FileReader();
             reader.onload = (e) => {
 
                 if (e.target.result) {
@@ -131,6 +137,21 @@ const CropImage = (
 
     getCsrfToken() {
         return document.querySelector("meta[name=csrf-token]").content;
+    },
+
+    validation(src) {
+        const uploadedImage = new Image();
+
+        uploadedImage.src = URL.createObjectURL(src);
+        uploadedImage.onload = (e) => {
+            if (e.target.width < $minWidth) {
+                throw new TypeError(`Width is less than ${$minWidth}px.`);
+            }
+
+            if (e.target.height < $minHeight) {
+                throw new TypeError(`Height is less than ${$minHeight}px.`);
+            }
+        };
     },
 });
 
