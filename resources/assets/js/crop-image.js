@@ -59,7 +59,7 @@ const CropImage = (
                 this.validation(this.uploadEl.files[0]);
             } catch (err) {
                 // @TODO: handle errors and stop execution
-                console.error(err.name, err.message, err.stack)
+                console.error(err.name, err.message, err.stack);
             }
 
             const reader = new FileReader();
