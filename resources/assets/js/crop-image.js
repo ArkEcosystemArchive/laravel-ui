@@ -29,19 +29,19 @@ const CropImage = (
     init() {
         this.uploadEl = document.getElementById($uploadID);
 
-        Livewire.on('discardCroppedImage', () => {
+        Livewire.on("discardCroppedImage", () => {
             this.discardImage();
         });
 
-        Livewire.on('saveCroppedImage', () => {
-            Livewire.emit('closeModal', $modalID);
+        Livewire.on("saveCroppedImage", () => {
+            Livewire.emit("closeModal", $modalID);
 
             this.saveCroppedImage();
         });
     },
 
     destroyCropper() {
-        if (! this.cropper) {
+        if (!this.cropper) {
             return;
         }
 
@@ -58,7 +58,6 @@ const CropImage = (
             const reader = new FileReader();
 
             reader.onload = (e) => {
-
                 if (e.target.result) {
                     this.cropEl = document.getElementById($cropID);
                     this.cropEl.src = e.target.result;
@@ -79,7 +78,7 @@ const CropImage = (
     },
 
     saveCroppedImage() {
-        if (! this.cropper) {
+        if (!this.cropper) {
             return;
         }
 
@@ -95,19 +94,20 @@ const CropImage = (
             imageSmoothingQuality: $imageSmoothingQuality,
         });
 
-        if (! croppedCanvas) {
+        if (!croppedCanvas) {
             return;
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, this.getCsrfToken())
-                .then((response) => {
+            uploadImage(blob, $endpoint, this.getCsrfToken()).then(
+                (response) => {
                     if (!response.url) {
                         throw new Error("Received invalid response");
                     }
 
                     this.model = response.url;
-                });
+                }
+            );
         });
 
         this.discardImage();
@@ -126,7 +126,7 @@ const CropImage = (
     },
 
     openCropModal() {
-        Livewire.emit('openModal', $modalID);
+        Livewire.emit("openModal", $modalID);
     },
 
     getCsrfToken() {
