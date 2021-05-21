@@ -1,28 +1,32 @@
 @props([
     'id',
-    'image'                 => null,
-    'dimensions'            => 'w-48 h-48',
-    'uploadText'            => trans('ui::forms.upload-image.upload_image'),
-    'deleteTooltip'         => trans('ui::forms.upload-image.delete_image'),
-    'minWidth'              => 148,
-    'minHeight'             => 148,
-    'maxWidth'              => null,
-    'maxHeight'             => null,
-    'width'                 => null,
-    'height'                => null,
-    'maxFilesize'           => '2MB',
-    'readonly'              => false,
-    'uploadErrorMessage'    => null,
-    'withCrop'              => false,
-    'cropOptions'           => "{}",
-    'cropTitle'             => trans('ui::modals.crop-image.title'),
-    'cropMessage'           => trans('ui::modals.crop-image.message'),
-    'cropModalWidth'        => 'max-w-xl',
-    'cropCancelButton'      => trans('ui::actions.back'),
-    'cropSaveButton'        => trans('ui::actions.save'),
-    'cropCancelButtonClass' => 'button-secondary flex items-center text-center',
-    'cropSaveButtonClass'   => 'button-primary flex items-center text-center',
-    'cropSaveIcon'          => false,
+    'image'                     => null,
+    'dimensions'                => 'w-48 h-48',
+    'uploadText'                => trans('ui::forms.upload-image.upload_image'),
+    'deleteTooltip'             => trans('ui::forms.upload-image.delete_image'),
+    'minWidth'                  => 148,
+    'minHeight'                 => 148,
+    'maxWidth'                  => 1000,
+    'maxHeight'                 => 1000,
+    'width'                     => 800,
+    'height'                    => 800,
+    'maxFilesize'               => '2MB',
+    'readonly'                  => false,
+    'uploadErrorMessage'        => null,
+    'withCrop'                  => false,
+    'cropOptions'               => "{}",
+    'cropTitle'                 => trans('ui::modals.crop-image.title'),
+    'cropMessage'               => trans('ui::modals.crop-image.message'),
+    'cropModalWidth'            => 'max-w-xl',
+    'cropCancelButton'          => trans('ui::actions.back'),
+    'cropSaveButton'            => trans('ui::actions.save'),
+    'cropCancelButtonClass'     => 'button-secondary flex items-center justify-center',
+    'cropSaveButtonClass'       => 'button-primary flex items-center justify-center',
+    'cropSaveIcon'              => false,
+    'cropFillColor'             => '#fff',
+    'cropImageSmoothingEnabled' => true,
+    'cropImageSmoothingQuality' => 'high',
+    'cropEndpoint'              => route('cropper.upload-image'),
 ])
 
 <div
@@ -32,14 +36,17 @@
         @entangle($attributes->wire('model')),
         'image-single-upload-{{ $id }}',
         'image-single-crop-{{ $id }}',
-        'save-crop-button-{{ $id }}',
-        'cancel-crop-button-{{ $id }}',
-        {{ $minWidth ?? 148 }},
-        {{ $minHeight ?? 148 }},
-        {{ $maxWidth ?? 1000 }},
-        {{ $maxHeight ?? 1000 }},
-        {{ $width ?? 800 }},
-        {{ $height ?? 800 }},
+        'crop-modal-{{ $id }}',
+        {{ $minWidth }},
+        {{ $minHeight }},
+        {{ $maxWidth }},
+        {{ $maxHeight }},
+        {{ $width }},
+        {{ $height }},
+        '{{ $cropFillColor }}',
+        {{ $cropImageSmoothingEnabled }},
+        '{{ $cropImageSmoothingQuality }}',
+        '{{ $cropEndpoint }}',
     )"
     x-init="init"
     @else
@@ -57,7 +64,7 @@
             @endif
             class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50 @unless($readonly) cursor-pointer hover:bg-theme-primary-100 transition-default @endunless"
             @unless($readonly)
-            @click="select()"
+            @click.self="select"
             role="button"
             @endunless
         >
@@ -65,10 +72,10 @@
                 <input
                     id="image-single-upload-{{ $id }}"
                     type="file"
-                    class="block absolute top-0 opacity-0 cursor-pointer sr-only"
+                    class="sr-only"
                     accept="image/jpg,image/jpeg,image/bmp,image/png"
                     @if($withCrop)
-                    @change="loadCropper()"
+                    @change="loadCropper"
                     @else
                     wire:model="{{ $attributes->wire('model') }}"
                     @endif
@@ -123,39 +130,45 @@
         @endunless
     </div>
 
-    @if($withCrop)
-    <div x-show="isCropping">
-        <x-ark-modal title-class="header-2" :width-class="$cropModalWidth">
-            @slot('title')
-                {{ $cropTitle }}
-            @endslot
+    <x-ark-js-modal
+        name="crop-modal-{{ $id }}"
+        class="w-full max-w-2xl text-left"
+        title-class="header-2"
+        x-data="{
+            onHidden: () => {
+                Livewire.emit('discardCroppedImage');
+            },
+        }"
+        init
+    >
+        @slot('title')
+            {{ $cropTitle }}
+        @endslot
 
-            @slot('description')
-                @if($cropMessage)
-                    <div class="mt-3">
-                        {!! $cropMessage !!}
-                    </div>
+        @slot('description')
+            @if($cropMessage)
+                <div class="mt-3">
+                    {!! $cropMessage !!}
+                </div>
+            @endif
+
+            <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10 h-75">
+                <img id="image-single-crop-{{ $id }}" src="" alt="">
+            </div>
+        @endslot
+
+        @slot('buttons')
+            <button class="{{ $cropCancelButtonClass }}" @click="hide">
+                {{ $cropCancelButton }}
+            </button>
+
+            <button class="{{ $cropSaveButtonClass }}" @click="Livewire.emit('saveCroppedImage')">
+                @if($cropSaveIcon)
+                    <x-ark-icon :name="$cropSaveIcon" size="sm" class="inline my-auto mr-2"/>
                 @endif
 
-                <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10 h-75">
-                    <img id="image-single-crop-{{ $id }}" src="" alt="">
-                </div>
-            @endslot
-
-            @slot('buttons')
-                <button class="{{ $cropCancelButtonClass }}" id="cancel-crop-button-{{ $id }}">
-                    {{ $cropCancelButton }}
-                </button>
-
-                <button class="{{ $cropSaveButtonClass }}" id="save-crop-button-{{ $id }}">
-                    @if($cropSaveIcon)
-                        <x-ark-icon :name="$cropSaveIcon" size="sm" class="inline my-auto mr-2"/>
-                    @endif
-
-                    {{ $cropSaveButton }}
-                </button>
-            @endslot
-        </x-ark-modal>
-    </div>
-    @endif
+                {{ $cropSaveButton }}
+            </button>
+        @endslot
+    </x-ark-js-modal>
 </div>

@@ -5,8 +5,7 @@ const CropImage = (
     $model = null,
     $uploadID = null,
     $cropID = null,
-    $saveCropButton = null,
-    $cancelCropButton = null,
+    $modalID = null,
     $minWidth = 148,
     $minHeight = 148,
     $maxWidth = 1000,
@@ -22,89 +21,116 @@ const CropImage = (
     cropper: null,
     isUploading: false,
     isCropping: false,
-    select() {
-        document.getElementById($uploadID).click();
+    uploadEl: null,
+    cropEl: null,
+    modalCancelButton: null,
+    modalSaveButton: null,
+
+    init() {
+        this.uploadEl = document.getElementById($uploadID);
+
+        Livewire.on('discardCroppedImage', () => {
+            this.discardImage();
+        });
+
+        Livewire.on('saveCroppedImage', () => {
+            Livewire.emit('closeModal', $modalID);
+
+            this.saveCroppedImage();
+        });
     },
+
+    destroyCropper() {
+        if (! this.cropper) {
+            return;
+        }
+
+        this.cropper.destroy();
+        this.cropper = null;
+    },
+
+    select() {
+        this.uploadEl.click();
+    },
+
     loadCropper() {
-        const el = document.getElementById($uploadID);
-        if (el.files.length) {
+        if (this.uploadEl.files.length) {
             const reader = new FileReader();
 
             reader.onload = (e) => {
-                if (e.target.result) {
-                    const img = document.getElementById($cropID);
-                    img.src = e.target.result;
 
-                    this.cropper = new Cropper(img, $cropOptions);
+                if (e.target.result) {
+                    this.cropEl = document.getElementById($cropID);
+                    this.cropEl.src = e.target.result;
+
+                    this.cropper = new Cropper(this.cropEl, $cropOptions);
+
+                    this.$nextTick(() => {
+                        this.destroyCropper();
+                        this.cropper = new Cropper(this.cropEl, $cropOptions);
+                    });
+
                     this.openCropModal();
                 }
             };
 
-            reader.readAsDataURL(el.files[0]);
+            reader.readAsDataURL(this.uploadEl.files[0]);
         }
     },
-    saveCroppedImage() {
-        this.cropper
-            .getCroppedCanvas({
-                minWidth: $minWidth,
-                minHeight: $minHeight,
-                maxWidth: $maxWidth,
-                maxHeight: $maxHeight,
-                width: $width,
-                height: $height,
-                fillColor: $fillColor,
-                imageSmoothingEnabled: $imageSmoothingEnabled,
-                imageSmoothingQuality: $imageSmoothingQuality,
-            })
-            .toBlob((blob) => {
-                const csrfToken = this.getCsrfToken();
 
-                uploadImage(blob, $endpoint, csrfToken).then((response) => {
+    saveCroppedImage() {
+        if (! this.cropper) {
+            return;
+        }
+
+        let croppedCanvas = this.cropper.getCroppedCanvas({
+            minWidth: $minWidth,
+            minHeight: $minHeight,
+            maxWidth: $maxWidth,
+            maxHeight: $maxHeight,
+            width: $width,
+            height: $height,
+            fillColor: $fillColor,
+            imageSmoothingEnabled: $imageSmoothingEnabled,
+            imageSmoothingQuality: $imageSmoothingQuality,
+        });
+
+        if (! croppedCanvas) {
+            return;
+        }
+
+        croppedCanvas.toBlob((blob) => {
+            uploadImage(blob, $endpoint, this.getCsrfToken())
+                .then((response) => {
                     if (!response.url) {
                         throw new Error("Received invalid response");
                     }
 
                     this.model = response.url;
                 });
-            });
+        });
 
         this.discardImage();
     },
+
     discardImage() {
-        this.closeCropModal();
+        this.destroyCropper();
 
-        document.getElementById($cropID).src = null;
-
-        this.cropper.destroy();
-        this.cropper = null;
+        this.resetUploadInput();
     },
+
+    resetUploadInput() {
+        this.uploadEl.value = "";
+        this.uploadEl.type = "";
+        this.uploadEl.type = "file";
+    },
+
     openCropModal() {
-        this.isCropping = true;
-
-        document
-            .getElementById($saveCropButton)
-            .addEventListener("click", () => this.saveCroppedImage());
-
-        document
-            .getElementById($cancelCropButton)
-            .addEventListener("click", () => this.discardImage());
+        Livewire.emit('openModal', $modalID);
     },
-    closeCropModal() {
-        this.isCropping = false;
 
-        document
-            .getElementById($saveCropButton)
-            .removeEventListener("click", () => this.saveCroppedImage());
-
-        document
-            .getElementById($cancelCropButton)
-            .removeEventListener("click", () => this.discardImage());
-    },
     getCsrfToken() {
         return document.querySelector("meta[name=csrf-token]").content;
-    },
-    init() {
-        document.body.style.removeProperty("overflow");
     },
 });
 

@@ -167,33 +167,6 @@ Accepts `full` for all the plugins and `basic` for only text related buttons.
 <meta name="csrf-token" content="{{ csrf_token() }}">
 ```
 
-### Upload Single Image
-
-1. Ensure to import the following scripts inside the `<head>` tag of your template.
-
-```html
-@push('scripts')
-    <x-ark-pages-includes-crop-image-scripts />
-@endpush
-```
-
-_Assigning to the `window` object is now done in the crop-image script itself, therefore there is no need to import and assign this script manually!_
-
-2. Compile the crop-image script into the public folder:
-
-```js
-mix
-    .js('vendor/arkecosystem/ui/resources/assets/js/crop-image.js', 'public/js/crop-image.js')
-```
-
-3. use the component in your pages
-
-```html
-<x-ark-upload-image :image="$image" wire:model="logo" with-crop />
-```
-
-[Check the example page](EXAMPLES.md#upload-image) to see all the available parameters.
-
 ### Tags input
 
 1. Add taggle dependency `yarn add taggle` and ensure to copy the scripts to the public directory:
@@ -359,7 +332,7 @@ Note that it is also possible to hook into the lifecycle methods of the modal. Y
         @slot('description')
             My Description
         @endslot
-    </x-ark-modal>
+    </x-ark-js-modal>
 </div>
 ```
 
