@@ -565,8 +565,11 @@
     @apply bg-transparent;
 }
 
-/* Table with sticky headers you will need to manually override the `top` property for `.table-container table.sticky-headers th` according to your needs */
-
+/**
+* To use sticky headers you will need to manually define the `top` CSS property
+* inside a `.table-container table.sticky-headers th` class according to your
+* needs
+*/
 .table-container table.sticky-headers th {
     @apply sticky z-10 bg-white bg-clip-padding;
     box-shadow: inset 0 -1px 0 var(--theme-color-secondary-300);
