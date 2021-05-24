@@ -8,4 +8,6 @@ return [
     'save'          => 'Save',
     'hide'          => 'Hide',
     'show'          => 'Show',
+    'show_less'     => 'Show Less',
+    'read_more'     => 'Read More',
 ];
