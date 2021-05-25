@@ -6,11 +6,12 @@
     'deleteTooltip'             => trans('ui::forms.upload-image.delete_image'),
     'minWidth'                  => 148,
     'minHeight'                 => 148,
-    'maxWidth'                  => 1000,
-    'maxHeight'                 => 1000,
+    'maxWidth'                  => 4000,
+    'maxHeight'                 => 4000,
     'width'                     => 800,
     'height'                    => 800,
     'maxFilesize'               => '2MB',
+    'acceptMime'                => 'image/jpg,image/jpeg,image/bmp,image/png',
     'readonly'                  => false,
     'uploadErrorMessage'        => null,
     'withCrop'                  => false,
@@ -43,6 +44,7 @@
         {{ $maxHeight }},
         {{ $width }},
         {{ $height }},
+        '{{ $maxFilesize }}',
         '{{ $cropFillColor }}',
         {{ $cropImageSmoothingEnabled }},
         '{{ $cropImageSmoothingQuality }}',
@@ -73,9 +75,9 @@
                     id="image-single-upload-{{ $id }}"
                     type="file"
                     class="sr-only"
-                    accept="image/jpg,image/jpeg,image/bmp,image/png"
+                    accept="{{ $acceptMime }}"
                     @if($withCrop)
-                    @change="loadCropper"
+                    @change="validateImage"
                     @else
                     wire:model="{{ $attributes->wire('model') }}"
                     @endif

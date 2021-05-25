@@ -1,4 +1,4 @@
-import { uploadImage } from "./utils";
+import { uploadImage, imageValidator } from "./utils";
 
 const CropImage = (
     $cropOptions = {},
@@ -12,6 +12,7 @@ const CropImage = (
     $maxHeight = 1000,
     $width = 800,
     $height = 800,
+    $maxFileSize = 2,
     $fillColor = "#fff",
     $imageSmoothingEnabled = true,
     $imageSmoothingQuality = "high",
@@ -29,19 +30,19 @@ const CropImage = (
     init() {
         this.uploadEl = document.getElementById($uploadID);
 
-        Livewire.on("discardCroppedImage", () => {
+        Livewire.on('discardCroppedImage', () => {
             this.discardImage();
         });
 
-        Livewire.on("saveCroppedImage", () => {
-            Livewire.emit("closeModal", $modalID);
+        Livewire.on('saveCroppedImage', () => {
+            Livewire.emit('closeModal', $modalID);
 
             this.saveCroppedImage();
         });
     },
 
     destroyCropper() {
-        if (!this.cropper) {
+        if (! this.cropper) {
             return;
         }
 
@@ -53,15 +54,26 @@ const CropImage = (
         this.uploadEl.click();
     },
 
+    validateImage() {
+        if (this.uploadEl.files.length) {
+            imageValidator(this.uploadEl.files[0], [
+                { rule: 'minWidth', value: $minWidth },
+                { rule: 'maxWidth', value: $maxWidth },
+                { rule: 'minHeight', value: $minHeight },
+                { rule: 'maxHeight', value: $maxHeight },
+                { rule: 'maxFileSize', value: $maxFileSize },
+            ]).then(() => {
+                this.loadCropper();
+            }).catch((err) => {
+                err.forEach((err) => {
+                    Livewire.emit('toastMessage', [err.message, 'danger']);
+                });
+            });
+        }
+    },
+
     loadCropper() {
         if (this.uploadEl.files.length) {
-            try {
-                this.validation(this.uploadEl.files[0]);
-            } catch (err) {
-                // @TODO: handle errors and stop execution
-                console.error(err.name, err.message, err.stack)
-            }
-
             const reader = new FileReader();
             reader.onload = (e) => {
                 if (e.target.result) {
@@ -84,7 +96,7 @@ const CropImage = (
     },
 
     saveCroppedImage() {
-        if (!this.cropper) {
+        if (! this.cropper) {
             return;
         }
 
@@ -100,20 +112,19 @@ const CropImage = (
             imageSmoothingQuality: $imageSmoothingQuality,
         });
 
-        if (!croppedCanvas) {
+        if (! croppedCanvas) {
             return;
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, this.getCsrfToken()).then(
-                (response) => {
+            uploadImage(blob, $endpoint, this.getCsrfToken())
+                .then((response) => {
                     if (!response.url) {
                         throw new Error("Received invalid response");
                     }
 
                     this.model = response.url;
-                }
-            );
+                });
         });
 
         this.discardImage();
@@ -132,26 +143,11 @@ const CropImage = (
     },
 
     openCropModal() {
-        Livewire.emit("openModal", $modalID);
+        Livewire.emit('openModal', $modalID);
     },
 
     getCsrfToken() {
         return document.querySelector("meta[name=csrf-token]").content;
-    },
-
-    validation(src) {
-        const uploadedImage = new Image();
-
-        uploadedImage.src = URL.createObjectURL(src);
-        uploadedImage.onload = (e) => {
-            if (e.target.width < $minWidth) {
-                throw new TypeError(`Width is less than ${$minWidth}px.`);
-            }
-
-            if (e.target.height < $minHeight) {
-                throw new TypeError(`Height is less than ${$minHeight}px.`);
-            }
-        };
     },
 });
 
