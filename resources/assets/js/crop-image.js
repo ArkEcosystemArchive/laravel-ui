@@ -6,12 +6,12 @@ const CropImage = (
     $uploadID = null,
     $cropID = null,
     $modalID = null,
-    $minWidth = 148,
-    $minHeight = 148,
+    $minWidth = 200,
+    $minHeight = 200,
     $maxWidth = 1000,
     $maxHeight = 1000,
-    $width = 800,
-    $height = 800,
+    $width = 900,
+    $height = 900,
     $maxFileSize = 2,
     $fillColor = "#fff",
     $imageSmoothingEnabled = true,
@@ -101,10 +101,6 @@ const CropImage = (
         }
 
         let croppedCanvas = this.cropper.getCroppedCanvas({
-            minWidth: $minWidth,
-            minHeight: $minHeight,
-            maxWidth: $maxWidth,
-            maxHeight: $maxHeight,
             width: $width,
             height: $height,
             fillColor: $fillColor,
