@@ -30,19 +30,19 @@ const CropImage = (
     init() {
         this.uploadEl = document.getElementById($uploadID);
 
-        Livewire.on('discardCroppedImage', () => {
+        Livewire.on("discardCroppedImage", () => {
             this.discardImage();
         });
 
-        Livewire.on('saveCroppedImage', () => {
-            Livewire.emit('closeModal', $modalID);
+        Livewire.on("saveCroppedImage", () => {
+            Livewire.emit("closeModal", $modalID);
 
             this.saveCroppedImage();
         });
     },
 
     destroyCropper() {
-        if (! this.cropper) {
+        if (!this.cropper) {
             return;
         }
 
@@ -57,18 +57,20 @@ const CropImage = (
     validateImage() {
         if (this.uploadEl.files.length) {
             imageValidator(this.uploadEl.files[0], [
-                { rule: 'minWidth', value: $minWidth },
-                { rule: 'maxWidth', value: $maxWidth },
-                { rule: 'minHeight', value: $minHeight },
-                { rule: 'maxHeight', value: $maxHeight },
-                { rule: 'maxFileSize', value: $maxFileSize },
-            ]).then(() => {
-                this.loadCropper();
-            }).catch((err) => {
-                err.forEach((err) => {
-                    Livewire.emit('toastMessage', [err.message, 'danger']);
+                { rule: "minWidth", value: $minWidth },
+                { rule: "maxWidth", value: $maxWidth },
+                { rule: "minHeight", value: $minHeight },
+                { rule: "maxHeight", value: $maxHeight },
+                { rule: "maxFileSize", value: $maxFileSize },
+            ])
+                .then(() => {
+                    this.loadCropper();
+                })
+                .catch((err) => {
+                    err.forEach((err) => {
+                        Livewire.emit("toastMessage", [err.message, "danger"]);
+                    });
                 });
-            });
         }
     },
 
@@ -96,7 +98,7 @@ const CropImage = (
     },
 
     saveCroppedImage() {
-        if (! this.cropper) {
+        if (!this.cropper) {
             return;
         }
 
@@ -108,19 +110,20 @@ const CropImage = (
             imageSmoothingQuality: $imageSmoothingQuality,
         });
 
-        if (! croppedCanvas) {
+        if (!croppedCanvas) {
             return;
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, this.getCsrfToken())
-                .then((response) => {
+            uploadImage(blob, $endpoint, this.getCsrfToken()).then(
+                (response) => {
                     if (!response.url) {
                         throw new Error("Received invalid response");
                     }
 
                     this.model = response.url;
-                });
+                }
+            );
         });
 
         this.discardImage();
@@ -139,7 +142,7 @@ const CropImage = (
     },
 
     openCropModal() {
-        Livewire.emit('openModal', $modalID);
+        Livewire.emit("openModal", $modalID);
     },
 
     getCsrfToken() {

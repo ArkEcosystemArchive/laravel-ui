@@ -46,36 +46,50 @@ export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
  * @param rules  It must be an array of objects with 'rule', 'value' keys.
  */
 export const imageValidator = (inputFile, rules = []) => {
-    const
-        errorBag = [],
+    const errorBag = [],
         image = new Image(),
         ruleset = [
-            'minWidth', 'maxWidth',
-            'minHeight', 'maxHeight',
-            'minFileSize', 'maxFileSize',
+            "minWidth",
+            "maxWidth",
+            "minHeight",
+            "maxHeight",
+            "minFileSize",
+            "maxFileSize",
         ];
 
     const minWidth = (image, target) => {
         if (image.width < target) {
-            pushError(getCallerName(), `Image width is less than ${target}px. Given ${image.width}px.`);
+            pushError(
+                getCallerName(),
+                `Image width is less than ${target}px. Given ${image.width}px.`
+            );
         }
     };
 
     const minHeight = (image, target) => {
         if (image.height < target) {
-            pushError(getCallerName(), `Image height is less than ${target}px. Given ${image.height}px.`);
+            pushError(
+                getCallerName(),
+                `Image height is less than ${target}px. Given ${image.height}px.`
+            );
         }
     };
 
     const maxWidth = (image, target) => {
         if (image.width > target) {
-            pushError(getCallerName(), `Image width is greater than ${target}px. Given ${image.width}px.`);
+            pushError(
+                getCallerName(),
+                `Image width is greater than ${target}px. Given ${image.width}px.`
+            );
         }
     };
 
     const maxHeight = (image, target) => {
         if (image.height > target) {
-            pushError(getCallerName(), `Image height is greater than ${target}px. Given ${image.height}px.`);
+            pushError(
+                getCallerName(),
+                `Image height is greater than ${target}px. Given ${image.height}px.`
+            );
         }
     };
 
@@ -83,7 +97,10 @@ export const imageValidator = (inputFile, rules = []) => {
         let size = bytesToMegabytes(image.size);
 
         if (size < target) {
-            pushError(getCallerName(), `Image file size is less than ${target}Mb. Given ${size}Mb.`);
+            pushError(
+                getCallerName(),
+                `Image file size is less than ${target}Mb. Given ${size}Mb.`
+            );
         }
     };
 
@@ -91,7 +108,10 @@ export const imageValidator = (inputFile, rules = []) => {
         let size = bytesToMegabytes(image.size);
 
         if (size > target) {
-            pushError(getCallerName(), `Image file size is greater than ${target}Mb. Given ${size}Mb.`);
+            pushError(
+                getCallerName(),
+                `Image file size is greater than ${target}Mb. Given ${size}Mb.`
+            );
         }
     };
 
@@ -100,7 +120,7 @@ export const imageValidator = (inputFile, rules = []) => {
     };
 
     const errorBagItem = (err, message) => {
-        return { 'error': err, 'message': message };
+        return { error: err, message: message };
     };
 
     image.src = URL.createObjectURL(inputFile);
@@ -109,7 +129,10 @@ export const imageValidator = (inputFile, rules = []) => {
     return new Promise((resolve, reject) => {
         image.onload = (e) => {
             rules.forEach((item) => {
-                if (item.hasOwnProperty('rule') && ruleset.includes(item.rule)) {
+                if (
+                    item.hasOwnProperty("rule") &&
+                    ruleset.includes(item.rule)
+                ) {
                     eval(item.rule)(e.target, parseInt(item.value));
                 }
             });
@@ -129,8 +152,10 @@ export const imageValidator = (inputFile, rules = []) => {
  * @returns {string}
  */
 export const getCallerName = () => {
-    return (new Error()).stack.split('\n')[2].replace(/^\s+at\s+(.+?)\s.+/g, '$1');
-}
+    return new Error().stack
+        .split("\n")[2]
+        .replace(/^\s+at\s+(.+?)\s.+/g, "$1");
+};
 
 /**
  * Convert bytes to megabytes.
