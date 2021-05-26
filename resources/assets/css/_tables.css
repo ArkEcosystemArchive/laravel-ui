@@ -571,7 +571,7 @@
 * needs
 */
 .table-container table.sticky-headers th {
-    @apply sticky z-10 bg-white bg-clip-padding;
+    @apply sticky z-5 bg-white bg-clip-padding;
     box-shadow: inset 0 -1px 0 var(--theme-color-secondary-300);
     /* Define this on your local project CSS file */
     /* top: 80px; */
