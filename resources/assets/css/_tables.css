@@ -361,7 +361,7 @@
     > tr:hover
     > td.hoverable-cell
     > div.table-cell-bg {
-    @apply bg-theme-secondary-800 !important;
+    @apply bg-black !important;
 }
 
 .table-container table thead th:last-child,
