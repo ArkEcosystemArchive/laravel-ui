@@ -28,8 +28,6 @@
     @apply text-white bg-theme-danger-400;
 }
 
-
-
 /** Dropdown Scrollbar **/
 .dropdown-scrolling::-webkit-scrollbar {
     @apply rounded-lg;
