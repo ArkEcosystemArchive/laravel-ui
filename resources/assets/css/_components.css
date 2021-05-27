@@ -129,6 +129,9 @@
 .link:hover {
     @apply underline text-theme-primary-700;
 }
+.link.link-no-underline:hover {
+    @apply no-underline;
+}
 
 .link:active {
     @apply text-theme-primary-400;
