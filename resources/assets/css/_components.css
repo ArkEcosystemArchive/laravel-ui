@@ -53,7 +53,7 @@
 }
 
 .tab-item {
-    @apply relative pt-8 ml-16 border-b-4 border-transparent cursor-pointer whitespace-nowrap pb-7;
+    @apply relative pt-4 ml-16 border-b-3 border-transparent cursor-pointer whitespace-nowrap pb-3;
 }
 .tab-item:first-child {
     @apply ml-0;
