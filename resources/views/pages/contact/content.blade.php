@@ -132,7 +132,6 @@
                         success: {{ (flash()->level === 'success') ? 'true' : 'false' }},
                         error: {{ (flash()->level === 'error') ? 'true' : 'false' }}
                     }"
-                    x-bind.transition:class="{ invisible: success || error }"
                     @if(flash()->message)
                         x-init="livewire.emit('toastMessage', ['{{ flash()->message }}', '{{ flash()->level }}'])"
                     @endif
