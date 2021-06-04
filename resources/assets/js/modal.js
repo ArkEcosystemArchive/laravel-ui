@@ -4,18 +4,18 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-const onModalClosed = (modal) => {
-    enableBodyScroll(modal);
+const onModalClosed = (scrollable) => {
+    enableBodyScroll(scrollable);
 
     if (!document.querySelectorAll("[data-modal]").length) {
         clearAllBodyScrollLocks();
     }
 };
 
-const onModalOpened = (modal) => {
-    disableBodyScroll(modal);
+const onModalOpened = (scrollable) => {
+    disableBodyScroll(scrollable);
 
-    modal.focus();
+    scrollable.focus();
 };
 
 const Modal = {
@@ -28,8 +28,7 @@ const Modal = {
             onHidden: false,
             onShown: false,
             init() {
-                const { modal } = this.$refs;
-
+                const scrollable = this.getScrollable();
                 if (this.name) {
                     Livewire.on("openModal", (modalName) => {
                         if (this.name === modalName) {
@@ -53,19 +52,19 @@ const Modal = {
                                 this.onShown();
                             }
 
-                            onModalOpened(modal);
+                            onModalOpened(scrollable);
                         } else {
                             if (typeof this.onHidden === "function") {
                                 this.onHidden();
                             }
 
-                            onModalClosed(modal);
+                            onModalClosed(scrollable);
                         }
                     });
                 });
 
                 if (this.shown) {
-                    onModalOpened(modal);
+                    onModalOpened(scrollable);
                 }
             },
             hide() {
@@ -74,21 +73,29 @@ const Modal = {
             show() {
                 this.shown = true;
             },
+            getScrollable() {
+                const { modal } = this.$refs;
+                return modal;
+            },
             ...extraData,
         };
     },
     livewire(extraData = {}) {
         return {
             init() {
-                const { modal } = this.$refs;
+                const scrollable = this.getScrollable();
 
                 this.$wire.on("modalClosed", () => {
                     this.$nextTick(() => {
-                        onModalClosed(modal);
+                        onModalClosed(scrollable);
                     });
                 });
 
-                onModalOpened(modal);
+                onModalOpened(scrollable);
+            },
+            getScrollable() {
+                const { modal } = this.$refs;
+                return modal;
             },
             ...extraData,
         };
