@@ -133,9 +133,8 @@
 /* Toggle */
 
 .input-toggle-button {
-    --tw-ring-color:rgb(62, 157, 255, 0.5);
+    --tw-ring-color: rgb(62, 157, 255, 0.5);
 }
-
 
 /* Switch (toggle alternative) */
 .input-switch-button-left {
