@@ -28,11 +28,11 @@
         <span
             aria-hidden="true"
             :class="{
-                'ring outline-none': focused,
+                'ring ring-focus outline-none': focused,
                 'translate-x-full bg-theme-primary-600': value,
                 'translate-x-0 bg-theme-secondary-300 dark:bg-theme-secondary-700': !value,
             }"
-            class="absolute left-0 inline-block w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full cursor-pointer input-toggle-button"
+            class="absolute left-0 inline-block w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full cursor-pointer"
         ></span>
     </span>
 
