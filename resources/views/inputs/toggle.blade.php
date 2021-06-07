@@ -15,7 +15,7 @@
     @endunless
 
     <span
-        class="relative inline-flex items-center justify-center flex-shrink-0 w-8 h-5 outline-none ring-0"
+        class="inline-flex relative flex-shrink-0 justify-center items-center w-8 h-5 ring-0 outline-none"
         role="checkbox"
         @focus="focused=true"
         @blur="focused=false"
@@ -32,7 +32,7 @@
                 'translate-x-full bg-theme-primary-600': value,
                 'translate-x-0 bg-theme-secondary-300 dark:bg-theme-secondary-700': !value,
             }"
-            class="absolute left-0 inline-block w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full cursor-pointer"
+            class="inline-block absolute left-0 w-4 h-4 bg-white rounded-full transition duration-200 ease-in-out transform cursor-pointer"
         ></span>
     </span>
 
