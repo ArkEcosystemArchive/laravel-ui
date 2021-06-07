@@ -131,30 +131,11 @@
 }
 
 /* Toggle */
-.input-toggle-slide {
-    @apply absolute h-2 mx-auto transition-colors duration-200 ease-in-out rounded-full w-9 bg-theme-secondary-300;
-}
-.dark .input-toggle-slide {
-    @apply bg-theme-secondary-800;
-}
 
 .input-toggle-button {
-    @apply absolute left-0 inline-block w-5 h-5 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow;
+    --tw-ring-color:rgb(62, 157, 255, 0.5);
 }
 
-.input-toggle-button-active {
-    @apply translate-x-5 bg-theme-primary-600;
-}
-.input-toggle-button-active:hover {
-    @apply ring;
-}
-
-.input-toggle-button-inactive {
-    @apply translate-x-0 bg-theme-secondary-300;
-}
-.dark .input-toggle-button-inactive {
-    @apply bg-theme-secondary-700;
-}
 
 /* Switch (toggle alternative) */
 .input-switch-button-left {

@@ -1,5 +1,5 @@
 <div
-    x-data="{ value: {{ $default ?? 'false' }}, toggle() { this.value = !this.value; this.$refs['checkbox-livewire'].click(); }, focused: false }"
+    x-data="{ focused: false, value: {{ $default ?? 'false' }}, toggle() { this.value = !this.value; this.$refs['checkbox-livewire'].click(); } }"
     class="flex items-center"
 >
     @unless($hideLabel ?? false)
@@ -15,24 +15,27 @@
     @endunless
 
     <span
-        @focus="focused = true"
-        @blur="focused = false"
-        class="inline-flex relative flex-shrink-0 justify-center items-center w-10 h-5 cursor-pointer focus:outline-none"
+        class="relative inline-flex items-center justify-center flex-shrink-0 w-8 h-5 outline-none ring-0"
         role="checkbox"
-        tabindex="0"
-        @click="toggle()"
-        @keydown.space.prevent="toggle()"
+        @focus="focused=true"
+        @blur="focused=false"
         :aria-checked="value.toString()"
+        tabindex="0"
+        @click.prevent="toggle"
+        @keyup.space.prevent="toggle"
     >
-        <span aria-hidden="true" class="input-toggle-slide"></span>
+        <span aria-hidden="true" class="absolute w-full h-1.5 mx-auto transition-colors duration-200 ease-in-out rounded-full bg-theme-secondary-300 dark:bg-theme-secondary-800"></span>
         <span
             aria-hidden="true"
             :class="{
-                'input-toggle-button-active': value,
-                'input-toggle-button-inactive': !value
+                'ring outline-none': focused,
+                'translate-x-full bg-theme-primary-600': value,
+                'translate-x-0 bg-theme-secondary-300 dark:bg-theme-secondary-700': !value,
             }"
-            class="input-toggle-button"></span>
+            class="absolute left-0 inline-block w-4 h-4 transition duration-200 ease-in-out transform bg-white rounded-full cursor-pointer input-toggle-button"
+        ></span>
     </span>
+
     <input
         x-ref="checkbox-livewire"
         type="checkbox"
