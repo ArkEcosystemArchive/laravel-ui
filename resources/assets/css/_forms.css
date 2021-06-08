@@ -130,32 +130,6 @@
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='gray' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
 }
 
-/* Toggle */
-.input-toggle-slide {
-    @apply absolute h-2 mx-auto transition-colors duration-200 ease-in-out rounded-full w-9 bg-theme-secondary-300;
-}
-.dark .input-toggle-slide {
-    @apply bg-theme-secondary-800;
-}
-
-.input-toggle-button {
-    @apply absolute left-0 inline-block w-5 h-5 transition-transform duration-200 ease-in-out transform bg-white rounded-full shadow;
-}
-
-.input-toggle-button-active {
-    @apply translate-x-5 bg-theme-primary-600;
-}
-.input-toggle-button-active:hover {
-    @apply ring;
-}
-
-.input-toggle-button-inactive {
-    @apply translate-x-0 bg-theme-secondary-300;
-}
-.dark .input-toggle-button-inactive {
-    @apply bg-theme-secondary-700;
-}
-
 /* Switch (toggle alternative) */
 .input-switch-button-left {
     @apply translate-x-0 bg-theme-primary-600;

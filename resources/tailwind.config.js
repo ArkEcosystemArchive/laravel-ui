@@ -47,6 +47,9 @@ module.exports = {
             zIndex: {
                 "5": 5,
             },
+            ringColor: {
+                focus: "rgba(var(--theme-color-primary-rgb), 0.50)",
+            },
         },
 
         colors: {
