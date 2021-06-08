@@ -4,7 +4,7 @@
 }
 
 .dropdown-entry {
-    @apply block w-full px-6 py-4 font-semibold leading-5 text-left transition duration-150 ease-in-out cursor-pointer text-theme-secondary-800;
+    @apply block w-full px-6 py-4 font-semibold leading-5 text-left transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900;
 }
 
 .dropdown-entry:focus {
@@ -13,6 +13,9 @@
 
 .dropdown-entry:hover {
     @apply text-theme-primary-600 bg-theme-primary-100;
+}
+.dark .dropdown-entry {
+    @apply text-theme-secondary-200;
 }
 .dark .dropdown-entry:hover {
     @apply text-white bg-theme-primary-600;
@@ -46,14 +49,14 @@
 
 /** Tabs **/
 .tabs {
-    @apply px-8 mb-8 font-semibold rounded-xl select-none bg-theme-secondary-100;
+    @apply px-8 mb-8 font-semibold select-none rounded-xl bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
 }
 
 .tab-item {
-    @apply relative pt-8 ml-16 border-b-4 border-transparent cursor-pointer whitespace-nowrap pb-7;
+    @apply relative pt-4 pb-3 ml-16 border-transparent cursor-pointer border-b-3 whitespace-nowrap;
 }
 .tab-item:first-child {
     @apply ml-0;
@@ -120,7 +123,7 @@
 
 /** Links **/
 .link {
-    @apply no-underline text-theme-primary-600 cursor-pointer transition-default;
+    @apply no-underline cursor-pointer text-theme-primary-600 transition-default;
 }
 .link.read-only {
     @apply cursor-not-allowed;
@@ -128,6 +131,9 @@
 
 .link:hover {
     @apply underline text-theme-primary-700;
+}
+.link.link-no-underline:hover {
+    @apply no-underline;
 }
 
 .link:active {
@@ -227,7 +233,7 @@
 }
 
 .modal-close {
-    @apply absolute top-0 right-0 w-12 h-11 mt-5 mr-5 rounded text-theme-secondary-900 bg-theme-info-100 transition-default;
+    @apply absolute top-0 right-0 w-12 mt-5 mr-5 rounded h-11 text-theme-secondary-900 bg-theme-info-100 transition-default;
 }
 .dark .modal-close {
     @apply bg-theme-secondary-800 text-theme-secondary-600;
@@ -336,11 +342,11 @@
 }
 
 .tile-selection-option {
-    @apply relative border-2 rounded-xl cursor-pointer select-none border-theme-primary-100 h-30 transition-default;
+    @apply relative border-2 cursor-pointer select-none rounded-xl border-theme-primary-100 h-30 transition-default;
 }
 
 .tile-selection-single {
-    @apply relative py-4 border-2 rounded-xl cursor-pointer select-none border-theme-primary-100 transition-default;
+    @apply relative py-4 border-2 cursor-pointer select-none rounded-xl border-theme-primary-100 transition-default;
 }
 
 .tile-selection-option:hover,
@@ -401,7 +407,7 @@
 }
 
 .tile-link {
-    @apply relative bg-white rounded-xl cursor-pointer select-none h-30 transition-default;
+    @apply relative bg-white cursor-pointer select-none rounded-xl h-30 transition-default;
 }
 .tile-link:not(.tile-link-disabled) {
     @apply cursor-pointer;
