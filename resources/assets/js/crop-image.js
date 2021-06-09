@@ -68,6 +68,8 @@ const CropImage = (
                 })
                 .catch((err) => {
                     err.forEach((err) => {
+                        this.resetUploadInput();
+
                         Livewire.emit("toastMessage", [err.message, "danger"]);
                     });
                 });
