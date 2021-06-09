@@ -10,4 +10,5 @@ return [
     'show'          => 'Show',
     'show_less'     => 'Show Less',
     'read_more'     => 'Read More',
+    'back'          => 'Back',
 ];

@@ -332,7 +332,7 @@ Note that it is also possible to hook into the lifecycle methods of the modal. Y
         @slot('description')
             My Description
         @endslot
-    </x-ark-modal>
+    </x-ark-js-modal>
 </div>
 ```
 
@@ -506,7 +506,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-tags>`
 - `<x-ark-textarea>`
 - `<x-ark-toggle>`
-- `<x-ark-upload-image>`
+- [`<x-ark-upload-image>`](EXAMPLES.md#upload-image)
 - [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples

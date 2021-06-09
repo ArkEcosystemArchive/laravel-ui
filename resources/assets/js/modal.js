@@ -35,6 +35,12 @@ const Modal = {
                             this.show();
                         }
                     });
+
+                    Livewire.on("closeModal", (modalName) => {
+                        if (this.name === modalName) {
+                            this.hide();
+                        }
+                    });
                 }
 
                 this.$watch("shown", (shown) => {
