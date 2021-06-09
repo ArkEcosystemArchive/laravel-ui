@@ -138,7 +138,7 @@ export const imageValidator = (inputFile, rules = []) => {
             });
 
             if (errorBag.length) {
-                reject(errorBag.filter((v,i) => errorBag.indexOf(v) === i));
+                reject(errorBag.filter((v, i) => errorBag.indexOf(v) === i));
             }
 
             resolve();
