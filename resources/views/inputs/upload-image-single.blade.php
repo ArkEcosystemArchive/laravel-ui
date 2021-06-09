@@ -160,11 +160,11 @@
         @endslot
 
         @slot('buttons')
-            <button class="{{ $cropCancelButtonClass }}" @click="hide">
+            <button class="{{ $cropCancelButtonClass }}" @click="hide" dusk="crop-cancel-button">
                 {{ $cropCancelButton }}
             </button>
 
-            <button class="{{ $cropSaveButtonClass }}" @click="Livewire.emit('saveCroppedImage')">
+            <button class="{{ $cropSaveButtonClass }}" @click="Livewire.emit('saveCroppedImage')" dusk="crop-save-button">
                 @if($cropSaveIcon)
                     <x-ark-icon :name="$cropSaveIcon" size="sm" class="inline my-auto mr-2"/>
                 @endif
