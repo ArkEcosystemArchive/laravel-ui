@@ -61,7 +61,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (image.width < target) {
             pushError(
                 getCallerName(),
-                `Image width is less than ${target}px. Given ${image.width}px.`
+                `The image should be at least ${target}x${target}px`
             );
         }
     };
@@ -70,7 +70,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (image.height < target) {
             pushError(
                 getCallerName(),
-                `Image height is less than ${target}px. Given ${image.height}px.`
+                `The image should be at least ${target}x${target}px`
             );
         }
     };
@@ -79,7 +79,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (image.width > target) {
             pushError(
                 getCallerName(),
-                `Image width is greater than ${target}px. Given ${image.width}px.`
+                `The image should be no bigger than ${target}x${target}px`
             );
         }
     };
@@ -88,7 +88,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (image.height > target) {
             pushError(
                 getCallerName(),
-                `Image height is greater than ${target}px. Given ${image.height}px.`
+                `The image should be no bigger than ${target}x${target}px`
             );
         }
     };
@@ -99,7 +99,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (size < target) {
             pushError(
                 getCallerName(),
-                `Image file size is less than ${target}Mb. Given ${size}Mb.`
+                `The image should be at least ${target}MB`
             );
         }
     };
@@ -110,7 +110,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (size > target) {
             pushError(
                 getCallerName(),
-                `Image file size is greater than ${target}Mb. Given ${size}Mb.`
+                `The image should be no bigger than ${target}MB`
             );
         }
     };
@@ -138,7 +138,19 @@ export const imageValidator = (inputFile, rules = []) => {
             });
 
             if (errorBag.length) {
-                reject(errorBag);
+                let unique = errorBag.map((a) => Object.assign({}, a)),
+                    repeat = [],
+                    tmp,
+                    i = 0;
+
+                while (i < errorBag.length) {
+                    repeat.indexOf((tmp = errorBag[i].message)) > -1
+                        ? unique.splice(i, 1)
+                        : repeat.push(tmp);
+                    i++;
+                }
+
+                reject(unique);
             }
 
             resolve();
