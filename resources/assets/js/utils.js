@@ -99,7 +99,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (size < target) {
             pushError(
                 getCallerName(),
-                `The image should be at least ${target}Mb`
+                `The image should be at least ${target}MB`
             );
         }
     };
@@ -110,7 +110,7 @@ export const imageValidator = (inputFile, rules = []) => {
         if (size > target) {
             pushError(
                 getCallerName(),
-                `The image should be no bigger than ${target}Mb`
+                `The image should be no bigger than ${target}MB`
             );
         }
     };
