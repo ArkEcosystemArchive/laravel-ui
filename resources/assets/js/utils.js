@@ -138,11 +138,16 @@ export const imageValidator = (inputFile, rules = []) => {
             });
 
             if (errorBag.length) {
-                let unique = errorBag.map(a => Object.assign({}, a)), repeat = [], tmp, i = 0;
+                let unique = errorBag.map((a) => Object.assign({}, a)),
+                    repeat = [],
+                    tmp,
+                    i = 0;
 
-                while(i < errorBag.length){
-                  repeat.indexOf(tmp = errorBag[i].message) > -1 ? unique.splice(i, 1) : repeat.push(tmp);
-                  i++;
+                while (i < errorBag.length) {
+                    repeat.indexOf((tmp = errorBag[i].message)) > -1
+                        ? unique.splice(i, 1)
+                        : repeat.push(tmp);
+                    i++;
                 }
 
                 reject(unique);
