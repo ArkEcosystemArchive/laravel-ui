@@ -141,6 +141,7 @@
                 Livewire.emit('discardCroppedImage');
             },
         }"
+        close-button-only
         init
     >
         @slot('title')
