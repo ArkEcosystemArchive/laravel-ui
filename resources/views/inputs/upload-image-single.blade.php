@@ -79,7 +79,7 @@
                     @if($withCrop)
                     @change="validateImage"
                     @else
-                    wire:model="{{ $attributes->wire('model') }}"
+                    {{ $attributes->wire('model') }}
                     @endif
                 />
             @endunless
