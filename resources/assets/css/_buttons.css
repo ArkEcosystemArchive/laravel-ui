@@ -142,7 +142,6 @@ a.button-secondary {
     @apply px-2 py-2.5 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-600;
 }
 
-
 .button-pagination-page-indicator .button-pagination-search,
 .button-pagination-page-indicator .button-pagination-ellipsis {
     @apply transition-opacity duration-100 ease-in-out;
