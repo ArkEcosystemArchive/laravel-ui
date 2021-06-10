@@ -11,12 +11,12 @@
 }
 
 .button-tag {
-    @apply button-secondary break-all;
+    @apply break-all button-secondary;
     @apply py-0.5 px-3 text-left !important;
 }
 
 .button-outline {
-    @apply button-generic border-2 border-theme-primary-100 text-theme-primary-600;
+    @apply border-2 button-generic border-theme-primary-100 text-theme-primary-600;
 }
 
 .button-tag-outline {
@@ -38,7 +38,7 @@ a.disabled {
 .button-outline.button-disabled,
 .button-tag-outline:disabled,
 .button-tag-outline.button-disabled {
-    @apply border-theme-secondary-200 text-theme-secondary-400 shadow-none cursor-not-allowed pointer-events-none;
+    @apply shadow-none cursor-not-allowed pointer-events-none border-theme-secondary-200 text-theme-secondary-400;
 }
 
 .dark .button-primary:disabled,
@@ -108,7 +108,7 @@ a.disabled {
 
 .button-outline:hover,
 .button-tag-outline:hover {
-    @apply text-white bg-theme-primary-700 border-transparent shadow-button-secondary;
+    @apply text-white border-transparent bg-theme-primary-700 shadow-button-secondary;
 }
 
 .dark .button-icon:hover,
@@ -142,13 +142,22 @@ a.button-secondary {
     @apply px-2 py-2.5 font-semibold text-center transition-default bg-theme-primary-100 text-theme-primary-600;
 }
 
+
+.button-pagination-page-indicator .button-pagination-search,
+.button-pagination-page-indicator .button-pagination-ellipsis {
+    @apply transition-opacity duration-100 ease-in-out;
+}
+.button-pagination-page-indicator .button-pagination-search {
+    @apply absolute mt-1;
+}
+
 .button-pagination-page-indicator:hover .button-pagination-search,
 .button-pagination-page-indicator .button-pagination-ellipsis {
-    @apply inline;
+    @apply opacity-100;
 }
 .button-pagination-page-indicator:hover .button-pagination-ellipsis,
 .button-pagination-page-indicator .button-pagination-search {
-    @apply hidden;
+    @apply opacity-0;
 }
 
 .dark .button-pagination-page-indicator {
