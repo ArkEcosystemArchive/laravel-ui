@@ -87,7 +87,7 @@ $icons = [
                 @if($showCharsCount || $showWordsCount || $showReadingTime)
                     <div x-cloak class="flex justify-end py-3 text-xs bg-white border-t-2 border-theme-secondary-200">
                         @if($showWordsCount)
-                            <span class="px-4 ">{{ trans('ui::forms.wysiwyg.words') }}: <strong x-text="wordsCount"></strong></span>
+                            <span class="px-4">{{ trans('ui::forms.wysiwyg.words') }}: <strong x-text="wordsCount"></strong></span>
                         @endif
                         @if($showCharsCount)
                             <span class="px-4 border-l-2 border-theme-secondary-200">
