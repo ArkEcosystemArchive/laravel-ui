@@ -8,7 +8,6 @@
     'buttons' => null,
     'buttonsStyle' => 'modal-buttons',
     'closeButtonOnly' => false,
-    'closeAway' => true,
     'escToClose' => true,
     'name' => '',
 ])
@@ -32,20 +31,20 @@
 
     <div
         class="modal-content-wrapper md:m-auto w-full {{ $class }} {{ $widthClass }}"
-        @if($closeAway)
+        @if(!$closeButtonOnly)
         @click.away="hide"
         @endif
     >
         <div class="modal-content dropdown-scrolling {{ $widthClass }}">
             <div class="p-8 sm:p-10">
-                @unless($closeButtonOnly)
+                @if(!$closeButtonOnly)
                 <button
                     class="modal-close"
                     @click="hide"
                 >
                     <x-ark-icon name="close" size="md" class="m-auto" />
                 </button>
-                @endunless
+                @endif
 
                 @if ($title)
                     <h1 class="{{ $titleClass }}">
