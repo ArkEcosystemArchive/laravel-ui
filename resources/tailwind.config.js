@@ -18,7 +18,8 @@ module.exports = {
                     "2px 3px 10px 2px rgba(var(--theme-color-primary-rgb), 0.34)",
                 "button-secondary":
                     "2px 3px 10px 2px rgba(var(--theme-color-primary-rgb), 0.34)",
-                "lg-smooth": "0 10px 15px -3px rgba(0, 0, 0, 0.025), 0 4px 6px -2px rgba(0, 0, 0, 0.025)",
+                "lg-smooth":
+                    "0 10px 15px -3px rgba(0, 0, 0, 0.025), 0 4px 6px -2px rgba(0, 0, 0, 0.025)",
                 "header-smooth": " 0px 2px 10px 0px rgba(192, 200, 207, 0.22)",
                 "header-smooth-dark": " 0px 2px 10px 0px rgba(18, 18, 19, .6)",
                 "lg-dark":
