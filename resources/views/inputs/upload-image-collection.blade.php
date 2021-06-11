@@ -60,9 +60,11 @@
                     </div>
 
                     <div class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}">
-                        <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-80 bg-theme-secondary-900 w-full {{ $imageHeight }}">
-                            <x-ark-icon name="drag" size="lg" class="text-white"/>
-                            <p class="mt-3 font-semibold text-xs text-theme-secondary-500">Drag to reposition</p>
+                        <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full {{ $imageHeight }}">
+                            @if($sortable)
+                                <x-ark-icon name="drag" size="lg" class="text-white"/>
+                                <p class="mt-3 font-semibold text-xs text-theme-secondary-500">Drag to reposition</p>
+                            @endif
                         </div>
 
                         <button type="button" data-action
