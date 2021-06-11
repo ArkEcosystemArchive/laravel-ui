@@ -55,7 +55,7 @@
         <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" @if($sortable)wire:sortable="updateImageOrder"@endif>
             @foreach ($images as $index => $image)
                 <div class="relative {{ $imageHeight }}" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
-                    <div class="relative inline-block w-full h-full rounded-xl border border-theme-secondary-300 overflow-hidden">
+                    <div class="inline-block overflow-hidden relative w-full h-full rounded-xl border border-theme-secondary-300">
                         <img src="{{ $image['url'] }}" class="object-cover w-full h-full" alt="">
                     </div>
 
@@ -63,7 +63,7 @@
                         <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full {{ $imageHeight }}">
                             @if($sortable)
                                 <x-ark-icon name="drag" size="lg" class="text-white"/>
-                                <p class="mt-3 font-semibold text-xs text-theme-secondary-500">Drag to reposition</p>
+                                <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to reposition</p>
                             @endif
                         </div>
 
