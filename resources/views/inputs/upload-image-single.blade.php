@@ -117,13 +117,15 @@
                 <div
                     class="absolute top-0 w-full h-full rounded-xl opacity-70 pointer-events-none border-6 border-theme-secondary-900 transition-default"></div>
 
-                <div
+                <button
+                    wire:loading.attr="disabled"
+                    type="button"
                     class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
                     wire:click="deleteImageSingle"
                     data-tippy-hover="{{ $deleteTooltip }}"
                 >
                     <x-ark-icon name="close" size="sm"/>
-                </div>
+                </button>
             </div>
 
             <div x-show="isUploading" x-cloak>
