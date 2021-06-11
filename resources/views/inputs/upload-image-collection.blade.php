@@ -55,24 +55,23 @@
         <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" @if($sortable)wire:sortable="updateImageOrder"@endif>
             @foreach ($images as $index => $image)
                 <div class="relative {{ $imageHeight }}" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
-                    <div
-                        style="background-image: url('{{ $image['url'] }}')"
-                        class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl border border-theme-secondary-300"
-                    ></div>
+                    <div class="relative inline-block w-full h-full rounded-xl border border-theme-secondary-300 overflow-hidden">
+                        <img src="{{ $image['url'] }}" class="object-cover w-full h-full" alt="">
+                    </div>
 
-                    <div
-                        wire:key="delete-button-{{ $id }}"
-                        class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}"
-                    >
-                        <div class="pointer-events-none rounded-xl absolute top-0 opacity-70 border-6 border-theme-secondary-900 transition-default w-full {{ $imageHeight }}"></div>
+                    <div class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}">
+                        <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-80 bg-theme-secondary-900 w-full {{ $imageHeight }}">
+                            <x-ark-icon name="drag" size="lg" class="text-white"/>
+                            <p class="mt-3 font-semibold text-xs text-theme-secondary-500">Drag to reposition</p>
+                        </div>
 
-                        <div
+                        <button type="button" data-action
                             class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
                             wire:click="deleteImage({{ $index }})"
                             data-tippy-hover="{{ $deleteTooltip }}"
                         >
                             <x-ark-icon name="close" size="sm" />
-                        </div>
+                        </button>
                     </div>
                 </div>
             @endforeach
