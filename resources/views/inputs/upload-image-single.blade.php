@@ -79,7 +79,7 @@
                     @if($withCrop)
                     @change="validateImage"
                     @else
-                    wire:model="{{ $attributes->wire('model') }}"
+                    {{ $attributes->wire('model') }}
                     @endif
                 />
             @endunless
@@ -161,11 +161,11 @@
         @endslot
 
         @slot('buttons')
-            <button class="{{ $cropCancelButtonClass }}" @click="hide" dusk="crop-cancel-button">
+            <button type="button" class="{{ $cropCancelButtonClass }}" @click="hide" dusk="crop-cancel-button">
                 {{ $cropCancelButton }}
             </button>
 
-            <button class="{{ $cropSaveButtonClass }}" @click="Livewire.emit('saveCroppedImage')" dusk="crop-save-button">
+            <button type="button" class="{{ $cropSaveButtonClass }}" @click="Livewire.emit('saveCroppedImage')" dusk="crop-save-button">
                 @if($cropSaveIcon)
                     <x-ark-icon :name="$cropSaveIcon" size="sm" class="inline my-auto mr-2"/>
                 @endif
