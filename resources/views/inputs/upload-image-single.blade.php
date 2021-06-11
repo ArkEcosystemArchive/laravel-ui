@@ -88,7 +88,7 @@
         @if (!$image && !$readonly)
             <div
                 wire:key="upload-button"
-                class="absolute flex flex-col items-center justify-center space-y-2 cursor-pointer pointer-events-none top-2 right-2 bottom-2 left-2 rounded-xl"
+                class="flex absolute top-2 right-2 bottom-2 left-2 flex-col justify-center items-center space-y-2 rounded-xl cursor-pointer pointer-events-none"
                 role="button"
             >
                 <div class="text-theme-primary-500">
@@ -115,7 +115,7 @@
 
             >
                 <div
-                    class="absolute top-0 w-full h-full pointer-events-none rounded-xl opacity-70 border-6 border-theme-secondary-900 transition-default"></div>
+                    class="absolute top-0 w-full h-full rounded-xl opacity-70 pointer-events-none border-6 border-theme-secondary-900 transition-default"></div>
 
                 <button
                     wire:loading.attr="disabled"
@@ -129,7 +129,7 @@
             </div>
 
             <div x-show="isUploading" x-cloak>
-                <x-ark-loading-spinner class="bottom-0 left-0 right-0 rounded-xl" :dimensions="$dimensions"/>
+                <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions"/>
             </div>
         @endunless
     </div>
@@ -157,7 +157,7 @@
                 </div>
             @endif
 
-            <div class="mt-8 -mx-8 sm:mt-10 sm:-mx-10 h-75">
+            <div class="-mx-8 mt-8 sm:mt-10 sm:-mx-10 h-75">
                 <img id="image-single-crop-{{ $id }}" src="" alt="">
             </div>
         @endslot
