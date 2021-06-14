@@ -1,7 +1,4 @@
-import {
-    disableBodyScroll,
-    enableBodyScroll,
-} from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const onNavbarClosed = (navbar) => {
     enableBodyScroll(navbar);
@@ -76,7 +73,7 @@ const Navbar = {
                 this.open = true;
             },
             ...xData,
-        }
+        };
     },
 };
 
