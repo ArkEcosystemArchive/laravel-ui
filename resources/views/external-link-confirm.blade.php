@@ -36,7 +36,7 @@
         @endslot
 
         @slot('description')
-            <div class="flex flex-col space-y-4 whitespace-normal">
+            <div class="flex flex-col space-y-4 whitespace-normal" x-data="cookies()">
                 <p>
                     @lang('generic.external_link_warning')
                 </p>
@@ -44,6 +44,14 @@
                     <x-ark-alert type="warning" :message="$url" />
                 </div>
                 <p>@lang('generic.external_link_disclaimer')</p>
+                <x-ark-checkbox
+                    name="dismissAlert"
+                    alpine="cookies.set('dismiss_external_link_alert', true)"
+                >
+                    @slot('label')
+                        @lang('ui::forms.do_not_show_message_again')
+                    @endslot
+                </x-ark-checkbox>
             </div>
         @endslot
 
