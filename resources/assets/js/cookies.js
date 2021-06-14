@@ -6,6 +6,6 @@ window.cookies = () => {
 
         get(cookieName) {
             Cookies.noConflict().get(cookieName);
-        }
+        },
     };
 };
