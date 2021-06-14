@@ -105,10 +105,11 @@ $initialText = $grouped
                             @mouseenter="selected = index"
                             @mouseleave="selected = null"
                             :class="{
-                                'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
-                                'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === index && value !== optionValue,
+                                'rich-select-dropdown-entry-selected': value === optionValue,
+                                'rich-select-dropdown-entry-hover': selected === index && value !== optionValue,
+                                'rich-select-dropdown-entry-not-selected': selected !== index && value !== optionValue,
                             }"
-                            class="py-4 px-8 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                            class="rich-select-dropdown-entry"
                             x-text="options[optionValue]"
                         ></div>
                     </template>
@@ -130,10 +131,11 @@ $initialText = $grouped
                                     @mouseenter="selected = getOptionIndex(index, index2); selectedGroup = groupName"
                                     @mouseleave="selected = null; selectedGroup = null"
                                     :class="{
-                                        'text-theme-danger-400 bg-theme-danger-100 dark:text-white dark:bg-theme-danger-400': value === optionValue,
-                                        'text-theme-primary-600 bg-theme-secondary-100 dark:bg-theme-primary-600 dark:text-white': selected === getOptionIndex(index, index2) && value !== optionValue,
+                                        'rich-select-dropdown-entry-selected': value === optionValue,
+                                        'rich-select-dropdown-entry-hover': selected === getOptionIndex(index, index2) && value !== optionValue,
+                                        'rich-select-dropdown-entry-not-selected': selected !== getOptionIndex(index, index2) && value !== optionValue,
                                     }"
-                                    class="py-4 px-8 font-medium transition duration-150 ease-in-out cursor-pointer text-theme-secondary-900 hover:bg-theme-secondary-100 hover:text-theme-secondary-900 dark:text-theme-secondary-200 dark:hover:bg-theme-primary-600 dark:hover:text-theme-secondary-200"
+                                    class="rich-select-dropdown-entry"
                                     x-text="options[groupName][optionValue]"
                                 ></div>
                             </template>
