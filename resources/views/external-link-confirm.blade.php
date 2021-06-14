@@ -36,10 +36,7 @@
         @endslot
 
         @slot('description')
-            <div class="flex flex-col space-y-4 whitespace-normal">
-                <p>
-                    @lang('generic.external_link_warning')
-                </p>
+            <div class="flex flex-col space-y-4 whitespace-normal mt-8">
                 <div class="font-semibold text-theme-secondary-900">
                     <x-ark-alert type="warning" :message="$url" />
                 </div>
