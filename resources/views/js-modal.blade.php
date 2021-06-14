@@ -27,7 +27,7 @@
     x-show="shown"
     class="flex overflow-y-auto fixed inset-0 z-50 md:py-10 md:px-8"
 >
-    <div class="fixed inset-0 opacity-75 bg-theme-secondary-900 dark:bg-theme-secondary-800 dark:opacity-50"></div>
+    <div class="fixed inset-0 opacity-75 dark:opacity-50 bg-theme-secondary-900 dark:bg-theme-secondary-800"></div>
 
     <div
         class="modal-content-wrapper md:m-auto w-full {{ $class }} {{ $widthClass }}"

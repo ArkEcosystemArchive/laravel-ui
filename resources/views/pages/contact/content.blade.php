@@ -18,7 +18,7 @@
 ])
 
 <div class="flex flex-col space-y-16 lg:flex-row lg:space-y-0 contact-content">
-    <div class="flex-1 space-y-8 lg:w-1/2 border-theme-secondary-300 lg:border-r lg:pr-6">
+    <div class="flex-1 space-y-8 lg:pr-6 lg:w-1/2 lg:border-r border-theme-secondary-300">
         <div class="pb-8 border-b border-dashed border-theme-secondary-300">
             <h3>{{ $helpTitle }}</h3>
 
@@ -34,7 +34,7 @@
                 {{ $additionalDescription }}
             </div>
 
-            <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:space-x-2 sm:space-y-0 sm:items-center">
+            <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
                 <a href="@lang('ui::urls.documentation')" target="_blank" rel="noopener noreferrer" class="button-secondary">@lang('ui::actions.documentation')</a>
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
@@ -68,7 +68,7 @@
 
             @honeypot
 
-            <div class="flex flex-col space-y-8 sm:flex-row sm:space-x-3 sm:space-y-0">
+            <div class="flex flex-col space-y-8 sm:flex-row sm:space-y-0 sm:space-x-3">
                 <x-ark-input
                     name="name"
                     :label="trans('ui::forms.name')"

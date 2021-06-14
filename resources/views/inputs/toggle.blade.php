@@ -24,7 +24,7 @@
         @click.prevent="toggle"
         @keyup.space.prevent="toggle"
     >
-        <span aria-hidden="true" class="absolute w-full h-1.5 mx-auto transition-colors duration-200 ease-in-out rounded-full bg-theme-secondary-300 dark:bg-theme-secondary-800"></span>
+        <span aria-hidden="true" class="absolute mx-auto w-full h-1.5 rounded-full transition-colors duration-200 ease-in-out bg-theme-secondary-300 dark:bg-theme-secondary-800"></span>
         <span
             aria-hidden="true"
             :class="{
