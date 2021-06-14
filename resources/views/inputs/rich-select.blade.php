@@ -107,7 +107,6 @@ $initialText = $grouped
                             :class="{
                                 'rich-select-dropdown-entry-selected': value === optionValue,
                                 'rich-select-dropdown-entry-hover': selected === index && value !== optionValue,
-                                'rich-select-dropdown-entry-not-selected': selected !== index && value !== optionValue,
                             }"
                             class="rich-select-dropdown-entry"
                             x-text="options[optionValue]"
@@ -133,7 +132,6 @@ $initialText = $grouped
                                     :class="{
                                         'rich-select-dropdown-entry-selected': value === optionValue,
                                         'rich-select-dropdown-entry-hover': selected === getOptionIndex(index, index2) && value !== optionValue,
-                                        'rich-select-dropdown-entry-not-selected': selected !== getOptionIndex(index, index2) && value !== optionValue,
                                     }"
                                     class="rich-select-dropdown-entry"
                                     x-text="options[groupName][optionValue]"

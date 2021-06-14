@@ -6,10 +6,6 @@
 .dropdown-entry,
 .rich-select-dropdown-entry {
     @apply block w-full py-4 px-8 font-medium transition duration-150 ease-in-out cursor-pointer text-left;
-}
-
-.dropdown-entry,
-.rich-select-dropdown-entry-not-selected {
     @apply text-theme-secondary-900 bg-white dark:text-theme-secondary-200 dark:bg-theme-secondary-800;
 }
 
