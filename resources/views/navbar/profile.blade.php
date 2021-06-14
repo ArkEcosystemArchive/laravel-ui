@@ -14,7 +14,7 @@
                     x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
-                <div class="overflow-hidden w-10 h-10 rounded-xl border-2 border-transparent md:h-11 md:w-11">
+                <div class="overflow-hidden w-10 h-10 rounded-xl border-2 border-transparent md:w-11 md:h-11">
                     {{ $profilePhoto->img('', ['class' => 'object-cover w-full h-full', 'alt' => trans('ui::general.profile_avatar_alt')]) }}
                 </div>
             @endisset

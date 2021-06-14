@@ -5,7 +5,7 @@
                 <dt>
                     <button
                         type="button"
-                        class="flex justify-between items-center w-full text-left text-theme-primary-600 focus:outline-none"
+                        class="flex justify-between items-center w-full text-left focus:outline-none text-theme-primary-600"
                         :class="{ 'mb-5': openPanel === {{ $i }} }"
                         @click="openPanel = (openPanel === {{ $i }} ? null : {{ $i }})"
                     >

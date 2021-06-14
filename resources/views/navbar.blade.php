@@ -19,11 +19,11 @@
     ></div>
 
     {{-- Spacer for the sticky navbar  --}}
-    <div class="h-20 mb-0.5"></div>
+    <div class="mb-0.5 h-20"></div>
     <nav
         aria-label="{{ trans('ark::general.primary_navigation') }}"
         x-ref="nav"
-        class="fixed top-0 z-30 w-full bg-white border-b dark:bg-theme-secondary-900 border-theme-secondary-300"
+        class="fixed top-0 z-30 w-full bg-white border-b border-theme-secondary-300 dark:bg-theme-secondary-900"
         dusk="navigation-bar"
     >
         <div class="relative z-10 bg-white navbar-container border-theme-secondary-300">
@@ -35,7 +35,7 @@
                 @endisset
 
                 <div class="flex justify-end">
-                    <div class="flex flex-1 justify-end items-center sm:items-stretch sm:justify-between">
+                    <div class="flex flex-1 justify-end items-center sm:justify-between sm:items-stretch">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
