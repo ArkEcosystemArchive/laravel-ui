@@ -55,7 +55,7 @@
     @if (count($images) > 0)
         <div class="flex flex-wrap -m-3" @if($sortable)wire:sortable="updateImageOrder"@endif>
             @foreach ($images as $index => $image)
-                <div class="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6 p-3" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
+                <div class="p-3 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
                     <div class="aspect-w-16 aspect-h-9">
                         <div>
                             <img src="{{ $image['url'] }}" class="object-cover w-full h-full rounded-xl border border-theme-secondary-300" alt="">
