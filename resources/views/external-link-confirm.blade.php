@@ -11,10 +11,20 @@
     x-data="{
         openModal() {
             Livewire.emit('openModal', '{{ $identifier }}')
+        },
+        redirect() {
+            window.location.href = '{{ $url }}'
+        },
+        hasDismissedCookie() {
+            if (document.cookie.match('dismiss_external_link_alert=true')) {
+                return true;
+            }
+
+            return false;
         }
     }"
     class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
-    @click="openModal"
+    @click="hasDismissedCookie() ? redirect() : openModal()"
 >
     <span>{{ $text ?? $slot ?? '' }}</span>
 
@@ -36,17 +46,15 @@
         @endslot
 
         @slot('description')
-            <div class="flex flex-col space-y-4 whitespace-normal" x-data="cookies()">
-                <p>
-                    @lang('generic.external_link_warning')
-                </p>
+            <div class="flex flex-col space-y-4 whitespace-normal mt-8">
                 <div class="font-semibold text-theme-secondary-900">
                     <x-ark-alert type="warning" :message="$url" />
                 </div>
                 <p>@lang('generic.external_link_disclaimer')</p>
+
                 <x-ark-checkbox
-                    name="dismissAlert"
-                    alpine="cookies.set('dismiss_external_link_alert', true)"
+                    name="terms"
+                    alpine="document.cookie = 'dismiss_external_link_alert=true'"
                 >
                     @slot('label')
                         @lang('ui::forms.do_not_show_message_again')

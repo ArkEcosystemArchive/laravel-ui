@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "@sindresorhus/slugify": "sindresorhus/slugify",
-    "js-cookie": "^2.2.1",
     "prettier": "^2.0.2"
   },
   "devDependencies": {
