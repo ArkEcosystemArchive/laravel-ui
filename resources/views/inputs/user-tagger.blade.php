@@ -37,7 +37,7 @@
             <div
                 wire:ignore
                 x-ref="editor"
-                style="min-height: {{ $rows * 30 }}px; word-break: break-word;"
+                style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
                 class="input-text @error($name) input-text--error @enderror"
                 data-placeholder="{{ $placeholder }}"
             >{{ $slot ?? '' }}</div>
