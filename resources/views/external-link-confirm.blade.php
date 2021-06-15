@@ -16,11 +16,7 @@
             window.location.href = '{{ $url }}'
         },
         hasDismissedCookie() {
-            if (document.cookie.match('dismiss_external_link_alert=true')) {
-                return true;
-            }
-
-            return false;
+            return !! document.cookie.match('dismiss_external_link_alert=true');
         }
     }"
     class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
@@ -54,7 +50,7 @@
 
                 <x-ark-checkbox
                     name="terms"
-                    alpine="document.cookie = 'dismiss_external_link_alert=true'"
+                    alpine="document.cookie.match('dismiss_external_link_alert=true') ? document.cookie = 'dismiss_external_link_alert=false' : document.cookie = 'dismiss_external_link_alert=true'"
                 >
                     @slot('label')
                         @lang('ui::forms.do_not_show_message_again')
