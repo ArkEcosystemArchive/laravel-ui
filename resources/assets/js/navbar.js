@@ -1,5 +1,4 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import isTouchDevice from "./helpers/isTouchDevice";
 
 const onNavbarClosed = (navbar) => {
     enableBodyScroll(navbar);
@@ -19,7 +18,7 @@ const Navbar = {
             selectedChild: null,
             scrollProgress: 0,
             nav: null,
-            onlyLockOnTouchDevice: false,
+            lockBodyBreakpoint: 640,
             onScroll() {
                 const progress = this.getScrollProgress();
                 if (progress !== this.scrollProgress) {
@@ -50,20 +49,20 @@ const Navbar = {
                 this.scrollProgress = this.getScrollProgress();
                 this.updateShadow(this.scrollProgress);
 
-                if (this.lockBody()) {
-                    this.$watch("open", (open) => {
-                        this.$nextTick(() => {
-                            if (open) {
+                this.$watch("open", (open) => {
+                    this.$nextTick(() => {
+                        if (open) {
+                            if (this.lockBody()) {
                                 onNavbarOpened(scrollable || nav);
-                            } else {
-                                onNavbarClosed(scrollable || nav);
                             }
-                        });
+                        } else {
+                            onNavbarClosed(scrollable || nav);
+                        }
                     });
+                });
 
-                    if (this.open) {
-                        onNavbarOpened(scrollable || nav);
-                    }
+                if (this.open && this.lockBody()) {
+                    onNavbarOpened(scrollable || nav);
                 }
             },
             hide() {
@@ -73,11 +72,7 @@ const Navbar = {
                 this.open = true;
             },
             lockBody() {
-                if (this.onlyLockOnTouchDevice) {
-                    return isTouchDevice();
-                }
-
-                return true;
+                return window.innerWidth <= this.lockBodyBreakpoint;
             },
             ...xData,
         };
