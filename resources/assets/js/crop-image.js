@@ -1,4 +1,11 @@
-import { uploadImage, imageValidator } from "./utils";
+import {
+    uploadImage,
+    imageValidator,
+    getCsrfToken,
+    resetUploadInput,
+} from "./utils";
+
+import { invalidResponseException } from "./utils/exceptions";
 
 const CropImage = (
     $cropOptions = {},
@@ -68,7 +75,7 @@ const CropImage = (
                 })
                 .catch((err) => {
                     err.forEach((err) => {
-                        this.resetUploadInput();
+                        resetUploadInput(this.uploadEl);
 
                         Livewire.emit("toastMessage", [err.message, "danger"]);
                     });
@@ -77,26 +84,30 @@ const CropImage = (
     },
 
     loadCropper() {
-        if (this.uploadEl.files.length) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                if (e.target.result) {
-                    this.cropEl = document.getElementById($cropID);
-                    this.cropEl.src = e.target.result;
+        const file = this.uploadEl.files[0];
 
-                    this.cropper = new Cropper(this.cropEl, $cropOptions);
-
-                    this.$nextTick(() => {
-                        this.destroyCropper();
-                        this.cropper = new Cropper(this.cropEl, $cropOptions);
-                    });
-
-                    this.openCropModal();
-                }
-            };
-
-            reader.readAsDataURL(this.uploadEl.files[0]);
+        if (! file) {
+            return;
         }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if (e.target.result) {
+                this.cropEl = document.getElementById($cropID);
+                this.cropEl.src = e.target.result;
+
+                this.cropper = new Cropper(this.cropEl, $cropOptions);
+
+                this.$nextTick(() => {
+                    this.destroyCropper();
+                    this.cropper = new Cropper(this.cropEl, $cropOptions);
+                });
+
+                this.openCropModal();
+            }
+        };
+
+        reader.readAsDataURL(file);
     },
 
     saveCroppedImage() {
@@ -117,10 +128,10 @@ const CropImage = (
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, this.getCsrfToken()).then(
+            uploadImage(blob, $endpoint, getCsrfToken()).then(
                 (response) => {
                     if (!response.url) {
-                        throw new Error("Received invalid response");
+                        invalidResponseException();
                     }
 
                     this.model = response.url;
@@ -134,21 +145,11 @@ const CropImage = (
     discardImage() {
         this.destroyCropper();
 
-        this.resetUploadInput();
-    },
-
-    resetUploadInput() {
-        this.uploadEl.value = "";
-        this.uploadEl.type = "";
-        this.uploadEl.type = "file";
+        resetUploadInput(this.uploadEl);
     },
 
     openCropModal() {
         Livewire.emit("openModal", $modalID);
-    },
-
-    getCsrfToken() {
-        return document.querySelector("meta[name=csrf-token]").content;
     },
 });
 

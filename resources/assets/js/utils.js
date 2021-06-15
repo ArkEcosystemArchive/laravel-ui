@@ -20,7 +20,7 @@ export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
         },
     })
         .then((response) => {
-            const { status } = response;
+            const {status} = response;
             if (status === 200) {
                 return response.json();
             } else if (status === 419) {
@@ -120,7 +120,7 @@ export const imageValidator = (inputFile, rules = []) => {
     };
 
     const errorBagItem = (err, message) => {
-        return { error: err, message: message };
+        return {error: err, message: message};
     };
 
     image.src = URL.createObjectURL(inputFile);
@@ -175,6 +175,22 @@ export const getCallerName = () => {
  * @param bytes
  * @returns {string}
  */
-export const bytesToMegabytes = (bytes) => {
-    return parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
+export const bytesToMegabytes = (bytes) => parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
+
+/**
+ * Get CSRF token from DOM.
+ *
+ * @returns {string}
+ */
+export const getCsrfToken = () => document.querySelector("meta[name=csrf-token]").content;
+
+/**
+ * Reset an input file field.
+ *
+ * @param uploadEl
+ */
+export const resetUploadInput = (uploadEl) => {
+    uploadEl.value = "";
+    uploadEl.type = "";
+    uploadEl.type = "file";
 };
