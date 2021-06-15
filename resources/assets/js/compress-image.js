@@ -1,11 +1,6 @@
-import {
-    uploadImage,
-    imageValidator,
-    getCsrfToken,
-    resetUploadInput,
-} from "./utils";
-
+import {uploadImage, imageValidator, getCsrfToken, resetUploadInput} from "./utils";
 import {invalidResponseException} from "./utils/exceptions";
+import ErrorBag from "./utils/error-bag";
 
 const CompressImage = (
     $uploadID,
@@ -24,21 +19,13 @@ const CompressImage = (
 ) => ({
     model: $model,
     compressors: [],
-    errors: [],
+    errors: new ErrorBag(),
     isUploading: false,
     uploadEl: null,
 
     init() {
         this.uploadEl = document.getElementById($uploadID);
     },
-
-    resetErrorBag() {
-        this.errors = [];
-    },
-
-    // destroyCompressor() {
-    //     this.compressor = null;
-    // },
 
     select() {
         this.uploadEl.click();
@@ -49,7 +36,7 @@ const CompressImage = (
             return;
         }
 
-        this.resetErrorBag();
+        this.errors.reset();
 
         this.uploadEl.files.forEach((file) => {
             imageValidator(this.uploadEl.files[0], [
@@ -64,31 +51,15 @@ const CompressImage = (
                 })
                 .catch((errors) => {
                     errors.forEach((err) => {
-
-                        Livewire.emit("toastMessage", [err.message, "danger"]);
+                        this.errors.push(err.error, err.message)
+                        // Livewire.emit("toastMessage", [err.message, "danger"]);
                     });
                 });
         });
 
-        if (this.uploadEl.files.length) {
-            imageValidator(this.uploadEl.files[0], [
-                {rule: "minWidth", value: $minWidth},
-                {rule: "maxWidth", value: $maxWidth},
-                {rule: "minHeight", value: $minHeight},
-                {rule: "maxHeight", value: $maxHeight},
-                {rule: "maxFileSize", value: $maxFileSize},
-            ])
-                .then(() => {
-                    this.loadCompressor();
-                })
-                .catch((errors) => {
-                    errors.forEach((err) => {
-                        resetUploadInput(this.uploadEl);
+        this.errors.getAll().forEach((error) => {
 
-                        Livewire.emit("toastMessage", [err.message, "danger"]);
-                    });
-                });
-        }
+        });
     },
 
     loadCompressor() {
