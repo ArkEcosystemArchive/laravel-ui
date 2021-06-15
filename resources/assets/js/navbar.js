@@ -1,4 +1,5 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import isTouchDevice from "./helpers/isTouchDevice";
 
 const onNavbarClosed = (navbar) => {
     enableBodyScroll(navbar);
@@ -18,7 +19,7 @@ const Navbar = {
             selectedChild: null,
             scrollProgress: 0,
             nav: null,
-
+            onlyLockOnTouchDevice: false,
             onScroll() {
                 const progress = this.getScrollProgress();
                 if (progress !== this.scrollProgress) {
@@ -26,7 +27,6 @@ const Navbar = {
                     this.updateShadow(progress);
                 }
             },
-
             getScrollProgress() {
                 const navbarHeight = 82;
                 return Math.min(
@@ -34,7 +34,6 @@ const Navbar = {
                     document.documentElement.scrollTop / navbarHeight
                 );
             },
-
             updateShadow(progress) {
                 const maxTransparency = 0.22;
                 const shadowTransparency =
@@ -44,7 +43,6 @@ const Navbar = {
                 this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
                 this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
             },
-
             init() {
                 const { nav, scrollable } = this.$refs;
                 this.nav = nav;
@@ -52,18 +50,20 @@ const Navbar = {
                 this.scrollProgress = this.getScrollProgress();
                 this.updateShadow(this.scrollProgress);
 
-                this.$watch("open", (open) => {
-                    this.$nextTick(() => {
-                        if (open) {
-                            onNavbarOpened(scrollable || nav);
-                        } else {
-                            onNavbarClosed(scrollable || nav);
-                        }
+                if (this.lockBody()) {
+                    this.$watch("open", (open) => {
+                        this.$nextTick(() => {
+                            if (open) {
+                                onNavbarOpened(scrollable || nav);
+                            } else {
+                                onNavbarClosed(scrollable || nav);
+                            }
+                        });
                     });
-                });
 
-                if (this.open) {
-                    onNavbarOpened(scrollable || nav);
+                    if (this.open) {
+                        onNavbarOpened(scrollable || nav);
+                    }
                 }
             },
             hide() {
@@ -71,6 +71,13 @@ const Navbar = {
             },
             show() {
                 this.open = true;
+            },
+            lockBody() {
+                if (this.onlyLockOnTouchDevice) {
+                    return isTouchDevice();
+                }
+
+                return true;
             },
             ...xData,
         };
