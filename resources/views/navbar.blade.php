@@ -10,7 +10,7 @@
     ][$breakpoint ?? 'md'];
 @endphp
 
-<header x-data="Navbar.dropdown({ onlyLockOnTouchDevice: true })" x-init="init">
+<header x-data="Navbar.dropdown()" x-init="init">
     <div
         x-show="openDropdown !== null || open"
         class="overflow-y-auto fixed inset-0 z-30 opacity-75 bg-theme-secondary-900 {{ $backdropClass }}"
@@ -27,7 +27,7 @@
         dusk="navigation-bar"
     >
         <div class="relative z-10 bg-white navbar-container border-theme-secondary-300">
-            <div class="relative flex justify-between h-20">
+            <div class="flex relative justify-between h-20">
                 @include('ark::navbar.logo')
 
                 @isset($middle)
@@ -35,7 +35,7 @@
                 @endisset
 
                 <div class="flex justify-end">
-                    <div class="flex items-center justify-end flex-1 sm:justify-between sm:items-stretch">
+                    <div class="flex flex-1 justify-end items-center sm:justify-between sm:items-stretch">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
@@ -43,7 +43,7 @@
                         @endisset
                     </div>
 
-                    <div class="inset-y-0 right-0 flex items-center sm:static sm:inset-auto sm:ml-4">
+                    <div class="flex inset-y-0 right-0 items-center sm:static sm:inset-auto sm:ml-4">
                         @if(is_array($navigation))
                             @include('ark::navbar.hamburger')
                         @endif
