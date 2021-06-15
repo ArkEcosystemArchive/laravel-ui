@@ -31,12 +31,13 @@
 
         <div class="flex flex-col justify-center items-center space-y-2 w-full h-full rounded-xl bg-theme-primary-50">
             <div class="text-theme-primary-500">
-                <x-ark-icon name="upload-cloud" size="lg" />
+                <x-ark-icon name="upload-cloud" size="lg"/>
             </div>
 
             <div class="font-semibold text-theme-secondary-900">{!! $uploadText !!}</div>
 
-            <div class="flex flex-col space-y-1 text-xs font-semibold text-center sm:flex-row sm:space-y-0 sm:space-x-1 text-theme-secondary-500 chunk-header">
+            <div
+                class="flex flex-col space-y-1 text-xs font-semibold text-center sm:flex-row sm:space-y-0 sm:space-x-1 text-theme-secondary-500 chunk-header">
                 @lang('ui::forms.upload-image-collection.requirements', [
                     'width'    => $minWidth,
                     'height'   => $minHeight,
@@ -47,33 +48,36 @@
         </div>
 
         <div x-show="isUploading" x-cloak>
-            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions" />
+            <x-ark-loading-spinner class="right-0 bottom-0 left-0 rounded-xl" :dimensions="$dimensions"/>
         </div>
     </div>
 
     @if (count($images) > 0)
-        <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6" @if($sortable)wire:sortable="updateImageOrder"@endif>
+        <div class="flex flex-wrap -m-3" @if($sortable)wire:sortable="updateImageOrder"@endif>
             @foreach ($images as $index => $image)
-                <div class="relative {{ $imageHeight }}" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
-                    <div class="inline-block overflow-hidden relative w-full h-full rounded-xl border border-theme-secondary-300">
-                        <img src="{{ $image['url'] }}" class="object-cover w-full h-full" alt="">
-                    </div>
-
-                    <div class="absolute top-0 opacity-0 hover:opacity-100 transition-default w-full {{ $imageHeight }}">
-                        <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full {{ $imageHeight }}">
-                            @if($sortable)
-                                <x-ark-icon name="drag" size="lg" class="text-white"/>
-                                <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to reposition</p>
-                            @endif
+                <div class="p-3 w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6" wire:sortable.item="{{ $index }}" wire:key="image-{{ $index }}">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <div>
+                            <img src="{{ $image['url'] }}" class="object-cover w-full h-full rounded-xl border border-theme-secondary-300" alt="">
                         </div>
 
-                        <button type="button" data-action
-                            class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
-                            wire:click="deleteImage({{ $index }})"
-                            data-tippy-hover="{{ $deleteTooltip }}"
-                        >
-                            <x-ark-icon name="close" size="sm" />
-                        </button>
+                        <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-default">
+                            <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full h-full">
+                                @if($sortable)
+                                    <x-ark-icon name="drag" size="lg" class="text-white"/>
+                                    <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to
+                                        reposition</p>
+                                @endif
+                            </div>
+
+                            <button type="button" data-action
+                                    class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
+                                    wire:click="deleteImage({{ $index }})"
+                                    data-tippy-hover="{{ $deleteTooltip }}"
+                            >
+                                <x-ark-icon name="close" size="sm"/>
+                            </button>
+                        </div>
                     </div>
                 </div>
             @endforeach
