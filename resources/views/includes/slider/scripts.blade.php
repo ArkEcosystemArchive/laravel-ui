@@ -75,7 +75,7 @@
         @unless ($hideBullets)
         pagination: {
             el: '#swiper-{{ $id }} .swiper-pagination',
-            clickable: {{ $hideNavigation && !$topPagination ? 'false' : 'true' }}
+            clickable: true
         },
         @endif
         @unless ($hideNavigation)
