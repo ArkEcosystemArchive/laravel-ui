@@ -15,12 +15,12 @@
         redirect() {
             window.location.href = '{{ $url }}'
         },
-        hasDismissedCookie() {
-            return !! document.cookie.match('dismiss_external_link_alert=true');
+        hasDismissedModal() {
+            return localStorage.getItem('dismiss_external_link_modal') == 'true';
         }
     }"
     class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
-    @click="hasDismissedCookie() ? redirect() : openModal()"
+    @click="hasDismissedModal() ? redirect() : openModal()"
 >
     <span>{{ $text ?? $slot ?? '' }}</span>
 
@@ -50,7 +50,7 @@
 
                 <x-ark-checkbox
                     name="terms"
-                    alpine="document.cookie.match('dismiss_external_link_alert=true') ? document.cookie = 'dismiss_external_link_alert=false' : document.cookie = 'dismiss_external_link_alert=true'"
+                    alpine="localStorage.getItem('dismiss_external_link_modal') == 'true' ? localStorage.setItem('dismiss_external_link_modal', false) : localStorage.setItem('dismiss_external_link_modal', true)"
                 >
                     @slot('label')
                         @lang('ui::forms.do_not_show_message_again')
