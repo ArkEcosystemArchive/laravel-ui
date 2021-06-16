@@ -1,7 +1,28 @@
-import {uploadImage, imageValidator, getCsrfToken, resetUploadInput} from "./utils";
-import {invalidResponseException} from "./utils/exceptions";
-import ErrorBag from "./utils/error-bag";
+import {
+    uploadImage,
+    imageValidator,
+    getCsrfToken,
+    resetUploadInput,
+} from "./utils";
 
+import { invalidResponseException } from "./utils/exceptions";
+
+/**
+ * @param {String} $uploadID
+ * @param {String} $model
+ * @param {Number} $minWidth
+ * @param {Number} $minHeight
+ * @param {Number} $maxWidth
+ * @param {Number} $maxHeight
+ * @param {Number} $width
+ * @param {Number} $height
+ * @param {String} $maxFileSize
+ * @param {Number} $quality
+ * @param {string} $endpoint
+ * @param {Number} $convertSize
+ * @param {Boolean} $disableConvertSize
+ * @return {Object}
+ */
 const CompressImage = (
     $uploadID,
     $model = null,
@@ -11,15 +32,13 @@ const CompressImage = (
     $maxHeight = 4000,
     $width = null,
     $height = null,
-    $maxFileSize = 2,
+    $maxFileSize = '2',
     $quality = 0.8,
     $endpoint = "/cropper/upload-image",
     $convertSize = 5000000,
     $disableConvertSize = false
 ) => ({
     model: $model,
-    compressors: [],
-    errors: new ErrorBag(),
     isUploading: false,
     uploadEl: null,
 
@@ -36,29 +55,24 @@ const CompressImage = (
             return;
         }
 
-        this.errors.reset();
-
         this.uploadEl.files.forEach((file) => {
             imageValidator(this.uploadEl.files[0], [
                 {rule: "minWidth", value: $minWidth},
                 {rule: "maxWidth", value: $maxWidth},
                 {rule: "minHeight", value: $minHeight},
                 {rule: "maxHeight", value: $maxHeight},
-                {rule: "maxFileSize", value: $maxFileSize},
+                {rule: "maxFileSize", value: parseInt($maxFileSize)},
             ])
                 .then(() => {
                     this.loadCompressor();
                 })
-                .catch((errors) => {
-                    errors.forEach((err) => {
-                        this.errors.push(err.error, err.message)
-                        // Livewire.emit("toastMessage", [err.message, "danger"]);
+                .catch(errors => {
+                    errors.unify().getAll().forEach(bags => {
+                        bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
                     });
+
+                    resetUploadInput(this.uploadEl);
                 });
-        });
-
-        this.errors.getAll().forEach((error) => {
-
         });
     },
 
@@ -67,7 +81,7 @@ const CompressImage = (
             return;
         }
 
-        this.uploadEl.files.forEach((file) => {
+        this.uploadEl.files.forEach(file => {
             new Compressor(file, {
                 /* https://github.com/fengyuanchen/compressorjs#quality */
                 quality: $quality,
@@ -93,22 +107,20 @@ const CompressImage = (
                             }
 
                             this.model = response.url;
+
+                            this.discardImage();
                         }
                     );
-
-                    this.discardImage();
                 },
 
                 error(err) {
                     throw new Error(err.message);
-                },
+                }
             });
         });
     },
 
     discardImage() {
-        this.destroyCompressor();
-
         resetUploadInput(this.uploadEl);
     },
 });

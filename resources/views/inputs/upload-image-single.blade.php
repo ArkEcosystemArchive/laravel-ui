@@ -11,6 +11,7 @@
     'width'                     => 450,
     'height'                    => 450,
     'maxFilesize'               => '2MB',
+    'quality'                   => 0.8,
     'acceptMime'                => 'image/jpg,image/jpeg,image/bmp,image/png',
     'readonly'                  => false,
     'uploadErrorMessage'        => null,
@@ -52,7 +53,18 @@
     )"
     x-init="init"
     @else
-    x-data="{ isUploading: false, select() { document.getElementById('image-single-upload-{{ $id }}').click(); } }"
+    x-data="CompressImage(
+        'image-single-upload-{{ $id }}',
+        @entangle($attributes->wire('model')),
+        {{ $minWidth }},
+        {{ $minHeight }},
+        {{ $maxWidth }},
+        {{ $maxHeight }},
+        {{ $width }},
+        {{ $height }},
+        '{{ $maxFilesize }}',
+        {{ $quality }}
+    )"
     @endif
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"

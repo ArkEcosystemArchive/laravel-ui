@@ -7,6 +7,26 @@ import {
 
 import { invalidResponseException } from "./utils/exceptions";
 
+/**
+ * @param $cropOptions
+ * @param $model
+ * @param $uploadID
+ * @param $cropID
+ * @param $modalID
+ * @param $minWidth
+ * @param $minHeight
+ * @param $maxWidth
+ * @param $maxHeight
+ * @param $width
+ * @param $height
+ * @param $maxFileSize
+ * @param $fillColor
+ * @param $imageSmoothingEnabled
+ * @param $imageSmoothingQuality
+ * @param $endpoint
+ * @return {{init(): void, select(): void, validateImage(): void, discardImage(): void, modalSaveButton: null, cropper: null, isUploading: boolean, uploadEl: null, openCropModal(): void, saveCroppedImage(): void, loadCropper(): void, isCropping: boolean, model: null, modalCancelButton: null, cropEl: null, destroyCropper(): void}}
+ * @constructor
+ */
 const CropImage = (
     $cropOptions = {},
     $model = null,
@@ -73,12 +93,12 @@ const CropImage = (
                 .then(() => {
                     this.loadCropper();
                 })
-                .catch((err) => {
-                    err.forEach((err) => {
-                        resetUploadInput(this.uploadEl);
-
-                        Livewire.emit("toastMessage", [err.message, "danger"]);
+                .catch(errors => {
+                    errors.unify().getAll().forEach(bags => {
+                        bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
                     });
+
+                    resetUploadInput(this.uploadEl);
                 });
         }
     },
