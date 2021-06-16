@@ -18,6 +18,7 @@ const Navbar = {
             selectedChild: null,
             scrollProgress: 0,
             nav: null,
+            dark: false,
             lockBodyBreakpoint: 640,
             onScroll() {
                 const progress = this.getScrollProgress();
@@ -34,13 +35,21 @@ const Navbar = {
                 );
             },
             updateShadow(progress) {
-                const maxTransparency = 0.22;
+                const maxTransparency = this.dark ? 0.6 : 0.22;
                 const shadowTransparency =
                     Math.round(maxTransparency * progress * 100) / 100;
                 const borderTransparency =
                     Math.round((1 - progress) * 100) / 100;
-                this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
-                this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
+                const borderColorRgb = this.dark
+                    ? [60, 66, 73]
+                    : [219, 222, 229];
+                const boxShadowRgb = this.dark ? [18, 18, 19] : [192, 200, 207];
+                this.nav.style.boxShadow = `0px 2px 10px 0px rgba(${boxShadowRgb.join(
+                    ", "
+                )}, ${shadowTransparency})`;
+                this.nav.style.borderColor = `rgba(${borderColorRgb.join(
+                    ", "
+                )}, ${borderTransparency})`;
             },
             init() {
                 const { nav, scrollable } = this.$refs;
@@ -48,6 +57,10 @@ const Navbar = {
                 window.onscroll = this.onScroll.bind(this);
                 this.scrollProgress = this.getScrollProgress();
                 this.updateShadow(this.scrollProgress);
+
+                this.$watch("dark", () =>
+                    this.updateShadow(this.getScrollProgress())
+                );
 
                 this.$watch("open", (open) => {
                     this.$nextTick(() => {
