@@ -21,7 +21,7 @@
     {{-- Spacer for the sticky navbar  --}}
     <div class="mb-0.5 h-20"></div>
     <nav
-        aria-label="{{ trans('ark::general.primary_navigation') }}"
+        aria-label="{{ trans('ui::general.primary_navigation') }}"
         x-ref="nav"
         class="fixed top-0 z-30 w-full bg-white border-b border-theme-secondary-300 dark:bg-theme-secondary-900"
         dusk="navigation-bar"
