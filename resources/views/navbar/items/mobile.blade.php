@@ -16,7 +16,7 @@
 <div x-cloak :class="{'block': open, 'hidden': !open}" class="border-t-2 border-theme-secondary-200 {{ $breakpointClass }}">
     <div class="pt-2 pb-4 rounded-b-lg">
         @if(isset($navbarNotificationsMobile) || isset($notifications))
-            <div class="flex items-center justify-center px-2 py-0.5 mx-8 my-4 border rounded shadow-sm border-theme-secondary-300 md:hidden">
+            <div class="flex justify-center items-center py-0.5 px-2 my-4 mx-8 rounded border shadow-sm md:hidden border-theme-secondary-300">
                 @isset($navbarNotificationsMobile)
                     {{ $navbarNotificationsMobile }}
                 @endisset

@@ -141,7 +141,26 @@ This file contains basic examples and explains the parameters that can be used f
 | hiddenOptions | used for hiding options (e.g. expanding the field)                                       | no       |
 | class         | allows additional classes for the component                                              | no       |
 
-### Upload Image
+### Upload Single Image
+
+#### If you need the `Crop` functionality
+
+1. Ensure to import the following scripts inside the `<head>` tag of your template.
+
+```html
+@push('scripts')
+    <x-ark-pages-includes-crop-image-scripts />
+@endpush
+```
+
+2. Compile the crop-image script into the public folder:
+
+```js
+mix
+    .js('vendor/arkecosystem/ui/resources/assets/js/crop-image.js', 'public/js/crop-image.js')
+```
+
+#### How to use
 
 ```
 <x-ark-upload-image
@@ -152,18 +171,42 @@ This file contains basic examples and explains the parameters that can be used f
     min-width="640"
     min-height="640"
     max-filesize="100MB"
+    with-crop
+    cropOptions="{
+        aspectRatio: 1 / 1,
+        ... 
+    }"
 />
 ```
 
-| Parameter      | Description                                   | Required |
-|----------------|-----------------------------------------------|----------|
-| image          | Object with the image reference (if uploaded) | yes      |
-| dimensions     | Size of the upload component                  | no       |
-| upload-text    | Text to display when no existing image        | no       |
-| delete-tooltip | Tooltip text for the delete button            | no       |
-| min-width      | Minimum width for the image                   | no       |
-| min-height     | Minimum height for the image                  | no       |
-| max-filesize   | Maximum filesize allowed for the image        | no       |
+| Parameter                    | Description                                                                      | Required |
+|------------------------------|----------------------------------------------------------------------------------|----------|
+| id                           | The component ID                                                                 | yes      |
+| image                        | Object with the image reference (if uploaded)                                    | yes      |
+| dimensions                   | Size of the upload component                                                     | no       |
+| upload-text                  | Text to display when no existing image                                           | no       |
+| delete-tooltip               | Tooltip text for the delete button                                               | no       |
+| min-width                    | Minimum width for the image                                                      | no       |
+| min-height                   | Minimum height for the image                                                     | no       |
+| max-width                    | Maximum width for the image                                                      | no       |
+| max-height                   | Maximum height for the image                                                     | no       |
+| width                        | Width of the cropped image                                                       | no       |
+| height                       | Height of the cropped image                                                      | no       |
+| max-filesize                 | Maximum filesize allowed for the image                                           | no       |
+| with-crop                    | Enable the crop functionality (be sure to import JS files)                       | no       |
+| crop-options                 | [The cropping plugin options](https://github.com/fengyuanchen/cropperjs#options) | no       |
+| crop-title                   | Crop modal title                                                                 | no       |
+| crop-message                 | Crop modal message                                                               | no       |
+| crop-modal-width             | Crop modal max width                                                             | no       |
+| crop-cancel-button           | ID of the crop modal cancel button                                               | no       |
+| crop-save-button             | ID of the crop modal save button                                                 | no       |
+| crop-cancel-button-class     | Class of the crop modal cancel button                                            | no       |
+| crop-save-button-class       | Class of the crop modal save button                                              | no       |
+| crop-save-icon               | Whether to show or not the icon on crop modal save button                        | no       |
+| crop-fill-color              | A color to fill any alpha values in the output canvas                            | no       |
+| crop-image-smoothing-enabled | Set to change if images are smoothed                                             | no       |
+| crop-image-smoothing-quality | Set the quality of image smoothing, one of "low" (default), "medium", or "high"  | no       |
+| crop-endpoint                | Where to upload the image                                                        | no       |
 
 #### Backend
 

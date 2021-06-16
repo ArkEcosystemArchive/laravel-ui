@@ -14,7 +14,7 @@
                     x-bind:class="{ 'border-theme-primary-600': dropdownOpen }"
                 />
             @else
-                <div class="overflow-hidden w-10 h-10 rounded-xl border-2 border-transparent md:h-11 md:w-11">
+                <div class="overflow-hidden w-10 h-10 rounded-xl border-2 border-transparent md:w-11 md:h-11">
                     {{ $profilePhoto->img('', ['class' => 'object-cover w-full h-full', 'alt' => trans('ui::general.profile_avatar_alt')]) }}
                 </div>
             @endisset
@@ -40,9 +40,16 @@
             </form>
         @else
             <a
-                href="{{ route($menuItem['route']) }}"
+                @isset($menuItem['href'])
+                    href="{{ $menuItem['href'] }}"
+                @else
+                    href="{{ route($menuItem['route']) }}"
+                @endif
                 class="dropdown-entry"
                 dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
+                @foreach(Arr::get($menuItem, 'attributes', []) as $attribute => $attributeValue)
+                    {{ $attribute }}="{{ $attributeValue }}"
+                @endforeach
             >
                 @if($menuItem['icon'] ?? false)
                     @svg($menuItem['icon'], 'inline w-5 mr-4')

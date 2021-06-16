@@ -332,7 +332,7 @@ Note that it is also possible to hook into the lifecycle methods of the modal. Y
         @slot('description')
             My Description
         @endslot
-    </x-ark-modal>
+    </x-ark-js-modal>
 </div>
 ```
 
@@ -465,6 +465,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 ```
 
+### Image Collection Sortable
+1. Install `Livewire Sortable`
+
+```bash
+yarn add -D livewire-sortable
+```
+
+2. Add the following snippet to your `resources/app.js`
+
+```bash
+import 'livewire-sortable'
+// Or.
+require('livewire-sortable')
+```
+
+3. Add `imagesReordered` method to handle index reordering when an image is sorted. 
+
+```php
+public function imagesReordered(array $ids): void
+{
+    Media::setNewOrder($ids);
+}
+```
+
+4. Then, you can use `upload-image-collection` component with sortable functionality. 
+
+```blade
+<x-ark-upload-image-collection id="media" :images="$this->imageCollection" sortable />
+```
+
 ### Error Pages
 
 There are also default error pages you can use for your Laravel project
@@ -506,7 +536,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-tags>`
 - `<x-ark-textarea>`
 - `<x-ark-toggle>`
-- `<x-ark-upload-image>`
+- [`<x-ark-upload-image>`](EXAMPLES.md#upload-image)
 - [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
