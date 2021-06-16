@@ -7,6 +7,8 @@ import {
 
 import { invalidResponseException } from "./utils/exceptions";
 
+import Compressor from 'compressorjs';
+
 /**
  * @param {String} $uploadID
  * @param {String} $model

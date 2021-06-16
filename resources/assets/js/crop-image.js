@@ -24,8 +24,7 @@ import { invalidResponseException } from "./utils/exceptions";
  * @param $imageSmoothingEnabled
  * @param $imageSmoothingQuality
  * @param $endpoint
- * @return {{init(): void, select(): void, validateImage(): void, discardImage(): void, modalSaveButton: null, cropper: null, isUploading: boolean, uploadEl: null, openCropModal(): void, saveCroppedImage(): void, loadCropper(): void, isCropping: boolean, model: null, modalCancelButton: null, cropEl: null, destroyCropper(): void}}
- * @constructor
+ * @return {Object}
  */
 const CropImage = (
     $cropOptions = {},

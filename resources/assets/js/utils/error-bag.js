@@ -1,14 +1,14 @@
 export default class ErrorBag {
-    #defaultBagName = 'default';
-
     /**
      * @param {string|null} bag
      */
     constructor(bag = null) {
+        let _defaultBagName = 'default';
+
         this.collection = {};
 
         if (!bag) {
-            this.#defaultBagName = bag;
+            this._defaultBagName = bag;
         }
     }
 
@@ -18,20 +18,20 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {void}
      */
-    add(key = null, value = null, bag = this.#defaultBagName) {
+    add(key = null, value = null, bag = this._defaultBagName) {
         if (!key && !value) {
             this.collection[bag] = [];
             return;
         }
 
-        this.#addItem(key, value, bag);
+        this._addItem(key, value, bag);
     }
 
     /**
      * @param {string} bag
      * @return {void}
      */
-    reset(bag = this.#defaultBagName) {
+    reset(bag = this._defaultBagName) {
         this.add(bag);
     }
 
@@ -40,9 +40,9 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {Object[]|any}
      */
-    get(key = null, bag = this.#defaultBagName) {
+    get(key = null, bag = this._defaultBagName) {
         if (!key) {
-            return this.#getBag(bag);
+            return this._getBag(bag);
         }
 
         return this.collection[bag].find(obj => obj.key === key);
@@ -53,9 +53,9 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {boolean}
      */
-    hasErrors(key = null, bag = this.#defaultBagName) {
+    hasErrors(key = null, bag = this._defaultBagName) {
         if (!key) {
-            return !!this.#getBag(bag).length;
+            return !!this._getBag(bag).length;
         }
 
         return !!this.collection[bag].find(obj => obj.key === key);
@@ -66,7 +66,7 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {void}
      */
-    remove(key = null, bag = this.#defaultBagName) {
+    remove(key = null, bag = this._defaultBagName) {
         if (!key) {
             delete this.collection[bag];
             return;
@@ -122,7 +122,7 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {Object[]}
      */
-    #getBag(bag = this.#defaultBagName) {
+    _getBag(bag = this._defaultBagName) {
         return this.collection[bag];
     }
 
@@ -132,8 +132,8 @@ export default class ErrorBag {
      * @param {string} bag
      * @return {void}
      */
-    #addItem(key, value, bag = this.#defaultBagName) {
-        this.#getBag(bag).push(ErrorBag.#errorItem(key, value));
+    _addItem(key, value, bag = this._defaultBagName) {
+        this._getBag(bag).push(ErrorBag._errorItem(key, value));
     }
 
     /**
@@ -141,7 +141,7 @@ export default class ErrorBag {
      * @param {any} value
      * @return {Object<{value, key}>}
      */
-    static #errorItem(key, value) {
+    static _errorItem(key, value) {
         return {key: key, value: value};
     }
 }

@@ -31,7 +31,7 @@
         '{{ $maxFilesize }}',
         {{ $quality }}
     )"
-{{--    x-data="{ isUploading: false, select() { document.getElementById('image-collection-upload-{{ $id }}').click(); } }"--}}
+    x-init="init"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
@@ -42,9 +42,7 @@
             id="image-collection-upload-{{ $id }}"
             type="file"
             class="absolute w-full h-full opacity-0 cursor-pointer"
-{{--            wire:model="temporaryImages"--}}
             {{ $attributes->wire('model') }}
-{{--            accept="image/jpg,image/jpeg,image/bmp,image/png"--}}
             accept="{{ $acceptMime }}"
             multiple
         />
