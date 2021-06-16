@@ -18,7 +18,7 @@ const Navbar = {
             selectedChild: null,
             scrollProgress: 0,
             nav: null,
-
+            lockBodyBreakpoint: 640,
             onScroll() {
                 const progress = this.getScrollProgress();
                 if (progress !== this.scrollProgress) {
@@ -26,7 +26,6 @@ const Navbar = {
                     this.updateShadow(progress);
                 }
             },
-
             getScrollProgress() {
                 const navbarHeight = 82;
                 return Math.min(
@@ -34,7 +33,6 @@ const Navbar = {
                     document.documentElement.scrollTop / navbarHeight
                 );
             },
-
             updateShadow(progress) {
                 const maxTransparency = 0.22;
                 const shadowTransparency =
@@ -44,7 +42,6 @@ const Navbar = {
                 this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
                 this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
             },
-
             init() {
                 const { nav, scrollable } = this.$refs;
                 this.nav = nav;
@@ -55,14 +52,16 @@ const Navbar = {
                 this.$watch("open", (open) => {
                     this.$nextTick(() => {
                         if (open) {
-                            onNavbarOpened(scrollable || nav);
+                            if (this.lockBody()) {
+                                onNavbarOpened(scrollable || nav);
+                            }
                         } else {
                             onNavbarClosed(scrollable || nav);
                         }
                     });
                 });
 
-                if (this.open) {
+                if (this.open && this.lockBody()) {
                     onNavbarOpened(scrollable || nav);
                 }
             },
@@ -71,6 +70,9 @@ const Navbar = {
             },
             show() {
                 this.open = true;
+            },
+            lockBody() {
+                return window.innerWidth <= this.lockBodyBreakpoint;
             },
             ...xData,
         };
