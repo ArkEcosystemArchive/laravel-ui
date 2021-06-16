@@ -7,13 +7,31 @@
     'deleteTooltip'      => trans('ui::forms.upload-image-collection.delete_image'),
     'minWidth'           => 148,
     'minHeight'          => 148,
+    'maxWidth'           => 4000,
+    'maxHeight'          => 4000,
+    'width'              => null,
+    'height'             => null,
     'maxFilesize'        => '2MB',
+    'quality'            => 0.8,
+    'acceptMime'         => 'image/jpg,image/jpeg,image/bmp,image/png',
     'uploadErrorMessage' => null,
     'sortable'           => false,
 ])
 
 <div
-    x-data="{ isUploading: false, select() { document.getElementById('image-collection-upload-{{ $id }}').click(); } }"
+    x-data="CompressImage(
+        'image-collection-upload-{{ $id }}',
+        @entangle($attributes->wire('model')),
+        {{ $minWidth }},
+        {{ $minHeight }},
+        {{ $maxWidth }},
+        {{ $maxHeight }},
+        {{ $width }},
+        {{ $height }},
+        '{{ $maxFilesize }}',
+        {{ $quality }}
+    )"
+{{--    x-data="{ isUploading: false, select() { document.getElementById('image-collection-upload-{{ $id }}').click(); } }"--}}
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
@@ -24,8 +42,10 @@
             id="image-collection-upload-{{ $id }}"
             type="file"
             class="absolute w-full h-full opacity-0 cursor-pointer"
-            wire:model="temporaryImages"
-            accept="image/jpg,image/jpeg,image/bmp,image/png"
+{{--            wire:model="temporaryImages"--}}
+            {{ $attributes->wire('model') }}
+{{--            accept="image/jpg,image/jpeg,image/bmp,image/png"--}}
+            accept="{{ $acceptMime }}"
             multiple
         />
 

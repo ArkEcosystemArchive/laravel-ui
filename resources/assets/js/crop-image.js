@@ -90,9 +90,7 @@ const CropImage = (
                 { rule: "maxHeight", value: $maxHeight },
                 { rule: "maxFileSize", value: $maxFileSize },
             ])
-                .then(() => {
-                    this.loadCropper();
-                })
+                .then(() => this.loadCropper())
                 .catch(errors => {
                     errors.unify().getAll().forEach(bags => {
                         bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));

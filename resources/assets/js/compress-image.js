@@ -55,23 +55,19 @@ const CompressImage = (
             return;
         }
 
-        this.uploadEl.files.forEach((file) => {
-            imageValidator(this.uploadEl.files[0], [
+        this.uploadEl.files.forEach(file => {
+            imageValidator(file, [
                 {rule: "minWidth", value: $minWidth},
                 {rule: "maxWidth", value: $maxWidth},
                 {rule: "minHeight", value: $minHeight},
                 {rule: "maxHeight", value: $maxHeight},
                 {rule: "maxFileSize", value: parseInt($maxFileSize)},
             ])
-                .then(() => {
-                    this.loadCompressor();
-                })
+                .then(() => this.loadCompressor())
                 .catch(errors => {
                     errors.unify().getAll().forEach(bags => {
                         bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
                     });
-
-                    resetUploadInput(this.uploadEl);
                 });
         });
     },
@@ -87,7 +83,7 @@ const CompressImage = (
                 quality: $quality,
 
                 /* https://github.com/fengyuanchen/compressorjs#checkorientation */
-                checkOrientation: $maxFileSize <= 10,
+                checkOrientation: parseInt($maxFileSize) <= 10,
 
                 /* https://github.com/fengyuanchen/compressorjs#convertsize */
                 convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
