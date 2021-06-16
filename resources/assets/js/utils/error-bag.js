@@ -3,7 +3,7 @@ export default class ErrorBag {
      * @param {string|null} bag
      */
     constructor(bag = null) {
-        let _defaultBagName = 'default';
+        let _defaultBagName = "default";
 
         this.collection = {};
 
@@ -45,7 +45,7 @@ export default class ErrorBag {
             return this._getBag(bag);
         }
 
-        return this.collection[bag].find(obj => obj.key === key);
+        return this.collection[bag].find((obj) => obj.key === key);
     }
 
     /**
@@ -58,7 +58,7 @@ export default class ErrorBag {
             return !!this._getBag(bag).length;
         }
 
-        return !!this.collection[bag].find(obj => obj.key === key);
+        return !!this.collection[bag].find((obj) => obj.key === key);
     }
 
     /**
@@ -74,7 +74,10 @@ export default class ErrorBag {
 
         const _bag = this.collection[bag];
 
-        _bag.splice(_bag.findIndex(obj => obj.key === key), 1);
+        _bag.splice(
+            _bag.findIndex((obj) => obj.key === key),
+            1
+        );
     }
 
     /**
@@ -97,13 +100,15 @@ export default class ErrorBag {
     unify() {
         const newCollection = {};
 
-        Object.entries(this.collection).forEach(bags => {
-            bags[1].forEach(bag => {
-                let tmp, i = 0;
-                const unique = bag.map(a => Object.assign({}, a)), repeat = [];
+        Object.entries(this.collection).forEach((bags) => {
+            bags[1].forEach((bag) => {
+                let tmp,
+                    i = 0;
+                const unique = bag.map((a) => Object.assign({}, a)),
+                    repeat = [];
 
                 while (i < bag.length) {
-                    repeat.indexOf(tmp = bag[i].value) > -1
+                    repeat.indexOf((tmp = bag[i].value)) > -1
                         ? unique.splice(i, 1)
                         : repeat.push(tmp);
                     i++;
@@ -142,6 +147,6 @@ export default class ErrorBag {
      * @return {Object<{value, key}>}
      */
     static _errorItem(key, value) {
-        return {key: key, value: value};
+        return { key: key, value: value };
     }
 }

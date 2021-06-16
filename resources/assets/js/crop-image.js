@@ -90,10 +90,15 @@ const CropImage = (
                 { rule: "maxFileSize", value: $maxFileSize },
             ])
                 .then(() => this.loadCropper())
-                .catch(errors => {
-                    errors.unify().getAll().forEach(bags => {
-                        bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
-                    });
+                .catch((errors) => {
+                    errors
+                        .unify()
+                        .getAll()
+                        .forEach((bags) => {
+                            bags[1].forEach(({ value }) =>
+                                Livewire.emit("toastMessage", [value, "danger"])
+                            );
+                        });
 
                     resetUploadInput(this.uploadEl);
                 });
@@ -103,7 +108,7 @@ const CropImage = (
     loadCropper() {
         const file = this.uploadEl.files[0];
 
-        if (! file) {
+        if (!file) {
             return;
         }
 
@@ -145,15 +150,13 @@ const CropImage = (
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, getCsrfToken()).then(
-                (response) => {
-                    if (!response.url) {
-                        invalidResponseException();
-                    }
-
-                    this.model = response.url;
+            uploadImage(blob, $endpoint, getCsrfToken()).then((response) => {
+                if (!response.url) {
+                    invalidResponseException();
                 }
-            );
+
+                this.model = response.url;
+            });
         });
 
         this.discardImage();
