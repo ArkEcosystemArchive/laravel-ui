@@ -5,9 +5,9 @@ import {
     resetUploadInput,
 } from "./utils";
 
-import {invalidResponseException} from "./utils/exceptions";
+import { invalidResponseException } from "./utils/exceptions";
 
-import Compressor from 'compressorjs';
+import Compressor from "compressorjs";
 
 /**
  * @param {String} $uploadID
@@ -34,7 +34,7 @@ const CompressImage = (
     $maxHeight = 4000,
     $width = null,
     $height = null,
-    $maxFileSize = '2',
+    $maxFileSize = "2",
     $quality = 0.8,
     $endpoint = "/cropper/upload-image",
     $convertSize = 5000000,
@@ -59,19 +59,23 @@ const CompressImage = (
             return;
         }
 
-        [...this.uploadEl.files].forEach(file => {
+        [...this.uploadEl.files].forEach((file) => {
             imageValidator(file, [
-                {rule: "minWidth", value: $minWidth},
-                {rule: "maxWidth", value: $maxWidth},
-                {rule: "minHeight", value: $minHeight},
-                {rule: "maxHeight", value: $maxHeight},
-                {rule: "maxFileSize", value: parseInt($maxFileSize)},
+                { rule: "minWidth", value: $minWidth },
+                { rule: "maxWidth", value: $maxWidth },
+                { rule: "minHeight", value: $minHeight },
+                { rule: "maxHeight", value: $maxHeight },
+                { rule: "maxFileSize", value: parseInt($maxFileSize) },
             ])
                 .then(() => this.loadCompressor())
-                .catch(errors => {
-                    errors.getAll().forEach(bags => {
-                        bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
-                    });
+                .catch((errors) => {
+                    errors
+                        .getAll()
+                        .forEach((bags) => {
+                            bags[1].forEach(({ value }) =>
+                                Livewire.emit("toastMessage", [value, "danger"])
+                            );
+                        });
                 });
         });
     },
@@ -81,7 +85,7 @@ const CompressImage = (
             return;
         }
 
-        [...this.uploadEl.files].forEach(file => {
+        [...this.uploadEl.files].forEach((file) => {
             new Compressor(file, {
                 /* https://github.com/fengyuanchen/compressorjs#quality */
                 quality: $quality,
@@ -90,7 +94,7 @@ const CompressImage = (
                 checkOrientation: parseInt($maxFileSize) <= 10,
 
                 /* https://github.com/fengyuanchen/compressorjs#convertsize */
-                convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
+                convertSize: $disableConvertSize ? "Infinity" : $convertSize,
 
                 maxWidth: $maxWidth,
                 maxHeight: $maxHeight,
@@ -113,7 +117,7 @@ const CompressImage = (
 
                 error(err) {
                     throw new Error(err.message);
-                }
+                },
             });
         });
     },

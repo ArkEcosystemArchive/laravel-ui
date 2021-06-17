@@ -22,20 +22,22 @@ export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
             "X-CSRF-TOKEN": csrfToken,
         },
     })
-        .then(response => {
-            const {status} = response;
+        .then((response) => {
+            const { status } = response;
             if (status === 200) {
                 return response.json();
             } else if (status === 419) {
                 // Means the CSRF Token is no longer valid
-                throw new Error("Session expired. You will need to refresh the browser to continue uploading images.");
+                throw new Error(
+                    "Session expired. You will need to refresh the browser to continue uploading images."
+                );
             } else {
-                response.text().then(text => {
+                response.text().then((text) => {
                     throw new Error(text);
                 });
             }
         })
-        .catch(error => {
+        .catch((error) => {
             throw new Error(error);
         });
 };
@@ -64,7 +66,7 @@ export const imageValidator = (inputFile, rules = []) => {
             errorBag.add(
                 getCallerName(),
                 `The image should be at least ${target}x${target}px`
-            )
+            );
         }
     };
 
@@ -157,14 +159,16 @@ export const getCallerName = () => {
  * @param bytes
  * @returns {string}
  */
-export const bytesToMegabytes = (bytes) => parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
+export const bytesToMegabytes = (bytes) =>
+    parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
 
 /**
  * Get CSRF token from DOM.
  *
  * @returns {string}
  */
-export const getCsrfToken = () => document.querySelector("meta[name=csrf-token]").content;
+export const getCsrfToken = () =>
+    document.querySelector("meta[name=csrf-token]").content;
 
 /**
  * Reset an input file field.
