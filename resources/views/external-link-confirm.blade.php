@@ -13,7 +13,7 @@
             Livewire.emit('openModal', '{{ $identifier }}')
         },
         redirect() {
-            window.location.href = '{{ $url }}'
+            window.open('{{ $url }}', '_blank')
         },
         hasDismissedModal() {
             return localStorage.getItem('dismiss_external_link_modal') == 'true';
