@@ -1,12 +1,8 @@
-import {
-    uploadImage,
-    imageValidator,
-    getCsrfToken,
-} from "./utils";
+import { uploadImage, imageValidator, getCsrfToken } from "./utils";
 
-import {invalidResponseException} from "./utils/exceptions";
+import { invalidResponseException } from "./utils/exceptions";
 
-import Compressor from 'compressorjs';
+import Compressor from "compressorjs";
 
 /**
  * @param {String} $uploadID
@@ -33,7 +29,7 @@ const CompressImage = (
     $maxHeight = 7000,
     $width = null,
     $height = null,
-    $maxFileSize = '8',
+    $maxFileSize = "8",
     $quality = 0.8,
     $endpoint = "/cropper/upload-image",
     $convertSize = 5000000,
@@ -56,35 +52,38 @@ const CompressImage = (
             return;
         }
 
-        [...this.uploadEl.files].forEach(file => {
+        [...this.uploadEl.files].forEach((file) => {
             imageValidator(file, [
-                {rule: "minWidth", value: $minWidth},
-                {rule: "maxWidth", value: $maxWidth},
-                {rule: "minHeight", value: $minHeight},
-                {rule: "maxHeight", value: $maxHeight},
-                {rule: "maxFileSize", value: parseInt($maxFileSize)},
+                { rule: "minWidth", value: $minWidth },
+                { rule: "maxWidth", value: $maxWidth },
+                { rule: "minHeight", value: $minHeight },
+                { rule: "maxHeight", value: $maxHeight },
+                { rule: "maxFileSize", value: parseInt($maxFileSize) },
             ])
                 .then(() => {
                     this.loadCompressor(file);
                 })
                 .catch((errors) => {
-                    Object.values(errors.getAll()).forEach(bags => {
-                        [...bags].forEach(({value}) => Livewire.emit("toastMessage", [`${value} - ${file.name}`, "danger"]));
+                    Object.values(errors.getAll()).forEach((bags) => {
+                        [...bags].forEach(({ value }) =>
+                            Livewire.emit("toastMessage", [
+                                `${value} - ${file.name}`,
+                                "danger",
+                            ])
+                        );
                     });
                 });
         });
     },
 
     onSuccess(file) {
-        uploadImage(file, $endpoint, getCsrfToken()).then(
-            (response) => {
-                if (!response.url) {
-                    invalidResponseException();
-                }
-
-                this.model = response.url;
+        uploadImage(file, $endpoint, getCsrfToken()).then((response) => {
+            if (!response.url) {
+                invalidResponseException();
             }
-        );
+
+            this.model = response.url;
+        });
     },
 
     onError(error) {
@@ -95,7 +94,7 @@ const CompressImage = (
         new Compressor(file, {
             quality: $quality,
             checkOrientation: parseInt($maxFileSize) <= 10,
-            convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
+            convertSize: $disableConvertSize ? "Infinity" : $convertSize,
             maxWidth: $maxWidth,
             maxHeight: $maxHeight,
             minWidth: $minWidth,
