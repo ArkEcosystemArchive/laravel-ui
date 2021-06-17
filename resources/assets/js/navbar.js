@@ -18,7 +18,8 @@ const Navbar = {
             selectedChild: null,
             scrollProgress: 0,
             nav: null,
-
+            dark: false,
+            lockBodyBreakpoint: 640,
             onScroll() {
                 const progress = this.getScrollProgress();
                 if (progress !== this.scrollProgress) {
@@ -26,7 +27,6 @@ const Navbar = {
                     this.updateShadow(progress);
                 }
             },
-
             getScrollProgress() {
                 const navbarHeight = 82;
                 return Math.min(
@@ -34,17 +34,23 @@ const Navbar = {
                     document.documentElement.scrollTop / navbarHeight
                 );
             },
-
             updateShadow(progress) {
-                const maxTransparency = 0.22;
+                const maxTransparency = this.dark ? 0.6 : 0.22;
                 const shadowTransparency =
                     Math.round(maxTransparency * progress * 100) / 100;
                 const borderTransparency =
                     Math.round((1 - progress) * 100) / 100;
-                this.nav.style.boxShadow = `0px 2px 10px 0px rgba(192, 200, 207, ${shadowTransparency})`;
-                this.nav.style.borderColor = `rgba(219, 222, 229, ${borderTransparency})`;
+                const borderColorRgb = this.dark
+                    ? [60, 66, 73]
+                    : [219, 222, 229];
+                const boxShadowRgb = this.dark ? [18, 18, 19] : [192, 200, 207];
+                this.nav.style.boxShadow = `0px 2px 10px 0px rgba(${boxShadowRgb.join(
+                    ", "
+                )}, ${shadowTransparency})`;
+                this.nav.style.borderColor = `rgba(${borderColorRgb.join(
+                    ", "
+                )}, ${borderTransparency})`;
             },
-
             init() {
                 const { nav, scrollable } = this.$refs;
                 this.nav = nav;
@@ -52,17 +58,23 @@ const Navbar = {
                 this.scrollProgress = this.getScrollProgress();
                 this.updateShadow(this.scrollProgress);
 
+                this.$watch("dark", () =>
+                    this.updateShadow(this.getScrollProgress())
+                );
+
                 this.$watch("open", (open) => {
                     this.$nextTick(() => {
                         if (open) {
-                            onNavbarOpened(scrollable || nav);
+                            if (this.lockBody()) {
+                                onNavbarOpened(scrollable || nav);
+                            }
                         } else {
                             onNavbarClosed(scrollable || nav);
                         }
                     });
                 });
 
-                if (this.open) {
+                if (this.open && this.lockBody()) {
                     onNavbarOpened(scrollable || nav);
                 }
             },
@@ -71,6 +83,9 @@ const Navbar = {
             },
             show() {
                 this.open = true;
+            },
+            lockBody() {
+                return window.innerWidth <= this.lockBodyBreakpoint;
             },
             ...xData,
         };

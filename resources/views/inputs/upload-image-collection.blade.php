@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-default">
-                            <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full h-full">
+                            <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) cursor-pointer bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full h-full">
                                 @if($sortable)
                                     <x-ark-icon name="drag" size="lg" class="text-white"/>
                                     <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to
