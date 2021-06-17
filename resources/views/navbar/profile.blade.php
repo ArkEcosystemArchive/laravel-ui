@@ -40,9 +40,16 @@
             </form>
         @else
             <a
-                href="{{ route($menuItem['route']) }}"
+                @isset($menuItem['href'])
+                    href="{{ $menuItem['href'] }}"
+                @else
+                    href="{{ route($menuItem['route']) }}"
+                @endif
                 class="dropdown-entry"
                 dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
+                @foreach(Arr::get($menuItem, 'attributes', []) as $attribute => $attributeValue)
+                    {{ $attribute }}="{{ $attributeValue }}"
+                @endforeach
             >
                 @if($menuItem['icon'] ?? false)
                     @svg($menuItem['icon'], 'inline w-5 mr-4')
