@@ -77,10 +77,10 @@ export default class ErrorBag {
     }
 
     /**
-     * @return {[string, unknown][] | [string, any][]}
+     * @return {*|{}}
      */
     getAll() {
-        return Object.entries(this.collection);
+        return this.collection;
     }
 
     /**

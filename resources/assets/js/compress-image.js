@@ -2,7 +2,6 @@ import {
     uploadImage,
     imageValidator,
     getCsrfToken,
-    resetUploadInput,
 } from "./utils";
 
 import {invalidResponseException} from "./utils/exceptions";
@@ -43,12 +42,9 @@ const CompressImage = (
     model: $model,
     isUploading: false,
     uploadEl: null,
-    files: [],
 
     init() {
         this.uploadEl = document.getElementById($uploadID);
-
-        this.$watch(this.files, (value) => this.loadCompressor(value));
     },
 
     select() {
@@ -61,8 +57,6 @@ const CompressImage = (
         }
 
         [...this.uploadEl.files].forEach(file => {
-            console.log('validate', file);
-
             imageValidator(file, [
                 {rule: "minWidth", value: $minWidth},
                 {rule: "maxWidth", value: $maxWidth},
@@ -71,10 +65,10 @@ const CompressImage = (
                 {rule: "maxFileSize", value: parseInt($maxFileSize)},
             ])
                 .then(() => {
-                    this.files.push(file);
+                    this.loadCompressor(file);
                 })
                 .catch((errors) => {
-                    errors.getAll().forEach(bags => {
+                    Object.values(errors.getAll()).forEach(bags => {
                         [...bags].forEach(({value}) => Livewire.emit("toastMessage", [`${value} - ${file.name}`, "danger"]));
                     });
                 });
@@ -82,10 +76,6 @@ const CompressImage = (
     },
 
     onSuccess(file) {
-
-        // Remove file from the list to avoid concurrency call.
-        // this.files.slice(this.files.findIndex(obj => obj === file), 1);
-
         uploadImage(file, $endpoint, getCsrfToken()).then(
             (response) => {
                 if (!response.url) {
@@ -101,31 +91,19 @@ const CompressImage = (
         throw new Error(error.message);
     },
 
-    loadCompressor(collection) {
-        console.log('compress - collection', collection);
-        console.log('compress - this.files', this.files);
-
-        collection.forEach(file => {
-            new Compressor(file, {
-                /* https://github.com/fengyuanchen/compressorjs#quality */
-                quality: $quality,
-
-                /* https://github.com/fengyuanchen/compressorjs#checkorientation */
-                checkOrientation: parseInt($maxFileSize) <= 10,
-
-                /* https://github.com/fengyuanchen/compressorjs#convertsize */
-                convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
-
-                maxWidth: $maxWidth,
-                maxHeight: $maxHeight,
-                minWidth: $minWidth,
-                minHeight: $minHeight,
-                width: $width,
-                height: $height,
-
-                success: (file) => this.onSuccess(file),
-                error: (error) => this.onError(error),
-            });
+    loadCompressor(file) {
+        new Compressor(file, {
+            quality: $quality,
+            checkOrientation: parseInt($maxFileSize) <= 10,
+            convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
+            maxWidth: $maxWidth,
+            maxHeight: $maxHeight,
+            minWidth: $minWidth,
+            minHeight: $minHeight,
+            width: $width,
+            height: $height,
+            success: (file) => this.onSuccess(file),
+            error: (error) => this.onError(error),
         });
     },
 });

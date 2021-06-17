@@ -5,27 +5,8 @@ import {
     resetUploadInput,
 } from "./utils";
 
-import { invalidResponseException } from "./utils/exceptions";
+import {invalidResponseException} from "./utils/exceptions";
 
-/**
- * @param $cropOptions
- * @param $model
- * @param $uploadID
- * @param $cropID
- * @param $modalID
- * @param $minWidth
- * @param $minHeight
- * @param $maxWidth
- * @param $maxHeight
- * @param $width
- * @param $height
- * @param $maxFileSize
- * @param $fillColor
- * @param $imageSmoothingEnabled
- * @param $imageSmoothingQuality
- * @param $endpoint
- * @return {Object}
- */
 const CropImage = (
     $cropOptions = {},
     $model = null,
@@ -89,47 +70,40 @@ const CropImage = (
                 { rule: "maxHeight", value: $maxHeight },
                 { rule: "maxFileSize", value: $maxFileSize },
             ])
-                .then(() => this.loadCropper())
+                .then(() => {
+                    this.loadCropper();
+                })
                 .catch((errors) => {
-                    errors
-                        .unify()
-                        .getAll()
-                        .forEach((bags) => {
-                            bags[1].forEach(({ value }) =>
-                                Livewire.emit("toastMessage", [value, "danger"])
-                            );
-                        });
-
                     resetUploadInput(this.uploadEl);
+
+                    Object.values(errors.getAll()).forEach(bags => {
+                        [...bags].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
+                    });
                 });
         }
     },
 
     loadCropper() {
-        const file = this.uploadEl.files[0];
+        if (this.uploadEl.files.length) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                if (e.target.result) {
+                    this.cropEl = document.getElementById($cropID);
+                    this.cropEl.src = e.target.result;
 
-        if (!file) {
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            if (e.target.result) {
-                this.cropEl = document.getElementById($cropID);
-                this.cropEl.src = e.target.result;
-
-                this.cropper = new Cropper(this.cropEl, $cropOptions);
-
-                this.$nextTick(() => {
-                    this.destroyCropper();
                     this.cropper = new Cropper(this.cropEl, $cropOptions);
-                });
 
-                this.openCropModal();
-            }
-        };
+                    this.$nextTick(() => {
+                        this.destroyCropper();
+                        this.cropper = new Cropper(this.cropEl, $cropOptions);
+                    });
 
-        reader.readAsDataURL(file);
+                    this.openCropModal();
+                }
+            };
+
+            reader.readAsDataURL(this.uploadEl.files[0]);
+        }
     },
 
     saveCroppedImage() {
@@ -150,13 +124,15 @@ const CropImage = (
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, getCsrfToken()).then((response) => {
-                if (!response.url) {
-                    invalidResponseException();
-                }
+            uploadImage(blob, $endpoint, getCsrfToken()).then(
+                (response) => {
+                    if (!response.url) {
+                        invalidResponseException();
+                    }
 
-                this.model = response.url;
-            });
+                    this.model = response.url;
+                }
+            );
         });
 
         this.discardImage();
