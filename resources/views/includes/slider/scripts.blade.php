@@ -31,6 +31,12 @@
     }
 
     new Swiper('#swiper-{{ $id }}', {
+        @if($keyboardScroll)
+        keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+        },
+        @endif
         slidesPerView: 1,
         slidesPerGroup: 1,
         slidesPerColumn: 1,

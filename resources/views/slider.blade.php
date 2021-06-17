@@ -19,6 +19,7 @@
     'autoplayDelay'   => 3000,
     'hideViewAll'     => false,
     'shadowSpacing'   => false,
+    'keyboardScroll'  => true,
 ])
 
 @php ($hasViewAll = $viewAllUrl && ! $hideViewAll)
