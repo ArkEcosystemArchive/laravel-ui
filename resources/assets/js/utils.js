@@ -30,7 +30,9 @@ export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
                 // Means the CSRF Token is no longer valid
                 throw new Error("Session expired. You will need to refresh the browser to continue uploading images.");
             } else {
-                response.text().then(text => throw new Error(text));
+                response.text().then(text => {
+                    throw new Error(text);
+                });
             }
         })
         .catch(error => {

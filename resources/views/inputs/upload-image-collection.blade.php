@@ -11,7 +11,7 @@
     'maxHeight'          => 4000,
     'width'              => null,
     'height'             => null,
-    'maxFilesize'        => '2MB',
+    'maxFilesize'        => '8MB',
     'quality'            => 0.8,
     'acceptMime'         => 'image/jpg,image/jpeg,image/bmp,image/png',
     'uploadErrorMessage' => null,
@@ -26,8 +26,8 @@
         {{ $minHeight }},
         {{ $maxWidth }},
         {{ $maxHeight }},
-        {{ $width }},
-        {{ $height }},
+        '{{ $width }}',
+        '{{ $height }}',
         '{{ $maxFilesize }}',
         {{ $quality }}
     )"
@@ -42,7 +42,7 @@
             id="image-collection-upload-{{ $id }}"
             type="file"
             class="absolute w-full h-full opacity-0 cursor-pointer"
-            {{ $attributes->wire('model') }}
+            @change="validateImage"
             accept="{{ $acceptMime }}"
             multiple
         />

@@ -5,7 +5,7 @@ import {
     resetUploadInput,
 } from "./utils";
 
-import { invalidResponseException } from "./utils/exceptions";
+import {invalidResponseException} from "./utils/exceptions";
 
 import Compressor from 'compressorjs';
 
@@ -46,6 +46,8 @@ const CompressImage = (
 
     init() {
         this.uploadEl = document.getElementById($uploadID);
+
+        // this.$watch(this.model, () => resetUploadInput(this.uploadEl));
     },
 
     select() {
@@ -57,7 +59,7 @@ const CompressImage = (
             return;
         }
 
-        this.uploadEl.files.forEach(file => {
+        [...this.uploadEl.files].forEach(file => {
             imageValidator(file, [
                 {rule: "minWidth", value: $minWidth},
                 {rule: "maxWidth", value: $maxWidth},
@@ -67,7 +69,7 @@ const CompressImage = (
             ])
                 .then(() => this.loadCompressor())
                 .catch(errors => {
-                    errors.unify().getAll().forEach(bags => {
+                    errors.getAll().forEach(bags => {
                         bags[1].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
                     });
                 });
@@ -79,7 +81,7 @@ const CompressImage = (
             return;
         }
 
-        this.uploadEl.files.forEach(file => {
+        [...this.uploadEl.files].forEach(file => {
             new Compressor(file, {
                 /* https://github.com/fengyuanchen/compressorjs#quality */
                 quality: $quality,
@@ -105,8 +107,6 @@ const CompressImage = (
                             }
 
                             this.model = response.url;
-
-                            this.discardImage();
                         }
                     );
                 },
@@ -116,10 +116,6 @@ const CompressImage = (
                 }
             });
         });
-    },
-
-    discardImage() {
-        resetUploadInput(this.uploadEl);
     },
 });
 
