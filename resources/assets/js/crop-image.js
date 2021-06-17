@@ -5,7 +5,7 @@ import {
     resetUploadInput,
 } from "./utils";
 
-import {invalidResponseException} from "./utils/exceptions";
+import { invalidResponseException } from "./utils/exceptions";
 
 const CropImage = (
     $cropOptions = {},
@@ -76,8 +76,10 @@ const CropImage = (
                 .catch((errors) => {
                     resetUploadInput(this.uploadEl);
 
-                    Object.values(errors.getAll()).forEach(bags => {
-                        [...bags].forEach(({value}) => Livewire.emit("toastMessage", [value, "danger"]));
+                    Object.values(errors.getAll()).forEach((bags) => {
+                        [...bags].forEach(({ value }) =>
+                            Livewire.emit("toastMessage", [value, "danger"])
+                        );
                     });
                 });
         }
@@ -124,15 +126,13 @@ const CropImage = (
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, getCsrfToken()).then(
-                (response) => {
-                    if (!response.url) {
-                        invalidResponseException();
-                    }
-
-                    this.model = response.url;
+            uploadImage(blob, $endpoint, getCsrfToken()).then((response) => {
+                if (!response.url) {
+                    invalidResponseException();
                 }
-            );
+
+                this.model = response.url;
+            });
         });
 
         this.discardImage();
