@@ -5,9 +5,9 @@ import {
     resetUploadInput,
 } from "./utils";
 
-import { invalidResponseException } from "./utils/exceptions";
+import {invalidResponseException} from "./utils/exceptions";
 
-import Compressor from "compressorjs";
+import Compressor from 'compressorjs';
 
 /**
  * @param {String} $uploadID
@@ -30,11 +30,11 @@ const CompressImage = (
     $model = null,
     $minWidth = 200,
     $minHeight = 200,
-    $maxWidth = 4000,
-    $maxHeight = 4000,
+    $maxWidth = 7000,
+    $maxHeight = 7000,
     $width = null,
     $height = null,
-    $maxFileSize = "2",
+    $maxFileSize = '8',
     $quality = 0.8,
     $endpoint = "/cropper/upload-image",
     $convertSize = 5000000,
@@ -43,11 +43,12 @@ const CompressImage = (
     model: $model,
     isUploading: false,
     uploadEl: null,
+    files: [],
 
     init() {
         this.uploadEl = document.getElementById($uploadID);
 
-        // this.$watch(this.model, () => resetUploadInput(this.uploadEl));
+        this.$watch(this.files, (value) => this.loadCompressor(value));
     },
 
     select() {
@@ -59,31 +60,52 @@ const CompressImage = (
             return;
         }
 
-        [...this.uploadEl.files].forEach((file) => {
+        [...this.uploadEl.files].forEach(file => {
+            console.log('validate', file);
+
             imageValidator(file, [
-                { rule: "minWidth", value: $minWidth },
-                { rule: "maxWidth", value: $maxWidth },
-                { rule: "minHeight", value: $minHeight },
-                { rule: "maxHeight", value: $maxHeight },
-                { rule: "maxFileSize", value: parseInt($maxFileSize) },
+                {rule: "minWidth", value: $minWidth},
+                {rule: "maxWidth", value: $maxWidth},
+                {rule: "minHeight", value: $minHeight},
+                {rule: "maxHeight", value: $maxHeight},
+                {rule: "maxFileSize", value: parseInt($maxFileSize)},
             ])
-                .then(() => this.loadCompressor())
+                .then(() => {
+                    this.files.push(file);
+                })
                 .catch((errors) => {
-                    errors.getAll().forEach((bags) => {
-                        bags[1].forEach(({ value }) =>
-                            Livewire.emit("toastMessage", [value, "danger"])
-                        );
+                    errors.getAll().forEach(bags => {
+                        [...bags].forEach(({value}) => Livewire.emit("toastMessage", [`${value} - ${file.name}`, "danger"]));
                     });
                 });
         });
     },
 
-    loadCompressor() {
-        if (this.uploadEl.files.length === 0) {
-            return;
-        }
+    onSuccess(file) {
 
-        [...this.uploadEl.files].forEach((file) => {
+        // Remove file from the list to avoid concurrency call.
+        // this.files.slice(this.files.findIndex(obj => obj === file), 1);
+
+        uploadImage(file, $endpoint, getCsrfToken()).then(
+            (response) => {
+                if (!response.url) {
+                    invalidResponseException();
+                }
+
+                this.model = response.url;
+            }
+        );
+    },
+
+    onError(error) {
+        throw new Error(error.message);
+    },
+
+    loadCompressor(collection) {
+        console.log('compress - collection', collection);
+        console.log('compress - this.files', this.files);
+
+        collection.forEach(file => {
             new Compressor(file, {
                 /* https://github.com/fengyuanchen/compressorjs#quality */
                 quality: $quality,
@@ -92,7 +114,7 @@ const CompressImage = (
                 checkOrientation: parseInt($maxFileSize) <= 10,
 
                 /* https://github.com/fengyuanchen/compressorjs#convertsize */
-                convertSize: $disableConvertSize ? "Infinity" : $convertSize,
+                convertSize: $disableConvertSize ? 'Infinity' : $convertSize,
 
                 maxWidth: $maxWidth,
                 maxHeight: $maxHeight,
@@ -101,21 +123,8 @@ const CompressImage = (
                 width: $width,
                 height: $height,
 
-                success(result) {
-                    uploadImage(result, $endpoint, getCsrfToken()).then(
-                        (response) => {
-                            if (!response.url) {
-                                invalidResponseException();
-                            }
-
-                            this.model = response.url;
-                        }
-                    );
-                },
-
-                error(err) {
-                    throw new Error(err.message);
-                },
+                success: (file) => this.onSuccess(file),
+                error: (error) => this.onError(error),
             });
         });
     },

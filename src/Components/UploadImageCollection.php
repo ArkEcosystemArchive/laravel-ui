@@ -6,6 +6,7 @@ namespace ARKEcosystem\UserInterface\Components;
 
 use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 use Illuminate\Support\Facades\Validator;
+use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 trait UploadImageCollection
@@ -24,6 +25,14 @@ trait UploadImageCollection
 
     public function updatedTemporaryImages()
     {
+        $this->temporaryImages = collect($this->temporaryImages)->map(function ($image) {
+            if ($image instanceof TemporaryUploadedFile) {
+                return $image;
+            }
+
+            return TemporaryUploadedFile::createFromLivewire($image);
+        })->toArray();
+
         if (!$this->validateImageCollection()) {
             return;
         }
