@@ -69,13 +69,11 @@ const CompressImage = (
             ])
                 .then(() => this.loadCompressor())
                 .catch((errors) => {
-                    errors
-                        .getAll()
-                        .forEach((bags) => {
-                            bags[1].forEach(({ value }) =>
-                                Livewire.emit("toastMessage", [value, "danger"])
-                            );
-                        });
+                    errors.getAll().forEach((bags) => {
+                        bags[1].forEach(({ value }) =>
+                            Livewire.emit("toastMessage", [value, "danger"])
+                        );
+                    });
                 });
         });
     },
