@@ -141,30 +141,35 @@ This file contains basic examples and explains the parameters that can be used f
 | hiddenOptions | used for hiding options (e.g. expanding the field)                                       | no       |
 | class         | allows additional classes for the component                                              | no       |
 
+
 ### Upload Single Image
+This component renders an input file for a single image upload.
+```html
+<x-ark-upload-image-single id="profile" :image="$image" wire:model="imageSingle" />
+```
+> It requires the use of a Livewire Component. 
+> There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageSingle`.
 
-#### If you need the `Crop` functionality
-
-1. Ensure to import the following scripts inside the `<head>` tag of your template.
-
+#### Crop functionality (optional)
+1. Import the following scripts inside the `<head>` tag of your template.
 ```html
 @push('scripts')
     <x-ark-pages-includes-crop-image-scripts />
 @endpush
 ```
 
-2. Compile the crop-image script into the public folder:
-
+2. Copy the `crop-image.js` script into the public folder:
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/crop-image.js', 'public/js/crop-image.js')
 ```
 
 #### How to use
-
-```
-<x-ark-upload-image
+```html
+<x-ark-upload-image-single
+    id="profile"
     :image="$image"
+    wire:model="imageSingle"
     dimensions="w-64 h-64"
     upload-text="Upload Screenshot"
     delete-tooltip="Delete Screenshot"
@@ -183,6 +188,7 @@ mix
 |------------------------------|----------------------------------------------------------------------------------|----------|
 | id                           | The component ID                                                                 | yes      |
 | image                        | Object with the image reference (if uploaded)                                    | yes      |
+| model                        | The two-bindings connection with Livewire Component                              | yes      |
 | dimensions                   | Size of the upload component                                                     | no       |
 | upload-text                  | Text to display when no existing image                                           | no       |
 | delete-tooltip               | Tooltip text for the delete button                                               | no       |
@@ -208,55 +214,98 @@ mix
 | crop-image-smoothing-quality | Set the quality of image smoothing, one of "low" (default), "medium", or "high"  | no       |
 | crop-endpoint                | Where to upload the image                                                        | no       |
 
-#### Backend
 
-This component requires the use of a Livewire component. There is an abstract class that can be extended to provide this functionality:
-
+### Upload Multiple Images
+This component renders an input file for a multiple image upload.
+```html
+<x-ark-upload-image-collection id="media" :image="$imageCollection" wire:model="tempCollection" />
 ```
-<?php
+> It requires the use of a Livewire Component. 
+> There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageCollection`.
 
-use ARKEcosystem\UserInterface\Components\UploadImage;
+1. Install `Compressorjs`
+```bash
+yarn add -D compressorjs
+```
 
-class UpdateScreenshot extends UploadImage
+2. Import the following scripts inside the `<head>` tag of your template.
+```html
+@push('scripts')
+    <x-ark-pages-includes-compress-image-scripts />
+@endpush
+```
+
+3. Copy the `compress-image.js` script into the public folder:
+```js
+mix
+    .js('vendor/arkecosystem/ui/resources/assets/js/compress-image.js', 'public/js/compress-image.js')
+```
+
+#### Sort functionality (optional)
+1. Install `Livewire Sortable`
+```bash
+yarn add -D livewire-sortable
+```
+
+2. Add the following snippet to your `resources/app.js`
+```bash
+import 'livewire-sortable'
+// Or.
+require('livewire-sortable')
+```
+
+3. Add `imagesReordered` method to handle index reordering when an image is sorted.
+```php
+public function imagesReordered(array $ids): void
 {
-    /**
-     * Render the component.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function render()
-    {
-        return view('forms.update-screenshot-form');
-    }
-
-    /**
-     * Override default validators - 100mb
-     *
-     * @return array
-     */
-    public function validators()
-    {
-        return ['mimes:jpeg,png,bmp,jpg', 'max:102400'];
-    }
-
-    /**
-     * Store image
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Delete image
-     */
-    public function delete()
-    {
-        //
-    }
+    Media::setNewOrder($ids);
 }
-
 ```
+
+4. Then, you can use `upload-image-collection` component with sortable functionality.
+```html
+<x-ark-upload-image-collection 
+    id="media" 
+    ... 
+    sortable 
+/>
+```
+
+#### How to use
+```
+<x-ark-upload-image-collection
+    id="media"
+    :image="$imageCollection"
+    wire:model="tempCollection"
+    dimensions="w-64 h-64"
+    upload-text="Upload Screenshot"
+    delete-tooltip="Delete Screenshot"
+    min-width="640"
+    min-height="640"
+    max-filesize="100MB"
+    sortable
+/>
+```
+
+| Parameter                    | Description                                                                                             | Required |
+|------------------------------|---------------------------------------------------------------------------------------------------------|----------|
+| id                           | The component ID                                                                                        | yes      |
+| image                        | Object with the image reference (if uploaded)                                                           | yes      |
+| model                        | The two-bindings connection with Livewire Component                                                     | yes      |
+| dimensions                   | Size of the upload component                                                                            | no       |
+| upload-text                  | Text to display when no existing image                                                                  | no       |
+| delete-tooltip               | Tooltip text for the delete button                                                                      | no       |
+| min-width                    | Minimum width for the image                                                                             | no       |
+| min-height                   | Minimum height for the image                                                                            | no       |
+| max-width                    | Maximum width for the image                                                                             | no       |
+| max-height                   | Maximum height for the image                                                                            | no       |
+| width                        | The width of the output image. If not specified, the natural width of the original image will be used   | no       |
+| height                       | The height of the output image. If not specified, the natural height of the original image will be used | no       |
+| max-filesize                 | Maximum filesize allowed for the image                                                                  | no       |
+| quality                      | The quality of the output image. It must be a number between 0 and 1                                    | no       |
+| accept-mime                  | The mime type of the upload image                                                                       | no       |
+| upload-error-message         | Error message to display in case of error during the upload                                             | no       |
+| sortable                     | Enable the sort functionality (be sure to import JS files)                                              | no       |
 
 ---
 
