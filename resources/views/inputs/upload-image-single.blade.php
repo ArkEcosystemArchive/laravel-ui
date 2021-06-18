@@ -43,8 +43,8 @@
         {{ $minHeight }},
         {{ $maxWidth }},
         {{ $maxHeight }},
-        '{{ null }}',
-        '{{ null }}',
+        @if($width) {{ $width }} @else null @endif,
+        @if($height) {{ $height }} @else null @endif,
         '{{ $maxFilesize }}',
         '{{ $cropFillColor }}',
         {{ $cropImageSmoothingEnabled }},
@@ -59,8 +59,8 @@
         {{ $minHeight }},
         {{ $maxWidth }},
         {{ $maxHeight }},
-        {{ $width }},
-        {{ $height }},
+        @if($width) {{ $width }} @else null @endif,
+        @if($height) {{ $height }} @else null @endif,
         '{{ $maxFilesize }}',
         {{ $quality }}
     )"
