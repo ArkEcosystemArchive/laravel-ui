@@ -15,12 +15,12 @@
         redirect() {
             window.open('{{ $url }}', '_blank')
         },
-        hasDismissedModal() {
-            return localStorage.getItem('dismiss_external_link_modal') == 'true';
+        hasDisabledLinkWarning() {
+            return localStorage.getItem('disable_link_warning') == 'true';
         }
     }"
     class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
-    @click="hasDismissedModal() ? redirect() : openModal()"
+    @click="hasDisabledLinkWarning() ? redirect() : openModal()"
 >
     <span>{{ $text ?? $slot ?? '' }}</span>
 
@@ -49,8 +49,8 @@
                 <p>@lang('generic.external_link_disclaimer')</p>
 
                 <x-ark-checkbox
-                    name="terms"
-                    alpine="localStorage.getItem('dismiss_external_link_modal') == 'true' ? localStorage.setItem('dismiss_external_link_modal', false) : localStorage.setItem('dismiss_external_link_modal', true)"
+                    name="confirmation"
+                    alpine="localStorage.getItem('disable_link_warning') == 'true' ? localStorage.setItem('disable_link_warning', false) : localStorage.setItem('disable_link_warning', true)"
                 >
                     @slot('label')
                         @lang('ui::forms.do_not_show_message_again')
