@@ -5,7 +5,6 @@
     'label'            => null,
     'tooltip'          => null,
     'tooltipClass'     => 'input-tooltip',
-    'tooltipIconsize'  => 'sm',
     'tooltipType'      => 'info',
     'required'         => false,
     'auxiliaryTitle'   => '',
@@ -26,12 +25,6 @@
     @endif
 
     @if ($tooltip)
-        <div class="{{ $tooltipClass }}" data-tippy-content="{{ $tooltip }}">
-            @if($tooltipType === 'info')
-                <x-ark-icon name="hint" :size="$tooltipIconSize" />
-            @else
-                <x-ark-icon name="question-mark" :size="$tooltipIconSize" />
-            @endif
-        </div>
+        <x-ark-info :tooltip="$tooltip" :class="$tooltipClass" :type="$tooltipType" />
     @endif
 </label>

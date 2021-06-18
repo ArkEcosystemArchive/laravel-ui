@@ -8,7 +8,6 @@
                 'label'           => $label ?? null,
                 'tooltip'         => $tooltip ?? null,
                 'tooltipClass'    => $tooltipClass ?? null,
-                'tooltipIconSize' => $tooltipIconSize ?? null,
                 'tooltipType'     => $tooltipType ?? null,
                 'required'        => $required ?? false,
                 'auxiliaryTitle'  => $auxiliaryTitle ?? '',
