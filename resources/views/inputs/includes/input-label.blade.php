@@ -1,12 +1,14 @@
 @props([
     'name',
     'errors',
-    'id'             => null,
-    'label'          => null,
-    'tooltip'        => null,
-    'customTooltip'  => null,
-    'required'       => false,
-    'auxiliaryTitle' => '',
+    'id'               => null,
+    'label'            => null,
+    'tooltip'          => null,
+    'tooltipClass'     => 'input-tooltip',
+    'tooltipIconsize'  => 'sm',
+    'tooltipType'      => 'info',
+    'required'         => false,
+    'auxiliaryTitle'   => '',
 ])
 
 <label
@@ -24,10 +26,12 @@
     @endif
 
     @if ($tooltip)
-        <div class="input-tooltip" data-tippy-content="{{ $tooltip }}">?</div>
-    @endif
-
-    @if($customTooltip)
-        {{ $customTooltip }}
+        <div class="{{ $tooltipClass }}" data-tippy-content="{{ $tooltip }}">
+            @if($tooltipType === 'info')
+                <x-ark-icon name="hint" :size="$tooltipIconSize" />
+            @else
+                <x-ark-icon name="question-mark" :size="$tooltipIconSize" />
+            @endif
+        </div>
     @endif
 </label>
