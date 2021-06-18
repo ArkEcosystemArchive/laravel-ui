@@ -7,6 +7,7 @@
                 'id'             => $id ?? $name,
                 'label'          => $label ?? null,
                 'tooltip'        => $tooltip ?? null,
+                'customTooltip'  => $customTooltip ?? null,
                 'required'       => $required ?? false,
                 'auxiliaryTitle' => $auxiliaryTitle ?? '',
             ])

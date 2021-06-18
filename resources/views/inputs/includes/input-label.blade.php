@@ -4,6 +4,7 @@
     'id'             => null,
     'label'          => null,
     'tooltip'        => null,
+    'customTooltip'  => null,
     'required'       => false,
     'auxiliaryTitle' => '',
 ])
@@ -24,5 +25,9 @@
 
     @if ($tooltip)
         <div class="input-tooltip" data-tippy-content="{{ $tooltip }}">?</div>
+    @endif
+
+    @if($customTooltip)
+        {{ $customTooltip }}
     @endif
 </label>
