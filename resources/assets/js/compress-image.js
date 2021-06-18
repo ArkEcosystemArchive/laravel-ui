@@ -6,16 +6,16 @@ import Compressor from "compressorjs";
 
 /**
  * @param {String} $uploadID
- * @param {String} $model
+ * @param {String|null} $model
  * @param {Number} $minWidth
  * @param {Number} $minHeight
  * @param {Number} $maxWidth
  * @param {Number} $maxHeight
- * @param {Number} $width
- * @param {Number} $height
+ * @param {Number|null} $width
+ * @param {Number|null} $height
  * @param {String} $maxFileSize
  * @param {Number} $quality
- * @param {string} $endpoint
+ * @param {String} $endpoint
  * @param {Number} $convertSize
  * @param {Boolean} $disableConvertSize
  * @return {Object}
