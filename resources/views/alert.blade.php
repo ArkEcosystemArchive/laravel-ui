@@ -1,10 +1,11 @@
 @props([
-    'class'        => '',
-    'message'      => null,
-    'messageClass' => 'text-sm',
-    'large'        => false,
-    'title'        => null,
-    'type'         => 'info',
+    'class'           => '',
+    'message'         => null,
+    'messageClass'    => 'text-sm',
+    'large'           => false,
+    'title'           => null,
+    'type'            => 'info',
+    'withoutEscaping' => false,
 ])
 
 <div {{
@@ -32,7 +33,7 @@
         @endif
 
         @isset($message)
-            <span class="block leading-6 {{ $messageClass }}">{{ $message }}</span>
+            <span class="block leading-6 {{ $messageClass }}">@if($withoutEscaping) {!! $message !!} @else {{ $message }} @endif</span>
         @else
             <span class="block {{ $messageClass }}">{{ $slot }}</span>
         @endif
