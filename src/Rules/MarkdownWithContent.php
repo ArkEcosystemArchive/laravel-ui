@@ -13,7 +13,7 @@ class MarkdownWithContent implements Rule
      * Determine if the validation rule passes.
      *
      * @param  string  $attribute
-     * @param  string  $value
+     * @param  string|null  $value
      * @return bool
      */
     public function passes($attribute, $value)
