@@ -34,7 +34,7 @@
         @if($keyboardScroll)
         keyboard: {
             enabled: true,
-            onlyInViewport: true,
+            pageUpDown: false
         },
         @endif
         slidesPerView: 1,
