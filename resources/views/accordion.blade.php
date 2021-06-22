@@ -8,12 +8,15 @@
     'circleClass' => '',
     'circleSize' => 'sm',
     'toggleTitle' => false,
+    'mainWrapperClass' => null,
+    'descriptionListClass' => null,
+    'slotWrapperClass' => null,
 ])
 
 @php ($isDark = $dark)
 
-<div x-data="{ openPanel: null }">
-    <dl>
+<div x-data="{ openPanel: null }" class="{{ $mainWrapperClass }}">
+    <dl class="{{ $descriptionListClass }}">
         <div class="{{ $containerClass }} @if ($isDark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
@@ -42,7 +45,7 @@
                 </button>
             </dt>
 
-            <dd class="mt-2 @if($isDark) border-l border-theme-secondary-800 pl-8 @endif" x-show.transition.opacity="openPanel" x-cloak>
+            <dd class="mt-2 {{ $slotWrapperClass }} @if($isDark) border-l border-theme-secondary-800 pl-8 @endif" x-show.transition.opacity="openPanel" x-cloak>
                 {{ $slot }}
             </dd>
         </div>
