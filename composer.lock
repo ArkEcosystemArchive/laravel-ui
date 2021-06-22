@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5eb1363a7d9133b30f73f44ec25ac680",
+    "content-hash": "089c7f7b52af9ac6656f1b281ea25311",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5860,39 +5860,40 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "2.0.3",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "c9622c6820d3ede1e2315a6a377ea1076e421d88"
+                "reference": "13e3381b25847283a91948d04640543941309727"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/c9622c6820d3ede1e2315a6a377ea1076e421d88",
-                "reference": "c9622c6820d3ede1e2315a6a377ea1076e421d88",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/13e3381b25847283a91948d04640543941309727",
+                "reference": "13e3381b25847283a91948d04640543941309727",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.1 || ^8.0"
             },
             "conflict": {
-                "doctrine/common": ">2.2,<2.4",
-                "psr/cache": ">=3"
+                "doctrine/common": ">2.2,<2.4"
             },
             "require-dev": {
                 "alcaeus/mongo-php-adapter": "^1.1",
-                "cache/integration-tests": "dev-master",
-                "doctrine/coding-standard": "^8.0",
+                "doctrine/coding-standard": "^6.0",
                 "mongodb/mongodb": "^1.1",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
-                "predis/predis": "~1.0",
-                "psr/cache": "^1.0 || ^2.0",
-                "symfony/cache": "^4.4 || ^5.2"
+                "phpunit/phpunit": "^7.0",
+                "predis/predis": "~1.0"
             },
             "suggest": {
                 "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
@@ -5939,7 +5940,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/2.0.3"
+                "source": "https://github.com/doctrine/cache/tree/1.10.x"
             },
             "funding": [
                 {
@@ -5955,7 +5956,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-25T09:43:04+00:00"
+            "time": "2020-07-07T18:54:01+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -8254,16 +8255,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.88",
+            "version": "0.12.90",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "464d1a81af49409c41074aa6640ed0c4cbd9bb68"
+                "reference": "f0e4b56630fc3d4eb5be86606d07212ac212ede4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/464d1a81af49409c41074aa6640ed0c4cbd9bb68",
-                "reference": "464d1a81af49409c41074aa6640ed0c4cbd9bb68",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f0e4b56630fc3d4eb5be86606d07212ac212ede4",
+                "reference": "f0e4b56630fc3d4eb5be86606d07212ac212ede4",
                 "shasum": ""
             },
             "require": {
@@ -8294,11 +8295,15 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.88"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.90"
             },
             "funding": [
                 {
                     "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
                     "type": "github"
                 },
                 {
@@ -8310,7 +8315,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-05-17T12:24:49+00:00"
+            "time": "2021-06-18T07:15:38+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -8800,16 +8805,16 @@
         },
         {
             "name": "psr/cache",
-            "version": "2.0.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b"
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
-                "reference": "213f9dbc5b9bfbc4f8db86d2838dc968752ce13b",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
                 "shasum": ""
             },
             "require": {
@@ -8843,9 +8848,9 @@
                 "psr-6"
             ],
             "support": {
-                "source": "https://github.com/php-fig/cache/tree/2.0.0"
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
             },
-            "time": "2021-02-03T23:23:37+00:00"
+            "time": "2021-02-03T23:26:27+00:00"
         },
         {
             "name": "psr/http-message",
@@ -8996,21 +9001,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.11.20",
+            "version": "0.11.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "eb2f72236ad821dd9f19144a05d8b685480fd9a2"
+                "reference": "2765b17fc9de0792c9795cdc1a7704c6a9343691"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/eb2f72236ad821dd9f19144a05d8b685480fd9a2",
-                "reference": "eb2f72236ad821dd9f19144a05d8b685480fd9a2",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/2765b17fc9de0792c9795cdc1a7704c6a9343691",
+                "reference": "2765b17fc9de0792c9795cdc1a7704c6a9343691",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1|^8.0",
-                "phpstan/phpstan": ">=0.12.86 <=0.12.88"
+                "phpstan/phpstan": ">=0.12.86 <=0.12.90"
             },
             "conflict": {
                 "phpstan/phpdoc-parser": "<=0.5.3",
@@ -9044,7 +9049,7 @@
             "description": "Prefixed and PHP 7.1 downgraded version of rector/rector",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.11.20"
+                "source": "https://github.com/rectorphp/rector/tree/0.11.21"
             },
             "funding": [
                 {
@@ -9052,7 +9057,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-13T23:57:37+00:00"
+            "time": "2021-06-22T19:36:35+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -10193,16 +10198,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.20.2",
+            "version": "1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "41797d058a626878754342205d83ca6c4db7f6b2"
+                "reference": "4d8c8647f5697130710c4770ac3a9f18c8183ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/41797d058a626878754342205d83ca6c4db7f6b2",
-                "reference": "41797d058a626878754342205d83ca6c4db7f6b2",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/4d8c8647f5697130710c4770ac3a9f18c8183ed0",
+                "reference": "4d8c8647f5697130710c4770ac3a9f18c8183ed0",
                 "shasum": ""
             },
             "require": {
@@ -10258,7 +10263,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.20.2"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.21.0"
             },
             "funding": [
                 {
@@ -10270,7 +10275,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-06-21T07:02:32+00:00"
+            "time": "2021-06-22T19:33:13+00:00"
         },
         {
             "name": "spatie/macroable",
