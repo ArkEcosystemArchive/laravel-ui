@@ -4,7 +4,7 @@
     'id'               => null,
     'label'            => null,
     'tooltip'          => null,
-    'tooltipClass'     => 'input-tooltip',
+    'tooltipClass'     => null,
     'tooltipType'      => 'info',
     'required'         => false,
     'auxiliaryTitle'   => '',
