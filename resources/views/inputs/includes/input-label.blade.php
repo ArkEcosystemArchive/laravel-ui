@@ -1,11 +1,13 @@
 @props([
     'name',
     'errors',
-    'id'             => null,
-    'label'          => null,
-    'tooltip'        => null,
-    'required'       => false,
-    'auxiliaryTitle' => '',
+    'id'               => null,
+    'label'            => null,
+    'tooltip'          => null,
+    'tooltipClass'     => null,
+    'tooltipType'      => 'info',
+    'required'         => false,
+    'auxiliaryTitle'   => '',
 ])
 
 <label
@@ -23,6 +25,6 @@
     @endif
 
     @if ($tooltip)
-        <div class="input-tooltip" data-tippy-content="{{ $tooltip }}">?</div>
+        <x-ark-info :tooltip="$tooltip" :class="$tooltipClass" :type="$tooltipType" />
     @endif
 </label>
