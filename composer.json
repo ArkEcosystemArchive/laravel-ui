@@ -24,6 +24,22 @@
         "spatie/laravel-flash": "^1.8",
         "ruafozy/mersenne-twister": "^1.3"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "fzaninotto/faker": "^1.14",
+        "graham-campbell/analyzer": "^3.0",
+        "mockery/mockery": "^1.4",
+        "nunomaduro/larastan": "^0.7.6",
+        "nunomaduro/laravel-mojito": "^0.2.8",
+        "pestphp/pest": "^1.7",
+        "pestphp/pest-plugin-faker": "^1.0",
+        "pestphp/pest-plugin-laravel": "^1.0",
+        "pestphp/pest-plugin-livewire": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-laravel": "^1.4",
+        "rector/rector": "^0.11.21",
+        "vimeo/psalm": "^4.8"
+    },
     "autoload": {
         "psr-4": {
             "ARKEcosystem\\UserInterface\\": "src/"
@@ -51,21 +67,5 @@
         "test": [
             "./vendor/bin/pest --coverage --min=100 --coverage-html=.coverage --coverage-clover=coverage.xml"
         ]
-    },
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
-        "fzaninotto/faker": "^1.9",
-        "graham-campbell/analyzer": "^3.0",
-        "mockery/mockery": "^1.4",
-        "nunomaduro/larastan": "^0.7.6",
-        "nunomaduro/laravel-mojito": "^0.2.8",
-        "pestphp/pest": "^1.7",
-        "pestphp/pest-plugin-faker": "^1.0",
-        "pestphp/pest-plugin-laravel": "^1.0",
-        "pestphp/pest-plugin-livewire": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "psalm/plugin-laravel": "^1.4",
-        "rector/rector": "^0.11.21",
-        "vimeo/psalm": "^4.8"
     }
 }
