@@ -393,6 +393,14 @@ yarn add -D swiper
 @import "../../node_modules/swiper/swiper-bundle.min.css";
 ```
 
+5. Add the following to the `app.js` file:
+
+```js
+import Slider from "@ui/js/slider";
+
+window.Slider = Slider
+```
+
 ### Date Picker
 
 1. Install `pikaday`
