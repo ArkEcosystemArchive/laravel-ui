@@ -1,4 +1,3 @@
-
 <div>
     <form id="contact-form" class="flex flex-col flex-1 space-y-8" wire:submit.prevent="submit" enctype="multipart/form-data">
         @csrf

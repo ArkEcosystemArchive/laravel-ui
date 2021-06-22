@@ -67,7 +67,6 @@ final class ContactForm extends Component
 
     public function submit(): void
     {
-        // TODO: Real time validation instead ?
         $data = $this->validate();
 
         $mail = new ContactFormSubmitted(Arr::except($data, ['attachment']));
