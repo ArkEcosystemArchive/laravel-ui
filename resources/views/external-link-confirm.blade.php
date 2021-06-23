@@ -76,7 +76,7 @@
                     rel="noopener nofollow"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
-                    @click="hide(); localStorage.getItem('confirm_link_warning') == 'true' ? localStorage.setItem('disable_link_warning', false) : localStorage.setItem('disable_link_warning', true)"
+                    @click="hide(); localStorage.getItem('confirm_link_warning') == 'true' ? localStorage.setItem('disable_link_warning', true) : localStorage.setItem('disable_link_warning', false)"
                 >
                     @lang('actions.follow_link')
                 </a>
