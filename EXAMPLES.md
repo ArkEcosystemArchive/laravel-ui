@@ -209,6 +209,7 @@ mix
 | crop-image-smoothing-enabled | Set to change if images are smoothed                                             | no       |
 | crop-image-smoothing-quality | Set the quality of image smoothing, one of "low" (default), "medium", or "high"  | no       |
 | crop-endpoint                | Where to upload the image                                                        | no       |
+| accept-mime                  | List of comma separated mime types                                               | no       |
 
 #### Backend
 

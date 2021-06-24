@@ -11,4 +11,8 @@ return [
         'folder'     => 'livewire-tmp',
         'disk'       => 'local',
     ],
+
+    'upload' => [
+        'accept-mime' => 'image/jpg,image/jpeg,image/png',
+    ],
 ];
