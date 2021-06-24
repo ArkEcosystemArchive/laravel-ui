@@ -1,6 +1,8 @@
 <script>
     (() => {
-        const swiper = new Swiper('#swiper-{{ $id }}', {
+        const swiperEl = '#swiper-{{ $id }}';
+
+        const swiper = new Swiper(swiperEl, {
             slidesPerView: 1,
             slidesPerGroup: 1,
             slidesPerColumn: 1,
@@ -56,6 +58,13 @@
             @endunless
             watchOverflow: true,
             allowTouchMove: {{ $allowTouch ? 'true' : 'false' }},
+            on: {
+                beforeInit: function () {
+                    const wrapper = this.$el[0].querySelector('.swiper-wrapper');
+                    wrapper.classList.remove('grid');
+                    wrapper.removeAttribute('style');
+                },
+            },
         });
 
         document.addEventListener('DOMContentLoaded', function() {
