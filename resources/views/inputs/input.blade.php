@@ -2,13 +2,15 @@
     <div class="input-group">
         @unless ($hideLabel ?? false)
             @include('ark::inputs.includes.input-label', [
-                'name'           => $name,
-                'errors'         => $errors,
-                'id'             => $id ?? $name,
-                'label'          => $label ?? null,
-                'tooltip'        => $tooltip ?? null,
-                'required'       => $required ?? false,
-                'auxiliaryTitle' => $auxiliaryTitle ?? '',
+                'name'            => $name,
+                'errors'          => $errors,
+                'id'              => $id ?? $name,
+                'label'           => $label ?? null,
+                'tooltip'         => $tooltip ?? null,
+                'tooltipClass'    => $tooltipClass ?? null,
+                'tooltipType'     => $tooltipType ?? null,
+                'required'        => $required ?? false,
+                'auxiliaryTitle'  => $auxiliaryTitle ?? '',
             ])
         @endunless
 

@@ -10,16 +10,18 @@ This file contains basic examples and explains the parameters that can be used f
 
 `<x-ark-input type="email" name="my-input" :label="trans('forms.email_address')" :value="old('email')" :errors="$errors" />`
 
-| Parameter   | Description                                                                      | Required |
-|-------------|----------------------------------------------------------------------------------|----------|
-| name        | input name, will also be used as `id` if none specified                          | yes      |
-| errors      | laravel error bag                                                                | yes      |
-| label       | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
-| type        | input type, can be the general HTML types. Defaults to `text`                    | no       |
-| placeholder | placeholder value                                                                | no       |
-| value       | default value to show, can be used with laravel's `old('value')` functionality   | no       |
-| model       | livewire model to attach to                                                      | no       |
-| id          | id of the input, by default `name` is used                                       | no       |
+| Parameter     | Description                                                                      | Required |
+|---------------|----------------------------------------------------------------------------------|----------|
+| name          | input name, will also be used as `id` if none specified                          | yes      |
+| errors        | laravel error bag                                                                | yes      |
+| label         | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
+| type          | input type, can be the general HTML types. Defaults to `text`                    | no       |
+| placeholder   | placeholder value                                                                | no       |
+| value         | default value to show, can be used with laravel's `old('value')` functionality   | no       |
+| model         | livewire model to attach to                                                      | no       |
+| id            | id of the input, by default `name` is used                                       | no       |
+| tooltip       | content of the tooltip, will be shown next to the label                          | no       |
+| tooltip-class | allows additional classes for the tooltip                                        | no       |
 
 ### Textarea
 
@@ -174,7 +176,7 @@ mix
     with-crop
     cropOptions="{
         aspectRatio: 1 / 1,
-        ... 
+        ...
     }"
 />
 ```
@@ -207,6 +209,7 @@ mix
 | crop-image-smoothing-enabled | Set to change if images are smoothed                                             | no       |
 | crop-image-smoothing-quality | Set the quality of image smoothing, one of "low" (default), "medium", or "high"  | no       |
 | crop-endpoint                | Where to upload the image                                                        | no       |
+| accept-mime                  | List of comma separated mime types                                               | no       |
 
 #### Backend
 
