@@ -51,22 +51,12 @@ if (! function_exists('clearZalgoText')) {
 if (! function_exists('extractSlidesBreakpoints')) {
     function extractSlidesBreakpoints(string $str): Collection
     {
-        $data = [
-            'slidesPerGroup' => '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerGroup:\s+(?<slidesPerGroup>\d+))[^}]*}/m',
-            'slidesPerView' => '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerView:\s+(?<slidesPerView>\d+))[^}]*}/m',
-            'slidesPerColumn' => '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerColumn:\s+(?<slidesPerColumn>\d+))[^}]*}/m',
-            'slidesPerColumnFill' => '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerColumnFill:\s+\'(?<slidesPerColumnFill>[^\']+))[^}]*}/m',
-        ];
+        $regex = '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerView:\s+(?<slidesPerView>\d+))[^}]*}/m';
 
+        preg_match_all($regex, $str, $matches, PREG_SET_ORDER, 0);
 
-        return collect($data)->mapWithKeys(function ($regex, $name) use ($str) {
-            preg_match_all($regex, $str, $matches, PREG_SET_ORDER, 0);
-
-            $result = collect($matches)->mapWithKeys(function ($match) use ($name) {
-                return [$match['breakpoint'] =>  $match[$name]];
-            });
-
-            return [$name => $result];
+        return collect($matches)->mapWithKeys(function ($match) {
+            return [$match['breakpoint'] => $match['slidesPerView']];
         });
     }
 }

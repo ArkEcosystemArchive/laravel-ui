@@ -57,7 +57,7 @@
     ]);
 
     $gridClasses = $classesPerBreakpoint->map(function ($classes, $breakpoint) use ($slidesBreakpoints)  {
-        $key = $slidesBreakpoints->get('slidesPerView')->get($breakpoint);
+        $key = $slidesBreakpoints->get($breakpoint);
 
         if (!$key) {
             return null;
