@@ -1,8 +1,6 @@
 <script>
     (() => {
-        const swiperEl = '#swiper-{{ $id }}';
-
-        const swiper = new Swiper(swiperEl, {
+        const swiper = new Swiper('#swiper-{{ $id }}', {
             slidesPerView: 1,
             slidesPerGroup: 1,
             slidesPerColumn: 1,
