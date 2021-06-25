@@ -2,7 +2,7 @@
     <x-ark-dropdown
         wrapper-class="mx-1 md:relative"
         dropdown-classes="mt-8 md:px-0 px-8 {{ $dropdownClasses ?? '' }}"
-        button-class="relative p-3 rounded hover:py-2 transition-default group hover:bg-theme-primary-100"
+        button-class="relative py-3 px-4 rounded transition-default group hover:bg-theme-primary-100"
         dropdown-content-classes="bg-white dark:bg-theme-secondary-800 dark:text-theme-secondary-200 rounded-xl shadow-2xl"
     >
         <x-slot name="button">
