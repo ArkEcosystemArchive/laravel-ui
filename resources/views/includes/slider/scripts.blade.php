@@ -56,6 +56,13 @@
             @endunless
             watchOverflow: true,
             allowTouchMove: {{ $allowTouch ? 'true' : 'false' }},
+            on: {
+                beforeInit: function () {
+                    const wrapper = this.$el[0].querySelector('.swiper-wrapper');
+                    wrapper.classList.remove('grid');
+                    wrapper.removeAttribute('style');
+                },
+            },
         });
 
         document.addEventListener('DOMContentLoaded', function() {
