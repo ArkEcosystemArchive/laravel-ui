@@ -43,7 +43,7 @@
                         @endisset
                     </div>
 
-                    <div class="flex inset-y-0 right-0 items-center sm:static sm:inset-auto sm:ml-4">
+                    <div class="flex inset-y-0 right-0 items-center sm:static sm:inset-auto sm:ml-3">
                         @if(is_array($navigation))
                             @include('ark::navbar.hamburger')
                         @endif
