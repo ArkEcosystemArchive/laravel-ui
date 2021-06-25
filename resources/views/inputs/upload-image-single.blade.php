@@ -11,7 +11,7 @@
     'width'                     => 450,
     'height'                    => 450,
     'maxFilesize'               => '2MB',
-    'acceptMime'                => 'image/jpg,image/jpeg,image/bmp,image/png',
+    'acceptMime'                => (string) config('ui.upload.accept-mime'),
     'readonly'                  => false,
     'uploadErrorMessage'        => null,
     'withCrop'                  => false,
