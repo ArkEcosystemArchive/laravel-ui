@@ -14,15 +14,15 @@
             window.open('{{ $url }}', '_blank')
         },
         hasConfirmedLinkWarning() {
-            return localStorage.getItem('confirm_link_warning') == 'true';
+            return localStorage.getItem('has_confirmed_link_warning') === 'true';
         },
         hasDisabledLinkWarning() {
-            return localStorage.getItem('disable_link_warning') == 'true';
+            return localStorage.getItem('has_disabled_link_warning') === 'true';
         }
     }"
 >
     <a
-        href="javascript:;"
+        :href="javascript:;{{ $url }}"
         class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
@@ -54,7 +54,7 @@
 
                     <x-ark-checkbox
                         name="confirmation"
-                        alpine="localStorage.getItem('confirm_link_warning') == 'true' ? localStorage.setItem('confirm_link_warning', false) : localStorage.setItem('confirm_link_warning', true)"
+                        alpine="localStorage.getItem('has_confirmed_link_warning') === 'true' ? localStorage.setItem('has_confirmed_link_warning', false) : localStorage.setItem('has_confirmed_link_warning', true)"
                     >
                         @slot('label')
                             @lang('ui::forms.do_not_show_message_again')
@@ -76,7 +76,7 @@
                     rel="noopener nofollow"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
-                    @click="hide(); localStorage.getItem('confirm_link_warning') == 'true' ? localStorage.setItem('disable_link_warning', true) : localStorage.setItem('disable_link_warning', false)"
+                    @click="hide(); localStorage.getItem('has_confirmed_link_warning') === 'true' ? localStorage.setItem('has_disabled_link_warning', true) : localStorage.setItem('has_disabled_link_warning', false)"
                 >
                     @lang('actions.follow_link')
                 </a>
