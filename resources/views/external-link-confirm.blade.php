@@ -13,16 +13,13 @@
         redirect() {
             window.open('{{ $url }}', '_blank')
         },
-        hasConfirmedLinkWarning() {
-            return localStorage.getItem('has_confirmed_link_warning') === 'true';
-        },
         hasDisabledLinkWarning() {
             return localStorage.getItem('has_disabled_link_warning') === 'true';
         }
     }"
 >
     <a
-        :href="javascript:;{{ $url }}"
+        href="javascript:; {{ $url }}"
         class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
@@ -39,6 +36,12 @@
             class="w-full max-w-2xl text-left rounded-xl"
             title-class="header-2"
             buttons-style="flex justify-end space-x-3"
+            x-data="{
+                hasConfirmedLinkWarning: false,
+                toggle () {
+                    this.hasConfirmedLinkWarning = ! this.hasConfirmedLinkWarning;
+                }
+            }"
             init
         >
             @slot('title')
@@ -50,11 +53,12 @@
                     <div class="font-semibold text-theme-secondary-900">
                         <x-ark-alert type="warning" :message="$url" />
                     </div>
+
                     <p>@lang('generic.external_link_disclaimer')</p>
 
                     <x-ark-checkbox
                         name="confirmation"
-                        alpine="localStorage.getItem('has_confirmed_link_warning') === 'true' ? localStorage.setItem('has_confirmed_link_warning', false) : localStorage.setItem('has_confirmed_link_warning', true)"
+                        alpine="toggle"
                     >
                         @slot('label')
                             @lang('ui::forms.do_not_show_message_again')
@@ -76,7 +80,7 @@
                     rel="noopener nofollow"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
-                    @click="hide(); localStorage.getItem('has_confirmed_link_warning') === 'true' ? localStorage.setItem('has_disabled_link_warning', true) : localStorage.setItem('has_disabled_link_warning', false)"
+                    @click="hide(); hasConfirmedLinkWarning ? localStorage.setItem('has_disabled_link_warning', true) : localStorage.setItem('has_disabled_link_warning', false)"
                 >
                     @lang('actions.follow_link')
                 </a>
