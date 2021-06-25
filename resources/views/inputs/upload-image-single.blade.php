@@ -10,7 +10,7 @@
     'maxHeight'                 => 4000,
     'width'                     => 450,
     'height'                    => 450,
-    'maxFilesize'               => '2MB',
+    'maxFilesize'               => '5MB',
     'quality'                   => 0.8,
     'acceptMime'                => (string) config('ui.upload.accept-mime'),
     'readonly'                  => false,
