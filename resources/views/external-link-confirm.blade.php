@@ -19,7 +19,8 @@
     }"
 >
     <a
-        href="javascript:; {{ $url }}"
+        :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
+        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
         class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
