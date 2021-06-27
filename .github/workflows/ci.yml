@@ -46,7 +46,7 @@ jobs:
                   key: dependencies-composer-${{ hashFiles('composer.json') }}
 
             - name: Install Composer dependencies
-              run: composer install --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --optimize-autoloader
+              run: composer install --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --optimize-autoloader --ignore-platform-reqs
 
             - name: Run Tests
               run: ./vendor/bin/pest
