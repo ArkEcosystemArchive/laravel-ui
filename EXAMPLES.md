@@ -152,6 +152,24 @@ This component renders an input file for a single image upload.
 > It requires the use of a Livewire Component. 
 > There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageSingle`.
 
+1. Install `Compressorjs`
+```bash
+yarn add -D compressorjs
+```
+
+2. Import the following scripts inside the `<head>` tag of your template.
+```html
+@push('scripts')
+    <x-ark-pages-includes-compress-image-scripts />
+@endpush
+```
+
+3. Open `webpack.mix.js` file and copy the `compress-image.js` script into the public folder:
+```js
+mix
+    .js('vendor/arkecosystem/ui/resources/assets/js/compress-image.js', 'public/js/compress-image.js')
+```
+
 #### Crop functionality (optional)
 1. Import the following scripts inside the `<head>` tag of your template.
 ```html
@@ -238,7 +256,7 @@ yarn add -D compressorjs
 @endpush
 ```
 
-3. Copy the `compress-image.js` script into the public folder:
+3. Open `webpack.mix.js` file and copy the `compress-image.js` script into the public folder:
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/compress-image.js', 'public/js/compress-image.js')
