@@ -41,6 +41,15 @@
                 hasConfirmedLinkWarning: false,
                 toggle () {
                     this.hasConfirmedLinkWarning = ! this.hasConfirmedLinkWarning;
+                },
+                onHidden () {
+                    this.hasConfirmedLinkWarning = false;
+                    document.querySelector('input[name=confirmation]').checked = false;
+                },
+                followLink() {
+                    if(this.hasConfirmedLinkWarning) {
+                        localStorage.setItem('has_disabled_link_warning', true)
+                    }
                 }
             }"
             init
@@ -81,7 +90,7 @@
                     rel="noopener nofollow"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
-                    @click="hide(); hasConfirmedLinkWarning ? localStorage.setItem('has_disabled_link_warning', true) : localStorage.setItem('has_disabled_link_warning', false)"
+                    @click="hide(); followLink()"
                 >
                     @lang('actions.follow_link')
                 </a>
