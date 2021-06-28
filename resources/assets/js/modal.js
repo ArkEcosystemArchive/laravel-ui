@@ -159,20 +159,28 @@ const Modal = {
     },
 
     reserveNavScrollBarGap() {
-        const navbar = document.querySelector('header nav');
+        const navbar = document.querySelector("header nav");
         if (this.previousNavPaddingRight === undefined) {
-            const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+            const scrollBarGap =
+                window.innerWidth - document.documentElement.clientWidth;
 
             if (scrollBarGap > 0) {
-                const computedBodyPaddingRight = parseInt(window.getComputedStyle(navbar).getPropertyValue('padding-right'), 10);
+                const computedBodyPaddingRight = parseInt(
+                    window
+                        .getComputedStyle(navbar)
+                        .getPropertyValue("padding-right"),
+                    10
+                );
                 this.previousNavPaddingRight = navbar.style.paddingRight;
-                navbar.style.paddingRight = `${computedBodyPaddingRight + scrollBarGap}px`;
+                navbar.style.paddingRight = `${
+                    computedBodyPaddingRight + scrollBarGap
+                }px`;
             }
         }
     },
 
     restoreNavScrollBarGap() {
-        const navbar = document.querySelector('header nav');
+        const navbar = document.querySelector("header nav");
         if (this.previousNavPaddingRight !== undefined) {
             navbar.style.paddingRight = this.previousNavPaddingRight;
             this.previousNavPaddingRight = undefined;
