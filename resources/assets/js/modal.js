@@ -45,7 +45,7 @@ const Modal = {
         }
     },
 
-    alpine(extraData = {}, modalName = "") {
+    alpine(extraData = {}, modalName = "", eventOptions = Modal.defaultOptions) {
         return {
             name: modalName,
             shown: false,
@@ -84,19 +84,19 @@ const Modal = {
                                 this.onShown();
                             }
 
-                            Modal.onModalOpened(scrollable);
+                            Modal.onModalOpened(scrollable, eventOptions);
                         } else {
                             if (typeof this.onHidden === "function") {
                                 this.onHidden();
                             }
 
-                            Modal.onModalClosed(scrollable);
+                            Modal.onModalClosed(scrollable, eventOptions);
                         }
                     });
                 });
 
                 if (this.shown) {
-                    Modal.onModalOpened(scrollable);
+                    Modal.onModalOpened(scrollable, eventOptions);
                 }
             },
             hide() {
