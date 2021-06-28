@@ -8,7 +8,12 @@ const Modal = {
     previousPaddingRight: undefined,
     previousNavPaddingRight: undefined,
 
-    onModalOpened(scrollable, options = {}) {
+    defaultOptions: {
+        reserveScrollBarGap: true,
+        reserveNavScrollBarGap: true,
+    },
+
+    onModalOpened(scrollable, options = Modal.defaultOptions) {
         if (options.reserveScrollBarGap) {
             this.reserveModalScrollBarGap(scrollable);
         }
@@ -24,7 +29,7 @@ const Modal = {
         scrollable.focus();
     },
 
-    onModalClosed(scrollable, options = {}) {
+    onModalClosed(scrollable, options = Modal.defaultOptions) {
         if (options.reserveScrollBarGap) {
             this.restoreModalScrollBarGap(scrollable);
         }
@@ -108,7 +113,7 @@ const Modal = {
         };
     },
 
-    livewire(extraData = {}, eventOptions = {}) {
+    livewire(extraData = {}, eventOptions = Modal.defaultOptions) {
         return {
             init() {
                 const scrollable = this.getScrollable();
