@@ -223,7 +223,6 @@
 }
 
 .taggle_input {
-    width: 1ch;
     @apply max-w-full my-1 bg-none;
 }
 
