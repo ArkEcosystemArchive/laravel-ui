@@ -13,7 +13,7 @@ const Modal = {
         }
 
         disableBodyScroll(scrollable, {
-            reserveScrollBarGap: !! options.reserveScrollBarGap,
+            reserveScrollBarGap: !!options.reserveScrollBarGap,
         });
 
         scrollable.focus();
@@ -123,13 +123,21 @@ const Modal = {
     // Variation of https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L72
     reserveModalScrollBarGap(container) {
         if (this.previousPaddingRight === undefined) {
-            const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+            const scrollBarGap =
+                window.innerWidth - document.documentElement.clientWidth;
             console.log(scrollBarGap);
 
             if (scrollBarGap > 0) {
-                const computedBodyPaddingRight = parseInt(window.getComputedStyle(container).getPropertyValue('padding-right'), 10);
+                const computedBodyPaddingRight = parseInt(
+                    window
+                        .getComputedStyle(container)
+                        .getPropertyValue("padding-right"),
+                    10
+                );
                 this.previousPaddingRight = container.style.paddingRight;
-                container.style.paddingRight = `${computedBodyPaddingRight + scrollBarGap}px`;
+                container.style.paddingRight = `${
+                    computedBodyPaddingRight + scrollBarGap
+                }px`;
             }
         }
     },
