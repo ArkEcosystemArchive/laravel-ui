@@ -393,6 +393,14 @@ yarn add -D swiper
 @import "../../node_modules/swiper/swiper-bundle.min.css";
 ```
 
+5. Add the following to the `app.js` file:
+
+```js
+import Slider from "@ui/js/slider";
+
+window.Slider = Slider
+```
+
 ### Date Picker
 
 1. Install `pikaday`
@@ -480,7 +488,7 @@ import 'livewire-sortable'
 require('livewire-sortable')
 ```
 
-3. Add `imagesReordered` method to handle index reordering when an image is sorted. 
+3. Add `imagesReordered` method to handle index reordering when an image is sorted.
 
 ```php
 public function imagesReordered(array $ids): void
@@ -489,7 +497,7 @@ public function imagesReordered(array $ids): void
 }
 ```
 
-4. Then, you can use `upload-image-collection` component with sortable functionality. 
+4. Then, you can use `upload-image-collection` component with sortable functionality.
 
 ```blade
 <x-ark-upload-image-collection id="media" :images="$this->imageCollection" sortable />
@@ -527,7 +535,7 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-clipboard>`
 - `<x-ark-dropdown>`
 - [`<x-ark-expandable>`](EXAMPLES.md#expandable)
-- `<x-ark-input>`
+- [`<x-ark-input>`](EXAMPLES.md#input)
 - `<x-ark-navbar>`
 - `<x-ark-radio>`
 - `<x-ark-secondary-menu>`

@@ -8,6 +8,7 @@
     'minWidth'           => 148,
     'minHeight'          => 148,
     'maxFilesize'        => '2MB',
+    'acceptMime'         => (string) config('ui.upload.accept-mime'),
     'uploadErrorMessage' => null,
     'sortable'           => false,
 ])
@@ -25,7 +26,7 @@
             type="file"
             class="absolute w-full h-full opacity-0 cursor-pointer"
             wire:model="temporaryImages"
-            accept="image/jpg,image/jpeg,image/bmp,image/png"
+            accept="{{ $acceptMime }}"
             multiple
         />
 

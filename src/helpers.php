@@ -1,6 +1,7 @@
 <?php
 
 use ARKEcosystem\UserInterface\Components\SvgLazy;
+use Illuminate\Support\Collection;
 
 if (! function_exists('svgLazy')) {
     function svgLazy(string $name, $class = ''): SvgLazy
@@ -44,5 +45,18 @@ if (! function_exists('clearZalgoText')) {
     function clearZalgoText(string $zalgo): string
     {
         return preg_replace("|[\p{M}]|uis","", $zalgo);
+    }
+}
+
+if (! function_exists('extractSlidesBreakpoints')) {
+    function extractSlidesBreakpoints(string $str): Collection
+    {
+        $regex = '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerView:\s+(?<slidesPerView>\d+))[^}]*}/m';
+
+        preg_match_all($regex, $str, $matches, PREG_SET_ORDER, 0);
+
+        return collect($matches)->mapWithKeys(function ($match) {
+            return [$match['breakpoint'] => $match['slidesPerView']];
+        });
     }
 }
