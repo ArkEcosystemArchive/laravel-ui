@@ -45,7 +45,11 @@ const Modal = {
         }
     },
 
-    alpine(extraData = {}, modalName = "", eventOptions = Modal.defaultOptions) {
+    alpine(
+        extraData = {},
+        modalName = "",
+        eventOptions = Modal.defaultOptions
+    ) {
         return {
             name: modalName,
             shown: false,
