@@ -87,3 +87,76 @@ span.swiper-pagination-bullet-active {
 .swiper-pagination-bullet:only-child {
     @apply hidden;
 }
+
+/**
+ * Before swiper is loaded it uses grid classes to show the content properly.
+ * The following are for showing only the amount of elements that fit on
+ * different breakpoints.
+ */
+.swiper-wrapper.grid .swiper-slide:nth-child(n + 2) {
+    @apply hidden;
+}
+
+@screen sm {
+    .swiper-wrapper.grid.sm\:grid-cols-1 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.sm\:grid-cols-2 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.sm\:grid-cols-3 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.sm\:grid-cols-4 .swiper-slide:nth-child(n + 0) {
+        @apply block;
+    }
+
+    .swiper-wrapper.grid.sm\:grid-cols-1 .swiper-slide:nth-child(n + 2),
+    .swiper-wrapper.grid.sm\:grid-cols-2 .swiper-slide:nth-child(n + 3),
+    .swiper-wrapper.grid.sm\:grid-cols-3 .swiper-slide:nth-child(n + 4),
+    .swiper-wrapper.grid.sm\:grid-cols-4 .swiper-slide:nth-child(n + 5) {
+        @apply hidden;
+    }
+}
+
+@screen md {
+    .swiper-wrapper.grid.md\:grid-cols-1 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.md\:grid-cols-2 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.md\:grid-cols-3 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.md\:grid-cols-4 .swiper-slide:nth-child(n + 0) {
+        @apply block;
+    }
+
+    .swiper-wrapper.grid.md\:grid-cols-1 .swiper-slide:nth-child(n + 2),
+    .swiper-wrapper.grid.md\:grid-cols-2 .swiper-slide:nth-child(n + 3),
+    .swiper-wrapper.grid.md\:grid-cols-3 .swiper-slide:nth-child(n + 4),
+    .swiper-wrapper.grid.md\:grid-cols-4 .swiper-slide:nth-child(n + 5) {
+        @apply hidden;
+    }
+}
+
+@screen lg {
+    .swiper-wrapper.grid.lg\:grid-cols-1 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.lg\:grid-cols-2 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.lg\:grid-cols-3 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.lg\:grid-cols-4 .swiper-slide:nth-child(n + 0) {
+        @apply block;
+    }
+
+    .swiper-wrapper.grid.lg\:grid-cols-1 .swiper-slide:nth-child(n + 2),
+    .swiper-wrapper.grid.lg\:grid-cols-2 .swiper-slide:nth-child(n + 3),
+    .swiper-wrapper.grid.lg\:grid-cols-3 .swiper-slide:nth-child(n + 4),
+    .swiper-wrapper.grid.lg\:grid-cols-4 .swiper-slide:nth-child(n + 5) {
+        @apply hidden;
+    }
+}
+
+@screen xl {
+    .swiper-wrapper.grid.xl\:grid-cols-1 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.xl\:grid-cols-2 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.xl\:grid-cols-3 .swiper-slide:nth-child(n + 0),
+    .swiper-wrapper.grid.xl\:grid-cols-4 .swiper-slide:nth-child(n + 0) {
+        @apply block;
+    }
+
+    .swiper-wrapper.grid.xl\:grid-cols-1 .swiper-slide:nth-child(n + 2),
+    .swiper-wrapper.grid.xl\:grid-cols-2 .swiper-slide:nth-child(n + 3),
+    .swiper-wrapper.grid.xl\:grid-cols-3 .swiper-slide:nth-child(n + 4),
+    .swiper-wrapper.grid.xl\:grid-cols-4 .swiper-slide:nth-child(n + 5) {
+        @apply hidden;
+    }
+}
