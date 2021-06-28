@@ -6,6 +6,7 @@ namespace ARKEcosystem\UserInterface\Components;
 
 use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
@@ -83,9 +84,13 @@ trait UploadImageCollection
                 }
             },
             'temporaryImages.*'  => [
-                'mimes:jpeg,png,bmp,jpg',
-                'max:2048',
-                'dimensions:min_width=148,min_height=148',
+                'mimes:'.(string) config('ui.upload.image-collection.accept-mime'),
+                'max:'.(string) config('ui.upload.image-collection.max-filesize'),
+                Rule::dimensions()
+                    ->minWidth((int) config('ui.upload.image-collection.dimensions.min-width'))
+                    ->minHeight((int) config('ui.upload.image-collection.dimensions.min-height'))
+                    ->maxWidth((int) config('ui.upload.image-collection.dimensions.max-width'))
+                    ->maxHeight((int) config('ui.upload.image-collection.dimensions.max-height')),
             ],
         ];
     }
