@@ -451,8 +451,9 @@
     .tile-link-sm .tile-link-title {
         @apply block;
     }
+
     .tile-link-sm .tile-link-icon {
-        @apply hidden;
+        @apply block mr-2;
     }
 
     .tile-link-sm,
@@ -464,10 +465,6 @@
 @screen md {
     .tile-link-md {
         @apply h-22;
-    }
-
-    .tile-link-sm .tile-link-icon {
-        @apply block mr-2;
     }
 
     .tile-link-md .tile-link-icon {
