@@ -4,21 +4,33 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-const onModalClosed = (scrollable) => {
-    enableBodyScroll(scrollable);
-
-    if (!document.querySelectorAll("[data-modal]").length) {
-        clearAllBodyScrollLocks();
-    }
-};
-
-const onModalOpened = (scrollable) => {
-    disableBodyScroll(scrollable);
-
-    scrollable.focus();
-};
-
 const Modal = {
+    previousPaddingRight: undefined,
+
+    onModalOpened(scrollable, options = {}) {
+        if (options.reserveScrollBarGap) {
+            this.reserveModalScrollBarGap(scrollable);
+        }
+
+        disableBodyScroll(scrollable, {
+            reserveScrollBarGap: !! options.reserveScrollBarGap,
+        });
+
+        scrollable.focus();
+    },
+
+    onModalClosed(scrollable, options = {}) {
+        if (options.reserveScrollBarGap) {
+            this.restoreModalScrollBarGap(scrollable);
+        }
+
+        enableBodyScroll(scrollable);
+
+        if (!document.querySelectorAll("[data-modal]").length) {
+            clearAllBodyScrollLocks();
+        }
+    },
+
     alpine(extraData = {}, modalName = "") {
         return {
             name: modalName,
@@ -58,19 +70,19 @@ const Modal = {
                                 this.onShown();
                             }
 
-                            onModalOpened(scrollable);
+                            Modal.onModalOpened(scrollable);
                         } else {
                             if (typeof this.onHidden === "function") {
                                 this.onHidden();
                             }
 
-                            onModalClosed(scrollable);
+                            Modal.onModalClosed(scrollable);
                         }
                     });
                 });
 
                 if (this.shown) {
-                    onModalOpened(scrollable);
+                    Modal.onModalOpened(scrollable);
                 }
             },
             hide() {
@@ -86,18 +98,19 @@ const Modal = {
             ...extraData,
         };
     },
-    livewire(extraData = {}) {
+
+    livewire(extraData = {}, eventOptions = {}) {
         return {
             init() {
                 const scrollable = this.getScrollable();
 
                 this.$wire.on("modalClosed", () => {
                     this.$nextTick(() => {
-                        onModalClosed(scrollable);
+                        Modal.onModalClosed(scrollable, eventOptions);
                     });
                 });
 
-                onModalOpened(scrollable);
+                Modal.onModalOpened(scrollable, eventOptions);
             },
             getScrollable() {
                 const { modal } = this.$refs;
@@ -105,6 +118,29 @@ const Modal = {
             },
             ...extraData,
         };
+    },
+
+    // Variation of https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L72
+    reserveModalScrollBarGap(container) {
+        if (this.previousPaddingRight === undefined) {
+            const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+            console.log(scrollBarGap);
+
+            if (scrollBarGap > 0) {
+                const computedBodyPaddingRight = parseInt(window.getComputedStyle(container).getPropertyValue('padding-right'), 10);
+                this.previousPaddingRight = container.style.paddingRight;
+                container.style.paddingRight = `${computedBodyPaddingRight + scrollBarGap}px`;
+            }
+        }
+    },
+
+    // Variation of https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L92
+    restoreModalScrollBarGap(container) {
+        if (this.previousPaddingRight !== undefined) {
+            container.style.paddingRight = this.previousPaddingRight;
+
+            this.previousPaddingRight = undefined;
+        }
     },
 };
 
