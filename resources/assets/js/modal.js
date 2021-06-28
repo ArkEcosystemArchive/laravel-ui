@@ -6,10 +6,15 @@ import {
 
 const Modal = {
     previousPaddingRight: undefined,
+    previousNavPaddingRight: undefined,
 
     onModalOpened(scrollable, options = {}) {
         if (options.reserveScrollBarGap) {
             this.reserveModalScrollBarGap(scrollable);
+        }
+
+        if (options.reserveNavScrollBarGap) {
+            this.reserveNavScrollBarGap(scrollable);
         }
 
         disableBodyScroll(scrollable, {
@@ -22,6 +27,10 @@ const Modal = {
     onModalClosed(scrollable, options = {}) {
         if (options.reserveScrollBarGap) {
             this.restoreModalScrollBarGap(scrollable);
+        }
+
+        if (options.reserveNavScrollBarGap) {
+            this.restoreNavScrollBarGap(scrollable);
         }
 
         enableBodyScroll(scrollable);
@@ -120,11 +129,10 @@ const Modal = {
         };
     },
 
-    // Variation of https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L72
+    // Based on https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L72
     reserveModalScrollBarGap(container) {
         if (this.previousPaddingRight === undefined) {
             const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
-            console.log(scrollBarGap);
 
             if (scrollBarGap > 0) {
                 const computedBodyPaddingRight = parseInt(window.getComputedStyle(container).getPropertyValue('padding-right'), 10);
@@ -134,12 +142,32 @@ const Modal = {
         }
     },
 
-    // Variation of https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L92
+    // Based on https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L92
     restoreModalScrollBarGap(container) {
         if (this.previousPaddingRight !== undefined) {
             container.style.paddingRight = this.previousPaddingRight;
-
             this.previousPaddingRight = undefined;
+        }
+    },
+
+    reserveNavScrollBarGap() {
+        const navbar = document.querySelector('header nav');
+        if (this.previousNavPaddingRight === undefined) {
+            const scrollBarGap = window.innerWidth - document.documentElement.clientWidth;
+
+            if (scrollBarGap > 0) {
+                const computedBodyPaddingRight = parseInt(window.getComputedStyle(navbar).getPropertyValue('padding-right'), 10);
+                this.previousNavPaddingRight = navbar.style.paddingRight;
+                navbar.style.paddingRight = `${computedBodyPaddingRight + scrollBarGap}px`;
+            }
+        }
+    },
+
+    restoreNavScrollBarGap() {
+        const navbar = document.querySelector('header nav');
+        if (this.previousNavPaddingRight !== undefined) {
+            navbar.style.paddingRight = this.previousNavPaddingRight;
+            this.previousNavPaddingRight = undefined;
         }
     },
 };
