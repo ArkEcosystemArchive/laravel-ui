@@ -9,6 +9,7 @@
     'value'                 => null,
     'checked'               => false,
     'disabled'              => false,
+    'labelWrapperClass'     => 'pl-7 text-sm leading-5'
 ])
 
 <div class="{{ $class }}">
@@ -26,7 +27,7 @@
             />
         </div>
 
-        <div class="pl-7 text-sm leading-5">
+        <div class="{{ $labelWrapperClass }}">
             <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>
