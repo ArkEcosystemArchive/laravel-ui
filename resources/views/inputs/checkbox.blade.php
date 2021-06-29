@@ -9,11 +9,11 @@
     'value'                 => null,
     'checked'               => false,
     'disabled'              => false,
-    'labelWrapperClass'     => 'pl-7 text-sm leading-5'
+    'right'                 => false
 ])
 
 <div class="{{ $class }}">
-    <div class="flex relative {{ $checkboxPositionClass }}">
+    <div class="flex relative {{ $checkboxPositionClass }} @if($right) flex-row-reverse @endif">
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
@@ -27,7 +27,7 @@
             />
         </div>
 
-        <div class="{{ $labelWrapperClass }}">
+        <div class="@if($right) pr-7 @else pl-7 @endif text-sm leading-5">
             <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>

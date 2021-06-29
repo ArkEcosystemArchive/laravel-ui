@@ -48,12 +48,12 @@ This file contains basic examples and explains the parameters that can be used f
 | checkboxPositionClass | allows to reposition the checkbox                                    | no       |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
 | labelClasses | allows additional classes for the label                                       | no       |
-| labelWrapperClass | allows additional classes for the label wrapper                          | no       |
 | model     | livewire model to attach to                                                      | no       |
 | checked   | whether the input is checked or not                                              | no       |
 | disabled  | whether the input is disabled or not                                             | no       |
 | id        | id of the input, by default `name` is used                                       | no       |
 | value     | value of the input                                                               | no       |
+| right     | side of the checkbox, default is left                                            | no       |
 
 ### Radio Button
 
