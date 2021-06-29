@@ -87,7 +87,7 @@
 
                 <a
                     target="_blank"
-                    rel="noopener nofollow"
+                    :rel="localStorage.getItem('has_disabled_link_warning') === 'true' ? 'noopener nofollow' : ''"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
                     @click="hide(); followLink()"
