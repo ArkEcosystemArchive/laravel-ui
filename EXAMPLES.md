@@ -53,7 +53,7 @@ This file contains basic examples and explains the parameters that can be used f
 | disabled  | whether the input is disabled or not                                             | no       |
 | id        | id of the input, by default `name` is used                                       | no       |
 | value     | value of the input                                                               | no       |
-| right     | side of the checkbox, default is left                                            | no       |
+| right     | right-aligns the checkbox. Default alignment is left                             | no       |
 
 ### Radio Button
 
