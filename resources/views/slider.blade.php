@@ -22,10 +22,42 @@
 ])
 
 @php
+    if ($breakpoints === null ) {
+        if ($columns > 1) {
+            $breakpoints = [
+                '375' => [
+                    'slidesPerGroup' => $columns - 3 > 0 ? $columns - 3 : 2,
+                    'slidesPerView' => $columns - 3 > 0 ? $columns - 3 : 2,
+                ],
+                '640' => [
+                    'slidesPerGroup' => $columns - 2 > 0 ? $columns - 2 : 3,
+                    'slidesPerView' => $columns - 2 > 0 ? $columns - 2 : 3,
+                ],
+                '1024' => [
+                    'slidesPerGroup' =>  $columns - 1 > 0 ? $columns - 1 : 4,
+                    'slidesPerView' =>  $columns - 1 > 0 ? $columns - 1 : 4,
+                ],
+                '1280' => [
+                    'slidesPerGroup' => $columns,
+                    'slidesPerView' => $columns,
+                ],
+            ];
+        } else  {
+            $breakpoints = [
+                '1024' => [
+                    'slidesPerGroup' => $columns,
+                    'slidesPerView' => $columns,
+                ],
+            ];
+        }
+
+        if ($rows > 1) {
+            $breakpoints[$columns > 1 ? '1280' : '1024']['slidesPerColumn'] = $rows;
+            $breakpoints[$columns > 1 ? '1280' : '1024']['slidesPerColumnFill'] = 'row';
+        }
+    }
 
     $hasViewAll = $viewAllUrl && ! $hideViewAll;
-
-    $slidesBreakpoints = extractSlidesBreakpoints($breakpoints);
 
     $classesPerBreakpoint = collect([
         '0' => [
@@ -56,16 +88,9 @@
         ],
     ]);
 
-    $gridClasses = $classesPerBreakpoint->map(function ($classes, $breakpoint) use ($slidesBreakpoints)  {
-        $key = $slidesBreakpoints->get($breakpoint);
-
-        if (!$key) {
-            return null;
-        }
-
-        return $classes[$key];
-    })->filter(fn($className) => !!$className)->join(' ');
-
+    $gridClasses = $classesPerBreakpoint
+        ->map(fn ($classes, $breakpoint) => Arr::get($classes, Arr::get($breakpoints, $breakpoint . '.slidesPerView', '')))
+        ->filter(fn($className) => !!$className)->join(' ');
 @endphp
 
 <div class="w-full">
