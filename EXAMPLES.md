@@ -44,11 +44,16 @@ This file contains basic examples and explains the parameters that can be used f
 | Parameter | Description                                                                      | Required |
 |-----------|----------------------------------------------------------------------------------|----------|
 | name      | input name, will also be used as `id` if none specified                          | yes      |
+| class     | allows additional classes for the component                                      | no       |
+| verticalPosition | allows to reposition the checkbox. Default alignment is middle.                                        | no       |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
+| labelClasses | allows additional classes for the label                                       | no       |
 | model     | livewire model to attach to                                                      | no       |
 | checked   | whether the input is checked or not                                              | no       |
 | disabled  | whether the input is disabled or not                                             | no       |
 | id        | id of the input, by default `name` is used                                       | no       |
+| value     | value of the input                                                               | no       |
+| right     | right-aligns the checkbox. Default alignment is left                             | no       |
 
 ### Radio Button
 
@@ -209,6 +214,7 @@ mix
 | crop-image-smoothing-enabled | Set to change if images are smoothed                                             | no       |
 | crop-image-smoothing-quality | Set the quality of image smoothing, one of "low" (default), "medium", or "high"  | no       |
 | crop-endpoint                | Where to upload the image                                                        | no       |
+| accept-mime                  | List of comma separated mime types                                               | no       |
 
 #### Backend
 

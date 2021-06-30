@@ -4,22 +4,52 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-const onModalClosed = (scrollable) => {
-    enableBodyScroll(scrollable);
-
-    if (!document.querySelectorAll("[data-modal]").length) {
-        clearAllBodyScrollLocks();
-    }
-};
-
-const onModalOpened = (scrollable) => {
-    disableBodyScroll(scrollable);
-
-    scrollable.focus();
-};
-
 const Modal = {
-    alpine(extraData = {}, modalName = "") {
+    previousPaddingRight: undefined,
+    previousNavPaddingRight: undefined,
+
+    defaultOptions: {
+        reserveScrollBarGap: true,
+        reserveNavScrollBarGap: true,
+    },
+
+    onModalOpened(scrollable, options = Modal.defaultOptions) {
+        if (options.reserveScrollBarGap) {
+            this.reserveModalScrollBarGap(scrollable);
+        }
+
+        if (options.reserveNavScrollBarGap) {
+            this.reserveNavScrollBarGap(scrollable);
+        }
+
+        disableBodyScroll(scrollable, {
+            reserveScrollBarGap: !!options.reserveScrollBarGap,
+        });
+
+        scrollable.focus();
+    },
+
+    onModalClosed(scrollable, options = Modal.defaultOptions) {
+        if (options.reserveScrollBarGap) {
+            this.restoreModalScrollBarGap(scrollable);
+        }
+
+        if (options.reserveNavScrollBarGap) {
+            this.restoreNavScrollBarGap(scrollable);
+        }
+
+        enableBodyScroll(scrollable);
+
+        if (!document.querySelectorAll("[data-modal]").length) {
+            clearAllBodyScrollLocks();
+        }
+    },
+
+    alpine(
+        extraData = {},
+        modalName = "",
+        eventOptions = Modal.defaultOptions
+    ) {
         return {
             name: modalName,
             shown: false,
@@ -58,19 +88,19 @@ const Modal = {
                                 this.onShown();
                             }
 
-                            onModalOpened(scrollable);
+                            Modal.onModalOpened(scrollable, eventOptions);
                         } else {
                             if (typeof this.onHidden === "function") {
                                 this.onHidden();
                             }
 
-                            onModalClosed(scrollable);
+                            Modal.onModalClosed(scrollable, eventOptions);
                         }
                     });
                 });
 
                 if (this.shown) {
-                    onModalOpened(scrollable);
+                    Modal.onModalOpened(scrollable, eventOptions);
                 }
             },
             hide() {
@@ -86,18 +116,19 @@ const Modal = {
             ...extraData,
         };
     },
-    livewire(extraData = {}) {
+
+    livewire(extraData = {}, eventOptions = Modal.defaultOptions) {
         return {
             init() {
                 const scrollable = this.getScrollable();
 
                 this.$wire.on("modalClosed", () => {
                     this.$nextTick(() => {
-                        onModalClosed(scrollable);
+                        Modal.onModalClosed(scrollable, eventOptions);
                     });
                 });
 
-                onModalOpened(scrollable);
+                Modal.onModalOpened(scrollable, eventOptions);
             },
             getScrollable() {
                 const { modal } = this.$refs;
@@ -105,6 +136,64 @@ const Modal = {
             },
             ...extraData,
         };
+    },
+
+    // Based on https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L72
+    reserveModalScrollBarGap(container) {
+        if (this.previousPaddingRight === undefined) {
+            const scrollBarGap =
+                window.innerWidth - document.documentElement.clientWidth;
+
+            if (scrollBarGap > 0) {
+                const computedBodyPaddingRight = parseInt(
+                    window
+                        .getComputedStyle(container)
+                        .getPropertyValue("padding-right"),
+                    10
+                );
+                this.previousPaddingRight = container.style.paddingRight;
+                container.style.paddingRight = `${
+                    computedBodyPaddingRight + scrollBarGap
+                }px`;
+            }
+        }
+    },
+
+    // Based on https://github.com/willmcpo/body-scroll-lock/blob/master/src/bodyScrollLock.js#L92
+    restoreModalScrollBarGap(container) {
+        if (this.previousPaddingRight !== undefined) {
+            container.style.paddingRight = this.previousPaddingRight;
+            this.previousPaddingRight = undefined;
+        }
+    },
+
+    reserveNavScrollBarGap() {
+        const navbar = document.querySelector("header nav");
+        if (this.previousNavPaddingRight === undefined) {
+            const scrollBarGap =
+                window.innerWidth - document.documentElement.clientWidth;
+
+            if (scrollBarGap > 0) {
+                const computedBodyPaddingRight = parseInt(
+                    window
+                        .getComputedStyle(navbar)
+                        .getPropertyValue("padding-right"),
+                    10
+                );
+                this.previousNavPaddingRight = navbar.style.paddingRight;
+                navbar.style.paddingRight = `${
+                    computedBodyPaddingRight + scrollBarGap
+                }px`;
+            }
+        }
+    },
+
+    restoreNavScrollBarGap() {
+        const navbar = document.querySelector("header nav");
+        if (this.previousNavPaddingRight !== undefined) {
+            navbar.style.paddingRight = this.previousNavPaddingRight;
+            this.previousNavPaddingRight = undefined;
+        }
     },
 };
 
