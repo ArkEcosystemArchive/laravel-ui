@@ -21,6 +21,7 @@
     <a
         :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
         :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+        :rel="hasDisabledLinkWarning() ? 'noopener nofollow' : ''"
         class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
@@ -87,7 +88,7 @@
 
                 <a
                     target="_blank"
-                    :rel="localStorage.getItem('has_disabled_link_warning') === 'true' ? 'noopener nofollow' : ''"
+                    rel="noopener nofollow"
                     class="cursor-pointer button-primary"
                     href="{{ $url }}"
                     @click="hide(); followLink()"
