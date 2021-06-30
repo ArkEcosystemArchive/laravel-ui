@@ -1,3 +1,7 @@
+import Editor from "@toast-ui/editor";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import "codemirror/lib/codemirror.css";
+
 import {
     simplecastPlugin,
     youtubePlugin,
@@ -17,7 +21,7 @@ import { extractTextFromHtml, uploadImage } from "./utils/utils.js";
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
-toastui.Editor.setLanguage(["en", "en-US"], {
+Editor.setLanguage(["en", "en-US"], {
     "Unordered list": "Unordered List",
     "Ordered list": "Ordered List",
     "Insert link": "Insert link",
@@ -129,17 +133,10 @@ const MarkdownEditor = (
                   "embedlink",
               ],
     init() {
-        if (typeof toastui === "undefined") {
-            alert(
-                "You need to add the editor scripts. See `laravel-ui` README for instructions."
-            );
-            return;
-        }
-
         try {
             const { input } = this.$refs;
 
-            this.editor = new toastui.Editor({
+            this.editor = new Editor({
                 el: this.$refs.editor,
                 initialEditType: "markdown",
                 usageStatistics: false,

@@ -6,7 +6,7 @@ use ARKEcosystem\UserInterface\Support\MarkdownParser;
 
 trait ValidatesMarkdown
 {
-    private function getText($value): string
+    private function getText(string | null $value): string
     {
         $html = $this->getHtml($value);
         $html = $this->removeExtraLineBreakInListItems($html);
@@ -30,7 +30,7 @@ trait ValidatesMarkdown
 
     }
 
-    private function getHtml($value): string
+    private function getHtml(string | null $value): string
     {
         return MarkdownParser::full($value);
     }

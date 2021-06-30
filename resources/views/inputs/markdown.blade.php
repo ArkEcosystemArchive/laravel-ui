@@ -74,13 +74,13 @@ $icons = [
                     @endforeach
                 </div>
 
-                <input
+                <textarea
                     x-ref="input"
-                    type="hidden"
+                    style="display: none"
                     id="{{ $id ? $id : $name }}"
                     name="{{ $name }}"
                     wire:model="{{ $model ? $model : $name }}"
-                />
+                ></textarea>
 
                 <div wire:ignore x-ref="editor"></div>
 

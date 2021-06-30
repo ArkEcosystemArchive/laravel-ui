@@ -1,7 +1,7 @@
 @props([
     'name',
     'class'                 => 'mt-4',
-    'checkboxPositionClass' => 'items-center',
+    'verticalPosition'      => 'middle',
     'id'                    => null,
     'model'                 => null,
     'label'                 => null,
@@ -10,10 +10,25 @@
     'checked'               => false,
     'disabled'              => false,
     'alpine'                => false,
+    'right'                 => false
 ])
 
+@php
+    if ($verticalPosition === 'middle') {
+        $verticalPositionClass = 'items-center';
+    }
+
+    if ($verticalPosition === 'top') {
+        $verticalPositionClass = 'items-start';
+    }
+
+    if ($verticalPosition === 'bottom') {
+        $verticalPositionClass = 'items-end';
+    }
+@endphp
+
 <div class="{{ $class }}">
-    <div class="flex relative {{ $checkboxPositionClass }}">
+    <div class="flex relative {{ $verticalPositionClass }} @if($right) flex-row-reverse @endif">
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
@@ -28,7 +43,7 @@
             />
         </div>
 
-        <div class="pl-7 text-sm leading-5">
+        <div class="@if($right) pr-7 @else pl-7 @endif text-sm leading-5">
             <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>
