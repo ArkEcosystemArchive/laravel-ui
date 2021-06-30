@@ -47,16 +47,3 @@ if (! function_exists('clearZalgoText')) {
         return preg_replace("|[\p{M}]|uis","", $zalgo);
     }
 }
-
-if (! function_exists('extractSlidesBreakpoints')) {
-    function extractSlidesBreakpoints(string $str): Collection
-    {
-        $regex = '/(?<breakpoint>\d+):\s{[^}]*(?>slidesPerView:\s+(?<slidesPerView>\d+))[^}]*}/m';
-
-        preg_match_all($regex, $str, $matches, PREG_SET_ORDER, 0);
-
-        return collect($matches)->mapWithKeys(function ($match) {
-            return [$match['breakpoint'] => $match['slidesPerView']];
-        });
-    }
-}
