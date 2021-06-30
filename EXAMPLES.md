@@ -45,7 +45,7 @@ This file contains basic examples and explains the parameters that can be used f
 |-----------|----------------------------------------------------------------------------------|----------|
 | name      | input name, will also be used as `id` if none specified                          | yes      |
 | class     | allows additional classes for the component                                      | no       |
-| checkboxPositionClass | allows to reposition the checkbox                                    | no       |
+| verticalPosition | allows to reposition the checkbox. Default alignment is middle.                                        | no       |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
 | labelClasses | allows additional classes for the label                                       | no       |
 | model     | livewire model to attach to                                                      | no       |
