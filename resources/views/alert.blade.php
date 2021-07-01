@@ -32,7 +32,7 @@
         @endif
 
         @isset($message)
-            <span class="block leading-6 break-all {{ $messageClass }}">{{ $message }}</span>
+            <span class="block leading-6 {{ $messageClass }}">{{ $message }}</span>
         @else
             <span class="block {{ $messageClass }}">{{ $slot }}</span>
         @endif
