@@ -6,6 +6,16 @@ use ARKEcosystem\UserInterface\Rules\MarkdownWithContent;
 use League\CommonMark\MarkdownConverterInterface;
 use Mockery\MockInterface;
 
+it('handles null values', function () {
+    $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) {
+        $mock->shouldReceive('convertToHtml')
+            ->andReturn('');
+    });
+
+    $rule = new MarkdownWithContent();
+    $this->assertFalse($rule->passes('markdown', null));
+});
+
 it('denies zero-width characters', function ($text) {
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
         $mock->shouldReceive('convertToHtml')

@@ -31,8 +31,12 @@ final class MarkdownParser
         return $markdownParser->stripUnalllowedTags($html);
     }
 
-    public static function full(string $text): string
+    public static function full(string | null $text): string
     {
+        if ($text === null) {
+            return '';
+        }
+
         return (new self)->getMarkdownCoverter()->convertToHtml($text);
     }
 
