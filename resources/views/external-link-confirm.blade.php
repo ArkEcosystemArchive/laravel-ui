@@ -64,7 +64,7 @@
             @slot('description')
                 <div class="flex flex-col mt-8 space-y-4 whitespace-normal">
                     <div class="font-semibold text-theme-secondary-900">
-                        <x-ark-alert type="warning" :message="$url" />
+                        <x-ark-alert type="warning" :message="$url" message-class="break-all" />
                     </div>
 
                     <p>@lang('generic.external_link_disclaimer')</p>
