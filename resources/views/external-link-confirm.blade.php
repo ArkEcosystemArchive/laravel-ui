@@ -18,12 +18,11 @@
         }
     }"
     class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
-    @click="openModal"
 >
     <a
         :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
         :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
-        :rel="hasDisabledLinkWarning() ? 'noopener nofollow' : ''"
+        rel="noopener nofollow"
         class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
