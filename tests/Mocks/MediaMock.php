@@ -2,9 +2,9 @@
 
 namespace Tests\Mocks;
 
-use Illuminate\Contracts\Support\Htmlable;
+use ARKEcosystem\UserInterface\Support\Contracts\HasUrlAndConversions;
 
-class MediaMock implements Htmlable
+class MediaMock implements HasUrlAndConversions
 {
     private $url;
 
@@ -13,17 +13,13 @@ class MediaMock implements Htmlable
         $this->url = $url;
     }
 
-    public function img()
+    public function hasGeneratedConversion(): bool
     {
-        return $this;
+        return false;
     }
 
-    /**
-     * Get content as a string of HTML.
-     *
-     * @return string
-     */
-    public function toHtml() {
-        return sprintf('<img src="%s" />', $this->url);
+    public function getUrl(): string
+    {
+        return $this->url;
     }
 }
