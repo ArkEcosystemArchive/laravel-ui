@@ -267,9 +267,9 @@
 /* Disable arrows from numeric input */
 /* Chrome, Safari, Edge, Opera */
 .disabled-arrows-input input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.disabled-arrows-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
