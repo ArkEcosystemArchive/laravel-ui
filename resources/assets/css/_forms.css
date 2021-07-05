@@ -263,3 +263,16 @@
 .disabled-tags-input:not(.disabled-tags-input-add) .taggle > .close {
     @apply hidden;
 }
+
+/* Disable arrows from numeric input */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
