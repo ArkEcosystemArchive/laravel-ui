@@ -27,11 +27,11 @@
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
         <span>{{ $text ?? $slot ?? '' }}</span>
+
+        @unless($noIcon)
+            <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 mr-2 ml-1 -mt-1" />
+        @endunless
     </a>
-    @unless($noIcon)
-        <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 mr-2 ml-1 -mt-1" />
-    @endunless
-</a>
 
     @push('footer')
         <x-ark-js-modal
