@@ -7,7 +7,11 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
         noMatchTemplate: () => '<span class="hidden"></span>',
 
         selectTemplate(item) {
-            return `<a data-username="${item.original.username}" href="#" contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</a>`;
+            return `<a
+                data-username="${item.original.username}"
+                contenteditable="false"
+                class="link font-semibold"
+            >@${item.original.username}</a>`;
         },
 
         menuItemTemplate(item) {
