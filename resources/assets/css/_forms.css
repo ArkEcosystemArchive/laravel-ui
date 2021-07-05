@@ -273,6 +273,6 @@
 }
 
 /* Firefox */
-.disabled-arrows-input input[type=number] {
-  -moz-appearance: textfield;
+.disabled-arrows-input input[type="number"] {
+    -moz-appearance: textfield;
 }
