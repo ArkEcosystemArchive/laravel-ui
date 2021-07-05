@@ -38,7 +38,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             </div>`;
         },
 
-        latestFethController: null,
+        latestFetchController: null,
         fetchThrottlingTimeout: null,
 
         values(text, cb) {
@@ -48,12 +48,12 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
 
             // Workaround to reduce the amount of request while user is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
-                if (this.latestFethController) {
-                    this.latestFethController.abort();
+                if (this.latestFetchController) {
+                    this.latestFetchController.abort();
                 }
 
-                this.latestFethController = new AbortController();
-                const { signal } = this.latestFethController;
+                this.latestFetchController = new AbortController();
+                const { signal } = this.latestFetchController;
 
                 let query = `?q=${text}`;
                 if (Array.isArray(contextUsers) && contextUsers.length) {
