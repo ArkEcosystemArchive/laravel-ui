@@ -266,13 +266,13 @@
 
 /* Disable arrows from numeric input */
 /* Chrome, Safari, Edge, Opera */
-.disabled-arrows-input input::-webkit-outer-spin-button,
-.disabled-arrows-input input::-webkit-inner-spin-button {
+.hide-number-input-arrows input::-webkit-outer-spin-button,
+.hide-number-input-arrows input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
 /* Firefox */
-.disabled-arrows-input input[type="number"] {
+.hide-number-input-arrows input[type="number"] {
     -moz-appearance: textfield;
 }
