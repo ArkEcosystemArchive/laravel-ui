@@ -4,14 +4,15 @@
     'dimensions'                => 'w-48 h-48',
     'uploadText'                => trans('ui::forms.upload-image.upload_image'),
     'deleteTooltip'             => trans('ui::forms.upload-image.delete_image'),
-    'minWidth'                  => 148,
-    'minHeight'                 => 148,
-    'maxWidth'                  => 4000,
-    'maxHeight'                 => 4000,
-    'width'                     => 450,
-    'height'                    => 450,
-    'maxFilesize'               => '2MB',
-    'acceptMime'                => (string) config('ui.upload.accept-mime'),
+    'minWidth'                  => (int) config('ui.upload.image-single.dimensions.min-width'),
+    'minHeight'                 => (int) config('ui.upload.image-single.dimensions.min-height'),
+    'maxWidth'                  => (int) config('ui.upload.image-single.dimensions.max-width'),
+    'maxHeight'                 => (int) config('ui.upload.image-single.dimensions.max-height'),
+    'width'                     => 740,
+    'height'                    => 740,
+    'maxFilesize'               => '5MB',
+    'quality'                   => 0.8,
+    'acceptMime'                => (string) config('ui.upload.image-single.accept-mime'),
     'readonly'                  => false,
     'uploadErrorMessage'        => null,
     'withCrop'                  => false,
@@ -42,18 +43,29 @@
         {{ $minHeight }},
         {{ $maxWidth }},
         {{ $maxHeight }},
-        {{ $width }},
-        {{ $height }},
+        @if($width) {{ $width }} @else null @endif,
+        @if($height) {{ $height }} @else null @endif,
         '{{ $maxFilesize }}',
         '{{ $cropFillColor }}',
         {{ $cropImageSmoothingEnabled }},
         '{{ $cropImageSmoothingQuality }}',
         '{{ $cropEndpoint }}',
     )"
-    x-init="init"
     @else
-    x-data="{ isUploading: false, select() { document.getElementById('image-single-upload-{{ $id }}').click(); } }"
+    x-data="CompressImage(
+        'image-single-upload-{{ $id }}',
+        @entangle($attributes->wire('model')),
+        {{ $minWidth }},
+        {{ $minHeight }},
+        {{ $maxWidth }},
+        {{ $maxHeight }},
+        @if($width) {{ $width }} @else null @endif,
+        @if($height) {{ $height }} @else null @endif,
+        '{{ $maxFilesize }}',
+        {{ $quality }}
+    )"
     @endif
+    x-init="init"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
