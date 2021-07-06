@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ARKEcosystem\UserInterface\Components;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
 use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 
@@ -41,7 +42,15 @@ trait UploadImageSingle
     public function imageSingleValidators(): array
     {
         return [
-            'imageSingle' => ['mimes:jpeg,png,bmp,jpg', 'max:2048', 'dimensions:min_width=148,min_height=148'],
+            'imageSingle' => [
+                'mimes:'.(string) config('ui.upload.image-single.accept-mime'),
+                'max:'.(string) config('ui.upload.image-single.max-filesize'),
+                Rule::dimensions()
+                    ->minWidth((int) config('ui.upload.image-single.dimensions.min-width'))
+                    ->minHeight((int) config('ui.upload.image-single.dimensions.min-height'))
+                    ->maxWidth((int) config('ui.upload.image-single.dimensions.max-width'))
+                    ->maxHeight((int) config('ui.upload.image-single.dimensions.max-height')),
+            ],
         ];
     }
 }
