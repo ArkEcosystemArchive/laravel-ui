@@ -1,11 +1,14 @@
+import ErrorBag from "./utils/error-bag";
+
 /**
- * Upload Image
+ * Upload Image.
  *
- * @param blob  The upload file in binary mode.
- * @param url  The endpoint where to send the file.
- * @param csrfToken  The CSRF token.
- * @param fieldName  (optional) The request file name.
- * @returns {Promise<Response>}
+ * @param {string|Blob} blob  The upload file in binary mode.
+ * @param {string} url  The endpoint where to send the file.
+ * @param {string} csrfToken  The CSRF token.
+ * @param {string} fieldName  (optional) The request file name.
+ * @returns {Promise.<any>}  A Promise that resolves to a JavaScript object. This object could be anything that can be represented by JSON — an object, an array, a string, a number...
+ * @throws {Error}
  */
 export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
     const formData = new FormData();
@@ -25,28 +28,29 @@ export const uploadImage = (blob, url, csrfToken, fieldName = "image") => {
                 return response.json();
             } else if (status === 419) {
                 // Means the CSRF Token is no longer valid
-                alert(
+                throw new Error(
                     "Session expired. You will need to refresh the browser to continue uploading images."
                 );
             } else {
-                throw new Error(response);
+                response.text().then((text) => {
+                    throw new Error(text);
+                });
             }
         })
         .catch((error) => {
-            alert("Something went wrong!");
-
-            console.error(error);
+            throw new Error(error);
         });
 };
 
 /**
- * Image Validator
+ * Image Validator.
  *
- * @param inputFile  The input file.
- * @param rules  It must be an array of objects with 'rule', 'value' keys.
+ * @param {Object} inputFile  The input file.
+ * @param {Object[]} rules  The array of objects with 'rule', 'value' keys.
+ * @return {Promise.<void>|<ErrorBag>}
  */
 export const imageValidator = (inputFile, rules = []) => {
-    const errorBag = [],
+    const errorBag = new ErrorBag(inputFile.name),
         image = new Image(),
         ruleset = [
             "minWidth",
@@ -59,7 +63,7 @@ export const imageValidator = (inputFile, rules = []) => {
 
     const minWidth = (image, target) => {
         if (image.width < target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be at least ${target}x${target}px`
             );
@@ -68,7 +72,7 @@ export const imageValidator = (inputFile, rules = []) => {
 
     const minHeight = (image, target) => {
         if (image.height < target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be at least ${target}x${target}px`
             );
@@ -77,7 +81,7 @@ export const imageValidator = (inputFile, rules = []) => {
 
     const maxWidth = (image, target) => {
         if (image.width > target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be no bigger than ${target}x${target}px`
             );
@@ -86,7 +90,7 @@ export const imageValidator = (inputFile, rules = []) => {
 
     const maxHeight = (image, target) => {
         if (image.height > target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be no bigger than ${target}x${target}px`
             );
@@ -97,7 +101,7 @@ export const imageValidator = (inputFile, rules = []) => {
         let size = bytesToMegabytes(image.size);
 
         if (size < target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be at least ${target}MB`
             );
@@ -108,19 +112,11 @@ export const imageValidator = (inputFile, rules = []) => {
         let size = bytesToMegabytes(image.size);
 
         if (size > target) {
-            pushError(
+            errorBag.add(
                 getCallerName(),
                 `The image should be no bigger than ${target}MB`
             );
         }
-    };
-
-    const pushError = (err, message) => {
-        errorBag.push(errorBagItem(err, message));
-    };
-
-    const errorBagItem = (err, message) => {
-        return { error: err, message: message };
     };
 
     image.src = URL.createObjectURL(inputFile);
@@ -137,20 +133,8 @@ export const imageValidator = (inputFile, rules = []) => {
                 }
             });
 
-            if (errorBag.length) {
-                let unique = errorBag.map((a) => Object.assign({}, a)),
-                    repeat = [],
-                    tmp,
-                    i = 0;
-
-                while (i < errorBag.length) {
-                    repeat.indexOf((tmp = errorBag[i].message)) > -1
-                        ? unique.splice(i, 1)
-                        : repeat.push(tmp);
-                    i++;
-                }
-
-                reject(unique);
+            if (errorBag.hasErrors()) {
+                reject(errorBag);
             }
 
             resolve();
@@ -175,6 +159,24 @@ export const getCallerName = () => {
  * @param bytes
  * @returns {string}
  */
-export const bytesToMegabytes = (bytes) => {
-    return parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
+export const bytesToMegabytes = (bytes) =>
+    parseFloat(`${parseInt(bytes) / 1000 / 1000}`).toFixed(2);
+
+/**
+ * Get CSRF token from DOM.
+ *
+ * @returns {string}
+ */
+export const getCsrfToken = () =>
+    document.querySelector("meta[name=csrf-token]").content;
+
+/**
+ * Reset an input file field.
+ *
+ * @param {Object} uploadEl
+ */
+export const resetUploadInput = (uploadEl) => {
+    uploadEl.value = "";
+    uploadEl.type = "";
+    uploadEl.type = "file";
 };

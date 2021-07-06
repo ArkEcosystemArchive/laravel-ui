@@ -1,4 +1,11 @@
-import { uploadImage, imageValidator } from "./utils";
+import {
+    uploadImage,
+    imageValidator,
+    getCsrfToken,
+    resetUploadInput,
+} from "./utils";
+
+import { invalidResponseException } from "./utils/exceptions";
 
 const CropImage = (
     $cropOptions = {},
@@ -66,11 +73,13 @@ const CropImage = (
                 .then(() => {
                     this.loadCropper();
                 })
-                .catch((err) => {
-                    err.forEach((err) => {
-                        this.resetUploadInput();
+                .catch((errors) => {
+                    resetUploadInput(this.uploadEl);
 
-                        Livewire.emit("toastMessage", [err.message, "danger"]);
+                    Object.values(errors.getAll()).forEach((bags) => {
+                        [...bags].forEach(({ value }) =>
+                            Livewire.emit("toastMessage", [value, "danger"])
+                        );
                     });
                 });
         }
@@ -117,15 +126,13 @@ const CropImage = (
         }
 
         croppedCanvas.toBlob((blob) => {
-            uploadImage(blob, $endpoint, this.getCsrfToken()).then(
-                (response) => {
-                    if (!response.url) {
-                        throw new Error("Received invalid response");
-                    }
-
-                    this.model = response.url;
+            uploadImage(blob, $endpoint, getCsrfToken()).then((response) => {
+                if (!response.url) {
+                    invalidResponseException();
                 }
-            );
+
+                this.model = response.url;
+            });
         });
 
         this.discardImage();
@@ -134,21 +141,11 @@ const CropImage = (
     discardImage() {
         this.destroyCropper();
 
-        this.resetUploadInput();
-    },
-
-    resetUploadInput() {
-        this.uploadEl.value = "";
-        this.uploadEl.type = "";
-        this.uploadEl.type = "file";
+        resetUploadInput(this.uploadEl);
     },
 
     openCropModal() {
         Livewire.emit("openModal", $modalID);
-    },
-
-    getCsrfToken() {
-        return document.querySelector("meta[name=csrf-token]").content;
     },
 });
 
