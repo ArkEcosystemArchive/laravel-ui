@@ -3,8 +3,8 @@
 <svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
 <circle fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" cx="10" cy="10" r="9"/>
-<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10,13.4
-	c0.1,0,0.2,0.1,0.2,0.2c0,0.1-0.1,0.2-0.2,0.2s-0.2-0.1-0.2-0.2l0,0C9.8,13.5,9.9,13.4,10,13.4"/>
+<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10,13.6L10,13.6L10,13.6
+	L10,13.6L10,13.6L10,13.6"/>
 <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.3,7.9
-	C8.3,7,9,6.2,10,6.2s1.7,0.7,1.7,1.7c0,0.7-0.4,1.4-1.2,1.6C10.2,9.6,10,9.9,10,10.2v0.3"/>
+	C8.3,7,9,6.2,10,6.2s1.7,0.7,1.7,1.7c0,0.7-0.4,1.4-1.2,1.6C10.2,9.6,10,9.9,10,10.2V11"/>
 </svg>

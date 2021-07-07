@@ -45,7 +45,7 @@
 
 <div {{ $attributes->merge(['class' => 'flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none rounded-xl relative ' . $colorClass]) }}>
     <span class="flex items-center justify-center rounded text-white w-11 h-11 flex-shrink-0 {{ $iconClass }}">
-        <x-ark-icon :name="$icon" />
+        <x-ark-icon :name="$icon"/>
     </span>
 
     <div class="mt-4 text-center sm:pr-6 sm:mt-0 sm:text-left">{{ $message }}</div>
