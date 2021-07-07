@@ -1,22 +1,26 @@
 @props([
     'name',
     'errors',
-    'class'     => '',
-    'id'        => null,
-    'model'     => null,
-    'hideLabel' => false,
-    'label'     => null,
-    'tooltip'   => null,
-    'required'  => false,
-    'maxlength' => null,
-    'rows'      => 10,
+    'class'          => '',
+    'id'             => null,
+    'model'          => null,
+    'hideLabel'      => false,
+    'label'          => null,
+    'tooltip'        => null,
+    'required'       => false,
+    'maxlength'      => null,
+    'rows'           => 10,
     'usersInContext' => [],
-    'endpoint' => '/api/users/autocomplete',
-    'placeholder' => ''
+    'endpoint'       => '/api/users/autocomplete',
+    'placeholder'    => '',
 ])
 
 <div
-    x-data="UserTagger('{{ $endpoint }}', {{ json_encode($usersInContext) }}, {{ $maxlength === null ? 'null' : $maxlength }})"
+    x-data="UserTagger(
+        '{{ $endpoint }}',
+        {{ json_encode($usersInContext) }},
+        {{ $maxlength === null ? 'null' : $maxlength }}
+    )"
     x-init="init"
     class="{{ $class }} ark-user-tagger--input"
 >
