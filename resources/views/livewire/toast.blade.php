@@ -7,7 +7,7 @@
             @click="dismiss()"
             wire:key="{{ $key }}"
         >
-            <x-ark-toast :type="$toast['type']" wire-close="dismissToast('{{ $key }}')">
+            <x-ark-toast :type="$toast['type']" :style="$toast['style']" wire-close="dismissToast('{{ $key }}')">
                 <x-slot name='message'>
                     {!! $toast['message'] !!}
                 </x-slot>
