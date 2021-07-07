@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
+use Support\Components\HoneyPot;
 
 class UserInterfaceServiceProvider extends ServiceProvider
 {
@@ -277,6 +278,10 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');
+
+        // Honey Pot
+        //Blade::component('ark::honey-pot', 'honey-pot');
+        Blade::component('ark::honey-pot', HoneyPot::class);
     }
 
     /**
