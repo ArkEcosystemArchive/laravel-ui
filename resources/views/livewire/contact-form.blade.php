@@ -7,7 +7,6 @@
 
           @honeypot
         --}}
-        <x-ark-honey-pot />
 
         <div class="flex flex-col space-y-8 sm:flex-row sm:space-y-0 sm:space-x-3">
             <x-ark-input
