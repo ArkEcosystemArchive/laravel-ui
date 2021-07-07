@@ -7,7 +7,11 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
         noMatchTemplate: () => '<span class="hidden"></span>',
 
         selectTemplate(item) {
-            return `<a data-username="${item.original.username}" href="#" contenteditable="false" class="bg-theme-primary-100 text-theme-primary-600 font-semibold">@${item.original.username}</a>`;
+            return `<a
+                data-username="${item.original.username}"
+                contenteditable="false"
+                class="link font-semibold"
+            >@${item.original.username}</a>`;
         },
 
         menuItemTemplate(item) {
@@ -34,7 +38,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
             </div>`;
         },
 
-        latestFethController: null,
+        latestFetchController: null,
         fetchThrottlingTimeout: null,
 
         values(text, cb) {
@@ -44,12 +48,12 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
 
             // Workaround to reduce the amount of request while user is typing
             this.fetchThrottlingTimeout = setTimeout(() => {
-                if (this.latestFethController) {
-                    this.latestFethController.abort();
+                if (this.latestFetchController) {
+                    this.latestFetchController.abort();
                 }
 
-                this.latestFethController = new AbortController();
-                const { signal } = this.latestFethController;
+                this.latestFetchController = new AbortController();
+                const { signal } = this.latestFetchController;
 
                 let query = `?q=${text}`;
                 if (Array.isArray(contextUsers) && contextUsers.length) {

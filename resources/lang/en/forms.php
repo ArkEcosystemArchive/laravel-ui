@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'do_not_show_message_again'     => 'Do not show this message again.',
     'attachment_pdf'                => 'Attachment (.PDF)',
     'email'                         => 'E-Mail Address',
     'message'                       => 'Message',
