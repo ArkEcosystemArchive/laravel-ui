@@ -3,12 +3,10 @@
 namespace ARKEcosystem\UserInterface\Rules;
 
 use ARKEcosystem\UserInterface\Rules\Concerns\ValidatesEmptyString;
-use ARKEcosystem\UserInterface\Rules\Concerns\ValidatesMarkdown;
 use Illuminate\Contracts\Validation\Rule;
 
-class MarkdownWithContent implements Rule
+class IsNotEmpty implements Rule
 {
-    use ValidatesMarkdown;
     use ValidatesEmptyString;
 
     /**
@@ -20,7 +18,7 @@ class MarkdownWithContent implements Rule
      */
     public function passes($attribute, $value)
     {
-        $text = $this->stripZeroWidthSpaces($this->getText($value));
+        $text = $this->stripZeroWidthSpaces($value);
 
         return strlen($text) > 0;
     }
