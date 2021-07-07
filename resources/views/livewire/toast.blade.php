@@ -1,4 +1,4 @@
-<div class="grid fixed right-0 bottom-0 z-50 grid-rows-1 gap-3 p-5 max-w-4xl">
+<div class="fixed bottom-0 right-0 z-50 flex flex-col items-end p-5 space-y-3">
     @foreach ($toasts as $key => $toast)
         <div
             class="z-20 cursor-pointer"

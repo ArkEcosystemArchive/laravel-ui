@@ -55,7 +55,7 @@
     ], $type);
 @endphp
 
-<div {{ $attributes->merge(['class' => 'flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none rounded-xl relative ' . $colorClass]) }}>
+<div {{ $attributes->merge(['class' => 'inline-flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none rounded-xl relative max-w-4xl ' . $colorClass]) }}>
     @unless ($style === 'simple')
         <span class="flex items-center justify-center rounded text-white w-11 h-11 flex-shrink-0 {{ $iconClass }}">
             <x-ark-icon :name="$icon"/>
