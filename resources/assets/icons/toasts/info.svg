@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.3.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-<circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="10" cy="10" r="9"/>
-<line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" x1="10" y1="9.2" x2="10" y2="14.2"/>
-<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10,5.8L10,5.8L10,5.8
-	L10,5.8L10,5.8L10,5.8"/>
-</svg>
+<svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 20 20" xml:space="preserve"><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="10" cy="10" r="9"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M10 9.2v5"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M10 5.8h0"/></svg>
