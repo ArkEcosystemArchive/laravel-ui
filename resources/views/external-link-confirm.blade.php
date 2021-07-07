@@ -13,13 +13,13 @@
             Livewire.emit('openModal', '{{ $identifier }}')
         }
     }"
-    class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+    class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
     @click="openModal"
 >
     <span>{{ $text ?? $slot ?? '' }}</span>
 
     @unless($noIcon)
-        <x-ark-icon name="link" size="sm" class="mx-2" />
+        <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 mr-2 ml-1 -mt-1" />
     @endunless
 </a>
 
@@ -38,7 +38,7 @@
         @slot('description')
             <div class="flex flex-col mt-8 space-y-4 whitespace-normal">
                 <div class="font-semibold text-theme-secondary-900">
-                    <x-ark-alert type="warning" :message="$url" />
+                    <x-ark-alert type="warning" :message="$url" message-class="break-all" />
                 </div>
                 <p>@lang('generic.external_link_disclaimer')</p>
             </div>

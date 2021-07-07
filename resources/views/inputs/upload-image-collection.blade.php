@@ -5,16 +5,33 @@
     'imageHeight'        => 'h-28',
     'uploadText'         => trans('ui::forms.upload-image-collection.drag_drop_browse'),
     'deleteTooltip'      => trans('ui::forms.upload-image-collection.delete_image'),
-    'minWidth'           => 148,
-    'minHeight'          => 148,
-    'maxFilesize'        => '2MB',
-    'acceptMime'         => (string) config('ui.upload.accept-mime'),
+    'minWidth'           => (int) config('ui.upload.image-collection.dimensions.min-width'),
+    'minHeight'          => (int) config('ui.upload.image-collection.dimensions.min-height'),
+    'maxWidth'           => (int) config('ui.upload.image-collection.dimensions.max-width'),
+    'maxHeight'          => (int) config('ui.upload.image-collection.dimensions.max-height'),
+    'width'              => null,
+    'height'             => null,
+    'maxFilesize'        => '5MB',
+    'quality'            => 0.8,
+    'acceptMime'         => (string) config('ui.upload.image-collection.accept-mime'),
     'uploadErrorMessage' => null,
     'sortable'           => false,
 ])
 
 <div
-    x-data="{ isUploading: false, select() { document.getElementById('image-collection-upload-{{ $id }}').click(); } }"
+    x-data="CompressImage(
+        'image-collection-upload-{{ $id }}',
+        @entangle($attributes->wire('model')),
+        {{ $minWidth }},
+        {{ $minHeight }},
+        {{ $maxWidth }},
+        {{ $maxHeight }},
+        '{{ $width }}',
+        '{{ $height }}',
+        '{{ $maxFilesize }}',
+        {{ $quality }}
+    )"
+    x-init="init"
     x-on:livewire-upload-start="isUploading = true"
     x-on:livewire-upload-finish="isUploading = false"
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
@@ -25,7 +42,7 @@
             id="image-collection-upload-{{ $id }}"
             type="file"
             class="absolute w-full h-full opacity-0 cursor-pointer"
-            wire:model="temporaryImages"
+            @change="validateImage"
             accept="{{ $acceptMime }}"
             multiple
         />

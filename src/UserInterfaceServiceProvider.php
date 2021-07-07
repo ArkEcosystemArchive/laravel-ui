@@ -197,6 +197,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         Blade::component('ark::pages.includes.markdown-scripts', 'ark-pages-includes-markdown-scripts');
         Blade::component('ark::pages.includes.crop-image-scripts', 'ark-pages-includes-crop-image-scripts');
+        Blade::component('ark::pages.includes.compress-image-scripts', 'ark-pages-includes-compress-image-scripts');
 
         Blade::component('ark::tables.table', 'ark-tables.table');
         Blade::component('ark::tables.row', 'ark-tables.row');

@@ -113,7 +113,13 @@ window.Modal = Modal;
 
 ### WYSIWYG Markdown editor
 
-1. Ensure to import the following scripts inside the `<head>` tag of your template.
+1. Install the npm dependencies
+
+```bash
+yarn add @toast-ui/editor@^2.5.2 codemirror@^5.62.0
+```
+
+2. Ensure to import the markdown script inside the `<head>` tag of your template.
 
 ```html
 @push('scripts')
@@ -123,26 +129,26 @@ window.Modal = Modal;
 
 Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
 
-2. Import the markdown css file in your main file.
+3. Import the markdown css file in your main file.
 
 ```css
 @import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
 ```
 
-3. Compile the markdown scripts into the public folder:
+4. Compile the markdown scripts into the public folder:
 
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
 ```
 
-4. Add the markdown component to your form
+5. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-5. You can change the height and the toolbar preset:
+6. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -151,7 +157,7 @@ mix
 />
 ```
 
-6. You can choose to limit the characters to be inserted:
+7. You can choose to limit the characters to be inserted:
 
 ```html
 <x-ark-markdown name="about"
@@ -161,7 +167,7 @@ mix
 
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
-7. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
+8. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
 
 ```html
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -544,7 +550,8 @@ There are also default error pages you can use for your Laravel project
 - `<x-ark-tags>`
 - `<x-ark-textarea>`
 - `<x-ark-toggle>`
-- [`<x-ark-upload-image>`](EXAMPLES.md#upload-image)
+- [`<x-ark-upload-image-single>`](EXAMPLES.md#upload-single-image)
+- [`<x-ark-upload-image-collection>`](EXAMPLES.md#upload-multiple-images)
 - [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
