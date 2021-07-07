@@ -7,13 +7,13 @@
 
 @php
     $colorClass = Arr::get([
-        'warning' => 'bg-theme-warning-50',
-        'error' => 'bg-theme-danger-50',
-        'danger' => 'bg-theme-danger-50',
-        'success' => 'bg-theme-success-50',
-        'info' => 'bg-theme-primary-50',
-        'hint' => 'bg-theme-hint-50',
-    ], $type, 'bg-theme-primary-50');
+        'info' => 'text-theme-secondary-900 bg-theme-primary-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'warning' => 'text-theme-secondary-900 bg-theme-warning-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'error' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'danger' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'success' => 'text-theme-secondary-900 bg-theme-success-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'hint' => 'text-theme-secondary-900 bg-theme-hint-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+    ], $type);
 
     $iconClass = Arr::get([
         'warning' => 'bg-theme-warning-600',
@@ -22,7 +22,7 @@
         'success' => 'bg-theme-success-600',
         'info' => 'bg-theme-primary-600',
         'hint' => 'bg-theme-hint-500',
-    ], $type, 'bg-theme-primary-600');
+    ], $type);
 
     $icon = Arr::get([
         'warning' => 'toasts.warning',
@@ -31,19 +31,19 @@
         'success' => 'toasts.success',
         'info' => 'toasts.info',
         'hint' => 'toasts.hint',
-    ], $type, 'info');
+    ], $type);
 
     $closeButtonClass = Arr::get([
-        'warning' => 'bg-theme-warning-100 hover:bg-theme-warning-200',
-        'error' => 'bg-theme-danger-100 hover:bg-theme-danger-200',
-        'danger' => 'bg-theme-danger-100 hover:bg-theme-danger-200',
-        'success' => 'bg-theme-success-100 hover:bg-theme-success-200',
-        'info' => 'bg-theme-primary-100 hover:bg-theme-primary-200',
-        'hint' => 'bg-theme-hint-100 hover:bg-theme-hint-200',
-    ], $type, 'bg-theme-primary-100 hover:bg-theme-primary-200');
+        'info' => 'bg-theme-primary-100 text-theme-secondary-900 hover:bg-theme-primary-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+        'warning' => 'bg-theme-warning-100 text-theme-secondary-900 hover:bg-theme-warning-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+        'error' => 'bg-theme-danger-100 text-theme-secondary-900 hover:bg-theme-danger-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+        'danger' => 'bg-theme-danger-100 text-theme-secondary-900 hover:bg-theme-danger-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+        'success' => 'bg-theme-success-100 text-theme-secondary-900 hover:bg-theme-success-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+        'hint' => 'bg-theme-hint-100 text-theme-secondary-900 hover:bg-theme-hint-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400',
+    ], $type);
 @endphp
 
-<div {{ $attributes->merge(['class' => 'flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none text-theme-secondary-900 rounded-xl relative ' . $colorClass]) }}>
+<div {{ $attributes->merge(['class' => 'flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none rounded-xl relative ' . $colorClass]) }}>
     <span class="flex items-center justify-center rounded text-white w-11 h-11 flex-shrink-0 {{ $iconClass }}">
         <x-ark-icon :name="$icon" />
     </span>
