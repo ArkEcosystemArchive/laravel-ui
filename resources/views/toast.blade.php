@@ -7,16 +7,7 @@
 ])
 
 @php
-    if ($style === 'regular') {
-        $colorClass = Arr::get([
-            'info' => 'text-theme-secondary-900 bg-theme-primary-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'warning' => 'text-theme-secondary-900 bg-theme-warning-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'error' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'danger' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'success' => 'text-theme-secondary-900 bg-theme-success-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'hint' => 'text-theme-secondary-900 bg-theme-hint-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-        ], $type);
-    } else {
+    if ($style === 'simple') {
         $colorClass = Arr::get([
             'info' => 'text-theme-secondary-900 bg-theme-primary-100',
             'warning' => 'text-theme-secondary-900 bg-theme-warning-100',
@@ -24,6 +15,15 @@
             'danger' => 'text-theme-secondary-900 bg-theme-danger-100',
             'success' => 'text-theme-secondary-900 bg-theme-success-100',
             'hint' => 'text-theme-secondary-900 bg-theme-hint-100',
+        ], $type);
+    } else {
+        $colorClass = Arr::get([
+            'info' => 'text-theme-secondary-900 bg-theme-primary-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+            'warning' => 'text-theme-secondary-900 bg-theme-warning-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+            'error' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+            'danger' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+            'success' => 'text-theme-secondary-900 bg-theme-success-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+            'hint' => 'text-theme-secondary-900 bg-theme-hint-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
         ], $type);
     }
 
