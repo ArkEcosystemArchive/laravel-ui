@@ -11,7 +11,7 @@
 }
 
 .button-tag {
-    @apply break-all button-secondary;
+    @apply break-words button-secondary;
     @apply py-0.5 px-3 text-left !important;
 }
 
