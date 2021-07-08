@@ -13,7 +13,7 @@
     'usersInContext' => [],
     'endpoint'       => '/api/users/autocomplete',
     'placeholder'    => '',
-    'plainText'      => false,
+    'plainText'      => true,
 ])
 
 <div
