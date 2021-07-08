@@ -39,7 +39,14 @@
         @endunless
 
         <div class="input-wrapper" >
-            <input x-ref="input" type="hidden" id="{{ $id ?? $name }}" wire:model="{{ $model ?? $name }}" name="{{ $name }}" />
+            <input
+                x-ref="input"
+                type="hidden"
+                id="{{ $id ?? $name }}"
+                wire:model="{{ $model ?? $name }}"
+                name="{{ $name }}"
+            />
+
             <div
                 wire:ignore
                 x-ref="editor"
