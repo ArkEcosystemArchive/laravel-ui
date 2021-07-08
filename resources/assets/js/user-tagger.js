@@ -1,4 +1,9 @@
-window.UserTagger = (endpoint, contextUsers, maxLength = null, plainText = false) => {
+window.UserTagger = (
+    endpoint,
+    contextUsers,
+    maxLength = null,
+    plainText = false
+) => {
     const tribute = new Tribute({
         selectClass: "highlighted",
         containerClass:
@@ -144,7 +149,7 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null, plainText = false
 
             if (plainText) {
                 try {
-                    editor.contentEditable = 'plaintext-only';
+                    editor.contentEditable = "plaintext-only";
                 } catch (e) {
                     // Browser doesn't support plaintext
                 }
