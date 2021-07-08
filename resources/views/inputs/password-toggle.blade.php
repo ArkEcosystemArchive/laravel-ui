@@ -1,4 +1,4 @@
-<div x-data="{ show: false, toggle() { this.show = !this.show; this.show ? this.$refs['password-input'].type = 'text' : this.$refs['password-input'].type = 'password'; } }" class="{{ $class ?? '' }}">
+<div x-data="{ show: false, type: 'password', toggle() { this.show = !this.show; this.show ? this.type = 'text' : this.type = 'password'; } }" class="{{ $class ?? '' }}">
     <div class="input-group">
         @if(!($hideLabel ?? false))
             <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
@@ -7,31 +7,35 @@
         @endif
 
         <div class="input-wrapper">
-            <div class="flex space-x-4">
-                <div class="flex-1">
-                    <input
-                        x-ref="password-input"
-                        x-bind:type="show ? 'text' : 'password'"
-                        id="{{ $id ?? $name }}"
-                        name="{{ $name }}"
-                        class="input-text @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
-                        wire:model="{{ $model ?? $name }}"
-                        @if($max ?? false) maxlength="{{ $max }}" @endif
-                        @if($value ?? false) value="{{ $value }}" @endif
-                        @if($autofocus ?? false) autofocus @endif
-                        @if($readonly ?? false) readonly @endif
-                        @if($required ?? false) required @endif
-                    />
-                </div>
-                <div>
-                    <button type="button" class="w-12 h-12 button-icon" @click="toggle()">
-                        <span x-show="!show">@svg('view', 'w-6 h-6')</span>
-                        <span x-show="show" x-cloak>@svg('hide', 'w-6 h-6')</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+            {{--input--}}
+            <input
+                x-ref="password-input"
+                :type="type"
+                id="{{ $id ?? $name }}"
+                name="{{ $name }}"
+                class="input-text--shifted @error($name) input-text--error-shifted @enderror {{ $inputClass ?? '' }}"
+                wire:model="{{ $model ?? $name }}"
+                @if($max ?? false) maxlength="{{ $max }}" @endif
+                @if($value ?? false) value="{{ $value }}" @endif
+                @if($autofocus ?? false) autofocus @endif
+                @if($readonly ?? false) readonly @endif
+                @if($required ?? false) required @endif
+            />
 
-        @include('ark::inputs.includes.input-error')
+            {{--toggle--}}
+            <button type="button" class="right-0 px-4 input-icon text-theme-primary-300 @error($name) text-theme-danger-500 @enderror" @click="toggle()">
+                <span x-show="!show">@svg('view', 'w-5 h-5')</span>
+                <span x-show="show" x-cloak>@svg('hide', 'w-5 h-5')</span>
+            </button>
+
+            {{--error--}}
+            @error($name)
+                @include('ark::inputs.includes.input-error-tooltip', [
+                    'error' => $message,
+                    'id' => $id ?? $name,
+                    'shifted' => true,
+                ])
+            @enderror
+        </div>
     </div>
 </div>

@@ -53,6 +53,9 @@ module.exports = {
             ringColor: {
                 focus: "rgba(var(--theme-color-primary-rgb), 0.50)",
             },
+            inset: {
+                '13': '3.25rem',
+            },
         },
 
         colors: {
