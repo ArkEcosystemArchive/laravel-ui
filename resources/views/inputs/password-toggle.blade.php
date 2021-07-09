@@ -20,6 +20,7 @@
                 @if($autofocus ?? false) autofocus @endif
                 @if($readonly ?? false) readonly @endif
                 @if($required ?? false) required @endif
+                @keydown="$dispatch('typing')"
             />
 
             {{--toggle--}}
