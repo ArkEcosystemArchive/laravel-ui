@@ -13,7 +13,7 @@
                 :type="type"
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
-                class="input-text--shifted @error($name) input-text--error-shifted @enderror {{ $inputClass ?? '' }}"
+                class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
                 @if($max ?? false) maxlength="{{ $max }}" @endif
                 @if($value ?? false) value="{{ $value }}" @endif
