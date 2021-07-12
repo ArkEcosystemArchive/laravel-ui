@@ -195,6 +195,11 @@ const MarkdownEditor = (
                 },
             });
 
+            const events = this.editor.eventManager.events;
+            const handlers = events.get('command');
+            handlers.unshift(this.forceHttpsLinkHandler);
+            events.set('command', handlers);
+
             this.editor.getCodeMirror().setOption("lineNumbers", true);
 
             this.toolbar = this.editor.getUI().getToolbar();
@@ -305,6 +310,25 @@ const MarkdownEditor = (
         });
 
         return Object.values(plugins);
+    },
+    forceHttpsLinkHandler: (event, data) => {
+        if (event === "AddLink") {
+            if (/^\/\//.test(data.url)) {
+                data.url = "https:" + data.url;
+                return data;
+            }
+
+            if (/^\//.test(data.url)) {
+                return data;
+            }
+
+            if (!/^https?:\/\//.test(data.url)) {
+                data.url = "https://" + data.url;
+                return data;
+            }
+        }
+
+        return data;
     },
     addIconsToTheButtons() {
         const {
