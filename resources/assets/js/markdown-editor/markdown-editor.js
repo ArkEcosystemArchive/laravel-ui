@@ -196,9 +196,9 @@ const MarkdownEditor = (
             });
 
             const events = this.editor.eventManager.events;
-            const handlers = events.get('command');
+            const handlers = events.get("command");
             handlers.unshift(this.forceHttpsLinkHandler);
-            events.set('command', handlers);
+            events.set("command", handlers);
 
             this.editor.getCodeMirror().setOption("lineNumbers", true);
 
