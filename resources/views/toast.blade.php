@@ -1,31 +1,19 @@
 @props([
     'type' => 'info',
-    'style' => 'regular',
     'message' => '',
     'wireClose' => false,
     'alpineClose' => false,
 ])
 
 @php
-    if ($style === 'simple') {
-        $colorClass = Arr::get([
-            'info' => 'text-theme-secondary-900 bg-theme-primary-100',
-            'warning' => 'text-theme-secondary-900 bg-theme-warning-100',
-            'error' => 'text-theme-secondary-900 bg-theme-danger-100',
-            'danger' => 'text-theme-secondary-900 bg-theme-danger-100',
-            'success' => 'text-theme-secondary-900 bg-theme-success-100',
-            'hint' => 'text-theme-secondary-900 bg-theme-hint-100',
-        ], $type);
-    } else {
-        $colorClass = Arr::get([
-            'info' => 'text-theme-secondary-900 bg-theme-primary-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'warning' => 'text-theme-secondary-900 bg-theme-warning-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'error' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'danger' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'success' => 'text-theme-secondary-900 bg-theme-success-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-            'hint' => 'text-theme-secondary-900 bg-theme-hint-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
-        ], $type);
-    }
+    $colorClass = Arr::get([
+        'info' => 'text-theme-secondary-900 bg-theme-primary-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'warning' => 'text-theme-secondary-900 bg-theme-warning-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'error' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'danger' => 'text-theme-secondary-900 bg-theme-danger-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'success' => 'text-theme-secondary-900 bg-theme-success-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+        'hint' => 'text-theme-secondary-900 bg-theme-hint-50 dark:text-theme-secondary-500 dark:bg-theme-secondary-800',
+    ], $type);
 
     $iconClass = Arr::get([
         'warning' => 'bg-theme-warning-600',
@@ -56,24 +44,20 @@
 @endphp
 
 <div {{ $attributes->merge(['class' => 'inline-flex flex-col sm:flex-row sm:space-x-4 items-center p-4 text-sm select-none rounded-xl relative max-w-4xl ' . $colorClass]) }}>
-    @unless ($style === 'simple')
         <span class="flex items-center justify-center rounded text-white w-11 h-11 flex-shrink-0 {{ $iconClass }}">
             <x-ark-icon :name="$icon"/>
         </span>
-    @endunless
 
-    <div class="@unless ($style === 'simple') mt-4 @endif text-center sm:pr-6 sm:mt-0 sm:text-left">{{ $message }}</div>
+    <div class="mt-4text-center sm:pr-6 sm:mt-0 sm:text-left">{{ $message }}</div>
 
-    @if ($style === 'regular')
-        @if ($wireClose || $alpineClose)
-            <button
-                @if ($wireClose) wire:click="{{ $wireClose }}" @endif
-                @if ($alpineClose) @click="{{ $alpineClose }}" @endif
-                type="button"
-                class="absolute top-0 right-0 m-4 sm:m-0 sm:top-auto sm:right-auto sm:relative flex items-center justify-center w-11 h-11 rounded flex-shrink-0 {{ $closeButtonClass }}"
-            >
-                <x-ark-icon name="close" />
-            </button>
-        @endif
+    @if ($wireClose || $alpineClose)
+        <button
+            @if ($wireClose) wire:click="{{ $wireClose }}" @endif
+            @if ($alpineClose) @click="{{ $alpineClose }}" @endif
+            type="button"
+            class="absolute top-0 right-0 m-4 sm:m-0 sm:top-auto sm:right-auto sm:relative flex items-center justify-center w-11 h-11 rounded flex-shrink-0 {{ $closeButtonClass }}"
+        >
+            <x-ark-icon name="close" />
+        </button>
     @endif
 </div>

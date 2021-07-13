@@ -1,4 +1,4 @@
-<div class="flex fixed right-0 bottom-0 z-50 flex-col items-end p-5 space-y-3">
+<div class="fixed bottom-0 right-0 z-50 flex flex-col items-end p-5 space-y-3">
     @foreach ($toasts as $key => $toast)
         <div
             class="z-20 cursor-pointer"
@@ -7,7 +7,7 @@
             @click="dismiss()"
             wire:key="{{ $key }}"
         >
-            <x-ark-toast :type="$toast['type']" :style="$toast['style']" wire-close="dismissToast('{{ $key }}')">
+            <x-ark-toast :type="$toast['type']" wire-close="dismissToast('{{ $key }}')">
                 <x-slot name='message'>
                     {!! $toast['message'] !!}
                 </x-slot>
