@@ -49,7 +49,7 @@ final class MarkdownParser
     {
         return strip_tags(
             $html,
-            ['a', 'p', 'br', 'ul', 'ol', 'li', 'strong', 'em', 'svg', 'g', 'path', 'div', 'span'],
+            ['a', 'p', 'br', 'ul', 'ol', 'li', 'strong', 'em', 'svg', 'g', 'path', 'div'],
         );
     }
 }
