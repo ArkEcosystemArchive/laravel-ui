@@ -11,6 +11,7 @@
     'grouped' => false,
     'label' => null,
     'xData' => '{}',
+    'height' => '320',
 ])
 
 @php
@@ -76,6 +77,7 @@ $initialText = $grouped
             x-transition:leave-end="transform opacity-0 scale-95"
             class="absolute w-full min-w-max-content z-10 {{ $dropdownClass }}"
             style="display: none;"
+            @if ($height) data-height="{{ $height }}" @endif
         >
             <div
                 @keydown.enter.stop.prevent="onOptionSelect()"
