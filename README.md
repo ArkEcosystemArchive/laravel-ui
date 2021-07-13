@@ -134,6 +134,7 @@ Assigning to the `window` object is now done in the markdown script itself, ther
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
+    // The `tailwind.config.js` file may be different depending on the project
     .postCss('vendor/arkecosystem/ui/resources/assets/css/markdown-editor.css', 'public/css', [importCss(), tailwindCss('tailwind.config.js')])
 ```
 
