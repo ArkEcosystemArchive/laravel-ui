@@ -14,7 +14,6 @@
     @apply absolute top-0 right-0 flex items-center justify-center flex-shrink-0 m-4 rounded sm:m-0 sm:top-auto sm:right-auto sm:relative w-11 h-11 text-theme-secondary-900 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
 }
 
-
 .toast-info {
     @apply bg-theme-primary-50;
 }
@@ -31,34 +30,34 @@
     @apply bg-theme-success-50;
 }
 
-.toast-info .toast-icon{
+.toast-info .toast-icon {
     @apply bg-theme-primary-600;
 }
-.toast-warning .toast-icon{
+.toast-warning .toast-icon {
     @apply bg-theme-warning-600;
 }
-.toast-danger .toast-icon{
+.toast-danger .toast-icon {
     @apply bg-theme-danger-400;
 }
-.toast-hint .toast-icon{
+.toast-hint .toast-icon {
     @apply bg-theme-hint-500;
 }
-.toast-success .toast-icon{
+.toast-success .toast-icon {
     @apply bg-theme-success-600;
 }
 
-.toast-info .toast-button{
+.toast-info .toast-button {
     @apply bg-theme-primary-100 hover:bg-theme-primary-200;
 }
-.toast-warning .toast-button{
+.toast-warning .toast-button {
     @apply bg-theme-warning-100 hover:bg-theme-warning-200;
 }
-.toast-danger .toast-button{
+.toast-danger .toast-button {
     @apply bg-theme-danger-100 hover:bg-theme-danger-200;
 }
-.toast-hint .toast-button{
+.toast-hint .toast-button {
     @apply bg-theme-hint-100 hover:bg-theme-hint-200;
 }
-.toast-success .toast-button{
+.toast-success .toast-button {
     @apply bg-theme-success-100 hover:bg-theme-success-200;
 }
