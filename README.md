@@ -129,26 +129,21 @@ yarn add @toast-ui/editor@^2.5.2 codemirror@^5.62.0
 
 Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
 
-3. Import the markdown css file in your main file.
-
-```css
-@import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
-```
-
-4. Compile the markdown scripts into the public folder:
+3. Compile the markdown assets into the public folder:
 
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
+    .postCss('vendor/arkecosystem/ui/resources/assets/css/markdown-editor.css', 'public/css', [importCss(), tailwindCss('tailwind.config.js')])
 ```
 
-5. Add the markdown component to your form
+4. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-6. You can change the height and the toolbar preset:
+5. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -157,7 +152,7 @@ mix
 />
 ```
 
-7. You can choose to limit the characters to be inserted:
+6. You can choose to limit the characters to be inserted:
 
 ```html
 <x-ark-markdown name="about"
@@ -167,7 +162,7 @@ mix
 
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
-8. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
+7. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
 
 ```html
 <meta name="csrf-token" content="{{ csrf_token() }}">
