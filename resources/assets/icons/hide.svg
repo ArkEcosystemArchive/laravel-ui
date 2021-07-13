@@ -1,1 +1,15 @@
-<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 24.7 20.8" xml:space="preserve"><style>.hide-st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}</style><g id="hide" transform="translate(.366 -1.586)"><path id="Линия_133" class="hide-st0" d="M2.8 21L21.5 3"/><path id="Контур_464" class="hide-st0" d="M9 19.1c1 .3 2 .5 3 .4 4.1.1 8.3-2.8 10.8-5.6.6-.6.6-1.6 0-2.2-.9-1-2-1.9-3.1-2.8"/><path id="Контур_465" class="hide-st0" d="M14.4 6.3c-.8-.2-1.6-.3-2.4-.3-4-.1-8.2 2.8-10.8 5.6-.6.6-.6 1.6 0 2.2.8.9 1.7 1.7 2.6 2.4"/><path id="Контур_466" class="hide-st0" d="M8.2 12.8C8.2 10.7 9.9 9 12 9"/><path id="Контур_467" class="hide-st0" d="M15.8 12.7c0 2.1-1.7 3.8-3.7 3.8"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<g>
+		<line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="16.5" x2="16.6" y2="3.5"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8,15.1
+		c0.8,0.3,1.2,0.3,2,0.3c3.3,0,6.5-2.3,8.6-4.5c0.5-0.5,0.5-1.3,0-1.8c-0.7-0.8-1.3-1.4-2.2-2"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11.6,4.7
+		c-0.5-0.1-1-0.1-1.6-0.1c-3.2,0-6.5,2.2-8.6,4.5c-0.5,0.5-0.5,1.3,0,1.8c0.6,0.7,1.1,1.2,1.9,1.8"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.1,9.2
+		c0.5-1.3,1.4-2,2.5-2"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13,10L13,10
+		c0,1.7-1.3,3-3,3l0,0"/>
+</g>
+</svg>
