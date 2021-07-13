@@ -48,7 +48,7 @@
             <x-ark-icon :name="$icon"/>
         </span>
 
-    <div class="mt-4text-center sm:pr-6 sm:mt-0 sm:text-left">{{ $message }}</div>
+    <div class="sm:pr-6 sm:mt-0 sm:text-left mt-4text-center">{{ $message }}</div>
 
     @if ($wireClose || $alpineClose)
         <button
