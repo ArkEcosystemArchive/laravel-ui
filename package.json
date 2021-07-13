@@ -1,9 +1,12 @@
 {
-  "dependencies": {
-    "@sindresorhus/slugify": "sindresorhus/slugify",
-    "prettier": "^2.0.2"
-  },
-  "devDependencies": {
-    "glob": "^7.1.6"
-  }
+    "dependencies": {
+        "@sindresorhus/slugify": "sindresorhus/slugify",
+        "prettier": "^2.0.2"
+    },
+    "devDependencies": {
+        "glob": "^7.1.6"
+    },
+    "scripts": {
+        "generate-icon-preview": "node ./scripts/generate-preview"
+    }
 }
