@@ -97,13 +97,13 @@ trait UploadImageCollection
 
     public function updateImageOrder(array $order): void
     {
-        if (! method_exists($this, 'imagesReordered')) {
-            return;
-        }
-
         $this->imageCollection = collect($order)->map(function ($item) {
             return collect($this->imageCollection)->get($item['value']);
         })->toArray();
+
+        if (! method_exists($this, 'imagesReordered')) {
+            return;
+        }
 
         $orderedIds = collect($this->imageCollection)->map(fn ($item) => data_get($item, 'image.id'))->filter()->toArray();
 
