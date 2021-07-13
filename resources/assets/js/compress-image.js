@@ -1,4 +1,9 @@
-import { uploadImage, imageValidator, getCsrfToken } from "./utils";
+import {
+    uploadImage,
+    imageValidator,
+    getCsrfToken,
+    resetUploadInput,
+} from "./utils";
 
 import { invalidResponseException } from "./utils/exceptions";
 
@@ -64,6 +69,8 @@ const CompressImage = (
                     this.loadCompressor(file);
                 })
                 .catch((errors) => {
+                    resetUploadInput(this.uploadEl);
+
                     Object.values(errors.getAll()).forEach((bags) => {
                         [...bags].forEach(({ value }) =>
                             Livewire.emit("toastMessage", [
@@ -83,10 +90,14 @@ const CompressImage = (
             }
 
             this.model = response.url;
+
+            resetUploadInput(this.uploadEl);
         });
     },
 
     onError(error) {
+        resetUploadInput(this.uploadEl);
+
         throw new Error(error.message);
     },
 
