@@ -24,7 +24,7 @@
     ][$containerSize];
 
     $icon = Arr::get([
-        'success' => 'checkmark',
+        'success' => 'checkmark-smooth',
         'failed' => 'cross',
         'error' => 'cross',
         'running' => 'update',
