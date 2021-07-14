@@ -153,7 +153,7 @@ const MarkdownEditor = (
                 // Removes every HTML since the preview is not used
                 // 1. Prevents security issues
                 // 2. Makes the editor way faster
-                customHTMLSanitizer:() => '',
+                customHTMLSanitizer: () => "",
                 hooks: {
                     addImageBlobHook: (blob, callback) => {
                         const alt =
