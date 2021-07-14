@@ -93,9 +93,10 @@ final class MarkdownParser
     ];
 
     /**
-     * The html string that the LinkRenderer componentes created, using regex
-     * for the variable data like the links
+     * The HTML string that the LinkRenderer componente creates (with regex on
+     * the dynamic content)
      * @TODO: case where no SVG
+     * @TODO: fix regex for link content
      */
     protected static string $linkRendererTemplate = <<<EOD
     <span x-data="{
@@ -302,8 +303,6 @@ EOD;
 
     private static function rollbackMarkdownComponents(string $html): string
     {
-
-
         foreach(static::$replaced as $id => $originalHTML)
         {
 
