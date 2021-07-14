@@ -14,6 +14,9 @@
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./src</directory>
         </include>
+        <exclude>
+            <file>./src/Components/ContactForm.php</file>
+        </exclude>
     </coverage>
     <php>
         <server name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
