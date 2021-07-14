@@ -2,7 +2,7 @@
     <form id="contact-form" class="flex flex-col flex-1 space-y-8" wire:submit.prevent="submit" enctype="multipart/form-data">
         @csrf
 
-        <x-ark-honey />
+        <x-honey-pot />
 
         <div class="flex flex-col space-y-8 sm:flex-row sm:space-y-0 sm:space-x-3">
             <x-ark-input
