@@ -95,6 +95,7 @@ final class MarkdownParser
     /**
      * The html string that the LinkRenderer componentes created, using regex
      * for the variable data like the links
+     * @TODO: case where no SVG
      */
     protected static string $linkRendererTemplate = <<<EOD
     <span x-data="{
