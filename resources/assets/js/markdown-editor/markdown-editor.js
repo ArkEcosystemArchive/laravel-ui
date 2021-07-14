@@ -150,7 +150,8 @@ const MarkdownEditor = (
                 },
                 toolbarItems: this.toolbarItems,
                 plugins: this.getPlugins(),
-                // Removes every HTML since the preview is not used
+                // We dont need any "sanitized" HTML since we dont use the `preview`
+                // mode, so doing this:
                 // 1. Prevents security issues
                 // 2. Makes the editor way faster
                 customHTMLSanitizer:() => '',
