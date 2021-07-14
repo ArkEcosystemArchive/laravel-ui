@@ -92,6 +92,39 @@ final class MarkdownParser
         'strike',
     ];
 
+    /**
+     * The html string that the LinkRenderer componentes created, using regex
+     * for the variable data like the links
+     */
+    protected static string $linkRendererTemplate = <<<EOD
+    <span x-data="{
+        openModal() {
+            Livewire.emit('openModal', '[a-f0-9]{32}')
+        },
+        redirect() {
+            window.open('[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*', '_blank')
+        },
+        hasDisabledLinkWarning() {
+            return localStorage.getItem('has_disabled_link_warning') === 'true';
+        }
+    }"
+        class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
+    >
+        <a
+            :href="hasDisabledLinkWarning() ? '[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*' : 'javascript:;'"
+            :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+            rel="noopener nofollow"
+            class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+            @click="hasDisabledLinkWarning() ? redirect() : openModal()"
+        >
+            <span>[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*</span>
+            <svg wire:key="[a-zA-Z0-9]*" class="fill-current w-4 h-4 inline flex-shrink-0 mr-2 ml-1 -mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+            </svg>
+        </a>
+    </span>
+EOD;
+
     private static array $replaced = [];
 
     private MarkdownConverterInterface $markdownConverter;
@@ -228,11 +261,27 @@ final class MarkdownParser
         return strip_tags($html, $allowedTagsStr);
     }
 
+    private static function buildRegexFromTemplate($template)
+    {
+        // Replaces a group of white-space chars with a single regex
+        $template = preg_replace('/(\s+)/m', '\\\\s*', $template);
+        // Escape every `/`
+        $template = str_replace('/', '\/', $template);
+        // Escape every `(`
+        $template = str_replace('(', '\(', $template);
+        // Escape every `)`
+        $template = str_replace(')', '\)', $template);
+        // Escape every `?`
+        $template = str_replace('?', '\?', $template);
+
+        return '/\s*' . $template . '/m';
+    }
+
+
     private static function temporaryStripAndStoreMarkdownComponents(string $html): string
     {
-        // Currently we only have the LinkRenderer
         $componentsRegexs = [
-            'linkRenderedRegex' => '/<span\s*x-data="{\s*openModal\(\)\s*{\s*Livewire\.emit\(\'openModal\', \'[a-f0-9]{32}\'\)\s*},\s*redirect\(\)\s*{\s*window.open\(\'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\', \'_blank\'\)\s*},\s*hasDisabledLinkWarning\(\)\s*{\s*return localStorage\.getItem\(\'has_disabled_link_warning\'\) === \'true\';\s*}\s*}"\s*class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"\s*>\s*<a\s*:href="hasDisabledLinkWarning\(\) \? \'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\'\s:\s\'javascript:;\'"\s*:target="hasDisabledLinkWarning\(\) \? \'_blank\' : \'_self\'"\s*rel="noopener nofollow"\s*class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"\s*@click="hasDisabledLinkWarning\(\) \? redirect\(\) : openModal\(\)"\s*>\s*<span>[^<>"\'`]*<\/span>\s*(?:<svg[^>]*>.*<\/svg>)?\s*<\/a>\s*<\/span>/m'
+            'linkRenderedRegex' => self::buildRegexFromTemplate(static::$linkRendererTemplate)
         ];
 
         foreach ($componentsRegexs as $regex) {
@@ -252,8 +301,11 @@ final class MarkdownParser
 
     private static function rollbackMarkdownComponents(string $html): string
     {
+
+
         foreach(static::$replaced as $id => $originalHTML)
         {
+
             $html = str_replace('[' . $id . ']', $originalHTML, $html);
         }
 
