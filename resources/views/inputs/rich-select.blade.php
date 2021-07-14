@@ -2,7 +2,7 @@
     'options' => [],
     'initialValue' => '',
     'dispatchEvent' => null,
-    'class' => 'w-full input-group',
+    'class' => 'w-full',
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
@@ -21,7 +21,7 @@ $initialText = $grouped
     : collect($options)->get($initialValue);
 @endphp
 
-<div class="{{ $class }}">
+<div class="input-group {{ $class }}">
     @if($label ?? false)
         <label
             for="{{ $name ?? '' }}"
