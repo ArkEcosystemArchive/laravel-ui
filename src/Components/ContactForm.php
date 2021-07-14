@@ -20,6 +20,7 @@ use Livewire\WithFileUploads;
 final class ContactForm extends Component
 {
     use WithFileUploads;
+    use WithHoney;
 
     public $name;
     public $email;
