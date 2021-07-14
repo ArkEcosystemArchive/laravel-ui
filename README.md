@@ -696,6 +696,13 @@ When you create a `views/components` folder, you can create new blade files insi
 
 Afterwards you can add new components to the local package and use it in your project for testing.
 
+### Icons
+
+If you need to add, replace or delete an icon:
+- move the new icon in or remove it from `/resources/assets/icons`
+- run `yarn run generate-icon-preview`
+- open `icons.html` and check if the icon is present
+
 ## Tailwind Configuration
 
 There are a few tailwind configuration additions on which the components rely (e.g. colors and additional shadows) and are therefore expected to use the tailwind config in this repository as basis (you can import it and extend it further if needed).

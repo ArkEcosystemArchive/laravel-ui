@@ -4,6 +4,7 @@ namespace ARKEcosystem\UserInterface;
 
 use ARKEcosystem\UserInterface\Components\ContactForm;
 use ARKEcosystem\UserInterface\Components\FlashMessage;
+use ARKEcosystem\UserInterface\Components\HoneyPot;
 use ARKEcosystem\UserInterface\Components\Toast;
 use ARKEcosystem\UserInterface\Http\Controllers\ImageCropController;
 use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
@@ -92,6 +93,11 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/ui.php', 'ui'
+        );
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/honey.php',
+            'honey'
         );
 
         $this->publishes([
@@ -277,6 +283,9 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');
+
+        // Honey Pot
+        Blade::component('honey-pot', HoneyPot::class);
     }
 
     /**
