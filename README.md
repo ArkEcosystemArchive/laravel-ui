@@ -267,6 +267,26 @@ Note: You can change the the URL by using the `endpoint` prop.
 
 6. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
 
+### Honeypot
+
+1. Install dependency
+
+```bash
+composer require lukeraymonddowning/honey
+```
+
+2. Setup honeypot
+
+```bash
+php artisan honey:install
+```
+
+3. Database Migration
+
+```bash
+php artisan migrate
+```
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
