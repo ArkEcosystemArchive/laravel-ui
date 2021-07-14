@@ -45,4 +45,10 @@
         @if($alpineClick ?? false) x-on:click="{{ $alpineClick }}" @endif
         @if($default ?? false) checked @endif
     />
+
+    @if($rightSideLabel ?? false)
+        <label for="{{ $name }}" class="input-label--toggle {{ $rightSideLabelClass ?? '' }}">
+            {{ ($rightSideLabel ?? '') ? $rightSideLabel : trans('forms.' . $name) }}
+        </label>
+    @endif
 </div>

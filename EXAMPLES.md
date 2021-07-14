@@ -72,12 +72,14 @@ This file contains basic examples and explains the parameters that can be used f
 
 `<x-ark-toggle name="my-toggle" :errors="$errors" />`
 
-| Parameter | Description                                                                      | Required |
-|-----------|----------------------------------------------------------------------------------|----------|
-| name      | input name, will also be used as `id` if none specified                          | yes      |
-| label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
-| model     | livewire model to attach to                                                      | no       |
-| default   | default toggle position, defaults to `false` = unchecked                         | no       |
+| Parameter           | Description                                                                                        | Required |
+|---------------------|----------------------------------------------------------------------------------------------------|----------|
+| name                | input name, will also be used as `id` if none specified                                            | yes      |
+| label               | label to be shown for the input, will use `trans(form.<name>)` if none specified                   | no       |
+| model               | livewire model to attach to                                                                        | no       |
+| default             | default toggle position, defaults to `false` = unchecked                                           | no       |
+| rightSideLabel      | label to be shown for the right side of the input, will use `trans(form.<name>)` if none specified | no       |
+| rightSideLabelClass | allow to specify custom styling for the right side label                                           | no       |
 
 ### Tile Selection
 
@@ -154,7 +156,7 @@ This component renders an input file for a single image upload.
 ```html
 <x-ark-upload-image-single id="profile" :image="$image" wire:model="imageSingle" />
 ```
-> It requires the use of a Livewire Component. 
+> It requires the use of a Livewire Component.
 > There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageSingle`.
 
 1. Install `Compressorjs`
@@ -246,7 +248,7 @@ This component renders an input file for a multiple image upload.
 ```html
 <x-ark-upload-image-collection id="media" :image="$imageCollection" wire:model="tempCollection" />
 ```
-> It requires the use of a Livewire Component. 
+> It requires the use of a Livewire Component.
 > There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageCollection`.
 
 1. Install `Compressorjs`
@@ -290,10 +292,10 @@ public function imagesReordered(array $ids): void
 
 4. Then, you can use `upload-image-collection` component with sortable functionality.
 ```html
-<x-ark-upload-image-collection 
-    id="media" 
-    ... 
-    sortable 
+<x-ark-upload-image-collection
+    id="media"
+    ...
+    sortable
 />
 ```
 
