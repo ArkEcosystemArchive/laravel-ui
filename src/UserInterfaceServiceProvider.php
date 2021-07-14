@@ -94,11 +94,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
             __DIR__.'/../config/ui.php', 'ui'
         );
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/honey.php',
-            'honey'
-        );
-
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/ark'),
         ], 'views');

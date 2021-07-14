@@ -11,6 +11,7 @@
     'grouped' => false,
     'label' => null,
     'xData' => '{}',
+    'height' => '320',
 ])
 
 @php
@@ -45,7 +46,7 @@ $initialText = $grouped
             aria-haspopup="listbox"
             :aria-expanded="open"
             aria-labelledby="listbox-label"
-            class="relative pr-10 {{ $buttonClass }}"
+            class="relative pr-10 dropdown-button {{ $buttonClass }}"
         >
             @isset($dropdownEntry)
                 {{ $dropdownEntry }}
@@ -74,8 +75,9 @@ $initialText = $grouped
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute w-full min-w-max-content z-10 {{ $dropdownClass }}"
+            class="absolute w-full min-w-max-content z-10 dropdown {{ $dropdownClass }}"
             style="display: none;"
+            @if ($height) data-height="{{ $height }}" @endif
         >
             <div
                 @keydown.enter.stop.prevent="onOptionSelect()"
