@@ -17,8 +17,6 @@ use Exception;
 final class MarkdownParser
 {
     private static array $validUserTagsAndAttributes = [
-        'div' => [],
-        'span' => [],
         'h2' => [],
         'h3' => [],
         'h4' => [],
@@ -94,6 +92,8 @@ final class MarkdownParser
         'strike',
     ];
 
+    private static array $replaced = [];
+
     private MarkdownConverterInterface $markdownConverter;
 
     public function __construct()
@@ -115,11 +115,11 @@ final class MarkdownParser
         // Encodes the header symbols (`#`) so they are not converted to HTML
         $text = static::encodeMarkdownHeaders($text);
 
-        $cleanHTML = static::getHtml($text);
+        $html = static::getHtml($text);
 
-        $basicHtml = static::removeUnallowedHTMLTags($cleanHTML, static::$basicAllowedTags);
+        $html = static::removeUnallowedHTMLTags($html, static::$basicAllowedTags);
 
-        return $basicHtml;
+        return static::rollbackMarkdownComponents($html);
     }
 
     public static function full(string | null $text): string
@@ -128,11 +128,13 @@ final class MarkdownParser
             return '';
         }
 
-        $cleanHTML = static::getHtml($text);
 
-        $fullHtml = static::removeUnallowedHTMLTags($cleanHTML, static::$fullAllowedTags);
+        $html = static::getHtml($text);
 
-        return $fullHtml;
+        $html = static::removeUnallowedHTMLTags($html, static::$basicAllowedTags);
+
+        return static::rollbackMarkdownComponents($html);
+
     }
 
     /**
@@ -142,7 +144,7 @@ final class MarkdownParser
      */
     private static function replaceLineBreaksInsideTagsForBr(string $text): string
     {
-        $regex = '/<(p|a|strong|b|em|i|li|ins|h2|h3|h4|td)\b(?:[^>]*)>(?:\s|\S)*?<\/\1>/m';
+        $regex = '/<(p|a|strong|b|em|i|li|ins|h2|h3|h4|td)\b(?:[^>]*)>[^\s*<](?:\s|\S)*?<\/\1>/m';
 
         preg_match_all($regex, $text, $matches, PREG_SET_ORDER, 0);
 
@@ -206,18 +208,13 @@ final class MarkdownParser
 
         $markdown = static::wrapImagesTagsInAParagraph($markdown);
 
+        $markdown = static::replaceLineBreaksInsideTagsForBr($markdown);
+
         return static::replaceParagraphsForMarkdown($markdown);
     }
 
     private static function convertMarkdownToHtml(string $markdown): string
     {
-        // This method is called twice in purpose. This first time to convert
-        // every `\n` that is inside a **user** HTML tags to `<br />`, otherwise
-        // the markdown converter make them a <p> that breaks the HTML.
-        // The second time is called is at the end of this same method once
-        // the markdown is already converted to HTML.
-        $markdown = static::replaceLineBreaksInsideTagsForBr($markdown);
-
         $html = (new static)->getMarkdownCoverter()->convertToHtml($markdown);
 
         return static::replaceLineBreaksInsideTagsForBr($html);
@@ -230,8 +227,42 @@ final class MarkdownParser
         return strip_tags($html, $allowedTagsStr);
     }
 
+    private static function temporaryStripAndStoreMarkdownComponents(string $html): string
+    {
+        // Currently we only have the LinkRenderer
+        $componentsRegexs = [
+            'linkRenderedRegex' => '/<div\s*x-data="{\s*openModal\(\)\s*{\s*Livewire\.emit\(\'openModal\', \'[a-f0-9]{32}\'\)\s*},\s*redirect\(\)\s*{\s*window.open\(\'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\', \'_blank\'\)\s*},\s*hasDisabledLinkWarning\(\)\s*{\s*return localStorage\.getItem\(\'has_disabled_link_warning\'\) === \'true\';\s*}\s*}"\s*class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"\s*>\s*<a\s*:href="hasDisabledLinkWarning\(\) \? \'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\'\s:\s\'javascript:;\'"\s*:target="hasDisabledLinkWarning\(\) \? \'_blank\' : \'_self\'"\s*rel="noopener nofollow"\s*class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"\s*@click="hasDisabledLinkWarning\(\) \? redirect\(\) : openModal\(\)"\s*>\s*<span>[^<>"\'`]*<\/span>\s*(?:<svg[^>]*>.*<\/svg>)?\s*<\/a>\s*<\/div>/m'
+        ];
+
+        foreach ($componentsRegexs as $regex) {
+            preg_match_all($regex, $html, $matches, PREG_SET_ORDER, 0);
+
+            // For every found component, we store it on the temporary array so
+            // it can be recovered untoched at the end of the process
+            foreach ($matches as $match) {
+                $id = md5($match[0]);
+                static::$replaced[$id] = $match[0];
+                $html = str_replace($match[0], '[' . $id . ']', $html);
+            }
+        }
+
+        return $html;
+    }
+
+    private static function rollbackMarkdownComponents(string $html): string
+    {
+        foreach(static::$replaced as $id => $originalHTML)
+        {
+            $html = str_replace('<p>[' . $id . ']</p>', $originalHTML, $html);
+        }
+
+        return $html;
+    }
+
     private static function cleanHtml(string $html): string
     {
+        $html = static::temporaryStripAndStoreMarkdownComponents($html);
+
         $html = static::removeUnallowedHTMLTags($html, array_keys(static::$validUserTagsAndAttributes));
 
         $html = static::removeUnallowedHTMLAttributes($html);
@@ -258,6 +289,9 @@ final class MarkdownParser
     private static function removeUnallowedHTMLAttributes(string $html): string
     {
         $dom = new DOMDocument;
+
+        dd($html);
+
         try {
             $dom->loadHTML($html);
         } catch (Exception $e) {
