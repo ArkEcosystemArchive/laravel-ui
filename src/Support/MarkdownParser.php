@@ -131,7 +131,7 @@ final class MarkdownParser
 
         $html = static::getHtml($text);
 
-        $html = static::removeUnallowedHTMLTags($html, static::$basicAllowedTags);
+        $html = static::removeUnallowedHTMLTags($html, static::$fullAllowedTags);
 
         return static::rollbackMarkdownComponents($html);
 
