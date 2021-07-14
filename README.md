@@ -275,6 +275,18 @@ Note: You can change the the URL by using the `endpoint` prop.
 composer require lukeraymonddowning/honey
 ```
 
+2. Setup honeypot
+
+```bash
+php artisan honey:install
+```
+
+3. Database Migration
+
+```bash
+php artisan migrate
+```
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
