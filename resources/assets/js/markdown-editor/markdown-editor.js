@@ -154,7 +154,7 @@ const MarkdownEditor = (
                 // mode, so doing this:
                 // 1. Prevents security issues
                 // 2. Makes the editor way faster
-                customHTMLSanitizer:() => '',
+                customHTMLSanitizer: () => "",
                 hooks: {
                     addImageBlobHook: (blob, callback) => {
                         const alt =
