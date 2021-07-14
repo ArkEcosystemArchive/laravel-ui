@@ -6,7 +6,7 @@
 
 @php($identifier = md5($url . '-' . Str::random(8)))
 
-<div x-data="{
+<span x-data="{
         openModal() {
             Livewire.emit('openModal', '{{ $identifier }}')
         },
@@ -99,4 +99,4 @@
             @endslot
         </x-ark-js-modal>
     @endpush
-</div>
+</span>

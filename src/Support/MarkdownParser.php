@@ -144,7 +144,7 @@ final class MarkdownParser
      */
     private static function replaceLineBreaksInsideTagsForBr(string $text): string
     {
-        $regex = '/<(p|a|strong|b|em|i|li|ins|h2|h3|h4|td)\b(?:[^>]*)>[^\s*<](?:\s|\S)*?<\/\1>/m';
+        $regex = '/<(p|a|strong|b|em|i|li|ins|h2|h3|h4|td)\b(?:[^>]*)>[^<]*<\/\1>/m';
 
         preg_match_all($regex, $text, $matches, PREG_SET_ORDER, 0);
 
@@ -217,6 +217,7 @@ final class MarkdownParser
     {
         $html = (new static)->getMarkdownCoverter()->convertToHtml($markdown);
 
+
         return static::replaceLineBreaksInsideTagsForBr($html);
     }
 
@@ -231,7 +232,7 @@ final class MarkdownParser
     {
         // Currently we only have the LinkRenderer
         $componentsRegexs = [
-            'linkRenderedRegex' => '/<div\s*x-data="{\s*openModal\(\)\s*{\s*Livewire\.emit\(\'openModal\', \'[a-f0-9]{32}\'\)\s*},\s*redirect\(\)\s*{\s*window.open\(\'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\', \'_blank\'\)\s*},\s*hasDisabledLinkWarning\(\)\s*{\s*return localStorage\.getItem\(\'has_disabled_link_warning\'\) === \'true\';\s*}\s*}"\s*class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"\s*>\s*<a\s*:href="hasDisabledLinkWarning\(\) \? \'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\'\s:\s\'javascript:;\'"\s*:target="hasDisabledLinkWarning\(\) \? \'_blank\' : \'_self\'"\s*rel="noopener nofollow"\s*class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"\s*@click="hasDisabledLinkWarning\(\) \? redirect\(\) : openModal\(\)"\s*>\s*<span>[^<>"\'`]*<\/span>\s*(?:<svg[^>]*>.*<\/svg>)?\s*<\/a>\s*<\/div>/m'
+            'linkRenderedRegex' => '/<span\s*x-data="{\s*openModal\(\)\s*{\s*Livewire\.emit\(\'openModal\', \'[a-f0-9]{32}\'\)\s*},\s*redirect\(\)\s*{\s*window.open\(\'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\', \'_blank\'\)\s*},\s*hasDisabledLinkWarning\(\)\s*{\s*return localStorage\.getItem\(\'has_disabled_link_warning\'\) === \'true\';\s*}\s*}"\s*class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"\s*>\s*<a\s*:href="hasDisabledLinkWarning\(\) \? \'[A-Za-z0-9-,._~:\/?#\[\]@!\$&\(\)\*\+ ;%="]*\'\s:\s\'javascript:;\'"\s*:target="hasDisabledLinkWarning\(\) \? \'_blank\' : \'_self\'"\s*rel="noopener nofollow"\s*class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"\s*@click="hasDisabledLinkWarning\(\) \? redirect\(\) : openModal\(\)"\s*>\s*<span>[^<>"\'`]*<\/span>\s*(?:<svg[^>]*>.*<\/svg>)?\s*<\/a>\s*<\/span>/m'
         ];
 
         foreach ($componentsRegexs as $regex) {
@@ -253,7 +254,7 @@ final class MarkdownParser
     {
         foreach(static::$replaced as $id => $originalHTML)
         {
-            $html = str_replace('<p>[' . $id . ']</p>', $originalHTML, $html);
+            $html = str_replace('[' . $id . ']', $originalHTML, $html);
         }
 
         return $html;
@@ -289,8 +290,6 @@ final class MarkdownParser
     private static function removeUnallowedHTMLAttributes(string $html): string
     {
         $dom = new DOMDocument;
-
-        dd($html);
 
         try {
             $dom->loadHTML($html);
