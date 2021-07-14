@@ -1,7 +1,6 @@
-@import "_tailwind.css";
-
 /** UI Repo Styles **/
-@import "../../assets/css/styles-with-prism.css";
+@import "_buttons.css";
+@import "_animations.css";
 
 /* purgecss start ignore */
 @import "@toast-ui/editor/dist/toastui-editor.css";
