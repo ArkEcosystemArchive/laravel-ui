@@ -362,7 +362,103 @@ HTML;
     expect(MarkdownParser::basic($markdown))->toBe($html);
 });
 
-it('accepts `i` and `em` tags', function () {
+it('keeps the link component', function () {
+    $markdown = <<<MARKDOWN
+Visit the [Ark](https://ark.io/) website!
+
+[https://ark.io/](https://ark.io/)
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p>Visit the <span x-data="{
+        openModal() {
+            Livewire.emit('openModal', '933ff189f227da6ca82ce14f77bfbf4b')
+        },
+        redirect() {
+            window.open('https://ark.io/', '_blank')
+        },
+        hasDisabledLinkWarning() {
+            return localStorage.getItem('has_disabled_link_warning') === 'true';
+        }
+    }"
+    class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
+>
+    <a
+        :href="hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;'"
+        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+        rel="noopener nofollow"
+        class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+        @click="hasDisabledLinkWarning() ? redirect() : openModal()"
+    >
+        <span>Ark</span>
+
+        <svg wire:key="cYGY7hvI" class="fill-current w-4 h-4 inline flex-shrink-0 mr-2 ml-1 -mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+
+    </span>
+ website!</p>
+<p><span x-data="{
+        openModal() {
+            Livewire.emit('openModal', '1d5affb951bf14c1d2cbd73a956d3bc8')
+        },
+        redirect() {
+            window.open('https://ark.io/', '_blank')
+        },
+        hasDisabledLinkWarning() {
+            return localStorage.getItem('has_disabled_link_warning') === 'true';
+        }
+    }"
+    class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
+>
+    <a
+        :href="hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;'"
+        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+        rel="noopener nofollow"
+        class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+        @click="hasDisabledLinkWarning() ? redirect() : openModal()"
+    >
+        <span>https://ark.io/</span>
+
+        <svg wire:key="LrVRJbzw" class="fill-current w-4 h-4 inline flex-shrink-0 mr-2 ml-1 -mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+
+    </span>
+</p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toContain("<span>Ark</span>");
+    expect(MarkdownParser::basic($markdown))->toContain("hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;");
+    expect(MarkdownParser::basic($markdown))->toContain("hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;");
+});
+
+it('handlers relative links', function () {
+    $markdown = <<<MARKDOWN
+[My acccount](/account)
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><a href="/account" class="font-semibold link">My acccount</a></p>
+
+HTML;
+
+    $html = <<<HTML
+<p><a href="/account" class="font-semibold link">My
+acccount</a></p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
+it('accepts `i` and `em` tags on full markdown', function () {
     $markdown = <<<MARKDOWN
 <i>Italic 1</i>
 
