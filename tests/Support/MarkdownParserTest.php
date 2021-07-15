@@ -132,3 +132,29 @@ HTML;
 
     expect(MarkdownParser::full($markdown))->toBe($html);
 });
+
+
+it('accepts `b` and `strong` tags', function () {
+    $markdown = <<<MARKDOWN
+<strong>Bold 1</strong>
+
+<b>Bold 2</b>
+
+**Bold3**
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><strong>Bold 1</strong></p>
+<p><b>Bold 2</b></p>
+<p><strong>Bold3</strong></p>
+
+HTML;
+
+    $html = $convertedHtml;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});

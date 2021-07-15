@@ -252,7 +252,6 @@ EOD;
     {
         $html = (new static)->getMarkdownCoverter()->convertToHtml($markdown);
 
-
         return static::replaceLineBreaksInsideTagsForBr($html);
     }
 
