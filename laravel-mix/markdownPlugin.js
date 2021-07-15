@@ -10,7 +10,7 @@ class MarkdownPlugin {
     }
 
     webpackConfig(webpackConfig) {
-        const  index = webpackConfig.plugins.findIndex(plugin => plugin.constructor.name === 'WebpackNotifierPlugin');
+        const  index = webpackConfig.plugins.findIndex(plugin => (plugin.constructor.name === 'WebpackNotifierPlugin' || plugin.options?.alwaysNotify !== undefined));
 
         webpackConfig.plugins[index].options.excludeWarnings = true;
         if (!webpackConfig.stats.warningsFilter) {
