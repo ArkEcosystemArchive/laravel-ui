@@ -22,7 +22,7 @@ final class MarkdownParser
         'h4' => [],
         'ins' => [],
         'i' => [],
-        'a' => ['href',],
+        'a' => ['id', 'href', 'name', 'class', 'aria-hidden', 'title'],
         'p' => [],
         'br' => [],
         'ul' => [],
