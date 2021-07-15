@@ -344,7 +344,8 @@ EOD;
         $dom = new DOMDocument;
 
         try {
-            $dom->loadHTML($html);
+            // Needs a XML encoding declaration to ensure is treated as UTF-8
+            $dom->loadHTML('<?xml encoding="utf-8" ?>' . $html);
         } catch (Exception $e) {
             return '';
         }
