@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+const repositionDropdowns = () => {
     const dropdownButtons = document.querySelectorAll(".dropdown-button");
     for (const button of dropdownButtons) {
         if (
@@ -29,4 +29,10 @@ window.addEventListener("DOMContentLoaded", () => {
                 "px";
         }
     }
-});
+};
+
+if (document.readyState !== 'loading') {
+    repositionDropdowns();
+} else {
+    document.addEventListener('DOMContentLoaded', repositionDropdowns);
+}
