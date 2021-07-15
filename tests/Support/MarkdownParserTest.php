@@ -458,6 +458,50 @@ HTML;
     expect(MarkdownParser::basic($markdown))->toBe($html);
 });
 
+it('parses links with random characters in the link text', function () {
+    $markdown = <<<MARKDOWN
+[·$%&/()=?^*¨;MÑ](https://ark.io/)
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><span x-data="{
+        openModal() {
+            Livewire.emit('openModal', '90e49c24f2c8714897fe06a5f177da6b')
+        },
+        redirect() {
+            window.open('https://ark.io/', '_blank')
+        },
+        hasDisabledLinkWarning() {
+            return localStorage.getItem('has_disabled_link_warning') === 'true';
+        }
+    }"
+    class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
+>
+    <a
+        :href="hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;'"
+        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+        rel="noopener nofollow"
+        class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+        @click="hasDisabledLinkWarning() ? redirect() : openModal()"
+    >
+        <span>·$%&amp;amp;/()=?^*¨;MÑ</span>
+
+        <svg wire:key="JcUdy1s6" class="fill-current w-4 h-4 inline flex-shrink-0 mr-2 ml-1 -mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+
+    </span>
+</p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+        expect(MarkdownParser::basic($markdown))->toContain("hasDisabledLinkWarning() ? 'https://ark.io/' : 'javascript:;");
+        expect(MarkdownParser::basic($markdown))->toContain("·$%&amp;amp;/()=?^*¨;MÑ");
+});
+
 it('accepts `i` and `em` tags on full markdown', function () {
     $markdown = <<<MARKDOWN
 <i>Italic 1</i>
@@ -501,4 +545,51 @@ HTML;
         ->andReturn($convertedHtml);
 
     expect(MarkdownParser::full($markdown))->toBe($html);
+});
+
+it('strips an `script` tag', function () {
+    $markdown = <<<MARKDOWN
+<script>alert(document.cookie)</script>
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<script>alert(document.cookie)</script>
+
+HTML;
+
+    $html = <<<HTML
+<p>alert(document.cookie)</p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
+it('strips unsafe attributes', function () {
+    $markdown = <<<MARKDOWN
+<a x-data x-init="alert(document.cookie)" onload="alert(document.cookie)" href="/account" class="font-semibold link">My acccount</a>
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><a x-data x-init="alert(document.cookie)" onload="alert(document.cookie)" href="/account" class="font-semibold link">My acccount</a></p>
+
+HTML;
+
+    $html = <<<HTML
+<p><a href="/account" class="font-semibold link">My
+acccount</a></p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
 });
