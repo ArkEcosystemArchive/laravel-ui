@@ -129,13 +129,15 @@ yarn add @toast-ui/editor@^2.5.2 codemirror@^5.62.0
 
 Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
 
-3. Compile the markdown assets into the public folder:
+3. Configure webpack.mix with the markdown plugin
 
 ```js
-mix
-    .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
-    // The `tailwind.config.js` file may be different depending on the project
-    .postCss('vendor/arkecosystem/ui/resources/assets/css/markdown-editor.css', 'public/css', [importCss(), tailwindCss('tailwind.config.js')])
+// Import the following script in the `webpack.mix.js` file
+require('./vendor/arkecosystem/ui/laravel-mix/markdownPlugin.js');
+
+// If the Tailwind Config file in your project is `tailwind.config.js`
+// you dont need to pass any argument
+mix.markdown('tailwind.app.config.js')
 ```
 
 4. Add the markdown component to your form
