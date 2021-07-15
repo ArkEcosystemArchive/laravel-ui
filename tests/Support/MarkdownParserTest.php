@@ -286,6 +286,56 @@ HTML;
     expect(MarkdownParser::basic($markdown))->toBe($html);
 });
 
+it('handles line breaks inside html tags', function () {
+    $markdown = <<<MARKDOWN
+<strong>a text with multiple
+line breaks
+
+
+inside a tag</strong>
+
+<ul>
+<li>list items with a line
+
+break
+</li>
+<li>regular</li>
+
+</ul>
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><strong>a text with multiple<br />line breaks<br /><br /><br />inside a tag</strong></p>
+<ul>
+<li>list items with a line<br /><br />break<br /></li>
+<li>regular</li>
+</ul>
+
+HTML;
+
+    $html = <<<HTML
+<p><strong>a text with multiple<br />
+line breaks<br />
+<br />
+<br />
+inside a tag</strong></p>
+<ul>
+<li>list items with a line<br />
+<br />
+break<br /></li>
+<li>regular</li>
+</ul>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
 
 it('accepts `b` and `strong` tags', function () {
     $markdown = <<<MARKDOWN
