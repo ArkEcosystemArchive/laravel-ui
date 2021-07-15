@@ -31,8 +31,8 @@ const repositionDropdowns = () => {
     }
 };
 
-if (document.readyState !== 'loading') {
+if (document.readyState !== "loading") {
     repositionDropdowns();
 } else {
-    document.addEventListener('DOMContentLoaded', repositionDropdowns);
+    document.addEventListener("DOMContentLoaded", repositionDropdowns);
 }
