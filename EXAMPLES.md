@@ -584,3 +584,86 @@ Here follow you can see an example on how to use it:
 |---|---|---|---|
 | src | The source of the font file | yes | |
 | preconnect | The source of the css file linked to the font itself. Can be different from the font source. | no | null |
+
+### Slider
+
+Used for sliding different elements (e.g. images).
+
+```
+<x-ark-slider
+    id="news-articles"
+    title="News Articles"
+    title-tooltip="See all the latest articles here"
+    view-all-url="{{ $route }}"
+    space-between="24"
+    hide-navigation
+    top-pagination
+    breakpoints="[
+        '0' => [
+            'slidesPerGroup' => 1,
+            'slidesPerView' => 1,
+        ],
+        '768' => [
+            'slidesPerGroup' => 2,
+            'slidesPerView' => 2,
+        ],
+        '1280' => [
+            'slidesPerGroup' => 3,
+            'slidesPerView' => 3,
+        ],
+    ]"
+>
+    <x-ark-slider-slide>
+        <img src="logo.png" />
+    </x-ark-slider-slide>
+</x-ark-slider>
+```
+
+| Parameter       | Description                                                          | Required |
+|-----------------|----------------------------------------------------------------------|----------|
+| id              | Used for initialising the slider                                     | yes      |
+| title           | Text used for the slider title [null]                                | no       |
+| titleClass      | CSS classes for the title text if provided ['text-2xl']              | no       |
+| titleTooltip    | Tooltip to be shown next to the title [null]                         | no       |
+| viewAllUrl      | URL used to navigate to a dedicated page [null]                      | no       |
+| viewAllClass    | CSS classes for view all text ['']                                   | no       |
+| hideNavigation  | Option to hide navigation arrows on the left & right [false]         | no       |
+| hideBullets     | Option to hide pagination bullets [false]                            | no       |
+| topPagination   | Show pagination at the top instead of the bottom [false]             | no       |
+| paginationClass | CSS classes for pagination bullets ['']                              | no       |
+| rows            | How many rows the slider consists of. Only used if                   | no       |
+|                 |   breakpoints are not specified. [1]                                 |          |
+| columns         | How many columns the slider consists of. Only used if                | no       |
+|                 |   breakpoints are not specified. [5]                                 |          |
+| breakpoints     | Allow more advanced overriding of breakpoints [null]                 | no       |
+| spaceBetween    | How much space (in pixels) to have between each slide [0]            | no       |
+| loop            | Allow looping from start to end and vice versa [false]               | no       |
+| allowTouch      | Used for mobile [true]                                               | no       |
+| autoplay        | Enable automatic sliding [false]                                     | no       |
+| autoplayDelay   | How long to wait on each slider when autoplay is enabled [3000]      | no       |
+| hideViewAll     | Option to hide the view all text [false]                             | no       |
+| shadowSpacing   | Whether the slider should allow spacing for shadows [false]          | no       |
+| delayInit       | Delays initialisation of the slider. See below for example [false]   | no       |
+
+#### Delayed Initialisation Example (Alpine)
+
+```
+<div x-data="{}">
+    <a
+        class="link"
+        @click="$nextTick(() => { window.sliders['news-articles'].init() });"
+    >
+        Initialise Slider
+    </a>
+
+    <x-ark-slider
+        id="news-articles"
+        title="News Articles"
+        delay-init
+    >
+        <x-ark-slider-slide>
+            <img src="logo.png" />
+        </x-ark-slider-slide>
+    </x-ark-slider>
+</div>
+```
