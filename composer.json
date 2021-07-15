@@ -22,8 +22,7 @@
         "pragmarx/google2fa-laravel": "^1.3",
         "spatie/laravel-schemaless-attributes": "^1.8",
         "spatie/laravel-flash": "^1.7",
-        "ruafozy/mersenne-twister": "^1.3",
-        "lukeraymonddowning/honey": "^0.3.4"
+        "ruafozy/mersenne-twister": "^1.3"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
