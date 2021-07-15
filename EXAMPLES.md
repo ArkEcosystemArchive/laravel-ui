@@ -647,23 +647,30 @@ Used for sliding different elements (e.g. images).
 
 #### Delayed Initialisation Example (Alpine)
 
+We use `$nextTick` here to make sure the UI is updated prior to initialising our slider, otherwise it may trigger too quickly.
+
 ```
-<div x-data="{}">
+<div x-data="{ hidden: true }">
     <a
         class="link"
-        @click="$nextTick(() => { window.sliders['news-articles'].init() });"
+        @click="
+            hidden = false;
+            $nextTick(() => { window.sliders['news-articles'].init() });
+        "
     >
         Initialise Slider
     </a>
 
-    <x-ark-slider
-        id="news-articles"
-        title="News Articles"
-        delay-init
-    >
-        <x-ark-slider-slide>
-            <img src="logo.png" />
-        </x-ark-slider-slide>
-    </x-ark-slider>
+    <div x-bind:class="{ 'hidden': hidden }">
+        <x-ark-slider
+            id="news-articles"
+            title="News Articles"
+            delay-init
+        >
+            <x-ark-slider-slide>
+                <img src="logo.png" />
+            </x-ark-slider-slide>
+        </x-ark-slider>
+    </div>
 </div>
 ```
