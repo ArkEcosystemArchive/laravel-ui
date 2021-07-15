@@ -589,7 +589,7 @@ Here follow you can see an example on how to use it:
 
 Used for sliding different elements (e.g. images).
 
-```html
+```blade
 <x-ark-slider
     id="news-articles"
     title="News Articles"
@@ -647,7 +647,7 @@ Used for sliding different elements (e.g. images).
 
 We use `$nextTick` here to make sure the UI is updated prior to initialising our slider, otherwise it may trigger too quickly.
 
-```html
+```blade
 <div x-data="{ hidden: true }">
     <a
         class="link"
