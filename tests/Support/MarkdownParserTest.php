@@ -133,6 +133,104 @@ HTML;
     expect(MarkdownParser::full($markdown))->toBe($html);
 });
 
+it('accepts `ol` lists', function () {
+    $markdown = <<<MARKDOWN
+<ol>
+    <li>Item 1</li>
+  <li>Item 2</li>
+    <li>Item 3</li>
+</ol>
+
+1. item a
+2. item b
+3. item c
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<ol>
+    <li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ol>
+<ol>
+<li>item a</li>
+<li>item b</li>
+<li>item c</li>
+</ol>
+
+HTML;
+
+    $html = <<<HTML
+<ol>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ol>
+<ol>
+<li>item a</li>
+<li>item b</li>
+<li>item c</li>
+</ol>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
+it('accepts `ul` lists', function () {
+    $markdown = <<<MARKDOWN
+<ul>
+    <li>Item 1</li>
+  <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+- item a
+- item b
+- item c
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<ul>
+    <li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+<ul>
+<li>item a</li>
+<li>item b</li>
+<li>item c</li>
+</ul>
+
+HTML;
+
+    $html = <<<HTML
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+<ul>
+<li>item a</li>
+<li>item b</li>
+<li>item c</li>
+</ul>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
 
 it('accepts `b` and `strong` tags', function () {
     $markdown = <<<MARKDOWN
@@ -157,4 +255,49 @@ HTML;
         ->andReturn($convertedHtml);
 
     expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
+it('accepts `i` and `em` tags', function () {
+    $markdown = <<<MARKDOWN
+<i>Italic 1</i>
+
+<em>Italic 2</em>
+
+**Italic 3**
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><i>Italic 1</i></p>
+<p><em>Italic 2</em></p>
+<p><i>Italic 3</i></p>
+
+HTML;
+
+    $html = $convertedHtml;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
+it('accepts `ins` or underline on `full`', function () {
+    $markdown = <<<MARKDOWN
+<ins>Underline</ins>
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><ins>Underline</ins></p>
+
+HTML;
+
+    $html = $convertedHtml;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::full($markdown))->toBe($html);
 });

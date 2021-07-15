@@ -78,9 +78,8 @@ final class MarkdownParser
         'code',
         'tr',
         'td',
-        // underline variants
+        // underline
         'ins',
-        'u',
         // bold variants
         'strong',
         'b',
