@@ -231,6 +231,61 @@ HTML;
     expect(MarkdownParser::basic($markdown))->toBe($html);
 });
 
+it('handles html paragraphs and line breaks', function () {
+    $markdown = <<<MARKDOWN
+<p>
+custom paragraph
+with some line breaks
+
+
+and even double breaks
+</p>
+
+
+<p>Single line</p>
+
+<p>Paragraph with <br /> explicit line breaks
+
+Regular markdown paragraph
+
+regular markdown...
+...line break
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><br /> custom paragraph<br /> with some line breaks<br /> <br /> <br /> and even double breaks<br /></p>
+<p>Single line</p>
+<p>Paragraph with <br /> explicit line breaks
+<p>Regular markdown paragraph</p>
+<p>regular markdown…
+…line break</p>
+
+HTML;
+
+    $html = <<<HTML
+<p><br />
+custom paragraph<br />
+with some line breaks<br />
+<br />
+<br />
+and even double breaks<br /></p>
+<p>Single line</p>
+<p>Paragraph with<br />
+explicit line breaks</p>
+<p>Regular markdown paragraph</p>
+<p>regular markdown…<br />
+…line break</p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
 
 it('accepts `b` and `strong` tags', function () {
     $markdown = <<<MARKDOWN
