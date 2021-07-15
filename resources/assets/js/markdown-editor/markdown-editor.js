@@ -1,4 +1,6 @@
 import Editor from "@toast-ui/editor";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import "codemirror/lib/codemirror.css";
 
 import {
     simplecastPlugin,
@@ -148,6 +150,11 @@ const MarkdownEditor = (
                 },
                 toolbarItems: this.toolbarItems,
                 plugins: this.getPlugins(),
+                // We dont need any "sanitized" HTML since we dont use the `preview`
+                // mode, so doing this:
+                // 1. Prevents security issues
+                // 2. Makes the editor way faster
+                customHTMLSanitizer: () => "",
                 hooks: {
                     addImageBlobHook: (blob, callback) => {
                         const alt =
@@ -207,8 +214,6 @@ const MarkdownEditor = (
             this.addIconsToTheButtons();
 
             this.initOverlay();
-
-            this.updatePreviewClasses();
 
             this.removeScrollSyncButton();
 
@@ -366,12 +371,6 @@ const MarkdownEditor = (
             }
         });
     },
-    updatePreviewClasses() {
-        const ui = this.editor.getUI();
-
-        ui.el.querySelector(".tui-editor-contents").className =
-            "tui-editor-contents documentation-content text-theme-secondary-700";
-    },
     initOverlay() {
         this.editor.eventManager.addEventType("popupShown");
         this.editor.eventManager.addEventType("popupHidden");
@@ -426,3 +425,4 @@ const MarkdownEditor = (
 });
 
 window.MarkdownEditor = MarkdownEditor;
+{"mode":"full","isActive":false}
