@@ -57,7 +57,7 @@ final class Avatar
                 $shapeString .= '<circle r="' . $r . '" cx="' . $cx . '" cy="' . $cy . '" fill="' . $fill . '"/>';
             }
 
-            $shortenedIdentifier = Str::limit($seed, 2, '');
+            $shortenedIdentifier = Str::upper(Str::limit($seed, 2, ''));
 
             $letters = $withLetters ?
                 "<text x='50%' y='50%' stroke-width='2' dominant-baseline='middle' text-anchor='middle' letter-spacing='2' style='font-size : 24; fill: #fff; stroke: #fff;'>{$shortenedIdentifier}</text>" :
