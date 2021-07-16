@@ -55,7 +55,7 @@
                             {{ $attribute }}="{{ $attributeValue }}"
                         @endforeach
                     @endif
-                    class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-2
+                    class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-3
                         focus:outline-none transition duration-150 ease-in-out h-full
                         @if(optional(Route::current())->getName() === $navItem['route'])
                             border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
