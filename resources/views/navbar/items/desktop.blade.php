@@ -50,7 +50,12 @@
             @else
                 <a
                     href="{{ route($navItem['route'], $navItem['params'] ?? []) }}"
-                    class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2
+                    @if (array_key_exists('attributes', $navItem))
+                        @foreach($navItem['attributes'] as $attribute => $attributeValue)
+                            {{ $attribute }}="{{ $attributeValue }}"
+                        @endforeach
+                    @endif
+                    class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-2
                         focus:outline-none transition duration-150 ease-in-out h-full
                         @if(optional(Route::current())->getName() === $navItem['route'])
                             border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
@@ -61,7 +66,11 @@
                     @click="openDropdown = null;"
                     dusk='navbar-{{ Str::slug($navItem['label']) }}'
                 >
-                    {{ $navItem['label'] }}
+                    <span>{{ $navItem['label'] }}</span>
+
+                    @if (array_key_exists('icon', $navItem))
+                        <x-ark-icon class="text-theme-primary-600" size="sm" :name="$navItem['icon']" />
+                    @endif
                 </a>
             @endisset
         @endforeach
