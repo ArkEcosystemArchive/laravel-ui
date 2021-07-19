@@ -13,9 +13,9 @@
         @include('ark::navbar.profile')
     @endisset
 @else
-    <div class="flex items-center sm:ml-3 sm:space-x-4">
+    <div class="flex items-center sm:space-x-4">
         @if(Route::has('register'))
-            <a href="{{ route('register') }}" class="hidden md:block link">@lang('actions.sign_up')</a>
+            <a href="{{ route('register') }}" class="hidden md:block link font-semibold">@lang('actions.sign_up')</a>
         @endif
 
         @if(Route::has('login'))
