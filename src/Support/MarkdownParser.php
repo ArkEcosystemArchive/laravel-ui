@@ -50,7 +50,7 @@ final class MarkdownParser
     ];
 
     /**
-     * Tags that will be keeped when using the basic markdown.
+     * Tags that will be kept when using the basic markdown.
      */
     private static array $basicAllowedTags = [
         'a',
@@ -68,7 +68,7 @@ final class MarkdownParser
     ];
 
     /**
-     * Tags that will be keeped when using the full markdown.
+     * Tags that will be kept when using the full markdown.
      */
     private static array $fullAllowedTags = [
         'h2',
