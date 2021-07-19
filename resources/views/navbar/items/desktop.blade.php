@@ -33,7 +33,12 @@
                         <div class="flex-shrink-0 w-56 border-r border-theme-secondary-300">
                             @foreach ($navItem['children'] as $childNavItem)
                                 <div @mouseenter="selectedChild = {{ json_encode($childNavItem) }}">
-                                    <x-ark-sidebar-link :route="$childNavItem['route']" :name="$childNavItem['label']" :params="$childNavItem['params'] ?? []"/>
+                                    <x-ark-sidebar-link
+                                        :route="$childNavItem['route'] ?: null"
+                                        :name="$childNavItem['label']"
+                                        :params="$childNavItem['params'] ?? []"
+                                        :href="$childNavItem['href'] ?: null"
+                                    />
                                 </div>
                             @endforeach
                         </div>
@@ -49,7 +54,11 @@
                 </div>
             @else
                 <a
-                    href="{{ route($navItem['route'], $navItem['params'] ?? []) }}"
+                    @if (array_key_exists('href', $navItem))
+                        href="{{ $navItem['href'] }}"
+                    @else
+                        href="{{ route($navItem['route'], $navItem['params'] ?? []) }}"
+                    @endif
                     @if (array_key_exists('attributes', $navItem))
                         @foreach($navItem['attributes'] as $attribute => $attributeValue)
                             {{ $attribute }}="{{ $attributeValue }}"
@@ -57,7 +66,7 @@
                     @endif
                     class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-3
                         focus:outline-none transition duration-150 ease-in-out h-full
-                        @if(optional(Route::current())->getName() === $navItem['route'])
+                        @if(array_key_exists('route', $navItem) && optional(Route::current())->getName() === $navItem['route'])
                             border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
                         @else
                             border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400

@@ -33,7 +33,8 @@
 
         @foreach ($navigation as $navItem)
             <x-ark-sidebar-link
-                :route="$navItem['route']"
+                :href="$navItem['href'] ?? null"
+                :route="$navItem['route'] ?? null"
                 :name="$navItem['label']"
                 :params="$navItem['params'] ?? []"
                 :icon="isset($navItem['icon']) ? $navItem['icon'] : false"
