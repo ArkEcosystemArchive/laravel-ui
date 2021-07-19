@@ -6,8 +6,9 @@ use Livewire\Livewire;
 it('can_see_a_toast', function () {
     Livewire::test(Toast::class)
         ->emit('toastMessage', ['Hello', 'info'])
-        ->assertSee('Hello')
-        ->assertSee('info');
+        ->assertSee('Hello') // body
+        ->assertSee('button') // close button
+        ->assertSee('span'); // icon
 });
 
 it('can_dismiss_a_toast', function () {
@@ -15,9 +16,12 @@ it('can_dismiss_a_toast', function () {
         ->set('toasts', ['test123' => [
             'message' => 'Hello',
             'type'    => 'info',
+            'style'   => 'regular',
         ]])
         ->assertSee('Hello')
-        ->assertSee('info')
+        ->assertSee('button')
+        ->assertSee('span')
         ->call('dismissToast', 'test123')
-        ->assertDontSee('Hello');
+        ->assertDontSee('button')
+        ->assertDontSee('span');
 });

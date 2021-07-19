@@ -1,78 +1,63 @@
 .toast {
-    @apply text-sm text-theme-secondary-900 select-none p-4 rounded-xl;
+    @apply relative inline-flex flex-col items-center max-w-4xl p-4 text-sm select-none text-theme-secondary-900 dark:text-theme-secondary-500 dark:bg-theme-secondary-800 sm:flex-row sm:space-x-4 rounded-xl;
+}
+
+.toast-body {
+    @apply mt-4 text-center sm:pr-6 sm:mt-0 sm:text-left;
+}
+
+.toast-icon {
+    @apply flex items-center justify-center flex-shrink-0 text-white rounded w-11 h-11;
+}
+
+.toast-button {
+    @apply absolute top-0 right-0 flex items-center justify-center flex-shrink-0 m-4 rounded sm:m-0 sm:top-auto sm:right-auto sm:relative w-11 h-11 text-theme-secondary-900;
 }
 
 .toast-info {
-    @apply bg-theme-info-100 toast;
+    @apply bg-theme-primary-50;
 }
-.toast-info .toast-close {
-    @apply text-theme-info-600;
-}
-.toast-info .toast-close:hover {
-    @apply text-theme-info-700;
-}
-
-.toast-success {
-    @apply bg-theme-success-100 toast;
-}
-.toast-success .toast-close {
-    @apply text-theme-success-600;
-}
-.toast-success .toast-close:hover {
-    @apply text-theme-success-700;
-}
-
 .toast-warning {
-    @apply bg-theme-warning-100 toast;
+    @apply bg-theme-warning-50;
 }
-.toast-warning .toast-close {
-    @apply text-theme-warning-600;
-}
-.toast-warning .toast-close:hover {
-    @apply text-theme-warning-700;
-}
-
-.toast-error,
 .toast-danger {
-    @apply bg-theme-danger-100 toast;
+    @apply bg-theme-danger-50;
 }
-.toast-error .toast-close,
-.toast-danger .toast-close {
-    @apply text-theme-danger-400;
-}
-.toast-error .toast-close:hover,
-.toast-danger .toast-close:hover {
-    @apply text-theme-danger-600;
-}
-
 .toast-hint {
-    @apply bg-theme-secondary-100 toast;
+    @apply bg-theme-hint-50;
 }
-.toast-hint .toast-close {
-    @apply text-theme-secondary-600;
-}
-.toast-hint .toast-close:hover {
-    @apply text-theme-secondary-700;
+.toast-success {
+    @apply bg-theme-success-50;
 }
 
-.toast-close {
-    @apply w-7 h-7 cursor-pointer;
+.toast-info .toast-icon {
+    @apply bg-theme-primary-600;
+}
+.toast-warning .toast-icon {
+    @apply bg-theme-warning-600;
+}
+.toast-danger .toast-icon {
+    @apply bg-theme-danger-400;
+}
+.toast-hint .toast-icon {
+    @apply bg-theme-hint-500;
+}
+.toast-success .toast-icon {
+    @apply bg-theme-success-600;
 }
 
-.toast-info a,
-.toast-success a,
-.toast-warning a,
-.toast-error a,
-.toast-danger a,
-.toast-hint a {
-    @apply font-semibold transition-default;
+.toast-info .toast-button {
+    @apply bg-theme-primary-100 hover:bg-theme-primary-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
 }
-
-.toast-info a:hover,
-.toast-success a:hover,
-.toast-warning a:hover,
-.toast-error a:hover,
-.toast-danger a:hover,
-.toast-hint a:hover {
-    @apply underline;
+.toast-warning .toast-button {
+    @apply bg-theme-warning-100 hover:bg-theme-warning-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
+}
+.toast-danger .toast-button {
+    @apply bg-theme-danger-100 hover:bg-theme-danger-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
+}
+.toast-hint .toast-button {
+    @apply bg-theme-hint-100 hover:bg-theme-hint-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
+}
+.toast-success .toast-button {
+    @apply bg-theme-success-100 hover:bg-theme-success-200 dark:bg-theme-secondary-900 dark:text-theme-secondary-600 dark:hover:bg-theme-secondary-500 dark:hover:text-theme-secondary-400;
 }

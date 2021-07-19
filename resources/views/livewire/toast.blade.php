@@ -1,4 +1,4 @@
-<div class="grid fixed right-0 bottom-0 z-50 grid-rows-1 gap-2 mr-1 mb-5" style="min-width: 250px; max-width: 350px">
+<div class="flex fixed right-0 bottom-0 z-50 flex-col items-end p-5 space-y-3">
     @foreach ($toasts as $key => $toast)
         <div
             class="z-20 cursor-pointer"
@@ -9,7 +9,7 @@
         >
             <x-ark-toast :type="$toast['type']" wire-close="dismissToast('{{ $key }}')">
                 <x-slot name='message'>
-                    <div class="px-3">{!! $toast['message'] !!}</div>
+                    {!! $toast['message'] !!}
                 </x-slot>
             </x-ark-toast>
         </div>
