@@ -29,15 +29,15 @@ $backdropClass = [
         @include('ark::navbar.profile')
     @endisset
 @else
-    <span class="block border-l border-theme-secondary-300 dark:border-theme-secondary-800 ml-7 pr-7 h-7"></span>
+    <span class="block pr-7 ml-7 h-7 border-l border-theme-secondary-300 dark:border-theme-secondary-800"></span>
 
     <div class="flex items-center">
         @if(Route::has('register'))
-            <a href="{{ route('register') }}" class="hidden sm:block link mr-4">@lang('actions.sign_up')</a>
+            <a href="{{ route('register') }}" class="hidden mr-4 sm:block link">@lang('actions.sign_up')</a>
         @endif
 
         @if(Route::has('login'))
-            <a href="{{ route('login') }}" class="button-secondary ml-2">@lang('actions.sign_in')</a>
+            <a href="{{ route('login') }}" class="ml-2 button-secondary">@lang('actions.sign_in')</a>
         @endif
     </div>
 @endauth
