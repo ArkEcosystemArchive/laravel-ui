@@ -17,8 +17,8 @@ use Exception;
 final class MarkdownParser
 {
     /**
-     * Tags that are allowed to be used globally with the allowed attributes
-     * per tag.
+     * Only this tags and attributes will be allowed (globally) when working with
+     * markdown.
      */
     private static array $validUserTagsAndAttributes = [
         'h2' => [],
