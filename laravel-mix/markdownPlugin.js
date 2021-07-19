@@ -10,14 +10,28 @@ class MarkdownPlugin {
     }
 
     webpackConfig(webpackConfig) {
-        const  index = webpackConfig.plugins.findIndex(plugin => (plugin.constructor.name === 'WebpackNotifierPlugin' || plugin.options?.alwaysNotify !== undefined));
+        const  index = webpackConfig.plugins.findIndex(plugin => this.isWebpackNotifierPlugin(plugin));
+
+        if (index <= -1) {
+            return;
+        }
 
         webpackConfig.plugins[index].options.excludeWarnings = true;
+
         if (!webpackConfig.stats.warningsFilter) {
             webpackConfig.stats.warningsFilter = [];
         }
 
         webpackConfig.stats.warningsFilter.push(/@charset must precede all other statements/);
+    }
+
+    isWebpackNotifierPlugin(plugin)
+    {
+        if (plugin.constructor.name === 'WebpackNotifierPlugin') {
+            return true;
+        }
+
+        return !! (plugin.options && plugin.options.alwaysNotify);
     }
 }
 
