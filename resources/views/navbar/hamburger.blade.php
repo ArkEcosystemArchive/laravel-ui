@@ -24,7 +24,11 @@
         </span>
 
         @isset($allNotificationsIndicator)
-        {{ $allNotificationsIndicator }}
+            {{ $allNotificationsIndicator }}
         @endisset
     </button>
 </div>
+
+<span class="block border-l border-theme-secondary-300 dark:border-theme-secondary-800 ml-7 pr-7 h-7"></span>
+
+

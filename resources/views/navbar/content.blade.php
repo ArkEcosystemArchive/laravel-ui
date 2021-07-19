@@ -1,19 +1,3 @@
-@props([
-    'breakpoint' => 'md',
-])
-
-@php
-// Exact class strings required to prevent purging
-$backdropClass = [
-    'sm' => 'sm:hidden',
-    'md' => 'md:hidden',
-    'lg' => 'lg:hidden',
-    'xl' => 'xl:hidden',
-][$breakpoint ?? 'md'];
-
-@endphp
-
-
 @auth
     @isset($navbarNotifications)
         {{ $navbarNotifications }}
@@ -29,15 +13,13 @@ $backdropClass = [
         @include('ark::navbar.profile')
     @endisset
 @else
-    <span class="block border-l border-theme-secondary-300 dark:border-theme-secondary-800 ml-7 pr-7 h-7"></span>
-
-    <div class="flex items-center">
+    <div class="flex items-center sm:ml-3 sm:space-x-4">
         @if(Route::has('register'))
-            <a href="{{ route('register') }}" class="hidden sm:block link mr-4">@lang('actions.sign_up')</a>
+            <a href="{{ route('register') }}" class="hidden md:block link">@lang('actions.sign_up')</a>
         @endif
 
         @if(Route::has('login'))
-            <a href="{{ route('login') }}" class="button-secondary ml-2">@lang('actions.sign_in')</a>
+            <a href="{{ route('login') }}" class="button-secondary">@lang('actions.sign_in')</a>
         @endif
     </div>
 @endauth
