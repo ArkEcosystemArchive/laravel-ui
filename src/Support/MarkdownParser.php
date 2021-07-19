@@ -16,6 +16,10 @@ use Exception;
 
 final class MarkdownParser
 {
+    /**
+     * Tags that are allowed to be used globally with the allowed attributes
+     * per tag.
+     */
     private static array $validUserTagsAndAttributes = [
         'h2' => [],
         'h3' => [],
@@ -45,6 +49,9 @@ final class MarkdownParser
         'pre' => [],
     ];
 
+    /**
+     * Tags that will be keeped when using the basic markdown.
+     */
     private static array $basicAllowedTags = [
         'a',
         'p',
@@ -60,6 +67,9 @@ final class MarkdownParser
         'i',
     ];
 
+    /**
+     * Tags that will be keeped when using the full markdown.
+     */
     private static array $fullAllowedTags = [
         'h2',
         'h3',
@@ -92,7 +102,7 @@ final class MarkdownParser
     ];
 
     /**
-     * The HTML string that the LinkRenderer componente creates (with regex on
+     * The HTML string that the LinkRenderer componente creates (with regex for
      * the dynamic content)
      */
     protected static string $linkRendererTemplate = <<<EOD
@@ -124,6 +134,10 @@ final class MarkdownParser
     </span>
 EOD;
 
+    /**
+     * Temporaly will hold the custom components content that is being stripped
+     * while the markdown is parsed.
+     */
     private static array $replaced = [];
 
     private MarkdownConverterInterface $markdownConverter;
@@ -160,7 +174,6 @@ EOD;
             return '';
         }
 
-
         $html = static::getHtml($text);
 
         $html = static::removeUnallowedHTMLTags($html, static::$fullAllowedTags);
@@ -171,8 +184,9 @@ EOD;
 
     /**
      * The HTML converter keeps the line breaks (`\n`) that are inside a
-     * HTML tag like a paragraph (`<p>`). This method replaces every line break
-     * for the HTML `<br />` tag.
+     * HTML tag like a paragraph (`<p>`) and that creates unexpected HTML when
+     * converted from mardown to HTML.
+     * This method replaces every line break for the HTML `<br />` tag.
      */
     private static function replaceLineBreaksInsideTagsForBr(string $text): string
     {
@@ -189,8 +203,8 @@ EOD;
     }
 
     /**
-     * Replaces every paragraph HTML Tag for the markdown equivalent (two break
-     * lines)
+     * Replaces every user HTML Paragraph Tag for the markdown equivalent: Two
+     * break lines. (So we can work with normalized text).
      */
     private static function replaceParagraphsForMarkdown(string $text): string
     {
@@ -204,8 +218,9 @@ EOD;
     }
 
     /**
-     * Searchs for every HTML `simple` tag (a, strong, etc) and wraps it in a
-     * paragraph (`p`) in order to have normalized data
+     * Searchs for every HTML `inline` tag (a, strong, etc) and wraps it in a
+     * paragraph (`p`). Prevents unexpected HTML and unexpected stripped spaces
+     * when converting from markdown to HTML.
      */
     private static function wrapBasicTagsInAParagraph(string $text): string
     {
@@ -218,7 +233,7 @@ EOD;
 
     /**
      * Searchs for every HTML `img` tag and wraps it in a paragraph (`p`) in order
-     * to have normalized data
+     * to have normalized data.
      */
     private static function wrapImagesTagsInAParagraph(string $text): string
     {
@@ -232,7 +247,8 @@ EOD;
     }
 
     /**
-     * Normalizes and prepares both HTML and markdown to be converted to HTML
+     * Takes both user HTML and markdown content and normalizes it to preparate
+     * it to be converted to HTML.
      */
     private static function normalizeHTMLAndMarkdown(string $text): string
     {
@@ -245,6 +261,9 @@ EOD;
         return static::replaceParagraphsForMarkdown($markdown);
     }
 
+    /**
+     * Uses the markdown converter to convert the markdown content to HTML.
+     */
     private static function convertMarkdownToHtml(string $markdown): string
     {
         $html = (new static)->getMarkdownCoverter()->convertToHtml($markdown);
@@ -252,6 +271,9 @@ EOD;
         return static::replaceLineBreaksInsideTagsForBr($html);
     }
 
+    /**
+     * Removes all the tags that are not allowed to be used in the HTML.
+     */
     private static function removeUnallowedHTMLTags(string $html, array $tags): string
     {
         $allowedTagsStr = '<' . implode('><', $tags) . '>';
@@ -259,7 +281,14 @@ EOD;
         return strip_tags($html, $allowedTagsStr);
     }
 
-    private static function buildRegexFromTemplate($template)
+    /**
+     * This method, converts a single HTML template from the `$linkRendererTemplate`
+     * property of this class into a valid regex string.
+     * That property is _mostly_ the HTML that the Laravel component
+     * creates. We use an HTML template because it is easy to read, debug,
+     * update or add a new component than a raw regex.
+     */
+    private static function buildRegexFromTemplate($template): string
     {
         // Replaces a group of white-space chars with a single regex
         $template = preg_replace('/(\s+)/m', '\\\\s*', $template);
@@ -275,7 +304,13 @@ EOD;
         return '/\s*' . $template . '/m';
     }
 
-
+    /**
+     * Uses regex to find custom components and replace them with the temporal
+     * placeholder. The idea is to prevent that the filters affect the custom
+     * components.
+     * Once the content is parsed, the components will replace the placeholders
+     * again.
+     */
     private static function temporaryStripAndStoreMarkdownComponents(string $html): string
     {
         $componentsRegexs = [
@@ -297,6 +332,9 @@ EOD;
         return $html;
     }
 
+    /**
+     * Replaces the temporal placeholders with the original components.
+     */
     private static function rollbackMarkdownComponents(string $html): string
     {
         foreach(static::$replaced as $id => $originalHTML)
@@ -308,6 +346,9 @@ EOD;
         return $html;
     }
 
+    /**
+     * Removes every used input that is not expected
+     */
     private static function cleanHtml(string $html): string
     {
         $html = static::temporaryStripAndStoreMarkdownComponents($html);
@@ -330,11 +371,18 @@ EOD;
         return $safeHtml;
     }
 
+    /**
+     * Used for basic markdown. Encodes the `#` character so its rendered as it
+     * is instead of being converted to a header.
+     */
     private static function encodeMarkdownHeaders(string $text): string
     {
         return str_replace('#', '&#35;', $text);
     }
 
+    /**
+     * Removes every HTML attribute that is not allowed.
+     */
     private static function removeUnallowedHTMLAttributes(string $html): string
     {
         $tidy = new tidy();
@@ -368,12 +416,18 @@ EOD;
         ], 'utf8');
     }
 
+    /**
+     * Returns all the nodes that have attributes
+     */
     private static function getAttributesNodes(DOMDocument $dom): DOMNodeList
     {
         $xpath = new DOMXPath($dom);
         return $xpath->query('//@*');
     }
 
+    /**
+     * Verifies if the attribute is allowed for the parent node tag name.
+     */
     private static function isAttributeAllowedForTag(DOMAttr $attribute): bool
     {
         return !in_array(
