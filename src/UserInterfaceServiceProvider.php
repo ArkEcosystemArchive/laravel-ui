@@ -3,6 +3,7 @@
 namespace ARKEcosystem\UserInterface;
 
 use ARKEcosystem\UserInterface\Components\FlashMessage;
+use ARKEcosystem\UserInterface\Components\HoneyPot;
 use ARKEcosystem\UserInterface\Components\Toast;
 use ARKEcosystem\UserInterface\Http\Controllers\ImageCropController;
 use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
@@ -276,6 +277,9 @@ class UserInterfaceServiceProvider extends ServiceProvider
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');
+
+        // Honey Pot
+        Blade::component('honey-pot', HoneyPot::class);
     }
 
     /**

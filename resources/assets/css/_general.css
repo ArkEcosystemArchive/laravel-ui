@@ -9,7 +9,7 @@
 
 /* Navbar container */
 .navbar-container {
-    @apply px-8 py-0.5;
+    @apply px-8;
 }
 
 @screen sm {

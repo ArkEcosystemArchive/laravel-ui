@@ -129,26 +129,22 @@ yarn add @toast-ui/editor@^2.5.2 codemirror@^5.62.0
 
 Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
 
-3. Import the markdown css file in your main file.
-
-```css
-@import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
-```
-
-4. Compile the markdown scripts into the public folder:
+3. Compile the markdown assets into the public folder:
 
 ```js
 mix
     .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
+    // The `tailwind.config.js` file may be different depending on the project
+    .postCss('vendor/arkecosystem/ui/resources/assets/css/markdown-editor.css', 'public/css', [importCss(), tailwindCss('tailwind.config.js')])
 ```
 
-5. Add the markdown component to your form
+4. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-6. You can change the height and the toolbar preset:
+5. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -157,7 +153,7 @@ mix
 />
 ```
 
-7. You can choose to limit the characters to be inserted:
+6. You can choose to limit the characters to be inserted:
 
 ```html
 <x-ark-markdown name="about"
@@ -167,7 +163,7 @@ mix
 
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
-8. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
+7. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
 
 ```html
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -266,6 +262,26 @@ Note: You can change the the URL by using the `endpoint` prop.
 ```
 
 6. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
+
+### Honeypot
+
+1. Install dependency
+
+```bash
+composer require lukeraymonddowning/honey
+```
+
+2. Setup honeypot
+
+```bash
+php artisan honey:install
+```
+
+3. Database Migration
+
+```bash
+php artisan migrate
+```
 
 #### Livewire modals
 
@@ -695,6 +711,13 @@ This approach is recommended to test out smaller changes. You can publish the vi
 When you create a `views/components` folder, you can create new blade files inside it and they will automatically become available through `<x-your-component>` to be used in your project. This way you can create new components, test them, and then copy them to the `arkecosystem/ui` repo when finished.
 
 Afterwards you can add new components to the local package and use it in your project for testing.
+
+### Icons
+
+If you need to add, replace or delete an icon:
+- move the new icon in or remove it from `/resources/assets/icons`
+- run `yarn run generate-icon-preview`
+- open `icons.html` and check if the icon is present
 
 ## Tailwind Configuration
 
