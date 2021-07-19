@@ -147,6 +147,11 @@ const MarkdownEditor = (
                     focus: this.onFocus,
                 },
                 toolbarItems: this.toolbarItems,
+                // We dont need any "sanitized" HTML since we dont use the `preview`
+                // mode, so doing this:
+                // 1. Prevents security issues
+                // 2. Makes the editor way faster
+                customHTMLSanitizer: () => "",
                 plugins: this.getPlugins(),
                 // We dont need any "sanitized" HTML since we dont use the `preview`
                 // mode, so doing this:
