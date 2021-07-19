@@ -102,7 +102,7 @@ final class MarkdownParser
     ];
 
     /**
-     * The HTML string that the LinkRenderer componente creates (with regex for
+     * The HTML string that the LinkRenderer component creates (+ regex for
      * the dynamic content)
      */
     protected static string $linkRendererTemplate = <<<EOD
@@ -272,7 +272,7 @@ EOD;
     }
 
     /**
-     * Removes all the tags that are not allowed to be used in the HTML.
+     * Removes all the tags that are not allowed to be used.
      */
     private static function removeUnallowedHTMLTags(string $html, array $tags): string
     {
@@ -360,6 +360,9 @@ EOD;
         return $html;
     }
 
+    /**
+     * Gets a clean, xss-safe HTML string from a markdown string.
+     */
     private static function getHtml(string $text): string
     {
         $markdown = static::normalizeHTMLAndMarkdown($text);
