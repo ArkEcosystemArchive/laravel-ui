@@ -337,7 +337,17 @@ EOD;
 
     private static function removeUnallowedHTMLAttributes(string $html): string
     {
+        $tidy = new tidy();
+
         $dom = new DOMDocument;
+
+        // Normalizes the HTML which reduce the possibility of having an unexpected
+        // exception in the DomDocument library because some bad HTML was found.
+        // Once the HTML is normalized, we will parse it again.
+        $html = $tidy->repairString($html, [
+            'output-xhtml' => true,
+            'show-body-only' => true,
+        ], 'utf8');
 
         try {
             // Needs a XML encoding declaration to ensure is treated as UTF-8
@@ -351,8 +361,6 @@ EOD;
         collect($attributes)
             ->filter(fn ($attribute) => static::isAttributeAllowedForTag($attribute))
             ->each(fn($node) => $node->parentNode->removeAttribute($node->nodeName));
-
-        $tidy = new tidy();
 
         return $tidy->repairString($dom->saveHTML(), [
             'output-xhtml' => true,
