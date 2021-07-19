@@ -35,7 +35,7 @@
                 @endisset
 
                 <div class="flex justify-end">
-                    <div class="flex flex-1 justify-end items-center sm:justify-between sm:items-stretch">
+                    <div class="flex flex-1 justify-end items-center">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
@@ -43,9 +43,9 @@
                         @endisset
                     </div>
 
-                    <div class="flex inset-y-0 right-0 items-center sm:static sm:inset-auto sm:ml-3">
+                    <div class="flex inset-y-0 right-0 items-center">
                         @if(is_array($navigation))
-                            @include('ark::navbar.hamburger')
+                            <x-ark-navbar-hamburger :breakpoint="$breakpoint ?? 'md'" />
                         @endif
 
                         @isset($content)

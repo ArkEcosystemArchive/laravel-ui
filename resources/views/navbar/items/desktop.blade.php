@@ -74,8 +74,6 @@
                 </a>
             @endisset
         @endforeach
-
-        <span class="ml-7 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
     </div>
 @else
     {{ $navigation }}
