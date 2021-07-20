@@ -33,7 +33,7 @@
         class="modal-content-wrapper @if($fixedPosition) md:mx-auto @else md:m-auto @endif w-full {{ $class }} {{ $widthClass }}"
         @if($style) style="{{ $style }}" @endif
     >
-        <div class="modal-content custom-scroll {{ $widthClass }}">
+        <div class="modal-content dropdown-scrolling {{ $widthClass }}">
             <div class="p-8 sm:p-10">
                 @if($wireClose)
                     <button

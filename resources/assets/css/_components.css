@@ -28,22 +28,22 @@
     content: "";
 }
 
-/* Custom scrollbar */
-.custom-scroll::-webkit-scrollbar {
+/** Dropdown Scrollbar **/
+.dropdown-scrolling::-webkit-scrollbar {
     @apply rounded-lg;
     width: 6px;
     height: 4px;
 }
 
-.custom-scroll::-webkit-scrollbar-track-piece:start {
+.dropdown-scrolling::-webkit-scrollbar-track-piece:start {
     background: transparent;
 }
 
-.custom-scroll::-webkit-scrollbar-thumb {
+.dropdown-scrolling::-webkit-scrollbar-thumb {
     @apply rounded-lg bg-theme-primary-200;
 }
 
-.custom-scroll {
+.dropdown-scrolling {
     scrollbar-color: #bad6f0 transparent;
 }
 
