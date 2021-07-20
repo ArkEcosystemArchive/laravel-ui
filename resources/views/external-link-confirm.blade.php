@@ -19,19 +19,19 @@
             return localStorage.getItem('has_disabled_link_warning') === 'true';
         }
     }"
-    class="inline-block items-center space-x-2 font-semibold break-all cursor-pointer link"
+    class="inline-block"
 >
     <a
         :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
         :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
         rel="noopener nofollow"
-        class="inline-flex items-center space-x-2 font-semibold whitespace-nowrap cursor-pointer link"
+        class="inline-flex items-center font-semibold whitespace-nowrap break-all cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
         <span>{{ $text ?? $slot ?? '' }}</span>
 
         @unless($noIcon)
-            <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 mr-2 ml-1 -mt-1" />
+            <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 ml-1 -mt-0.5" />
         @endunless
     </a>
 
