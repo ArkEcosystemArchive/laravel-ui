@@ -136,11 +136,11 @@
 
 /* Switch (toggle alternative) */
 .input-switch-button-left {
-    @apply translate-x-0 bg-theme-primary-600;
+    @apply translate-x-full bg-theme-primary-600;
 }
 
 .input-switch-button-right {
-    @apply translate-x-5 bg-theme-primary-600;
+    @apply translate-x-0 bg-theme-primary-600;
 }
 
 .input-switch-button-left:hover,
@@ -282,4 +282,10 @@
 /* Firefox */
 .hide-number-input-arrows input[type="number"] {
     -moz-appearance: textfield;
+}
+
+/* Hides native eye icon for revealing password */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
 }
