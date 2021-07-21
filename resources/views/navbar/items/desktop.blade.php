@@ -37,12 +37,12 @@
                                         :route="$childNavItem['route'] ?: null"
                                         :name="$childNavItem['label']"
                                         :params="$childNavItem['params'] ?? []"
-                                        :href="$childNavItem['href'] ?: null"
+                                        :href="$childNavItem['href'] ?? null"
                                     />
                                 </div>
                             @endforeach
                         </div>
-                        <div class="flex flex-col flex-shrink-0 pr-8 pl-8 w-128">
+                        <div class="flex flex-col flex-shrink-0 pl-8 pr-8 w-128">
                             <img class="w-full" :src="selectedChild ? selectedChild.image : '{{ $navItem['image'] }}'" />
 
                             <template x-if="selectedChild">
