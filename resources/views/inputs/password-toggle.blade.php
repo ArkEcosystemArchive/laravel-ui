@@ -11,7 +11,6 @@
             },
         @else
             type: 'password',
-            style: '',
             toggle() {
                 this.show = !this.show;
                 this.show ? this.type = 'text' : this.type = 'password';
@@ -34,11 +33,11 @@
             <input
                 x-ref="password-input"
                 :type="type"
-                :style="style"
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
                 class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
+                @if($masked) :style="style" @endif
                 @if($max ?? false) maxlength="{{ $max }}" @endif
                 @if($value ?? false) value="{{ $value }}" @endif
                 @if($autofocus ?? false) autofocus @endif
