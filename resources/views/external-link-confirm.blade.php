@@ -24,7 +24,7 @@
         :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
         :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
         rel="noopener nofollow"
-        class="break-all cursor-pointer font-semibold items-center link"
+        class="items-center font-semibold break-all cursor-pointer link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
         <span>{{ $text ?? $slot ?? '' }}</span>
