@@ -35,7 +35,7 @@
         @click.away="hide"
         @endif
     >
-        <div class="modal-content dropdown-scrolling {{ $widthClass }}">
+        <div class="modal-content custom-scroll {{ $widthClass }}">
             <div class="p-8 sm:p-10">
                 @if(!$closeButtonOnly)
                 <button
