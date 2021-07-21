@@ -13,7 +13,7 @@
         @include('ark::navbar.profile')
     @endisset
 @else
-    <div class="flex items-center ml-5 sm:space-x-6 sm:ml-4">
+    <div class="flex items-center ml-5 sm:ml-4 sm:space-x-6">
         @if(Route::has('register'))
             <a href="{{ route('register') }}" class="hidden font-semibold sm:block link">@lang('actions.sign_up')</a>
         @endif

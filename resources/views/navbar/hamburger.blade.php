@@ -14,7 +14,7 @@
 @endphp
 
 <div class="flex items-center {{ $breakpointClass }}">
-    <button @click="open = !open" class="relative inline-flex items-center justify-center p-2 transition duration-150 ease-in-out rounded-md text-theme-secondary-900">
+    <button @click="open = !open" class="inline-flex relative justify-center items-center p-2 rounded-md transition duration-150 ease-in-out text-theme-secondary-900">
         <span :class="{ 'hidden': open, 'inline-flex': !open }">
             <x-ark-icon name="menu" size="sm" />
         </span>
@@ -28,7 +28,7 @@
         @endisset
     </button>
 
-    <span class="block pr-3 border-l ml-7 h-7 border-theme-secondary-300 dark:border-theme-secondary-800"></span>
+    <span class="block pr-3 ml-7 h-7 border-l border-theme-secondary-300 dark:border-theme-secondary-800"></span>
 </div>
 
 
