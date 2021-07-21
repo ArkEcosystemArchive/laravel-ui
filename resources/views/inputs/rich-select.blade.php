@@ -90,7 +90,7 @@ $initialText = $grouped
                 tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
-                class="py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
+                class="custom-scroll py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
             >
                 @isset($dropdownList)
                     {{ $dropdownList }}
