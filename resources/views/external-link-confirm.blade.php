@@ -19,19 +19,18 @@
             return localStorage.getItem('has_disabled_link_warning') === 'true';
         }
     }"
-    class="inline-block"
 >
     <a
         :href="hasDisabledLinkWarning() ? '{{ $url }}' : 'javascript:;'"
         :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
         rel="noopener nofollow"
-        class="inline-flex items-center font-semibold whitespace-nowrap break-all cursor-pointer link"
+        class="break-all cursor-pointer font-semibold items-center link"
         @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
         <span>{{ $text ?? $slot ?? '' }}</span>
 
         @unless($noIcon)
-            <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 ml-1 -mt-0.5" />
+            <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 ml-1 -mt-2" />
         @endunless
     </a>
 

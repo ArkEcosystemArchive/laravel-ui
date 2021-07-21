@@ -106,8 +106,8 @@ final class MarkdownParser
      * the dynamic content)
      */
     protected static string $linkRendererTemplate = <<<EOD
-    <span x-data="{
-        openModal() {
+<span x-data="{
+    openModal() {
             Livewire.emit('openModal', '[a-f0-9]{32}')
         },
         redirect() {
@@ -117,21 +117,20 @@ final class MarkdownParser
             return localStorage.getItem('has_disabled_link_warning') === 'true';
         }
     }"
-        class="inline-block"
+>
+    <a
+        :href="hasDisabledLinkWarning() ? '[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*' : 'javascript:;'"
+        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
+        rel="noopener nofollow"
+        class="break-all cursor-pointer font-semibold items-center link"
+        @click="hasDisabledLinkWarning() ? redirect() : openModal()"
     >
-        <a
-            :href="hasDisabledLinkWarning() ? '[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*' : 'javascript:;'"
-            :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
-            rel="noopener nofollow"
-            class="inline-flex items-center font-semibold whitespace-nowrap break-all cursor-pointer link"
-            @click="hasDisabledLinkWarning() ? redirect() : openModal()"
-        >
-            <span>[^<>]*</span>
-            <svg wire:key="[a-zA-Z0-9]*" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-            </svg>
-        </a>
-    </span>
+        <span>[^<>]*</span>
+        <svg wire:key="[a-zA-Z0-9]*" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        </svg>
+    </a>
+</span>
 EOD;
 
     /**
