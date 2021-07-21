@@ -1,3 +1,10 @@
+{{--
+    **Important:**
+    If you ever change the template or the icon here here ensure to update:
+    - regex in `src/Support/MarkdownParser.php`
+    - tests in `tests/Support/MarkdownParserTest.php`
+--}}
+
 @props([
     'url',
     'text' => null,
@@ -5,8 +12,6 @@
 ])
 
 @php($identifier = md5($url . '-' . Str::random(8)))
-
-{{-- Important: if you ever change the template here ensure to update the regex in `laravel-ui/src/Support/MarkdownParser.php`  --}}
 
 <span x-data="{
         openModal() {
