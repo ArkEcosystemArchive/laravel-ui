@@ -1,7 +1,30 @@
-<div x-data="{ show: false, type: 'password', toggle() { this.show = !this.show; this.show ? this.type = 'text' : this.type = 'password'; } }" class="{{ $class ?? '' }}">
+<div
+    class="{{ $class ?? '' }}"
+    x-data="{
+        show: false,
+        @if($masked ?? false)
+            type: 'text',
+            style: '-webkit-text-security: disc;',
+            toggle() {
+                this.show = !this.show;
+                this.show ? this.style = '' : this.style = '-webkit-text-security: disc;';
+            },
+        @else
+            type: 'password',
+            style: '',
+            toggle() {
+                this.show = !this.show;
+                this.show ? this.type = 'text' : this.type = 'password';
+            },
+        @endif
+    }"
+>
     <div class="input-group">
         @if(!($hideLabel ?? false))
-            <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
+            <label
+                for="{{ $id ?? $name }}"
+                class="input-label @error($name) input-label--error @enderror"
+            >
                 {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
             </label>
         @endif
@@ -11,6 +34,7 @@
             <input
                 x-ref="password-input"
                 :type="type"
+                :style="style"
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
                 class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
