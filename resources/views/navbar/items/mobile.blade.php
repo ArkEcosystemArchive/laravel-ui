@@ -22,7 +22,7 @@
                 @endisset
 
                 @if(isset($navbarNotificationsMobile) && isset($notifications))
-                    <span class="h-5 mx-4 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
+                    <span class="mx-4 h-5 border-r border-theme-secondary-300 dark:border-theme-secondary-800"></span>
                 @endif
 
                 @isset($notifications)
