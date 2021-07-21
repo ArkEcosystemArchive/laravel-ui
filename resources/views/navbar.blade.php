@@ -8,6 +8,13 @@
         'lg' => 'lg:hidden',
         'xl' => 'xl:hidden',
     ][$breakpoint ?? 'md'];
+
+    $separatorBreakpointClass = [
+        'sm' => 'sm:block',
+        'md' => 'md:block',
+        'lg' => 'lg:block',
+        'xl' => 'xl:block',
+    ][$breakpoint ?? 'md'];
 @endphp
 
 <header x-data="Navbar.dropdown()" x-init="init">
@@ -27,15 +34,15 @@
         dusk="navigation-bar"
     >
         <div class="relative z-10 bg-white navbar-container border-theme-secondary-300">
-            <div class="flex relative justify-between h-21">
+            <div class="relative flex justify-between h-21">
                 @include('ark::navbar.logo')
 
                 @isset($middle)
                     {{ $middle }}
                 @endisset
 
-                <div class="flex justify-end">
-                    <div class="flex flex-1 justify-end items-center">
+                <div class="flex items-center justify-end h-full">
+                    <div class="flex items-center justify-end flex-1 h-full">
                         @isset($desktop)
                             {{ $desktop }}
                         @else
@@ -43,7 +50,9 @@
                         @endisset
                     </div>
 
-                    <div class="flex inset-y-0 right-0 items-center">
+                    <span class="{{ $separatorClasses ?? 'hidden pr-2 border-l ml-7 h-7 border-theme-secondary-300 dark:border-theme-secondary-800 ' . $separatorBreakpointClass }}"></span>
+
+                    <div class="inset-y-0 right-0 flex items-center">
                         @if(is_array($navigation))
                             <x-ark-navbar-hamburger :breakpoint="$breakpoint ?? 'md'" />
                         @endif
