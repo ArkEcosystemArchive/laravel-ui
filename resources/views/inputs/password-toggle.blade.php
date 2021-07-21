@@ -37,7 +37,7 @@
                 name="{{ $name }}"
                 class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
-                @if($masked) :style="style" @endif
+                @if($masked ?? false) :style="style" @endif
                 @if($max ?? false) maxlength="{{ $max }}" @endif
                 @if($value ?? false) value="{{ $value }}" @endif
                 @if($autofocus ?? false) autofocus @endif
