@@ -19,7 +19,7 @@
     <span>{{ $text ?? $slot ?? '' }}</span>
 
     @unless($noIcon)
-        <x-ark-icon name="link" size="sm" class="flex-shrink-0 inline ml-1 -mt-2" />
+        <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 ml-1 -mt-2" />
     @endunless
 </a>
 
