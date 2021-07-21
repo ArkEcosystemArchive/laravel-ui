@@ -392,7 +392,7 @@ MARKDOWN;
     >
         <span>Ark</span>
 
-        <svg wire:key="cYGY7hvI" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+        <svg wire:key="cYGY7hvI" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
 
     </span>
  website!</p>
@@ -417,7 +417,7 @@ MARKDOWN;
     >
         <span>https://ark.io/</span>
 
-        <svg wire:key="LrVRJbzw" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+        <svg wire:key="LrVRJbzw" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
 
     </span>
 </p>
@@ -484,7 +484,7 @@ MARKDOWN;
     >
         <span>·$%&amp;amp;/()=?^*¨;MÑ</span>
 
-        <svg wire:key="JcUdy1s6" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
+        <svg wire:key="JcUdy1s6" class="fill-current w-4 h-4 inline flex-shrink-0 ml-1 -mt-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>            </a>
 
     </span>
 </p>
