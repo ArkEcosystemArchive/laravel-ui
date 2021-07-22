@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Lukeraymonddowning\Honey\Traits\WithHoney;
 
 /**
  * Contact Form Livewire Component.
