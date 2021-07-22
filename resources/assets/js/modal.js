@@ -75,11 +75,11 @@ const Modal = {
                 }
 
                 this.$watch("shown", (shown) => {
-                    if (typeof this.onBeforeShow === "function") {
+                    if (shown && typeof this.onBeforeShow === "function") {
                         this.onBeforeShow(this.options);
                     }
 
-                    if (typeof this.onBeforeHide === "function") {
+                    if (! shown && typeof this.onBeforeHide === "function") {
                         this.onBeforeHide(this.options);
                     }
 

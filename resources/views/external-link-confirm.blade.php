@@ -13,18 +13,22 @@
             this.url = url;
         },
         onHidden () {
-            this.url = null;
             this.hasConfirmedLinkWarning = false;
             document.querySelector('input[name=confirmation]').checked = false;
         },
         followLink() {
-            if(this.hasConfirmedLinkWarning) {
+            if (this.hasConfirmedLinkWarning) {
+                console.log(':gsd');
                 localStorage.setItem('has_disabled_link_warning', true)
             }
-        }
+
+            this.hide();
+        },
     }"
     init
 >
+
+
     @slot('title')
         @lang('generic.external_link')
     @endslot
@@ -39,6 +43,7 @@
                                 name="warning"
                                 size="xs"
                             />
+
                         </div>
                     </div>
                     <div class="alert-content-wrapper alert-warning-content">
@@ -73,9 +78,43 @@
             rel="noopener nofollow"
             class="cursor-pointer button-primary"
             :href="url"
-            @click="hide(); followLink()"
+            @click="followLink()"
         >
             @lang('actions.follow_link')
         </a>
     @endslot
 </x-ark-js-modal>
+
+<script type="text/javascript">
+const initExternalLinkConfirm = () => {
+    const selectors = [
+        '[href*="://"]',
+        ':not([href^="{{ config("app.url") }}"])',
+        ':not([data-safe-external])',
+        ':not([data-external-link-confirm])',
+    ];
+
+    const links = document.querySelectorAll(`a${selectors.join('')}`);
+    links.forEach(link => {
+        link.setAttribute('data-external-link-confirm', 'true');
+        link.addEventListener('click', e => {
+            if (localStorage.getItem('has_disabled_link_warning') === 'true') {
+                return;
+            }
+
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            Livewire.emit('openModal', 'external-link-confirm', href);
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    Livewire.hook("message.processed", (message, component) => {
+        initExternalLinkConfirm();
+    });
+});
+
+initExternalLinkConfirm();
+
+</script>
