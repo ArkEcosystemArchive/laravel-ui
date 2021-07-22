@@ -102,38 +102,6 @@ final class MarkdownParser
     ];
 
     /**
-     * The HTML string that the LinkRenderer component creates (+ regex for
-     * the dynamic content)
-     */
-    protected static string $linkRendererTemplate = <<<EOD
-<span x-data="{
-    openModal() {
-            Livewire.emit('openModal', '[a-f0-9]{32}')
-        },
-        redirect() {
-            window.open('[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*', '_blank')
-        },
-        hasDisabledLinkWarning() {
-            return localStorage.getItem('has_disabled_link_warning') === 'true';
-        }
-    }"
->
-    <a
-        :href="hasDisabledLinkWarning() ? '[A-Za-z0-9-,._~:/?#\[\]@!\$&\(\)\*\+ ;%="]*' : 'javascript:;'"
-        :target="hasDisabledLinkWarning() ? '_blank' : '_self'"
-        rel="noopener nofollow"
-        class="[a-zA-Z0-9\s\-:\.]*"
-        @click="hasDisabledLinkWarning() ? redirect() : openModal()"
-    >
-        <span>[^<>]*</span>
-        <svg wire:key="[a-zA-Z0-9]*" class="[a-zA-Z0-9\s\-:\.]*" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M23.251 7.498V.748h-6.75m6.75 0l-15 15m3-10.5h-9a1.5 1.5 0 00-1.5 1.5v15a1.5 1.5 0 001.5 1.5h15a1.5 1.5 0 001.5-1.5v-9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-        </svg>
-    </a>
-</span>
-EOD;
-
-    /**
      * Temporaly will hold the custom components content that is being stripped
      * while the markdown is parsed.
      */
@@ -164,7 +132,7 @@ EOD;
 
         $html = static::removeUnallowedHTMLTags($html, static::$basicAllowedTags);
 
-        return static::rollbackMarkdownComponents($html);
+        return $html;
     }
 
     public static function full(string | null $text): string
@@ -177,8 +145,7 @@ EOD;
 
         $html = static::removeUnallowedHTMLTags($html, static::$fullAllowedTags);
 
-        return static::rollbackMarkdownComponents($html);
-
+        return $html;
     }
 
     /**
@@ -281,57 +248,6 @@ EOD;
     }
 
     /**
-     * This method, converts a single HTML template from the `$linkRendererTemplate`
-     * property of this class into a valid regex string.
-     * That property is _mostly_ the HTML that the Laravel component
-     * creates. We use an HTML template because it is easy to read, debug,
-     * update or add a new component than a raw regex.
-     */
-    private static function buildRegexFromTemplate($template): string
-    {
-        // Replaces a group of white-space chars with a single regex
-        $template = preg_replace('/(\s+)/m', '\\\\s*', $template);
-        // Escape every `/`
-        $template = str_replace('/', '\/', $template);
-        // Escape every `(`
-        $template = str_replace('(', '\(', $template);
-        // Escape every `)`
-        $template = str_replace(')', '\)', $template);
-        // Escape every `?`
-        $template = str_replace('?', '\?', $template);
-
-        return '/\s*' . $template . '/m';
-    }
-
-    /**
-     * Uses regex to find custom components and replace them with the temporal
-     * placeholder. The idea is to prevent that the filters affect the custom
-     * components.
-     * Once the content is parsed, the components will replace the placeholders
-     * again.
-     */
-    private static function temporaryStripAndStoreMarkdownComponents(string $html): string
-    {
-        $componentsRegexs = [
-            'linkRenderedRegex' => self::buildRegexFromTemplate(static::$linkRendererTemplate)
-        ];
-
-        foreach ($componentsRegexs as $regex) {
-            preg_match_all($regex, $html, $matches, PREG_SET_ORDER, 0);
-
-            // For every found component, we store it on the temporary array so
-            // it can be recovered untoched at the end of the process
-            foreach ($matches as $match) {
-                $id = md5($match[0]);
-                static::$replaced[$id] = $match[0];
-                $html = str_replace($match[0], '[' . $id . ']', $html);
-            }
-        }
-
-        return $html;
-    }
-
-    /**
      * Replaces the temporal placeholders with the original components.
      */
     private static function rollbackMarkdownComponents(string $html): string
@@ -350,8 +266,6 @@ EOD;
      */
     private static function cleanHtml(string $html): string
     {
-        $html = static::temporaryStripAndStoreMarkdownComponents($html);
-
         $html = static::removeUnallowedHTMLTags($html, array_keys(static::$validUserTagsAndAttributes));
 
         $html = static::removeUnallowedHTMLAttributes($html);
