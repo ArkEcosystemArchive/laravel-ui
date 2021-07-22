@@ -79,7 +79,7 @@ const Modal = {
                         this.onBeforeShow(this.options);
                     }
 
-                    if (! shown && typeof this.onBeforeHide === "function") {
+                    if (!shown && typeof this.onBeforeHide === "function") {
                         this.onBeforeHide(this.options);
                     }
 
