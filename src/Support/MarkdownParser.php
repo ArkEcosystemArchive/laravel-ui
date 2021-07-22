@@ -47,6 +47,8 @@ final class MarkdownParser
         'td' => [],
         'code' => [],
         'pre' => [],
+        'svg' => ['wire:key', 'class', 'xmlns', 'viewbox'],
+        'path' => ['d', 'fill', 'stroke', 'stroke-linecap', 'stroke-linejoin', 'stroke-width'],
     ];
 
     /**
@@ -65,6 +67,9 @@ final class MarkdownParser
         // italic variants
         'em',
         'i',
+        // Icons related
+        'svg',
+        'path',
     ];
 
     /**
@@ -99,6 +104,9 @@ final class MarkdownParser
         // strile variants
         'del',
         'strike',
+        // Icons related
+        'svg',
+        'path',
     ];
 
     /**
@@ -248,20 +256,6 @@ final class MarkdownParser
     }
 
     /**
-     * Replaces the temporal placeholders with the original components.
-     */
-    private static function rollbackMarkdownComponents(string $html): string
-    {
-        foreach(static::$replaced as $id => $originalHTML)
-        {
-
-            $html = str_replace('[' . $id . ']', $originalHTML, $html);
-        }
-
-        return $html;
-    }
-
-    /**
      * Removes every used input that is not expected
      */
     private static function cleanHtml(string $html): string
@@ -314,6 +308,7 @@ final class MarkdownParser
         ], 'utf8');
 
         try {
+            libxml_use_internal_errors(true);
             // Needs a XML encoding declaration to ensure is treated as UTF-8
             $dom->loadHTML('<?xml encoding="utf-8" ?>' . $html);
         } catch (Exception $e) {

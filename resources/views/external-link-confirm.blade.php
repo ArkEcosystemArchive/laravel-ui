@@ -1,3 +1,5 @@
+{{-- External icon classes, dont remove are here for purgecss --}}
+{{-- inline ml-1 -mt-1.5 --}}
 <x-ark-js-modal
     name="external-link-confirm"
     class="w-full max-w-2xl text-left rounded-xl"
@@ -27,8 +29,6 @@
     }"
     init
 >
-
-
     @slot('title')
         @lang('generic.external_link')
     @endslot
@@ -96,12 +96,8 @@ const initExternalLinkConfirm = () => {
     ];
 
     const links = document.querySelectorAll(`a${selectors.join('')}`);
-    const icon = `<x-ark-icon name="link" size="sm" class="inline ml-1 -mt-1.5" />`
     links.forEach(link => {
         link.setAttribute('data-external-link-confirm', 'true');
-        if (link.getAttribute('data-external')) {
-            link.innerHTML = link.innerHTML + icon;
-        }
         link.addEventListener('click', e => {
             if (localStorage.getItem('has_disabled_link_warning') === 'true') {
                 return;
