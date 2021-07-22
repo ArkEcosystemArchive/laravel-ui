@@ -26,7 +26,7 @@ final class MarkdownParser
         'h4' => [],
         'ins' => [],
         'i' => [],
-        'a' => ['id', 'href', 'name', 'class', 'aria-hidden', 'title'],
+        'a' => ['id', 'href', 'name', 'class', 'aria-hidden', 'title', 'target', 'data-external'],
         'p' => [],
         'br' => [],
         'ul' => [],

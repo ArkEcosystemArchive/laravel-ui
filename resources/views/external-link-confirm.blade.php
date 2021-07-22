@@ -85,6 +85,7 @@
     @endslot
 </x-ark-js-modal>
 
+
 <script type="text/javascript">
 const initExternalLinkConfirm = () => {
     const selectors = [
@@ -95,16 +96,20 @@ const initExternalLinkConfirm = () => {
     ];
 
     const links = document.querySelectorAll(`a${selectors.join('')}`);
+    const icon = `<x-ark-icon name="link" size="sm" class="inline ml-1 -mt-1.5" />`
     links.forEach(link => {
         link.setAttribute('data-external-link-confirm', 'true');
+        if (link.getAttribute('data-external')) {
+            link.innerHTML = link.innerHTML + icon;
+        }
         link.addEventListener('click', e => {
             if (localStorage.getItem('has_disabled_link_warning') === 'true') {
                 return;
             }
 
             e.preventDefault();
-            const href = link.getAttribute('href');
-            Livewire.emit('openModal', 'external-link-confirm', href);
+
+            Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
         });
     });
 }
