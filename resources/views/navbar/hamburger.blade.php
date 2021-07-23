@@ -10,7 +10,6 @@
         'lg' => 'lg:hidden',
         'xl' => 'xl:hidden',
     ][$breakpoint];
-
 @endphp
 
 <div class="flex items-center {{ $breakpointClass }}">
@@ -22,10 +21,6 @@
         <span :class="{ 'hidden': !open, 'inline-flex': open }" x-cloak>
             <x-ark-icon name="menu-show" size="sm" />
         </span>
-
-        @isset($allNotificationsIndicator)
-            {{ $allNotificationsIndicator }}
-        @endisset
     </button>
 
     <span class="block pr-3 ml-7 h-7 border-l border-theme-secondary-300 dark:border-theme-secondary-800"></span>
