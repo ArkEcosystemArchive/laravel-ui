@@ -1,9 +1,10 @@
 @props([
+    'showMobile'        => false,
     'selectedClasses'   => 'text-theme-danger-400 border-theme-danger-100',
     'unselectedClasses' => 'text-theme-info-300 border-white',
 ])
 
-<div class="items-center @if($showMobile ?? false) flex @else hidden md:flex @endif">
+<div class="items-center @if($showMobile) flex @else hidden md:flex @endif">
     <div
         :class="{
             '{{ $selectedClasses }}': tableView === 'grid',
