@@ -110,7 +110,7 @@ final class MarkdownParser
     ];
 
     /**
-     * Temporaly will hold the custom components content that is being stripped
+     * Temporarily will hold the custom components content that is being stripped
      * while the markdown is parsed.
      */
     private static array $replaced = [];
