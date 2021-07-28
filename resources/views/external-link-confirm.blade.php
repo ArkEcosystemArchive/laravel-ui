@@ -110,11 +110,10 @@ const initExternalLinkConfirm = () => {
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    initExternalLinkConfirm();
+
     Livewire.hook("message.processed", (message, component) => {
         initExternalLinkConfirm();
     });
 });
-
-initExternalLinkConfirm();
-
 </script>
