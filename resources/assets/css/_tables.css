@@ -115,6 +115,10 @@
     @apply px-0 py-0.5;
 }
 
+.table-container table tbody tr {
+    @apply outline-none;
+}
+
 .table-container
     table
     > tbody
@@ -255,6 +259,39 @@
     table
     > tbody
     > tr:hover
+    > td.hoverable-cell
+    > div.table-cell-bg {
+    @apply bg-theme-secondary-100;
+}
+
+.table-container
+    table
+    > tbody
+    > tr:focus
+    > td.hoverable-cell:first-child
+    > div.table-cell-bg::before,
+.table-container
+    table
+    > tbody
+    > tr:focus
+    > td.hoverable-cell.first-cell
+    > div.table-cell-bg::before,
+.table-container
+    table
+    > tbody
+    > tr:focus
+    > td.hoverable-cell:last-child
+    > div.table-cell-bg:before,
+.table-container
+    table
+    > tbody
+    > tr:focus
+    > td.hoverable-cell.last-cell
+    > div.table-cell-bg::before,
+.table-container
+    table
+    > tbody
+    > tr:focus
     > td.hoverable-cell
     > div.table-cell-bg {
     @apply bg-theme-secondary-100;
