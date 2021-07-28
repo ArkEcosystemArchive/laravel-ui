@@ -86,34 +86,36 @@
 
 
 <script type="text/javascript">
-const initExternalLinkConfirm = () => {
-    const selectors = [
-        '[href*="://"]',
-        ':not([href^="{{ config("app.url") }}"])',
-        ':not([data-safe-external])',
-        ':not([data-external-link-confirm])',
-    ];
+document.addEventListener("DOMContentLoaded", function (event) {
+    function initExternalLinkConfirm() {
+        const selectors = [
+            '[href*="://"]',
+            ':not([href^="{{ config("app.url") }}"])',
+            ':not([data-safe-external])',
+            ':not([data-external-link-confirm])',
+        ];
 
-    const links = document.querySelectorAll(`a${selectors.join('')}`);
-    links.forEach(link => {
-        link.setAttribute('data-external-link-confirm', 'true');
-        link.addEventListener('click', e => {
-            if (localStorage.getItem('has_disabled_link_warning') === 'true') {
-                return;
-            }
+        const links = document.querySelectorAll(`a${selectors.join('')}`);
 
-            e.preventDefault();
+        links.forEach(function (link) {
+            link.setAttribute('data-external-link-confirm', 'true');
 
-            Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
+            link.addEventListener('click', function(e) {
+                if (localStorage.getItem('has_disabled_link_warning') === 'true') {
+                    return;
+                }
+
+                e.preventDefault();
+
+                Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
+            });
         });
-    });
-}
+    }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    initExternalLinkConfirm();
-
-    Livewire.hook("message.processed", (message, component) => {
+    Livewire.hook("message.processed", function (message, component) {
         initExternalLinkConfirm();
     });
+
+    initExternalLinkConfirm();
 });
 </script>
