@@ -20,7 +20,6 @@
         },
         followLink() {
             if (this.hasConfirmedLinkWarning) {
-                console.log(':gsd');
                 localStorage.setItem('has_disabled_link_warning', true)
             }
 
