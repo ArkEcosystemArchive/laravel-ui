@@ -23,8 +23,8 @@
         <span
             aria-hidden="true"
             :class="{
-                'input-switch-button-left': value,
-                'input-switch-button-right': !value
+                'input-switch-button-left': !value,
+                'input-switch-button-right': value
             }"
             class="inline-block absolute left-0 w-4 h-4 bg-white rounded-full transition duration-200 ease-in-out transform cursor-pointer"
         ></span>
