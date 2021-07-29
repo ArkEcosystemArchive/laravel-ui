@@ -1,66 +1,121 @@
-@props([
-    'url',
-    'text' => null,
-    'noIcon' => false,
-])
-
-@php($identifier = md5($url . '-' . Str::random(8)))
-
-<a
-    href="javascript:;"
+{{-- External icon classes, dont remove are here for purgecss --}}
+{{-- inline ml-1 -mt-1.5 --}}
+<x-ark-js-modal
+    name="external-link-confirm"
+    class="w-full max-w-2xl text-left rounded-xl"
+    title-class="header-2"
+    buttons-style="flex justify-end space-x-3"
     x-data="{
-        openModal() {
-            Livewire.emit('openModal', '{{ $identifier }}')
-        }
+        url: null,
+        hasConfirmedLinkWarning: false,
+        toggle () {
+            this.hasConfirmedLinkWarning = ! this.hasConfirmedLinkWarning;
+        },
+        onBeforeShow ([ url ]) {
+            this.url = url;
+        },
+        onHidden () {
+            this.hasConfirmedLinkWarning = false;
+            document.querySelector('input[name=confirmation]').checked = false;
+        },
+        followLink() {
+            if (this.hasConfirmedLinkWarning) {
+                localStorage.setItem('has_disabled_link_warning', true)
+            }
+
+            this.hide();
+        },
     }"
-    class="items-center font-semibold break-all cursor-pointer link"
-    @click="openModal"
+    init
 >
-    <span>{{ $text ?? $slot ?? '' }}</span>
+    @slot('title')
+        @lang('generic.external_link')
+    @endslot
 
-    @unless($noIcon)
-        <x-ark-icon name="link" size="sm" class="inline flex-shrink-0 ml-1 -mt-1.5" />
-    @endunless
-</a>
+    @slot('description')
+        <div class="flex flex-col mt-8 space-y-4 whitespace-normal">
+            <div class="font-semibold text-theme-secondary-900">
+                <div class="alert-wrapper alert-warning">
+                    <div class="alert-icon-wrapper alert-warning-icon">
+                        <div class="p-1 rounded-full border-2 border-white">
+                            <x-ark-icon
+                                name="warning"
+                                size="xs"
+                            />
 
-@push('footer')
-    <x-ark-js-modal
-        :name="$identifier"
-        class="w-full max-w-2xl text-left rounded-xl"
-        title-class="header-2"
-        buttons-style="flex justify-end space-x-3"
-        init
-    >
-        @slot('title')
-            @lang('generic.external_link')
-        @endslot
-
-        @slot('description')
-            <div class="flex flex-col mt-8 space-y-4 whitespace-normal">
-                <div class="font-semibold text-theme-secondary-900">
-                    <x-ark-alert type="warning" :message="$url" message-class="break-all" />
+                        </div>
+                    </div>
+                    <div class="alert-content-wrapper alert-warning-content">
+                        <span class="block leading-6 break-all" x-text="url"></span>
+                    </div>
                 </div>
-                <p>@lang('generic.external_link_disclaimer')</p>
             </div>
-        @endslot
 
-        @slot('buttons')
-            <button
-                class="button-secondary"
-                @click="hide"
-            >
-                @lang('actions.back')
-            </button>
+            <p>@lang('generic.external_link_disclaimer')</p>
 
-            <a
-                target="_blank"
-                rel="noopener nofollow"
-                class="cursor-pointer button-primary"
-                href="{{ $url }}"
-                @click="hide"
+            <x-ark-checkbox
+                name="confirmation"
+                alpine="toggle"
             >
-                @lang('actions.follow_link')
-            </a>
-        @endslot
-    </x-ark-js-modal>
-@endpush
+                @slot('label')
+                    @lang('ui::forms.do_not_show_message_again')
+                @endslot
+            </x-ark-checkbox>
+        </div>
+    @endslot
+
+    @slot('buttons')
+        <button
+            class="button-secondary"
+            @click="hide"
+        >
+            @lang('actions.back')
+        </button>
+
+        <a
+            target="_blank"
+            rel="noopener nofollow"
+            class="cursor-pointer button-primary"
+            :href="url"
+            @click="followLink()"
+        >
+            @lang('actions.follow_link')
+        </a>
+    @endslot
+</x-ark-js-modal>
+
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function (event) {
+    function initExternalLinkConfirm() {
+        const selectors = [
+            '[href*="://"]',
+            ':not([href^="{{ config("app.url") }}"])',
+            ':not([data-safe-external])',
+            ':not([data-external-link-confirm])',
+        ];
+
+        const links = document.querySelectorAll(`a${selectors.join('')}`);
+
+        links.forEach(function (link) {
+            link.setAttribute('data-external-link-confirm', 'true');
+
+            link.addEventListener('click', function(e) {
+                if (localStorage.getItem('has_disabled_link_warning') === 'true') {
+                    return;
+                }
+
+                e.preventDefault();
+
+                Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
+            });
+        });
+    }
+
+    Livewire.hook("message.processed", function (message, component) {
+        initExternalLinkConfirm();
+    });
+
+    initExternalLinkConfirm();
+});
+</script>
