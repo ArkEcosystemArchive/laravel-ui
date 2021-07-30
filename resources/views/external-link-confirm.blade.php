@@ -39,7 +39,7 @@
                     <div class="alert-icon-wrapper alert-warning-icon">
                         <div class="p-1 rounded-full border-2 border-white">
                             <x-ark-icon
-                                name="warning"
+                                name="exclamation-mark"
                                 size="xs"
                             />
 
