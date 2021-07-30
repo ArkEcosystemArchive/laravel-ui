@@ -147,11 +147,6 @@ const MarkdownEditor = (
                     focus: this.onFocus,
                 },
                 toolbarItems: this.toolbarItems,
-                // We dont need any "sanitized" HTML since we dont use the `preview`
-                // mode, so doing this:
-                // 1. Prevents security issues
-                // 2. Makes the editor way faster
-                customHTMLSanitizer: () => "",
                 plugins: this.getPlugins(),
                 hooks: {
                     addImageBlobHook: (blob, callback) => {
@@ -206,6 +201,12 @@ const MarkdownEditor = (
             this.editor.getCodeMirror().setOption("lineNumbers", true);
 
             this.toolbar = this.editor.getUI().getToolbar();
+
+            // Overrides the function that renders the HTML preview since it is
+            // not used and only represents a security issue.
+            // I am overriding the method because there is no native option to
+            // disable it.
+            this.editor.preview.renderHTML = () => {};
 
             this.toolbarItems = this.toolbar.getItems();
 
