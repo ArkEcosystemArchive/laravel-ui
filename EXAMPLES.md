@@ -672,3 +672,18 @@ We use `$nextTick` here to make sure the UI is updated prior to initialising our
     </div>
 </div>
 ```
+
+### Loader Icon
+Shows a spinner icon. Useful to add inside a button.
+
+Here follow you can see an example on how to use it:
+```blade
+<button class="button-secondary">
+    <x-icons.loading-spinner class="w-7 h-7 text-white" path-class="bg-theme-primary-600" />
+</button>
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| class | The class of the circle | no | |
+| path-class | The class of the spinner | no | |
