@@ -245,6 +245,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::logo-simple', 'ark-logo-simple');
         Blade::component('ark::loading-spinner', 'ark-loading-spinner');
         Blade::component('ark::spinner-icon', 'ark-spinner-icon');
+        Blade::component('ark::loader-icon', 'ark-loader-icon');
         Blade::component('ark::message', 'ark-message');
         Blade::component('ark::metadata', 'ark-metadata');
         Blade::component('ark::metadata-tags', 'ark-metadata-tags');
@@ -275,6 +276,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         // Navigation
         Blade::component('ark::navbar', 'ark-navbar');
         Blade::component('ark::navbar.link-mobile', 'ark-navbar-link-mobile');
+        Blade::component('ark::navbar.hamburger', 'ark-navbar-hamburger');
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');

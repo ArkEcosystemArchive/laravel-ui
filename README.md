@@ -293,6 +293,8 @@ To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Co
 
 #### Alpine modals
 
+**Important**: for the modals to work properly, they expect a `nav` element inside a `header` element to be used for the header component. If you use the navbar from the UI lib (see `navbar.blade.php`) these elements are already used, but for custom navbars you may need to make adjustments.
+
 There's a few ways you can make use of the new modals in conjunction with Alpine:
 
 For JS-only modals, you need to use the `<x-ark-js-modal />` component. You need to initiate the modal with a name (using the `name` attribute) and it can be opened by calling `Livewire.emit('openModal', 'name-of-my-modal')`
