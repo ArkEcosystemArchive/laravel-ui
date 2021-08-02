@@ -416,7 +416,8 @@ const MarkdownEditor = (
     getWordsAndCharactersCount(markdown) {
         this.loadingCharsCount = true;
 
-        // Throttles the request to avoid too many requests
+        // Throttles the call to get the word count to avoid multiple requests
+        // while the user is typing.
         if (this.loadingCharsTimeout) {
             clearTimeout(this.loadingCharsTimeout);
             this.loadingCharsTimeout = null;
@@ -428,10 +429,11 @@ const MarkdownEditor = (
             const csrfToken = document.querySelector('meta[name="csrf-token"]')
                 .content;
 
+            // The following lines cancels any pending request in favour
+            // of the incoming one.
             if (this.loadingCharsCount && this.loadingCharsAbortController) {
                 this.loadingCharsAbortController.abort();
             }
-
             this.loadingCharsAbortController = new AbortController();
 
             try {
