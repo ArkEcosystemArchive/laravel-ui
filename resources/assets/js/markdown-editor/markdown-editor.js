@@ -451,7 +451,7 @@ const MarkdownEditor = (
             } catch (e) {}
 
             this.loadingCharsCount = false;
-        }, 250);
+        }, 500);
     },
 
     // Default handlers
