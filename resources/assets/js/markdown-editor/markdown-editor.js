@@ -413,8 +413,6 @@ const MarkdownEditor = (
         input.dispatchEvent(event);
 
         this.getWordsAndCharactersCount(markdown);
-
-
     },
     getWordsAndCharactersCount(markdown) {
         this.loadingCharsCount = true;
@@ -428,18 +426,21 @@ const MarkdownEditor = (
         this.loadingCharsTimeout = setTimeout(async () => {
             this.loadingCharsTimeout = null;
 
-            const csrfToken = document.querySelector(
-                'meta[name="csrf-token"]'
-            ).content;
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                .content;
 
             if (this.loadingCharsCount && this.loadingCharsAbortController) {
                 this.loadingCharsAbortController.abort();
             }
 
-            this.loadingCharsAbortController = new AbortController()
+            this.loadingCharsAbortController = new AbortController();
 
             try {
-                const { characters, words } = await getWordsAndCharactersCount(markdown, csrfToken, this.loadingCharsAbortController.signal);
+                const { characters, words } = await getWordsAndCharactersCount(
+                    markdown,
+                    csrfToken,
+                    this.loadingCharsAbortController.signal
+                );
 
                 this.charsCount = characters;
                 this.wordsCount = words;

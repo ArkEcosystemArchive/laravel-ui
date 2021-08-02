@@ -91,7 +91,7 @@ export const createPopup = (
     });
 };
 
-const handleFetchSuccessResponse = (response)  => {
+const handleFetchSuccessResponse = (response) => {
     const { status } = response;
     if (status === 200) {
         return response.json();
@@ -103,17 +103,16 @@ const handleFetchSuccessResponse = (response)  => {
     } else {
         throw new Error(response);
     }
+};
 
-}
-
-const handleFetchErrorResponse = (error)  => {
-    if (error.name === 'AbortError') {
+const handleFetchErrorResponse = (error) => {
+    if (error.name === "AbortError") {
         return;
     }
 
     alert("Something went wrong!");
     console.error(error);
-}
+};
 
 export const uploadImage = (blob, csrfToken) => {
     const formData = new FormData();
@@ -131,7 +130,11 @@ export const uploadImage = (blob, csrfToken) => {
         .catch((error) => handleFetchErrorResponse(error));
 };
 
-export const getWordsAndCharactersCount = (markdown, csrfToken, cancelSignal) => {
+export const getWordsAndCharactersCount = (
+    markdown,
+    csrfToken,
+    cancelSignal
+) => {
     const formData = new FormData();
     formData.append("markdown", markdown);
 
