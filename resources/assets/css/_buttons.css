@@ -1,5 +1,5 @@
 .button-generic {
-    @apply px-4 py-2.5 font-semibold text-center rounded transition-default;
+    @apply px-5 py-3 font-semibold text-center rounded transition-default leading-tight;
 }
 
 .button-primary {
