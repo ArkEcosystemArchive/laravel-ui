@@ -2,12 +2,12 @@
 
 namespace ARKEcosystem\UserInterface\Rules;
 
-use ARKEcosystem\UserInterface\Rules\Concerns\ValidatesMarkdown;
+use ARKEcosystem\UserInterface\Support\Concerns\HandlesMarkdown;
 use Illuminate\Contracts\Validation\Rule;
 
 class MarkdownMaxChars implements Rule
 {
-    use ValidatesMarkdown;
+    use HandlesMarkdown;
 
     private int $maxChars;
 
