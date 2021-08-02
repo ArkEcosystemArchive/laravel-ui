@@ -1,9 +1,3 @@
-export const extractTextFromHtml = (html) => {
-    const tempWrapper = document.createElement("div");
-    tempWrapper.innerHTML = html;
-    return tempWrapper.innerText;
-};
-
 export const escapeRegExp = (string) => {
     return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 };
@@ -97,6 +91,30 @@ export const createPopup = (
     });
 };
 
+const handleFetchSuccessResponse = (response)  => {
+    const { status } = response;
+    if (status === 200) {
+        return response.json();
+        // Means the CSRF Token is no longer valid
+    } else if (status === 419) {
+        alert(
+            "Session expired. You will need to refresh the browser to continue uploading images."
+        );
+    } else {
+        throw new Error(response);
+    }
+
+}
+
+const handleFetchErrorResponse = (error)  => {
+    if (error.name === 'AbortError') {
+        return;
+    }
+
+    alert("Something went wrong!");
+    console.error(error);
+}
+
 export const uploadImage = (blob, csrfToken) => {
     const formData = new FormData();
     formData.append("image", blob);
@@ -109,22 +127,23 @@ export const uploadImage = (blob, csrfToken) => {
             "X-CSRF-TOKEN": csrfToken,
         },
     })
-        .then((response) => {
-            const { status } = response;
-            if (status === 200) {
-                return response.json();
-                // Means the CSRF Token is no longer valid
-            } else if (status === 419) {
-                alert(
-                    "Session expired. You will need to refresh the browser to continue uploading images."
-                );
-            } else {
-                throw new Error(response);
-            }
-        })
-        .catch((error) => {
-            alert("Something went wrong!");
+        .then((response) => handleFetchSuccessResponse(response))
+        .catch((error) => handleFetchErrorResponse(error));
+};
 
-            console.error(error);
-        });
+export const getWordsAndCharactersCount = (markdown, csrfToken, cancelSignal) => {
+    const formData = new FormData();
+    formData.append("markdown", markdown);
+
+    return fetch(`/wysiwyg/count-characters`, {
+        method: "POST",
+        body: formData,
+        signal: cancelSignal,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+    })
+        .then((response) => handleFetchSuccessResponse(response))
+        .catch((error) => handleFetchErrorResponse(error));
 };
