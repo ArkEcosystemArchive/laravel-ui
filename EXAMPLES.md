@@ -687,3 +687,48 @@ Here follow you can see an example on how to use it:
 |---|---|---|---|
 | class | The class of the circle | no | |
 | path-class | The class of the spinner | no | |
+
+
+### Chart
+
+1. Install the npm dependencies
+
+```bash
+yarn add chart.js@^2.9.4
+```
+
+1. On `resource/app/js/app.js` add:
+```js
+import CustomChart from "@ui/js/chart.js";
+
+window.CustomChart = CustomChart;
+```
+
+1. On `webpack.mix.js` extract `chart.js` module:
+```js
+mix.extract(['chart.js']);
+```
+
+1. use the component:
+
+```html
+<x-ark-chart 
+    id="stats"
+    data="[0.9839,1.003,1.074,1.125,1.209,1.154,1.113]"
+    labels="['27.07','28.07','29.07','30.07','31.07','01.08','02.08']"
+    currency="USD"
+/>
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| id | The id of the chart | yes | |
+| data | An array of data to visualize | yes | |
+| labels | An array of labels for each data item | yes | |
+| currency | The current currency. (ISO-3 like 'USD') | yes | |
+| canvas-class | The class of the wrapper canvas | no | |
+| width | The width of the canvas | no | |
+| height | The height of the canvas | no | |
+| grid | Whether to show the grid or not | no | |
+| tooltips | Whether to show tooltips or not | no | |
+| theme | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no | |
