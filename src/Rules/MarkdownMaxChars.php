@@ -30,9 +30,7 @@ class MarkdownMaxChars implements Rule
      */
     public function passes($attribute, $value)
     {
-        $text = $this->getText($value);
-
-        return mb_strlen($text) <= $this->maxChars;
+        return $this->count($value)['characters'] <= $this->maxChars;
     }
 
     /**

@@ -25,4 +25,13 @@ trait HandlesMarkdown
         return MarkdownParser::full($value);
     }
 
+    private function count(string | null $value): array
+    {
+        $text = $this->getText($value);
+
+        return [
+            'characters' => mb_strlen($text),
+            'words' => str_word_count($text),
+        ];
+    }
 }
