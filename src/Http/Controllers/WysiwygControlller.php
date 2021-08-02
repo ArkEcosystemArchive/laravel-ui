@@ -53,6 +53,10 @@ final class WysiwygControlller extends Controller
 
     public function countCharacters(Request $request): array
     {
+        $this->validate($request, [
+            'markdown' => ['string', 'nullable'],
+        ]);
+
         $markdown = $request->markdown;
 
         return $this->count($markdown);
