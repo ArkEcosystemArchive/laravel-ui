@@ -16,6 +16,7 @@
 <div class="fixed inset-0 z-50 opacity-75 dark:opacity-50 bg-theme-secondary-900 dark:bg-theme-secondary-800"></div>
 
 <div
+    wire:ignore.self
     x-ref="modal"
     data-modal
     x-data="Modal.livewire({{ $xData }})"
