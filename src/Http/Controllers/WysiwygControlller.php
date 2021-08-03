@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\UserInterface\Http\Controllers;
 
-use ARKEcosystem\UserInterface\Support\Concerns\HandlesMarkdown;
+use ARKEcosystem\UserInterface\Support\Concerns\ParsesMarkdown;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
 final class WysiwygControlller extends Controller
 {
-    use HandlesMarkdown;
+    use ParsesMarkdown;
 
     public function getTwitterEmbedCode(Request $request): string
     {

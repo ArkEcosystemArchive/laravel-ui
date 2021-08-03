@@ -4,7 +4,7 @@ namespace ARKEcosystem\UserInterface\Support\Concerns;
 
 use ARKEcosystem\UserInterface\Support\MarkdownParser;
 
-trait HandlesMarkdown
+trait ParsesMarkdown
 {
     private function getText(string | null $value): string
     {

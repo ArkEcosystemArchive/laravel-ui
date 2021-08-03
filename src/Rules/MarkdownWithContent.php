@@ -3,12 +3,12 @@
 namespace ARKEcosystem\UserInterface\Rules;
 
 use ARKEcosystem\UserInterface\Rules\Concerns\ValidatesEmptyString;
-use ARKEcosystem\UserInterface\Support\Concerns\HandlesMarkdown;
+use ARKEcosystem\UserInterface\Support\Concerns\ParsesMarkdown;
 use Illuminate\Contracts\Validation\Rule;
 
 class MarkdownWithContent implements Rule
 {
-    use HandlesMarkdown;
+    use ParsesMarkdown;
     use ValidatesEmptyString;
 
     /**
