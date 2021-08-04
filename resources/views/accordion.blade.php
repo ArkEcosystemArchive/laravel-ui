@@ -15,15 +15,19 @@
     'contentClass'    => 'mt-2',
 ])
 
-<div x-data="{ openPanel: false }">
+<div
+    class="accordion"
+    x-data="{ openPanel: false }"
+    :class="{ 'accordion-open': openPanel }"
+>
     <dl>
         <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
-                    class="text-left w-full flex justify-between items-center rounded
+                    class="accordion-trigger text-left w-full flex justify-between items-center rounded
                         {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
-                    @click="openPanel = ! openPanel"
+                    @click="openPanel = !openPanel"
                 >
                     <div class="{{ $titleClass }}">
                         @if($toggleTitle)
