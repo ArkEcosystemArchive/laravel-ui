@@ -9,6 +9,7 @@
     'dusk'                   => false,
     'buttonTooltip'          => null,
     'height'                 => null,
+    'disabled'               => false,
 ])
 
 <div
@@ -36,7 +37,9 @@
 >
     <div>
         <button
-            @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
+            type="button"
+            @unless($disabled) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endunless
+            @if($disabled) disabled @endif
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
             @if($buttonTooltip)
