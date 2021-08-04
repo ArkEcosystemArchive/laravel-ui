@@ -208,7 +208,8 @@ const MarkdownEditor = (
             events.set("command", handlers);
 
             // Since we dont use the preview and is hidden, the scroll event
-            // creates some exceptions that are fixed by removing the listener.
+            // creates some exceptions that are fixed by removing these listeners.
+            this.editor.preview.eventManager.removeEventHandler("previewRenderAfter");
             this.editor.preview.eventManager.removeEventHandler("scroll");
 
             this.editor.getCodeMirror().setOption("lineNumbers", true);

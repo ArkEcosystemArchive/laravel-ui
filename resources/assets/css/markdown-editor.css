@@ -18,7 +18,14 @@
 
 .ark-markdown-editor .te-md-container .CodeMirror-scroll {
     @apply p-0 m-0;
-    overflow: hidden !important;
+}
+
+.ark-markdown-editor .te-md-container .CodeMirror-sizer {
+    border-right-width: 15px !important;
+}
+
+.ark-markdown-editor .te-md-container .CodeMirror-scroll::-webkit-scrollbar {
+    display: none;
 }
 
 .ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar {
