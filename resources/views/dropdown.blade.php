@@ -4,15 +4,17 @@
     'buttonClassExpanded'    => 'text-theme-primary-500',
     'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'dropdownClasses'        => 'w-40',
-    'wrapperClass'           => '',
+    'wrapperClass'           => 'absolute inline-block top-0 right-0 text-left',
     'fullScreen'             => false,
     'dusk'                   => false,
     'buttonTooltip'          => null,
     'height'                 => null,
+    'initAlpine'             => true,
+    'closeOnBlur'            => true,
 ])
 
 <div
-    @if ($initAlpine ?? true)
+    @if ($initAlpine)
         x-data="{ {{ $dropdownProperty }}: false }"
         x-init="$watch('{{ $dropdownProperty }}', (expanded) => {
             if (expanded) {
@@ -27,11 +29,11 @@
             }
         })"
     @endif
-    @if($closeOnBlur ?? true)
+    @if($closeOnBlur)
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
     @endif
-    class="{{ $wrapperClass ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
+    @if($wrapperClass) class="{{ $wrapperClass }}" @endif
     @if($dusk) dusk="{{ $dusk }}" @endif
 >
     <div>
