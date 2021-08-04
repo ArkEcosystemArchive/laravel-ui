@@ -122,7 +122,6 @@
     @apply bg-white whitespace-nowrap border-transparent;
 }
 
-
 .ark-markdown-editor .CodeMirror-linenumber {
     @apply p-0 text-xs text-center text-theme-secondary-500;
     width: 49px !important;
