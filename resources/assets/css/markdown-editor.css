@@ -22,18 +22,19 @@
 }
 
 .ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar {
-    border-radius:0.5rem;
+    border-radius: 0.5rem;
     width: 6px;
     height: 4px;
 }
 
-.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar-track-piece:start {
+.ark-markdown-editor
+    .CodeMirror-vscrollbar::-webkit-scrollbar-track-piece:start {
     background: transparent;
 }
 
 .ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
-    background-color:var(--theme-color-primary-200);
-    border-radius:0.5rem;
+    background-color: var(--theme-color-primary-200);
+    border-radius: 0.5rem;
 }
 
 .ark-markdown-editor .CodeMirror-vscrollbar {
