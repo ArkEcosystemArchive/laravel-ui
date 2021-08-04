@@ -9,11 +9,35 @@
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
-    @apply py-4;
+    @apply py-4 overflow-hidden;
+}
+
+.ark-markdown-editor .te-md-container .te-preview {
+    @apply hidden;
 }
 
 .ark-markdown-editor .te-md-container .CodeMirror-scroll {
     @apply p-0 m-0;
+    overflow: hidden !important;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar {
+    border-radius:0.5rem;
+    width: 6px;
+    height: 4px;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+    background-color:var(--theme-color-primary-200);
+    border-radius:0.5rem;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar {
+    scrollbar-color: #bad6f0 transparent;
 }
 
 .ark-markdown-editor .tui-editor-contents {
