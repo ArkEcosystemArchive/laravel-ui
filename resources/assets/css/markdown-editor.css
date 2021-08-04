@@ -9,7 +9,7 @@
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
-    @apply py-4 overflow-hidden;
+    @apply overflow-hidden;
 }
 
 .ark-markdown-editor .te-md-container .te-preview {
@@ -22,6 +22,14 @@
 
 .ark-markdown-editor .te-md-container .CodeMirror-sizer {
     border-right-width: 15px !important;
+}
+
+.ark-markdown-editor .te-md-container::after {
+    @apply bg-theme-secondary-200 block absolute top-0 left-0 z-10 py-4 bg-clip-content h-full;
+    content: "";
+    margin-left: 50px;
+    width: 1px;
+    margin-bottom: 1em;
 }
 
 .ark-markdown-editor .te-md-container .CodeMirror-scroll::-webkit-scrollbar {
@@ -111,8 +119,9 @@
 }
 
 .ark-markdown-editor .CodeMirror-gutters {
-    @apply bg-white border-r border-theme-secondary-200 whitespace-nowrap;
+    @apply bg-white whitespace-nowrap border-transparent;
 }
+
 
 .ark-markdown-editor .CodeMirror-linenumber {
     @apply p-0 text-xs text-center text-theme-secondary-500;
