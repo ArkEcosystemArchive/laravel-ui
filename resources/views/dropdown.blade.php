@@ -1,6 +1,6 @@
 @props([
     'dropdownProperty'       => 'dropdownOpen',
-    'dropdownContentClasses' => 'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
+    'dropdownContentClasses' => 'bg-white rounded-xl shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
     'buttonClassExpanded'    => 'text-theme-primary-500',
     'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'dropdownClasses'        => 'w-40',
