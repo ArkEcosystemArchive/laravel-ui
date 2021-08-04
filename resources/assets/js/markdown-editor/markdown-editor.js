@@ -143,6 +143,7 @@ const MarkdownEditor = (
                 usageStatistics: false,
                 hideModeSwitch: true,
                 previewStyle: "tab",
+                previewHighlight: false,
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
@@ -205,6 +206,10 @@ const MarkdownEditor = (
             const handlers = events.get("command");
             handlers.unshift(this.forceHttpsLinkHandler);
             events.set("command", handlers);
+
+            // Since we dont use the preview and is hidden, the scroll event
+            // creates some exceptions that are fixed by removing the listener.
+            this.editor.preview.eventManager.removeEventHandler('scroll');
 
             this.editor.getCodeMirror().setOption("lineNumbers", true);
 
