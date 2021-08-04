@@ -11,6 +11,7 @@
     'height'                 => null,
     'initAlpine'             => true,
     'closeOnBlur'            => true,
+    'onClose'                => null,
 ])
 
 <div
@@ -26,6 +27,12 @@
                         }
                     });
                 })
+            @if($onClose)
+            } else {
+                $nextTick(() => {
+                    ({{ $onClose }})($el);
+                });
+            @endif
             }
         })"
     @endif
