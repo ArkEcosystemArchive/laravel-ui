@@ -1,19 +1,22 @@
 @props([
     'dropdownProperty'       => 'dropdownOpen',
-    'dropdownContentClasses' => 'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
+    'dropdownContentClasses' => 'bg-white rounded-xl shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
     'buttonClassExpanded'    => 'text-theme-primary-500',
     'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'dropdownClasses'        => 'w-40',
     'dropdownOriginClass'    => 'origin-top-right',
-    'wrapperClass'           => '',
+    'wrapperClass'           => 'absolute inline-block top-0 right-0 text-left',
     'fullScreen'             => false,
     'dusk'                   => false,
     'buttonTooltip'          => null,
     'height'                 => null,
+    'initAlpine'             => true,
+    'closeOnBlur'            => true,
+    'onClose'                => null,
 ])
 
 <div
-    @if ($initAlpine ?? true)
+    @if ($initAlpine)
         x-data="{ {{ $dropdownProperty }}: false }"
         x-init="$watch('{{ $dropdownProperty }}', (expanded) => {
             if (expanded) {
@@ -25,14 +28,20 @@
                         }
                     });
                 })
+            @if($onClose)
+            } else {
+                $nextTick(() => {
+                    ({{ $onClose }})($el);
+                });
+            @endif
             }
         })"
     @endif
-    @if($closeOnBlur ?? true)
+    @if($closeOnBlur)
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
     @endif
-    class="{{ $wrapperClass ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
+    @if($wrapperClass) class="{{ $wrapperClass }}" @endif
     @if($dusk) dusk="{{ $dusk }}" @endif
 >
     <div>
