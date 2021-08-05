@@ -478,3 +478,38 @@ HTML;
 
     expect(MarkdownParser::basic($markdown))->toBe($html);
 });
+
+
+it('allows youtube, twitter and typeform embeds in safe mode', function () {
+    $markdown = <<<MARKDOWN
+![MarketSquare Launch Announcement](youtube:<c50CUmBJ6qA>)
+
+![Ray Alvarez as ARK ECOSYSTEM, SCIC President](twitter:ArkEcosystem/status/1408140592186540042)
+
+<div class="typeform-widget" data-url="https://form.typeform.com/to/aGWSKj" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=aGWSKj&utm_source=typeform.com-01DJB8H5QAN3BZQ6JR4K5PWB6B-professional&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a> </div>
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p><div class="image-container"><div class="video-container"><iframe width="100%" height="480" src="https://www.youtube.com/embed/%3Cc50CUmBJ6qA%3E" frameborder="0" allowfullscreen="1" showinfo="0" controls="0" autoplay="0" modestbranding="1" autohide="1"></iframe></div><span class="image-caption">MarketSquare Launch Announcement</span></div></p>
+<p><div class="image-container"><blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">We are pleased to announce that Ray Alvarez has been appointed as the New President and CEO of ARK ECOSYSTEM, SCIC. <a href="https://t.co/L6v3wJngHw">https://t.co/L6v3wJngHw</a></p>&mdash; ARK.io (@ArkEcosystem) <a href="https://twitter.com/ArkEcosystem/status/1408140592186540042?ref_src=twsrc%5Etfw">June 24, 2021</a></blockquote>
+<span class="image-caption">Ray Alvarez as ARK ECOSYSTEM, SCIC President</span></div></p>
+<div class="typeform-widget" data-url="https://form.typeform.com/to/aGWSKj" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=aGWSKj&utm_source=typeform.com-01DJB8H5QAN3BZQ6JR4K5PWB6B-professional&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a>
+</div>
+
+HTML;
+
+    $html = <<<HTML
+<p><div class="image-container"><div class="video-container"><iframe width="100%" height="480" src="https://www.youtube.com/embed/%3Cc50CUmBJ6qA%3E" frameborder="0" allowfullscreen="1" showinfo="0" controls="0" autoplay="0" modestbranding="1" autohide="1"></iframe></div><span class="image-caption">MarketSquare Launch Announcement</span></div></p>
+<p><div class="image-container"><blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">We are pleased to announce that Ray Alvarez has been appointed as the New President and CEO of ARK ECOSYSTEM, SCIC. <a href="https://t.co/L6v3wJngHw">https://t.co/L6v3wJngHw</a></p>&mdash; ARK.io (@ArkEcosystem) <a href="https://twitter.com/ArkEcosystem/status/1408140592186540042?ref_src=twsrc%5Etfw">June 24, 2021</a></blockquote>
+<span class="image-caption">Ray Alvarez as ARK ECOSYSTEM, SCIC President</span></div></p>
+<div class="typeform-widget" data-url="https://form.typeform.com/to/aGWSKj" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script> <div style="font-family: Sans-Serif;font-size: 12px;color: #999;opacity: 0.5; padding-top: 5px;"> powered by <a href="https://admin.typeform.com/signup?utm_campaign=aGWSKj&utm_source=typeform.com-01DJB8H5QAN3BZQ6JR4K5PWB6B-professional&utm_medium=typeform&utm_content=typeform-embedded-poweredbytypeform&utm_term=EN" style="color: #999" target="_blank">Typeform</a>
+</div>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::safe($markdown))->toBe($html);
+});
