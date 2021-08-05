@@ -272,6 +272,8 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
         Blade::component('ark::link-collection', 'ark-link-collection');
         Blade::component('ark::file-download', 'ark-file-download');
+        Blade::component('ark::tabs.wrapper', 'ark-tabs');
+        Blade::component('ark::tabs.tab', 'ark-tab');
 
         // Navigation
         Blade::component('ark::navbar', 'ark-navbar');

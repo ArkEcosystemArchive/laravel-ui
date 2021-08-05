@@ -687,3 +687,33 @@ Here follow you can see an example on how to use it:
 |---|---|---|---|
 | class | The class of the circle | no | |
 | path-class | The class of the spinner | no | |
+
+
+### Tabs
+
+> Open `webpack.mix.js` file and compile the `tabs.js` script into the public folder:
+```js
+mix
+    .js('vendor/arkecosystem/ui/resources/assets/js/tabs.js', 'public/js/tabs.js')
+```
+
+```
+<x-ark-tabs>
+    <x-ark-tab name="tab-1" />
+    <x-ark-tab name="tab-2" />
+    <x-ark-tab name="tab-3" />
+    ...
+</x-ark-tabs>
+```
+
+| Parameter        | Description                                   | Required |
+|------------------|-----------------------------------------------|----------|
+| x-data           | Extra data passed to Alpine js component      | no       |
+| on-selected      | to customise the action when a tab is pressed | no       |
+| default-selected | the tab selected by default                   | no       |
+| no-data          | avoid to load Alpine js component             | no       |
+
+The parameter accepted by `<x-ark-tab>`
+| Parameter | Description         | Required |
+|-----------|---------------------|----------|
+| name      | The name of the tab | yes      |

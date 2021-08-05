@@ -573,6 +573,7 @@ There are also default error pages you can use for your Laravel project
 - [`<x-ark-upload-image-single>`](EXAMPLES.md#upload-single-image)
 - [`<x-ark-upload-image-collection>`](EXAMPLES.md#upload-multiple-images)
 - [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
+- [`<x-ark-tabs>`](EXAMPLES.md#tabs)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 
