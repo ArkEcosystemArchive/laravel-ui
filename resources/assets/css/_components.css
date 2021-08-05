@@ -62,8 +62,12 @@
     @apply ml-0;
 }
 .tab-item-current,
-.tab-item:hover {
+.tab-item:hover:not(:disabled) {
     @apply text-theme-secondary-900 border-theme-primary-600;
+}
+
+.tab-item:disabled {
+    @apply text-theme-secondary-500;
 }
 
 .dark .tab-item:hover {
