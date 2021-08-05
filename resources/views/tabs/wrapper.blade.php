@@ -6,18 +6,16 @@
 ])
 
 <div
-    {{ $attributes->merge(['class' => 'items-center justify-between w-full flex bg-theme-secondary-100 rounded-xl dark:bg-black relative z-10' ])}}
+    {{ $attributes->merge(['class' => 'tabs-wrapper items-center justify-between w-full flex bg-theme-secondary-100 rounded-xl dark:bg-black relative z-10' ])}}
     @unless($noData)
         x-data="Tabs(
             '{{ $defaultSelected }}',
             {{ $xData }}
-            @if($onSelected)
-            , {{ $onSelected }}
-            @endif
+            @if($onSelected) , {{ $onSelected }} @endif
         )"
     @endunless
 >
-    <div role="tablist" class="flex">
+    <div role="tablist" class="tabs">
         {{ $slot }}
     </div>
 
