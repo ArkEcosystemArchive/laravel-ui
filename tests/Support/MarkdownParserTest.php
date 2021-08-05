@@ -432,6 +432,74 @@ HTML;
     expect(MarkdownParser::full($markdown))->toBe($html);
 });
 
+it('strips a `table` tag on basic parsing', function () {
+    $markdown = <<<MARKDOWN
+Other text
+
+| Hello | World  |
+| --- | --- |
+| Hola  | Mundo |
+| Bonjour  | monde |
+
+Something **in bold**
+
+MARKDOWN;
+
+    $convertedHtml = <<<HTML
+<p>Other text</p>
+<div class="table-wrapper overflow-x-auto"><table>
+<thead>
+<tr>
+<th>Hello</th>
+<th>World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hola</td>
+<td>Mundo</td>
+</tr>
+<tr>
+<td>Bonjour</td>
+<td>monde</td>
+</tr>
+</tbody>
+</table></div>
+<p>Something <strong>in bold</strong></p>
+
+HTML;
+
+    $html = <<<HTML
+<p>Other text</p>
+Hello World
+
+
+
+
+
+
+
+
+Hola
+Mundo
+
+
+Bonjour
+monde
+
+
+
+<p>Something <strong>in bold</strong></p>
+
+HTML;
+
+    $this->mock(MarkdownConverterInterface::class)
+        ->shouldReceive('convertToHtml')
+        ->andReturn($convertedHtml);
+
+    expect(MarkdownParser::basic($markdown))->toBe($html);
+});
+
 it('strips an `script` tag', function () {
     $markdown = <<<MARKDOWN
 <script>alert(document.cookie)</script>
