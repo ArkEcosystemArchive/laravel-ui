@@ -2,6 +2,6 @@
     'danger' => false,
     'warning' => false,
 ])
-<tr {{ $attributes }} @if($danger) data-danger @elseif($warning) data-warning @endif class="h-full">
+<tr {{ $attributes }} @if($danger) data-danger @elseif($warning) data-warning @endif>
     {{ $slot }}
 </tr>
