@@ -691,10 +691,12 @@ Here follow you can see an example on how to use it:
 
 ### Tabs
 
-> Open `webpack.mix.js` file and compile the `tabs.js` script into the public folder:
+Add the following to the `app.js` file:
+
 ```js
-mix
-    .js('vendor/arkecosystem/ui/resources/assets/js/tabs.js', 'public/js/tabs.js')
+import Tabs from "@ui/js/tabs";
+
+window.Tabs = Tabs
 ```
 
 ```
