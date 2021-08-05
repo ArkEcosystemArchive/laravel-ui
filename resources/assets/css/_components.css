@@ -496,3 +496,8 @@
 .contact-content {
     @apply py-8 content-container;
 }
+
+/* Accordion */
+.accordion-trigger {
+    @apply text-left w-full flex justify-between items-center rounded;
+}

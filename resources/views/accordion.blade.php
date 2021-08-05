@@ -24,8 +24,7 @@
         <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
-                    class="accordion-trigger text-left w-full flex justify-between items-center rounded
-                        {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
+                    class="accordion-trigger {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
                     @click="openPanel = !openPanel"
                 >
