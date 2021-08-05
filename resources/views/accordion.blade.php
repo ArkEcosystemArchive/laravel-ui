@@ -1,26 +1,32 @@
 @props([
     'title',
     'slot',
-    'dark' => false,
-    'border' => true,
-    'containerClass' => 'p-6',
-    'titleClass' => 'text-lg font-semibold',
-    'circleClass' => '',
-    'circleSize' => 'sm',
-    'toggleTitle' => false,
+    'dark'            => false,
+    'border'          => true,
+    'leftBorder'      => false,
+    'leftPadding'     => 'pl-8',
+    'containerClass'  => 'p-6',
+    'titleClass'      => 'text-lg font-semibold',
+    'circleClass'     => '',
+    'circleSize'      => 'sm',
+    'toggleTitle'     => false,
+    'iconOpenClass'   => 'rotate-180 text-theme-primary-500',
+    'iconClosedClass' => 'text-theme-secondary-500',
+    'contentClass'    => 'mt-2',
 ])
 
-@php ($isDark = $dark)
-
-<div x-data="{ openPanel: null }">
+<div
+    class="accordion"
+    x-data="{ openPanel: false }"
+    :class="{ 'accordion-open': openPanel }"
+>
     <dl>
-        <div class="{{ $containerClass }} @if ($isDark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
+        <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
-                    class="text-left w-full flex justify-between items-center rounded
-                        {{ $isDark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
+                    class="accordion-trigger {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
-                    @click="openPanel = (openPanel ? null : 1)"
+                    @click="openPanel = !openPanel"
                 >
                     <div class="{{ $titleClass }}">
                         @if($toggleTitle)
@@ -31,9 +37,12 @@
                         @endif
                     </div>
 
-                    <span class="flex items-center ml-6 h-7">
+                    <span class="flex items-center h-7">
                         <span
-                            :class="{ 'rotate-180 text-theme-primary-500': openPanel, 'text-theme-secondary-500': !openPanel }"
+                            :class="{
+                                '{{ $iconOpenClass }}': openPanel,
+                                '{{ $iconClosedClass }}': !openPanel
+                            }"
                             class="transition duration-150 ease-in-out transform {{ $circleClass }}"
                         >
                             <x-ark-icon name="chevron-down" :size="$circleSize" />
@@ -42,7 +51,12 @@
                 </button>
             </dt>
 
-            <dd class="mt-2 @if($isDark) border-l border-theme-secondary-800 pl-8 @endif" x-show.transition.opacity="openPanel" x-cloak>
+            <dd
+                class="{{ $contentClass }} {{ $dark ? 'border-theme-secondary-800' : 'border-theme-secondary-300' }}
+                    @if($dark || $leftBorder) border-l {{ $leftPadding }} @endif"
+                x-show.transition.opacity="openPanel"
+                x-cloak
+            >
                 {{ $slot }}
             </dd>
         </div>

@@ -1,17 +1,21 @@
 @props([
     'dropdownProperty'       => 'dropdownOpen',
-    'dropdownContentClasses' => 'bg-white rounded-md shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
+    'dropdownContentClasses' => 'bg-white rounded-xl shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
     'buttonClassExpanded'    => 'text-theme-primary-500',
     'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'dropdownClasses'        => 'w-40',
-    'wrapperClass'           => '',
+    'wrapperClass'           => 'absolute inline-block top-0 right-0 text-left',
     'fullScreen'             => false,
     'dusk'                   => false,
     'buttonTooltip'          => null,
+    'height'                 => null,
+    'initAlpine'             => true,
+    'closeOnBlur'            => true,
+    'onClose'                => null,
 ])
 
 <div
-    @if ($initAlpine ?? true)
+    @if ($initAlpine)
         x-data="{ {{ $dropdownProperty }}: false }"
         x-init="$watch('{{ $dropdownProperty }}', (expanded) => {
             if (expanded) {
@@ -23,14 +27,20 @@
                         }
                     });
                 })
+            @if($onClose)
+            } else {
+                $nextTick(() => {
+                    ({{ $onClose }})($el);
+                });
+            @endif
             }
         })"
     @endif
-    @if($closeOnBlur ?? true)
+    @if($closeOnBlur)
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
     @endif
-    class="{{ $wrapperClass ? $wrapperClass : 'absolute inline-block top-0 right-0 text-left' }}"
+    @if($wrapperClass) class="{{ $wrapperClass }}" @endif
     @if($dusk) dusk="{{ $dusk }}" @endif
 >
     <div>
@@ -59,7 +69,7 @@
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
         class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
-        @if ($height ?? false) data-height="{{ $height }}" @endif
+        @if ($height) data-height="{{ $height }}" @endif
     >
         <div class="{{ $dropdownContentClasses }}" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>

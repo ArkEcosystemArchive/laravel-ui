@@ -28,7 +28,7 @@
         'failed' => 'cross',
         'error' => 'cross',
         'running' => 'update',
-        'paused' => 'update',
+        'paused' => 'pause',
         'updated' => 'update',
         'locked' => 'lock',
         'errored' => 'errored',
