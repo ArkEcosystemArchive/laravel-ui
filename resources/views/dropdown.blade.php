@@ -38,13 +38,10 @@
     <div>
         <button
             type="button"
-            @unless($disabled) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endunless
-            @if($disabled) disabled @endif
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
-            @if($buttonTooltip)
-                data-tippy-content="{{ $buttonTooltip }}"
-            @endif
+            @if($disabled) disabled @else @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif
+            @if($buttonTooltip) data-tippy-content="{{ $buttonTooltip }}" @endif
         >
             @if($button ?? false)
                 {{ $button }}
