@@ -15,13 +15,11 @@
         )"
     @endunless
 >
-    <div role="tablist" class="tabs">
+    <ul role="tablist" class="tabs">
         {{ $slot }}
-    </div>
+    </ul>
 
     <div>
-        @isset($right)
-            {{ $right }}
-        @endisset
+        {{ $panels }}
     </div>
 </div>

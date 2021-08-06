@@ -699,23 +699,33 @@ import Tabs from "@ui/js/tabs";
 window.Tabs = Tabs
 ```
 
-```
-<x-ark-tabs>
+```html
+<x-ark-tabbed>
     <x-ark-tab name="tab-1" />
     <x-ark-tab name="tab-2" />
     <x-ark-tab name="tab-3" />
-    ...
-</x-ark-tabs>
+    
+    <x-slot name="panels">
+        <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+        <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+        <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+    </x-slot>
+</x-ark-tabbed>
 ```
 
-| Parameter        | Description                                   | Required |
-|------------------|-----------------------------------------------|----------|
-| x-data           | Extra data passed to Alpine js component      | no       |
-| on-selected      | to customise the action when a tab is pressed | no       |
-| default-selected | the tab selected by default                   | no       |
-| no-data          | avoid to load Alpine js component             | no       |
+| Parameter        | Description                                                   | Required |
+|------------------|---------------------------------------------------------------|----------|
+| x-data           | Extra data passed to Alpine js component                      | no       |
+| on-selected      | to customise the action when a tab is pressed                 | no       |
+| default-selected | the tab selected by default                                   | no       |
+| no-data          | avoid to load Alpine js component                             | no       |
 
 The parameter accepted by `<x-ark-tab>`
-| Parameter | Description         | Required |
-|-----------|---------------------|----------|
-| name      | The name of the tab | yes      |
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab                                                  | yes      |
+
+The parameter accepted by `<x-ark-tab-panel>`
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab panel (it must be the same used for `x-ark-tab`) | yes      |
