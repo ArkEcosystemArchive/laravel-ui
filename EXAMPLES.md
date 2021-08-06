@@ -475,6 +475,7 @@ You can also get an alert with more padding and large icon by specifying `large`
 | wrapperClass | The class(es) applied to the wrapper element | no | '' |
 | dropdownContentClasses | The class(es) applied to the content container | no | null |
 | buttonTooltip | Apply the given text as button tooltip | no | null |
+| disabled | This Boolean attribute prevents the user from interacting with the component | no | false |
 
 ### Expandable
 Displays a defined number of items and hides the rest, showing a button to show/hide the hidden items.
