@@ -1,4 +1,5 @@
 @props([
+    'button'                 => false,
     'dropdownProperty'       => 'dropdownOpen',
     'dropdownContentClasses' => 'bg-white rounded-xl shadow-lg dark:bg-theme-secondary-800 dark:text-theme-secondary-200',
     'buttonClassExpanded'    => 'text-theme-primary-500',
@@ -10,6 +11,7 @@
     'buttonTooltip'          => null,
     'initAlpine'             => true,
     'closeOnBlur'            => true,
+    'closeOnClick'           => true,
     'disabled'               => false,
     'repositionOnOpen'       => true,
     'onClosed'               => null,
@@ -40,7 +42,7 @@
             @if($disabled) disabled @else @click="toggle" @endif
             @if($buttonTooltip) data-tippy-content="{{ $buttonTooltip }}" @endif
         >
-            @if($button ?? false)
+            @if($button)
                 {{ $button }}
             @else
                 @svg('vertical-dots', 'h-5 w-5')
@@ -59,7 +61,10 @@
         class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
     >
         <div class="{{ $dropdownContentClasses }}" x-cloak>
-            <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
+            <div
+                class="py-1"
+                @if($closeOnClick) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif
+            >
                 {{ $slot }}
             </div>
         </div>
