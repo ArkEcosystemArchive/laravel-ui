@@ -70,6 +70,7 @@ final class MarkdownParser
         // Icons related
         'svg',
         'path',
+        'img',
     ];
 
     /**
@@ -107,6 +108,7 @@ final class MarkdownParser
         // Icons related
         'svg',
         'path',
+        'img',
     ];
 
     /**
