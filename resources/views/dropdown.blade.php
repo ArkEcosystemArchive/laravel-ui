@@ -40,8 +40,8 @@
         @keydown.escape="{{ $dropdownProperty }} = false"
         @click.away="{{ $dropdownProperty }} = false"
     @endif
-    @if($wrapperClass) class="{{ $wrapperClass }}" @endif
     @if($dusk) dusk="{{ $dusk }}" @endif
+    class="dropdown-container @if($wrapperClass) {{ $wrapperClass }} @endif"
 >
     <div>
         <button
