@@ -16,7 +16,7 @@
         @endunless
 
         <div
-            class="input-wrapper input-wrapper-with-prefix @error($name) input-text--error @enderror"
+            class="input-wrapper input-wrapper-with-prefix  @error($name) input-text--error @enderror"
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
             @if ($icon ?? false)
@@ -42,6 +42,12 @@
                 'max'            => $max ?? null,
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
             ])
+
+            @if($suffix ?? false)
+                <div class="input-suffix">
+                    {{ $suffix }}
+                </div>
+            @endif
 
             @error($name)
                 @include('ark::inputs.includes.input-error-tooltip', [

@@ -71,11 +71,21 @@
 
 /** Input with icon prefix **/
 .input-prefix-icon,
-.input-prefix {
-    @apply flex items-center rounded-l;
+.input-prefix,
+.input-suffix {
+    @apply flex items-center;
 }
-.input-prefix {
+
+.input-prefix,
+.input-suffix{
     @apply px-4;
+}
+
+.input-prefix {
+    @apply rounded-l;
+}
+.input-suffix {
+    @apply rounded-r;
 }
 
 .input-text-with-prefix {
@@ -96,9 +106,15 @@
 .input-wrapper-with-prefix:focus-within .input-prefix-icon {
     @apply text-theme-primary-500;
 }
-
 .input-wrapper-with-prefix .input-prefix {
-    @apply border-r select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
+    @apply border-r;
+}
+.input-wrapper-with-prefix .input-suffix {
+    @apply border-l;
+}
+.input-wrapper-with-prefix .input-prefix,
+.input-wrapper-with-prefix .input-suffix {
+    @apply select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
 }
 
 /* Radio buttons */
