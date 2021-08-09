@@ -13,7 +13,7 @@
     'iconClosedClass' => 'text-theme-secondary-500',
     'contentClass'    => 'mt-2',
     'buttonClass'     => '',
-    'buttonOpenClass' => '',
+    'buttonOpenClass' => 'mb-5',
     'onToggle'        => null,
 ])
 
