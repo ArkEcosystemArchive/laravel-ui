@@ -4,7 +4,6 @@
     'dark'            => false,
     'border'          => true,
     'leftBorder'      => false,
-    'leftPadding'     => 'pl-8',
     'containerClass'  => 'p-6',
     'titleClass'      => 'text-lg font-semibold',
     'circleClass'     => '',
