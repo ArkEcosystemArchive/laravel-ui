@@ -8,7 +8,6 @@
     'fullScreen'             => false,
     'dusk'                   => false,
     'buttonTooltip'          => null,
-    'height'                 => null,
     'initAlpine'             => true,
     'closeOnBlur'            => true,
     'onClose'                => null,
@@ -69,7 +68,6 @@
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
         class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
-        @if ($height) data-height="{{ $height }}" @endif
     >
         <div class="{{ $dropdownContentClasses }}" x-cloak>
             <div class="py-1" @if($closeOnClick ?? true) @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif>
