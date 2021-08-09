@@ -10,31 +10,21 @@
     'buttonTooltip'          => null,
     'initAlpine'             => true,
     'closeOnBlur'            => true,
-    'onClose'                => null,
     'disabled'               => false,
+    'repositionOnOpen'       => true,
+    'repositionOnClick'      => true,
+    'onClosed'               => null,
 ])
 
 <div
     @if ($initAlpine)
-        x-data="{ {{ $dropdownProperty }}: false }"
-        x-init="$watch('{{ $dropdownProperty }}', (expanded) => {
-            if (expanded) {
-                $nextTick(() => {
-                    $el.querySelectorAll('img[onload]').forEach(img => {
-                        if (img.onload) {
-                            img.onload();
-                            img.removeAttribute('onload');
-                        }
-                    });
-                })
-            @if($onClose)
-            } else {
-                $nextTick(() => {
-                    ({{ $onClose }})($el);
-                });
+        x-data="Dropdown.setup('{{ $dropdownProperty }}', {
+            @if($onClosed)
+                onClosed: ({{ $onClosed }}),
             @endif
-            }
+            repositionOnOpen: {{ $repositionOnOpen ? 'true' : 'false' }},
         })"
+        x-init="init"
     @endif
     @if($closeOnBlur)
         @keydown.escape="{{ $dropdownProperty }} = false"
@@ -48,7 +38,7 @@
             type="button"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
-            @if($disabled) disabled @else @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif
+            @if($disabled) disabled @else @click="toggle" @endif
             @if($buttonTooltip) data-tippy-content="{{ $buttonTooltip }}" @endif
         >
             @if($button ?? false)
