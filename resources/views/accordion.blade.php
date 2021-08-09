@@ -12,6 +12,7 @@
     'iconOpenClass'   => 'rotate-180 text-theme-primary-500',
     'iconClosedClass' => 'text-theme-secondary-500',
     'contentClass'    => 'mt-2',
+    'buttonClass'     => '',
 ])
 
 <div
@@ -23,7 +24,7 @@
         <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
-                    class="accordion-trigger {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
+                    class="accordion-trigger {{ $buttonClass }} {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
                     @click="openPanel = !openPanel"
                 >
