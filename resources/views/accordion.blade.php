@@ -13,6 +13,7 @@
     'iconClosedClass' => 'text-theme-secondary-500',
     'contentClass'    => 'mt-2',
     'buttonClass'     => '',
+    'buttonOpenClass' => '',
     'onToggle'        => null,
 ])
 
@@ -33,9 +34,11 @@
         <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
             <dt>
                 <button
-                    class="accordion-trigger {{ $buttonClass }} {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
-                    :class="{ 'mb-5': openPanel }"
                     @click="toggle"
+                    class="accordion-trigger {{ $buttonClass }} {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
+                    @if($buttonOpenClass)
+                        :class="{ '{{ $buttonOpenClass }}': openPanel }"
+                    @endif
                 >
                     <div class="{{ $titleClass }}">
                         @if($toggleTitle)
