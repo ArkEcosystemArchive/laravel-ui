@@ -12,7 +12,6 @@
     'closeOnBlur'            => true,
     'disabled'               => false,
     'repositionOnOpen'       => true,
-    'repositionOnClick'      => true,
     'onClosed'               => null,
 ])
 
