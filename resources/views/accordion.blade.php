@@ -13,11 +13,20 @@
     'iconClosedClass' => 'text-theme-secondary-500',
     'contentClass'    => 'mt-2',
     'buttonClass'     => '',
+    'onToggle'        => null,
 ])
 
 <div
     class="accordion"
-    x-data="{ openPanel: false }"
+    x-data="{
+        openPanel: false,
+        toggle: function () {
+            this.openPanel = ! this.openPanel;
+            @if($onToggle)
+                ({{ $onToggle }}).call(this);
+            @endif
+        },
+    }"
     :class="{ 'accordion-open': openPanel }"
 >
     <dl>
@@ -26,7 +35,7 @@
                 <button
                     class="accordion-trigger {{ $buttonClass }} {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
                     :class="{ 'mb-5': openPanel }"
-                    @click="openPanel = !openPanel"
+                    @click="toggle"
                 >
                     <div class="{{ $titleClass }}">
                         @if($toggleTitle)
