@@ -25,7 +25,6 @@ const Dropdown = {
     },
 
     repositionOutOfBounds(container) {
-        console.log("repositionOutOfBounds");
         const dropdown = container.querySelector(".dropdown");
         dropdown.style.bottom = null;
         dropdown.style.top = null;
@@ -53,8 +52,6 @@ const Dropdown = {
 
             init() {
                 this.$watch(propertyName, (expanded) => {
-                    console.log("setup watch open", expanded);
-
                     if (expanded) {
                         this.$nextTick(() =>
                             Dropdown.onOpened.call(this, settings)
