@@ -88,6 +88,13 @@
 .input-suffix {
     @apply rounded-r;
 }
+.input-text--error .input-suffix {
+    @apply ml-10;
+}
+.input-text--error .input-suffix .input-icon {
+    @apply right-auto left-0 -ml-13;
+
+}
 
 .input-text-with-prefix {
     @apply block w-full border-0 rounded outline-none appearance-none transition-default border-theme-danger-500;
@@ -179,7 +186,12 @@
 
 .input-text-with-icon--error,
 .input-text--error {
-    @apply pr-10 border-theme-danger-500;
+    @apply border-theme-danger-500;
+}
+
+.input-text-with-icon--error,
+.input-text--error:not(.input-wrapper-with-suffix) {
+    @apply pr-10;
 }
 .dark .input-text-with-icon--error,
 .dark .input-text--error {

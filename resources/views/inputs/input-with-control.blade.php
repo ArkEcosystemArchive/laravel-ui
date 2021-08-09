@@ -16,7 +16,7 @@
         @endunless
 
         <div
-            class="input-wrapper input-wrapper-with-prefix  @error($name) input-text--error @enderror"
+            class="input-wrapper input-wrapper-with-prefix @if($suffix ?? false) input-wrapper-with-suffix @endif @error($name) input-text--error @enderror"
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
             @if ($icon ?? false)
@@ -44,17 +44,24 @@
             ])
 
             @if($suffix ?? false)
-                <div class="input-suffix">
+                <div class="input-suffix relative">
                     {{ $suffix }}
-                </div>
-            @endif
 
-            @error($name)
-                @include('ark::inputs.includes.input-error-tooltip', [
-                    'error' => $message,
-                    'id' => $id ?? $name
-                ])
-            @enderror
+                    @error($name)
+                        @include('ark::inputs.includes.input-error-tooltip', [
+                            'error' => $message,
+                            'id' => $id ?? $name
+                        ])
+                    @enderror
+                </div>
+            @else
+                @error($name)
+                    @include('ark::inputs.includes.input-error-tooltip', [
+                        'error' => $message,
+                        'id' => $id ?? $name
+                    ])
+                @enderror
+            @endif
         </div>
     </div>
 </div>
