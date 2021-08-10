@@ -12,6 +12,7 @@
     'initAlpine'             => true,
     'closeOnBlur'            => true,
     'onClose'                => null,
+    'disabled'               => false,
 ])
 
 <div
@@ -45,12 +46,11 @@
 >
     <div>
         <button
-            @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
+            type="button"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
-            @if($buttonTooltip)
-                data-tippy-content="{{ $buttonTooltip }}"
-            @endif
+            @if($disabled) disabled @else @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif
+            @if($buttonTooltip) data-tippy-content="{{ $buttonTooltip }}" @endif
         >
             @if($button ?? false)
                 {{ $button }}
