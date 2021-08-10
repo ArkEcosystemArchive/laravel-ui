@@ -628,22 +628,6 @@ window.Pagination = Pagination
 <x-ark-pagination :results="$results"  />
 ```
 
-### Dropdown
-
-1. Add the following to the `app.js` file:
-
-```js
-import Dropdown from "@ui/js/dropdown";
-
-window.Dropdown = Dropdown
-```
-
-2. All set, now you can use the dropdown component
-
-```html
-<x-ark-dropdown ...  />
-```
-
 ### Footer
 
 Add the following snippet to your `urls.php` lang file:
