@@ -7,12 +7,12 @@
 
 @php
     $icon = Arr::get([
-        'warning' => 'status.warning',
-        'error' => 'status.error',
-        'danger' => 'status.error',
-        'success' => 'status.success',
-        'info' => 'status.info',
-        'hint' => 'status.hint',
+        'warning' => 'circle.exclamation-mark',
+        'error' => 'circle.cross',
+        'danger' => 'circle.cross',
+        'success' => 'circle.checkmark',
+        'info' => 'circle.info',
+        'hint' => 'circle.question-mark',
     ], $type);
 
     $toastClass = Arr::get([
