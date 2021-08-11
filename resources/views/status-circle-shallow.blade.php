@@ -56,7 +56,7 @@
 @endphp
 
 <div
-    class="flex items-center justify-center flex-shrink-0"
+    class="flex flex-shrink-0 justify-center items-center"
     @if ($tooltip)
         data-tippy-content="{{ $tooltip }}"
     @endif
