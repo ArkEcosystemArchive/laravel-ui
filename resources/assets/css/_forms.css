@@ -78,7 +78,7 @@
 }
 
 .input-prefix,
-.input-suffix{
+.input-suffix {
     @apply px-4;
 }
 
@@ -93,7 +93,6 @@
 }
 .input-text--error .input-suffix .input-icon {
     @apply right-auto left-0 -ml-13;
-
 }
 
 .input-text-with-prefix {

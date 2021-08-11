@@ -44,7 +44,7 @@
             ])
 
             @if($suffix ?? false)
-                <div class="input-suffix relative">
+                <div class="relative input-suffix">
                     {{ $suffix }}
 
                     @error($name)
