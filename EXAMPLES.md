@@ -398,7 +398,26 @@ You can also get an alert with more padding and large icon by specifying `large`
 
 ### Accordion
 
-```php
+| Parameter | Description | Required |
+|-----------|-------------|----------|
+| title | Title for accordion open/close option | yes |
+| slot | Content of accordion | yes |
+| dark | Whether the styling should be dark mode or not | no |
+| border | Whether accordion & button should have a border | no |
+| leftBorder | Whether accordion content should have a left border | no |
+| container-class | Class for accordion container | no |
+| title-class | Class for title | no |
+| circle-class | Class for icon | no |
+| circle-size | Size of icon | no |
+| toggle-title | Include "Show"/"Hide" prefix text along with title | no |
+| icon-open-class | Icon class for when accordion is open | no |
+| icon-closed-class | Icon class for when accordion is closed | no |
+| content-class | Class for content | no |
+| button-class | Class for button | no |
+| button-open-class | Button class for when accordion is open | no |
+| on-toggle | JS Method which is called when the accordion is opened or closed | no |
+
+```blade
 <x-ark-accordion-group slots="2">
     @slot('title_1')
         <p>Title for slot 1</p>
@@ -416,8 +435,19 @@ You can also get an alert with more padding and large icon by specifying `large`
 </x-ark-accordion-group>
 ```
 
-```php
+```blade
 <x-ark-accordion title="Title">
+    <p>Content for slot</p>
+</x-ark-accordion>
+```
+
+#### JS on-toggle
+
+```blade
+<x-ark-accordion
+    title="Title"
+    on-toggle="() => { this.$el.style.background = '...'; }"
+>
     <p>Content for slot</p>
 </x-ark-accordion>
 ```
