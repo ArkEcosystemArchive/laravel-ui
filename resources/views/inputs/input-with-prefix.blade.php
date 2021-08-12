@@ -16,8 +16,8 @@
         @endunless
 
         <div
-            class="input-wrapper input-wrapper-with-prefix @error($name) input-text--error @enderror"
-            x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
+            class="input-wrapper input-wrapper-with-prefix-suffix @error($name) input-text--error @enderror"
+            x-bind:class="{ 'input-wrapper-with-prefix-suffix--dirty': !! isDirty }"
         >
             @if ($icon ?? false)
                 @include('ark::inputs.includes.input-prefix-icon', [
@@ -34,7 +34,7 @@
                 'name'           => $name,
                 'errors'         => null,
                 'id'             => $id ?? $name,
-                'inputTypeClass' => 'input-text-with-prefix',
+                'inputTypeClass' => 'input-text-with-prefix-suffix',
                 'inputClass'     => $inputClass ?? '',
                 'noModel'        => $noModel ?? false,
                 'model'          => $model ?? $name,
