@@ -95,6 +95,7 @@ final class MarkdownParser
         'code',
         'tr',
         'td',
+        'span',
         // underline
         'ins',
         // bold variants
