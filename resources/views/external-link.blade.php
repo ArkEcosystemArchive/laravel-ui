@@ -11,14 +11,14 @@
     class="{{ $class }}"
     target="_blank"
     rel="noopener nofollow noreferrer"
-><!--
-    -->{{ isset($slot) && trim($slot) ? $slot : $text }}<!--
+>
+    <span>{{ isset($slot) && trim($slot) ? $slot : $text }}</span>
 
     @unless($noIcon)
-    --><x-ark-icon
+        <x-ark-icon
             name="link"
             :size="$small ? 'xs' : 'sm'"
-            :class="'flex-shrink-0 inline relative ml-1.5 ' . ($small ? '-top-1 -mt-0.5' : '-mt-1.5')"
-        /><!--
+            :class="'flex-shrink-0 inline relative ml-0.5 ' . ($small ? '-top-1 -mt-0.5' : '-mt-1.5')"
+        />
     @endunless
---></a>
+</a>
