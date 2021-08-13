@@ -16,14 +16,14 @@
         @endunless
 
         <div
-            class="input-wrapper input-wrapper-with-prefix-suffix input-wrapper-with-suffix @error($name) input-text--error @enderror"
-            x-bind:class="{ 'input-wrapper-with-prefix-suffix--dirty': !! isDirty }"
+            class="input-wrapper input-wrapper-with-suffix @error($name) input-text--error @enderror"
+            x-bind:class="{ 'input-wrapper-with-suffix--dirty': !! isDirty }"
         >
             @include('ark::inputs.includes.input-field', [
                 'name'           => $name,
                 'errors'         => null,
                 'id'             => $id ?? $name,
-                'inputTypeClass' => 'input-text-with-prefix-suffix',
+                'inputTypeClass' => 'input-text-with-suffix',
                 'inputClass'     => $inputClass ?? '',
                 'noModel'        => $noModel ?? false,
                 'model'          => $model ?? $name,

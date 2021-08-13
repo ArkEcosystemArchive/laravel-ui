@@ -42,17 +42,20 @@
     @apply text-theme-primary-600;
 }
 
-.input-group:focus-within .input-wrapper-with-prefix-suffix,
+.input-group:focus-within .input-wrapper-with-prefix,
+.input-group:focus-within .input-wrapper-with-suffix,
 .input-group:focus-within .input-text {
     @apply border-theme-primary-600;
 }
 
-.input-group:focus-within .input-text-with-prefix-suffix:read-only,
+.input-group:focus-within .input-text-with-prefix:read-only,
+.input-group:focus-within .input-text-with-suffix:read-only,
 .input-group:focus-within .input-text-with-icon:read-only,
 .input-text-with-icon:read-only,
 .input-group:focus-within .input-text:read-only,
 .input-text:read-only,
-.input-text-with-prefix-suffix:read-only {
+.input-text-with-prefix:read-only,
+.input-text-with-suffix:read-only, {
     @apply cursor-not-allowed border-theme-secondary-400 bg-theme-secondary-100;
 }
 
@@ -95,32 +98,34 @@
     @apply right-auto left-0 -ml-13;
 }
 
-.input-text-with-prefix-suffix {
+.input-text-with-prefix,
+.input-text-with-suffix {
     @apply block w-full border-0 rounded outline-none appearance-none transition-default border-theme-danger-500;
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
 }
 
-.input-wrapper-with-prefix-suffix {
+.input-wrapper-with-prefix,
+.input-wrapper-with-suffix {
     @apply flex bg-white border rounded border-theme-secondary-300;
 }
 
-.input-wrapper-with-prefix-suffix .input-prefix-icon {
+.input-wrapper-with-prefix .input-prefix-icon {
     @apply text-theme-secondary-500;
 }
-.input-wrapper-with-prefix-suffix--dirty .input-prefix-icon,
-.input-wrapper-with-prefix-suffix:focus-within .input-prefix-icon {
+.input-wrapper-with-prefix--dirty .input-prefix-icon,
+.input-wrapper-with-prefix:focus-within .input-prefix-icon {
     @apply text-theme-primary-500;
 }
-.input-wrapper-with-prefix-suffix .input-prefix {
+.input-wrapper-with-prefix .input-prefix {
     @apply border-r;
 }
-.input-wrapper-with-prefix-suffix .input-suffix {
+.input-wrapper-with-suffix .input-suffix {
     @apply border-l;
 }
-.input-wrapper-with-prefix-suffix .input-prefix,
-.input-wrapper-with-prefix-suffix .input-suffix {
+.input-wrapper-with-prefix .input-prefix,
+.input-wrapper-with-suffix .input-suffix {
     @apply select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
 }
 
