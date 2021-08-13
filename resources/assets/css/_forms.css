@@ -55,7 +55,7 @@
 .input-group:focus-within .input-text:read-only,
 .input-text:read-only,
 .input-text-with-prefix:read-only,
-.input-text-with-suffix:read-only, {
+.input-text-with-suffix:read-only {
     @apply cursor-not-allowed border-theme-secondary-400 bg-theme-secondary-100;
 }
 
