@@ -143,7 +143,7 @@ code.hljs .hljs-ln-n {
 
 .documentation-content ol ol,
 .documentation-content ul ol {
-    @apply ml-4 list-outside;
+    @apply ml-4 list-outside mb-0;
     list-style-type: lower-latin;
 }
 
