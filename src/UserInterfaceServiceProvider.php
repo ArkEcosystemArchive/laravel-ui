@@ -176,6 +176,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.input', 'ark-input');
         Blade::component('ark::inputs.input-with-icon', 'ark-input-with-icon');
         Blade::component('ark::inputs.input-with-prefix', 'ark-input-with-prefix');
+        Blade::component('ark::inputs.input-with-suffix', 'ark-input-with-suffix');
         Blade::component('ark::inputs.radio', 'ark-radio');
         Blade::component('ark::inputs.textarea', 'ark-textarea');
         Blade::component('ark::inputs.toggle', 'ark-toggle');
