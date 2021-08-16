@@ -19,7 +19,7 @@
         {{ $slot }}
     </ul>
 
-    <div>
+    <div class="{{ $panelWrapperClass }}">
         {{ $panels }}
     </div>
 </div>

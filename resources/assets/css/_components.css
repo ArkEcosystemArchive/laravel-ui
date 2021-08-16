@@ -49,10 +49,13 @@
 
 /** Tabs **/
 .tabs {
-    @apply px-8 mb-8 font-semibold select-none rounded-xl bg-theme-secondary-100;
+    @apply flex w-full font-semibold rounded-xl bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
+}
+.tabs > [role=presentation] {
+    @apply px-8;
 }
 
 .tab-item {
@@ -82,7 +85,7 @@
     content: "";
     @apply absolute left-0 h-6 -ml-8 border-l border-theme-secondary-300;
 }
-.tab-item:first-child::before {
+[role=presentation]:first-child > .tab-item::before {
     @apply border-l-0;
 }
 .dark .tab-item::before {
@@ -90,13 +93,7 @@
 }
 
 .tabs-wrapper {
-    @apply flex items-center px-4 mt-3 rounded-xl bg-theme-secondary-100 text-theme-secondary-500;
-}
-
-@screen sm {
-    .tabs-wrapper {
-        @apply px-8;
-    }
+    @apply flex flex-col items-center;
 }
 
 .tabs-default {
