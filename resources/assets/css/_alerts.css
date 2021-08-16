@@ -136,7 +136,7 @@
 .alert-warning a,
 .alert-error a,
 .alert-danger a,
-.alert-hint a  {
+.alert-hint a {
     @apply font-semibold no-underline transition-default;
 }
 

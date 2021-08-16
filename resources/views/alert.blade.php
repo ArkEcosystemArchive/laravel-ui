@@ -21,7 +21,7 @@
         <div class="p-1 rounded-full border-2 border-white">
             <x-ark-icon
                 :name="alertIcon($type)"
-                :size="$large ? 'md' : 'xs'"
+                :size="$large ? 'md' : '2xs'"
             />
         </div>
     </div>
