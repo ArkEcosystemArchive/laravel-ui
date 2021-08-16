@@ -770,9 +770,7 @@ mix.extract(['chart.js']);
 Add the following to the `app.js` file:
 
 ```js
-import Tabs from "@ui/js/tabs";
-
-window.Tabs = Tabs
+import "@ui/js/tabs.js";
 ```
 
 ```html
