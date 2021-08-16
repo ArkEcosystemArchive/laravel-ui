@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="circle-play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<g>
+	<path fill="none" stroke="currentColor" stroke-width="2" d="M10,1L10,1c5,0,9,4,9,9l0,0c0,5-4,9-9,9l0,0c-5,0-9-4-9-9l0,0C1,5,5,1,10,1
+		z"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9,12
+		c-0.2,0.1-0.5,0-0.7-0.2c0,0,0-0.1,0-0.2V8.4C8.3,8.2,8.5,8,8.8,8c0,0,0.1,0,0.2,0l3.2,1.6c0.2,0.1,0.3,0.4,0.2,0.7
+		c0,0.1-0.1,0.1-0.2,0.2L9,12z"/>
+</g>
+</svg>

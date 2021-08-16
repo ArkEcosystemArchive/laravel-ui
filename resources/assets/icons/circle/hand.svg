@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="circle-hand" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<g>
+	<path fill="none" stroke="currentColor" stroke-width="2" d="M10,1L10,1c5,0,9,4,9,9l0,0c0,5-4,9-9,9l0,0c-5,0-9-4-9-9l0,0C1,5,5,1,10,1
+		z"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11.9,7.4L10.6,7
+		C9.8,6.8,9.1,7.2,8.8,7.9c0,0.1-0.1,0.3-0.1,0.4v2.1L7.9,9.8C7.7,9.6,7.4,9.6,7.2,9.9C7,10,7,10.3,7.1,10.5l1.2,1.8
+		c0.4,0.6,1,1,1.8,1h1c0.4,0,0.9-0.1,1.2-0.5l0,0c0.3-0.3,0.5-0.8,0.5-1.2V8.9C12.8,8.2,12.5,7.6,11.9,7.4z"/>
+</g>
+</svg>
