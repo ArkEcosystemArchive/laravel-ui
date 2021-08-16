@@ -4,6 +4,7 @@
     'buttonClassExpanded'    => 'text-theme-primary-500',
     'buttonClass'            => 'text-theme-secondary-400 hover:text-theme-primary-500',
     'dropdownClasses'        => 'w-40',
+    'dropdownOriginClass'    => 'origin-top-right',
     'wrapperClass'           => 'absolute inline-block top-0 right-0 text-left',
     'fullScreen'             => false,
     'dusk'                   => false,
@@ -12,6 +13,7 @@
     'initAlpine'             => true,
     'closeOnBlur'            => true,
     'onClose'                => null,
+    'disabled'               => false,
 ])
 
 <div
@@ -45,12 +47,11 @@
 >
     <div>
         <button
-            @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}"
+            type="button"
             :class="{ '{{ $buttonClassExpanded }}' : {{ $dropdownProperty }} }"
             class="flex items-center focus:outline-none dropdown-button transition-default {{ $buttonClass }}"
-            @if($buttonTooltip)
-                data-tippy-content="{{ $buttonTooltip }}"
-            @endif
+            @if($disabled) disabled @else @click="{{ $dropdownProperty }} = !{{ $dropdownProperty }}" @endif
+            @if($buttonTooltip) data-tippy-content="{{ $buttonTooltip }}" @endif
         >
             @if($button ?? false)
                 {{ $button }}
@@ -68,7 +69,7 @@
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="origin-top-right absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
+        class="absolute right-0 mt-2 z-10 dropdown {{ $dropdownClasses }} {{ $fullScreen ? 'w-screen -mx-8 md:w-auto md:mx-0' : '' }}"
         @if ($height) data-height="{{ $height }}" @endif
     >
         <div class="{{ $dropdownContentClasses }}" x-cloak>

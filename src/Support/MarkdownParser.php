@@ -138,9 +138,7 @@ final class MarkdownParser
 
         $html = static::getHtml($text);
 
-        $html = static::removeUnallowedHTMLTags($html, static::$basicAllowedTags);
-
-        return $html;
+        return static::cleanHtml($html, static::$basicAllowedTags);
     }
 
     public static function full(string | null $text): string
@@ -151,9 +149,20 @@ final class MarkdownParser
 
         $html = static::getHtml($text);
 
-        $html = static::removeUnallowedHTMLTags($html, static::$fullAllowedTags);
+        return static::cleanHtml($html, static::$fullAllowedTags);
+    }
 
-        return $html;
+    /**
+     * Returns HTML from the given markdown text withouth removing specific tags
+     * and attributes.
+     */
+    public static function safe(string | null $text): string
+    {
+        if ($text === null) {
+            return '';
+        }
+
+        return static::getHtml($text);
     }
 
     /**
@@ -248,27 +257,29 @@ final class MarkdownParser
     /**
      * Removes all the tags that are not allowed to be used.
      */
-    private static function removeUnallowedHTMLTags(string $html, array $tags): string
+    private static function removeUnallowedHTMLTags(string $html, array $allowedTags): string
     {
-        $allowedTagsStr = '<' . implode('><', $tags) . '>';
+        $allowedTagsStr = '<' . implode('><', $allowedTags) . '>';
 
         return strip_tags($html, $allowedTagsStr);
     }
 
     /**
-     * Removes every used input that is not expected
+     * Removes every user input that is not expected
      */
-    private static function cleanHtml(string $html): string
+    private static function cleanHtml(string $html, array $allowedTags): string
     {
         $html = static::removeUnallowedHTMLTags($html, array_keys(static::$validUserTagsAndAttributes));
 
         $html = static::removeUnallowedHTMLAttributes($html);
 
+        $html = static::removeUnallowedHTMLTags($html, $allowedTags);
+
         return $html;
     }
 
     /**
-     * Gets a clean, xss-safe HTML string from a markdown string.
+     * Gets a clean, normalized HTML string from a markdown string.
      */
     private static function getHtml(string $text): string
     {
@@ -276,9 +287,7 @@ final class MarkdownParser
 
         $html = static::convertMarkdownToHtml($markdown);
 
-        $safeHtml = static::cleanHtml($html);
-
-        return $safeHtml;
+        return $html;
     }
 
     /**

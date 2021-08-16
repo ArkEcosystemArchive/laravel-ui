@@ -398,7 +398,26 @@ You can also get an alert with more padding and large icon by specifying `large`
 
 ### Accordion
 
-```php
+| Parameter | Description | Required |
+|-----------|-------------|----------|
+| title | Title for accordion open/close option | yes |
+| slot | Content of accordion | yes |
+| dark | Whether the styling should be dark mode or not | no |
+| border | Whether accordion & button should have a border | no |
+| leftBorder | Whether accordion content should have a left border | no |
+| container-class | Class for accordion container | no |
+| title-class | Class for title | no |
+| circle-class | Class for icon | no |
+| circle-size | Size of icon | no |
+| toggle-title | Include "Show"/"Hide" prefix text along with title | no |
+| icon-open-class | Icon class for when accordion is open | no |
+| icon-closed-class | Icon class for when accordion is closed | no |
+| content-class | Class for content | no |
+| button-class | Class for button | no |
+| button-open-class | Button class for when accordion is open | no |
+| on-toggle | JS Method which is called when the accordion is opened or closed | no |
+
+```blade
 <x-ark-accordion-group slots="2">
     @slot('title_1')
         <p>Title for slot 1</p>
@@ -416,8 +435,19 @@ You can also get an alert with more padding and large icon by specifying `large`
 </x-ark-accordion-group>
 ```
 
-```php
+```blade
 <x-ark-accordion title="Title">
+    <p>Content for slot</p>
+</x-ark-accordion>
+```
+
+#### JS on-toggle
+
+```blade
+<x-ark-accordion
+    title="Title"
+    on-toggle="() => { this.$el.style.background = '...'; }"
+>
     <p>Content for slot</p>
 </x-ark-accordion>
 ```
@@ -475,6 +505,7 @@ You can also get an alert with more padding and large icon by specifying `large`
 | wrapperClass | The class(es) applied to the wrapper element | no | '' |
 | dropdownContentClasses | The class(es) applied to the content container | no | null |
 | buttonTooltip | Apply the given text as button tooltip | no | null |
+| disabled | This Boolean attribute prevents the user from interacting with the component | no | false |
 
 ### Expandable
 Displays a defined number of items and hides the rest, showing a button to show/hide the hidden items.
@@ -687,6 +718,51 @@ Here follow you can see an example on how to use it:
 |---|---|---|---|
 | class | The class of the circle | no | |
 | path-class | The class of the spinner | no | |
+
+
+### Chart
+
+1. Install the npm dependencies
+
+```bash
+yarn add chart.js@^2.9.4
+```
+
+1. On `resource/app/js/app.js` add:
+```js
+import CustomChart from "@ui/js/chart.js";
+
+window.CustomChart = CustomChart;
+```
+
+1. On `webpack.mix.js` extract `chart.js` module:
+```js
+mix.extract(['chart.js']);
+```
+
+1. use the component:
+
+```html
+<x-ark-chart 
+    id="stats"
+    data="[0.9839,1.003,1.074,1.125,1.209,1.154,1.113]"
+    labels="['27.07','28.07','29.07','30.07','31.07','01.08','02.08']"
+    currency="USD"
+/>
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| id | The id of the chart | yes | |
+| data | An array of data to visualize | yes | |
+| labels | An array of labels for each data item | yes | |
+| currency | The current currency. (ISO-3 like 'USD') | yes | |
+| canvas-class | The class of the wrapper canvas | no | |
+| width | The width of the canvas | no | |
+| height | The height of the canvas | no | |
+| grid | Whether to show the grid or not | no | |
+| tooltips | Whether to show tooltips or not | no | |
+| theme | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no | |
 
 
 ### Tabs
