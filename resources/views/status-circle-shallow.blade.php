@@ -1,57 +1,45 @@
 @props([
     'type',
-    'size'          => 'base',
-    'containerSize' => 'base',
-    'tooltip'       => null,
+    'size'    => 'base',
+    'tooltip' => null,
 ])
 
 @php
-    $icon = Arr::get([
-        'success' => 'status.success',
-        'failed' => 'status.error',
-        'error' => 'status.error',
-        // 'running' => 'update',
-        // 'paused' => 'pause',
-        // 'updated' => 'update',
-        // 'locked' => 'lock',
-        'errored' => 'status.error',
-        // 'launching' => 'launching',
-        // 'one-launch-status' => 'one-status-launch',
-        'online' => 'status.success',
-        // 'stopped' => 'pause',
-        // 'stopping' => 'stopping',
-        'waiting-restart' => 'status.debug',
-        'emergency' => 'status.error',
-        'alert'     => 'status.error',
-        'critical'  => 'status.error',
-        'warning'   => 'status.warning',
-        'notice'    => 'status.hint',
-        'info'      => 'status.info',
-        'undefined' => 'status.hint',
-    ], $type, 'undefined');
+    if ($size === 'lg') {
+        $icon = Arr::get([
+            'undefined' => 'circle.large.question-mark',
+            'online' => 'circle.large.checkmark',
+            'stopped' => 'circle.large.pause',
+            'stopping' => 'circle.large.hand',
+            'waiting restart' => 'circle.large.clock',
+            'launching' => 'circle.large.play',
+            'errored' => 'circle.large.cross',
+            'one-launch-status' => 'circle.forward',
+        ], $type, 'undefined');
+
+        $size = '2xl';
+    } else {
+        $icon = Arr::get([
+            'undefined' => 'circle.question-mark',
+            'online' => 'circle.checkmark',
+            'stopped' => 'circle.pause',
+            'stopping' => 'circle.hand',
+            'waiting restart' => 'clock',
+            'launching' => 'circle.play',
+            'errored' => 'circle.cross',
+            'one-launch-status' => 'circle.forward',
+        ], $type, 'undefined');
+    }
 
     $iconColor = Arr::get([
-        'success' => 'text-theme-success-600',
-        'failed' => 'text-theme-danger-400',
-        'error' => 'text-theme-danger-400',
-        'running' => 'text-theme-warning-900',
-        'paused' => 'text-theme-warning-500',
-        'updated' => 'text-theme-warning-900',
-        'locked' => 'text-theme-secondary-700',
-        'errored' => 'text-theme-danger-400',
-        'launching' => 'text-theme-primary-500',
-        'one-launch-status' => 'text-theme-info-500',
+        'undefined' => 'text-theme-secondary-700',
         'online' => 'text-theme-success-600',
         'stopped' => 'text-theme-warning-500',
         'stopping' => 'text-theme-warning-500',
-        'waiting-restart' => 'text-theme-hint-400',
-        'emergency' => 'text-theme-danger-400',
-        'alert'     => 'text-theme-danger-400',
-        'critical'  => 'text-theme-danger-400',
-        'warning'   => 'text-theme-warning-400',
-        'notice'    => 'text-theme-hint-400',
-        'info'      => 'text-theme-info-400',
-        'undefined' => 'text-theme-secondary-700',
+        'waiting restart' => 'text-theme-hint-400',
+        'launching' => 'text-theme-primary-500',
+        'errored' => 'text-theme-danger-400',
+        'one-launch-status' => 'text-theme-info-500',
     ], $type, 'text-theme-secondary-700');
 @endphp
 
@@ -63,7 +51,7 @@
 >
     <x-ark-icon
         :name="$icon"
-        size="$size"
+        :size="$size"
         :class="$iconColor"
     />
 </div>
