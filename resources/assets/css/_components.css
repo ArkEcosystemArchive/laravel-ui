@@ -54,7 +54,7 @@
 .dark .tabs {
     @apply bg-black;
 }
-.tabs > [role=presentation] {
+.tabs > [role="presentation"] {
     @apply px-8;
 }
 
@@ -85,7 +85,7 @@
     content: "";
     @apply absolute left-0 h-6 -ml-8 border-l border-theme-secondary-300;
 }
-[role=presentation]:first-child > .tab-item::before {
+[role="presentation"]:first-child > .tab-item::before {
     @apply border-l-0;
 }
 .dark .tab-item::before {
