@@ -36,4 +36,4 @@ const Tabs = (defaultSelected = "", extraData = {}, onSelected = () => {}) => {
     };
 };
 
-export default Tabs;
+window.Tabs = Tabs;
