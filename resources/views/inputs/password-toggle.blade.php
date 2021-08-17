@@ -2,20 +2,11 @@
     class="{{ $class ?? '' }}"
     x-data="{
         show: false,
-        @if($masked ?? false)
-            type: 'text',
-            style: '-webkit-text-security: disc;',
-            toggle() {
-                this.show = !this.show;
-                this.show ? this.style = '' : this.style = '-webkit-text-security: disc;';
-            },
-        @else
-            type: 'password',
-            toggle() {
-                this.show = !this.show;
-                this.show ? this.type = 'text' : this.type = 'password';
-            },
-        @endif
+        type: 'password',
+        toggle() {
+            this.show = !this.show;
+            this.show ? this.type = 'text' : this.type = 'password';
+        },
     }"
 >
     <div class="input-group">
@@ -37,7 +28,6 @@
                 name="{{ $name }}"
                 class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
                 wire:model="{{ $model ?? $name }}"
-                @if($masked ?? false) :style="style" @endif
                 @if($max ?? false) maxlength="{{ $max }}" @endif
                 @if($value ?? false) value="{{ $value }}" @endif
                 @if($autofocus ?? false) autofocus @endif
