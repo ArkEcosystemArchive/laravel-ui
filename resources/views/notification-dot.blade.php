@@ -3,6 +3,6 @@
     'color' => 'bg-theme-danger-400 border-theme-danger-400',
 ])
 
-<span class="notification-dot {{ $class }}">
+<span {{ $attributes->merge(['class' => 'notification-dot ' . $class]) }}>
     <span class="block w-1 h-1 rounded-full border-3 {{ $color }}"></span>
 </span>
