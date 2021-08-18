@@ -9,16 +9,9 @@
 
 <div {{
     $attributes->merge(['class' => $class.' alert-wrapper alert-'.$type])
-        ->except([
-            'large',
-            'message',
-            'messageClass',
-            'title',
-            'type',
-        ])
 }}>
     <div @class([
-        'alert-icon-wrapper alert-{{ $type }}-icon',
+        'alert-icon-wrapper alert-'.$type.'-icon',
         'alert-icon-large' => $large
     ])>
         <div class="p-1 rounded-full border-2 border-white">
@@ -30,8 +23,8 @@
     </div>
 
     <div @class([
-        'alert-content-wrapper alert-{{ $type }}-content',
-        'alert-icon-large' => $large
+        'alert-content-wrapper alert-'.$type.'-content',
+        'alert-content-large' => $large
     ])>
         @isset($title)
             <span class="alert-{{ $type }}-title">{{ $title }}</span>
