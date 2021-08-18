@@ -1,7 +1,14 @@
+@props([
+    'image',
+    'slot',
+    'url',
+    'isExternal' => false,
+])
+
 <a
     href="{{ $url }}"
     class="image-tile"
-    @if($isExternal ?? false)
+    @if($isExternal)
         target="_blank"
         rel="noopener nofollow noreferrer"
     @endif

@@ -1,14 +1,14 @@
 @props([
-    'id',
-    'data',
-    'labels',
     'currency',
+    'data',
+    'id',
+    'labels',
     'canvasClass' => '',
-    'width' => '1000',
-    'height' => '500',
-    'grid' => false,
-    'tooltips' => false,
-    'theme' => collect(['name' => 'grey', 'mode' => 'light']),
+    'grid'        => false,
+    'height'      => '500',
+    'theme'       => collect(['name' => 'grey', 'mode' => 'light']),
+    'tooltips'    => false,
+    'width'       => '1000',
 ])
 
 <div

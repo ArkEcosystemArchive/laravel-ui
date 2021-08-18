@@ -1,7 +1,14 @@
+@props([
+    'description',
+    'image',
+    'title',
+    'lazyLoad' => false,
+])
+
 <div class="description-block">
     <div class="flex justify-center">
         <img
-            @unless ($lazyLoad ?? false)
+            @unless ($lazyLoad)
                 src="{{ $image }}"
             @else
                 lazy="{{ $image }}"

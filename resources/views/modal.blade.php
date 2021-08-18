@@ -1,16 +1,17 @@
 @props([
-    'xData' => '{}',
-    'class' => '',
-    'style' => null,
-    'widthClass' => 'max-w-2xl',
-    'title' => null,
-    'titleClass' => 'inline-block pb-2 font-bold dark:text-theme-secondary-200',
-    'buttons' => null,
-    'buttonsStyle' => 'modal-buttons',
+    'xData'           => '{}',
+    'buttons'         => null,
+    'buttonsStyle'    => 'modal-buttons',
+    'class'           => '',
     'closeButtonOnly' => false,
-    'wireClose' => false,
-    'escToClose' => true,
-    'fixedPosition' => false,
+    'escToClose'      => true,
+    'fixedPosition'   => false,
+    'style'           => null,
+    'title'           => null,
+    'titleClass'      => 'inline-block pb-2 font-bold dark:text-theme-secondary-200',
+    'widthClass'      => 'max-w-2xl',
+    'wireClose'       => false,
+
 ])
 
 <div class="fixed inset-0 z-50 opacity-75 dark:opacity-50 bg-theme-secondary-900 dark:bg-theme-secondary-800"></div>
@@ -31,7 +32,13 @@
     @endif
 >
     <div
-        class="modal-content-wrapper @if($fixedPosition) md:mx-auto @else md:m-auto @endif w-full {{ $class }} {{ $widthClass }}"
+        @class([
+            $class,
+            $widthClass,
+            'modal-content-wrapper w-full',
+            'md:mx-auto' => $fixedPosition,
+            'md:m-auto'  => ! $fixedPosition,
+        ])
         @if($style) style="{{ $style }}" @endif
     >
         <div class="modal-content custom-scroll {{ $widthClass }}">
@@ -40,7 +47,7 @@
                     <button
                         type="button"
                         class="modal-close"
-                        @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
+                        @if($wireClose) wire:click="{{ $wireClose }}" @endif
                     >
                         <x-ark-icon name="close" size="md" class="m-auto" />
                     </button>
@@ -54,7 +61,7 @@
 
                 {{ $description }}
 
-                @if($buttons ?? false)
+                @if($buttons)
                     <div class="mt-8 text-right {{ $buttonsStyle }}">
                         {{ $buttons }}
                     </div>

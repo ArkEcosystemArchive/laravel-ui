@@ -1,15 +1,15 @@
 @props([
     'total',
-    'triggerDusk' => null,
-    'triggerClass' => '',
-    'collapsedClass' => '',
-    'expandedClass' => '',
-    'collapsed' => null,
-    'expanded' => null,
-    'placeholder' => null,
+    'collapsed'        => null,
+    'collapsedClass'   => '',
+    'expanded'         => null,
+    'expandedClass'    => '',
+    'placeholder'      => null,
     'placeholderCount' => 1,
-    'showMore' => null,
-    'style' => '',
+    'showMore'         => null,
+    'style'            => '',
+    'triggerClass'     => '',
+    'triggerDusk'      => null,
 ])
 
 <ol data-expandable

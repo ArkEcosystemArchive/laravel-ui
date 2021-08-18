@@ -1,24 +1,24 @@
 @props([
     'id',
-    'title'           => null,
-    'titleClass'      => 'text-2xl',
-    'titleTooltip'    => null,
-    'viewAllUrl'      => null,
-    'viewAllClass'    => '',
-    'hideNavigation'  => false,
-    'hideBullets'     => false,
-    'topPagination'   => false,
-    'paginationClass' => '',
-    'rows'            => 1,
-    'columns'         => 5,
-    'breakpoints'     => null,
-    'spaceBetween'    => 0,
-    'loop'            => false,
     'allowTouch'      => true,
     'autoplay'        => false,
     'autoplayDelay'   => 3000,
+    'breakpoints'     => null,
+    'columns'         => 5,
+    'hideNavigation'  => false,
+    'hideBullets'     => false,
     'hideViewAll'     => false,
+    'loop'            => false,
+    'paginationClass' => '',
+    'rows'            => 1,
     'shadowSpacing'   => false,
+    'spaceBetween'    => 0,
+    'title'           => null,
+    'titleClass'      => 'text-2xl',
+    'titleTooltip'    => null,
+    'topPagination'   => false,
+    'viewAllUrl'      => null,
+    'viewAllClass'    => '',
 ])
 
 @php
@@ -97,16 +97,22 @@
     <div class="relative @unless($hideNavigation) px-10 @endunless">
         <div
             id="swiper-{{ $id }}"
-            class="swiper-container
-                @unless ($topPagination) slider-pagination-bottom @endunless
-                @if ($hasViewAll) slider-show-view-all @endif
-                @if ($shadowSpacing) px-5 @endif
-                @if ($rows > 1) slider-multirow @endif"
+            @class([
+                'swiper-container',
+                'slider-pagination-bottom' => $topPagination,
+                'slider-show-view-all'     => $hasViewAll,
+                'px-5'                     => $shadowSpacing,
+                'slider-multirow'          => $rows > 1,
+            ])
         >
             @include('ark::includes.slider.header')
 
             <div
-                class="@if($shadowSpacing) px-5 pt-5 -mx-5 -mt-5 @endif swiper-wrapper grid grid-cols-1 {{ $gridClasses }}"
+                @class([
+                    $gridClasses,
+                    'swiper-wrapper grid grid-cols-1',
+                    'px-5 pt-5 -mx-5 -mt-5' => $shadowSpacing,
+                ])
                 style="gap: {{ $spaceBetween }}px"
             >
                 {{ $slot }}

@@ -1,7 +1,7 @@
 @props([
     'isArkProduct' => true,
-    'class' => '',
-    'copyClass' => '',
+    'class'        => '',
+    'copyClass'    => '',
 ])
 
 <div class="flex flex-col {{ $class }}">

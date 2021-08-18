@@ -1,17 +1,17 @@
 @props([
     'name',
+    'attributes'     => $attributes,
+    'autocapitalize' => 'none',
+    'errorClass'     => 'input-text--error',
     'errors'         => null,
-    'type'           => 'text',
     'id'             => null,
     'inputClass'     => '',
     'inputTypeClass' => 'input-text',
-    'errorClass'     => 'input-text--error',
-    'noModel'        => false,
-    'model'          => null,
     'keydownEnter'   => null,
     'max'            => null,
-    'attributes'     => $attributes,
-    'autocapitalize' => 'none',
+    'model'          => null,
+    'noModel'        => false,
+    'type'           => 'text',
 ])
 
 <input

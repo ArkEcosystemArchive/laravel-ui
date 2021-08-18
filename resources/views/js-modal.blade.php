@@ -1,15 +1,15 @@
 @props([
-    'init' => false,
-    'xData' => '{}',
-    'class' => '',
-    'widthClass' => 'max-w-2xl',
-    'title' => null,
-    'titleClass' => 'inline-block pb-2 font-bold dark:text-theme-secondary-200',
-    'buttons' => null,
-    'buttonsStyle' => 'modal-buttons',
+    'init'            => false,
+    'xData'           => '{}',
+    'buttons'         => null,
+    'buttonsStyle'    => 'modal-buttons',
+    'class'           => '',
     'closeButtonOnly' => false,
-    'escToClose' => true,
-    'name' => '',
+    'escToClose'      => true,
+    'name'            => '',
+    'title'           => null,
+    'titleClass'      => 'inline-block pb-2 font-bold dark:text-theme-secondary-200',
+    'widthClass'      => 'max-w-2xl',
 ])
 
 <div
@@ -18,12 +18,12 @@
     data-modal
     x-cloak
     @if($init)
-    x-data="Modal.alpine({{ $xData }}, '{{ $name }}')"
-    x-init="init"
+        x-data="Modal.alpine({{ $xData }}, '{{ $name }}')"
+        x-init="init"
     @endif
     @if(!$closeButtonOnly && $escToClose)
-    @keydown.escape="hide"
-    tabindex="0"
+        @keydown.escape="hide"
+        tabindex="0"
     @endif
     x-show="shown"
     class="flex overflow-y-auto fixed inset-0 z-50 md:py-10 md:px-8"

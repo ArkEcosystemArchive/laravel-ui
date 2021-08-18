@@ -1,3 +1,9 @@
+@props([
+    'navigation'
+    'title',
+    'navigationClass' => null,
+])
+
 <div x-data="{ open: false }" @keydown.window.escape="open = false" @click.away="open = false" class="inline-block relative w-full text-left">
     <div>
         <button
@@ -20,7 +26,7 @@
         class="absolute right-0 z-10 mt-2 w-full max-w-full rounded-md shadow-lg origin-top"
         x-cloak
     >
-        <div class="w-full py-4 bg-white rounded-md shadow-lg {{ $navigationClass ?? '' }}">
+        <div class="w-full py-4 bg-white rounded-md shadow-lg {{ $navigationClass }}">
             {{ $navigation }}
         </div>
     </div>

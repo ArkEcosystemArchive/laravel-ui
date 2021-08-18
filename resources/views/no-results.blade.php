@@ -1,8 +1,8 @@
 @props([
-    'text' => trans('ui::general.no-results'),
-    'image' => '/images/vendor/ark/search/empty.svg',
-    'imageDark' => '/images/vendor/ark/search/empty-dark.svg',
     'excludeDark' => false,
+    'image'       => '/images/vendor/ark/search/empty.svg',
+    'imageDark'   => '/images/vendor/ark/search/empty-dark.svg',
+    'text'        => trans('ui::general.no-results'),
 ])
 
 <div class="flex flex-col justify-center pt-8 space-y-8">

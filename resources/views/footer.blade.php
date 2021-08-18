@@ -6,7 +6,10 @@
 ])
 
 <div {{ $attributes->merge(['class' => 'border-t bg-theme-secondary-900 border-theme-secondary-800']) }}>
-    <div class="{{ $desktopClass }} flex-col mx-auto">
+    <div @class([
+        'flex-col mx-auto',
+        $desktopClass,
+    ])>
         {{-- Empty class to remove border --}}
         <x-ark-footer-bar-desktop no-border :is-ark-product="$isArkProduct" :copy-class="$copyClass" />
     </div>

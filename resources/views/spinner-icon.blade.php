@@ -1,7 +1,7 @@
 @props([
-    'stroke' => 'currentColor',
     'circleColor' => null,
-    'size' => 'w-6 h-6',
+    'size'        => 'w-6 h-6',
+    'stroke'      => 'currentColor',
 ])
 
 <svg class="{{ $size }}" viewBox="-3 -3 43 43" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">

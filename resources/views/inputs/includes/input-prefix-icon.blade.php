@@ -1,7 +1,7 @@
 @props([
     'icon',
-    'position' => 'right',
     'iconClass' => '',
+    'position'  => 'right',
 ])
 
 @php

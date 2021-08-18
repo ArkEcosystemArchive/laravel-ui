@@ -1,6 +1,6 @@
 @props([
-    'page'   => 'home',
     'detail' => null,
+    'page'   => 'home',
 ])
 
 @section('meta-title')

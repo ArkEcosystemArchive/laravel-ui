@@ -6,7 +6,11 @@
 
 <div
     wire:key="{{ md5($error) }}"
-    class="px-4 input-icon @if($shifted) right-13 @else right-0 @endif"
+    @class([
+        'px-4 input-icon',
+        'right-13' => $shift,
+        'right-0'  => ! $shift,
+    ])
     data-tippy-content="{{ $error }}"
     onclick="document.getElementById('{{ $id }}').focus()"
 >

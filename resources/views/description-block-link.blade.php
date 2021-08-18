@@ -1,14 +1,23 @@
+@props([
+    'description',
+    'image',
+    'title',
+    'url',
+    'isExternal' => false,
+    'lazyLoad'   => false,
+])
+
 <a
     href="{{ $url }}"
     class="description-block description-block-link"
-    @if($isExternal ?? false)
+    @if($isExternal)
         target="_blank"
         rel="noopener nofollow noreferrer"
     @endif
 >
     <div class="flex justify-center">
         <img
-            @unless ($lazyLoad ?? false)
+            @unless ($lazyLoad)
                 src="{{ $image }}"
             @else
                 lazy="{{ $image }}"
@@ -18,7 +27,7 @@
     </div>
 
     <div class="flex flex-col mt-8 space-y-4">
-        @if($isExternal ?? false)
+        @if($isExternal)
             <span class="text-xl font-bold text-theme-secondary-900">
                 <div class="flex items-center space-x-2 link">
                     <span>{{ $title }}</span>
@@ -28,7 +37,7 @@
             </span>
         @else
             <span class="text-xl font-bold text-theme-secondary-900">
-                @if ($url ?? false)
+                @if ($url)
                     <div class="link">{{ $title }}</div>
                 @else
                     {{ $title }}

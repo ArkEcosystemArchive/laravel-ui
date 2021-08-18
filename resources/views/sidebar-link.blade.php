@@ -1,16 +1,19 @@
 @props([
     'name',
-    'route' => null,
-    'params' => [],
     'attributes' => [],
-    'icon' => null,
-    'href' => null,
+    'icon'       => null,
+    'href'       => null,
+    'params'     => [],
+    'route'      => null,
 ])
 
 @php ($isCurrent = $route && url()->full() === route($route, $params))
 
 <div class="flex">
-    <div class="@if($isCurrent) bg-theme-primary-600 rounded-xl @endif w-2 -mr-1 z-10"></div>
+    <div @class([
+        'w-2 -mr-1 z-10',
+        'bg-theme-primary-600 rounded-xl' => $isCurrent,
+    ])></div>
 
     <a
         @if ($href)
@@ -18,7 +21,11 @@
         @else
             href="{{ route($route, $params) }}"
         @endif
-        class="flex items-center block font-semibold pl-8 py-3 space-x-2 @if($isCurrent) text-theme-primary-600 bg-theme-primary-100 @else text-theme-secondary-900 hover:text-theme-primary-600 @endif rounded-r w-full"
+        @class([
+            'flex items-center block font-semibold pl-8 py-3 space-x-2 rounder-r w-full',
+            'text-theme-primary-600 bg-theme-primary-100'           => $isCurrent,
+            'text-theme-secondary-900 hover:text-theme-primary-600' => ! $isCurrent,
+        ])
         dusk='navbar-item-{{ Str::slug($name) }}'
         @foreach($attributes as $attribute => $attributeValue)
             {{ $attribute }}="{{ $attributeValue }}"

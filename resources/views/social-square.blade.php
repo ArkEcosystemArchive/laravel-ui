@@ -1,7 +1,7 @@
 @props([
     'icon',
     'url',
-    'internal' => false,
+    'internal'   => false,
     'hoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
 ])
 

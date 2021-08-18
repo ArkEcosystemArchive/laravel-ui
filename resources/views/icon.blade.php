@@ -1,8 +1,8 @@
 @props([
     'name',
-    'size' => 'base',
-    'style' => '',
     'class' => ''
+    'size'  => 'base',
+    'style' => '',
 ])
 @php
     $availableSizes = ['2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', 'base'];

@@ -11,7 +11,11 @@
         dusk="tile-selection-label-{{ $option['id'] }}"
         for="{{ $id.'-'.$option['id'] }}"
         wire:key="tile-selection-option-{{ $id.'-'.$option['id'] }}"
-        class="{{ $single ? 'tile-selection-single' : 'tile-selection-option' }} {{ $isDisabled && ! $option['checked'] ? 'disabled-tile' : '' }}"
+        @class([
+            'tile-selection-single' => $single,
+            'tile-selection-option' => ! $single,
+            'disabled-tile'         => $isDisabled && ! $option['checked'],
+        ])
         x-bind:class="{
             @if ($single)
                 'tile-selection--checked': {{ $this->{$wireModel ?? $id} === $option['id'] ? 'true': 'false' }},

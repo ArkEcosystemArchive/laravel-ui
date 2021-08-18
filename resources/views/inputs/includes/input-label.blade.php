@@ -1,13 +1,13 @@
 @props([
     'name',
     'errors',
+    'auxiliaryTitle'   => '',
     'id'               => null,
     'label'            => null,
+    'required'         => false,
     'tooltip'          => null,
     'tooltipClass'     => null,
     'tooltipType'      => 'info',
-    'required'         => false,
-    'auxiliaryTitle'   => '',
 ])
 
 <label

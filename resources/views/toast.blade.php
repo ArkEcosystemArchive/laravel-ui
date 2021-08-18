@@ -1,8 +1,8 @@
 @props([
-    'type' => 'info',
-    'message' => '',
-    'wireClose' => false,
     'alpineClose' => false,
+    'message'     => '',
+    'type'        => 'info',
+    'wireClose'   => false,
 ])
 
 @php

@@ -1,25 +1,38 @@
-@if($url ?? false)
+@props ([
+    'image'               => null,
+    'imageHover'          => null,
+    'containerClass'      => 'p-5',
+    'imageContainerClass' => null,
+    'logo'                => null,
+    'logoHover'           => null,
+    'slot'                => null
+    'tooltip'             => null,
+    'url'                 => null,
+    'wrapperClass'        => 'justify-center',
+])
+
+@if($url)
     <a
-        href="{{ $url ?? '#' }}"
+        href="{{ $url }}"
         target="_blank"
         rel="noopener noreferrer"
-        class="{{ $wrapperClass ?? 'justify-center' }} logo-entry"
-        @if($tooltip ?? false)
+        class="{{ $wrapperClass }} logo-entry"
+        @if($tooltip)
             data-tippy-content="{{ $tooltip }}"
         @endif
     >
 @else
     <div
-        class="{{ $wrapperClass ?? 'justify-center' }} cursor-pointer logo-entry"
-        @if($tooltip ?? false)
+        class="{{ $wrapperClass }} cursor-pointer logo-entry"
+        @if($tooltip)
             data-tippy-content="{{ $tooltip }}"
         @endif
     >
 @endif
 
-    <div class="flex items-center justify-center flex-1 {{ $containerClass ?? 'p-5' }}">
-        <div class="relative flex items-center justify-center {{ $imageContainerClass ?? '' }} transition-default">
-            @if($image ?? false)
+    <div class="flex items-center justify-center flex-1 {{ $containerClass }}">
+        <div class="relative flex items-center justify-center {{ $imageContainerClass }} transition-default">
+            @if($image)
                 <img
                     class="logo-entry-image"
                     src="{{ $image }}"
@@ -28,22 +41,22 @@
                 <div class="logo-entry-image">{{ $logo }}</div>
             @endif
 
-            @if($imageHover ?? false)
+            @if($imageHover)
                 <img
                     class="logo-entry-image-hover"
                     src="{{ $imageHover }}"
                 />
-            @elseif($logoHover ?? false)
+            @elseif($logoHover)
                 <div class="logo-entry-image-hover">{{ $logoHover }}</div>
             @endif
         </div>
 
-        @if($slot ?? false)
+        @if($slot)
             {{ $slot }}
         @endif
     </div>
 
-@if($url ?? false)
+@if($url)
     </a>
 @else
     </div>
