@@ -775,18 +775,19 @@ import "@ui/js/tabs.js";
 
 ```html
 <x-ark-tabbed>
-    <x-ark-tab name="tab-1" />
-    <x-ark-tab name="tab-2" />
-    <x-ark-tab name="tab-3" />
-    
-    <x-slot name="panels">
-        <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
-        <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
-        <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+    <x-slot name="tabs">
+        <x-ark-tab name="tab-1" />
+        <x-ark-tab name="tab-2" />
+        <x-ark-tab name="tab-3" />
     </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
 </x-ark-tabbed>
 ```
 
+The parameter accepted by `<x-ark-tabbed>`
 | Parameter        | Description                                                   | Required |
 |------------------|---------------------------------------------------------------|----------|
 | x-data           | Extra data passed to Alpine js component                      | no       |

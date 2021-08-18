@@ -6,8 +6,7 @@
     'panelWrapperClass' => '',
 ])
 
-<div
-    {{ $attributes->merge(['class' => 'tabs-wrapper']) }}
+<div {{ $attributes->merge(['class' => 'tabs-wrapper']) }}
     @unless($noData)
         x-data="Tabs(
             '{{ $defaultSelected }}',
@@ -17,10 +16,10 @@
     @endunless
 >
     <ul role="tablist" class="tabs">
-        {{ $slot }}
+        {{ $tabs }}
     </ul>
 
     <div class="{{ $panelWrapperClass }}">
-        {{ $panels }}
+        {{ $slot }}
     </div>
 </div>
