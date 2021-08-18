@@ -113,7 +113,7 @@
     @apply h-4 border-l border-theme-secondary-300;
 }
 
-[role=tabpanel] {
+[role="tabpanel"] {
     @apply w-full;
 }
 
