@@ -31,11 +31,21 @@
     :class="{ 'accordion-open': openPanel }"
 >
     <dl>
-        <div class="{{ $containerClass }} @if ($dark === false && $border) border-2 border-theme-secondary-200 rounded-xl @endif">
+        <div
+            @class([
+                $containerClass,
+                'border-2 border-theme-secondary-200 rounded-xl' => ! $dark && $border
+            ])
+        >
             <dt>
                 <button
                     @click="toggle"
-                    class="accordion-trigger {{ $buttonClass }} {{ $dark ? 'text-theme-secondary-400' : 'text-theme-secondary-900' }}"
+                    @class([
+                        'accordion-trigger',
+                        $buttonClass,
+                        'text-theme-secondary-400' => $dark,
+                        'text-theme-secondary-900' => ! $dark
+                    ])
                     @if($buttonOpenClass)
                         :class="{ '{{ $buttonOpenClass }}': openPanel }"
                     @endif
@@ -64,8 +74,12 @@
             </dt>
 
             <dd
-                class="{{ $contentClass }} {{ $dark ? 'border-theme-secondary-800' : 'border-theme-secondary-300' }}
-                    @if($dark || $leftBorder) border-l @endif"
+                @class([
+                    $contentClass,
+                    'border-theme-secondary-800' => $dark,
+                    'border-theme-secondary-300' => ! $dark
+                    'border-l'                   => $dark || $leftBorder
+                ])
                 x-show.transition.opacity="openPanel"
                 x-cloak
             >

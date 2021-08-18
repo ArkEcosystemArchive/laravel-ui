@@ -4,7 +4,10 @@
             @isset($crumb['route'])
                 <span>
                     <a
-                        class="flex items-center font-semibold hover:underline transition-default @if($loop->last) text-theme-secondary-700 @endif"
+                        @class([
+                            'flex items-center font-semibold hover:underline transition-default',
+                            'text-theme-secondary-700' => $loop->last,
+                        ])
                         href="{{ route($crumb['route'], empty($crumb['params']) ? [] : $crumb['params']) }}"
                     >
                         @if($loop->first && count($crumbs) > 1)
@@ -15,10 +18,15 @@
                     </a>
                 </span>
             @else
-                <span class="font-semibold truncate @if($loop->last) text-theme-secondary-700 @endif">{{ $crumb['label'] }}</span>
+                <span
+                    @class([
+                        'font-semibold truncate',
+                        'text-theme-secondary-700' => $loop->last,
+                    ])
+                >{{ $crumb['label'] }}</span>
             @endisset
 
-            @if(!$loop->last)
+            @if(! $loop->last)
                 <span class="mx-3"> | </span>
             @endif
         @endforeach

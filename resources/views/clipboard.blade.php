@@ -4,7 +4,11 @@
 >
     <button
         type="button"
-        class="clipboard @unless($noStyling ?? false) button-icon @endif {{ $class ?? 'h-10 w-12' }}"
+        @class([
+            'clipboard',
+            'button-icon' => $noStyling,
+            'h-10 w-12'   => $class,
+        ])
         tooltip-content="{{ ($tooltipContent ?? '') ? $tooltipContent : trans('tooltips.copied') }}"
         @if($copyInput ?? false)
             x-on:click="copyFromInput('{{ $value }}')"
