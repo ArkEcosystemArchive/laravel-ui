@@ -17,7 +17,10 @@
             'type',
         ])
 }}>
-    <div class="alert-icon-wrapper alert-{{ $type }}-icon @if($large) alert-icon-large @endif">
+    <div @class([
+        'alert-icon-wrapper alert-{{ $type }}-icon',
+        'alert-icon-large' => $large
+    ])>
         <div class="p-1 rounded-full border-2 border-white">
             <x-ark-icon
                 :name="alertIcon($type)"
@@ -26,7 +29,10 @@
         </div>
     </div>
 
-    <div class="alert-content-wrapper alert-{{ $type }}-content @if($large) alert-content-large @endif">
+    <div @class([
+        'alert-content-wrapper alert-{{ $type }}-content',
+        'alert-icon-large' => $large
+    ])>
         @isset($title)
             <span class="alert-{{ $type }}-title">{{ $title }}</span>
         @endif
