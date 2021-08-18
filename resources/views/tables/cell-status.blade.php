@@ -54,7 +54,7 @@
 >
     <div>
         <div class="flex items-center space-x-2 font-semibold px-4 py-3 -mx-3 -my-4 {{ $colours }}">
-            <x-ark-status-circle-shallow :type="$type" />
+            <x-ark-status-circle :type="$type" />
 
             <div>@lang('ui::status.'.$type)</div>
         </div>
