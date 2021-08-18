@@ -3,6 +3,7 @@
     'onSelected' => null,
     'defaultSelected' => '',
     'noData' => false,
+    'panelWrapperClass' => '',
 ])
 
 <div
