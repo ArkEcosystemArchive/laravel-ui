@@ -7165,16 +7165,16 @@
         },
         {
             "name": "nunomaduro/laravel-mojito",
-            "version": "v0.2.6",
+            "version": "v0.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/laravel-mojito.git",
-                "reference": "4b9b9161286f654bffa5094ae846ce1e19008470"
+                "reference": "e9e1a842fbe403462f994f97682dc0360ef68d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/laravel-mojito/zipball/4b9b9161286f654bffa5094ae846ce1e19008470",
-                "reference": "4b9b9161286f654bffa5094ae846ce1e19008470",
+                "url": "https://api.github.com/repos/nunomaduro/laravel-mojito/zipball/e9e1a842fbe403462f994f97682dc0360ef68d25",
+                "reference": "e9e1a842fbe403462f994f97682dc0360ef68d25",
                 "shasum": ""
             },
             "require": {
@@ -7223,9 +7223,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/laravel-mojito/issues",
-                "source": "https://github.com/nunomaduro/laravel-mojito/tree/v0.2.6"
+                "source": "https://github.com/nunomaduro/laravel-mojito/tree/v0.2.8"
             },
-            "time": "2020-11-02T09:29:13+00:00"
+            "time": "2021-04-08T16:59:00+00:00"
         },
         {
             "name": "ondram/ci-detector",
