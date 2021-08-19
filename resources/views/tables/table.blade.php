@@ -1,7 +1,7 @@
 @props([
-    'sticky' => false,
-    'tableClass' => '',
     'noContainer' => false
+    'sticky'      => false,
+    'tableClass'  => '',
 ])
 
 @unless ($noContainer)

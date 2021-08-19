@@ -1,7 +1,7 @@
 @props([
-    'danger' => false,
-    'warning' => false,
+    'danger'  => false,
     'tooltip' => false,
+    'warning' => false,
 ])
 <tr {{ $attributes }}
     @if($danger) data-danger @elseif($warning) data-warning @endif

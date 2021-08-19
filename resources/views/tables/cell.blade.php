@@ -1,14 +1,14 @@
 @props([
-    'responsive' => false,
     'breakpoint' => 'lg',
+    'class'      => '',
+    'colspan'    => null,
     // In wich screen sizes this column will be the first one  (`xl`, `lg`, etc)
     // (Only neccesary if the first column changes on responsive versions)
-    'firstOn' => null,
+    'firstOn'    => null,
     // In wich screen sizes this column will be the last one (`xl`, `lg`, etc)
     // (Only neccesary if the last column changes on responsive versions)
-    'lastOn' => null,
-    'class' => '',
-    'colspan' => null,
+    'lastOn'     => null,
+    'responsive' => false,
 ])
 
 <td {{ $attributes->merge([
