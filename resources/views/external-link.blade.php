@@ -1,14 +1,15 @@
 @props([
     'url',
     'text',
-    'class'     => 'link font-semibold inline break-all',
+    'class'     => 'link font-semibold inline',
+    'breakAll'  => false,
     'small'     => false,
     'noIcon'    => false,
 ])
 
 <a
     href="{{ $url }}"
-    class="{{ $class }}"
+    class="{{ $class }} {{ $breakAll ? 'break-all' : 'break-words' }} "
     target="_blank"
     rel="noopener nofollow noreferrer"
 >
