@@ -6,7 +6,7 @@
 
 <div
     @class([
-        'flex items-center justify-between'
+        'flex items-center justify-between',
         'border-t border-theme-secondary-800' => ! $noBorder,
     ])
 >

@@ -1,9 +1,9 @@
 @props([
     'slot',
-    'title'
+    'title',
     'icon'       => null,
     'iconRaw'    => null,
-    'iconClass'  => ''
+    'iconClass'  => '',
     'titleClass' => 'w-32'
 ])
 

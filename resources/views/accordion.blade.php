@@ -77,8 +77,8 @@
                 @class([
                     $contentClass,
                     'border-theme-secondary-800' => $dark,
-                    'border-theme-secondary-300' => ! $dark
-                    'border-l'                   => $dark || $leftBorder
+                    'border-theme-secondary-300' => ! $dark,
+                    'border-l'                   => $dark || $leftBorder,
                 ])
                 x-show.transition.opacity="openPanel"
                 x-cloak

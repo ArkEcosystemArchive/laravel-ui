@@ -1,6 +1,6 @@
 @props([
     'name',
-    'class' => ''
+    'class' => '',
     'size'  => 'base',
     'style' => '',
 ])

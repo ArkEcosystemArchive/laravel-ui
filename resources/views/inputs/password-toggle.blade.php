@@ -1,5 +1,6 @@
 @props([
     'id',
+    'errors',
     'model',
     'name',
     'autofocus'  => false,

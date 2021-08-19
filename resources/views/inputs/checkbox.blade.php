@@ -8,7 +8,7 @@
     'label'            => null,
     'labelClasses'     => '',
     'model'            => null,
-    'right'            => false
+    'right'            => false,
     'value'            => null,
     'verticalPosition' => 'middle',
 ])
