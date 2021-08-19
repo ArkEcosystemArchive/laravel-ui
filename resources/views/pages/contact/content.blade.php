@@ -1,20 +1,20 @@
 @props([
-    'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
-    'discordUrl' => trans('ui::urls.discord'),
-    'subject' => null,
-    'message' => null,
-    'helpTitle' => trans('ui::pages.contact.let_us_help.title'),
-    'helpDescription' => trans('ui::pages.contact.let_us_help.description'),
-    'additionalTitle' => trans('ui::pages.contact.additional_support.title'),
     'additionalDescription' => trans('ui::pages.contact.additional_support.description'),
-    'formTitle' => trans('ui::pages.contact.form.title'),
-    'formDescription' => trans('ui::pages.contact.form.description'),
+    'additionalTitle'       => trans('ui::pages.contact.additional_support.title'),
     'contactNetworks' => [
-        'twitter' => trans('ui::urls.twitter'),
+        'twitter'  => trans('ui::urls.twitter'),
         'facebook' => trans('ui::urls.facebook'),
-        'reddit' => trans('ui::urls.reddit'),
+        'reddit'   => trans('ui::urls.reddit'),
         'linkedin' => trans('ui::urls.linkedin'),
     ],
+    'discordUrl'            => trans('ui::urls.discord'),
+    'formDescription'       => trans('ui::pages.contact.form.description'),
+    'formTitle'             => trans('ui::pages.contact.form.title'),
+    'helpDescription'       => trans('ui::pages.contact.let_us_help.description'),
+    'helpTitle'             => trans('ui::pages.contact.let_us_help.title'),
+    'message'               => null,
+    'socialIconHoverClass'  => 'hover:bg-theme-danger-400 hover:text-white',
+    'subject'               => null,
 ])
 
 <div class="flex flex-col space-y-16 lg:flex-row lg:space-y-0 contact-content">

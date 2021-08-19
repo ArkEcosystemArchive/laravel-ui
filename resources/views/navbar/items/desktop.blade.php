@@ -19,8 +19,10 @@
             @isset($navItem['children'])
                 <a
                     href="#"
-                    class="relative inline-flex justify-center items-center px-1 pt-px font-semibold leading-5 border-b-2 border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 focus:outline-none transition duration-150 ease-in-out h-full dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
-                        @if(!$loop->first) ml-8 @endif"
+                    @class([
+                        'relative inline-flex justify-center items-center px-1 pt-px font-semibold leading-5 border-b-2 border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 focus:outline-none transition duration-150 ease-in-out h-full dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400',
+                        'ml-8' => ! $loop->first,
+                    ])
                     @click="openDropdown = openDropdown === '{{ $navItem['label'] }}' ? null : '{{ $navItem['label'] }}'"
                     dusk='navbar-{{ Str::slug($navItem['label']) }}'
                 >
@@ -64,14 +66,15 @@
                             {{ $attribute }}="{{ $attributeValue }}"
                         @endforeach
                     @endif
-                    class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-3
-                        focus:outline-none transition duration-150 ease-in-out h-full
-                        @if(array_key_exists('route', $navItem) && optional(Route::current())->getName() === $navItem['route'])
-                            border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
-                        @else
-                            border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
-                        @endif
-                        @if(!$loop->first) ml-8 @endif"
+                    @php
+                        $isCurrentRoute = array_key_exists('route', $navItem) && optional(Route::current())->getName() === $navItem['route'];
+                    @endphp
+                    @class([
+                        'inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-3 focus:outline-none transition duration-150 ease-in-out h-full',
+                        'border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400' => $isCurrentRoute,
+                        'border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400' => ! $isCurrentRoute,
+                        'ml-8' => ! $loop->first
+                    ])
                     @click="openDropdown = null;"
                     dusk='navbar-{{ Str::slug($navItem['label']) }}'
                 >
