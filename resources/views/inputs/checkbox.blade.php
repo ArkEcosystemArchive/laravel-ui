@@ -48,11 +48,11 @@
         </div>
 
         <div @class([
-            'text-sm leading-5',
+            'text-sm leading-5 theme-secondary-700',
             'pr-7' => $right,
             'pl-7' => ! $right,
         ])>
-            <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
+            <label for="{{ $id ?? $name }}" class="{{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>
         </div>

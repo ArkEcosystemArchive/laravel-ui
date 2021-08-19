@@ -5,7 +5,7 @@
 ])
 
 <div
-    wire:key="{{ md5($error) }}"
+    wire:key="{{ md5($id.$error) }}"
     @class([
         'px-4 input-icon',
         'right-13' => $shift,
