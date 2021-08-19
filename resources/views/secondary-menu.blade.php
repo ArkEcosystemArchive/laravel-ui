@@ -1,5 +1,5 @@
 @props([
-    'navigation'
+    'navigation',
     'title',
     'navigationClass' => null,
 ])

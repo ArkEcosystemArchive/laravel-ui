@@ -1,15 +1,9 @@
-@props([
-    'notifications',
-    'class'                  => null,
-    'dropdownClasses'        => null,
-    'notificationsIndicator' => null,
-])
+{{--TODO: Couldnt make use of props here, not sure of why, but tests were failing (NotificationsTest > it should render the [dropdownClasses] attribute) Undefined variable $attributes--}}
 
-
-<div class="{{ $class }}" @click="livewire.emit('markNotificationsAsSeen')" dusk="navigation-notifications-icon">
+<div class="{{ $class ?? ''}}" @click="livewire.emit('markNotificationsAsSeen')" dusk="navigation-notifications-icon">
     <x-ark-dropdown
         wrapper-class="mx-1 md:relative"
-        dropdown-classes="mt-8 md:px-0 px-8 {{ $dropdownClasses }}"
+        dropdown-classes="mt-8 md:px-0 px-8 {{ $dropdownClasses ?? '' }}"
         button-class="relative py-3 px-4 rounded transition-default group hover:bg-theme-primary-100"
         dropdown-content-classes="bg-white dark:bg-theme-secondary-800 dark:text-theme-secondary-200 rounded-xl shadow-2xl"
     >
