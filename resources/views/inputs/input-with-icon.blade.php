@@ -16,6 +16,8 @@
     'slot'           => null,
     'slotClass'      => 'h-full',
     'tooltip'        => null,
+    'type'           => null,
+    'value'          => null,
 ])
 
 <div class="{{ $class }}">
@@ -45,6 +47,8 @@
                     'model'          => $model ?? $name,
                     'keydownEnter'   => $keydownEnter,
                     'max'            => $max,
+                    'value'          => $value,
+                    'type'           => $type,
                 ])
             </div>
 

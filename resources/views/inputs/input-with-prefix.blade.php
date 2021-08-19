@@ -5,7 +5,6 @@
     'name',
     'attributes'     => null,
     'auxiliaryTitle' => null,
-    'class'          => null,
     'hideLabel'      => false,
     'icon'           => null,
     'inputClass'     => null,
@@ -16,6 +15,7 @@
     'prefix'         => null,
     'required'       => false,
     'tooltip'        => null,
+    'type'           => null,
     'value'          => null,
 ])
 
@@ -62,6 +62,8 @@
                 'keydownEnter'   => $keydownEnter,
                 'max'            => $max,
                 'attributes'     => $attributes->merge(['x-on:change' => 'isDirty = !! $event.target.value']),
+                'type'           => $type,
+                'value'          => $value,
             ])
 
             @error($name)

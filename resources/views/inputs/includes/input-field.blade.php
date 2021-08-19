@@ -12,6 +12,7 @@
     'model'          => null,
     'noModel'        => false,
     'type'           => 'text',
+    'value'          => null,
 ])
 
 <input
@@ -25,6 +26,7 @@
     {{-- @TODO: remove --}}
     @if ($max) maxlength="{{ $max }}" @endif
     autocapitalize="{{ $autocapitalize }}"
+    @if($value) value="{{ $value }}"@endif
 
     {{ $attributes->except([
         'autocapitalize',

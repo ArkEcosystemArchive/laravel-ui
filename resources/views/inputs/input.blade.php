@@ -3,7 +3,7 @@
     'errors',
     'model',
     'name',
-    'attributes'     => null,
+    'autocapitalize' => null,
     'auxiliaryTitle' => null,
     'hideLabel'      => false,
     'inputClass'     => null,
@@ -15,6 +15,8 @@
     'tooltip'        => null,
     'tooltipClass'   => null,
     'tooltipType'    => null,
+    'type'           => null,
+    'value'          => null,
 ])
 
 <div {{ $attributes->only('class') }} >
@@ -35,14 +37,17 @@
 
         <div class="input-wrapper">
             @include('ark::inputs.includes.input-field', [
-                'name'         => $name,
-                'errors'       => $errors,
-                'id'           => $id ?? $name,
-                'inputClass'   => $inputClass,
-                'noModel'      => $noModel,
-                'model'        => $model ?? $name,
-                'keydownEnter' => $keydownEnter,
-                'max'          => $max,
+                'name'           => $name,
+                'errors'         => $errors,
+                'id'             => $id ?? $name,
+                'inputClass'     => $inputClass,
+                'noModel'        => $noModel,
+                'model'          => $model ?? $name,
+                'keydownEnter'   => $keydownEnter,
+                'max'            => $max,
+                'autocapitalize' => $autocapitalize,
+                'type'           => $type,
+                'value'          => $value,
             ])
 
             @error($name)
