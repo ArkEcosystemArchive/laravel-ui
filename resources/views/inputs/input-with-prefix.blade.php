@@ -1,5 +1,5 @@
 @props([
-    'id'
+    'id',
     'errors',
     'model',
     'name',
@@ -67,7 +67,7 @@
             @error($name)
                 @include('ark::inputs.includes.input-error-tooltip', [
                     'error' => $message,
-                    'id' => $id ?? $name
+                    'id' => $id ?? $name,
                 ])
             @enderror
         </div>
