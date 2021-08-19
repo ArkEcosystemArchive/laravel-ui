@@ -1,5 +1,5 @@
 @props([
-    'noContainer' => false
+    'noContainer' => false,
     'sticky'      => false,
     'tableClass'  => '',
 ])

@@ -8,8 +8,8 @@
     wire:key="{{ md5($id.$error) }}"
     @class([
         'px-4 input-icon',
-        'right-13' => $shift,
-        'right-0'  => ! $shift,
+        'right-13' => $shifted,
+        'right-0'  => ! $shifted,
     ])
     data-tippy-content="{{ $error }}"
     onclick="document.getElementById('{{ $id }}').focus()"

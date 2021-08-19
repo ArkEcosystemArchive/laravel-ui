@@ -1,4 +1,5 @@
 @props([
+    'errors',
     'xData'             => '{}',
     'attributes'        => null, // Not sure if these or slot are required, need to check
     'buttonClass'       => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
