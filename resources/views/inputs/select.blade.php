@@ -1,4 +1,5 @@
 @props([
+    'errors',
     'id',
     'model',
     'name',

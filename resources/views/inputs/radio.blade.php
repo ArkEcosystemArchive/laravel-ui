@@ -3,7 +3,7 @@
     'model',
     'name',
     'checked'  => false,
-    'class'    => 'mt-4'
+    'class'    => 'mt-4',
     'disabled' => false,
     'label'    => trans('forms.' . $name),
     'value'    => null,

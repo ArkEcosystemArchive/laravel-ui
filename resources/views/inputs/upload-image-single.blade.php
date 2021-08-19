@@ -81,11 +81,11 @@
             @endif
             @class([
                 'inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50',
-                'cursor-pointer hover:bg-theme-primary-100 transition-default' => $readonly,
+                'cursor-pointer hover:bg-theme-primary-100 transition-default' => ! $readonly,
             ])
             @unless($readonly)
-            @click.self="select"
-            role="button"
+                @click.self="select"
+                role="button"
             @endunless
         >
             @unless($readonly)

@@ -32,8 +32,8 @@
                     'flex-shrink-0 text-theme-secondary-900 dark:text-theme-secondary-600',
                     'flex-row-reverse' => $reverse,
                     'mt-0.5'           => $verticalPosition === 'top',
-                    'mr-5'             => $reverse,
-                    'ml-5'             => ! $reverse,
+                    'mr-5'             => ! $reverse,
+                    'ml-5'             => $reverse,
                 ])
             >
                 @if ($icon)
@@ -48,8 +48,8 @@
                     $iconWrapperClass,
                     'flex-shrink-0 circled-icon text-theme-secondary-900 dark:text-theme-secondary-600 border-theme-secondary-900 dark:border-theme-secondary-600',
                     'mt-0.5'           => $verticalPosition === 'top',
-                    'mr-5'             => $reverse,
-                    'ml-5'             => ! $reverse,
+                    'mr-5'             => ! $reverse,
+                    'ml-5'             => $reverse,
                 ])
             >
                 @if ($icon)
@@ -64,8 +64,8 @@
                     $iconWrapperClass,
                     'flex items-center justify-center p-2 rounded-full h-12 w-12 flex-shrink-0 bg-theme-secondary-200 dark:bg-theme-secondary-800',
                     'mt-0.5'           => $verticalPosition === 'top',
-                    'mr-5'             => $reverse,
-                    'ml-5'             => ! $reverse,
+                    'mr-5'             => ! $reverse,
+                    'ml-5'             => $reverse,
                 ])
             >
                 @if ($icon)

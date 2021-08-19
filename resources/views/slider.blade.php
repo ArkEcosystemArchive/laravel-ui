@@ -94,12 +94,15 @@
 @endphp
 
 <div class="w-full">
-    <div class="relative @unless($hideNavigation) px-10 @endunless">
+    <div @class([
+        'relative',
+        'px-10' => ! $hideNavigation,
+    ])>
         <div
             id="swiper-{{ $id }}"
             @class([
                 'swiper-container',
-                'slider-pagination-bottom' => $topPagination,
+                'slider-pagination-bottom' => ! $topPagination,
                 'slider-show-view-all'     => $hasViewAll,
                 'px-5'                     => $shadowSpacing,
                 'slider-multirow'          => $rows > 1,
