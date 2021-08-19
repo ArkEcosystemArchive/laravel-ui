@@ -1,12 +1,23 @@
+@props([
+    'model',
+    'name',
+    'alpineClick' => null,
+    'default'     => null,
+    'description' => null,
+    'hideLabel'   => false,
+    'label'       => trans('forms.'.$name),
+    'labelClass'  => null,
+])
+
 <div
     x-data="{ focused: false, value: {{ $default ?? 'false' }}, toggle() { this.value = !this.value; this.$refs['checkbox-livewire'].click(); } }"
     class="flex items-center"
 >
-    @unless($hideLabel ?? false)
-        <label for="{{ $name }}" class="input-label--toggle {{ $labelClass ?? '' }}">
-            {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+    @unless($hideLabel)
+        <label for="{{ $name }}" class="input-label--toggle {{ $labelClass }}">
+            {{ $label }}
 
-            @if($description ?? false)
+            @if($description)
                 <div class="font-normal text-theme-secondary-500">
                     {{ $description }}
                 </div>
@@ -42,7 +53,7 @@
         name="{{ $name }}"
         class="hidden"
         wire:model="{{ $model ?? $name }}"
-        @if($alpineClick ?? false) x-on:click="{{ $alpineClick }}" @endif
-        @if($default ?? false) checked @endif
+        @if($alpineClick) x-on:click="{{ $alpineClick }}" @endif
+        @if($default) checked @endif
     />
 </div>

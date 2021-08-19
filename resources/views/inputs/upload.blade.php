@@ -1,9 +1,20 @@
+@props([
+    'method',
+    'name',
+    'url',
+    'change'     => false,
+    'click'      => false,
+    'extensions' => [],
+    'label'      => trans('forms.' . $name),
+    'size'       => '10',
+])
+
 <div
     class="flex flex-col flex-1 h-full"
     x-data="{{ $method }}({ url: '{{ $url }}', onUpload: () => { window.location.reload() }})"
 >
     <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
-        {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+        {{ $label }}
     </label>
 
     <div class="flex flex-1 mt-2">
@@ -20,20 +31,20 @@
                                 id="{{ $id ?? $name }}"
                                 type="file"
                                 class="block absolute top-0 opacity-0 cursor-pointer"
-                                @if ($change ?? false) @change.prevent="{{ $change }}" @endif
+                                @if ($change) @change.prevent="{{ $change }}" @endif
                             >
 
                             <button
                                 type="button"
                                 class="link"
-                                @if ($click ?? false) @click="{{ $click }}" @endif
+                                @if ($click) @click="{{ $click }}" @endif
                             >
                                 Upload a file
                             </button>
                         </p>
 
                         <p class="mt-1 text-xs text-theme-secondary-500">
-                            {{ strtoupper(implode(', ', $extensions ?? [])) }} up to {{ $size ?? '10' }}MB
+                            {{ strtoupper(implode(', ', $extensions)) }} up to {{ $size }}MB
                         </p>
                     </div>
                 </div>

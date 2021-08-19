@@ -2,17 +2,18 @@
     'name',
     'errors',
     'class'          => '',
-    'id'             => null,
-    'model'          => null,
-    'hideLabel'      => false,
-    'label'          => null,
-    'tooltip'        => null,
-    'required'       => false,
-    'maxlength'      => null,
-    'rows'           => 10,
-    'usersInContext' => [],
     'endpoint'       => '/api/users/autocomplete',
+    'hideLabel'      => false,
+    'id'             => null,
+    'label'          => null,
+    'maxlength'      => null,
+    'model'          => null,
     'placeholder'    => '',
+    'slot'           => '',
+    'required'       => false,
+    'rows'           => 10,
+    'tooltip'        => null,
+    'usersInContext' => [],
 ])
 
 <div
@@ -44,7 +45,7 @@
                 style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
                 class="input-text @error($name) input-text--error @enderror"
                 data-placeholder="{{ $placeholder }}"
-            >{{ $slot ?? '' }}</div>
+            >{{ $slot }}</div>
         </div>
 
         @include('ark::inputs.includes.input-error')

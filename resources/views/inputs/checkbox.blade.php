@@ -1,16 +1,16 @@
 @props([
     'name',
-    'class'                 => 'mt-4',
-    'verticalPosition'      => 'middle',
-    'id'                    => null,
-    'model'                 => null,
-    'label'                 => null,
-    'labelClasses'          => '',
-    'value'                 => null,
-    'checked'               => false,
-    'disabled'              => false,
-    'alpine'                => false,
-    'right'                 => false
+    'alpine'           => false,
+    'checked'          => false,
+    'class'            => 'mt-4',
+    'disabled'         => false,
+    'id'               => null,
+    'label'            => null,
+    'labelClasses'     => '',
+    'model'            => null,
+    'right'            => false
+    'value'            => null,
+    'verticalPosition' => 'middle',
 ])
 
 @php
@@ -28,7 +28,11 @@
 @endphp
 
 <div class="{{ $class }}">
-    <div class="flex relative {{ $verticalPositionClass }} @if($right) flex-row-reverse @endif">
+    <div @class([
+        $verticalPositionClass,
+        'flex-relative',
+        'flex-row-reverse' => $right,
+    ])>
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
@@ -43,7 +47,11 @@
             />
         </div>
 
-        <div class="@if($right) pr-7 @else pl-7 @endif text-sm leading-5">
+        <div @class([
+            'text-sm leading-5',
+            'pr-7' => $right,
+            'pl-7' => ! $right,
+        ])>
             <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>

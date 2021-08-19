@@ -1,34 +1,34 @@
 @props([
     'id',
-    'image'                     => null,
-    'dimensions'                => 'w-48 h-48',
-    'uploadText'                => trans('ui::forms.upload-image.upload_image'),
-    'deleteTooltip'             => trans('ui::forms.upload-image.delete_image'),
-    'minWidth'                  => (int) config('ui.upload.image-single.dimensions.min-width'),
-    'minHeight'                 => (int) config('ui.upload.image-single.dimensions.min-height'),
-    'maxWidth'                  => (int) config('ui.upload.image-single.dimensions.max-width'),
-    'maxHeight'                 => (int) config('ui.upload.image-single.dimensions.max-height'),
-    'width'                     => 740,
-    'height'                    => 740,
-    'maxFilesize'               => '5MB',
-    'quality'                   => 0.8,
     'acceptMime'                => (string) config('ui.upload.image-single.accept-mime'),
-    'readonly'                  => false,
-    'uploadErrorMessage'        => null,
-    'withCrop'                  => false,
-    'cropOptions'               => "{}",
-    'cropTitle'                 => trans('ui::modals.crop-image.title'),
-    'cropMessage'               => trans('ui::modals.crop-image.message'),
-    'cropModalWidth'            => 'max-w-xl',
     'cropCancelButton'          => trans('ui::actions.back'),
-    'cropSaveButton'            => trans('ui::actions.save'),
     'cropCancelButtonClass'     => 'button-secondary flex items-center justify-center',
-    'cropSaveButtonClass'       => 'button-primary flex items-center justify-center',
-    'cropSaveIcon'              => false,
+    'cropEndpoint'              => route('cropper.upload-image'),
     'cropFillColor'             => '#fff',
     'cropImageSmoothingEnabled' => true,
     'cropImageSmoothingQuality' => 'high',
-    'cropEndpoint'              => route('cropper.upload-image'),
+    'cropMessage'               => trans('ui::modals.crop-image.message'),
+    'cropModalWidth'            => 'max-w-xl',
+    'cropOptions'               => "{}",
+    'cropSaveButton'            => trans('ui::actions.save'),
+    'cropSaveButtonClass'       => 'button-primary flex items-center justify-center',
+    'cropSaveIcon'              => false,
+    'cropTitle'                 => trans('ui::modals.crop-image.title'),
+    'deleteTooltip'             => trans('ui::forms.upload-image.delete_image'),
+    'dimensions'                => 'w-48 h-48',
+    'height'                    => 740,
+    'image'                     => null,
+    'maxFilesize'               => '5MB',
+    'maxHeight'                 => (int) config('ui.upload.image-single.dimensions.max-height'),
+    'maxWidth'                  => (int) config('ui.upload.image-single.dimensions.max-width'),
+    'minHeight'                 => (int) config('ui.upload.image-single.dimensions.min-height'),
+    'minWidth'                  => (int) config('ui.upload.image-single.dimensions.min-width'),
+    'quality'                   => 0.8,
+    'readonly'                  => false,
+    'uploadErrorMessage'        => null,
+    'uploadText'                => trans('ui::forms.upload-image.upload_image'),
+    'width'                     => 740,
+    'withCrop'                  => false,
 ])
 
 <div
@@ -71,12 +71,18 @@
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
     class="relative {{ $dimensions }}"
 >
-    <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
+    <div @class([
+        'rounded-xl w-full h-full',
+        'p-2 border-2 border-dashed border-theme-primary-100' => $image,
+    ])>
         <div
             @if ($image)
             style="background-image: url('{{ $image }}')"
             @endif
-            class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50 @unless($readonly) cursor-pointer hover:bg-theme-primary-100 transition-default @endunless"
+            @class([
+                'inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50',
+                'cursor-pointer hover:bg-theme-primary-100 transition-default' => $readonly,
+            ])
             @unless($readonly)
             @click.self="select"
             role="button"

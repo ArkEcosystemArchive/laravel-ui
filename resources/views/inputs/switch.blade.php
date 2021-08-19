@@ -1,8 +1,18 @@
+@props([
+    'leftLabel',
+    'model',
+    'name',
+    'rightLabel',
+    'alpineClick' => null,
+    'default'     => null,
+    'labelClass'  => null,
+])
+
 <div
     x-data="{ value: {{ $default ?? 'false' }}, toggle() { this.value = !this.value; this.$refs['checkbox-livewire'].click(); }, focused: false }"
     class="flex items-center space-x-3"
 >
-    <span class="font-semibold {{ $labelClass ?? '' }}" :class="{ 'text-theme-secondary-500': !value }">
+    <span class="font-semibold {{ $labelClass }}" :class="{ 'text-theme-secondary-500': !value }">
         {{ $leftLabel }}
     </span>
 
@@ -35,11 +45,11 @@
         name="{{ $name }}"
         class="hidden"
         wire:model="{{ $model ?? $name }}"
-        @if($alpineClick ?? false) x-on:click="{{ $alpineClick }}" @endif
-        @if($default ?? false) checked @endif
+        @if($alpineClick) x-on:click="{{ $alpineClick }}" @endif
+        @if($default) checked @endif
     />
 
-    <span class="font-semibold {{ $labelClass ?? '' }}" :class="{ 'text-theme-secondary-500': value }">
+    <span class="font-semibold {{ $labelClass }}" :class="{ 'text-theme-secondary-500': value }">
         {{ $rightLabel }}
     </span>
 </div>

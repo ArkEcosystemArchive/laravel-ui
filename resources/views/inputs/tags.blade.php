@@ -1,19 +1,20 @@
 @props([
-    'xData' => '{}',
     'name',
     'errors',
-    'tags' => [],
-    'maxTags' => null,
-    'allowedTags' => [],
-    'id' => null,
-    'label' => null,
-    'tooltip' => null,
-    'required' => false,
-    'placeholder' => 'Enter tags',
-    'isDisabled' => false,
-    'addDisabled' => false,
-    'removeDisabled' => false,
+    'xData'                => '{}',
+    'addDisabled'          => false,
+    'allowedTags'          => [],
     'disabledInputTooltip' => '',
+    'hideLabel'            => false,
+    'id'                   => null,
+    'isDisabled'           => false,
+    'label'                => null,
+    'maxTags'              => null,
+    'placeholder'          => 'Enter tags',
+    'removeDisabled'       => false,
+    'required'             => false,
+    'tags'                 => [],
+    'tooltip'              => null,
 ])
 
 <div
@@ -22,18 +23,22 @@
     {{ $attributes->merge(['class' => 'relative']) }}
 >
     <div class="input-group">
-        @unless ($hideLabel ?? false)
+        @unless ($hideLabel)
             @include('ark::inputs.includes.input-label', [
                 'name'     => $name,
                 'errors'   => $errors,
                 'id'       => $id !== null ? $id : $name,
-                'label'    => $label ?? null,
-                'tooltip'  => $tooltip ?? null,
-                'required' => $required ?? false,
+                'label'    => $label,
+                'tooltip'  => $tooltip,
+                'required' => $required,
             ])
         @endunless
 
-        <div class="input-wrapper {{ ($isDisabled || $addDisabled) ? 'disabled-tags-input' : '' }} {{ ($addDisabled) ? 'disabled-tags-input-add' : '' }}">
+        <div @class([
+            'input-wrapper',
+            'disabled-tags-input'     => $isDisabled || $addDisabled,
+            'disabled-tags-input-add' => $addDisabled,
+        ])>
             <div
                 wire:ignore
                 x-ref="input"

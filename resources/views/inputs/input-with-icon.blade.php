@@ -1,18 +1,38 @@
-<div class="{{ $class ?? '' }}">
+@props([
+    'id'
+    'errors',
+    'model',
+    'name',
+    'auxiliaryTitle' => null,
+    'class'          => null,
+    'containerClass' => null,
+    'hideLabel'      => false,
+    'inputClass'     => null,
+    'keydownEnter'   => null,
+    'label'          => null,
+    'max'            => null,
+    'noModel'        => false,
+    'required'       => false,
+    'slot'           => null,
+    'slotClass'      => 'h-full',
+    'tooltip'        => null,
+])
+
+<div class="{{ $class }}">
     <div class="input-group">
-        @unless ($hideLabel ?? false)
+        @unless ($hideLabel)
             @include('ark::inputs.includes.input-label', [
                 'name'           => $name,
                 'errors'         => $errors,
                 'id'             => $id ?? $name,
-                'label'          => $label ?? null,
-                'tooltip'        => $tooltip ?? null,
-                'required'       => $required ?? false,
-                'auxiliaryTitle' => $auxiliaryTitle ?? '',
+                'label'          => $label,
+                'tooltip'        => $tooltip,
+                'required'       => $required,
+                'auxiliaryTitle' => $auxiliaryTitle,
             ])
         @endunless
 
-        <div class="flex input-wrapper-with-icon {{ $containerClass ?? '' }}">
+        <div class="flex input-wrapper-with-icon {{ $containerClass }}">
             <div class="flex-1">
                 @include('ark::inputs.includes.input-field', [
                     'name'           => $name,
@@ -20,17 +40,17 @@
                     'id'             => $id ?? $name,
                     'inputTypeClass' => 'input-text-with-icon',
                     'errorClass'     => 'input-text-with-icon--error',
-                    'inputClass'     => $inputClass ?? '',
-                    'noModel'        => $noModel ?? false,
+                    'inputClass'     => $inputClass,
+                    'noModel'        => $noModel,
                     'model'          => $model ?? $name,
-                    'keydownEnter'   => $keydownEnter ?? null,
-                    'max'            => $max ?? null,
+                    'keydownEnter'   => $keydownEnter,
+                    'max'            => $max,
                 ])
             </div>
 
-            @if ($slot ?? false)
+            @if ($slot)
                 <div>
-                    <div class="flex {{ $slotClass ?? 'h-full' }}">
+                    <div class="flex {{ $slotClass }}">
                         {{ $slot }}
                     </div>
                 </div>

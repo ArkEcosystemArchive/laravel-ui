@@ -1,15 +1,16 @@
 @props([
     'name',
     'errors',
+    'auxiliaryTitle'  => '',
     'class'           => '',
-    'id'              => null,
-    'model'           => null,
     'hideLabel'       => false,
+    'id'              => null,
     'label'           => null,
-    'tooltip'         => null,
+    'model'           => null,
     'required'        => false,
     'rows'            => 10,
-    'auxiliaryTitle'  => '',
+    'slot'            => null,
+    'tooltip'         => null,
 ])
 
 <div class="{{ $class }}">
@@ -44,7 +45,7 @@
                         'label',
                         'hide-label',
                     ]) }}
-            >{{ $slot ?? '' }}</textarea>
+            >{{ $slot }}</textarea>
         </div>
 
         @include('ark::inputs.includes.input-error')

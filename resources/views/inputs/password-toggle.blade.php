@@ -1,8 +1,25 @@
+@props([
+    'id',
+    'model',
+    'name',
+    'autofocus'  => false,
+    'class'      => null,
+    'hideLabel'  => false,
+    'inputClass' => '',
+    'label'      => trans('forms' . $name),
+    'masked'     => false,
+    'max'        => null,
+    'message'    => null,
+    'readonly'   => false,
+    'required'   => false,
+    'value'      => null,
+])
+
 <div
-    class="{{ $class ?? '' }}"
+    class="{{ $class }}"
     x-data="{
         show: false,
-        @if($masked ?? false)
+        @if($masked)
             type: 'text',
             style: '-webkit-text-security: disc;',
             toggle() {
@@ -19,12 +36,12 @@
     }"
 >
     <div class="input-group">
-        @if(!($hideLabel ?? false))
+        @if(! ($hideLabel))
             <label
                 for="{{ $id ?? $name }}"
                 class="input-label @error($name) input-label--error @enderror"
             >
-                {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
+                {{ $label }}
             </label>
         @endif
 
@@ -35,14 +52,14 @@
                 :type="type"
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
-                class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
+                class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass }}"
                 wire:model="{{ $model ?? $name }}"
-                @if($masked ?? false) :style="style" @endif
-                @if($max ?? false) maxlength="{{ $max }}" @endif
-                @if($value ?? false) value="{{ $value }}" @endif
-                @if($autofocus ?? false) autofocus @endif
-                @if($readonly ?? false) readonly @endif
-                @if($required ?? false) required @endif
+                @if($masked) :style="style" @endif
+                @if($max) maxlength="{{ $max }}" @endif
+                @if($value) value="{{ $value }}" @endif
+                @if($autofocus) autofocus @endif
+                @if($readonly) readonly @endif
+                @if($required) required @endif
                 @keydown="$dispatch('typing')"
             />
 

@@ -1,18 +1,22 @@
 @props([
-    'options' => [],
-    'initialValue' => '',
-    'dispatchEvent' => null,
-    'class' => 'w-full',
-    'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
-    'wrapperClass' => 'w-full',
-    'dropdownClass' => 'mt-1',
+    'xData'             => '{}',
+    'attributes'        => null, // Not sure if these or slot are required, need to check
+    'buttonClass'       => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
+    'class'             => 'w-full',
+    'dispatchEvent'     => null,
+    'dropdownClass'     => 'mt-1',
+    'dropdownEntry'     => null,
+    'dropdownList'      => null,
     'dropdownListClass' => 'max-h-80',
-    'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
-    'placeholder' => '',
-    'grouped' => false,
-    'label' => null,
-    'xData' => '{}',
-    'height' => '320',
+    'grouped'           => false,
+    'height'            => '320',
+    'iconClass'         => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
+    'initialValue'      => '',
+    'label'             => null,
+    'name'              => null,
+    'options'           => [],
+    'placeholder'       => '',
+    'wrapperClass'      => 'w-full',
 ])
 
 @php
@@ -22,10 +26,10 @@ $initialText = $grouped
 @endphp
 
 <div class="input-group {{ $class }}">
-    @if($label ?? false)
+    @if($label)
         <label
-            for="{{ $name ?? '' }}"
-            class="input-label @if ($name ?? false) @error($name) input-label--error @enderror @endif"
+            for="{{ $name }}"
+            class="input-label @if ($name) @error($name) input-label--error @enderror @endif"
         >
             {{ $label }}
         </label>

@@ -1,16 +1,35 @@
+@props([
+    'id'
+    'errors',
+    'model',
+    'name',
+    'attributes'     => null,
+    'auxiliaryTitle' => null,
+    'hideLabel'      => false,
+    'inputClass'     => null,
+    'keydownEnter'   => null,
+    'label'          => null,
+    'max'            => null,
+    'noModel'        => false,
+    'required'       => false,
+    'tooltip'        => null,
+    'tooltipClass'   => null,
+    'tooltipType'    => null,
+])
+
 <div {{ $attributes->only('class') }} >
     <div class="input-group">
-        @unless ($hideLabel ?? false)
+        @unless ($hideLabel)
             @include('ark::inputs.includes.input-label', [
                 'name'            => $name,
                 'errors'          => $errors,
                 'id'              => $id ?? $name,
-                'label'           => $label ?? null,
-                'tooltip'         => $tooltip ?? null,
-                'tooltipClass'    => $tooltipClass ?? null,
-                'tooltipType'     => $tooltipType ?? null,
-                'required'        => $required ?? false,
-                'auxiliaryTitle'  => $auxiliaryTitle ?? '',
+                'label'           => $label,
+                'tooltip'         => $tooltip,
+                'tooltipClass'    => $tooltipClass,
+                'tooltipType'     => $tooltipType,
+                'required'        => $required,
+                'auxiliaryTitle'  => $auxiliaryTitle,
             ])
         @endunless
 
@@ -19,11 +38,11 @@
                 'name'         => $name,
                 'errors'       => $errors,
                 'id'           => $id ?? $name,
-                'inputClass'   => $inputClass ?? '',
-                'noModel'      => $noModel ?? false,
+                'inputClass'   => $inputClass,
+                'noModel'      => $noModel,
                 'model'        => $model ?? $name,
-                'keydownEnter' => $keydownEnter ?? null,
-                'max'          => $max ?? null,
+                'keydownEnter' => $keydownEnter,
+                'max'          => $max,
             ])
 
             @error($name)

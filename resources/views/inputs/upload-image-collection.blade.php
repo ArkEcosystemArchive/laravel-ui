@@ -1,21 +1,21 @@
 @props([
     'id',
-    'images'             => [],
-    'dimensions'         => 'w-full h-48',
-    'imageHeight'        => 'h-28',
-    'uploadText'         => trans('ui::forms.upload-image-collection.drag_drop_browse'),
-    'deleteTooltip'      => trans('ui::forms.upload-image-collection.delete_image'),
-    'minWidth'           => (int) config('ui.upload.image-collection.dimensions.min-width'),
-    'minHeight'          => (int) config('ui.upload.image-collection.dimensions.min-height'),
-    'maxWidth'           => (int) config('ui.upload.image-collection.dimensions.max-width'),
-    'maxHeight'          => (int) config('ui.upload.image-collection.dimensions.max-height'),
-    'width'              => null,
-    'height'             => null,
-    'maxFilesize'        => '5MB',
-    'quality'            => 0.8,
     'acceptMime'         => (string) config('ui.upload.image-collection.accept-mime'),
-    'uploadErrorMessage' => null,
+    'dimensions'         => 'w-full h-48',
+    'deleteTooltip'      => trans('ui::forms.upload-image-collection.delete_image'),
+    'height'             => null,
+    'images'             => [],
+    'imageHeight'        => 'h-28',
+    'maxFilesize'        => '5MB',
+    'maxHeight'          => (int) config('ui.upload.image-collection.dimensions.max-height'),
+    'maxWidth'           => (int) config('ui.upload.image-collection.dimensions.max-width'),
+    'minHeight'          => (int) config('ui.upload.image-collection.dimensions.min-height'),
+    'minWidth'           => (int) config('ui.upload.image-collection.dimensions.min-width'),
+    'quality'            => 0.8,
     'sortable'           => false,
+    'uploadErrorMessage' => null,
+    'uploadText'         => trans('ui::forms.upload-image-collection.drag_drop_browse'),
+    'width'              => null,
 ])
 
 <div
@@ -80,11 +80,16 @@
                         </div>
 
                         <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-default">
-                            <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) cursor-pointer bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full h-full">
+                            <div @class([
+                                'select-none rounded-xl flex flex-col items-center justify-center opacity-70 w-full h-full',
+                                'cursor-pointer bg-theme-secondary-900' => $sortable,
+                                'border-6 border-theme-secondary-900'   => ! $sortable,
+                            ])>
                                 @if($sortable)
                                     <x-ark-icon name="drag" size="lg" class="text-white"/>
-                                    <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to
-                                        reposition</p>
+                                    <p class="mt-3 text-xs font-semibold text-theme-secondary-500">
+                                        Drag to reposition
+                                    </p>
                                 @endif
                             </div>
 
