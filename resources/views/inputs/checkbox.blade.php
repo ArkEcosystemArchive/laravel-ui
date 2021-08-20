@@ -43,8 +43,8 @@
             />
         </div>
 
-        <div class="@if($right) pr-7 @else pl-7 @endif text-sm leading-5">
-            <label for="{{ $id ?? $name }}" class="text-theme-secondary-700 {{ $labelClasses }}">
+        <div class="@if($right) pr-7 @else pl-7 @endif text-sm text-theme-secondary-700 leading-5">
+            <label for="{{ $id ?? $name }}" class="{{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>
         </div>
