@@ -203,7 +203,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::tables.table', 'ark-tables.table');
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
-        Blade::component('ark::tables.cell-status', 'ark-tables.cell-status');
         Blade::component('ark::tables.header', 'ark-tables.header');
         Blade::component('ark::tables.view-options', 'ark-tables.view-options');
         Blade::component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
@@ -264,7 +263,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::social-link', 'ark-social-link');
         Blade::component('ark::social-square', 'ark-social-square');
         Blade::component('ark::sort-icon', 'ark-sort-icon');
-        Blade::component('ark::status', 'ark-status');
         Blade::component('ark::status-circle', 'ark-status-circle');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
         Blade::component('ark::toast', 'ark-toast');
