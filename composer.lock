@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4883bc4626900711041ea19da77990a",
+    "content-hash": "37e760b0d36adaabfd7ae51d7dac5784",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7165,16 +7165,16 @@
         },
         {
             "name": "nunomaduro/laravel-mojito",
-            "version": "v0.2.8",
+            "version": "v0.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/laravel-mojito.git",
-                "reference": "e9e1a842fbe403462f994f97682dc0360ef68d25"
+                "reference": "4b9b9161286f654bffa5094ae846ce1e19008470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/laravel-mojito/zipball/e9e1a842fbe403462f994f97682dc0360ef68d25",
-                "reference": "e9e1a842fbe403462f994f97682dc0360ef68d25",
+                "url": "https://api.github.com/repos/nunomaduro/laravel-mojito/zipball/4b9b9161286f654bffa5094ae846ce1e19008470",
+                "reference": "4b9b9161286f654bffa5094ae846ce1e19008470",
                 "shasum": ""
             },
             "require": {
@@ -7223,9 +7223,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/laravel-mojito/issues",
-                "source": "https://github.com/nunomaduro/laravel-mojito/tree/v0.2.8"
+                "source": "https://github.com/nunomaduro/laravel-mojito/tree/v0.2.6"
             },
-            "time": "2021-04-08T16:59:00+00:00"
+            "time": "2020-11-02T09:29:13+00:00"
         },
         {
             "name": "ondram/ci-detector",
