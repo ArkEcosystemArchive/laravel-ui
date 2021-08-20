@@ -17,7 +17,8 @@
             '{{ $unselectedClasses }}': tableView !== 'grid',
         }"
         class="py-2 px-3 border-b-3"
-        @if ($disabled) disabled @else @click="tableView = 'grid'" @endif
+        @click="tableView = 'grid'"
+        @if ($disabled) disabled @endif
     >
         <x-ark-icon name="grid" />
     </button>
@@ -29,7 +30,8 @@
             '{{ $unselectedClasses }}': tableView !== 'list',
         }"
         class="py-2 px-3 border-b-3"
-        @if ($disabled) disabled @else @click="tableView = 'list'" @endif
+        @click="tableView = 'list'"
+        @if ($disabled) disabled @endif
     >
         <x-ark-icon name="list" />
     </button>
