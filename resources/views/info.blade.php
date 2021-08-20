@@ -1,6 +1,6 @@
 @props([
     'class'   => '',
-    'large'   => false
+    'large'   => false,
     'tooltip' => '',
     'type'    => 'question',
 ])
