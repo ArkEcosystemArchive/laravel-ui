@@ -38,6 +38,7 @@
             <div class="p-8 sm:p-10">
                 @if($wireClose)
                     <button
+                        type="button"
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >

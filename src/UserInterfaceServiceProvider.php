@@ -177,6 +177,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.input', 'ark-input');
         Blade::component('ark::inputs.input-with-icon', 'ark-input-with-icon');
         Blade::component('ark::inputs.input-with-prefix', 'ark-input-with-prefix');
+        Blade::component('ark::inputs.input-with-suffix', 'ark-input-with-suffix');
         Blade::component('ark::inputs.radio', 'ark-radio');
         Blade::component('ark::inputs.textarea', 'ark-textarea');
         Blade::component('ark::inputs.toggle', 'ark-toggle');
@@ -203,7 +204,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::tables.table', 'ark-tables.table');
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
-        Blade::component('ark::tables.cell-status', 'ark-tables.cell-status');
         Blade::component('ark::tables.header', 'ark-tables.header');
         Blade::component('ark::tables.view-options', 'ark-tables.view-options');
         Blade::component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
@@ -264,15 +264,14 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::social-link', 'ark-social-link');
         Blade::component('ark::social-square', 'ark-social-square');
         Blade::component('ark::sort-icon', 'ark-sort-icon');
-        Blade::component('ark::status', 'ark-status');
         Blade::component('ark::status-circle', 'ark-status-circle');
-        Blade::component('ark::status-circle-shallow', 'ark-status-circle-shallow');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
         Blade::component('ark::toast', 'ark-toast');
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
         Blade::component('ark::link-collection', 'ark-link-collection');
         Blade::component('ark::file-download', 'ark-file-download');
+        Blade::component('ark::chart', 'ark-chart');
 
         // Navigation
         Blade::component('ark::navbar', 'ark-navbar');
