@@ -5,6 +5,7 @@
         type="button"
         role="tab"
         id="tab-{{ $name }}"
+        x-ref="{{ $name }}"
         :class="{ 'tab-item-current': selected === '{{ $name }}' }"
         @click="select('{{ $name }}')"
         wire:key="tab-{{ $name }}"
