@@ -1,6 +1,7 @@
 @props([
     'title',
     'description',
+    'metaTitle' => null,
     'image' => null,
 ])
 
