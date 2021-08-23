@@ -47,7 +47,7 @@ it('can submit the contact form', function () {
 
     Config::set('web.contact.subjects', Arr::get($config, 'subjects'));
 
-    $instance = Livewire::test(ContactForm::class)
+    Livewire::test(ContactForm::class)
         ->set('name', null)
         ->call('submit')
         ->assertHasErrors(['name'])
@@ -72,9 +72,12 @@ it('can submit the contact form', function () {
         ->set('message', 'fooBar')
         ->call('submit')
         ->assertHasNoErrors(['message'])
-        ;
-
-    $instance->assertEmitted('toastMessage');
+        ->assertEmitted('toastMessage')
+        ->assertSet('name', null)
+        ->assertSet('email', null)
+        ->assertSet('subject', null)
+        ->assertSet('message', null)
+        ->assertSet('attachment', null);
 
     Mail::assertQueued(\ARKEcosystem\UserInterface\Mail\ContactFormSubmitted::class);
 });
