@@ -529,6 +529,30 @@ public function imagesReordered(array $ids): void
 <x-ark-upload-image-collection id="media" :images="$this->imageCollection" sortable />
 ```
 
+### Tabs
+
+Add the following to the `app.js` file:
+
+```js
+import "@ui/js/tabs.js";
+```
+
+```html
+<x-ark-tabbed>
+    <x-slot name="tabs">
+        <x-ark-tab name="tab-1" />
+        <x-ark-tab name="tab-2" />
+        <x-ark-tab name="tab-3" />
+    </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+</x-ark-tabbed>
+```
+
+For the available parameters, please refer to the [EXAMPLE.md](EXAMPLE.md#tabs)
+
 ### Error Pages
 
 There are also default error pages you can use for your Laravel project

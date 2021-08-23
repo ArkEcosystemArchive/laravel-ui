@@ -767,12 +767,6 @@ mix.extract(['chart.js']);
 
 ### Tabs
 
-Add the following to the `app.js` file:
-
-```js
-import "@ui/js/tabs.js";
-```
-
 ```html
 <x-ark-tabbed>
     <x-slot name="tabs">
