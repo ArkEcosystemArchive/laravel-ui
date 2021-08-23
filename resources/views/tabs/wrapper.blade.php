@@ -3,7 +3,7 @@
     'onSelected' => null,
     'defaultSelected' => '',
     'noData' => false,
-    'panelWrapperClass' => '',
+    'panelWrapperClass' => 'mt-6 w-full',
 ])
 
 <div {{ $attributes->merge(['class' => 'tabs-wrapper']) }}

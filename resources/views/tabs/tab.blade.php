@@ -3,20 +3,15 @@
 <li role="presentation">
     <button
         type="button"
-        class="tab-item transition-default"
-        :class="{ 'tab-item-current': selected === '{{ $name }}' }"
-        @click="select('{{ $name }}')"
-        @keydown.enter="select('{{ $name }}')"
-        @keydown.space.prevent="select('{{ $name }}')"
         role="tab"
         id="tab-{{ $name }}"
-        aria-controls="tab-panel-{{ $name }}"
+        :class="{ 'tab-item-current': selected === '{{ $name }}' }"
+        @click="select('{{ $name }}')"
         wire:key="tab-{{ $name }}"
-        @keydown.arrow-left="selectPrevTab"
-        @keydown.arrow-right="selectNextTab"
+        @keydown="keyboard"
         :tabindex="selected === '{{ $name }}' ? 0 : -1"
         :aria-selected="selected === '{{ $name }}'"
-        {{ $attributes }}
+        {{ $attributes->merge(['class' => 'tab-item']) }}
     >
         {{ $slot }}
     </button>

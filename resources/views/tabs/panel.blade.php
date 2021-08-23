@@ -1,5 +1,11 @@
 @props(['name'])
 
-<div role="tabpanel" id="tab-panel-{{ $name }}" x-show="selected === '{{ $name }}'" {{ $attributes->merge(['class' => 'tab-panel']) }}>
+<section
+    role="tabpanel"
+    id="tab-panel-{{ $name }}"
+    aria-labelledby="tab-{{ $name }}"
+    x-show="selected === '{{ $name }}'"
+    {{ $attributes->merge(['class' => 'tab-panel']) }}
+>
     {{ $slot }}
-</div>
+</section>
