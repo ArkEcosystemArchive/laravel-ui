@@ -17,11 +17,13 @@
             'type',
         ])
 }}>
-    <div class="alert-icon-wrapper alert-{{ $type }}-icon @if($large) alert-icon-large flex-shrink-0 @endif">
-        <x-ark-icon
-            :name="alertIcon($type)"
-            :size="$large ? 'md' : 'base'"
-        />
+    <div class="alert-icon-wrapper alert-{{ $type }}-icon flex-shrink-0 @if($large) alert-icon-large @endif">
+        <div>
+            <x-ark-icon
+                :name="alertIcon($type)"
+                :size="$large ? 'md' : 'base'"
+            />
+        </div>
     </div>
 
     <div class="alert-content-wrapper alert-{{ $type }}-content @if($large) alert-content-large @endif">
