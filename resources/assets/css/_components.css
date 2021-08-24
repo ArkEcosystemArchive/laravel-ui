@@ -49,67 +49,53 @@
 
 /** Tabs **/
 .tabs {
-    @apply px-8 mb-8 font-semibold select-none rounded-xl bg-theme-secondary-100;
+    @apply flex w-full font-semibold rounded-xl bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
 }
 
 .tab-item {
-    @apply relative pt-4 pb-3 ml-16 border-transparent cursor-pointer border-b-3 whitespace-nowrap;
+    @apply relative pt-4 pb-3 mx-6 font-semibold text-theme-secondary-700 border-transparent border-b-3 whitespace-nowrap transition-default;
 }
-.tab-item:first-child {
-    @apply ml-0;
-}
+
 .tab-item-current,
-.tab-item:hover {
+.tab-item:hover:not(:disabled) {
     @apply text-theme-secondary-900 border-theme-primary-600;
 }
 
-.dark .tab-item:hover {
-    @apply text-theme-secondary-600;
+.tab-item:disabled {
+    @apply text-theme-secondary-500;
 }
+
 .dark .tab-item-current,
-.dark .tab-item:hover {
+.dark .tab-item:hover:not(:disabled) {
     @apply text-theme-secondary-200;
 }
 
 .tab-item::before {
     content: "";
-    @apply absolute left-0 h-6 -ml-8 border-l border-theme-secondary-300;
+    @apply absolute left-0 h-6 -ml-6 border-l border-theme-secondary-300;
 }
-.tab-item:first-child::before {
+
+.tabs > li[role="presentation"]:first-child > .tab-item::before {
     @apply border-l-0;
 }
+
 .dark .tab-item::before {
     @apply border-theme-secondary-800;
 }
 
 .tabs-wrapper {
-    @apply flex items-center px-4 mt-3 rounded-xl bg-theme-secondary-100 text-theme-secondary-500;
+    @apply flex flex-col items-center w-full;
 }
 
-@screen sm {
-    .tabs-wrapper {
-        @apply px-8;
-    }
+[role="tablist"] {
+    @apply px-2;
 }
 
-.tabs-default {
-    @apply px-4 py-4 font-semibold border-b-2 border-transparent cursor-pointer transition-default;
-}
-
-.tabs-default:hover {
-    @apply text-theme-secondary-600 border-theme-secondary-300;
-}
-
-.tabs-active,
-.tabs-active:hover {
-    @apply text-theme-secondary-900 border-theme-primary-600;
-}
-
-.tabs-separator {
-    @apply h-4 border-l border-theme-secondary-300;
+[role="tabpanel"] {
+    @apply w-full;
 }
 
 /** Tab Badge **/

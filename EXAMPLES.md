@@ -763,3 +763,38 @@ mix.extract(['chart.js']);
 | grid | Whether to show the grid or not | no | |
 | tooltips | Whether to show tooltips or not | no | |
 | theme | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no | |
+
+
+### Tabs
+
+```html
+<x-ark-tabbed>
+    <x-slot name="tabs">
+        <x-ark-tab name="tab-1" />
+        <x-ark-tab name="tab-2" />
+        <x-ark-tab name="tab-3" />
+    </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+</x-ark-tabbed>
+```
+
+The parameter accepted by `<x-ark-tabbed>`
+| Parameter        | Description                                                   | Required |
+|------------------|---------------------------------------------------------------|----------|
+| x-data           | Extra data passed to Alpine js component                      | no       |
+| on-selected      | to customise the action when a tab is pressed                 | no       |
+| default-selected | the tab selected by default                                   | no       |
+| no-data          | avoid to load Alpine js component                             | no       |
+
+The parameter accepted by `<x-ark-tab>`
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab                                                  | yes      |
+
+The parameter accepted by `<x-ark-tab-panel>`
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab panel (it must be the same used for `x-ark-tab`) | yes      |
