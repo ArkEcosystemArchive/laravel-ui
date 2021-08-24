@@ -10,5 +10,5 @@
 <meta property="og:description" content="{!! trim(htmlentities($description)) !!}" />
 
 @if ($image)
-    <meta property="og:image" content="{!! trim(htmlentities($image)) !!}" />
+    <meta property="og:image" content="{!! trim($image) !!}" />
 @endif
