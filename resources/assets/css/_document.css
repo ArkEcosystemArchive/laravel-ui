@@ -118,6 +118,14 @@ code.hljs .hljs-ln-n {
     @apply font-semibold no-underline text-theme-primary-600 transition-default;
 }
 
+.documentation-content a[target="_blank"]:hover {
+    @apply no-underline;
+}
+
+.documentation-content a[target="_blank"]:hover > span{
+    @apply underline;
+}
+
 .documentation-content a:hover {
     @apply underline text-theme-primary-700;
 }
