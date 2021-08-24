@@ -56,8 +56,9 @@
 }
 
 .tab-item {
-    @apply relative pt-4 pb-3 mx-6 font-semibold text-theme-secondary-700 border-transparent border-b-3 whitespace-nowrap;
+    @apply relative pt-4 pb-3 mx-6 font-semibold text-theme-secondary-700 border-transparent border-b-3 whitespace-nowrap transition-default;
 }
+
 .tab-item-current,
 .tab-item:hover:not(:disabled) {
     @apply text-theme-secondary-900 border-theme-primary-600;
@@ -76,9 +77,11 @@
     content: "";
     @apply absolute left-0 h-6 -ml-6 border-l border-theme-secondary-300;
 }
+
 .tabs > li[role="presentation"]:first-child > .tab-item::before {
     @apply border-l-0;
 }
+
 .dark .tab-item::before {
     @apply border-theme-secondary-800;
 }
