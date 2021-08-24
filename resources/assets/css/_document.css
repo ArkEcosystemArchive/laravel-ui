@@ -122,7 +122,7 @@ code.hljs .hljs-ln-n {
     @apply no-underline;
 }
 
-.documentation-content a[target="_blank"]:hover > span{
+.documentation-content a[target="_blank"]:hover > span {
     @apply underline;
 }
 
