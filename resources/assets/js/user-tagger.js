@@ -4,7 +4,7 @@ window.UserTagger = (
     maxLength = null,
     plainText = false
 ) => {
-    const tribute = new Tribute({
+    const options = {
         selectClass: "highlighted",
         containerClass:
             "ark-user-tagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
@@ -79,7 +79,13 @@ window.UserTagger = (
         },
 
         lookup: (item) => item.name + item.username,
-    });
+    };
+
+    if (plainText) {
+        options.selectTemplate = (item) => `@${item.original.username}`;
+    }
+
+    const tribute = new Tribute(options);
 
     return {
         latestValue: "",
@@ -146,14 +152,6 @@ window.UserTagger = (
             });
 
             editor.addEventListener("blur", (e) => this.updateValue(e));
-
-            if (plainText) {
-                try {
-                    editor.contentEditable = "plaintext-only";
-                } catch (e) {
-                    // Browser doesn't support plaintext
-                }
-            }
         },
     };
 };
