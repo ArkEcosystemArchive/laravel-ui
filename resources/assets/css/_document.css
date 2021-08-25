@@ -118,6 +118,14 @@ code.hljs .hljs-ln-n {
     @apply font-semibold no-underline text-theme-primary-600 transition-default;
 }
 
+.documentation-content a[target="_blank"]:hover {
+    @apply no-underline;
+}
+
+.documentation-content a[target="_blank"]:hover > span {
+    @apply underline;
+}
+
 .documentation-content a:hover {
     @apply underline text-theme-primary-700;
 }
@@ -137,13 +145,13 @@ code.hljs .hljs-ln-n {
 
 .documentation-content ul ul,
 .documentation-content ol ul {
-    @apply ml-4 list-outside;
+    @apply ml-4 list-outside mb-0;
     list-style-type: circle;
 }
 
 .documentation-content ol ol,
 .documentation-content ul ol {
-    @apply ml-4 list-outside;
+    @apply ml-4 list-outside mb-0;
     list-style-type: lower-latin;
 }
 
@@ -162,20 +170,36 @@ code.hljs .hljs-ln-n {
     @apply block mx-auto;
 }
 
+.documentation-content .image-container {
+    @apply flex flex-col items-center;
+}
+
+.documentation-content .video-container {
+    @apply w-full;
+}
+
 .documentation-content img,
-.documentation-content .image-container iframe {
-    @apply border-2 rounded-xl border-theme-secondary-300;
+.documentation-content iframe,
+.documentation-content .typeform-widget,
+.documentation-content .image-container .twitter-tweet {
+    @apply border rounded-xl border-theme-secondary-300 overflow-hidden;
+}
+
+.documentation-content .image-container .twitter-tweet {
+    overflow: hidden;
+    /* This style within the negative margin on the `.twitter-tweet iframe` is
+    used to hide the built-in Twitter border in favor of a custom border used
+    on the rest of the embeds.  */
+    max-width: 548px;
+}
+.documentation-content .image-container .twitter-tweet iframe {
+    @apply border-0;
+    margin: -1px;
 }
 
 /* Image caption */
 .documentation-content .image-caption {
-    @apply relative block w-full mx-auto p-4 mt-2 border-2 rounded-xl border-theme-secondary-300 bg-theme-secondary-100 text-theme-secondary-900 text-sm;
-}
-
-@screen sm {
-    .documentation-content .image-caption {
-        @apply px-4 py-2;
-    }
+    @apply relative block mx-auto text-theme-secondary-800 border-l-2 border-theme-secondary-300 text-sm px-3 mt-3 italic text-center;
 }
 
 /* Misc */

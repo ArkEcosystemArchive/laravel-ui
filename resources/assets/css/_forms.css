@@ -43,15 +43,19 @@
 }
 
 .input-group:focus-within .input-wrapper-with-prefix,
+.input-group:focus-within .input-wrapper-with-suffix,
 .input-group:focus-within .input-text {
     @apply border-theme-primary-600;
 }
 
 .input-group:focus-within .input-text-with-prefix:read-only,
+.input-group:focus-within .input-text-with-suffix:read-only,
 .input-group:focus-within .input-text-with-icon:read-only,
 .input-text-with-icon:read-only,
 .input-group:focus-within .input-text:read-only,
-.input-text:read-only {
+.input-text:read-only,
+.input-text-with-prefix:read-only,
+.input-text-with-suffix:read-only {
     @apply cursor-not-allowed border-theme-secondary-400 bg-theme-secondary-100;
 }
 
@@ -71,21 +75,39 @@
 
 /** Input with icon prefix **/
 .input-prefix-icon,
-.input-prefix {
-    @apply flex items-center rounded-l;
+.input-prefix,
+.input-suffix {
+    @apply flex items-center;
 }
-.input-prefix {
+
+.input-prefix,
+.input-suffix {
     @apply px-4;
 }
 
-.input-text-with-prefix {
+.input-prefix {
+    @apply rounded-l;
+}
+.input-suffix {
+    @apply rounded-r;
+}
+.input-text--error .input-suffix {
+    @apply ml-10;
+}
+.input-text--error .input-suffix .input-icon {
+    @apply right-auto left-0 -ml-13;
+}
+
+.input-text-with-prefix,
+.input-text-with-suffix {
     @apply block w-full border-0 rounded outline-none appearance-none transition-default border-theme-danger-500;
 
     /* Note: need this to override form-input padding */
     padding: 0.75rem 1rem;
 }
 
-.input-wrapper-with-prefix {
+.input-wrapper-with-prefix,
+.input-wrapper-with-suffix {
     @apply flex bg-white border rounded border-theme-secondary-300;
 }
 
@@ -96,9 +118,15 @@
 .input-wrapper-with-prefix:focus-within .input-prefix-icon {
     @apply text-theme-primary-500;
 }
-
 .input-wrapper-with-prefix .input-prefix {
-    @apply border-r select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
+    @apply border-r;
+}
+.input-wrapper-with-suffix .input-suffix {
+    @apply border-l;
+}
+.input-wrapper-with-prefix .input-prefix,
+.input-wrapper-with-suffix .input-suffix {
+    @apply select-none bg-theme-primary-50 text-theme-secondary-500 border-theme-secondary-300;
 }
 
 /* Radio buttons */
@@ -136,11 +164,11 @@
 
 /* Switch (toggle alternative) */
 .input-switch-button-left {
-    @apply translate-x-0 bg-theme-primary-600;
+    @apply translate-x-full bg-theme-primary-600;
 }
 
 .input-switch-button-right {
-    @apply translate-x-5 bg-theme-primary-600;
+    @apply translate-x-0 bg-theme-primary-600;
 }
 
 .input-switch-button-left:hover,
@@ -162,7 +190,12 @@
 
 .input-text-with-icon--error,
 .input-text--error {
-    @apply pr-10 border-theme-danger-500;
+    @apply border-theme-danger-500;
+}
+
+.input-text-with-icon--error,
+.input-text--error:not(.input-wrapper-with-suffix) {
+    @apply pr-10;
 }
 .dark .input-text-with-icon--error,
 .dark .input-text--error {
@@ -282,4 +315,10 @@
 /* Firefox */
 .hide-number-input-arrows input[type="number"] {
     -moz-appearance: textfield;
+}
+
+/* Hides native eye icon for revealing password */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
 }

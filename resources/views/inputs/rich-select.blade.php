@@ -2,6 +2,7 @@
     'options' => [],
     'initialValue' => '',
     'dispatchEvent' => null,
+    'class' => 'w-full',
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
     'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
@@ -20,7 +21,7 @@ $initialText = $grouped
     : collect($options)->get($initialValue);
 @endphp
 
-<div class="w-full input-group">
+<div class="input-group {{ $class }}">
     @if($label ?? false)
         <label
             for="{{ $name ?? '' }}"
@@ -89,7 +90,7 @@ $initialText = $grouped
                 tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
-                class="py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
+                class="custom-scroll py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
             >
                 @isset($dropdownList)
                     {{ $dropdownList }}

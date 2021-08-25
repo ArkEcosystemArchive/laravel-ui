@@ -9,7 +9,7 @@
 .alert-content-wrapper {
     overflow-wrap: anywhere;
 
-    @apply flex flex-col justify-center text-theme-secondary-900 pt-4 w-full;
+    @apply flex flex-col justify-center text-theme-secondary-900 pt-4 w-full text-center;
 }
 
 @screen sm {
@@ -18,7 +18,7 @@
     }
 
     .alert-content-wrapper {
-        @apply pt-0 pl-4;
+        @apply pt-0 pl-4 text-left;
     }
 }
 
@@ -136,7 +136,7 @@
 .alert-warning a,
 .alert-error a,
 .alert-danger a,
-.alert-hint a  {
+.alert-hint a {
     @apply font-semibold no-underline transition-default;
 }
 

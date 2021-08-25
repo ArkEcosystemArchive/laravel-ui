@@ -16,6 +16,7 @@
 <div class="fixed inset-0 z-50 opacity-75 dark:opacity-50 bg-theme-secondary-900 dark:bg-theme-secondary-800"></div>
 
 <div
+    wire:ignore.self
     x-ref="modal"
     data-modal
     x-data="Modal.livewire({{ $xData }})"
@@ -33,10 +34,11 @@
         class="modal-content-wrapper @if($fixedPosition) md:mx-auto @else md:m-auto @endif w-full {{ $class }} {{ $widthClass }}"
         @if($style) style="{{ $style }}" @endif
     >
-        <div class="modal-content dropdown-scrolling {{ $widthClass }}">
+        <div class="modal-content custom-scroll {{ $widthClass }}">
             <div class="p-8 sm:p-10">
                 @if($wireClose)
                     <button
+                        type="button"
                         class="modal-close"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >

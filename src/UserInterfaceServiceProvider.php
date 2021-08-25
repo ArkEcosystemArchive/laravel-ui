@@ -94,11 +94,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
             __DIR__.'/../config/ui.php', 'ui'
         );
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/honey.php',
-            'honey'
-        );
-
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/ark'),
         ], 'views');
@@ -181,6 +176,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::inputs.input', 'ark-input');
         Blade::component('ark::inputs.input-with-icon', 'ark-input-with-icon');
         Blade::component('ark::inputs.input-with-prefix', 'ark-input-with-prefix');
+        Blade::component('ark::inputs.input-with-suffix', 'ark-input-with-suffix');
         Blade::component('ark::inputs.radio', 'ark-radio');
         Blade::component('ark::inputs.textarea', 'ark-textarea');
         Blade::component('ark::inputs.toggle', 'ark-toggle');
@@ -207,7 +203,6 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::tables.table', 'ark-tables.table');
         Blade::component('ark::tables.row', 'ark-tables.row');
         Blade::component('ark::tables.cell', 'ark-tables.cell');
-        Blade::component('ark::tables.cell-status', 'ark-tables.cell-status');
         Blade::component('ark::tables.header', 'ark-tables.header');
         Blade::component('ark::tables.view-options', 'ark-tables.view-options');
         Blade::component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
@@ -249,11 +244,13 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::logo-simple', 'ark-logo-simple');
         Blade::component('ark::loading-spinner', 'ark-loading-spinner');
         Blade::component('ark::spinner-icon', 'ark-spinner-icon');
+        Blade::component('ark::loader-icon', 'ark-loader-icon');
         Blade::component('ark::message', 'ark-message');
         Blade::component('ark::metadata', 'ark-metadata');
         Blade::component('ark::metadata-tags', 'ark-metadata-tags');
         Blade::component('ark::modal', 'ark-modal');
         Blade::component('ark::no-results', 'ark-no-results');
+        Blade::component('ark::notification-dot', 'ark-notification-dot');
         Blade::component('ark::outgoing-link', 'ark-outgoing-link');
         Blade::component('ark::pagination', 'ark-pagination');
         Blade::component('ark::pagination-url', 'ark-pagination-url');
@@ -266,19 +263,22 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::social-link', 'ark-social-link');
         Blade::component('ark::social-square', 'ark-social-square');
         Blade::component('ark::sort-icon', 'ark-sort-icon');
-        Blade::component('ark::status', 'ark-status');
         Blade::component('ark::status-circle', 'ark-status-circle');
-        Blade::component('ark::status-circle-shallow', 'ark-status-circle-shallow');
         Blade::component('ark::svg-lazy', 'ark-svg-lazy');
         Blade::component('ark::toast', 'ark-toast');
         Blade::component('ark::shapes.line', 'ark-placeholder-line');
         Blade::component('ark::shapes.square', 'ark-placeholder-square');
         Blade::component('ark::link-collection', 'ark-link-collection');
         Blade::component('ark::file-download', 'ark-file-download');
+        Blade::component('ark::chart', 'ark-chart');
+        Blade::component('ark::tabs.wrapper', 'ark-tabbed');
+        Blade::component('ark::tabs.tab', 'ark-tab');
+        Blade::component('ark::tabs.panel', 'ark-tab-panel');
 
         // Navigation
         Blade::component('ark::navbar', 'ark-navbar');
         Blade::component('ark::navbar.link-mobile', 'ark-navbar-link-mobile');
+        Blade::component('ark::navbar.hamburger', 'ark-navbar-hamburger');
 
         // Font Loader
         Blade::component('ark::font-loader', 'ark-font-loader');

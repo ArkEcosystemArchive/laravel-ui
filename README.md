@@ -129,26 +129,24 @@ yarn add @toast-ui/editor@^2.5.2 codemirror@^5.62.0
 
 Assigning to the `window` object is now done in the markdown script itself, therefore there is no need to import and assign this script manually!
 
-3. Import the markdown css file in your main file.
-
-```css
-@import "../../vendor/arkecosystem/ui/resources/assets/css/_markdown-editor.css";
-```
-
-4. Compile the markdown scripts into the public folder:
+3. Configure webpack.mix with the markdown plugin
 
 ```js
-mix
-    .js('vendor/arkecosystem/ui/resources/assets/js/markdown-editor/markdown-editor.js', 'public/js/markdown-editor.js')
+// Import the following script in the `webpack.mix.js` file
+require('./vendor/arkecosystem/ui/laravel-mix/markdownPlugin.js');
+
+// If the Tailwind Config file in your project is `tailwind.config.js`
+// you dont need to pass any argument
+mix.markdown('tailwind.app.config.js')
 ```
 
-5. Add the markdown component to your form
+4. Add the markdown component to your form
 
 ```html
 <x-ark-markdown name="about" />
 ```
 
-6. You can change the height and the toolbar preset:
+5. You can change the height and the toolbar preset:
 
 ```html
 <x-ark-markdown name="about"
@@ -157,7 +155,7 @@ mix
 />
 ```
 
-7. You can choose to limit the characters to be inserted:
+6. You can choose to limit the characters to be inserted:
 
 ```html
 <x-ark-markdown name="about"
@@ -167,7 +165,7 @@ mix
 
 Accepts `full` for all the plugins and `basic` for only text related buttons.
 
-8. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
+7. If you use the image upload plugin your page will need to have the csrf_token in the metadata.
 
 ```html
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -267,6 +265,26 @@ Note: You can change the the URL by using the `endpoint` prop.
 
 6. The component accepts a `usersInContext` prop that expects an array of usernames. These usernames will be sent in the search query request as  `context` and can be used to show those users first in the response. Useful to show the user in the conversation first.
 
+### Honeypot
+
+1. Install dependency
+
+```bash
+composer require lukeraymonddowning/honey
+```
+
+2. Setup honeypot
+
+```bash
+php artisan honey:install
+```
+
+3. Database Migration
+
+```bash
+php artisan migrate
+```
+
 #### Livewire modals
 
 To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
@@ -274,6 +292,8 @@ To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Co
 **Important**: If you need to use a different variable to close the modal, or you can't make use of the trait for a reason, make sure to emit the `modalClosed` event as that is required for proper handling of the modals on the frontend! If you fail to emit this event, the browser window will not be scrollable after the modal disappears.
 
 #### Alpine modals
+
+**Important**: for the modals to work properly, they expect a `nav` element inside a `header` element to be used for the header component. If you use the navbar from the UI lib (see `navbar.blade.php`) these elements are already used, but for custom navbars you may need to make adjustments.
 
 There's a few ways you can make use of the new modals in conjunction with Alpine:
 
@@ -509,6 +529,30 @@ public function imagesReordered(array $ids): void
 <x-ark-upload-image-collection id="media" :images="$this->imageCollection" sortable />
 ```
 
+### Tabs
+
+Add the following to the `app.js` file:
+
+```js
+import "@ui/js/tabs.js";
+```
+
+```html
+<x-ark-tabbed>
+    <x-slot name="tabs">
+        <x-ark-tab name="tab-1" />
+        <x-ark-tab name="tab-2" />
+        <x-ark-tab name="tab-3" />
+    </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+</x-ark-tabbed>
+```
+
+For the available parameters, please refer to the [EXAMPLE.md](EXAMPLE.md#tabs)
+
 ### Error Pages
 
 There are also default error pages you can use for your Laravel project
@@ -553,6 +597,7 @@ There are also default error pages you can use for your Laravel project
 - [`<x-ark-upload-image-single>`](EXAMPLES.md#upload-single-image)
 - [`<x-ark-upload-image-collection>`](EXAMPLES.md#upload-multiple-images)
 - [`<x-ark-font-loader>`](EXAMPLES.md#font-loader)
+- [`<x-ark-tabs>`](EXAMPLES.md#tabs)
 
 > See the [example file](EXAMPLES.md) for more in-depth usage examples
 

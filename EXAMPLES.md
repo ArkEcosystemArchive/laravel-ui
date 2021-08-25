@@ -398,7 +398,26 @@ You can also get an alert with more padding and large icon by specifying `large`
 
 ### Accordion
 
-```php
+| Parameter | Description | Required |
+|-----------|-------------|----------|
+| title | Title for accordion open/close option | yes |
+| slot | Content of accordion | yes |
+| dark | Whether the styling should be dark mode or not | no |
+| border | Whether accordion & button should have a border | no |
+| leftBorder | Whether accordion content should have a left border | no |
+| container-class | Class for accordion container | no |
+| title-class | Class for title | no |
+| circle-class | Class for icon | no |
+| circle-size | Size of icon | no |
+| toggle-title | Include "Show"/"Hide" prefix text along with title | no |
+| icon-open-class | Icon class for when accordion is open | no |
+| icon-closed-class | Icon class for when accordion is closed | no |
+| content-class | Class for content | no |
+| button-class | Class for button | no |
+| button-open-class | Button class for when accordion is open | no |
+| on-toggle | JS Method which is called when the accordion is opened or closed | no |
+
+```blade
 <x-ark-accordion-group slots="2">
     @slot('title_1')
         <p>Title for slot 1</p>
@@ -416,8 +435,19 @@ You can also get an alert with more padding and large icon by specifying `large`
 </x-ark-accordion-group>
 ```
 
-```php
+```blade
 <x-ark-accordion title="Title">
+    <p>Content for slot</p>
+</x-ark-accordion>
+```
+
+#### JS on-toggle
+
+```blade
+<x-ark-accordion
+    title="Title"
+    on-toggle="() => { this.$el.style.background = '...'; }"
+>
     <p>Content for slot</p>
 </x-ark-accordion>
 ```
@@ -475,6 +505,7 @@ You can also get an alert with more padding and large icon by specifying `large`
 | wrapperClass | The class(es) applied to the wrapper element | no | '' |
 | dropdownContentClasses | The class(es) applied to the content container | no | null |
 | buttonTooltip | Apply the given text as button tooltip | no | null |
+| disabled | This Boolean attribute prevents the user from interacting with the component | no | false |
 
 ### Expandable
 Displays a defined number of items and hides the rest, showing a button to show/hide the hidden items.
@@ -584,3 +615,186 @@ Here follow you can see an example on how to use it:
 |---|---|---|---|
 | src | The source of the font file | yes | |
 | preconnect | The source of the css file linked to the font itself. Can be different from the font source. | no | null |
+
+### Slider
+
+Used for sliding different elements (e.g. images).
+
+```blade
+<x-ark-slider
+    id="news-articles"
+    title="News Articles"
+    title-tooltip="See all the latest articles here"
+    view-all-url="{{ $route }}"
+    space-between="24"
+    hide-navigation
+    top-pagination
+    breakpoints="[
+        '0' => [
+            'slidesPerGroup' => 1,
+            'slidesPerView' => 1,
+        ],
+        '768' => [
+            'slidesPerGroup' => 2,
+            'slidesPerView' => 2,
+        ],
+        '1280' => [
+            'slidesPerGroup' => 3,
+            'slidesPerView' => 3,
+        ],
+    ]"
+>
+    <x-ark-slider-slide>
+        <img src="logo.png" />
+    </x-ark-slider-slide>
+</x-ark-slider>
+```
+
+| Parameter       | Description                                                                             | Required |
+|-----------------|-----------------------------------------------------------------------------------------|----------|
+| id              | Used for initialising the slider                                                        | yes      |
+| title           | Text used for the slider title [null]                                                   | no       |
+| titleClass      | CSS classes for the title text if provided ['text-2xl']                                 | no       |
+| titleTooltip    | Tooltip to be shown next to the title [null]                                            | no       |
+| viewAllUrl      | URL used to navigate to a dedicated page [null]                                         | no       |
+| viewAllClass    | CSS classes for view all text ['']                                                      | no       |
+| hideNavigation  | Option to hide navigation arrows on the left & right [false]                            | no       |
+| hideBullets     | Option to hide pagination bullets [false]                                               | no       |
+| topPagination   | Show pagination at the top instead of the bottom [false]                                | no       |
+| paginationClass | CSS classes for pagination bullets ['']                                                 | no       |
+| rows            | How many rows the slider consists of. Only used if breakpoints are not specified [1]    | no       |
+| columns         | How many columns the slider consists of. Only used if breakpoints are not specified [5] | no       |
+| breakpoints     | Allow more advanced overriding of breakpoints [null]                                    | no       |
+| spaceBetween    | How much space (in pixels) to have between each slide [0]                               | no       |
+| loop            | Allow looping from start to end and vice versa [false]                                  | no       |
+| allowTouch      | Used for mobile [true]                                                                  | no       |
+| autoplay        | Enable automatic sliding [false]                                                        | no       |
+| autoplayDelay   | How long to wait on each slider when autoplay is enabled [3000]                         | no       |
+| hideViewAll     | Option to hide the view all text [false]                                                | no       |
+| shadowSpacing   | Whether the slider should allow spacing for shadows [false]                             | no       |
+| delayInit       | Delays initialisation of the slider. See below for example [false]                      | no       |
+
+#### Delayed Initialisation Example (Alpine)
+
+We use `$nextTick` here to make sure the UI is updated prior to initialising our slider, otherwise it may trigger too quickly.
+
+```blade
+<div x-data="{ hidden: true }">
+    <a
+        class="link"
+        @click="
+            hidden = false;
+            $nextTick(() => { window.sliders['news-articles'].init() });
+        "
+    >
+        Initialise Slider
+    </a>
+
+    <div x-bind:class="{ 'hidden': hidden }">
+        <x-ark-slider
+            id="news-articles"
+            title="News Articles"
+            delay-init
+        >
+            <x-ark-slider-slide>
+                <img src="logo.png" />
+            </x-ark-slider-slide>
+        </x-ark-slider>
+    </div>
+</div>
+```
+
+### Loader Icon
+Shows a spinner icon. Useful to add inside a button.
+
+Here follow you can see an example on how to use it:
+```blade
+<button class="button-secondary">
+    <x-ark-loader-icon class="w-7 h-7 text-white" path-class="bg-theme-primary-600" />
+</button>
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| class | The class of the circle | no | |
+| path-class | The class of the spinner | no | |
+
+
+### Chart
+
+1. Install the npm dependencies
+
+```bash
+yarn add chart.js@^2.9.4
+```
+
+1. On `resource/app/js/app.js` add:
+```js
+import CustomChart from "@ui/js/chart.js";
+
+window.CustomChart = CustomChart;
+```
+
+1. On `webpack.mix.js` extract `chart.js` module:
+```js
+mix.extract(['chart.js']);
+```
+
+1. use the component:
+
+```html
+<x-ark-chart 
+    id="stats"
+    data="[0.9839,1.003,1.074,1.125,1.209,1.154,1.113]"
+    labels="['27.07','28.07','29.07','30.07','31.07','01.08','02.08']"
+    currency="USD"
+/>
+```
+
+| Parameter | Description | Required | Default Value |
+|---|---|---|---|
+| id | The id of the chart | yes | |
+| data | An array of data to visualize | yes | |
+| labels | An array of labels for each data item | yes | |
+| currency | The current currency. (ISO-3 like 'USD') | yes | |
+| canvas-class | The class of the wrapper canvas | no | |
+| width | The width of the canvas | no | |
+| height | The height of the canvas | no | |
+| grid | Whether to show the grid or not | no | |
+| tooltips | Whether to show tooltips or not | no | |
+| theme | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no | |
+
+
+### Tabs
+
+```html
+<x-ark-tabbed>
+    <x-slot name="tabs">
+        <x-ark-tab name="tab-1" />
+        <x-ark-tab name="tab-2" />
+        <x-ark-tab name="tab-3" />
+    </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+</x-ark-tabbed>
+```
+
+The parameter accepted by `<x-ark-tabbed>`
+| Parameter        | Description                                                   | Required |
+|------------------|---------------------------------------------------------------|----------|
+| x-data           | Extra data passed to Alpine js component                      | no       |
+| on-selected      | to customise the action when a tab is pressed                 | no       |
+| default-selected | the tab selected by default                                   | no       |
+| no-data          | avoid to load Alpine js component                             | no       |
+
+The parameter accepted by `<x-ark-tab>`
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab                                                  | yes      |
+
+The parameter accepted by `<x-ark-tab-panel>`
+| Parameter | Description                                                          | Required |
+|-----------|----------------------------------------------------------------------|----------|
+| name      | The name of the tab panel (it must be the same used for `x-ark-tab`) | yes      |

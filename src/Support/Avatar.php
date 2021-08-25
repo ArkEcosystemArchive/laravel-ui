@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace ARKEcosystem\UserInterface\Support;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 // See https://github.com/vechain/picasso/blob/master/src/index.ts
 
 final class Avatar
 {
-    public static function make(string $seed): string
+    public static function make(string $seed, ?bool $withLetters): string
     {
-        return Cache::tags('avatar')->remember($seed, now()->addHour(), function () use ($seed): string {
+        return Cache::tags('avatar')->remember($seed, now()->addHour(), function () use ($seed, $withLetters): string {
             $defaultColors = [
                 'rgb(244, 67, 54)',
                 'rgb(233, 30, 99)',
@@ -56,11 +57,19 @@ final class Avatar
                 $shapeString .= '<circle r="' . $r . '" cx="' . $cx . '" cy="' . $cy . '" fill="' . $fill . '"/>';
             }
 
+            $shortenedIdentifier = Str::upper(Str::limit($seed, 2, ''));
+
+            $letters = $withLetters ?
+                "<text x='50%' y='52%' stroke-width='1' dominant-baseline='middle' text-anchor='middle' letter-spacing='2' style='font-size : 1.75rem; fill: #fff; stroke: #fff;'>{$shortenedIdentifier}</text>" :
+                "";
+
             return sprintf(
-                "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' class='picasso' viewBox='0 0 100 100'>%s%s%s</svg>",
+                "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' class='picasso' viewBox='0 0 100 100'>%s%s%s%s</svg>",
                 $styleString,
                 $backgroundString,
-                $shapeString
+                $shapeString,
+                $letters
+
             );
         });
     }

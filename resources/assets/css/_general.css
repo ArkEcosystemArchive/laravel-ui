@@ -27,7 +27,7 @@ h4 {
 }
 
 h1 {
-    @apply font-extrabold;
+    @apply font-bold;
 }
 
 .dark h1,
@@ -46,7 +46,7 @@ h1 {
 }
 
 .header-1 {
-    @apply font-extrabold text-theme-secondary-900;
+    @apply font-bold text-theme-secondary-900;
 }
 
 .dark header-1,
