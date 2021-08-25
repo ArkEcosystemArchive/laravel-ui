@@ -33,6 +33,7 @@ final class MarkdownParser
         'ol' => [],
         'li' => [],
         'strong' => [],
+        'span' => [],
         'b' => [],
         'em' => [],
         'i' => [],
@@ -61,6 +62,7 @@ final class MarkdownParser
         'ul',
         'ol',
         'li',
+        'span',
         // bold variants
         'strong',
         'b',
@@ -93,6 +95,7 @@ final class MarkdownParser
         'code',
         'tr',
         'td',
+        'span',
         // underline
         'ins',
         // bold variants
