@@ -11,13 +11,13 @@
     $attributes->merge(['class' => $class.' alert-wrapper alert-'.$type])
 }}>
     <div @class([
-        'alert-icon-wrapper alert-'.$type.'-icon',
+        'alert-icon-wrapper alert-'.$type.'-icon flex-shrink-0',
         'alert-icon-large' => $large
     ])>
-        <div class="p-1 rounded-full border-2 border-white">
+        <div>
             <x-ark-icon
                 :name="alertIcon($type)"
-                :size="$large ? 'md' : 'xs'"
+                :size="$large ? 'md' : 'base'"
             />
         </div>
     </div>
