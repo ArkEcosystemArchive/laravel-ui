@@ -123,15 +123,17 @@ window.UserTagger = (
 
             input.value = value;
 
-            var event = new Event("input", {
+            input.dispatchEvent(new Event("input", {
                 bubbles: true,
                 cancelable: true,
-            });
-
-            input.dispatchEvent(event);
+            }));
         },
 
         getRawValue(e) {
+            if (plainText) {
+                return e.target.value;
+            }
+
             return String(e.target.innerHTML)
                 .replace(/<div><br>/gi, "\n")
                 .replace(/<div>/gi, "\n")
