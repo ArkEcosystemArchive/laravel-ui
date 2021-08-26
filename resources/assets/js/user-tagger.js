@@ -123,10 +123,12 @@ window.UserTagger = (
 
             input.value = value;
 
-            input.dispatchEvent(new Event("input", {
-                bubbles: true,
-                cancelable: true,
-            }));
+            input.dispatchEvent(
+                new Event("input", {
+                    bubbles: true,
+                    cancelable: true,
+                })
+            );
         },
 
         getRawValue(e) {
