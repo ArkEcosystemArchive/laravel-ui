@@ -13,13 +13,15 @@
     'usersInContext' => [],
     'endpoint'       => '/api/users/autocomplete',
     'placeholder'    => '',
+    'plainText'      => true,
 ])
 
 <div
     x-data="UserTagger(
         '{{ $endpoint }}',
         {{ json_encode($usersInContext) }},
-        {{ $maxlength === null ? 'null' : $maxlength }}
+        {{ $maxlength === null ? 'null' : $maxlength }},
+        {{ $plainText ? 'true' : 'false' }}
     )"
     x-init="init"
     class="{{ $class }} ark-user-tagger--input"
@@ -37,14 +39,31 @@
         @endunless
 
         <div class="input-wrapper" >
-            <input x-ref="input" type="hidden" id="{{ $id ?? $name }}" wire:model="{{ $model ?? $name }}" name="{{ $name }}" />
-            <div
-                wire:ignore
-                x-ref="editor"
-                style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
-                class="input-text @error($name) input-text--error @enderror"
-                data-placeholder="{{ $placeholder }}"
-            >{{ $slot ?? '' }}</div>
+            <input
+                x-ref="input"
+                type="hidden"
+                id="{{ $id ?? $name }}"
+                wire:model="{{ $model ?? $name }}"
+                name="{{ $name }}"
+            />
+
+            @unless($plainText)
+                <textarea
+                    wire:ignore
+                    x-ref="editor"
+                    style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
+                    class="input-text @error($name) input-text--error @enderror"
+                    data-placeholder="{{ $placeholder }}"
+                >{{ $slot ?? '' }}</textarea>
+            @else
+                <div
+                    wire:ignore
+                    x-ref="editor"
+                    style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
+                    class="input-text @error($name) input-text--error @enderror"
+                    data-placeholder="{{ $placeholder }}"
+                >{{ $slot ?? '' }}</div>
+            @endunless
         </div>
 
         @include('ark::inputs.includes.input-error')

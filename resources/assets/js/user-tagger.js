@@ -1,5 +1,10 @@
-window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
-    const tribute = new Tribute({
+window.UserTagger = (
+    endpoint,
+    contextUsers,
+    maxLength = null,
+    plainText = false
+) => {
+    const options = {
         selectClass: "highlighted",
         containerClass:
             "ark-user-tagger bg-white rounded-md shadow-lg py-6 z-50 left-0 sm:left-auto w-full sm:w-auto",
@@ -74,7 +79,13 @@ window.UserTagger = (endpoint, contextUsers, maxLength = null) => {
         },
 
         lookup: (item) => item.name + item.username,
-    });
+    };
+
+    if (plainText) {
+        options.selectTemplate = (item) => `@${item.original.username}`;
+    }
+
+    const tribute = new Tribute(options);
 
     return {
         latestValue: "",
