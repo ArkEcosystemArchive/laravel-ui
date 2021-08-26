@@ -24,7 +24,7 @@
         {{ $plainText ? 'true' : 'false' }}
     )"
     x-init="init"
-    class="{{ $class }} ark-user-tagger--input ark-user-tagger--plain-text"
+    class="{{ $class }} ark-user-tagger--input"
 >
     <div class="input-group">
         @unless ($hideLabel)

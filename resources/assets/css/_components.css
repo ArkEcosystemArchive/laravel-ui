@@ -492,17 +492,3 @@
 .notification-dot {
     @apply absolute block rounded-full;
 }
-
-/* User Tagger */
-/* Cater for Firefox not allowing plaintext contenteditable fields (we strip these tags on save anyway) */
-.ark-user-tagger--plain-text .input-text[contenteditable] b {
-    font-weight: normal;
-}
-
-.ark-user-tagger--plain-text .input-text[contenteditable] i {
-    font-style: normal;
-}
-
-.ark-user-tagger--plain-text .input-text[contenteditable] img {
-    display: none;
-}
