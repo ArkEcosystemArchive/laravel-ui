@@ -4,6 +4,7 @@
     'defaultSelected' => '',
     'noData' => false,
     'panelWrapperClass' => 'mt-6 w-full',
+    'tablistClass' => '',
 ])
 
 <div {{ $attributes->merge(['class' => 'tabs-wrapper']) }}
@@ -15,7 +16,7 @@
         )"
     @endunless
 >
-    <ul role="tablist" class="tabs">
+    <ul role="tablist" class="tabs {{ $tablistClass }}">
         {{ $tabs }}
     </ul>
 
