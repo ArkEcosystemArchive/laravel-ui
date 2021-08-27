@@ -113,7 +113,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             link.addEventListener('click', clickHandler);
 
             link.addEventListener('mousedown', (e) => {
-                // Meaning the user clicked the middle mouse button (scroll)
+                // Meaning the user clicked the middle mouse button (scroll).
+                // The rest of the buttons are handled bu the `click` event.
                 if (e.button === 1) {
                     clickHandler(e);
                 }
