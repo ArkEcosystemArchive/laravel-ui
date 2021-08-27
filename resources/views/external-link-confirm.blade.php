@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         links.forEach(function (link) {
             link.setAttribute('data-external-link-confirm', 'true');
 
-            link.addEventListener('click', function(e) {
+            const clickHandler = (e) => {
                 if (localStorage.getItem('has_disabled_link_warning') === 'true') {
                     return;
                 }
@@ -108,6 +108,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 e.preventDefault();
 
                 Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
+            }
+
+            link.addEventListener('click', clickHandler);
+
+            link.addEventListener('mousedown', (e) => {
+                // Meaning the user clicked the middle mouse button (scroll)
+                if (e.button === 1) {
+                    clickHandler(e);
+                }
             });
         });
     }
