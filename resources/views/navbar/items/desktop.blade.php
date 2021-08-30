@@ -67,7 +67,7 @@
                     class="inline-flex items-center px-1 pt-px font-semibold leading-5 border-b-2 space-x-3
                         focus:outline-none transition duration-150 ease-in-out h-full
                         @if(array_key_exists('route', $navItem) && optional(Route::current())->getName() === $navItem['route'])
-                            border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400
+                            border-theme-primary-600 text-theme-secondary-900 dark:text-theme-secondary-400 focus-visible:border-b-0 focus-visible:pt-0
                         @else
                             border-transparent text-theme-secondary-700 hover:text-theme-secondary-800 hover:border-theme-secondary-300 dark:text-theme-secondary-500 dark:hover:text-theme-secondary-400
                         @endif
