@@ -19,7 +19,7 @@
         @endif
 
         @if(Route::has('login'))
-            <a href="{{ route('login') }}" class="button-secondary whitespace-nowrap">@lang('actions.sign_in')</a>
+            <a href="{{ route('login') }}" class="whitespace-nowrap button-secondary">@lang('actions.sign_in')</a>
         @endif
     </div>
 @endauth
