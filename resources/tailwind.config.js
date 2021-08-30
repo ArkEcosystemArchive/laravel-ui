@@ -169,6 +169,16 @@ module.exports = {
         divideColor: ["dark", "responsive", "hover", "focus"],
         opacity: ["dark", "responsive", "hover", "focus"],
         display: ["dark", "responsive"],
+        extend: {
+            padding: ['focus-visible'],
+            borderRadius: ['focus-visible'],
+            ringColor: ['focus-visible'],
+            ringWidth: ['focus-visible'],
+            ringOffsetWidth: ['focus-visible'],
+            textDecoration: ['focus-visible'],
+            transitionProperty: ['focus-visible'],
+            zIndex: ['focus-visible'],
+        },
     },
     plugins: [require("@tailwindcss/ui")],
     purge: {
