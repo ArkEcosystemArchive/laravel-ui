@@ -97,28 +97,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         const links = document.querySelectorAll(`a${selectors.join('')}`);
 
+        const hasDisabledLinkWarning = () => localStorage.getItem('has_disabled_link_warning') === 'true';
+
         links.forEach(function (link) {
             link.setAttribute('data-external-link-confirm', 'true');
 
             const clickHandler = (e) => {
-                if (localStorage.getItem('has_disabled_link_warning') === 'true') {
+                if (hasDisabledLinkWarning()) {
                     return;
                 }
 
                 e.preventDefault();
 
+
                 Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
-            }
+            };
 
-            link.addEventListener('click', clickHandler);
-
-            link.addEventListener('mousedown', (e) => {
-                // Meaning the user clicked the middle mouse button (scroll).
-                // The rest of the buttons are handled bu the `click` event.
-                if (e.button === 1) {
-                    clickHandler(e);
+            link.addEventListener("auxclick", (event) => {
+                if (event.button === 1) {
+                    clickHandler(event);
                 }
             });
+
+            link.addEventListener('click', clickHandler, false);
         });
     }
 
