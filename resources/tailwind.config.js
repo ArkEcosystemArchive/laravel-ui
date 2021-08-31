@@ -170,8 +170,10 @@ module.exports = {
         opacity: ["dark", "responsive", "hover", "focus"],
         display: ["dark", "responsive"],
         extend: {
+            margin: ["focus-visible"],
             padding: ["focus-visible"],
             borderRadius: ["focus-visible"],
+            borderWidth: ["focus-visible"],
             ringColor: ["focus-visible"],
             ringWidth: ["focus-visible"],
             ringOffsetWidth: ["focus-visible"],
