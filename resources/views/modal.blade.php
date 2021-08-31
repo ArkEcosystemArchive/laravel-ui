@@ -39,7 +39,7 @@
                 @if($wireClose)
                     <button
                         type="button"
-                        class="modal-close"
+                        class="modal-close focus-visible:ring-offset-2"
                         @if($wireClose ?? false) wire:click="{{ $wireClose }}" @endif
                     >
                         <x-ark-icon name="close" size="md" class="m-auto" />

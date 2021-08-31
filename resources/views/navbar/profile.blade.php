@@ -1,3 +1,4 @@
+
 <x-ark-dropdown
     wrapper-class="ml-3 whitespace-nowrap md:relative"
     :dropdown-classes="'w-full md:w-auto mt-4 '.($profileMenuClass ?? null)"
@@ -29,7 +30,7 @@
 
                 <button
                     type="submit"
-                    class="dropdown-entry"
+                    class="dropdown-entry focus-visible:rounded focus-visible:ring-inset"
                     dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
                 >
                     @if($menuItem['icon'] ?? false)
@@ -46,7 +47,7 @@
                 @else
                     href="{{ route($menuItem['route']) }}"
                 @endif
-                class="dropdown-entry"
+                class="dropdown-entry focus-visible:rounded focus-visible:ring-inset"
                 dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
                 @foreach(Arr::get($menuItem, 'attributes', []) as $attribute => $attributeValue)
                     {{ $attribute }}="{{ $attributeValue }}"
