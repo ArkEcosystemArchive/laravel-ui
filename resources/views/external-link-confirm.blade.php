@@ -97,18 +97,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         const links = document.querySelectorAll(`a${selectors.join('')}`);
 
+        const hasDisabledLinkWarning = () => localStorage.getItem('has_disabled_link_warning') === 'true';
+
         links.forEach(function (link) {
             link.setAttribute('data-external-link-confirm', 'true');
 
-            link.addEventListener('click', function(e) {
-                if (localStorage.getItem('has_disabled_link_warning') === 'true') {
+            const clickHandler = (e) => {
+                if (hasDisabledLinkWarning()) {
                     return;
                 }
 
                 e.preventDefault();
 
                 Livewire.emit('openModal', 'external-link-confirm', link.getAttribute('href'));
+            };
+
+            link.addEventListener("auxclick", (event) => {
+                if (event.button === 1) {
+                    clickHandler(event);
+                }
             });
+
+            link.addEventListener('click', clickHandler, false);
         });
     }
 
