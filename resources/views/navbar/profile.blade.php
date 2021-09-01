@@ -1,4 +1,3 @@
-
 <x-ark-dropdown
     wrapper-class="ml-3 whitespace-nowrap md:relative"
     :dropdown-classes="'w-full md:w-auto mt-4 '.($profileMenuClass ?? null)"

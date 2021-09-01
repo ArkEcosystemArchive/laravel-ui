@@ -177,8 +177,6 @@ module.exports = {
             borderColor: ["focus-visible"],
             ringColor: ["focus-visible"],
             ringWidth: ["focus-visible"],
-            ringOffsetWidth: ["focus-visible"],
-            ringOffsetColor: ["focus-visible"],
             textDecoration: ["focus-visible"],
             transitionProperty: ["focus-visible"],
             zIndex: ["focus-visible"],
