@@ -7,7 +7,7 @@
     @if($isArkProduct)
         <span class="hidden mr-1 sm:inline"> | </span>
         <span class="whitespace-nowrap">
-            @svg('ark-logo-red-square', 'inline-block h-6 -mt-1') An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded focus-visible:ring-offset-2 focus-visible:ring-offset-theme-secondary-900">ARK.io</a> Product
+            @svg('ark-logo-red-square', 'inline-block h-6 -mt-1') An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded focus-visible:ring-offset-theme-secondary-900">ARK.io</a> Product
         </span>
     @endif
 </div>

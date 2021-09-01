@@ -34,7 +34,7 @@
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
                 type="checkbox"
-                class="form-checkbox input-checkbox focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-theme-primary-500"
+                class="form-checkbox input-checkbox focus-visible:ring-2 focus-visible:ring-theme-primary-500"
                 wire:model="{{ $model ?? $name }}"
                 @if($value) value="{{ $value }}" @endif
                 @if($checked) checked @endif
