@@ -30,7 +30,7 @@
 
                 <button
                     type="submit"
-                    class="dropdown-entry focus-visible:rounded focus-visible:ring-inset"
+                    class="focus-visible:rounded focus-visible:ring-inset dropdown-entry"
                     dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
                 >
                     @if($menuItem['icon'] ?? false)
@@ -47,7 +47,7 @@
                 @else
                     href="{{ route($menuItem['route']) }}"
                 @endif
-                class="dropdown-entry focus-visible:rounded focus-visible:ring-inset"
+                class="focus-visible:rounded focus-visible:ring-inset dropdown-entry"
                 dusk="dropdown-entry-{{ Str::slug($menuItem['label']) }}"
                 @foreach(Arr::get($menuItem, 'attributes', []) as $attribute => $attributeValue)
                     {{ $attribute }}="{{ $attributeValue }}"
