@@ -3,6 +3,7 @@
     'noBorder'     => '',
     'copyClass'    => '',
     'copyText'     => null,
+    'socials'      => null,
 ])
 
 <div class="flex items-center justify-between @unless ($noBorder) border-t border-theme-secondary-800 @endunless">
@@ -12,5 +13,5 @@
         class="{{ $copyClass }}"
     />
 
-    <x-ark-footer-social />
+    <x-ark-footer-social :networks="$socials" />
 </div>

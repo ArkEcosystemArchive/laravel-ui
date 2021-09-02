@@ -1,5 +1,9 @@
 @props([
-    'networks' => [
+    'networks' => null,
+])
+
+@php
+    $networks = $networks ?: [
         [
             'icon' => 'brands.discord',
             'url' => trans('ui::urls.discord')
@@ -32,8 +36,8 @@
             'icon' => 'brands.telegram',
             'url' => trans('ui::urls.telegram')
         ],
-    ],
-])
+    ];
+@endphp
 
 <div class="flex space-x-5">
     @foreach($networks as $network)

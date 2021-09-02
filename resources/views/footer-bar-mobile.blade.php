@@ -3,6 +3,7 @@
     'class'        => '',
     'copyClass'    => '',
     'copyText'     => null,
+    'socials'      => null,
 ])
 
 <div class="flex flex-col {{ $class }}">
@@ -11,5 +12,6 @@
         :copy-text="$copyText"
         class="{{ $copyClass }}"
     />
-    <x-ark-footer-social />
+
+    <x-ark-footer-social :networks="$socials" />
 </div>

@@ -4,6 +4,7 @@
     'copyClass'    => '',
     'copyText'     => null,
     'isArkProduct' => true,
+    'socials'      => null,
 ])
 
 <div {{ $attributes->merge(['class' => 'border-t bg-theme-secondary-900 border-theme-secondary-800']) }}>
@@ -13,6 +14,7 @@
             :is-ark-product="$isArkProduct"
             :copy-class="$copyClass"
             :copy-text="$copyText"
+            :socials="$socials"
             no-border
         />
     </div>
@@ -22,5 +24,6 @@
         :is-ark-product="$isArkProduct"
         :copy-class="$copyClass"
         :copy-text="$copyText"
+        :socials="$socials"
     />
 </div>
