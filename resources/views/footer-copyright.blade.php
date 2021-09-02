@@ -1,9 +1,7 @@
 @props([
     'isArkProduct' => true,
-    'copyText'     => null,
+    'copyText'     => 'ARK.io | All rights reserved',
 ])
-
-@php($copyText = $copyText ?: 'ARK.io | All rights reserved')
 
 <div {{ $attributes->merge(['class' => 'flex flex-col py-6 space-y-2 font-semibold text-theme-secondary-700 sm:block sm:space-y-0'])}}>
     <span class="whitespace-nowrap">
