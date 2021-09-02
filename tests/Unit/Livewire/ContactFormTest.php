@@ -75,7 +75,7 @@ it('can submit the contact form', function () {
         ->assertEmitted('toastMessage')
         ->assertSet('name', null)
         ->assertSet('email', null)
-        ->assertSet('subject', null)
+        ->assertSet('subject', 'technical_support')
         ->assertSet('message', null)
         ->assertSet('attachment', null);
 

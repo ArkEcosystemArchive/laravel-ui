@@ -89,6 +89,8 @@ final class ContactForm extends Component
         $this->emit('toastMessage', [trans('ui::messages.contact'), 'success']);
 
         $this->reset();
+
+        $this->subject = $this->getSubjects()->first();
     }
 
     private function getSubjects(): Collection
