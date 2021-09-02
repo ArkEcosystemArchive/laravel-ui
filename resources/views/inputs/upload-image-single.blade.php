@@ -71,7 +71,7 @@
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
     class="relative {{ $dimensions }}"
 >
-    <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif">
+    <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif focus-within:border-theme-primary-500">
         <div
             @if ($image)
             style="background-image: url('{{ $image }}')"
