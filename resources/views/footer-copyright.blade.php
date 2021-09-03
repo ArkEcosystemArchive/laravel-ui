@@ -1,9 +1,13 @@
 @props([
     'isArkProduct' => true,
+    'copyText'     => 'ARK.io | All rights reserved',
 ])
 
 <div {{ $attributes->merge(['class' => 'flex flex-col py-6 space-y-2 font-semibold text-theme-secondary-700 sm:block sm:space-y-0'])}}>
-    <span class="whitespace-nowrap">{{ date('Y') }} &copy; ARK.io | All rights reserved</span>
+    <span class="whitespace-nowrap">
+        {{ date('Y') }} &copy; {{ $copyText }}
+    </span>
+
     @if($isArkProduct)
         <span class="hidden mr-1 sm:inline"> | </span>
         <span class="whitespace-nowrap">
