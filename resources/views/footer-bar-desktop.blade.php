@@ -1,10 +1,17 @@
 @props([
     'isArkProduct' => true,
-    'noBorder' => '',
-    'copyClass' => '',
+    'noBorder'     => '',
+    'copyClass'    => '',
+    'copyText'     => null,
+    'socials'      => null,
 ])
 
 <div class="flex items-center justify-between @unless ($noBorder) border-t border-theme-secondary-800 @endunless">
-    <x-ark-footer-copyright :is-ark-product="$isArkProduct" class="{{ $copyClass }}" />
-    <x-ark-footer-social />
+    <x-ark-footer-copyright
+        :is-ark-product="$isArkProduct"
+        :copy-text="$copyText"
+        class="{{ $copyClass }}"
+    />
+
+    <x-ark-footer-social :networks="$socials" />
 </div>

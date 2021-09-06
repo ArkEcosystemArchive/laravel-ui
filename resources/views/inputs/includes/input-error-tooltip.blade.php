@@ -4,9 +4,10 @@
     'shifted' => false,
 ])
 
-<div
+<button
+    type="button"
     wire:key="{{ md5($id.$error) }}"
-    class="px-4 input-icon @if($shifted) right-13 @else right-0 @endif"
+    class="px-4 input-icon @if($shifted) right-13 @else right-0 @endif focus-visible:rounded"
     data-tippy-content="{{ $error }}"
     onclick="document.getElementById('{{ $id }}').focus()"
 >
@@ -15,4 +16,4 @@
     @if($shifted)
         <div class="w-px h-5 transform translate-x-4 bg-theme-secondary-300">&nbsp;</div>
     @endif
-</div>
+</button>

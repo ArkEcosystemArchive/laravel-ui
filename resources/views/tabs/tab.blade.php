@@ -6,7 +6,7 @@
         role="tab"
         id="tab-{{ $name }}"
         x-ref="{{ $name }}"
-        :class="{ 'tab-item-current': selected === '{{ $name }}' }"
+        :class="{ 'tab-item-current {{ $selectedClass ?? '' }}': selected === '{{ $name }}' }"
         @click="select('{{ $name }}')"
         wire:key="tab-{{ $name }}"
         @keydown="keyboard"

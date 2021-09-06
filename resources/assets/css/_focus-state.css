@@ -1,0 +1,25 @@
+@layer base {
+    #newsletter input[type="email"] {
+        @apply rounded-l rounded-r-none border-none !important;
+    }
+    #newsletter button[type="submit"] {
+        @apply rounded-l-none rounded-r px-4 !important;
+    }
+
+    .review-content a,
+    a.link,
+    button.link,
+    a[dusk*="navbar-item-"],
+    #newsletter button[type="submit"],
+    .button-pagination-page-indicator,
+    .button-pagination-page-indicator--selected {
+        @apply focus-visible:rounded;
+    }
+
+    a,
+    button,
+    [role="button"],
+    label.tile-selection-option input {
+        @apply outline-none focus-visible:transition-none focus-visible:no-underline focus-visible:ring-2 focus-visible:ring-theme-primary-500 focus-visible:z-10;
+    }
+}

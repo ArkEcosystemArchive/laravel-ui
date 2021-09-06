@@ -44,6 +44,12 @@ window.initClipboard = () => {
 };
 
 if (typeof Livewire !== "undefined") {
+    Livewire.hook("message.received", (message, component) => {
+        component.el
+            .querySelectorAll("[data-tippy-content]")
+            .forEach((el) => el._tippy.destroy());
+    });
+
     Livewire.hook("message.processed", (message, component) => {
         tippy(component.el.querySelectorAll("[data-tippy-content]"), {
             trigger: "mouseenter focus",

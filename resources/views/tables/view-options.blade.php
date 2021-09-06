@@ -9,10 +9,10 @@
     <button
         type="button"
         :class="{
-            '{{ $selectedClasses }}': tableView === 'grid',
+            '{{ $selectedClasses }} focus-visible:border-transparent': tableView === 'grid',
             '{{ $unselectedClasses }}': tableView !== 'grid',
         }"
-        class="py-2 px-3 border-b-3"
+        class="py-2 px-3 focus-visible:rounded border-b-3"
         @click="tableView = 'grid'"
         @if ($disabled) disabled @endif
     >
@@ -22,10 +22,10 @@
     <button
         type="button"
         :class="{
-            '{{ $selectedClasses }}': tableView === 'list',
+            '{{ $selectedClasses }} focus-visible:border-transparent': tableView === 'list',
             '{{ $unselectedClasses }}': tableView !== 'list',
         }"
-        class="py-2 px-3 border-b-3"
+        class="py-2 px-3 focus-visible:rounded border-b-3"
         @click="tableView = 'list'"
         @if ($disabled) disabled @endif
     >
