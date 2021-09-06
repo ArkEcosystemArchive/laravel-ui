@@ -30,6 +30,7 @@ const Tags = (
             maxTags,
             placeholder,
             containerFocusClass: "tags-input-focus",
+            tabIndex: 0,
             onTagAdd: (e, tag) => {
                 if (typeof this.onTagAdd === "function") {
                     this.onTagAdd(e, tag);
