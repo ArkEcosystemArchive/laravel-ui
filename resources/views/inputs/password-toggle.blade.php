@@ -8,7 +8,6 @@
     'hideLabel'  => false,
     'inputClass' => '',
     'label'      => trans('forms' . $name),
-    'masked'     => false,
     'max'        => null,
     'message'    => null,
     'readonly'   => false,
@@ -20,20 +19,11 @@
     class="{{ $class }}"
     x-data="{
         show: false,
-        @if($masked)
-            type: 'text',
-            style: '-webkit-text-security: disc;',
-            toggle() {
-                this.show = !this.show;
-                this.show ? this.style = '' : this.style = '-webkit-text-security: disc;';
-            },
-        @else
-            type: 'password',
-            toggle() {
-                this.show = !this.show;
-                this.show ? this.type = 'text' : this.type = 'password';
-            },
-        @endif
+        type: 'password',
+        toggle() {
+            this.show = !this.show;
+            this.show ? this.type = 'text' : this.type = 'password';
+        },
     }"
 >
     <div class="input-group">
@@ -55,12 +45,12 @@
                 name="{{ $name }}"
                 class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass }}"
                 wire:model="{{ $model ?? $name }}"
-                @if($masked) :style="style" @endif
-                @if($max) maxlength="{{ $max }}" @endif
-                @if($value) value="{{ $value }}" @endif
-                @if($autofocus) autofocus @endif
-                @if($readonly) readonly @endif
-                @if($required) required @endif
+                @if($max ?? false) maxlength="{{ $max }}" @endif
+                @if($value ?? false) value="{{ $value }}" @endif
+                @if($autofocus ?? false) autofocus @endif
+                @if($readonly ?? false) readonly @endif
+                @if($required ?? false) required @endif
+                autocomplete="{{ $autocomplete ?? 'current-password' }}"
                 @keydown="$dispatch('typing')"
             />
 

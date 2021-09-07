@@ -4,10 +4,11 @@
     'shifted' => false,
 ])
 
-<div
+<button
+    type="button"
     wire:key="{{ md5($id.$error) }}"
     @class([
-        'px-4 input-icon',
+        'px-4 input-icon focus-visible:rounded',
         'right-13' => $shifted,
         'right-0'  => ! $shifted,
     ])
@@ -19,4 +20,4 @@
     @if($shifted)
         <div class="w-px h-5 transform translate-x-4 bg-theme-secondary-300">&nbsp;</div>
     @endif
-</div>
+</button>

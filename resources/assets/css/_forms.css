@@ -1,4 +1,8 @@
 /* General */
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
 .input-label {
     @apply flex text-sm font-semibold leading-5 text-theme-secondary-700 transition-default;
 }
