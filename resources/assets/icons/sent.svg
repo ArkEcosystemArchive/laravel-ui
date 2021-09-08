@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="received" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<g>
+	
+		<line fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="7.99999" y1="19" x2="7.99999" y2="15"/>
+	<path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7.99999,11V9h-3.4039
+		C4.34844,9,4.20567,8.71873,4.35185,8.51882l5.40984-7.39797c0.11903-0.16107,0.35765-0.16115,0.47678-0.00015l5.40968,7.39813
+		C15.79433,8.71873,15.65156,9,15.40391,9h-3.40392v10"/>
+</g>
+</svg>
