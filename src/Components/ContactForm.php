@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Lukeraymonddowning\Honey\Facades\Honey;
 use Lukeraymonddowning\Honey\Traits\WithHoney;
 
 /**
@@ -69,6 +70,20 @@ final class ContactForm extends Component
 
     public function submit(): void
     {
+        if (! Honey::check($this->honeyInputs)) {
+            Honey::failUsing(function() {
+                // Some spammers wait for the "success" response message so
+                // sending the same response will trick them into thinking that
+                // the form was succesfully submitted.
+                $this->emit('toastMessage', [trans('ui::messages.contact'), 'success']);
+
+                $this->reset();
+            });
+
+            Honey::fail();
+            return;
+        }
+
         $data = $this->validate();
 
         $mail = new ContactFormSubmitted(Arr::except($data, ['attachment']));
