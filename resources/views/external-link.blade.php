@@ -1,7 +1,7 @@
 @props([
     'url',
     'text',
-    'class'     => 'link font-semibold inline break-words',
+    'class'     => 'link font-semibold inline',
     'small'     => false,
     'noIcon'    => false,
 ])
