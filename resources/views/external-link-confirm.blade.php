@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="alert-content-wrapper alert-warning-content">
-                        <span class="block leading-6 break-all" x-text="url"></span>
+                        <span class="block leading-6 break-words" x-text="url"></span>
                     </div>
                 </div>
             </div>
