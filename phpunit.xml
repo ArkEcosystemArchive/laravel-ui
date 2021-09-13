@@ -7,7 +7,6 @@
     <testsuites>
         <testsuite name="Test Suite">
             <directory suffix="Test.php">./tests</directory>
-            <exclude>./tests/Unit/Livewire/ContactFormTest.php</exclude>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">
@@ -15,9 +14,6 @@
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./src</directory>
         </include>
-        <exclude>
-            <file>./tests/Unit/Livewire/ContactFormTest.php</file>
-        </exclude>
     </coverage>
     <php>
         <server name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
