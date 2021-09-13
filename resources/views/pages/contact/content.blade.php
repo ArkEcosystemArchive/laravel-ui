@@ -41,7 +41,7 @@
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
                 <a href="{{ $discordUrl }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
-                    <div class="flex items-center justify-center w-full space-x-2">
+                    <div class="flex justify-center items-center space-x-2 w-full">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
                     </div>
@@ -126,7 +126,7 @@
                 />
             </div>
 
-            <div class="relative flex flex-col justify-end flex-1">
+            <div class="flex relative flex-col flex-1 justify-end">
                 <button
                     type="submit"
                     x-data="{
