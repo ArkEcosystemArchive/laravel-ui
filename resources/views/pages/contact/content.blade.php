@@ -1,8 +1,9 @@
 @props([
-    'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
-    'discordUrl' => trans('ui::urls.discord'),
     'subject' => null,
     'message' => null,
+    'socialIconHoverClass' => 'hover:bg-theme-danger-400 hover:text-white',
+    'discordUrl' => trans('ui::urls.discord'),
+    'documentationUrl' => trans('ui::urls.documentation'),
     'helpTitle' => trans('ui::pages.contact.let_us_help.title'),
     'helpDescription' => trans('ui::pages.contact.let_us_help.description'),
     'additionalTitle' => trans('ui::pages.contact.additional_support.title'),
@@ -35,11 +36,11 @@
             </div>
 
             <div class="flex flex-col mt-6 space-y-3 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-                <a href="@lang('ui::urls.documentation')" target="_blank" rel="noopener noreferrer" class="button-secondary">@lang('ui::actions.documentation')</a>
+                <a href="{{ $documentationUrl }}" target="_blank" rel="noopener noreferrer" class="button-secondary">@lang('ui::actions.documentation')</a>
 
                 <span class="font-semibold leading-none text-center">@lang('ui::general.or')</span>
 
-                <a href="{{ $discordUrl}}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
+                <a href="{{ $discordUrl }}" target="_blank" rel="noopener nofollow noreferrer" class="button-secondary">
                     <div class="flex justify-center items-center space-x-2 w-full">
                         @svg('brands.outline.discord', 'w-5 h-5')
                         <span>@lang('ui::actions.discord')</span>
