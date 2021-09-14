@@ -64,7 +64,7 @@
     .tui-popup-body
     .te-button-section
     button.te-close-button:hover {
-    @apply text-white bg-theme-primary-700 shadow-button-primary;
+    @apply text-white bg-theme-primary-700;
 }
 
 .ark-markdown-editor .tui-toolbar-divider {

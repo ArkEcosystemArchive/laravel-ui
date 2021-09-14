@@ -7,7 +7,7 @@
 }
 
 .button-primary:hover {
-    @apply bg-theme-primary-700 shadow-button-primary;
+    @apply bg-theme-primary-700;
 }
 
 .button-tag {
@@ -103,12 +103,12 @@ a.disabled {
 .button-secondary:hover,
 .button-icon-rounded:hover,
 .button-tag:hover {
-    @apply text-white bg-theme-primary-700 shadow-button-secondary;
+    @apply text-white bg-theme-primary-700;
 }
 
 .button-outline:hover,
 .button-tag-outline:hover {
-    @apply text-white border-transparent bg-theme-primary-700 shadow-button-secondary;
+    @apply text-white border-transparent bg-theme-primary-700;
 }
 
 .dark .button-icon:hover,
@@ -124,7 +124,7 @@ a.disabled {
 }
 
 .button-icon-primary:hover {
-    @apply bg-theme-primary-700 shadow-button-primary;
+    @apply bg-theme-primary-700;
 }
 
 .button-cancel:hover,
