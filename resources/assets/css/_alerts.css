@@ -189,7 +189,7 @@
 .alert-simple-warning a,
 .alert-simple-error a,
 .alert-simple-danger a,
-.alert-simple-hint a  {
+.alert-simple-hint a {
     @apply font-semibold transition-default;
 }
 
