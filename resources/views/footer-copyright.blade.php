@@ -1,6 +1,6 @@
 @props([
     'isArkProduct' => true,
-    'copyText'     => 'ARK.io | All rights reserved',
+    'copyText'     => 'ARK.io | ' . trans('ui::general.all_rights_reserved'),
 ])
 
 <div {{ $attributes->merge(['class' => 'flex flex-col py-6 space-y-2 font-semibold text-theme-secondary-700 sm:block sm:space-y-0'])}}>
