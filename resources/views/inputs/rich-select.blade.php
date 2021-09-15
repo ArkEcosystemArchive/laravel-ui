@@ -32,7 +32,7 @@ $initialText = $grouped
     @endif
 
     <div
-        class="relative input-rich-select {{ $wrapperClass }}"
+        class="relative pr-10 input-rich-select {{ $wrapperClass }}"
         x-data="RichSelect({{ $xData }}, {{ json_encode($options) }}, '{{ $initialValue }}', '{{ $initialText }}', {{ $grouped ? 'true' : 'false'}}@if($dispatchEvent), '{{ $dispatchEvent }}' @endif)"
         x-init="init()"
     >
@@ -47,7 +47,7 @@ $initialText = $grouped
             aria-haspopup="listbox"
             :aria-expanded="open"
             aria-labelledby="listbox-label"
-            class="relative pr-10 dropdown-button {{ $buttonClass }}"
+            class="relative dropdown-button focus-visible:rounded {{ $buttonClass }}"
         >
             @isset($dropdownEntry)
                 {{ $dropdownEntry }}
@@ -87,7 +87,6 @@ $initialText = $grouped
                 @keydown.arrow-up.prevent="onArrowUp()"
                 @keydown.arrow-down.prevent="onArrowDown()"
                 x-ref="listbox"
-                tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
                 class="custom-scroll py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
@@ -111,8 +110,9 @@ $initialText = $grouped
                                 'rich-select-dropdown-entry-selected': value === optionValue,
                                 'rich-select-dropdown-entry-hover': selected === index && value !== optionValue,
                             }"
-                            class="rich-select-dropdown-entry"
+                            class="rich-select-dropdown-entry focus-visible:ring-inset focus-visible:rounded"
                             x-text="options[optionValue]"
+                            tabindex="0"
                         ></div>
                     </template>
                     @else
@@ -136,8 +136,9 @@ $initialText = $grouped
                                         'rich-select-dropdown-entry-selected': value === optionValue,
                                         'rich-select-dropdown-entry-hover': selected === getOptionIndex(index, index2) && value !== optionValue,
                                     }"
-                                    class="rich-select-dropdown-entry"
+                                    class="rich-select-dropdown-entry focus-visible:ring-inset focus-visible:rounded"
                                     x-text="options[groupName][optionValue]"
+                                    tabindex="0"
                                 ></div>
                             </template>
 
