@@ -4,7 +4,7 @@
     'dispatchEvent' => null,
     'class' => 'w-full',
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
-    'wrapperClass' => 'w-full pr-10',
+    'wrapperClass' => 'w-full',
     'dropdownClass' => 'mt-1',
     'dropdownListClass' => 'max-h-80',
     'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
@@ -47,7 +47,7 @@ $initialText = $grouped
             aria-haspopup="listbox"
             :aria-expanded="open"
             aria-labelledby="listbox-label"
-            class="relative dropdown-button focus-visible:rounded {{ $buttonClass }}"
+            class="relative mr-10 dropdown-button focus-visible:rounded {{ $buttonClass }}"
         >
             @isset($dropdownEntry)
                 {{ $dropdownEntry }}
