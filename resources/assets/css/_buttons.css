@@ -187,3 +187,12 @@ a.button-secondary {
 .dark .button-icon-primary:hover {
     @apply shadow-none;
 }
+
+.view-option-button {
+    @apply relative;
+}
+.view-option-button.active:not(:focus-visible)::before {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 bg-theme-primary-600;
+    height: 3px;
+}
