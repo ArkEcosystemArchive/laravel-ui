@@ -4,7 +4,7 @@
     'dispatchEvent' => null,
     'class' => 'w-full',
     'buttonClass' => 'inline-block w-full px-4 py-3 text-left form-input transition-default dark:bg-theme-secondary-900 dark:border-theme-secondary-800',
-    'wrapperClass' => 'w-full',
+    'wrapperClass' => 'w-full pr-10',
     'dropdownClass' => 'mt-1',
     'dropdownListClass' => 'max-h-80',
     'iconClass' => 'absolute inset-y-0 right-0 flex items-center justify-center mr-4',
@@ -32,7 +32,7 @@ $initialText = $grouped
     @endif
 
     <div
-        class="relative pr-10 input-rich-select {{ $wrapperClass }}"
+        class="relative input-rich-select {{ $wrapperClass }}"
         x-data="RichSelect({{ $xData }}, {{ json_encode($options) }}, '{{ $initialValue }}', '{{ $initialText }}', {{ $grouped ? 'true' : 'false'}}@if($dispatchEvent), '{{ $dispatchEvent }}' @endif)"
         x-init="init()"
     >
