@@ -110,7 +110,7 @@ $initialText = $grouped
                                 'rich-select-dropdown-entry-selected': value === optionValue,
                                 'rich-select-dropdown-entry-hover': selected === index && value !== optionValue,
                             }"
-                            class="rich-select-dropdown-entry focus-visible:ring-inset focus-visible:rounded"
+                            class="focus-visible:rounded focus-visible:ring-inset rich-select-dropdown-entry"
                             x-text="options[optionValue]"
                             tabindex="0"
                         ></div>
@@ -136,7 +136,7 @@ $initialText = $grouped
                                         'rich-select-dropdown-entry-selected': value === optionValue,
                                         'rich-select-dropdown-entry-hover': selected === getOptionIndex(index, index2) && value !== optionValue,
                                     }"
-                                    class="rich-select-dropdown-entry focus-visible:ring-inset focus-visible:rounded"
+                                    class="focus-visible:rounded focus-visible:ring-inset rich-select-dropdown-entry"
                                     x-text="options[groupName][optionValue]"
                                     tabindex="0"
                                 ></div>
