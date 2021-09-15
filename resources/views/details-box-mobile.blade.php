@@ -1,10 +1,11 @@
 @props([
     'title',
-    'icon'       => null,
-    'iconRaw'    => null,
-    'iconClass'  => null,
-    'slotClass'  => null,
-    'titleClass' => 'w-32',
+    'icon'         => null,
+    'iconRaw'      => null,
+    'iconClass'    => null,
+    'slotClass'    => null,
+    'titleClass'   => 'w-32',
+    'wrapperClass' => null,
 ])
 
 <div class="flex justify-between">
