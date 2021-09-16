@@ -2,7 +2,13 @@
     class="flex flex-col flex-1 h-full"
     x-data="{{ $method }}({ url: '{{ $url }}', onUpload: () => { window.location.reload() }})"
 >
-    <label for="{{ $id ?? $name }}" class="input-label @error($name) input-label--error @enderror">
+    <label
+        for="{{ $id ?? $name }}"
+        @class([
+            'input-label',
+            'input-label--error' => $errors->has('name'),
+        ])
+    >
         {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
     </label>
 

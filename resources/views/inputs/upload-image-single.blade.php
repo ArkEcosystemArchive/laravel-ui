@@ -71,12 +71,18 @@
     x-on:livewire-upload-error="isUploading = false; livewire.emit('uploadError', '{{ $uploadErrorMessage }}');"
     class="relative {{ $dimensions }}"
 >
-    <div class="rounded-xl w-full h-full @unless ($image) p-2 border-2 border-dashed border-theme-primary-100 @endif focus-within:border-theme-primary-500">
+    <div @class([
+        'rounded-xl w-full h-full focus-within:border-theme-primary-500',
+        'p-2 border-2 border-dashed border-theme-primary-100' => ! $image,
+    ])>
         <div
             @if ($image)
             style="background-image: url('{{ $image }}')"
             @endif
-            class="inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50 @unless($readonly) cursor-pointer hover:bg-theme-primary-100 transition-default @endunless"
+            @class([
+                'inline-block w-full h-full bg-center bg-no-repeat bg-cover rounded-xl bg-theme-primary-50',
+                'cursor-pointer hover:bg-theme-primary-100 transition-default' => ! $readonly,
+            ])
             @unless($readonly)
             @click.self="select"
             role="button"
@@ -122,9 +128,10 @@
         @unless($readonly)
             <div
                 wire:key="delete-button-{{ $id }}"
-                class="rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default w-full h-full
-                    @unless ($image) hidden @endunless"
-
+                @class([
+                    'rounded-xl absolute top-0 opacity-0 hover:opacity-100 transition-default w-full h-full',
+                    'hidden' => ! $image,
+                ])
             >
                 <div
                     class="absolute top-0 w-full h-full rounded-xl opacity-70 pointer-events-none border-6 border-theme-secondary-900 transition-default"></div>

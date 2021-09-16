@@ -33,7 +33,11 @@
             ])
         @endunless
 
-        <div class="input-wrapper {{ ($isDisabled || $addDisabled) ? 'disabled-tags-input' : '' }} {{ ($addDisabled) ? 'disabled-tags-input-add' : '' }}">
+        <div @class([
+                'input-wrapper',
+                'disabled-tags-input'     => $isDisabled || $addDisabled,
+                'disabled-tags-input-add' => $addDisabled,
+            ])>
             <div
                 wire:ignore
                 x-ref="input"

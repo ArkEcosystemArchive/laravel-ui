@@ -15,8 +15,10 @@
             ])
         @endunless
 
-        <div
-            class="input-wrapper input-wrapper-with-prefix @error($name) input-text--error @enderror"
+        <div @class([
+                'input-wrapper input-wrapper-with-prefix',
+                'input-text--error' => $errors->has('name'),
+            ])
             x-bind:class="{ 'input-wrapper-with-prefix--dirty': !! isDirty }"
         >
             @if ($icon ?? false)

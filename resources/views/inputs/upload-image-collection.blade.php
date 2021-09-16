@@ -80,18 +80,25 @@
                         </div>
 
                         <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-default">
-                            <div class="select-none rounded-xl flex flex-col items-center justify-center opacity-70 @if($sortable) cursor-pointer bg-theme-secondary-900 @else border-6 border-theme-secondary-900 @endif w-full h-full">
+                            <div @class([
+                                'select-none rounded-xl flex flex-col items-center justify-center opacity-70 w-full h-full'
+                                'cursor-pointer bg-theme-secondary-900' => $sortable,
+                                'border-6 border-theme-secondary-900'   => ! $sortable,
+                            ])>
                                 @if($sortable)
                                     <x-ark-icon name="drag" size="lg" class="text-white"/>
-                                    <p class="mt-3 text-xs font-semibold text-theme-secondary-500">Drag to
-                                        reposition</p>
+                                    <p class="mt-3 text-xs font-semibold text-theme-secondary-500">
+                                        Drag to reposition
+                                    </p>
                                 @endif
                             </div>
 
-                            <button type="button" data-action
-                                    class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
-                                    wire:click="deleteImage({{ $index }})"
-                                    data-tippy-hover="{{ $deleteTooltip }}"
+                            <button
+                                type="button"
+                                data-action
+                                class="absolute top-0 right-0 p-1 -mt-2 -mr-2 rounded cursor-pointer bg-theme-danger-100 text-theme-danger-500"
+                                wire:click="deleteImage({{ $index }})"
+                                data-tippy-hover="{{ $deleteTooltip }}"
                             >
                                 <x-ark-icon name="close" size="sm"/>
                             </button>

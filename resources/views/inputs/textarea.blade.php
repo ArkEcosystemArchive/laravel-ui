@@ -27,7 +27,11 @@
         @endunless
 
         <div class="input-wrapper">
-            <textarea class="input-text @error($name) input-text--error @enderror"
+            <textarea
+                @class([
+                    'input-text',
+                    'input-text--error' => $errors->has('name'),
+                ])
                 {{ $attributes
                     ->merge([
                         'id'   => $id ?? $name,

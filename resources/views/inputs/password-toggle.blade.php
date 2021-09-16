@@ -13,7 +13,10 @@
         @if(!($hideLabel ?? false))
             <label
                 for="{{ $id ?? $name }}"
-                class="input-label @error($name) input-label--error @enderror"
+                @class([
+                    'input-label',
+                    'input-label--error' => $errors->has('name'),
+                ])
             >
                 {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
             </label>
@@ -26,7 +29,11 @@
                 :type="type"
                 id="{{ $id ?? $name }}"
                 name="{{ $name }}"
-                class="input-text shifted @error($name) input-text--error @enderror {{ $inputClass ?? '' }}"
+                @class([
+                    $inputClass ?? '',
+                    'input-text shifted',
+                    'input-text--error' => $errors->has('name'),
+                ])
                 wire:model="{{ $model ?? $name }}"
                 @if($max ?? false) maxlength="{{ $max }}" @endif
                 @if($value ?? false) value="{{ $value }}" @endif
@@ -40,7 +47,10 @@
             {{--toggle--}}
             <button
                 type="button"
-                class="right-0 px-4 input-icon text-theme-primary-300 rounded @error($name) text-theme-danger-500 @enderror"
+                @class([
+                    'right-0 px-4 input-icon text-theme-primary-300 rounded',
+                    'text-theme-danger-500' => $errors->has('name'),
+                ])
                 @click="toggle()"
             >
                 <span x-show="!show">@svg('view', 'w-5 h-5')</span>

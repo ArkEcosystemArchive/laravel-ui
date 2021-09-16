@@ -15,8 +15,10 @@
             ])
         @endunless
 
-        <div
-            class="input-wrapper input-wrapper-with-suffix @error($name) input-text--error @enderror"
+        <div @class([
+                'input-wrapper input-wrapper-with-suffix',
+                'input-text--error' => $errors->has('name'),
+            ])
             x-bind:class="{ 'input-wrapper-with-suffix--dirty': !! isDirty }"
         >
             @include('ark::inputs.includes.input-field', [
