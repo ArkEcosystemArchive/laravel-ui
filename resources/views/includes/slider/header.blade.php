@@ -1,7 +1,9 @@
 @if ($title || $hasViewAll)
-    <div class="flex flex-col mb-6 space-y-4 sm:space-y-0 sm:flex-row sm:items-center
-        @if ($title) sm:justify-between @else sm:justify-end @endif"
-    >
+    <div @class([
+        'flex flex-col mb-6 space-y-4 sm:space-y-0 sm:flex-row sm:items-center',
+        'sm:justify-between' => $title,
+        'sm:justify-end'     => ! $title,
+    ])>
         @if ($title)
             <div class="slider-title {{ $titleClass }}">
                 {{ $title }}
