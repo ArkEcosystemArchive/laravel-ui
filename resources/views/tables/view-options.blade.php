@@ -5,7 +5,11 @@
     'disabled'          => false,
 ])
 
-<div class="items-center @if($showMobile) flex @else hidden md:flex @endif">
+<div @class([
+    'items-center',
+    'flex'           => $showMobile,
+    'hidden md:flex' => ! $showMobile,
+])>
     <button
         type="button"
         :class="{
