@@ -770,14 +770,43 @@ mix.extract(['chart.js']);
 ```html
 <x-ark-tabbed>
     <x-slot name="tabs">
-        <x-ark-tab name="tab-1" />
-        <x-ark-tab name="tab-2" />
-        <x-ark-tab name="tab-3" />
+        <x-ark-tab name="tab-1">One</x-ark-tab>
+        <x-ark-tab name="tab-2">Two</x-ark-tab>
+        <x-ark-tab name="tab-3">Three</x-ark-tab>
     </x-slot>
     
     <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
+</x-ark-tabbed>
+```
+
+It's possible to customize tab list by using `tabsTrigger` slot.  
+In the example below we use a custom dropdown.
+```html
+<x-ark-tabbed x-data="{ menuToggle: false, closeMenu() {() => menuToggle = false} }">
+    <x-slot name="tabsTrigger">
+        <x-ark-dropdown :init-alpine="false" dropdown-property="menuToggle">
+            <x-slot name="button">
+                <span x-show="selected === 'tab-1'">One</span>
+                <span x-show="selected === 'tab-2'">Two</span>
+            </x-slot>
+
+            <div class="block items-center py-3 mt-1">
+                <button type="button" wire:key="tab-1" @click="selected = 'tab-1'; closeMenu()"
+                    class="dropdown-entry" :class="{ 'dropdown-entry-selected' : selected === 'tab-1' }">
+                    One
+                </button>
+                <button type="button" wire:key="tab-2" @click="selected = 'tab-2'; closeMenu()"
+                    class="dropdown-entry" :class="{ 'dropdown-entry-selected' : selected === 'tab-2' }">
+                    Two
+                </button>
+            </div>
+        </x-ark-dropdown>
+    </x-slot>
+    
+    <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
+    <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
 </x-ark-tabbed>
 ```
 
