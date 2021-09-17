@@ -16,7 +16,8 @@ final class DropInvalidLivewireRequests
         }
 
         if (! $this->containsValidPayload($request)) {
-            // Throwing 404 Not Found for some reason doesn't work as Livewire doesn't know how to intercept the 404, as it actually expects a response (WTF, Caleb?). (I guess as this wasn't working before with 404).
+            // Throwing 404 Not Found for some reason doesn't work as Livewire doesn't know how to intercept the 404,
+            // as it actually expects a response.(I guess as this wasn't working before with 404).
             // If 403 is thrown, Livewire knows to actually throw back 403 to browser.
             abort(403);
         }
