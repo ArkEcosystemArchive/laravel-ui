@@ -15,7 +15,7 @@
                 for="{{ $id ?? $name }}"
                 @class([
                     'input-label',
-                    'input-label--error' => $errors->has('name'),
+                    'input-label--error' => $errors->has($name),
                 ])
             >
                 {{ ($label ?? '') ? $label : trans('forms.' . $name) }}
@@ -32,7 +32,7 @@
                 @class([
                     $inputClass ?? '',
                     'input-text shifted',
-                    'input-text--error' => $errors->has('name'),
+                    'input-text--error' => $errors->has($name),
                 ])
                 wire:model="{{ $model ?? $name }}"
                 @if($max ?? false) maxlength="{{ $max }}" @endif
@@ -49,7 +49,7 @@
                 type="button"
                 @class([
                     'right-0 px-4 input-icon text-theme-primary-300 rounded',
-                    'text-theme-danger-500' => $errors->has('name'),
+                    'text-theme-danger-500' => $errors->has($name),
                 ])
                 @click="toggle()"
             >

@@ -30,7 +30,7 @@
             <textarea
                 @class([
                     'input-text',
-                    'input-text--error' => $errors->has('name'),
+                    'input-text--error' => $errors->has($name),
                 ])
                 {{ $attributes
                     ->merge([

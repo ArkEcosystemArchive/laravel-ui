@@ -6,7 +6,7 @@
         for="{{ $id ?? $name }}"
         @class([
             'input-label',
-            'input-label--error' => $errors->has('name'),
+            'input-label--error' => $errors->has($name),
         ])
     >
         {{ ($label ?? '') ? $label : trans('forms.' . $name) }}

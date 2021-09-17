@@ -54,7 +54,7 @@
                     style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
                     @class([
                         'input-text',
-                        'input-text--error' => $errors->has('name'),
+                        'input-text--error' => $errors->has($name),
                     ])
                     data-placeholder="{{ $placeholder }}"
                 >{{ $slot ?? '' }}</div>
@@ -65,7 +65,7 @@
                     style="min-height: {{ $rows * 30 }}px; word-break: break-word; white-space: pre-wrap;"
                     @class([
                         'input-text',
-                        'input-text--error' => $errors->has('name'),
+                        'input-text--error' => $errors->has($name),
                     ])
                     data-placeholder="{{ $placeholder }}"
                 >{{ $slot ?? '' }}</textarea>
