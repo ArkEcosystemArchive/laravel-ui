@@ -4,7 +4,7 @@
     'defaultSelected' => '',
     'noData' => false,
     'panelWrapperClass' => 'mt-6 w-full',
-    'tablistClass' => '',
+    'tablistClass' => 'w-full',
 ])
 
 <div {{ $attributes->merge(['class' => 'tabs-wrapper']) }}
