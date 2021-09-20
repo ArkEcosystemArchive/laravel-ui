@@ -29,9 +29,24 @@ const initTippy = (parentEl = document.body) => {
     }));
 }
 
+const destroyTippy = (parentEl = document.body) => {
+    parentEl
+        .querySelectorAll("[data-tippy-content], [data-tippy-hover]")
+        .forEach((el) => {
+            if (!el._tippy) {
+                console.error("Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.", el);
+                return;
+            }
+
+            el._tippy.destroy();
+        });
+}
+
 initTippy();
 
 window.initTippy = initTippy;
+
+window.destroyTippy = destroyTippy;
 
 document.addEventListener("scroll", () =>
     visibleTooltips.forEach((instance) => instance.hide(0))
@@ -50,22 +65,9 @@ window.initClipboard = () => {
 };
 
 if (typeof Livewire !== "undefined") {
-    Livewire.hook("message.received", (message, component) => {
-        component.el
-            .querySelectorAll("[data-tippy-content], [data-tippy-hover]")
-            .forEach((el) => {
-                if (!el._tippy) {
-                    console.error("Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.", el);
-                    return;
-                }
+    Livewire.hook("message.received", (message, component) => destroyTippy(component.el));
 
-                el._tippy.destroy();
-            });
-    });
-
-    Livewire.hook("message.processed", (message, component) => {
-        initTippy(component.el);
-    });
+    Livewire.hook("message.processed", (message, component) => initTippy(component.el));
 }
 
 window.tippy = tippy;
