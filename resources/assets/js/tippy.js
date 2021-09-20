@@ -21,14 +21,12 @@ const tooltipSettings = {
 const initTippy = (parentEl = document.body) => {
     tippy(parentEl.querySelectorAll("[data-tippy-content]"), tooltipSettings);
 
-    tippy(
-        parentEl.querySelectorAll("[data-tippy-hover]", {
-            ...tooltipSettings,
-            touch: "hold",
-            trigger: "mouseenter",
-            content: (reference) => reference.dataset.tippyHover,
-        })
-    );
+    tippy(parentEl.querySelectorAll("[data-tippy-hover]"), {
+        ...tooltipSettings,
+        touch: "hold",
+        trigger: "mouseenter",
+        content: (reference) => reference.dataset.tippyHover,
+    });
 };
 
 const destroyTippy = (parentEl = document.body) => {
