@@ -21,26 +21,31 @@ const tooltipSettings = {
 const initTippy = (parentEl = document.body) => {
     tippy(parentEl.querySelectorAll("[data-tippy-content]"), tooltipSettings);
 
-    tippy(parentEl.querySelectorAll("[data-tippy-hover]", {
-        ...tooltipSettings,
-        touch: "hold",
-        trigger: "mouseenter",
-        content: (reference) => reference.dataset.tippyHover,
-    }));
-}
+    tippy(
+        parentEl.querySelectorAll("[data-tippy-hover]", {
+            ...tooltipSettings,
+            touch: "hold",
+            trigger: "mouseenter",
+            content: (reference) => reference.dataset.tippyHover,
+        })
+    );
+};
 
 const destroyTippy = (parentEl = document.body) => {
     parentEl
         .querySelectorAll("[data-tippy-content], [data-tippy-hover]")
         .forEach((el) => {
             if (!el._tippy) {
-                console.error("Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.", el);
+                console.error(
+                    "Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.",
+                    el
+                );
                 return;
             }
 
             el._tippy.destroy();
         });
-}
+};
 
 initTippy();
 
@@ -65,9 +70,13 @@ window.initClipboard = () => {
 };
 
 if (typeof Livewire !== "undefined") {
-    Livewire.hook("message.received", (message, component) => destroyTippy(component.el));
+    Livewire.hook("message.received", (message, component) =>
+        destroyTippy(component.el)
+    );
 
-    Livewire.hook("message.processed", (message, component) => initTippy(component.el));
+    Livewire.hook("message.processed", (message, component) =>
+        initTippy(component.el)
+    );
 }
 
 window.tippy = tippy;
