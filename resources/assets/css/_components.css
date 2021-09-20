@@ -13,12 +13,13 @@
     @apply outline-none;
 }
 
-.dropdown-entry:not([disabled]):hover,
+.dropdown-entry:not([disabled]):not(.dropdown-entry-disabled):hover,
 .rich-select-dropdown-entry-hover {
     @apply bg-theme-secondary-100 text-theme-secondary-900 dark:text-theme-secondary-200 dark:bg-theme-secondary-900;
 }
 
-.dropdown-entry[disabled] {
+.dropdown-entry[disabled],
+.dropdown-entry-disabled {
     @apply opacity-50 cursor-not-allowed hover:text-theme-secondary-900 dark:hover:text-theme-secondary-200;
 }
 
