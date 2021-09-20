@@ -5,16 +5,17 @@
     'copyText'     => null,
     'isArkProduct' => true,
     'socials'      => null,
+    'iconSize'     => 'md',
 ])
 
 <div {{ $attributes->merge(['class' => 'border-t bg-theme-secondary-900 border-theme-secondary-800']) }}>
     <div class="{{ $desktopClass }} flex-col mx-auto">
-        {{-- Empty class to remove border --}}
         <x-ark-footer-bar-desktop
             :is-ark-product="$isArkProduct"
             :copy-class="$copyClass"
             :copy-text="$copyText"
             :socials="$socials"
+            :icon-size="$iconSize"
             no-border
         />
     </div>
@@ -25,5 +26,6 @@
         :copy-class="$copyClass"
         :copy-text="$copyText"
         :socials="$socials"
+        :icon-size="$iconSize"
     />
 </div>

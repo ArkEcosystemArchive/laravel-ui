@@ -4,6 +4,7 @@
     'copyClass'    => '',
     'copyText'     => null,
     'socials'      => null,
+    'iconSize'     => 'md',
 ])
 
 <div class="flex items-center justify-between @unless ($noBorder) border-t border-theme-secondary-800 @endunless">
@@ -11,6 +12,7 @@
         :is-ark-product="$isArkProduct"
         :copy-text="$copyText"
         class="{{ $copyClass }}"
+        :icon-size="$iconSize"
     />
 
     <x-ark-footer-social :networks="$socials" />
