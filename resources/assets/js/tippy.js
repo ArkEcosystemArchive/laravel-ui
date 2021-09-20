@@ -21,13 +21,15 @@ const tooltipSettings = {
 const initTippy = (parentEl = document.body) => {
     tippy(parentEl.querySelectorAll("[data-tippy-content]"), tooltipSettings);
 
-    tippy(parentEl.querySelectorAll("[data-tippy-hover]", {
-        ...tooltipSettings,
-        touch: "hold",
-        trigger: "mouseenter",
-        content: (reference) => reference.dataset.tippyHover,
-    }));
-}
+    tippy(
+        parentEl.querySelectorAll("[data-tippy-hover]", {
+            ...tooltipSettings,
+            touch: "hold",
+            trigger: "mouseenter",
+            content: (reference) => reference.dataset.tippyHover,
+        })
+    );
+};
 
 initTippy();
 
@@ -55,7 +57,10 @@ if (typeof Livewire !== "undefined") {
             .querySelectorAll("[data-tippy-content], [data-tippy-hover]")
             .forEach((el) => {
                 if (!el._tippy) {
-                    console.error("Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.", el);
+                    console.error(
+                        "Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.",
+                        el
+                    );
                     return;
                 }
 
