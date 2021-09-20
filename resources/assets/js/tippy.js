@@ -18,14 +18,20 @@ const tooltipSettings = {
     },
 };
 
-tippy("[data-tippy-content]", tooltipSettings);
+const initTippy = (parentEl = document.body) => {
+    tippy(parentEl.querySelectorAll("[data-tippy-content]"), tooltipSettings);
 
-tippy("[data-tippy-hover]", {
-    ...tooltipSettings,
-    touch: "hold",
-    trigger: "mouseenter",
-    content: (reference) => reference.dataset.tippyHover,
-});
+    tippy(parentEl.querySelectorAll("[data-tippy-hover]", {
+        ...tooltipSettings,
+        touch: "hold",
+        trigger: "mouseenter",
+        content: (reference) => reference.dataset.tippyHover,
+    }));
+}
+
+initTippy();
+
+window.initTippy = initTippy;
 
 document.addEventListener("scroll", () =>
     visibleTooltips.forEach((instance) => instance.hide(0))
@@ -46,22 +52,19 @@ window.initClipboard = () => {
 if (typeof Livewire !== "undefined") {
     Livewire.hook("message.received", (message, component) => {
         component.el
-            .querySelectorAll("[data-tippy-content]")
-            .forEach((el) => el._tippy && el._tippy.destroy());
+            .querySelectorAll("[data-tippy-content], [data-tippy-hover]")
+            .forEach((el) => {
+                if (!el._tippy) {
+                    console.error("Tippy tooltip instance not found. Ensure all tippy instances are properly initialized.", el);
+                    return;
+                }
+
+                el._tippy.destroy();
+            });
     });
 
     Livewire.hook("message.processed", (message, component) => {
-        tippy(component.el.querySelectorAll("[data-tippy-content]"), {
-            trigger: "mouseenter focus",
-            duration: 0,
-        });
-
-        tippy(component.el.querySelectorAll("[data-tippy-hover]"), {
-            touch: "hold",
-            trigger: "mouseenter",
-            content: (reference) => reference.dataset.tippyHover,
-            duration: 0,
-        });
+        initTippy(component.el);
     });
 }
 
