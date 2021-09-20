@@ -20,7 +20,7 @@
 
 .dropdown-entry[disabled],
 .dropdown-entry-disabled {
-    @apply opacity-50 cursor-not-allowed hover:text-theme-secondary-900 dark:hover:text-theme-secondary-200;
+    @apply opacity-50 cursor-not-allowed;
 }
 
 .dropdown-entry-selected,
