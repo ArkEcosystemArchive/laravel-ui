@@ -23,7 +23,7 @@
     </div>
 
     <x-ark-footer-bar-mobile
-        class="{{ $mobileClass }}"
+        :class="$mobileClass"
         :is-ark-product="$isArkProduct"
         :copy-class="$copyClass"
         :copy-text="$copyText"

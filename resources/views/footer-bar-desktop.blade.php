@@ -12,7 +12,7 @@
     <x-ark-footer-copyright
         :is-ark-product="$isArkProduct"
         :copy-text="$copyText"
-        class="{{ $copyClass }}"
+        :class="$copyClass"
         :extra="$extra"
         :icon-size="$iconSize"
     />
