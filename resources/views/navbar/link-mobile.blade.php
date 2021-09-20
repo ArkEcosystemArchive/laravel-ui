@@ -3,7 +3,10 @@
 <div class="flex">
     <a
         href="{{ $route }}"
-        class="navbar-mobile-link @if($isCurrent) navbar-mobile-link-current @endif"
+        @class([
+            'navbar-mobile-link',
+            'navbar-mobile-link-current' => $isCurrent,
+        ])
     >
         @if($icon ?? false)
             @svg($icon, 'w-6 mr-4')

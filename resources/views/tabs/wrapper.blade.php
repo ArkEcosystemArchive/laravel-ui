@@ -4,7 +4,8 @@
     'defaultSelected' => '',
     'noData' => false,
     'panelWrapperClass' => 'mt-6 w-full',
-    'tablistClass' => '',
+    'tablistClass' => 'w-full',
+    'tabsTrigger' => false,
 ])
 
 <div {{ $attributes->merge(['class' => 'tabs-wrapper']) }}
@@ -16,9 +17,13 @@
         )"
     @endunless
 >
-    <ul role="tablist" class="tabs {{ $tablistClass }}">
-        {{ $tabs }}
-    </ul>
+    @if($tabsTrigger)
+        {{ $tabsTrigger }}
+    @else
+        <ul role="tablist" class="tabs {{ $tablistClass }}">
+            {{ $tabs }}
+        </ul>
+    @endif
 
     <div class="{{ $panelWrapperClass }}">
         {{ $slot }}
