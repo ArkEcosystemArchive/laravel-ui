@@ -4,6 +4,7 @@
     'copyClass'    => '',
     'copyText'     => null,
     'socials'      => null,
+    'extra'        => null,
     'iconSize'     => 'md',
 ])
 
@@ -12,6 +13,7 @@
         :is-ark-product="$isArkProduct"
         :copy-text="$copyText"
         class="{{ $copyClass }}"
+        :extra="$extra"
         :icon-size="$iconSize"
     />
 

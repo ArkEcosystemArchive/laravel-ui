@@ -2,6 +2,7 @@
     'isArkProduct' => true,
     'copyText'     => 'ARK.io | ' . trans('ui::general.all_rights_reserved'),
     'iconSize'     => 'md',
+    'extra'        => null,
 ])
 
 <div {{ $attributes->merge(['class' => 'flex flex-col py-6 space-y-2 font-semibold text-theme-secondary-700 sm:block sm:space-y-0'])}}>
@@ -21,6 +22,15 @@
                     />
 
                     An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded">ARK.io</a> Product
+                </span>
+            </div>
+        @endif
+
+        @if($extra)
+            <div class="flex">
+                <span class="mx-1 sm:inline"> | </span>
+                <span class="whitespace-nowrap">
+                    {{ $extra }}
                 </span>
             </div>
         @endif
