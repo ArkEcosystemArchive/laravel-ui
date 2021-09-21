@@ -5,7 +5,6 @@
     'copyText'     => null,
     'socials'      => null,
     'extra'        => null,
-    'iconSize'     => 'md',
 ])
 
 <div class="flex flex-col {{ $class }}">
@@ -14,7 +13,6 @@
         :copy-text="$copyText"
         :class="$copyClass"
         :extra="$extra"
-        :icon-size="$iconSize"
     />
 
     <x-ark-footer-social :networks="$socials" />

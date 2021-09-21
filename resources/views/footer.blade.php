@@ -6,7 +6,6 @@
     'isArkProduct' => true,
     'socials'      => null,
     'extra'        => null,
-    'iconSize'     => 'md',
 ])
 
 <div {{ $attributes->merge(['class' => 'border-t bg-theme-secondary-900 border-theme-secondary-800']) }}>
@@ -17,7 +16,6 @@
             :copy-text="$copyText"
             :socials="$socials"
             :extra="$extra"
-            :icon-size="$iconSize"
             no-border
         />
     </div>
@@ -29,6 +27,5 @@
         :copy-text="$copyText"
         :socials="$socials"
         :extra="$extra"
-        :icon-size="$iconSize"
     />
 </div>

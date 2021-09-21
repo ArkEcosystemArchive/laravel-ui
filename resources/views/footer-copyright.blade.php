@@ -1,7 +1,6 @@
 @props([
     'isArkProduct' => true,
     'copyText'     => 'ARK.io | ' . trans('ui::general.all_rights_reserved'),
-    'iconSize'     => 'md',
     'extra'        => null,
 ])
 
@@ -18,7 +17,6 @@
                     <x-ark-icon
                         name="ark-logo-red-square"
                         class="inline-block mr-1 -mt-1"
-                        :size="$iconSize"
                     />
 
                     An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded">ARK.io</a> Product
