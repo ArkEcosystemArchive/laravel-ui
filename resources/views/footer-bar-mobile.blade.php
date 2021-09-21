@@ -1,10 +1,10 @@
 @props([
-    'isArkProduct' => true,
-    'class'        => '',
-    'copyClass'    => '',
-    'copyText'     => null,
-    'socials'      => null,
-    'extra'        => null,
+    'isArkProduct'  => true,
+    'class'         => '',
+    'copyClass'     => '',
+    'copyText'      => null,
+    'socials'       => null,
+    'copyrightSlot' => null,
 ])
 
 <div class="flex flex-col {{ $class }}">
@@ -12,7 +12,7 @@
         :is-ark-product="$isArkProduct"
         :copy-text="$copyText"
         :class="$copyClass"
-        :extra="$extra"
+        :copyright-slot="$copyrightSlot"
     />
 
     <x-ark-footer-social :networks="$socials" />

@@ -1,10 +1,10 @@
 @props([
-    'isArkProduct' => true,
-    'noBorder'     => '',
-    'copyClass'    => '',
-    'copyText'     => null,
-    'socials'      => null,
-    'extra'        => null,
+    'isArkProduct'  => true,
+    'noBorder'      => '',
+    'copyClass'     => '',
+    'copyText'      => null,
+    'socials'       => null,
+    'copyrightSlot' => null,
 ])
 
 <div class="flex items-center justify-between @unless ($noBorder) border-t border-theme-secondary-800 @endunless">
@@ -12,7 +12,7 @@
         :is-ark-product="$isArkProduct"
         :copy-text="$copyText"
         :class="$copyClass"
-        :extra="$extra"
+        :copyright-slot="$copyrightSlot"
     />
 
     <x-ark-footer-social :networks="$socials" />

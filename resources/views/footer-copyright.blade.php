@@ -1,7 +1,7 @@
 @props([
-    'isArkProduct' => true,
-    'copyText'     => 'ARK.io | ' . trans('ui::general.all_rights_reserved'),
-    'extra'        => null,
+    'isArkProduct'  => true,
+    'copyText'      => 'ARK.io | ' . trans('ui::general.all_rights_reserved'),
+    'copyrightSlot' => null,
 ])
 
 <div {{ $attributes->merge(['class' => 'flex flex-col py-6 space-y-2 font-semibold text-sm text-theme-secondary-700 sm:flex-row sm:space-y-0 sm:space-x-1'])}}>
@@ -24,13 +24,6 @@
             </div>
         @endif
 
-        @if($extra)
-            <div class="flex">
-                <span class="mx-1 sm:inline"> | </span>
-                <span class="whitespace-nowrap">
-                    {{ $extra }}
-                </span>
-            </div>
-        @endif
+        {{ $copyrightSlot }}
     </div>
 </div>

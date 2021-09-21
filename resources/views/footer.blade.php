@@ -1,11 +1,11 @@
 @props([
-    'desktopClass' => 'px-8 max-w-7xl hidden lg:flex',
-    'mobileClass'  => 'px-8 pb-8 lg:hidden',
-    'copyClass'    => '',
-    'copyText'     => null,
-    'isArkProduct' => true,
-    'socials'      => null,
-    'extra'        => null,
+    'desktopClass'  => 'px-8 max-w-7xl hidden lg:flex',
+    'mobileClass'   => 'px-8 pb-8 lg:hidden',
+    'copyClass'     => '',
+    'copyText'      => null,
+    'isArkProduct'  => true,
+    'socials'       => null,
+    'copyrightSlot' => null,
 ])
 
 <div {{ $attributes->merge(['class' => 'border-t bg-theme-secondary-900 border-theme-secondary-800']) }}>
@@ -15,7 +15,7 @@
             :copy-class="$copyClass"
             :copy-text="$copyText"
             :socials="$socials"
-            :extra="$extra"
+            :copyright-slot="$copyrightSlot"
             no-border
         />
     </div>
@@ -26,6 +26,6 @@
         :copy-class="$copyClass"
         :copy-text="$copyText"
         :socials="$socials"
-        :extra="$extra"
+        :copyright-slot="$copyrightSlot"
     />
 </div>
