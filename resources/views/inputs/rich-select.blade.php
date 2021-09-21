@@ -90,6 +90,7 @@ $initialText = $grouped
                 role="listbox"
                 aria-labelledby="listbox-label"
                 class="custom-scroll py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
+                tabindex="-1"
             >
                 @isset($dropdownList)
                     {{ $dropdownList }}
@@ -110,9 +111,8 @@ $initialText = $grouped
                                 'rich-select-dropdown-entry-selected': value === optionValue,
                                 'rich-select-dropdown-entry-hover': selected === index && value !== optionValue,
                             }"
-                            class="focus-visible:rounded focus-visible:ring-inset rich-select-dropdown-entry"
+                            class="rich-select-dropdown-entry"
                             x-text="options[optionValue]"
-                            tabindex="0"
                         ></div>
                     </template>
                     @else
@@ -136,9 +136,8 @@ $initialText = $grouped
                                         'rich-select-dropdown-entry-selected': value === optionValue,
                                         'rich-select-dropdown-entry-hover': selected === getOptionIndex(index, index2) && value !== optionValue,
                                     }"
-                                    class="focus-visible:rounded focus-visible:ring-inset rich-select-dropdown-entry"
+                                    class="rich-select-dropdown-entry"
                                     x-text="options[groupName][optionValue]"
-                                    tabindex="0"
                                 ></div>
                             </template>
 
