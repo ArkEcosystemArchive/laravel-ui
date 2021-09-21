@@ -30,7 +30,7 @@
 <div class="{{ $class }}">
     <div @class([
         $verticalPositionClass,
-        'flex-relative',
+        'flex relative',
         'flex-row-reverse' => $right,
     ])>
         <div class="flex absolute items-center h-5">

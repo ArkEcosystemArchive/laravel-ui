@@ -81,7 +81,7 @@
 
                         <div class="absolute inset-0 opacity-0 hover:opacity-100 transition-default">
                             <div @class([
-                                'select-none rounded-xl flex flex-col items-center justify-center opacity-70 w-full h-full'
+                                'select-none rounded-xl flex flex-col items-center justify-center opacity-70 w-full h-full',
                                 'cursor-pointer bg-theme-secondary-900' => $sortable,
                                 'border-6 border-theme-secondary-900'   => ! $sortable,
                             ])>
