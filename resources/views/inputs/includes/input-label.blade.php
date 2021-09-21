@@ -12,7 +12,10 @@
 
 <label
     for="{{ $id ?? $name }}"
-    class="items-center input-label @error($name) input-label--error @enderror"
+    @class([
+        'items-center input-label',
+        'input-label--error' => $errors->has($name),
+    ])
 >
     {{ $label ? $label : trans('forms.' . $name) }}
 
