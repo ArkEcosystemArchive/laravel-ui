@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace ARKEcosystem\UserInterface\Http\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ final class DropInvalidLivewireRequests
 {
     public function handle(Request $request, Closure $next)
     {
-        if (! $request->routeIs('livewire.*') || ! app()->bound(LivewireManager::class)) {
+        if (! $request->routeIs('livewire.*')) {
             return $next($request);
         }
 
@@ -52,7 +52,7 @@ final class DropInvalidLivewireRequests
      */
     private function containsValidPayload(Request $request) : bool
     {
-        return $request->has(['fingerprint.id', 'fingerprint.method', 'fingerprint.name', 'fingerprint.path'])
-            && $request->has(['serverMemo.checksum', 'serverMemo.htmlHash']);
+        return $request->filled(['fingerprint.id', 'fingerprint.method', 'fingerprint.name', 'fingerprint.path'])
+            && $request->filled(['serverMemo.checksum', 'serverMemo.htmlHash']);
     }
 }
