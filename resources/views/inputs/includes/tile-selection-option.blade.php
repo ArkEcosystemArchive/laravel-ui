@@ -10,7 +10,10 @@
     <label
         dusk="tile-selection-label-{{ $option['id'] }}"
         for="{{ $id.'-'.$option['id'] }}"
-        wire:key="tile-selection-option-{{ $id.'-'.$option['id'] }}"
+        @if ($single)
+            tabindex="0"
+            x-on:keydown.space.prevent="$event.target.querySelector('input').click()"
+        @endif
         @class([
             'tile-selection-single' => $single,
             'tile-selection-option' => ! $single,
@@ -26,6 +29,7 @@
     >
         @if ($single)
             <input
+                tabindex="-1"
                 id="{{ $id.'-'.$option['id'] }}"
                 name="{{ $id }}"
                 type="radio"

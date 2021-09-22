@@ -49,7 +49,7 @@
 
 /** Tabs **/
 .tabs {
-    @apply flex font-semibold rounded-xl bg-theme-secondary-100;
+    @apply flex w-full font-semibold rounded-xl bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
@@ -332,7 +332,7 @@
 }
 
 .tile-selection-single {
-    @apply relative py-4 border-2 cursor-pointer select-none rounded-xl border-theme-primary-100 transition-default;
+    @apply relative py-4 border-2 cursor-pointer select-none rounded-xl border-theme-primary-100 transition-default outline-none focus:ring-2 focus:ring-theme-primary-500;
 }
 
 .tile-selection-option:hover,
