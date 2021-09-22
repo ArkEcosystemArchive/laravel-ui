@@ -49,7 +49,7 @@
 
 /** Tabs **/
 .tabs {
-    @apply flex w-full font-semibold rounded-xl bg-theme-secondary-100;
+    @apply flex font-semibold rounded-xl bg-theme-secondary-100;
 }
 .dark .tabs {
     @apply bg-black;
