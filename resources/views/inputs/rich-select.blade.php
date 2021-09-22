@@ -47,7 +47,7 @@ $initialText = $grouped
             aria-haspopup="listbox"
             :aria-expanded="open"
             aria-labelledby="listbox-label"
-            class="relative pr-10 dropdown-button {{ $buttonClass }}"
+            class="relative mr-10 dropdown-button focus-visible:rounded {{ $buttonClass }}"
         >
             @isset($dropdownEntry)
                 {{ $dropdownEntry }}
@@ -87,10 +87,10 @@ $initialText = $grouped
                 @keydown.arrow-up.prevent="onArrowUp()"
                 @keydown.arrow-down.prevent="onArrowDown()"
                 x-ref="listbox"
-                tabindex="-1"
                 role="listbox"
                 aria-labelledby="listbox-label"
                 class="custom-scroll py-3 overflow-auto bg-white rounded-md outline-none dark:bg-theme-secondary-800 shadow-lg dark:text-theme-secondary-200 hover:outline-none {{ $dropdownListClass }}"
+                tabindex="-1"
             >
                 @isset($dropdownList)
                     {{ $dropdownList }}
