@@ -9,11 +9,51 @@
 .ark-markdown-editor .te-md-container .CodeMirror,
 .ark-markdown-editor .te-md-container .te-preview .tui-editor-contents,
 .ark-markdown-editor .tui-editor .te-md-splitter {
-    @apply py-4;
+    @apply overflow-hidden;
+}
+
+.ark-markdown-editor .te-md-container .te-preview {
+    @apply hidden;
 }
 
 .ark-markdown-editor .te-md-container .CodeMirror-scroll {
     @apply p-0 m-0;
+}
+
+.ark-markdown-editor .te-md-container .CodeMirror-sizer {
+    border-right-width: 15px !important;
+}
+
+.ark-markdown-editor .te-md-container::after {
+    @apply bg-theme-secondary-200 block absolute top-0 left-0 z-10 py-4 bg-clip-content h-full;
+    content: "";
+    margin-left: 50px;
+    width: 1px;
+    margin-bottom: 1em;
+}
+
+.ark-markdown-editor .te-md-container .CodeMirror-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar {
+    border-radius: 0.5rem;
+    width: 6px;
+    height: 4px;
+}
+
+.ark-markdown-editor
+    .CodeMirror-vscrollbar::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--theme-color-primary-200);
+    border-radius: 0.5rem;
+}
+
+.ark-markdown-editor .CodeMirror-vscrollbar {
+    scrollbar-color: #bad6f0 transparent;
 }
 
 .ark-markdown-editor .tui-editor-contents {
@@ -79,7 +119,7 @@
 }
 
 .ark-markdown-editor .CodeMirror-gutters {
-    @apply bg-white border-r border-theme-secondary-200 whitespace-nowrap;
+    @apply bg-white whitespace-nowrap border-transparent;
 }
 
 .ark-markdown-editor .CodeMirror-linenumber {

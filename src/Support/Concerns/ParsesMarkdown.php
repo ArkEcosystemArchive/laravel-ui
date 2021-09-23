@@ -1,15 +1,14 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\Rules\Concerns;
+namespace ARKEcosystem\UserInterface\Support\Concerns;
 
 use ARKEcosystem\UserInterface\Support\MarkdownParser;
 
-trait ValidatesMarkdown
+trait ParsesMarkdown
 {
     private function getText(string | null $value): string
     {
         $html = $this->getHtml($value);
-        $html = $this->removeExtraLineBreakInListItems($html);
         $html = $this->removeHeadersAnchors($html);
 
         return trim(strip_tags($html));
@@ -21,18 +20,18 @@ trait ValidatesMarkdown
         return preg_replace($regex, '', $html);
     }
 
-    private function removeExtraLineBreakInListItems($html): string
-    {
-        $regex = '/<(li)([^>]*)>(\n\r*)(.+?)(\n\r*)<\/\1>/mis';
-        $substitution = '<$1$2>$4<\\/$1>';
-
-        return preg_replace($regex, $substitution, $html);
-
-    }
-
     private function getHtml(string | null $value): string
     {
         return MarkdownParser::full($value);
     }
 
+    private function count(string | null $value): array
+    {
+        $text = $this->getText($value);
+
+        return [
+            'characters' => mb_strlen($text),
+            'words' => str_word_count($text),
+        ];
+    }
 }

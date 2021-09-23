@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\UserInterface\Http\Controllers;
 
+use ARKEcosystem\UserInterface\Support\Concerns\ParsesMarkdown;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
 final class WysiwygControlller extends Controller
 {
+    use ParsesMarkdown;
+
     public function getTwitterEmbedCode(Request $request): string
     {
         $id = $request->get('id');
@@ -46,5 +49,16 @@ final class WysiwygControlller extends Controller
         );
 
         return ['url' => asset($path)];
+    }
+
+    public function countCharacters(Request $request): array
+    {
+        $this->validate($request, [
+            'markdown' => ['string', 'nullable'],
+        ]);
+
+        $markdown = $request->markdown;
+
+        return $this->count($markdown);
     }
 }
