@@ -12,7 +12,6 @@
         output: '{{ $placeholder }}',
         tooltip: null,
     }"
-    aax-init="function (bla) {"
     x-init="
         output = datetime.format(format);
         @if($tooltipFormat)
