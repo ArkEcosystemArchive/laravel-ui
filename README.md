@@ -97,10 +97,11 @@ window.initClipboard = () => {
 
 ### Modals
 
-1. Install `body-scroll-lock`
+1. Install `body-scroll-lock` and `focus-trap`
 
 ```bash
 yarn add body-scroll-lock
+yarn add focus-trap
 ```
 
 2. Import the modal script in your `resources/js/app.js` file

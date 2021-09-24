@@ -4,9 +4,12 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
+import { createFocusTrap } from 'focus-trap';
+
 const Modal = {
     previousPaddingRight: undefined,
     previousNavPaddingRight: undefined,
+    trappedElement: null,
 
     defaultSettings: {
         reserveScrollBarGap: true,
@@ -26,7 +29,7 @@ const Modal = {
             reserveScrollBarGap: !!settings.reserveScrollBarGap,
         });
 
-        scrollable.focus();
+        this.trapFocus(scrollable);
     },
 
     onModalClosed(scrollable, settings = Modal.defaultSettings) {
@@ -40,9 +43,30 @@ const Modal = {
 
         enableBodyScroll(scrollable);
 
+        this.releaseTrappedFocus();
+
         if (!document.querySelectorAll("[data-modal]").length) {
             clearAllBodyScrollLocks();
         }
+    },
+
+    trapFocus(el) {
+        let trap = createFocusTrap(el, {
+            escapeDeactivates: false,
+            allowOutsideClick: true
+        })
+
+        this.trappedElement = trap.activate();
+    },
+
+    releaseTrappedFocus() {
+        let trap = this.trappedElement;
+
+        if (trap) {
+            trap.deactivate();
+        }
+
+        this.trappedElement = null;
     },
 
     alpine(
