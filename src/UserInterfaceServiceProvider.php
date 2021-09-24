@@ -72,6 +72,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Route::group(['prefix' => 'wysiwyg'], function () {
             Route::get('twitter-embed-code', [WysiwygControlller::class, 'getTwitterEmbedCode'])->name('wysiwyg.twitter');
             Route::post('upload-image', [WysiwygControlller::class, 'uploadImage'])->name('wysiwyg.upload-image')->middleware(['web', 'auth']);
+            Route::post('count-characters', [WysiwygControlller::class, 'countCharacters'])->name('wysiwyg.count-characters')->middleware(['web', 'auth', 'throttle']);
         });
 
         Route::post('cropper/upload-image', ImageCropController::class)->name('cropper.upload-image')->middleware(['web', 'auth']);
@@ -240,6 +241,7 @@ class UserInterfaceServiceProvider extends ServiceProvider
         Blade::component('ark::image-tile', 'ark-image-tile');
         Blade::component('ark::info', 'ark-info');
         Blade::component('ark::js-modal', 'ark-js-modal');
+        Blade::component('ark::local-time', 'ark-local-time');
         Blade::component('ark::logo', 'ark-logo');
         Blade::component('ark::logo-simple', 'ark-logo-simple');
         Blade::component('ark::loading-spinner', 'ark-loading-spinner');

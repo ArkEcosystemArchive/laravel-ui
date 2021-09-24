@@ -15,7 +15,7 @@ import {
     embedLinkPlugin,
 } from "./plugins/index.js";
 
-import { extractTextFromHtml, uploadImage } from "./utils/utils.js";
+import { getWordsAndCharactersCount, uploadImage } from "./utils/utils.js";
 
 const AVERAGE_WORDS_READ_PER_MINUTE = 200;
 
@@ -54,6 +54,9 @@ const MarkdownEditor = (
     wordsCount: 0,
     readMinutes: 0,
     height: height || "600px",
+    loadingCharsCount: false,
+    loadingCharsTimeout: false,
+    loadingCharsAbortController: null,
     toolbarItems:
         toolbar === "basic"
             ? [
@@ -140,6 +143,7 @@ const MarkdownEditor = (
                 usageStatistics: false,
                 hideModeSwitch: true,
                 previewStyle: "tab",
+                previewHighlight: false,
                 initialValue: input.value,
                 events: {
                     change: () => this.onChangeHandler(),
@@ -202,6 +206,13 @@ const MarkdownEditor = (
             const handlers = events.get("command");
             handlers.unshift(this.forceHttpsLinkHandler);
             events.set("command", handlers);
+
+            // Since we dont use the preview and is hidden, the scroll event
+            // creates some exceptions that are fixed by removing these listeners.
+            this.editor.preview.eventManager.removeEventHandler(
+                "previewRenderAfter"
+            );
+            this.editor.preview.eventManager.removeEventHandler("scroll");
 
             this.editor.getCodeMirror().setOption("lineNumbers", true);
 
@@ -397,15 +408,9 @@ const MarkdownEditor = (
 
         const { input } = this.$refs;
 
-        input.value = this.editor.getMarkdown();
+        const markdown = this.editor.getMarkdown();
 
-        const text = extractTextFromHtml(this.editor.getHtml());
-
-        this.charsCount = text.trimEnd().length;
-        this.wordsCount = text.trim().split(/\s+/).length;
-        this.readMinutes = Math.round(
-            this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
-        );
+        input.value = markdown;
 
         const event = new Event("input", {
             bubbles: true,
@@ -413,6 +418,48 @@ const MarkdownEditor = (
         });
 
         input.dispatchEvent(event);
+
+        this.getWordsAndCharactersCount(markdown);
+    },
+    getWordsAndCharactersCount(markdown) {
+        this.loadingCharsCount = true;
+
+        // Throttles the call to get the word count to avoid multiple requests
+        // while the user is typing.
+        if (this.loadingCharsTimeout) {
+            clearTimeout(this.loadingCharsTimeout);
+            this.loadingCharsTimeout = null;
+        }
+
+        this.loadingCharsTimeout = setTimeout(async () => {
+            this.loadingCharsTimeout = null;
+
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                .content;
+
+            // The following lines cancels any pending request in favour
+            // of the incoming one.
+            if (this.loadingCharsCount && this.loadingCharsAbortController) {
+                this.loadingCharsAbortController.abort();
+            }
+            this.loadingCharsAbortController = new AbortController();
+
+            try {
+                const { characters, words } = await getWordsAndCharactersCount(
+                    markdown,
+                    csrfToken,
+                    this.loadingCharsAbortController.signal
+                );
+
+                this.charsCount = characters;
+                this.wordsCount = words;
+                this.readMinutes = Math.round(
+                    this.wordsCount / AVERAGE_WORDS_READ_PER_MINUTE
+                );
+            } catch (e) {}
+
+            this.loadingCharsCount = false;
+        }, 500);
     },
 
     // Default handlers
