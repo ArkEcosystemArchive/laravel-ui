@@ -4,7 +4,7 @@ import {
     clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 
-import { createFocusTrap } from 'focus-trap';
+import { createFocusTrap } from "focus-trap";
 
 const Modal = {
     previousPaddingRight: undefined,
@@ -53,8 +53,8 @@ const Modal = {
     trapFocus(el) {
         let trap = createFocusTrap(el, {
             escapeDeactivates: false,
-            allowOutsideClick: true
-        })
+            allowOutsideClick: true,
+        });
 
         this.trappedElement = trap.activate();
     },
