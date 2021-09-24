@@ -2,12 +2,12 @@
 
 namespace ARKEcosystem\UserInterface\Rules;
 
-use ARKEcosystem\UserInterface\Rules\Concerns\ValidatesMarkdown;
+use ARKEcosystem\UserInterface\Support\Concerns\ParsesMarkdown;
 use Illuminate\Contracts\Validation\Rule;
 
 class MarkdownMaxChars implements Rule
 {
-    use ValidatesMarkdown;
+    use ParsesMarkdown;
 
     private int $maxChars;
 
@@ -30,9 +30,7 @@ class MarkdownMaxChars implements Rule
      */
     public function passes($attribute, $value)
     {
-        $text = $this->getText($value);
-
-        return mb_strlen($text) <= $this->maxChars;
+        return $this->count($value)['characters'] <= $this->maxChars;
     }
 
     /**
