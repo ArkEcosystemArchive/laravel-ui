@@ -15,14 +15,14 @@ final class SvgLazy extends Component
 
     public function __construct(string $name, string $class)
     {
-        $this->name = $name;
+        $this->name  = $name;
         $this->class = $class;
     }
 
     public function render(): View
     {
         return view('ark::svg-lazy', [
-            'name' => $this->name,
+            'name'  => $this->name,
             'class' => $this->class,
         ]);
     }

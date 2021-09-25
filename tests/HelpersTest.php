@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 it('clean up zalgo text', function (string $expected, string $zalgo): void {

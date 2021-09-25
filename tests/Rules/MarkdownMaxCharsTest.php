@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-use Mockery\MockInterface;
-use League\CommonMark\MarkdownConverterInterface;
 use ARKEcosystem\UserInterface\Rules\MarkdownMaxChars;
+use League\CommonMark\MarkdownConverterInterface;
+use League\CommonMark\Node\Block\Document;
+use League\CommonMark\Output\RenderedContent;
+use Mockery\MockInterface;
 
 it('validates the resulted text length', function () {
-    $text = <<<EOT
+    $text = <<<'EOT'
 # Aut spes nomina turis
 
 ## Spem non bracchia
@@ -29,7 +31,7 @@ iam *amnis* promissa miluus! Diomedeos ira atque facinus deus magnum legit
 *pariter*!
 EOT;
 
-    $html = <<<HTML
+    $html = <<<'HTML'
 <h1><a id="user-content-aut-spes-nomina-turis" href="#aut-spes-nomina-turis" name="aut-spes-nomina-turis" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Aut spes nomina turis</h1>
 <h2><a id="user-content-spem-non-bracchia" href="#spem-non-bracchia" name="spem-non-bracchia" class="heading-permalink" aria-hidden="true" title="Permalink">#</a>Spem non bracchia</h2>
 <p>Lorem markdownum; aequor rapta refovet requirit grandia <em>nec</em> germanae partu
@@ -51,7 +53,7 @@ HTML;
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($html) {
         $mock->shouldReceive('convertToHtml')
-            ->andReturn($html);
+            ->andReturn(new RenderedContent(new Document(), $html));
     });
 
     $rule = new MarkdownMaxChars(762);
@@ -66,7 +68,7 @@ it('accepts the exact number of chars on the parameter', function () {
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
         $mock->shouldReceive('convertToHtml')
-            ->andReturn($text);
+            ->andReturn(new RenderedContent(new Document(), $text));
     });
 
     $rule = new MarkdownMaxChars(100);
@@ -78,7 +80,7 @@ it('trims the whitespaces for counting', function () {
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
         $mock->shouldReceive('convertToHtml')
-            ->andReturn($text . "\n");
+            ->andReturn(new RenderedContent(new Document(), $text."\n"));
     });
 
     $rule = new MarkdownMaxChars(100);
@@ -90,7 +92,7 @@ it('doesnt accepts more characters than the limit', function () {
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) use ($text) {
         $mock->shouldReceive('convertToHtml')
-            ->andReturn($text);
+            ->andReturn(new RenderedContent(new Document(), $text));
     });
 
     $rule = new MarkdownMaxChars(10);
@@ -102,7 +104,7 @@ it('validates unicode text correctly', function () {
 
     $this->mock(MarkdownConverterInterface::class, function (MockInterface $mock) {
         $mock->shouldReceive('convertToHtml')
-            ->andReturn('⡷⡷⡷');
+            ->andReturn(new RenderedContent(new Document(), '⡷⡷⡷'));
     });
 
     $rule = new MarkdownMaxChars(3);
@@ -117,9 +119,8 @@ it('has an error message', function () {
     expect($rule->message())->toBe(trans('ui::validation.custom.max_markdown_chars', ['max' => 30]));
 });
 
-
 it('handles the characters count when we have lists', function () {
-    $markdown = <<<EOT
+    $markdown = <<<'EOT'
 I have been involved in the Blockchain and crypto industries for years. I started getting more active after discovering ARK and began collaborating with others in the ARK community:
 
 Delegate Cam’s Yellow Jacket for ArkLogoWorks
@@ -130,7 +131,7 @@ Jorma for ArkDirectory
 I launched a community service of my own under the name ARKStickers where I began shipping ARK sticker packs all over the world in exchange for ARK coins. Shortly thereafter, I helped write docs for the ARK Team. I founded the ARK Community Committee to make cool ARK stuff with other people, like ARKTimeline. I was hired to the team in 2018, and have since produced over 100 podcast episodes under The ARK Crypto Podcast. I attended and spoke at Blockchain conferences such as Consensus NYC 2019, WorldCryptoCon, Hivefest, DYGYCON, and others. I have been interviewed by BlockTV, Cointelegraph, and other media outlets. I now serve as Senior Brand Manager for ARK and its products.
 EOT;
 
-    $html = <<<HTML
+    $html = <<<'HTML'
 <p>I have been involved in the Blockchain and crypto industries for years. I started getting more active after discovering ARK and began collaborating with others in the ARK community:</p>
 <ul>
 <li>
@@ -151,7 +152,7 @@ HTML;
 
     $this->mock(MarkdownConverterInterface::class)
         ->shouldReceive('convertToHtml')
-        ->andReturn($html);
+        ->andReturn(new RenderedContent(new Document(), $html));
 
     $rule = new MarkdownMaxChars(998);
     $this->assertTrue($rule->passes('markdown', $markdown));

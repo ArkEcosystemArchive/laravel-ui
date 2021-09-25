@@ -9,13 +9,15 @@ use Illuminate\Contracts\Validation\Rule;
 class MarkdownWithContent implements Rule
 {
     use ParsesMarkdown;
+
     use ValidatesEmptyString;
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  string|null  $value
+     * @param string      $attribute
+     * @param string|null $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
