@@ -9,21 +9,23 @@
         {{ date('Y') }} &copy; {{ $copyText }}
     </span>
 
-    <div class="flex">
-        @if($isArkProduct)
-            <div>
-                <span class="hidden mr-1 sm:inline"> | </span>
-                <span class="whitespace-nowrap">
-                    <x-ark-icon
-                        name="ark-logo-red-square"
-                        class="inline-block mr-1 -mt-1"
-                    />
+    @if($isArkProduct || $copyrightSlot !== null)
+        <div class="flex">
+            @if($isArkProduct)
+                <div>
+                    <span class="hidden mr-1 sm:inline"> | </span>
+                    <span class="whitespace-nowrap">
+                        <x-ark-icon
+                            name="ark-logo-red-square"
+                            class="inline-block mr-1 -mt-1"
+                        />
 
-                    An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded">ARK.io</a> Product
-                </span>
-            </div>
-        @endif
+                        An <a href="https://ark.io/" class="underline hover:no-underline focus-visible:rounded">ARK.io</a> Product
+                    </span>
+                </div>
+            @endif
 
-        {{ $copyrightSlot }}
-    </div>
+            {{ $copyrightSlot }}
+        </div>
+    @endif
 </div>
