@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace ARKEcosystem\UserInterface\Http\Controllers;
 
 use ARKEcosystem\UserInterface\Mail\ContactFormSubmitted;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 final class ContactController extends Controller
 {

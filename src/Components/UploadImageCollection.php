@@ -13,6 +13,7 @@ use Livewire\WithFileUploads;
 trait UploadImageCollection
 {
     use HandleUploadError;
+
     use WithFileUploads;
 
     public array $imageCollection = [];
@@ -34,11 +35,11 @@ trait UploadImageCollection
             return TemporaryUploadedFile::createFromLivewire($image);
         })->toArray();
 
-        if (!$this->validateImageCollection()) {
+        if (! $this->validateImageCollection()) {
             return;
         }
 
-        $this->imageCollection = array_merge($this->imageCollection, array_map(fn($image) => [
+        $this->imageCollection = array_merge($this->imageCollection, array_map(fn ($image) => [
             'image' => $image,
             'url'   => $image->temporaryUrl(),
         ], $this->temporaryImages));
@@ -72,13 +73,13 @@ trait UploadImageCollection
     public function imageCollectionValidators(): array
     {
         return [
-            'imageCollection' => ['array', 'max:' . $this->getImageCollectionMaxQuantity()],
+            'imageCollection'  => ['array', 'max:'.$this->getImageCollectionMaxQuantity()],
             'temporaryImages'  => function ($attribute, $value, $fail) {
                 $max = $this->getImageCollectionMaxQuantity();
 
                 if (count($value) + count($this->imageCollection) > $max) {
                     $fail(trans('validation.max.array', [
-                        'max' => $max,
+                        'max'       => $max,
                         'attribute' => 'image collection',
                     ]));
                 }

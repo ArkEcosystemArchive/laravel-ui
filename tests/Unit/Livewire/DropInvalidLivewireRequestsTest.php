@@ -9,10 +9,11 @@ use Livewire\Exceptions\ComponentNotFoundException;
 use Livewire\LivewireManager;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-function mockRequest(string $routeName = 'testing::dummy', array $payload = []) : Request {
+function mockRequest(string $routeName = 'testing::dummy', array $payload = []) : Request
+{
     $route = Route::get('/dummy', fn () => response('OK'))->name($routeName);
 
-    return tap(new Request)
+    return tap(new Request())
             ->setRouteResolver(fn () => $route)
             ->merge($payload);
 }
@@ -24,7 +25,7 @@ it('ignores all non-livewire requests', function () {
 
     $called = false;
 
-    $response = (new DropInvalidLivewireRequests)->handle($request, function () use (&$called) {
+    $response = (new DropInvalidLivewireRequests())->handle($request, function () use (&$called) {
         $called = true;
 
         return 'Hello world';
@@ -37,10 +38,10 @@ it('ignores all non-livewire requests', function () {
 it('drops if component is not found', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => 'dummy-name',
+            'id'     => 'dummy-id',
+            'name'   => 'dummy-name',
             'method' => 'POST',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -53,7 +54,7 @@ it('drops if component is not found', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -65,10 +66,10 @@ it('drops if component is not found', function () {
 it('drops if fingerprint ID is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => '',
-            'name' => 'dummy-name',
+            'id'     => '',
+            'name'   => 'dummy-name',
             'method' => 'POST',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -81,7 +82,7 @@ it('drops if fingerprint ID is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -93,10 +94,10 @@ it('drops if fingerprint ID is missing', function () {
 it('drops if fingerprint component name is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => '',
+            'id'     => 'dummy-id',
+            'name'   => '',
             'method' => 'POST',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -109,7 +110,7 @@ it('drops if fingerprint component name is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -121,10 +122,10 @@ it('drops if fingerprint component name is missing', function () {
 it('drops if fingerprint method is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => 'dummy-name',
+            'id'     => 'dummy-id',
+            'name'   => 'dummy-name',
             'method' => '',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -137,7 +138,7 @@ it('drops if fingerprint method is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -149,10 +150,10 @@ it('drops if fingerprint method is missing', function () {
 it('drops if fingerprint path is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => 'dummy-name',
+            'id'     => 'dummy-id',
+            'name'   => 'dummy-name',
             'method' => 'POST',
-            'path' => '',
+            'path'   => '',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -165,7 +166,7 @@ it('drops if fingerprint path is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -177,10 +178,10 @@ it('drops if fingerprint path is missing', function () {
 it('drops if checksum is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => 'dummy-name',
+            'id'     => 'dummy-id',
+            'name'   => 'dummy-name',
             'method' => 'POST',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => '',
@@ -193,7 +194,7 @@ it('drops if checksum is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -205,10 +206,10 @@ it('drops if checksum is missing', function () {
 it('drops if html hash is missing', function () {
     $request = mockRequest('livewire.message', [
         'fingerprint' => [
-            'id' => 'dummy-id',
-            'name' => 'dummy-name',
+            'id'     => 'dummy-id',
+            'name'   => 'dummy-name',
             'method' => 'POST',
-            'path' => '/dummy',
+            'path'   => '/dummy',
         ],
         'serverMemo' => [
             'checksum' => 'some-checksum',
@@ -221,7 +222,7 @@ it('drops if html hash is missing', function () {
     });
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {
@@ -236,7 +237,7 @@ it('drops if payload is missing', function () {
     ]);
 
     try {
-        $response = (new DropInvalidLivewireRequests)->handle($request, fn () => 'Hello world');
+        $response = (new DropInvalidLivewireRequests())->handle($request, fn () => 'Hello world');
 
         $this->fail('HTTPException was not thrown.');
     } catch (HttpException $e) {

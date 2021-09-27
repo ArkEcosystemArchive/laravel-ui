@@ -1,9 +1,11 @@
 <?php
 
 use League\CommonMark\MarkdownConverterInterface;
+use League\CommonMark\Node\Block\Document;
+use League\CommonMark\Output\RenderedContent;
 
 it('counts the characters', function () {
-    $markdown = <<<MARKDOWN
+    $markdown = <<<'MARKDOWN'
 * Item 1
 * Item 2
 * Item 4
@@ -13,7 +15,7 @@ Hello world!
 **Bold**
 MARKDOWN;
 
-    $convertedHtml = <<<HTML
+    $convertedHtml = <<<'HTML'
 <ul>
 <li>Item 1</li>
 <li>Item 2</li>
@@ -28,7 +30,7 @@ HTML;
 
     $this->mock(MarkdownConverterInterface::class)
         ->shouldReceive('convertToHtml')
-        ->andReturn($convertedHtml);
+        ->andReturn(new RenderedContent(new Document(), $convertedHtml));
 
     $result = $this
         ->post(route('wysiwyg.count-characters'), [
@@ -46,7 +48,7 @@ it('counts the characters if markdown is a empty string', function () {
 
     $this->mock(MarkdownConverterInterface::class)
         ->shouldReceive('convertToHtml')
-        ->andReturn('');
+        ->andReturn(new RenderedContent(new Document(), ''));
 
     $result = $this
         ->post(route('wysiwyg.count-characters'), [
