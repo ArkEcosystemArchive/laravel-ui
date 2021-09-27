@@ -6,8 +6,8 @@ namespace ARKEcosystem\UserInterface\Http\Controllers;
 
 use ARKEcosystem\UserInterface\Support\Concerns\ParsesMarkdown;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 final class WysiwygControlller extends Controller
 {
@@ -17,7 +17,7 @@ final class WysiwygControlller extends Controller
     {
         $id = $request->get('id');
 
-        if (!$id) {
+        if (! $id) {
             abort('400', 'Missing id');
         }
 

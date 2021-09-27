@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\UserInterface\Components;
 
+use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Livewire\WithFileUploads;
-use ARKEcosystem\UserInterface\Components\Concerns\HandleUploadError;
 
 trait UploadImageSingle
 {
     use HandleUploadError;
+
     use WithFileUploads;
 
     public $imageSingle;
