@@ -12,8 +12,9 @@ class IsNotEmpty implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  string|null  $value
+     * @param string      $attribute
+     * @param string|null $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)

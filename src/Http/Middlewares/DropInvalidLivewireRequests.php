@@ -33,6 +33,7 @@ final class DropInvalidLivewireRequests
      * We want to drop all Livewire requests that want to manipulate on a component that doesn't even exist.
      *
      * @param string $component
+     *
      * @return bool
      */
     private function isValidComponent(string $component) : bool
@@ -48,6 +49,7 @@ final class DropInvalidLivewireRequests
      * A valid Livewire request should contain fingerprint data (ID, method) and stuff like checksum.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     private function containsValidPayload(Request $request) : bool
