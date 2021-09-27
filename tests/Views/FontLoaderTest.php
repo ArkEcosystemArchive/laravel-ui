@@ -35,6 +35,5 @@ it('should render the font from google fonts forcing display swap', function ():
         ->contains('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />')
         ->contains('<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />')
         ->contains('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" media="print" onload="this.media=\'all\'" />')
-        ->contains('<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" /></noscript>')
-    ;
+        ->contains('<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" /></noscript>');
 });

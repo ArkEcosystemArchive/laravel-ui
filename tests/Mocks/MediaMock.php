@@ -23,7 +23,8 @@ class MediaMock implements Htmlable
      *
      * @return string
      */
-    public function toHtml() {
+    public function toHtml()
+    {
         return sprintf('<img src="%s" />', $this->url);
     }
 }

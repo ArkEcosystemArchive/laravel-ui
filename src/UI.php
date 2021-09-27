@@ -2,8 +2,8 @@
 
 namespace ARKEcosystem\UserInterface;
 
-use Illuminate\Support\Arr;
 use Illuminate\Pagination\AbstractPaginator;
+use Illuminate\Support\Arr;
 
 class UI
 {
@@ -37,7 +37,7 @@ class UI
                 // Add square brackets to the query params when needed, example: `&state['all']=1`
                 $key = collect($parts)
                     ->slice(1)
-                    ->reduce(fn ($key, $part) => $key . '[' . $part . ']', $parts[0]);
+                    ->reduce(fn ($key, $part) => $key.'['.$part.']', $parts[0]);
 
                 return [$key => $value];
             });

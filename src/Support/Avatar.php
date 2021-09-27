@@ -40,7 +40,7 @@ final class Avatar
                 return array_splice($defaultColors, $index, 1)[0];
             };
 
-            $backgroundString = '<rect fill="' . $genColor() . '" width="100" height="100"/>';
+            $backgroundString = '<rect fill="'.$genColor().'" width="100" height="100"/>';
             $styleString      = '<style>.picasso circle{mix-blend-mode:soft-light;}</style>';
             $shapeString      = '';
             $layers           = 3;
@@ -54,14 +54,14 @@ final class Avatar
                 $cy   = array_splice($cys, (int) floor(count($cys) * $twister->random()), 1)[0];
                 $fill = $genColor();
 
-                $shapeString .= '<circle r="' . $r . '" cx="' . $cx . '" cy="' . $cy . '" fill="' . $fill . '"/>';
+                $shapeString .= '<circle r="'.$r.'" cx="'.$cx.'" cy="'.$cy.'" fill="'.$fill.'"/>';
             }
 
             $shortenedIdentifier = Str::upper(Str::limit($seed, 2, ''));
 
             $letters = $withLetters ?
                 "<text x='50%' y='52%' stroke-width='1' dominant-baseline='middle' text-anchor='middle' letter-spacing='2' style='font-size : 1.75rem; fill: #fff; stroke: #fff;'>{$shortenedIdentifier}</text>" :
-                "";
+                '';
 
             return sprintf(
                 "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' class='picasso' viewBox='0 0 100 100'>%s%s%s%s</svg>",

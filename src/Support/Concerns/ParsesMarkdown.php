@@ -17,6 +17,7 @@ trait ParsesMarkdown
     private function removeHeadersAnchors($html): string
     {
         $regex = '/<a\s?[^>]*[^>]*>#<\/a>/siU';
+
         return preg_replace($regex, '', $html);
     }
 
@@ -31,7 +32,7 @@ trait ParsesMarkdown
 
         return [
             'characters' => mb_strlen($text),
-            'words' => str_word_count($text),
+            'words'      => str_word_count($text),
         ];
     }
 }
