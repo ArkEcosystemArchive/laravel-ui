@@ -2,14 +2,21 @@
 
 namespace ARKEcosystem\UserInterface;
 
+use ARKEcosystem\UserInterface\Components\Currency;
+use ARKEcosystem\UserInterface\Components\DataBag;
 use ARKEcosystem\UserInterface\Components\FlashMessage;
 use ARKEcosystem\UserInterface\Components\HoneyPot;
+use ARKEcosystem\UserInterface\Components\Number;
+use ARKEcosystem\UserInterface\Components\Percentage;
+use ARKEcosystem\UserInterface\Components\ShortCurrency;
+use ARKEcosystem\UserInterface\Components\ShortPercentage;
 use ARKEcosystem\UserInterface\Components\Toast;
+use ARKEcosystem\UserInterface\Components\TruncateMiddle;
 use ARKEcosystem\UserInterface\Http\Controllers\ImageCropController;
 use ARKEcosystem\UserInterface\Http\Controllers\WysiwygControlller;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
 
@@ -172,120 +179,134 @@ class UserInterfaceServiceProvider extends ServiceProvider
      */
     private function registerBladeComponents(): void
     {
-        Blade::component('ark::inputs.checkbox', 'ark-checkbox');
-        Blade::component('ark::inputs.date-picker', 'ark-date-picker');
-        Blade::component('ark::inputs.input', 'ark-input');
-        Blade::component('ark::inputs.input-with-icon', 'ark-input-with-icon');
-        Blade::component('ark::inputs.input-with-prefix', 'ark-input-with-prefix');
-        Blade::component('ark::inputs.input-with-suffix', 'ark-input-with-suffix');
-        Blade::component('ark::inputs.radio', 'ark-radio');
-        Blade::component('ark::inputs.textarea', 'ark-textarea');
-        Blade::component('ark::inputs.toggle', 'ark-toggle');
-        Blade::component('ark::inputs.select', 'ark-select');
-        Blade::component('ark::inputs.upload', 'ark-upload');
-        Blade::component('ark::inputs.password-toggle', 'ark-password-toggle');
-        Blade::component('ark::inputs.rich-select', 'ark-rich-select');
-        Blade::component('ark::inputs.markdown', 'ark-markdown');
-        Blade::component('ark::inputs.user-tagger', 'ark-user-tagger');
-        Blade::component('ark::inputs.switch', 'ark-switch');
-        Blade::component('ark::inputs.tile-selection', 'ark-tile-selection');
-        Blade::component('ark::inputs.time', 'ark-time');
-        Blade::component('ark::inputs.upload-image-single', 'ark-upload-image-single');
-        Blade::component('ark::inputs.upload-image-collection', 'ark-upload-image-collection');
-        Blade::component('ark::inputs.tags', 'ark-tags');
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+            $blade->component('ark::inputs.checkbox', 'ark-checkbox');
+            $blade->component('ark::inputs.date-picker', 'ark-date-picker');
+            $blade->component('ark::inputs.input', 'ark-input');
+            $blade->component('ark::inputs.input-with-icon', 'ark-input-with-icon');
+            $blade->component('ark::inputs.input-with-prefix', 'ark-input-with-prefix');
+            $blade->component('ark::inputs.input-with-suffix', 'ark-input-with-suffix');
+            $blade->component('ark::inputs.radio', 'ark-radio');
+            $blade->component('ark::inputs.textarea', 'ark-textarea');
+            $blade->component('ark::inputs.toggle', 'ark-toggle');
+            $blade->component('ark::inputs.select', 'ark-select');
+            $blade->component('ark::inputs.upload', 'ark-upload');
+            $blade->component('ark::inputs.password-toggle', 'ark-password-toggle');
+            $blade->component('ark::inputs.rich-select', 'ark-rich-select');
+            $blade->component('ark::inputs.markdown', 'ark-markdown');
+            $blade->component('ark::inputs.user-tagger', 'ark-user-tagger');
+            $blade->component('ark::inputs.switch', 'ark-switch');
+            $blade->component('ark::inputs.tile-selection', 'ark-tile-selection');
+            $blade->component('ark::inputs.time', 'ark-time');
+            $blade->component('ark::inputs.upload-image-single', 'ark-upload-image-single');
+            $blade->component('ark::inputs.upload-image-collection', 'ark-upload-image-collection');
+            $blade->component('ark::inputs.tags', 'ark-tags');
 
-        Blade::component('ark::pages.contact.content', 'ark-pages-contact-content');
-        Blade::component('ark::pages.contact.header', 'ark-pages-contact-header');
+            $blade->component('ark::pages.contact.content', 'ark-pages-contact-content');
+            $blade->component('ark::pages.contact.header', 'ark-pages-contact-header');
 
-        Blade::component('ark::pages.includes.markdown-scripts', 'ark-pages-includes-markdown-scripts');
-        Blade::component('ark::pages.includes.crop-image-scripts', 'ark-pages-includes-crop-image-scripts');
-        Blade::component('ark::pages.includes.compress-image-scripts', 'ark-pages-includes-compress-image-scripts');
+            $blade->component('ark::pages.includes.markdown-scripts', 'ark-pages-includes-markdown-scripts');
+            $blade->component('ark::pages.includes.crop-image-scripts', 'ark-pages-includes-crop-image-scripts');
+            $blade->component('ark::pages.includes.compress-image-scripts', 'ark-pages-includes-compress-image-scripts');
 
-        Blade::component('ark::tables.table', 'ark-tables.table');
-        Blade::component('ark::tables.row', 'ark-tables.row');
-        Blade::component('ark::tables.cell', 'ark-tables.cell');
-        Blade::component('ark::tables.header', 'ark-tables.header');
-        Blade::component('ark::tables.view-options', 'ark-tables.view-options');
-        Blade::component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
-        Blade::component('ark::tables.mobile.row', 'ark-tables.mobile.row');
+            $blade->component('ark::tables.table', 'ark-tables.table');
+            $blade->component('ark::tables.row', 'ark-tables.row');
+            $blade->component('ark::tables.cell', 'ark-tables.cell');
+            $blade->component('ark::tables.header', 'ark-tables.header');
+            $blade->component('ark::tables.view-options', 'ark-tables.view-options');
+            $blade->component('ark::tables.mobile.cell', 'ark-tables.mobile.cell');
+            $blade->component('ark::tables.mobile.row', 'ark-tables.mobile.row');
 
-        Blade::component('ark::accordion-group', 'ark-accordion-group');
-        Blade::component('ark::accordion', 'ark-accordion');
-        Blade::component('ark::alert', 'ark-alert');
-        Blade::component('ark::alert-simple', 'ark-alert-simple');
-        Blade::component('ark::avatar', 'ark-avatar');
-        Blade::component('ark::breadcrumbs', 'ark-breadcrumbs');
-        Blade::component('ark::clipboard', 'ark-clipboard');
-        Blade::component('ark::code', 'ark-code');
-        Blade::component('ark::code-lines', 'ark-code-lines');
-        Blade::component('ark::container', 'ark-container');
-        Blade::component('ark::description-block', 'ark-description-block');
-        Blade::component('ark::description-block-link', 'ark-description-block-link');
-        Blade::component('ark::details-box', 'ark-details-box');
-        Blade::component('ark::details-box-mobile', 'ark-details-box-mobile');
-        Blade::component('ark::divider', 'ark-divider');
-        Blade::component('ark::dropdown', 'ark-dropdown');
-        Blade::component('ark::expandable', 'ark-expandable');
-        Blade::component('ark::expandable-item', 'ark-expandable-item');
-        Blade::component('ark::external-link', 'ark-external-link');
-        Blade::component('ark::external-link-confirm', 'ark-external-link-confirm');
-        Blade::component('ark::flash', 'ark-flash');
-        Blade::component('ark::footer-bar-desktop', 'ark-footer-bar-desktop');
-        Blade::component('ark::footer-bar-mobile', 'ark-footer-bar-mobile');
-        Blade::component('ark::footer-copyright', 'ark-footer-copyright');
-        Blade::component('ark::footer-social', 'ark-footer-social');
-        Blade::component('ark::footer', 'ark-footer');
-        Blade::component('ark::horizontal-divider', 'ark-horizontal-divider');
-        Blade::component('ark::icon', 'ark-icon');
-        Blade::component('ark::icon-link', 'ark-icon-link');
-        Blade::component('ark::image-tile', 'ark-image-tile');
-        Blade::component('ark::info', 'ark-info');
-        Blade::component('ark::js-modal', 'ark-js-modal');
-        Blade::component('ark::logo', 'ark-logo');
-        Blade::component('ark::logo-simple', 'ark-logo-simple');
-        Blade::component('ark::loading-spinner', 'ark-loading-spinner');
-        Blade::component('ark::spinner-icon', 'ark-spinner-icon');
-        Blade::component('ark::loader-icon', 'ark-loader-icon');
-        Blade::component('ark::message', 'ark-message');
-        Blade::component('ark::metadata', 'ark-metadata');
-        Blade::component('ark::metadata-tags', 'ark-metadata-tags');
-        Blade::component('ark::modal', 'ark-modal');
-        Blade::component('ark::no-results', 'ark-no-results');
-        Blade::component('ark::notification-dot', 'ark-notification-dot');
-        Blade::component('ark::outgoing-link', 'ark-outgoing-link');
-        Blade::component('ark::pagination', 'ark-pagination');
-        Blade::component('ark::pagination-url', 'ark-pagination-url');
-        Blade::component('ark::read-more', 'ark-read-more');
-        Blade::component('ark::secondary-menu', 'ark-secondary-menu');
-        Blade::component('ark::sidebar-link', 'ark-sidebar-link');
-        Blade::component('ark::simple-footer', 'ark-simple-footer');
-        Blade::component('ark::slider-slide', 'ark-slider-slide');
-        Blade::component('ark::slider', 'ark-slider');
-        Blade::component('ark::social-link', 'ark-social-link');
-        Blade::component('ark::social-square', 'ark-social-square');
-        Blade::component('ark::sort-icon', 'ark-sort-icon');
-        Blade::component('ark::status-circle', 'ark-status-circle');
-        Blade::component('ark::svg-lazy', 'ark-svg-lazy');
-        Blade::component('ark::toast', 'ark-toast');
-        Blade::component('ark::shapes.line', 'ark-placeholder-line');
-        Blade::component('ark::shapes.square', 'ark-placeholder-square');
-        Blade::component('ark::link-collection', 'ark-link-collection');
-        Blade::component('ark::file-download', 'ark-file-download');
-        Blade::component('ark::chart', 'ark-chart');
-        Blade::component('ark::tabs.wrapper', 'ark-tabbed');
-        Blade::component('ark::tabs.tab', 'ark-tab');
-        Blade::component('ark::tabs.panel', 'ark-tab-panel');
+            $blade->component('ark::accordion-group', 'ark-accordion-group');
+            $blade->component('ark::accordion', 'ark-accordion');
+            $blade->component('ark::alert', 'ark-alert');
+            $blade->component('ark::alert-simple', 'ark-alert-simple');
+            $blade->component('ark::avatar', 'ark-avatar');
+            $blade->component('ark::breadcrumbs', 'ark-breadcrumbs');
+            $blade->component('ark::clipboard', 'ark-clipboard');
+            $blade->component('ark::code', 'ark-code');
+            $blade->component('ark::code-lines', 'ark-code-lines');
+            $blade->component('ark::container', 'ark-container');
+            $blade->component('ark::description-block', 'ark-description-block');
+            $blade->component('ark::description-block-link', 'ark-description-block-link');
+            $blade->component('ark::details-box', 'ark-details-box');
+            $blade->component('ark::details-box-mobile', 'ark-details-box-mobile');
+            $blade->component('ark::divider', 'ark-divider');
+            $blade->component('ark::dropdown', 'ark-dropdown');
+            $blade->component('ark::expandable', 'ark-expandable');
+            $blade->component('ark::expandable-item', 'ark-expandable-item');
+            $blade->component('ark::external-link', 'ark-external-link');
+            $blade->component('ark::external-link-confirm', 'ark-external-link-confirm');
+            $blade->component('ark::flash', 'ark-flash');
+            $blade->component('ark::footer-bar-desktop', 'ark-footer-bar-desktop');
+            $blade->component('ark::footer-bar-mobile', 'ark-footer-bar-mobile');
+            $blade->component('ark::footer-copyright', 'ark-footer-copyright');
+            $blade->component('ark::footer-social', 'ark-footer-social');
+            $blade->component('ark::footer', 'ark-footer');
+            $blade->component('ark::horizontal-divider', 'ark-horizontal-divider');
+            $blade->component('ark::icon', 'ark-icon');
+            $blade->component('ark::icon-link', 'ark-icon-link');
+            $blade->component('ark::image-tile', 'ark-image-tile');
+            $blade->component('ark::info', 'ark-info');
+            $blade->component('ark::js-modal', 'ark-js-modal');
+            $blade->component('ark::local-time', 'ark-local-time');
+            $blade->component('ark::logo', 'ark-logo');
+            $blade->component('ark::logo-simple', 'ark-logo-simple');
+            $blade->component('ark::loading-spinner', 'ark-loading-spinner');
+            $blade->component('ark::spinner-icon', 'ark-spinner-icon');
+            $blade->component('ark::loader-icon', 'ark-loader-icon');
+            $blade->component('ark::message', 'ark-message');
+            $blade->component('ark::metadata', 'ark-metadata');
+            $blade->component('ark::metadata-tags', 'ark-metadata-tags');
+            $blade->component('ark::modal', 'ark-modal');
+            $blade->component('ark::no-results', 'ark-no-results');
+            $blade->component('ark::notification-dot', 'ark-notification-dot');
+            $blade->component('ark::outgoing-link', 'ark-outgoing-link');
+            $blade->component('ark::pagination', 'ark-pagination');
+            $blade->component('ark::pagination-url', 'ark-pagination-url');
+            $blade->component('ark::read-more', 'ark-read-more');
+            $blade->component('ark::secondary-menu', 'ark-secondary-menu');
+            $blade->component('ark::sidebar-link', 'ark-sidebar-link');
+            $blade->component('ark::simple-footer', 'ark-simple-footer');
+            $blade->component('ark::slider-slide', 'ark-slider-slide');
+            $blade->component('ark::slider', 'ark-slider');
+            $blade->component('ark::social-link', 'ark-social-link');
+            $blade->component('ark::social-square', 'ark-social-square');
+            $blade->component('ark::sort-icon', 'ark-sort-icon');
+            $blade->component('ark::status-circle', 'ark-status-circle');
+            $blade->component('ark::svg-lazy', 'ark-svg-lazy');
+            $blade->component('ark::toast', 'ark-toast');
+            $blade->component('ark::shapes.line', 'ark-placeholder-line');
+            $blade->component('ark::shapes.square', 'ark-placeholder-square');
+            $blade->component('ark::link-collection', 'ark-link-collection');
+            $blade->component('ark::file-download', 'ark-file-download');
+            $blade->component('ark::chart', 'ark-chart');
+            $blade->component('ark::tabs.wrapper', 'ark-tabbed');
+            $blade->component('ark::tabs.tab', 'ark-tab');
+            $blade->component('ark::tabs.panel', 'ark-tab-panel');
 
-        // Navigation
-        Blade::component('ark::navbar', 'ark-navbar');
-        Blade::component('ark::navbar.link-mobile', 'ark-navbar-link-mobile');
-        Blade::component('ark::navbar.hamburger', 'ark-navbar-hamburger');
+            // Navigation
+            $blade->component('ark::navbar', 'ark-navbar');
+            $blade->component('ark::navbar.link-mobile', 'ark-navbar-link-mobile');
+            $blade->component('ark::navbar.hamburger', 'ark-navbar-hamburger');
 
-        // Font Loader
-        Blade::component('ark::font-loader', 'ark-font-loader');
+            // Font Loader
+            $blade->component('ark::font-loader', 'ark-font-loader');
 
-        // Honey Pot
-        Blade::component('honey-pot', HoneyPot::class);
+            // Honey Pot
+            $blade->component('honey-pot', HoneyPot::class);
+
+            // Formatting
+            $blade->component('currency', Currency::class);
+            $blade->component('number', Number::class);
+            $blade->component('percentage', Percentage::class);
+            $blade->component('short-currency', ShortCurrency::class);
+            $blade->component('short-percentage', ShortPercentage::class);
+            $blade->component('truncate-middle', TruncateMiddle::class);
+
+            // Data Bags
+            $blade->component('data-bag', DataBag::class);
+        });
     }
 
     /**

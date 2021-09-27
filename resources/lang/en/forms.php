@@ -8,11 +8,11 @@ return [
     'name'                          => 'Name',
     'subject'                       => 'Subject',
     'github_markdown_can_be_used'   => '* Github flavored markdown can be used',
-    'wysiwyg'   => [
-        'words' => 'Words',
-        'characters' => 'Characters',
+    'wysiwyg'                       => [
+        'words'        => 'Words',
+        'characters'   => 'Characters',
         'reading_time' => 'Reading time',
-        'min' => 'min',
+        'min'          => 'min',
     ],
 
     'upload-image' => [

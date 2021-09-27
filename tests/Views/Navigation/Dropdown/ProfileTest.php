@@ -1,7 +1,7 @@
 <?php
 
-use Tests\Mocks\MediaMock;
 use function Tests\createAttributes;
+use Tests\Mocks\MediaMock;
 
 it('should render the component', function (): void {
     $this

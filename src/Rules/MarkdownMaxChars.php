@@ -24,8 +24,9 @@ class MarkdownMaxChars implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  string  $value
+     * @param string $attribute
+     * @param string $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
