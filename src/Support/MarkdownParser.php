@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\UserInterface\Support;
 
-use tidy;
 use DOMAttr;
-use DOMNodeList;
 use DOMDocument;
+use DOMNodeList;
 use DOMXPath;
+use Exception;
 use Illuminate\Support\Arr;
 use League\CommonMark\MarkdownConverterInterface;
-use Exception;
-
+use tidy;
 
 final class MarkdownParser
 {
@@ -21,35 +20,35 @@ final class MarkdownParser
      * markdown.
      */
     private static array $validUserTagsAndAttributes = [
-        'h2' => [],
-        'h3' => [],
-        'h4' => [],
-        'ins' => [],
-        'i' => [],
-        'a' => ['id', 'href', 'name', 'class', 'aria-hidden', 'title', 'target', 'data-external'],
-        'p' => [],
-        'br' => [],
-        'ul' => [],
-        'ol' => [],
-        'li' => [],
-        'strong' => [],
-        'span' => [],
-        'b' => [],
-        'em' => [],
-        'i' => [],
-        'img' => ['src', 'alt'],
-        'del' => [],
-        'strike' => [],
+        'h2'         => [],
+        'h3'         => [],
+        'h4'         => [],
+        'ins'        => [],
+        'i'          => [],
+        'a'          => ['id', 'href', 'name', 'class', 'aria-hidden', 'title', 'target', 'data-external'],
+        'p'          => [],
+        'br'         => [],
+        'ul'         => [],
+        'ol'         => [],
+        'li'         => [],
+        'strong'     => [],
+        'span'       => [],
+        'b'          => [],
+        'em'         => [],
+        'i'          => [],
+        'img'        => ['src', 'alt'],
+        'del'        => [],
+        'strike'     => [],
         'blockquote' => [],
-        'table' => [],
-        'tbody' => [],
-        'thead' => [],
-        'tr' => [],
-        'td' => [],
-        'code' => [],
-        'pre' => [],
-        'svg' => ['wire:key', 'class', 'xmlns', 'viewbox'],
-        'path' => ['d', 'fill', 'stroke', 'stroke-linecap', 'stroke-linejoin', 'stroke-width'],
+        'table'      => [],
+        'tbody'      => [],
+        'thead'      => [],
+        'tr'         => [],
+        'td'         => [],
+        'code'       => [],
+        'pre'        => [],
+        'svg'        => ['wire:key', 'class', 'xmlns', 'viewbox'],
+        'path'       => ['d', 'fill', 'stroke', 'stroke-linecap', 'stroke-linejoin', 'stroke-width'],
     ];
 
     /**
@@ -182,7 +181,7 @@ final class MarkdownParser
 
         foreach ($matches as $match) {
             $replaced = preg_replace('/\r\n|\r|\n/', '<br />', $match[0]);
-            $text = str_replace($match[0], $replaced, $text);
+            $text     = str_replace($match[0], $replaced, $text);
         }
 
         return $text;
@@ -212,7 +211,7 @@ final class MarkdownParser
     {
         $regex = '/<((?:a|strong|b|em|i|li|ins))\b([^>]*)>((?:\s|\S)*?)<\/\1>\s*/m';
 
-        $substitution = "<p><$1$2>$3</$1></p>";
+        $substitution = '<p><$1$2>$3</$1></p>';
 
         return preg_replace($regex, $substitution, $text);
     }
@@ -227,7 +226,7 @@ final class MarkdownParser
         $regex = '/<img\b([^>]*)\/>/m';
 
         // Adds two break lines
-        $substitution = "<p><img$1/></p>";
+        $substitution = '<p><img$1/></p>';
 
         return preg_replace($regex, $substitution, $text);
     }
@@ -252,9 +251,9 @@ final class MarkdownParser
      */
     private static function convertMarkdownToHtml(string $markdown): string
     {
-        $html = (new static)->getMarkdownCoverter()->convertToHtml($markdown);
+        $html = (new static())->getMarkdownCoverter()->convertToHtml($markdown);
 
-        return static::replaceLineBreaksInsideTagsForBr($html);
+        return static::replaceLineBreaksInsideTagsForBr((string) $html);
     }
 
     /**
@@ -262,13 +261,13 @@ final class MarkdownParser
      */
     private static function removeUnallowedHTMLTags(string $html, array $allowedTags): string
     {
-        $allowedTagsStr = '<' . implode('><', $allowedTags) . '>';
+        $allowedTagsStr = '<'.implode('><', $allowedTags).'>';
 
         return strip_tags($html, $allowedTagsStr);
     }
 
     /**
-     * Removes every user input that is not expected
+     * Removes every user input that is not expected.
      */
     private static function cleanHtml(string $html, array $allowedTags): string
     {
@@ -309,20 +308,20 @@ final class MarkdownParser
     {
         $tidy = new tidy();
 
-        $dom = new DOMDocument;
+        $dom = new DOMDocument();
 
         // Normalizes the HTML which reduce the possibility of having an unexpected
         // exception in the DomDocument library because some bad HTML was found.
         // Once the HTML is normalized, we will parse it again.
         $html = $tidy->repairString($html, [
-            'output-xhtml' => true,
+            'output-xhtml'   => true,
             'show-body-only' => true,
         ], 'utf8');
 
         try {
             libxml_use_internal_errors(true);
             // Needs a XML encoding declaration to ensure is treated as UTF-8
-            $dom->loadHTML('<?xml encoding="utf-8" ?>' . $html);
+            $dom->loadHTML('<?xml encoding="utf-8" ?>'.$html);
         } catch (Exception $e) {
             return '';
         }
@@ -331,20 +330,21 @@ final class MarkdownParser
 
         collect($attributes)
             ->filter(fn ($attribute) => static::isAttributeAllowedForTag($attribute))
-            ->each(fn($node) => $node->parentNode->removeAttribute($node->nodeName));
+            ->each(fn ($node)        => $node->parentNode->removeAttribute($node->nodeName));
 
         return $tidy->repairString($dom->saveHTML(), [
-            'output-xhtml' => true,
+            'output-xhtml'   => true,
             'show-body-only' => true,
         ], 'utf8');
     }
 
     /**
-     * Returns all the nodes that have attributes
+     * Returns all the nodes that have attributes.
      */
     private static function getAttributesNodes(DOMDocument $dom): DOMNodeList
     {
         $xpath = new DOMXPath($dom);
+
         return $xpath->query('//@*');
     }
 
@@ -353,9 +353,9 @@ final class MarkdownParser
      */
     private static function isAttributeAllowedForTag(DOMAttr $attribute): bool
     {
-        return !in_array(
+        return ! in_array(
             $attribute->nodeName,
-            Arr::get(static::$validUserTagsAndAttributes, $attribute->parentNode->tagName, [])
+            Arr::get(static::$validUserTagsAndAttributes, $attribute->parentNode->tagName, []), true
         );
     }
 }

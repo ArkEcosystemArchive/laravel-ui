@@ -4,7 +4,6 @@ namespace ARKEcosystem\UserInterface\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Spatie\Flash\Flash;
 
 class FormatReadTimeServiceProvider extends ServiceProvider
 {
