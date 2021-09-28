@@ -16,6 +16,7 @@
         output = datetime.format(format);
         @if($tooltipFormat)
             tooltip = datetime.format('{{ $tooltipFormat }}');
+            $nextTick(() => tippy($el, tooltipSettings));
         @endif
     "
     x-text="output"
