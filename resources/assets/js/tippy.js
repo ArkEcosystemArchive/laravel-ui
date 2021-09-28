@@ -47,6 +47,8 @@ const destroyTippy = (parentEl = document.body) => {
 
 initTippy();
 
+window.tooltipSettings = tooltipSettings;
+
 window.initTippy = initTippy;
 
 window.destroyTippy = destroyTippy;
