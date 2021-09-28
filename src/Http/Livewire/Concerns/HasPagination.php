@@ -11,6 +11,6 @@ trait HasPagination
     public function gotoPage(int $page): void
     {
         $this->emit('pageChanged');
-        $this->page = $page;
+        $this->setPage($page);
     }
 }
