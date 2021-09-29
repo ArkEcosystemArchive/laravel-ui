@@ -48,7 +48,8 @@ input[type="password"]::-ms-reveal {
 
 .input-group:focus-within .input-wrapper-with-prefix,
 .input-group:focus-within .input-wrapper-with-suffix,
-.input-group:focus-within .input-text {
+.input-group:focus-within .input-text,
+.input-group:focus-within .form-select {
     @apply border-theme-primary-600;
 }
 
