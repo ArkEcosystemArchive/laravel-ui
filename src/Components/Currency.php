@@ -5,7 +5,7 @@ namespace ARKEcosystem\UserInterface\Components;
 use Closure;
 use Illuminate\Support\Arr;
 use Illuminate\View\Component;
-use Konceiver\BetterNumberFormatter\BetterNumberFormatter;
+use ARKEcosystem\UserInterface\NumberFormatter\NumberFormatter;
 
 final class Currency extends Component
 {
@@ -25,7 +25,7 @@ final class Currency extends Component
                 $decimals = (int) Arr::get($data, 'attributes.decimals');
             }
 
-            return BetterNumberFormatter::new()->formatWithCurrencyCustom(trim((string) $data['slot']), $this->currency, $decimals);
+            return NumberFormatter::new()->formatWithCurrencyCustom(trim((string) $data['slot']), $this->currency, $decimals);
         };
     }
 }

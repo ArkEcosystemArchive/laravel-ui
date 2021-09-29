@@ -4,14 +4,14 @@ namespace ARKEcosystem\UserInterface\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Konceiver\BetterNumberFormatter\BetterNumberFormatter;
+use ARKEcosystem\UserInterface\NumberFormatter\NumberFormatter;
 
 final class Percentage extends Component
 {
     public function render(): Closure
     {
         return function (array $data): string {
-            return BetterNumberFormatter::new()->formatWithPercent((float) trim((string) $data['slot']), 2);
+            return NumberFormatter::new()->formatWithPercent((float) trim((string) $data['slot']), 2);
         };
     }
 }

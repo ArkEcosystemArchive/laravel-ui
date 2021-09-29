@@ -4,14 +4,14 @@ namespace ARKEcosystem\UserInterface\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Konceiver\BetterNumberFormatter\BetterNumberFormatter;
+use ARKEcosystem\UserInterface\NumberFormatter\NumberFormatter;
 
 final class Number extends Component
 {
     public function render(): Closure
     {
         return function (array $data): string {
-            return BetterNumberFormatter::new()->formatWithDecimal((float) trim((string) $data['slot']));
+            return NumberFormatter::new()->formatWithDecimal((float) trim((string) $data['slot']));
         };
     }
 }
