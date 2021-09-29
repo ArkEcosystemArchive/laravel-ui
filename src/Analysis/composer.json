@@ -1,0 +1,49 @@
+{
+    "name": "arkecosystem/stan",
+    "type": "library",
+    "description": "Static Analysis & Testing for Laravel. Powered by PHPStan and Pest.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Brian Faust",
+            "email": "hello@basecode.sh"
+        }
+    ],
+    "require": {
+        "pestphp/pest": "^1.11",
+        "pestphp/pest-plugin-faker": "^1.0",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-livewire": "^1.0",
+        "spatie/pest-plugin-snapshots": "^1.1",
+        "ergebnis/phpstan-rules": "^0.15.3",
+        "friendsofphp/php-cs-fixer": "^v3.1.0",
+        "graham-campbell/analyzer": "^3.0",
+        "johnkary/phpunit-speedtrap": "^4.0",
+        "mockery/mockery": "^1.4",
+        "nunomaduro/collision": "^5.5",
+        "nunomaduro/larastan": "^0.7.11",
+        "nunomaduro/laravel-mojito": "^0.2.8",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^0.12.6",
+        "phpstan/phpstan-strict-rules": "^0.12.10",
+        "phpunit/phpunit": "^9.5",
+        "rector/rector": "^0.11.38",
+        "jasonmccreary/laravel-test-assertions": "^1.1",
+        "orchestra/testbench": "^6.19",
+        "fakerphp/faker": "^1.15"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ARKEcosystem\\Stan\\StanServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ARKEcosystem\\Stan\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

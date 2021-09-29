@@ -1,0 +1,14 @@
+parameters:
+    paths:
+        - src
+    level: 8
+    ignoreErrors:
+        # Livewire
+        - '#\$listeners has no typehint specified#'
+        # @FIXME
+        - '#\$hasAllSelected#'
+        - '#\$id#'
+        - '#\$notifications#'
+        - '#\$user#'
+        - '#Cannot call method#'
+    checkMissingIterableValueType: false
