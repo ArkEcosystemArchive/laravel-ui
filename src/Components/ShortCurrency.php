@@ -4,7 +4,7 @@ namespace ARKEcosystem\UserInterface\Components;
 
 use Closure;
 use Illuminate\View\Component;
-use Konceiver\BetterNumberFormatter\BetterNumberFormatter;
+use ARKEcosystem\UserInterface\NumberFormatter\NumberFormatter;
 
 final class ShortCurrency extends Component
 {
@@ -18,7 +18,7 @@ final class ShortCurrency extends Component
     public function render(): Closure
     {
         return function (array $data): string {
-            return BetterNumberFormatter::new()->formatWithCurrencyShort((float) trim((string) $data['slot']), $this->currency);
+            return NumberFormatter::new()->formatWithCurrencyShort((float) trim((string) $data['slot']), $this->currency);
         };
     }
 }
