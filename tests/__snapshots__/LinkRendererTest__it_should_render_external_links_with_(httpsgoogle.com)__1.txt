@@ -1,0 +1,2 @@
+<a href="https://google.com" title="Title" target="_blank" data-external="true">Label @svg($name, $size . $style . $class, ['wire:key' => Str::random(8)])
+</a>
