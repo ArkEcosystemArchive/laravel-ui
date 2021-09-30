@@ -32,6 +32,7 @@ class TestCase extends Orchestra
         $app['config']->set('markdown', [
             'inlineRenderers' => [],
         ]);
+
         $app['config']->set('app', [
             'url' => 'https://ourapp.com',
         ]);
