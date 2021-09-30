@@ -45,8 +45,6 @@ class HermesServiceProvider extends ServiceProvider
      */
     public function registerLoaders(): void
     {
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'hermes');
-
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'hermes');
     }
 

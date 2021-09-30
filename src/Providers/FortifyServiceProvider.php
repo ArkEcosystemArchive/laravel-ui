@@ -58,8 +58,6 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerLoaders();
-
         $this->registerPublishers();
 
         $this->registerLivewireComponents();
@@ -71,16 +69,6 @@ class FortifyServiceProvider extends ServiceProvider
         $this->registerAuthentication();
 
         $this->registerRoutes();
-    }
-
-    /**
-     * Register the loaders.
-     *
-     * @return void
-     */
-    public function registerLoaders(): void
-    {
-        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'fortify');
     }
 
     /**
