@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\Foundation\Providers;
 
-use Livewire\Livewire;
-use Spatie\Flash\Flash;
+use ARKEcosystem\Foundation\UserInterface\Components\Currency;
+use ARKEcosystem\Foundation\UserInterface\Components\DataBag;
+use ARKEcosystem\Foundation\UserInterface\Components\FlashMessage;
+use ARKEcosystem\Foundation\UserInterface\Components\HoneyPot;
+use ARKEcosystem\Foundation\UserInterface\Components\Number;
+use ARKEcosystem\Foundation\UserInterface\Components\Percentage;
+use ARKEcosystem\Foundation\UserInterface\Components\ShortCurrency;
+use ARKEcosystem\Foundation\UserInterface\Components\ShortPercentage;
+use ARKEcosystem\Foundation\UserInterface\Components\Toast;
+use ARKEcosystem\Foundation\UserInterface\Components\TruncateMiddle;
+use ARKEcosystem\Foundation\UserInterface\Http\Controllers\ImageCropController;
+use ARKEcosystem\Foundation\UserInterface\Http\Controllers\WysiwygControlller;
+use ARKEcosystem\Foundation\UserInterface\UI;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use ARKEcosystem\Foundation\UserInterface\UI;
-use ARKEcosystem\Foundation\UserInterface\Components\Toast;
-use ARKEcosystem\Foundation\UserInterface\Components\Number;
-use ARKEcosystem\Foundation\UserInterface\Components\DataBag;
-use ARKEcosystem\Foundation\UserInterface\Components\Currency;
-use ARKEcosystem\Foundation\UserInterface\Components\HoneyPot;
-use ARKEcosystem\Foundation\UserInterface\Components\Percentage;
-use ARKEcosystem\Foundation\UserInterface\Components\FlashMessage;
-use ARKEcosystem\Foundation\UserInterface\Components\ShortCurrency;
-use ARKEcosystem\Foundation\UserInterface\Components\TruncateMiddle;
-use ARKEcosystem\Foundation\UserInterface\Components\ShortPercentage;
-use ARKEcosystem\Foundation\UserInterface\Http\Controllers\WysiwygControlller;
-use ARKEcosystem\Foundation\UserInterface\Http\Controllers\ImageCropController;
+use Livewire\Livewire;
+use Spatie\Flash\Flash;
 
 class UserInterfaceServiceProvider extends ServiceProvider
 {

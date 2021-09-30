@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Illuminate\Support\ViewErrorBag;
-use Illuminate\View\ComponentAttributeBag;
 use ARKEcosystem\Foundation\Fortify\Models\User;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Support\Str;
+use Illuminate\Support\ViewErrorBag;
 use Illuminate\Validation\ValidationException;
+use Illuminate\View\ComponentAttributeBag;
 
 function createAttributes(array $attributes): array
 {
