@@ -32,7 +32,7 @@ it('should be able to update the timezone', function () {
         ->call('updateTimezone')
         ->assertSet('timezone', 'Europe/Amsterdam')
         ->assertSee(') Europe/Amsterdam')
-        ->assertEmitted('toastMessage', [trans('fortify::pages.user-settings.timezone_updated'), 'success']);
+        ->assertEmitted('toastMessage', [trans('ui::pages.user-settings.timezone_updated'), 'success']);
 
     $this->assertDatabaseHas('users', [
         'timezone' => 'Europe/Amsterdam',

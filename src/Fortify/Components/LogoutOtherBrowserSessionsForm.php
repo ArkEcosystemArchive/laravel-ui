@@ -56,7 +56,7 @@ class LogoutOtherBrowserSessionsForm extends Component
 
         if (! Hash::check($this->password, Auth::user()->password)) {
             throw ValidationException::withMessages([
-                'password' => [trans('fortify::validation.password_doesnt_match_records')],
+                'password' => [trans('ui::validation.password_doesnt_match_records')],
             ]);
         }
 

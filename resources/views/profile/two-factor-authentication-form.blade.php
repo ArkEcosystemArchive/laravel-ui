@@ -21,19 +21,19 @@
         <div class="flex flex-col w-full space-y-8">
             <div class="flex flex-col">
                 <span class="header-4">
-                    @lang('fortify::pages.user-settings.2fa_title')
+                    @lang('ui::pages.user-settings.2fa_title')
                 </span>
                 <span class="mt-4">
-                    @lang('fortify::pages.user-settings.2fa_description')
+                    @lang('ui::pages.user-settings.2fa_description')
                 </span>
             </div>
 
             <div class="flex flex-col sm:hidden">
                 <span class="header-4">
-                    @lang('fortify::pages.user-settings.2fa_not_enabled_title')
+                    @lang('ui::pages.user-settings.2fa_not_enabled_title')
                 </span>
                 <div class="mt-2 text-base leading-7 text-theme-secondary-600">
-                    @lang('fortify::pages.user-settings.2fa_summary', [
+                    @lang('ui::pages.user-settings.2fa_summary', [
                         'link1' => $twoAuthLink1,
                         'link2' => $twoAuthLink2,
                     ])
@@ -45,7 +45,7 @@
                     <x-ark-input
                         type="number"
                         name="state.otp"
-                        :label="trans('fortify::pages.user-settings.one_time_password')"
+                        :label="trans('ui::pages.user-settings.one_time_password')"
                         :errors="$errors"
                         pattern="[0-9]{6}"
                         class="hide-number-input-arrows"
@@ -69,12 +69,12 @@
 
                 <div class="flex-col hidden sm:flex">
                     <span class="text-lg font-bold leading-7 text-theme-secondary-900">
-                        @lang('fortify::pages.user-settings.2fa_not_enabled_title')
+                        @lang('ui::pages.user-settings.2fa_not_enabled_title')
                     </span>
 
 
                     <div class="mt-2 text-base leading-7 text-theme-secondary-600">
-                        @lang('fortify::pages.user-settings.2fa_summary', [
+                        @lang('ui::pages.user-settings.2fa_summary', [
                             'link1' => $twoAuthLink1,
                             'link2' => $twoAuthLink2,
                         ])
@@ -85,7 +85,7 @@
                             <x-ark-input
                                 type="number"
                                 name="state.otp"
-                                :label="trans('fortify::pages.user-settings.one_time_password')"
+                                :label="trans('ui::pages.user-settings.one_time_password')"
                                 :errors="$errors"
                                 pattern="[0-9]{6}"
                                 class="hide-number-input-arrows"
@@ -101,7 +101,7 @@
                     <x-ark-input
                         type="number"
                         name="state.otp"
-                        :label="trans('fortify::pages.user-settings.one_time_password')"
+                        :label="trans('ui::pages.user-settings.one_time_password')"
                         :errors="$errors"
                         pattern="[0-9]{6}"
                         class="hide-number-input-arrows"
@@ -116,24 +116,24 @@
                     wire:click="enableTwoFactorAuthentication"
                     dusk="enable-two-factor-authentication"
                 >
-                    @lang('fortify::actions.enable')
+                    @lang('ui::actions.enable')
                 </button>
             </div>
         </div>
     @else
         <div class="flex flex-col">
-            <span class="header-4">@lang('fortify::pages.user-settings.2fa_title')</span>
-            <span class="mt-4">@lang('fortify::pages.user-settings.2fa_description')</span>
+            <span class="header-4">@lang('ui::pages.user-settings.2fa_title')</span>
+            <span class="mt-4">@lang('ui::pages.user-settings.2fa_description')</span>
 
             <div class="flex flex-col items-center mt-4 space-y-4 sm:mt-8 sm:items-start sm:flex-row sm:space-y-0 sm:space-x-6">
                 <img src="{{ asset('/images/profile/2fa.svg') }}" class="w-24 h-24" alt="">
                 <div class="flex flex-col">
                     <span class="text-lg font-bold leading-7 text-theme-secondary-900">
-                        @lang('fortify::pages.user-settings.2fa_enabled_title')
+                        @lang('ui::pages.user-settings.2fa_enabled_title')
                     </span>
                     <div class="mt-2 text-theme-secondary-600">
 
-                        @lang('fortify::pages.user-settings.2fa_summary', [
+                        @lang('ui::pages.user-settings.2fa_summary', [
                             'link1' => $twoAuthLink1,
                             'link2' => $twoAuthLink2,
                         ])
@@ -143,7 +143,7 @@
 
             <div class="flex flex-col w-full mt-8 space-y-3 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-3">
                 <button type="button" class="w-full button-secondary sm:w-auto" wire:click="showConfirmPassword">
-                    @lang('fortify::actions.recovery_codes')
+                    @lang('ui::actions.recovery_codes')
                 </button>
 
                 <button
@@ -152,7 +152,7 @@
                     wire:click="showDisableConfirmPassword"
                     dusk="disable-two-factor-authentication"
                 >
-                    @lang('fortify::actions.disable')
+                    @lang('ui::actions.disable')
                 </button>
             </div>
         </div>
@@ -166,8 +166,8 @@
 
     @if($this->confirmPasswordShown)
         <x:ark-fortify::modals.password-confirmation
-            :title="trans('fortify::forms.confirm-password.title')"
-            :description="trans('fortify::forms.confirm-password.description')"
+            :title="trans('ui::forms.confirm-password.title')"
+            :description="trans('ui::forms.confirm-password.description')"
             action-method="showRecoveryCodesAfterPasswordConfirmation"
             close-method="closeConfirmPassword"
         />
@@ -175,8 +175,8 @@
 
     @if($this->disableConfirmPasswordShown)
         <x:ark-fortify::modals.password-confirmation
-            :title="trans('fortify::forms.disable-2fa.title')"
-            :description="trans('fortify::forms.disable-2fa.description')"
+            :title="trans('ui::forms.disable-2fa.title')"
+            :description="trans('ui::forms.disable-2fa.description')"
             action-method="disableTwoFactorAuthentication"
             close-method="closeDisableConfirmPassword"
         />

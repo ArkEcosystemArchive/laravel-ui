@@ -12,7 +12,7 @@
                         model="username"
                         type="text"
                         name="username"
-                        :label="trans('fortify::forms.username')"
+                        :label="trans('ui::forms.username')"
                         autocomplete="username"
                         class="w-full"
                         :errors="$errors"
@@ -27,7 +27,7 @@
                     <x-ark-input
                         model="name"
                         name="name"
-                        :label="trans('fortify::forms.display_name')"
+                        :label="trans('ui::forms.display_name')"
                         autocomplete="name"
                         class="w-full"
                         :autofocus="true"
@@ -42,7 +42,7 @@
                         model="email"
                         type="email"
                         name="email"
-                        :label="trans('fortify::forms.email')"
+                        :label="trans('ui::forms.email')"
                         autocomplete="email"
                         class="w-full"
                         :errors="$errors"
@@ -59,7 +59,7 @@
             <x-ark-password-toggle
                 model="password"
                 name="password"
-                :label="trans('fortify::forms.password')"
+                :label="trans('ui::forms.password')"
                 autocomplete="new-password"
                 class="w-full"
                 @keydown="isTyping=true"
@@ -72,7 +72,7 @@
                 <x-ark-password-toggle
                     model="password_confirmation"
                     name="password_confirmation"
-                    :label="trans('fortify::forms.confirm_password')"
+                    :label="trans('ui::forms.confirm_password')"
                     autocomplete="new-password"
                     class="w-full"
                     :errors="$errors"
@@ -87,7 +87,7 @@
                 :errors="$errors"
             >
                 @slot('label')
-                    @lang('fortify::auth.register-form.conditions', ['termsOfServiceRoute' => route('terms-of-service'), 'privacyPolicyRoute' => route('privacy-policy')])
+                    @lang('ui::auth.register-form.conditions', ['termsOfServiceRoute' => route('terms-of-service'), 'privacyPolicyRoute' => route('privacy-policy')])
                 @endslot
             </x-ark-checkbox>
 
@@ -98,7 +98,7 @@
 
         <div class="text-right">
             <button type="submit" class="w-full button-secondary sm:w-auto">
-                @lang('fortify::actions.sign_up')
+                @lang('ui::actions.sign_up')
             </button>
         </div>
     </div>

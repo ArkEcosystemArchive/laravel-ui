@@ -33,7 +33,7 @@ trait ValidatesPassword
         $this->passwordRules['leak']      = $this->passes(Password::min(8)->uncompromised(0)->symbols(), $password);
 
         if (! $this->passwordRules['leak']) {
-            $this->addError('password', trans('fortify::validation.password_leaked'));
+            $this->addError('password', trans('ui::validation.password_leaked'));
         }
     }
 

@@ -96,7 +96,7 @@ class TwoFactorAuthenticationForm extends Component
         $this->closeDisableConfirmPassword();
 
         $this->emit('toastMessage', [
-            trans('fortify::messages.2fa_disabled'),
+            trans('ui::messages.2fa_disabled'),
             'success',
         ]);
     }

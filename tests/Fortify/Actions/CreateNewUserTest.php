@@ -60,7 +60,7 @@ it('should not create user with uppercase characters', function () {
         'password'              => 'sec$r2t12345',
         'password_confirmation' => 'sec$r2t12345',
         'terms'                 => true,
-    ]), 'username', trans('fortify::validation.messages.username.lowercase_only'));
+    ]), 'username', trans('ui::validation.messages.username.lowercase_only'));
 });
 
 it('should create a valid user with username if the username_alt setting is set', function () {
@@ -261,7 +261,7 @@ it('should require to have a properly formatted username', function () {
         'password'              => 'sec$r2t12345',
         'password_confirmation' => 'sec$r2t12345',
         'terms'                 => true,
-    ]), 'username', trans('fortify::validation.messages.username.special_character_start'));
+    ]), 'username', trans('ui::validation.messages.username.special_character_start'));
 });
 
 it('should work with username authentication', function () {

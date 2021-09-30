@@ -26,7 +26,7 @@ class TwoFactorAuthenticatedPasswordResetController extends Controller
         }
 
         if (! $request->hasValidToken()) {
-            throw new HttpResponseException(redirect()->route('login')->withErrors(['email' => trans('fortify::validation.password_reset_link_invalid')]));
+            throw new HttpResponseException(redirect()->route('login')->withErrors(['email' => trans('ui::validation.password_reset_link_invalid')]));
         }
 
         return view('ark-fortify::auth.two-factor-challenge', [
@@ -48,7 +48,7 @@ class TwoFactorAuthenticatedPasswordResetController extends Controller
         $user = $request->challengedUser();
 
         if (! $request->hasValidToken()) {
-            throw new HttpResponseException(redirect()->route('login')->withErrors(['email' => trans('fortify::validation.password_reset_link_invalid')]));
+            throw new HttpResponseException(redirect()->route('login')->withErrors(['email' => trans('ui::validation.password_reset_link_invalid')]));
         }
 
         if ($code = $request->validRecoveryCode()) {

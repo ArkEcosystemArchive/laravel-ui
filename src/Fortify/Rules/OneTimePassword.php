@@ -27,6 +27,6 @@ class OneTimePassword implements Rule
 
     public function message()
     {
-        return trans('fortify::validation.messages.one_time_password');
+        return trans('ui::validation.messages.one_time_password');
     }
 }

@@ -27,7 +27,7 @@ it('can interact with the form', function () {
         ->set('password_confirmation', 'abcd1234ABCD%')
         ->call('updatePassword')
         ->assertDispatchedBrowserEvent('updated-password')
-        ->assertEmitted('toastMessage', [trans('fortify::pages.user-settings.password_updated'), 'success']);
+        ->assertEmitted('toastMessage', [trans('ui::pages.user-settings.password_updated'), 'success']);
 });
 
 it('clears password rules on update', function () {

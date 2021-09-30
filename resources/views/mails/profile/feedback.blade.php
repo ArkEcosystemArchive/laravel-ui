@@ -2,5 +2,5 @@
 
 {{ $message }}
 
-@lang('fortify::mails.footer', ['applicationName' => config('app.name')])
+@lang('ui::mails.footer', ['applicationName' => config('app.name')])
 @endcomponent

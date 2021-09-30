@@ -31,6 +31,6 @@ final class StartsWithLetterOrNumber implements Rule
      */
     public function message()
     {
-        return trans('fortify::validation.messages.start_with_letter_or_number');
+        return trans('ui::validation.messages.start_with_letter_or_number');
     }
 }

@@ -127,30 +127,30 @@ class Username extends Fortify
     {
         switch (true) {
             case $this->withSpecialCharAtTheStart:
-                return trans('fortify::validation.messages.username.special_character_start');
+                return trans('ui::validation.messages.username.special_character_start');
 
             case $this->withSpecialCharAtTheEnd:
-                return trans('fortify::validation.messages.username.special_character_end');
+                return trans('ui::validation.messages.username.special_character_end');
 
             case $this->withConsecutiveSpecialChars:
-                return trans('fortify::validation.messages.username.consecutive_special_characters');
+                return trans('ui::validation.messages.username.consecutive_special_characters');
 
             case $this->withForbiddenSpecialChars:
-                return trans('fortify::validation.messages.username.forbidden_special_characters');
+                return trans('ui::validation.messages.username.forbidden_special_characters');
 
             case $this->hasReachedMaxLength:
-                return trans('fortify::validation.messages.username.max_length', [
+                return trans('ui::validation.messages.username.max_length', [
                     'length' => Constants::MAX_USERNAME_CHARACTERS,
                 ]);
 
             case $this->hasUpperCaseCharacters:
-                return trans('fortify::validation.messages.username.lowercase_only');
+                return trans('ui::validation.messages.username.lowercase_only');
 
             case $this->withReservedName:
                 return ReservedUsername::message();
 
             default:
-                return trans('fortify::validation.messages.username.min_length', [
+                return trans('ui::validation.messages.username.min_length', [
                     'length' => Constants::MIN_USERNAME_CHARACTERS,
                 ]);
         }

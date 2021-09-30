@@ -27,7 +27,7 @@ class UpdateUserPassword implements UpdatesUserPasswords
             'password'         => $this->passwordRules(),
         ])->after(function ($validator) use ($user, $input) {
             if (! Hash::check($input['current_password'], $user->password)) {
-                $validator->errors()->add('current_password', trans('fortify::validation.password_doesnt_match'));
+                $validator->errors()->add('current_password', trans('ui::validation.password_doesnt_match'));
             }
         })->validateWithBag('updatePassword');
 

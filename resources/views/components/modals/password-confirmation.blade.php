@@ -44,7 +44,7 @@
 
                 <x-ark-password-toggle
                     name="confirmedPassword"
-                    :label="trans('fortify::forms.password')"
+                    :label="trans('ui::forms.password')"
                     :errors="$errors"
                 />
             </div>
@@ -59,7 +59,7 @@
                 class="button-secondary"
                 wire:click="{{ $closeMethod }}"
             >
-                @lang('fortify::actions.cancel')
+                @lang('ui::actions.cancel')
             </button>
 
             <button
@@ -69,7 +69,7 @@
                 class="inline-flex items-center justify-center button-primary"
                 wire:click="{{ $actionMethod }}"
             >
-                @lang('fortify::actions.confirm')
+                @lang('ui::actions.confirm')
             </button>
         </div>
     </x-slot>

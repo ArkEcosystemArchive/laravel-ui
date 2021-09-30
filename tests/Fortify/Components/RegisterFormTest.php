@@ -103,7 +103,7 @@ it('cannot submit if the password appears to have been leaked', function () {
     expect($instance->instance()->canSubmit())->toBeFalse();
 
     expect($instance->assertHasErrors('password'));
-    expect($instance->assertSee(trans('fortify::validation.password_leaked')));
+    expect($instance->assertSee(trans('ui::validation.password_leaked')));
 });
 
 /**

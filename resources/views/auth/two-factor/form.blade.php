@@ -11,7 +11,7 @@
             <x-ark-input
                 type="text"
                 name="code"
-                :label="trans('fortify::forms.2fa_code')"
+                :label="trans('ui::forms.2fa_code')"
                 class="w-full hide-number-input-arrows"
                 :errors="$errors"
                 autocomplete="one-time-code"
@@ -23,11 +23,11 @@
 
     <div class="flex flex-col-reverse items-center justify-between sm:flex-row">
         <button @click="recovery = true" type="button" class="w-full mt-4 font-semibold link sm:w-auto sm:mt-0">
-            @lang('fortify::actions.enter_recovery_code')
+            @lang('ui::actions.enter_recovery_code')
         </button>
 
         <button type="submit" class="w-full button-secondary sm:w-auto">
-            @lang('fortify::actions.sign_in')
+            @lang('ui::actions.sign_in')
         </button>
     </div>
 </x:ark-fortify::form-wrapper>

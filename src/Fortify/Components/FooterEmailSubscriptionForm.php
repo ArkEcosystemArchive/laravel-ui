@@ -23,9 +23,9 @@ final class FooterEmailSubscriptionForm extends Component
         $this->subscribed = SubscribeToNewsletter::execute($this->email, config('newsletter.defaultListName'));
 
         if ($this->subscribed) {
-            $this->status = trans('fortify::messages.subscription.pending');
+            $this->status = trans('ui::messages.subscription.pending');
         } else {
-            $this->status = trans('fortify::messages.subscription.duplicate');
+            $this->status = trans('ui::messages.subscription.duplicate');
         }
 
         $this->email = null;

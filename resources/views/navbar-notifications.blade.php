@@ -39,13 +39,13 @@
 
             <div class="flex flex-row justify-center w-full px-2 pb-6 mt-4">
                 <a href="{{ route('user.notifications') }}" class="w-full cursor-pointer button-secondary">
-                    {{ $notificationCount > 4 ? trans('hermes::actions.show_all') : trans('hermes::actions.open_notifications') }}
+                    {{ $notificationCount > 4 ? trans('ui::actions.show_all') : trans('ui::actions.open_notifications') }}
                 </a>
             </div>
         </div>
     @else
         <div class="p-6 mt-8 text-center border-2 rounded-xl border-theme-secondary-200">
-            <span>@lang('hermes::menus.notifications.no_notifications')</span>
+            <span>@lang('ui::menus.notifications.no_notifications')</span>
         </div>
         <div class="py-8 md:px-8">
             <img src="{{ asset('images/defaults/no-notifications.svg') }}" alt=""/>

@@ -10,16 +10,11 @@ class ReservedUsername extends BaseRule
 {
     public static function passes($attribute, $value): bool
     {
-        dd(
-            trans(),
-            trans('ui::auth'),
-            trans('ui::username_blacklist'),
-        );
-        return ! in_array(Str::lower($value), trans('fortify::username_blacklist'), true);
+        return ! in_array(Str::lower($value), trans('ui::username_blacklist'), true);
     }
 
     public static function message(array $attributes = []): string
     {
-        return trans('fortify::validation.messages.username.blacklisted');
+        return trans('ui::validation.messages.username.blacklisted');
     }
 }

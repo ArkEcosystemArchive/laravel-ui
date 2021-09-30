@@ -11,7 +11,7 @@ it('can resend a verification email', function (): void {
         ->test(VerifyEmail::class)
         ->call('resend')
         ->assertDontSeeHtml('wire:loading.attr="disabled"')
-        ->assertSeeHtml(sprintf('data-tippy-content="%s"', trans('fortify::messages.resend_email_verification_limit')));
+        ->assertSeeHtml(sprintf('data-tippy-content="%s"', trans('ui::messages.resend_email_verification_limit')));
 });
 
 it('can resend a verification email once every 5 minutes', function (): void {
@@ -20,12 +20,12 @@ it('can resend a verification email once every 5 minutes', function (): void {
         ->call('resend')
         ->call('resend')
         ->assertDontSeeHtml('wire:loading.attr="disabled"')
-        ->assertSeeHtml(sprintf('data-tippy-content="%s"', trans('fortify::messages.resend_email_verification_limit')));
+        ->assertSeeHtml(sprintf('data-tippy-content="%s"', trans('ui::messages.resend_email_verification_limit')));
 
     $this->travel(6)->minutes();
 
     $component
         ->call('$refresh')
         ->assertSeeHtml('wire:loading.attr="disabled"')
-        ->assertDontSeeHtml(sprintf('data-tippy-content="%s"', trans('fortify::messages.resend_email_verification_limit')));
+        ->assertDontSeeHtml(sprintf('data-tippy-content="%s"', trans('ui::messages.resend_email_verification_limit')));
 });

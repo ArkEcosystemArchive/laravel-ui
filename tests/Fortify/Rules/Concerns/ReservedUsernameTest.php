@@ -11,7 +11,7 @@ beforeEach(function () {
 it('doesnt allow adding username that is blacklisted', function ($username) {
     expect($this->subject->passes('username', $username))->toBeFalse();
 
-    expect($this->subject->message())->toBe(trans('fortify::validation.messages.username.blacklisted'));
+    expect($this->subject->message())->toBe(trans('ui::validation.messages.username.blacklisted'));
 })->with([
     'admin',
     'root',

@@ -5,11 +5,11 @@
         </div>
 
         <span class="header-4">
-            @lang('fortify::pages.user-settings.password_information_title')
+            @lang('ui::pages.user-settings.password_information_title')
         </span>
 
         <span>
-            @lang('fortify::forms.update-password.requirements_notice')
+            @lang('ui::forms.update-password.requirements_notice')
         </span>
     </div>
 
@@ -20,7 +20,7 @@
             <x-ark-password-toggle
                 name="current_password"
                 model="currentPassword"
-                :label="trans('fortify::forms.current_password')"
+                :label="trans('ui::forms.current_password')"
                 :errors="$errors"
                 class="w-full"
                 autocomplete="current-password"
@@ -37,7 +37,7 @@
                     name="password"
                     model="password"
                     class="w-full"
-                    :label="trans('fortify::forms.new_password')"
+                    :label="trans('ui::forms.new_password')"
                     :errors="$errors"
                     @keydown="isTyping=true"
                     autocomplete="new-password"
@@ -47,7 +47,7 @@
             <x-ark-password-toggle
                 name="password_confirmation"
                 model="password_confirmation"
-                :label="trans('fortify::forms.confirm_password')"
+                :label="trans('ui::forms.confirm_password')"
                 :errors="$errors"
                 autocomplete="new-password"
             />
@@ -59,7 +59,7 @@
                 type="submit"
                 class="w-full button-secondary sm:w-auto"
             >
-                @lang('fortify::actions.update')
+                @lang('ui::actions.update')
             </button>
         </div>
     </form>

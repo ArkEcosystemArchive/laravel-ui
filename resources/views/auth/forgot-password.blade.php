@@ -8,8 +8,8 @@
 
 @section('breadcrumbs')
     <x-ark-breadcrumbs :crumbs="[
-        ['route' => 'login', 'label' => trans('fortify::menu.sign_in')],
-        ['label' => trans('fortify::menu.password_reset_email')],
+        ['route' => 'login', 'label' => trans('ui::menu.sign_in')],
+        ['label' => trans('ui::menu.password_reset_email')],
     ]"/>
 @endsection
 
@@ -39,11 +39,11 @@
 
                 <div class="flex flex-col-reverse items-center justify-between space-y-4 md:space-y-0 md:flex-row">
                     <div class="flex-1 mt-8 md:mt-0">
-                        <a href="{{ route('login') }}" class="link">@lang('fortify::actions.cancel')</a>
+                        <a href="{{ route('login') }}" class="link">@lang('ui::actions.cancel')</a>
                     </div>
 
                     <button type="submit" class="w-full button-secondary md:w-auto">
-                        @lang('fortify::auth.forgot-password.reset_link')
+                        @lang('ui::auth.forgot-password.reset_link')
                     </button>
                 </div>
             </x:ark-fortify::form-wrapper>

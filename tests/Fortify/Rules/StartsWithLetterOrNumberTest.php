@@ -26,5 +26,5 @@ it('doesnt accept a name that doesnt start with letter or number', function ($na
 
 it('has a message', function () {
     $rule = new StartsWithLetterOrNumber();
-    $this->assertEquals(trans('fortify::validation.messages.start_with_letter_or_number'), $rule->message());
+    $this->assertEquals(trans('ui::validation.messages.start_with_letter_or_number'), $rule->message());
 });

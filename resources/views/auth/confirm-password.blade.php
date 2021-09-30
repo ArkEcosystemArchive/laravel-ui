@@ -1,1 +1,1 @@
-@lang('fortify::auth.confirm-password.page_header')
+@lang('ui::auth.confirm-password.page_header')

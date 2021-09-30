@@ -23,7 +23,7 @@ final class SendFeedback extends Mailable implements ShouldQueue
     {
         return $this
             ->from(config('fortify.mail.default.address'), config('fortify.mail.default.name'))
-            ->subject(trans('fortify::mails.feedback_subject'))
+            ->subject(trans('ui::mails.feedback_subject'))
             ->markdown('ark-fortify::mails.profile.feedback');
     }
 }

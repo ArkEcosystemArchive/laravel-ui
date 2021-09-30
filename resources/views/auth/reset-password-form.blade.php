@@ -9,7 +9,7 @@
                     no-model
                     type="email"
                     name="email"
-                    :label="trans('fortify::forms.email')"
+                    :label="trans('ui::forms.email')"
                     autocomplete="email"
                     class="w-full"
                     :autofocus="true"
@@ -29,7 +29,7 @@
             <x-ark-password-toggle
                 model="password"
                 name="password"
-                :label="trans('fortify::forms.password')"
+                :label="trans('ui::forms.password')"
                 autocomplete="new-password"
                 class="w-full"
                 required="true"
@@ -44,7 +44,7 @@
                 <x-ark-password-toggle
                     model="password_confirmation"
                     name="password_confirmation"
-                    :label="trans('fortify::forms.confirm_password')"
+                    :label="trans('ui::forms.confirm_password')"
                     autocomplete="new-password"
                     class="w-full"
                     :required="true"
@@ -55,11 +55,11 @@
 
         <div class="flex flex-col-reverse items-center justify-between space-y-4 md:space-y-0 md:flex-row">
             <div class="flex-1 mt-8 md:mt-0">
-                <a href="{{ route('login') }}" class="link">@lang('fortify::actions.cancel')</a>
+                <a href="{{ route('login') }}" class="link">@lang('ui::actions.cancel')</a>
             </div>
 
             <button type="submit" class="w-full button-secondary md:w-auto">
-                @lang('fortify::actions.reset_password')
+                @lang('ui::actions.reset_password')
             </button>
         </div>
     </div>

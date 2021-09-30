@@ -18,7 +18,7 @@ class FailedTwoFactorLoginResponse implements Responsable
      */
     public function toResponse($request)
     {
-        $message = trans('fortify::messages.invalid_2fa_authentication_code');
+        $message = trans('ui::messages.invalid_2fa_authentication_code');
 
         $params = collect($request->only(['code', 'recovery_code']))
             ->filter()

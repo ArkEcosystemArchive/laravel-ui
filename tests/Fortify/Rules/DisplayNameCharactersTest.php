@@ -59,7 +59,7 @@ it('doesnt accept other special characters', function ($name) {
 it('doesnt accept repetitive characters', function ($name) {
     expect($this->subject->passes('name', $name))->toBeFalse();
 
-    expect($this->subject->message())->toBe(trans('fortify::validation.messages.some_special_characters'));
+    expect($this->subject->message())->toBe(trans('ui::validation.messages.some_special_characters'));
 })->with([
     'Marco d\'\'Almeida',
     'Marco d’’Almeida',
@@ -70,13 +70,13 @@ it('doesnt accept repetitive characters', function ($name) {
 ]);
 
 it('has a message', function () {
-    $this->assertEquals(trans('fortify::validation.messages.some_special_characters'), $this->subject->message());
+    $this->assertEquals(trans('ui::validation.messages.some_special_characters'), $this->subject->message());
 });
 
 it('will reject if the value contains any blacklisted name', function ($name) {
     expect($this->subject->passes('name', $name))->toBeFalse();
 
-    expect($this->subject->message())->toBe(trans('fortify::validation.messages.username.blacklisted'));
+    expect($this->subject->message())->toBe(trans('ui::validation.messages.username.blacklisted'));
 })->with([
     'admin',
     'root',

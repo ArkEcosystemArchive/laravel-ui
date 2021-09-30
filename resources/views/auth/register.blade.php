@@ -8,8 +8,8 @@
 
 @section('breadcrumbs')
     <x-ark-breadcrumbs :crumbs="[
-        ['route' => 'login', 'label' => trans('fortify::menu.sign_in')],
-        ['label' => trans('fortify::menu.sign_up')],
+        ['route' => 'login', 'label' => trans('ui::menu.sign_in')],
+        ['label' => trans('ui::menu.sign_up')],
     ]" />
 @endsection
 
@@ -21,7 +21,7 @@
 
         <div class="text-center">
             <div class="mt-8">
-                @lang('fortify::auth.register-form.already_member', ['route' => route('login')])
+                @lang('ui::auth.register-form.already_member', ['route' => route('login')])
             </div>
         </div>
     </div>

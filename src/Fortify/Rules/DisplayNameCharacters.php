@@ -73,10 +73,10 @@ final class DisplayNameCharacters implements Rule
         }
 
         if ($this->withRepetitiveSpecialChars) {
-            return trans('fortify::validation.messages.some_special_characters');
+            return trans('ui::validation.messages.some_special_characters');
         }
 
-        return trans('fortify::validation.messages.some_special_characters');
+        return trans('ui::validation.messages.some_special_characters');
     }
 
     public function withForbiddenChars(string $value): bool

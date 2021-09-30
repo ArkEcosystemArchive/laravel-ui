@@ -8,8 +8,8 @@
 
 @section('breadcrumbs')
     <x-ark-breadcrumbs :crumbs="[
-        ['route' => 'login', 'label' => trans('fortify::menu.sign_in')],
-        ['label' => trans('fortify::menu.reset_password')],
+        ['route' => 'login', 'label' => trans('ui::menu.sign_in')],
+        ['label' => trans('ui::menu.reset_password')],
     ]" />
 @endsection
 

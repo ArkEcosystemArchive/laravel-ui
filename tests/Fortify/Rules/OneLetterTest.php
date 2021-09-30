@@ -26,5 +26,5 @@ it('accepts a name that include at least one letter', function ($name) {
 
 it('has a message', function () {
     $rule = new OneLetter();
-    $this->assertEquals(trans('fortify::validation.messages.include_letters'), $rule->message());
+    $this->assertEquals(trans('ui::validation.messages.include_letters'), $rule->message());
 });

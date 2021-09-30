@@ -1,16 +1,16 @@
 <x-jet-action-section>
     {{-- TODO: rewrite to our components --}}
     <x-slot name="title">
-        @lang('fortify::forms.logout-sessions.title')
+        @lang('ui::forms.logout-sessions.title')
     </x-slot>
 
     <x-slot name="description">
-        @lang('fortify::forms.logout-sessions.description')
+        @lang('ui::forms.logout-sessions.description')
     </x-slot>
 
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-            @lang('fortify::forms.logout-sessions.content')
+            @lang('ui::forms.logout-sessions.content')
         </div>
 
         @if (count($this->sessions) > 0)
@@ -40,9 +40,9 @@
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">@lang('fortify::generic.this_device')</span>
+                                        <span class="text-green-500 font-semibold">@lang('ui::generic.this_device')</span>
                                     @else
-                                        @lang('fortify::generic.last_active') {{ $session->last_active }}
+                                        @lang('ui::generic.last_active') {{ $session->last_active }}
                                     @endif
                                 </div>
                             </div>
@@ -54,28 +54,28 @@
 
         <div class="flex items-center mt-5">
             <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                @lang('fortify::forms.logout-sessions.confirm_logout')
+                @lang('ui::forms.logout-sessions.confirm_logout')
             </x-jet-button>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
-                @lang('fortify::actions.done')
+                @lang('ui::actions.done')
             </x-jet-action-message>
         </div>
 
         <!-- Logout Other Devices Confirmation Modal -->
         <x-jet-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
-                @lang('fortify::forms.confirming-logout.title')
+                @lang('ui::forms.confirming-logout.title')
             </x-slot>
 
             <x-slot name="content">
-                @lang('fortify::forms.confirming-logout.content')
+                @lang('ui::forms.confirming-logout.content')
 
                 <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
                     <x-jet-input
                         type="password"
                         class="mt-1 block w-3/4"
-                        :placeholder="trans('fortify::forms.password')"
+                        :placeholder="trans('ui::forms.password')"
                         x-ref="password"
                         wire:model.defer="password"
                         wire:keydown.enter="logoutOtherBrowserSessions"
@@ -87,11 +87,11 @@
 
             <x-slot name="footer">
                 <x-jet-secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
-                    @lang('fortify::actions.nevermind')
+                    @lang('ui::actions.nevermind')
                 </x-jet-secondary-button>
 
                 <x-jet-button class="ml-2" wire:click="logoutOtherBrowserSessions" wire:loading.attr="disabled">
-                    @lang('fortify::actions.confirm_logout')
+                    @lang('ui::actions.confirm_logout')
                 </x-jet-button>
             </x-slot>
         </x-jet-dialog-modal>

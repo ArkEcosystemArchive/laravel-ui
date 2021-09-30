@@ -73,6 +73,6 @@ class UpdateTimezoneForm extends Component
 
         $this->user->save();
 
-        $this->emit('toastMessage', [trans('fortify::pages.user-settings.timezone_updated'), 'success']);
+        $this->emit('toastMessage', [trans('ui::pages.user-settings.timezone_updated'), 'success']);
     }
 }

@@ -31,7 +31,7 @@
                     <span
                         class="font-semibold {{ $ruleIsValid ? 'text-theme-success-600' : 'text-theme-secondary-600' }}"
                     >
-                        @lang('fortify::forms.password-rules.' .Str::snake($ruleName))
+                        @lang('ui::forms.password-rules.' .Str::snake($ruleName))
                     </span>
                 </div>
             @endforeach

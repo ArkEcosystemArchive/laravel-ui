@@ -22,5 +22,5 @@ it('builds the mail with sender', function () {
 it('builds the mail with subject', function () {
     $mail = new SendFeedback('feedback');
 
-    expect($mail->build()->subject)->toBe(trans('fortify::mails.feedback_subject'));
+    expect($mail->build()->subject)->toBe(trans('ui::mails.feedback_subject'));
 });

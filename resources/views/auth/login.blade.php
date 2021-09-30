@@ -8,8 +8,8 @@
 
 @section('breadcrumbs')
     <x-ark-breadcrumbs :crumbs="[
-        ['route' => 'home', 'label' => trans('fortify::menu.home')],
-        ['label' => trans('fortify::menu.sign_in')],
+        ['route' => 'home', 'label' => trans('ui::menu.home')],
+        ['label' => trans('ui::menu.sign_in')],
     ]"/>
 @endsection
 
@@ -34,9 +34,9 @@
                     $type = 'text';
 
                     if ($usernameAlt) {
-                        $label = trans('fortify::forms.'.$username).' or '.trans('fortify::forms.'.$usernameAlt);
+                        $label = trans('ui::forms.'.$username).' or '.trans('ui::forms.'.$usernameAlt);
                     } else {
-                        $label = trans('fortify::forms.'.$username);
+                        $label = trans('ui::forms.'.$username);
                         if ($username === 'email') {
                             $type = 'email';
                         }
@@ -58,7 +58,7 @@
             <div class="flex flex-1">
                 <x-ark-password-toggle
                     name="password"
-                    :label="trans('fortify::forms.password')"
+                    :label="trans('ui::forms.password')"
                     autocomplete="password"
                     class="w-full"
                     :errors="$errors"
@@ -67,7 +67,7 @@
 
             <x-ark-checkbox name="remember" :errors="$errors" label-classes="text-base">
                 @slot('label')
-                    @lang('fortify::auth.sign-in.remember_me')
+                    @lang('ui::auth.sign-in.remember_me')
                 @endslot
             </x-ark-checkbox>
 
@@ -79,13 +79,13 @@
                     @if($hasForgotPassword)
                         <div class="flex-1 mt-8 sm:mt-0">
                             <a href="{{ route('password.request') }}"
-                               class="link font-semibold">@lang('fortify::auth.sign-in.forgot_password')</a>
+                               class="link font-semibold">@lang('ui::auth.sign-in.forgot_password')</a>
                         </div>
                     @endif
                 </div>
 
                 <button type="submit" class="w-full button-secondary sm:w-auto">
-                    @lang('fortify::actions.sign_in')
+                    @lang('ui::actions.sign_in')
                 </button>
             </div>
         </div>

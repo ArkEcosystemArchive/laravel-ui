@@ -8,12 +8,11 @@
 
 @section('breadcrumbs')
     <x-ark-breadcrumbs :crumbs="[
-        ['route' => 'login', 'label' =>trans('fortify::menu.sign_in')],
-        ['label' => trans('fortify::menu.verify')],
+        ['route' => 'login', 'label' =>trans('ui::menu.sign_in')],
+        ['label' => trans('ui::menu.verify')],
     ]" />
 @endsection
 
 @section('content')
     <livewire:auth.verify-email />
 @endsection
-

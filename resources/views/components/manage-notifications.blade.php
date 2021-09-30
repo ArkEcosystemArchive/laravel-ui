@@ -1,5 +1,5 @@
 <div>
-    <h1 class="px-6 text-2xl font-bold md:text-4xl">@lang('hermes::pages.notifications.page_title')</h1>
+    <h1 class="px-6 text-2xl font-bold md:text-4xl">@lang('ui::pages.notifications.page_title')</h1>
 
     <div class="flex flex-col">
         <div class="flex flex-row justify-between w-full mt-4 mb-2 text-base font-semibold sm:px-6">
@@ -47,7 +47,7 @@
                                 class="cursor-pointer dropdown-entry focus-visible:ring-inset"
                                 wire:click="markSelectedAsRead"
                             >
-                                @lang('hermes::menus.notifications-dropdown.mark_selected_as_read')
+                                @lang('ui::menus.notifications-dropdown.mark_selected_as_read')
                             </button>
 
                             <button
@@ -55,7 +55,7 @@
                                 class="cursor-pointer dropdown-entry focus-visible:ring-inset"
                                 wire:click="markSelectedAsUnread"
                             >
-                                @lang('hermes::menus.notifications-dropdown.mark_selected_as_unread')
+                                @lang('ui::menus.notifications-dropdown.mark_selected_as_unread')
                             </button>
 
                             <button
@@ -63,7 +63,7 @@
                                 class="cursor-pointer dropdown-entry focus-visible:ring-inset"
                                 wire:click="markSelectedAsStarred"
                             >
-                                @lang('hermes::menus.notifications-dropdown.mark_selected_as_starred')
+                                @lang('ui::menus.notifications-dropdown.mark_selected_as_starred')
                             </button>
 
                             <button
@@ -71,7 +71,7 @@
                                 class="cursor-pointer dropdown-entry focus-visible:ring-inset"
                                 wire:click="markSelectedAsUnstarred"
                             >
-                                @lang('hermes::menus.notifications-dropdown.unstar_selected')
+                                @lang('ui::menus.notifications-dropdown.unstar_selected')
                             </button>
 
                             <button
@@ -79,7 +79,7 @@
                                 class="cursor-pointer dropdown-entry focus-visible:ring-inset"
                                 wire:click="deleteSelected"
                             >
-                                @lang('hermes::menus.notifications-dropdown.mark_selected_as_delete')
+                                @lang('ui::menus.notifications-dropdown.mark_selected_as_delete')
                             </button>
                         </div>
                     </x-ark-dropdown>
@@ -91,7 +91,7 @@
                     class="items-center justify-end hidden cursor-pointer sm:flex link"
                     wire:click="markAllAsRead"
                 >
-                    @lang('hermes::actions.mark_all_as_read')
+                    @lang('ui::actions.mark_all_as_read')
                 </button>
             @endif
         </div>
@@ -102,7 +102,7 @@
                 class="flex items-center mt-2 sm:hidden link"
                 wire:click="markAllAsRead"
             >
-                @lang('hermes::actions.mark_all_as_read')
+                @lang('ui::actions.mark_all_as_read')
             </button>
         @endif
 
@@ -225,9 +225,9 @@
             <div class="flex flex-col items-center justify-between p-4 mt-5 space-y-2 border-2 rounded cursor-pointer border-theme-secondary-200 sm:flex-row sm:space-y-0">
                 <span class="p-3">
                     @if (ARKEcosystem\Foundation\Hermes\Enums\NotificationFilterEnum::isAll($this->activeFilter))
-                        @lang('hermes::menus.notifications.no_notifications')
+                        @lang('ui::menus.notifications.no_notifications')
                     @else
-                        @lang('hermes::menus.notifications.no_filtered_notifications', ['filter' => $this->activeFilter])
+                        @lang('ui::menus.notifications.no_filtered_notifications', ['filter' => $this->activeFilter])
                     @endif
                 </span>
 
@@ -239,7 +239,7 @@
                     >
                         <x-ark-icon name="reset" />
 
-                        <span>@lang('hermes::actions.reset_filters')</span>
+                        <span>@lang('ui::actions.reset_filters')</span>
                     </button>
                 @endif
             </div>

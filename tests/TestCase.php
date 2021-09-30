@@ -33,9 +33,7 @@ class TestCase extends Orchestra
             'inlineRenderers' => [],
         ]);
 
-        $app['config']->set('app', [
-            'url' => 'https://ourapp.com',
-        ]);
+        $app['config']->set('app.url', 'https://ourapp.com');
 
         View::addNamespace('ark', realpath(__DIR__.'/views'));
     }
