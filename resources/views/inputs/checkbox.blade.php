@@ -28,7 +28,11 @@
 @endphp
 
 <div class="{{ $class }}">
-    <div class="flex relative {{ $verticalPositionClass }} @if($right) flex-row-reverse @endif">
+    <div @class([
+        $verticalPositionClass,
+        'flex relative',
+        'flex-row-reverse' => $right,
+    ])>
         <div class="flex absolute items-center h-5">
             <input
                 id="{{ $id ?? $name }}"
@@ -43,7 +47,11 @@
             />
         </div>
 
-        <div class="@if($right) pr-7 @else pl-7 @endif text-sm text-theme-secondary-700 leading-5">
+        <div @class([
+            'text-sm leading-5 theme-secondary-700',
+            'pr-7' => $right,
+            'pl-7' => ! $right,
+        ])>
             <label for="{{ $id ?? $name }}" class="{{ $labelClasses }}">
                 {{ $label ? $label : trans('forms.' . $name) }}
             </label>

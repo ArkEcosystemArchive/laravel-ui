@@ -28,7 +28,11 @@
     }"
 >
     <div class="{{ $wrapperClass }}">
-        <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between {{ $description ? 'md:items-end' : 'md:items-center' }}">
+        <div @class([
+            'flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-between',
+            'md:items-end'    => $description,
+            'md:items-center' => ! $description,
+        ])>
             @if($title || $description)
                 <div class="flex flex-col">
                     @if($title)
@@ -51,7 +55,11 @@
         </div>
 
         @unless ($hiddenOptions)
-            <div class="{{ $single ? 'tile-selection-list-single' : 'tile-selection-list' }} {{ $gridWrapperClass }}">
+            <div @class([
+                $gridWrapperClass,
+                'tile-selection-list-single'    => $single,
+                'tile-selection-list' => ! $single,
+            ])>
                 @foreach ($options as $option)
                     @include('ark::inputs.includes.tile-selection-option', [
                         'option' => $option,
