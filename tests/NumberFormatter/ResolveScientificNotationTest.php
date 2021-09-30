@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\NumberFormatter\ResolveScientificNotation;
+use ARKEcosystem\Foundation\NumberFormatter\ResolveScientificNotation;
 
 it('should resolve the scientification notation if it is present', function (): void {
     expect(ResolveScientificNotation::execute(123))->toBe('123');

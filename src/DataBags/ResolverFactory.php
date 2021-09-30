@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\DataBags;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\UserInterface\DataBags;
 
 use InvalidArgumentException;
 

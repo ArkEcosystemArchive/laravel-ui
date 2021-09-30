@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\NumberFormatter\Concerns;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\NumberFormatter\Concerns;
 
 use NumberFormatter;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\View;
+namespace ARKEcosystem\Foundation\CommonMark\View;
 
 use Illuminate\View\FileViewFinder as Finder;
 use Spatie\Regex\Regex;

@@ -20,7 +20,7 @@ Since this package relies on a few 3rd party packages, you will need to have the
 ## Installation
 
 1. Require with composer: `composer require arkecosystem/ui`
-2. Publish all the assets / views with `php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="css" --tag="fonts" --force`. If you need custom pagination, then also run `php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="pagination"`
+2. Publish all the assets / views with `php artisan vendor:publish --provider="ARKEcosystem\Foundation\UserInterface\UserInterfaceServiceProvider" --tag="css" --tag="fonts" --force`. If you need custom pagination, then also run `php artisan vendor:publish --provider="ARKEcosystem\Foundation\UserInterface\UserInterfaceServiceProvider" --tag="pagination"`
 3. Import the vendor css assets in your `app.css` file
 4. Import the vendor `tailwind.config.js` file in your own tailwind config and build on top of that if you need additional changes
 5. Use the components in your project with `<x-ark-component>`
@@ -287,7 +287,7 @@ php artisan migrate
 
 #### Livewire modals
 
-To use the Livewire modals, use the `ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
+To use the Livewire modals, use the `ARKEcosystem\Foundation\UserInterface\Http\Livewire\Concerns\HasModal` trait in your component class. The trait adds the `closeModal` and `openModal` methods that toggle the `modalShown` property that is the one you should use to whether show or hide the modal.
 
 **Important**: If you need to use a different variable to close the modal, or you can't make use of the trait for a reason, make sure to emit the `modalClosed` event as that is required for proper handling of the modals on the frontend! If you fail to emit this event, the browser window will not be scrollable after the modal disappears.
 
@@ -544,7 +544,7 @@ import "@ui/js/tabs.js";
         <x-ark-tab name="tab-2" />
         <x-ark-tab name="tab-3" />
     </x-slot>
-    
+
     <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
@@ -557,7 +557,7 @@ For the available parameters, please refer to the [EXAMPLE.md](EXAMPLE.md#tabs)
 
 There are also default error pages you can use for your Laravel project
 
-1. Run `php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="error-pages"`
+1. Run `php artisan vendor:publish --provider="ARKEcosystem\Foundation\UserInterface\UserInterfaceServiceProvider" --tag="error-pages"`
 
 2. Add the following snippet to your `menus.php` lang file:
 
@@ -612,7 +612,7 @@ import "@ui/js/page-scroll";
 2. Use the `HasPagination` trait on Livewire Components:
 
 ```php
-use ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasPagination;
+use ARKEcosystem\Foundation\UserInterface\Http\Livewire\Concerns\HasPagination;
 
 class Articles {
     use HasPagination;
@@ -637,7 +637,7 @@ class Articles {
 
 1. Publish the pagination assets
 
-`php artisan vendor:publish --provider="ARKEcosystem\UserInterface\UserInterfaceServiceProvider" --tag="pagination"`
+`php artisan vendor:publish --provider="ARKEcosystem\Foundation\UserInterface\UserInterfaceServiceProvider" --tag="pagination"`
 
 2. Add the following to the `app.js` file:
 
@@ -686,7 +686,7 @@ Add the following snippet to your `urls.php` lang file:
 In `config/app.php` under `aliases`, add the following entry:
 
 ```
-'Avatar' => ARKEcosystem\UserInterface\Support\Avatar::class,
+'Avatar' => ARKEcosystem\Foundation\UserInterface\Support\Avatar::class,
 ```
 
 ### Date Format
@@ -694,7 +694,7 @@ In `config/app.php` under `aliases`, add the following entry:
 In `config/app.php` under `aliases`, add the following entry:
 
 ```
-'DateFormat' => ARKEcosystem\UserInterface\Support\DateFormat::class,
+'DateFormat' => ARKEcosystem\Foundation\UserInterface\Support\DateFormat::class,
 ```
 
 ### Format Read Time method for blade (generally used for blog date/time output)
@@ -702,7 +702,7 @@ In `config/app.php` under `aliases`, add the following entry:
 In `config/app.php` under `providers`, add the following entry:
 
 ```
-ARKEcosystem\UserInterface\Providers\FormatReadTimeServiceProvider::class,
+ARKEcosystem\Foundation\UserInterface\Providers\FormatReadTimeServiceProvider::class,
 ```
 
 ### SVG Lazy-Loading Icons
@@ -710,7 +710,7 @@ ARKEcosystem\UserInterface\Providers\FormatReadTimeServiceProvider::class,
 In `config/app.php` under `providers`, add the following entry:
 
 ```
-ARKEcosystem\UserInterface\Providers\SvgLazyServiceProvider::class,
+ARKEcosystem\Foundation\UserInterface\Providers\SvgLazyServiceProvider::class,
 ```
 
 This will initiate the `svgLazy` directive and allow you to load icons from the `arkecosystem/ui` package. For example:

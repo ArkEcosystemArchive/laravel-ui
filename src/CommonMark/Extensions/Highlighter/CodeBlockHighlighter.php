@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\Extensions\Highlighter;
+namespace ARKEcosystem\Foundation\CommonMark\Extensions\Highlighter;
 
 use DomainException;
 

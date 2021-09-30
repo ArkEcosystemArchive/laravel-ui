@@ -71,10 +71,10 @@
     },
     "autoload": {
         "psr-4": {
-            "ARKEcosystem\\UserInterface\\": "src/"
+            "ARKEcosystem\\Foundation\\": "src/"
         },
         "files": [
-            "src/helpers.php"
+            "src/UserInterface/helpers.php"
         ]
     },
     "autoload-dev": {
@@ -85,7 +85,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ARKEcosystem\\UserInterface\\UserInterfaceServiceProvider"
+                "ARKEcosystem\\Foundation\\Providers\\UserInterfaceServiceProvider",
+                "ARKEcosystem\\Foundation\\Providers\\CommonMarkServiceProvider",
+                "ARKEcosystem\\Foundation\\Providers\\HermesServiceProvider",
+                "ARKEcosystem\\Foundation\\Providers\\FortifyServiceProvider",
+                "ARKEcosystem\\Foundation\\Providers\\StanServiceProvider"
             ]
         }
     },

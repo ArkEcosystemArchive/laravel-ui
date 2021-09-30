@@ -1,6 +1,8 @@
 <?php
 
-use ARKEcosystem\UserInterface\Components\FlashMessage;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\UserInterface\Components\FlashMessage;
 use Livewire\Livewire;
 
 it('can_see_flash_message', function () {

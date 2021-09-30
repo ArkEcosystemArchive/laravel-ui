@@ -33,7 +33,7 @@
                 <div class="w-full bg-white rounded-xl">
                     <div class="flex flex-col justify-center items-center space-y-8">
                         <img src="/images/errors/{{ $errorType }}.svg" class="max-w-4xl"/>
-                        <div class="text-lg font-semibold text-center text-theme-secondary-900">{{ ARKEcosystem\UserInterface\UI::getErrorMessage($errorType) }}</div>
+                        <div class="text-lg font-semibold text-center text-theme-secondary-900">{{ ARKEcosystem\Foundation\UserInterface\UI::getErrorMessage($errorType) }}</div>
                         <div class="space-x-3">
                             <a href="/" class="button-primary">@lang('menus.home')</a>
                             <a href="/contact" class="button-secondary">@lang('menus.contact')</a>

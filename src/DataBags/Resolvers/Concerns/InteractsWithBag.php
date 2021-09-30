@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\DataBags\Resolvers\Concerns;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\Concerns;
 
 use Illuminate\Support\Arr;
 

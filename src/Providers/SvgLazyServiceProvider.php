@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\Providers;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;

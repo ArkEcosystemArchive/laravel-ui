@@ -1,9 +1,14 @@
 <?php
 
-use ARKEcosystem\UserInterface\DataBags\DataBag;
-use ARKEcosystem\UserInterface\DataBags\ResolverFactory;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\UserInterface\DataBags\DataBag;
+use ARKEcosystem\Foundation\UserInterface\DataBags\ResolverFactory;
 use Illuminate\Support\Facades\Route;
 
+/**
+ * @coversNothing
+ */
 class ResolverFactoryTest
 {
     public function __invoke()

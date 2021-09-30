@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\View;
+namespace ARKEcosystem\Foundation\CommonMark\View;
 
 use Illuminate\Support\Str;
 use Livewire\LivewireViewCompilerEngine;

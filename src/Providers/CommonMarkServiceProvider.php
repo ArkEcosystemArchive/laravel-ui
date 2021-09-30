@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark;
+namespace ARKEcosystem\Foundation\Providers;
 
-use ARKEcosystem\CommonMark\Extensions\Highlighter\FencedCodeRenderer;
-use ARKEcosystem\CommonMark\Extensions\Image\ImageRenderer;
-use ARKEcosystem\CommonMark\Extensions\Link\LinkRenderer;
-use ARKEcosystem\CommonMark\View\BladeEngine;
-use ARKEcosystem\CommonMark\View\BladeMarkdownEngine;
-use ARKEcosystem\CommonMark\View\FileViewFinder;
+use ARKEcosystem\Foundation\CommonMark\Extensions\Highlighter\FencedCodeRenderer;
+use ARKEcosystem\Foundation\CommonMark\Extensions\Image\ImageRenderer;
+use ARKEcosystem\Foundation\CommonMark\Extensions\Link\LinkRenderer;
+use ARKEcosystem\Foundation\CommonMark\View\BladeEngine;
+use ARKEcosystem\Foundation\CommonMark\View\BladeMarkdownEngine;
+use ARKEcosystem\Foundation\CommonMark\View\FileViewFinder;
 use GrahamCampbell\Markdown\MarkdownServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -58,7 +58,7 @@ final class CommonMarkServiceProvider extends ServiceProvider
     public function registerPublishers(): void
     {
         $this->publishes([
-            __DIR__.'/../config/markdown.php' => config_path('markdown.php'),
+            __DIR__.'/../../config/markdown.php' => config_path('markdown.php'),
         ], 'config');
     }
 

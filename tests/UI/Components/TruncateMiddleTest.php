@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\Components\TruncateMiddle;
+use ARKEcosystem\Foundation\UserInterface\Components\TruncateMiddle;
 use Illuminate\Support\Facades\View;
 use function Spatie\Snapshots\assertMatchesSnapshot;
 

@@ -1,8 +1,10 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\DataBags\Resolvers;
+declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\DataBags\Contracts\Resolver;
+namespace ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers;
+
+use ARKEcosystem\Foundation\UserInterface\DataBags\Contracts\Resolver;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Request;
 

@@ -1,9 +1,11 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\NumberFormatter\Concerns;
+declare(strict_types=1);
 
+namespace ARKEcosystem\Foundation\NumberFormatter\Concerns;
+
+use ARKEcosystem\Foundation\NumberFormatter\ResolveScientificNotation;
 use Illuminate\Support\Str;
-use ARKEcosystem\UserInterface\NumberFormatter\ResolveScientificNotation;
 
 trait HasCustomFormatters
 {

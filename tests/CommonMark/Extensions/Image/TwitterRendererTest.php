@@ -1,7 +1,9 @@
 <?php
 
-use ARKEcosystem\CommonMark\Extensions\Image\MediaUrl;
-use ARKEcosystem\CommonMark\Extensions\Image\TwitterRenderer;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\CommonMark\Extensions\Image\MediaUrl;
+use ARKEcosystem\Foundation\CommonMark\Extensions\Image\TwitterRenderer;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;

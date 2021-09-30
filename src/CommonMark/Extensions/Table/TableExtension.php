@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\Extensions\Table;
+namespace ARKEcosystem\Foundation\CommonMark\Extensions\Table;
 
 use League\CommonMark\ConfigurableEnvironmentInterface;
 use League\CommonMark\Extension\ExtensionInterface;

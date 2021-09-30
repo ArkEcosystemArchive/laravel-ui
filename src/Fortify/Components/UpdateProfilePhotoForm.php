@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace ARKEcosystem\Fortify\Components;
 
 use ARKEcosystem\Fortify\Components\Concerns\InteractsWithUser;
-use ARKEcosystem\UserInterface\Components\UploadImageSingle;
+use ARKEcosystem\Foundation\UserInterface\Components\UploadImageSingle;
 use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\TemporaryUploadedFile;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes;
+namespace ARKEcosystem\Foundation\Providers;
 
 use ARKEcosystem\Hermes\Components\ManageNotifications;
 use ARKEcosystem\Hermes\Components\NotificationsIndicator;
@@ -19,7 +19,7 @@ class HermesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/hermes.php', 'hermes');
+        $this->mergeConfigFrom(__DIR__.'/../../config/hermes.php', 'hermes');
     }
 
     /**
@@ -45,9 +45,9 @@ class HermesServiceProvider extends ServiceProvider
      */
     public function registerLoaders(): void
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'hermes');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'hermes');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'hermes');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'hermes');
     }
 
     /**
@@ -59,15 +59,15 @@ class HermesServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/hermes.php' => config_path('hermes.php'),
+                __DIR__.'/../../config/hermes.php' => config_path('hermes.php'),
             ], 'hermes-config');
 
             $this->publishes([
-                __DIR__.'/../resources/views/components' => resource_path('views/components'),
+                __DIR__.'/../../resources/views/components' => resource_path('views/components'),
             ], 'hermes-views');
 
             $this->publishes([
-                __DIR__.'/../database/migrations' => database_path('migrations'),
+                __DIR__.'/../../database/migrations' => database_path('migrations'),
             ], 'hermes-migrations');
         }
     }

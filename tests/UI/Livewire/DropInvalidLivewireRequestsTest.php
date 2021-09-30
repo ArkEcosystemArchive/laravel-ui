@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\Http\Middlewares\DropInvalidLivewireRequests;
+use ARKEcosystem\Foundation\UserInterface\Http\Middlewares\DropInvalidLivewireRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Livewire\Exceptions\ComponentNotFoundException;

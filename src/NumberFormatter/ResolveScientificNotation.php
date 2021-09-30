@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\NumberFormatter;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\NumberFormatter;
 
 final class ResolveScientificNotation
 {

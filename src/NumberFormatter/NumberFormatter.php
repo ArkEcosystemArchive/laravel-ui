@@ -1,15 +1,17 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\NumberFormatter;
+declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasAttributes;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasCustomFormatters;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasFormatters;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasPadding;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasParsers;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasRounding;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasSymbol;
-use ARKEcosystem\UserInterface\NumberFormatter\Concerns\HasTextAttributes;
+namespace ARKEcosystem\Foundation\NumberFormatter;
+
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasAttributes;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasCustomFormatters;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasFormatters;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasPadding;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasParsers;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasRounding;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasSymbol;
+use ARKEcosystem\Foundation\NumberFormatter\Concerns\HasTextAttributes;
 use NumberFormatter as NativeFormatter;
 
 final class NumberFormatter

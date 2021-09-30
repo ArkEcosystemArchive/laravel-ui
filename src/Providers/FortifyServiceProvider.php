@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify;
+namespace ARKEcosystem\Foundation\Providers;
 
 use ARKEcosystem\Fortify\Actions\AuthenticateUser;
 use ARKEcosystem\Fortify\Actions\CreateNewUser;
@@ -90,16 +90,16 @@ class FortifyServiceProvider extends ServiceProvider
     public function registerPublishers(): void
     {
         $this->publishes([
-            __DIR__.'/../config/fortify.php' => config_path('fortify.php'),
+            __DIR__.'/../../config/fortify.php' => config_path('fortify.php'),
         ], 'config');
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/newsletter.php',
+            __DIR__.'/../../config/newsletter.php',
             'newsletter'
         );
 
         $this->mergeConfigFrom(
-            __DIR__.'/../config/fortify.php',
+            __DIR__.'/../../config/fortify.php',
             'fortify'
         );
 

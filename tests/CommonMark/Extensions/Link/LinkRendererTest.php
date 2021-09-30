@@ -1,6 +1,8 @@
 <?php
 
-use ARKEcosystem\CommonMark\Extensions\Link\LinkRenderer;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\CommonMark\Extensions\Link\LinkRenderer;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use League\CommonMark\Inline\Element\Link;

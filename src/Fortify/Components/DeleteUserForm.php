@@ -6,7 +6,7 @@ namespace ARKEcosystem\Fortify\Components;
 
 use ARKEcosystem\Fortify\Contracts\DeleteUser;
 use ARKEcosystem\Fortify\Mail\SendFeedback;
-use ARKEcosystem\UserInterface\Http\Livewire\Concerns\HasModal;
+use ARKEcosystem\Foundation\UserInterface\Http\Livewire\Concerns\HasModal;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;

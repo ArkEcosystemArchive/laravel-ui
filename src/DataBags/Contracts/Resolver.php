@@ -1,6 +1,8 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\DataBags\Contracts;
+declare(strict_types=1);
+
+namespace ARKEcosystem\Foundation\UserInterface\DataBags\Contracts;
 
 interface Resolver
 {

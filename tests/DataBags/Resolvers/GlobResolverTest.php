@@ -1,7 +1,9 @@
 <?php
 
-use ARKEcosystem\UserInterface\DataBags\DataBag;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\GlobResolver;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\UserInterface\DataBags\DataBag;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\GlobResolver;
 use Illuminate\Support\Facades\Route;
 
 it('should match by a glob pattern', function () {

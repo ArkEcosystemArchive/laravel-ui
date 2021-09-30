@@ -11,7 +11,7 @@ This file contains basic examples and explains the parameters that can be used f
 `<x-ark-input type="email" name="my-input" :label="trans('forms.email_address')" :value="old('email')" :errors="$errors" />`
 
 | Parameter     | Description                                                                      | Required |
-|---------------|----------------------------------------------------------------------------------|----------|
+| ------------- | -------------------------------------------------------------------------------- | -------- |
 | name          | input name, will also be used as `id` if none specified                          | yes      |
 | errors        | laravel error bag                                                                | yes      |
 | label         | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
@@ -28,7 +28,7 @@ This file contains basic examples and explains the parameters that can be used f
 `<x-ark-textarea name="my-textarea" :errors="$errors" />`
 
 | Parameter | Description                                                                      | Required |
-|-----------|----------------------------------------------------------------------------------|----------|
+| --------- | -------------------------------------------------------------------------------- | -------- |
 | name      | input name, will also be used as `id` if none specified                          | yes      |
 | errors    | laravel error bag                                                                | yes      |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
@@ -41,26 +41,26 @@ This file contains basic examples and explains the parameters that can be used f
 
 `<x-ark-checkbox name="my-checkbox" />`
 
-| Parameter | Description                                                                      | Required |
-|-----------|----------------------------------------------------------------------------------|----------|
-| name      | input name, will also be used as `id` if none specified                          | yes      |
-| class     | allows additional classes for the component                                      | no       |
-| verticalPosition | allows to reposition the checkbox. Default alignment is middle.                                        | no       |
-| label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
-| labelClasses | allows additional classes for the label                                       | no       |
-| model     | livewire model to attach to                                                      | no       |
-| checked   | whether the input is checked or not                                              | no       |
-| disabled  | whether the input is disabled or not                                             | no       |
-| id        | id of the input, by default `name` is used                                       | no       |
-| value     | value of the input                                                               | no       |
-| right     | right-aligns the checkbox. Default alignment is left                             | no       |
+| Parameter        | Description                                                                      | Required |
+| ---------------- | -------------------------------------------------------------------------------- | -------- |
+| name             | input name, will also be used as `id` if none specified                          | yes      |
+| class            | allows additional classes for the component                                      | no       |
+| verticalPosition | allows to reposition the checkbox. Default alignment is middle.                  | no       |
+| label            | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
+| labelClasses     | allows additional classes for the label                                          | no       |
+| model            | livewire model to attach to                                                      | no       |
+| checked          | whether the input is checked or not                                              | no       |
+| disabled         | whether the input is disabled or not                                             | no       |
+| id               | id of the input, by default `name` is used                                       | no       |
+| value            | value of the input                                                               | no       |
+| right            | right-aligns the checkbox. Default alignment is left                             | no       |
 
 ### Radio Button
 
 `<x-ark-radio name="my-radio-button" />`
 
 | Parameter | Description                                                                      | Required |
-|-----------|----------------------------------------------------------------------------------|----------|
+| --------- | -------------------------------------------------------------------------------- | -------- |
 | name      | input name, will also be used as `id` if none specified                          | yes      |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
 | model     | livewire model to attach to                                                      | no       |
@@ -73,7 +73,7 @@ This file contains basic examples and explains the parameters that can be used f
 `<x-ark-toggle name="my-toggle" :errors="$errors" />`
 
 | Parameter | Description                                                                      | Required |
-|-----------|----------------------------------------------------------------------------------|----------|
+| --------- | -------------------------------------------------------------------------------- | -------- |
 | name      | input name, will also be used as `id` if none specified                          | yes      |
 | label     | label to be shown for the input, will use `trans(form.<name>)` if none specified | no       |
 | model     | livewire model to attach to                                                      | no       |
@@ -138,7 +138,7 @@ This file contains basic examples and explains the parameters that can be used f
 ```
 
 | Parameter     | Description                                                                              | Required |
-|---------------|------------------------------------------------------------------------------------------|----------|
+| ------------- | ---------------------------------------------------------------------------------------- | -------- |
 | id            | ID used to identify tile selections                                                      | yes      |
 | title         | title of options                                                                         | yes      |
 | options       | array to display - requires "id", "title" & "checked" ("icon" is required if not single) | yes      |
@@ -154,8 +154,8 @@ This component renders an input file for a single image upload.
 ```html
 <x-ark-upload-image-single id="profile" :image="$image" wire:model="imageSingle" />
 ```
-> It requires the use of a Livewire Component. 
-> There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageSingle`.
+> It requires the use of a Livewire Component.
+> There is a trait that can be used with your Livewire Component `\ARKEcosystem\Foundation\UserInterface\Components\UploadImageSingle`.
 
 1. Install `Compressorjs`
 ```bash
@@ -210,7 +210,7 @@ mix
 ```
 
 | Parameter                    | Description                                                                      | Required |
-|------------------------------|----------------------------------------------------------------------------------|----------|
+| ---------------------------- | -------------------------------------------------------------------------------- | -------- |
 | id                           | The component ID                                                                 | yes      |
 | image                        | Object with the image reference (if uploaded)                                    | yes      |
 | model                        | The two-bindings connection with Livewire Component                              | yes      |
@@ -246,8 +246,8 @@ This component renders an input file for a multiple image upload.
 ```html
 <x-ark-upload-image-collection id="media" :image="$imageCollection" wire:model="tempCollection" />
 ```
-> It requires the use of a Livewire Component. 
-> There is a trait that can be used with your Livewire Component `\ARKEcosystem\UserInterface\Components\UploadImageCollection`.
+> It requires the use of a Livewire Component.
+> There is a trait that can be used with your Livewire Component `\ARKEcosystem\Foundation\UserInterface\Components\UploadImageCollection`.
 
 1. Install `Compressorjs`
 ```bash
@@ -290,10 +290,10 @@ public function imagesReordered(array $ids): void
 
 4. Then, you can use `upload-image-collection` component with sortable functionality.
 ```html
-<x-ark-upload-image-collection 
-    id="media" 
-    ... 
-    sortable 
+<x-ark-upload-image-collection
+    id="media"
+    ...
+    sortable
 />
 ```
 
@@ -313,25 +313,25 @@ public function imagesReordered(array $ids): void
 />
 ```
 
-| Parameter                    | Description                                                                                             | Required |
-|------------------------------|---------------------------------------------------------------------------------------------------------|----------|
-| id                           | The component ID                                                                                        | yes      |
-| image                        | Object with the image reference (if uploaded)                                                           | yes      |
-| model                        | The two-bindings connection with Livewire Component                                                     | yes      |
-| dimensions                   | Size of the upload component                                                                            | no       |
-| upload-text                  | Text to display when no existing image                                                                  | no       |
-| delete-tooltip               | Tooltip text for the delete button                                                                      | no       |
-| min-width                    | Minimum width for the image                                                                             | no       |
-| min-height                   | Minimum height for the image                                                                            | no       |
-| max-width                    | Maximum width for the image                                                                             | no       |
-| max-height                   | Maximum height for the image                                                                            | no       |
-| width                        | The width of the output image. If not specified, the natural width of the original image will be used   | no       |
-| height                       | The height of the output image. If not specified, the natural height of the original image will be used | no       |
-| max-filesize                 | Maximum filesize allowed for the image                                                                  | no       |
-| quality                      | The quality of the output image. It must be a number between 0 and 1                                    | no       |
-| accept-mime                  | The mime type of the upload image                                                                       | no       |
-| upload-error-message         | Error message to display in case of error during the upload                                             | no       |
-| sortable                     | Enable the sort functionality (be sure to import JS files)                                              | no       |
+| Parameter            | Description                                                                                             | Required |
+| -------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
+| id                   | The component ID                                                                                        | yes      |
+| image                | Object with the image reference (if uploaded)                                                           | yes      |
+| model                | The two-bindings connection with Livewire Component                                                     | yes      |
+| dimensions           | Size of the upload component                                                                            | no       |
+| upload-text          | Text to display when no existing image                                                                  | no       |
+| delete-tooltip       | Tooltip text for the delete button                                                                      | no       |
+| min-width            | Minimum width for the image                                                                             | no       |
+| min-height           | Minimum height for the image                                                                            | no       |
+| max-width            | Maximum width for the image                                                                             | no       |
+| max-height           | Maximum height for the image                                                                            | no       |
+| width                | The width of the output image. If not specified, the natural width of the original image will be used   | no       |
+| height               | The height of the output image. If not specified, the natural height of the original image will be used | no       |
+| max-filesize         | Maximum filesize allowed for the image                                                                  | no       |
+| quality              | The quality of the output image. It must be a number between 0 and 1                                    | no       |
+| accept-mime          | The mime type of the upload image                                                                       | no       |
+| upload-error-message | Error message to display in case of error during the upload                                             | no       |
+| sortable             | Enable the sort functionality (be sure to import JS files)                                              | no       |
 
 ---
 
@@ -342,7 +342,7 @@ public function imagesReordered(array $ids): void
 `<x-ark-navbar title="Deployer" :navigation="[['route' => 'tokens', 'label' => trans('menus.dashboard')]]" />`
 
 | Parameter  | Description                                                          | Required |
-|------------|----------------------------------------------------------------------|----------|
+| ---------- | -------------------------------------------------------------------- | -------- |
 | title      | used for the "ARK <title>" navbar text                               | yes      |
 | navigation | an array of `route`, `label` pairs for the navbar navigation options | yes      |
 
@@ -398,24 +398,24 @@ You can also get an alert with more padding and large icon by specifying `large`
 
 ### Accordion
 
-| Parameter | Description | Required |
-|-----------|-------------|----------|
-| title | Title for accordion open/close option | yes |
-| slot | Content of accordion | yes |
-| dark | Whether the styling should be dark mode or not | no |
-| border | Whether accordion & button should have a border | no |
-| leftBorder | Whether accordion content should have a left border | no |
-| container-class | Class for accordion container | no |
-| title-class | Class for title | no |
-| circle-class | Class for icon | no |
-| circle-size | Size of icon | no |
-| toggle-title | Include "Show"/"Hide" prefix text along with title | no |
-| icon-open-class | Icon class for when accordion is open | no |
-| icon-closed-class | Icon class for when accordion is closed | no |
-| content-class | Class for content | no |
-| button-class | Class for button | no |
-| button-open-class | Button class for when accordion is open | no |
-| on-toggle | JS Method which is called when the accordion is opened or closed | no |
+| Parameter         | Description                                                      | Required |
+| ----------------- | ---------------------------------------------------------------- | -------- |
+| title             | Title for accordion open/close option                            | yes      |
+| slot              | Content of accordion                                             | yes      |
+| dark              | Whether the styling should be dark mode or not                   | no       |
+| border            | Whether accordion & button should have a border                  | no       |
+| leftBorder        | Whether accordion content should have a left border              | no       |
+| container-class   | Class for accordion container                                    | no       |
+| title-class       | Class for title                                                  | no       |
+| circle-class      | Class for icon                                                   | no       |
+| circle-size       | Size of icon                                                     | no       |
+| toggle-title      | Include "Show"/"Hide" prefix text along with title               | no       |
+| icon-open-class   | Icon class for when accordion is open                            | no       |
+| icon-closed-class | Icon class for when accordion is closed                          | no       |
+| content-class     | Class for content                                                | no       |
+| button-class      | Class for button                                                 | no       |
+| button-open-class | Button class for when accordion is open                          | no       |
+| on-toggle         | JS Method which is called when the accordion is opened or closed | no       |
 
 ```blade
 <x-ark-accordion-group slots="2">
@@ -490,22 +490,22 @@ You can also get an alert with more padding and large icon by specifying `large`
 <x-ark-dropdown />
 ```
 
-| Parameter | Description | Required | Default Value |
-|---|---|---|---|
-| dropdownProperty | The variable name used by Alpine.js | no | 'dropdownOpen' |
-| initAlpine | Enable the dropdown functionality | no | true |
-| closeOnBlur | Enable the close-on-blur functionality | no | true |
-| closeOnClick | Enable the close-on-click functionality | no | true |
-| dusk | Apply a Dusk property for Dusk Tests | no | null |
-| button | Override the default trigger button | no | false |
-| height | Specify height for the content container | no | false |
-| fullScreen | Cover the entire horizontal viewport on smaller screen (until md) | no | false |
-| buttonClass | The class(es) applied to the trigger button | no | 'text-theme-primary-500' |
-| buttonClassExpanded | The class(es) applied to the trigger button when content is visible  | no | 'text-theme-secondary-400 hover:text-theme-primary-500' |
-| wrapperClass | The class(es) applied to the wrapper element | no | '' |
-| dropdownContentClasses | The class(es) applied to the content container | no | null |
-| buttonTooltip | Apply the given text as button tooltip | no | null |
-| disabled | This Boolean attribute prevents the user from interacting with the component | no | false |
+| Parameter              | Description                                                                  | Required | Default Value                                           |
+| ---------------------- | ---------------------------------------------------------------------------- | -------- | ------------------------------------------------------- |
+| dropdownProperty       | The variable name used by Alpine.js                                          | no       | 'dropdownOpen'                                          |
+| initAlpine             | Enable the dropdown functionality                                            | no       | true                                                    |
+| closeOnBlur            | Enable the close-on-blur functionality                                       | no       | true                                                    |
+| closeOnClick           | Enable the close-on-click functionality                                      | no       | true                                                    |
+| dusk                   | Apply a Dusk property for Dusk Tests                                         | no       | null                                                    |
+| button                 | Override the default trigger button                                          | no       | false                                                   |
+| height                 | Specify height for the content container                                     | no       | false                                                   |
+| fullScreen             | Cover the entire horizontal viewport on smaller screen (until md)            | no       | false                                                   |
+| buttonClass            | The class(es) applied to the trigger button                                  | no       | 'text-theme-primary-500'                                |
+| buttonClassExpanded    | The class(es) applied to the trigger button when content is visible          | no       | 'text-theme-secondary-400 hover:text-theme-primary-500' |
+| wrapperClass           | The class(es) applied to the wrapper element                                 | no       | ''                                                      |
+| dropdownContentClasses | The class(es) applied to the content container                               | no       | null                                                    |
+| buttonTooltip          | Apply the given text as button tooltip                                       | no       | null                                                    |
+| disabled               | This Boolean attribute prevents the user from interacting with the component | no       | false                                                   |
 
 ### Expandable
 Displays a defined number of items and hides the rest, showing a button to show/hide the hidden items.
@@ -576,19 +576,19 @@ As optional, an increment counter is automatically generated too and can be disp
 </x-ark-expandable>
 ```
 
-| Parameter | Description | Required | Default Value |
-|---|---|---|---|
-| total | Total count of items in the collection | yes | |
-| triggerDusk | Specify a trigger name used by Dusk | no | null |
-| triggerClass | The class(es) applied to the trigger element | no | '' |
-| collapsedClass | The class(es) applied to the collepsed element | no | '' |
-| expandedClass | The class(es) applied to the expanded element | no | '' |
-| collapsed | The collapsed element | no | null |
-| expanded | The expanded element | no | null |
-| placeholder | The placeholder element | no | null |
-| placeholderCount | Total copy of placeholder | no | 1 |
-| showMore | Implement your own show/hide system | no | null |
-| style | Useful to inject css variable(s) | no | '' |
+| Parameter        | Description                                    | Required | Default Value |
+| ---------------- | ---------------------------------------------- | -------- | ------------- |
+| total            | Total count of items in the collection         | yes      |               |
+| triggerDusk      | Specify a trigger name used by Dusk            | no       | null          |
+| triggerClass     | The class(es) applied to the trigger element   | no       | ''            |
+| collapsedClass   | The class(es) applied to the collepsed element | no       | ''            |
+| expandedClass    | The class(es) applied to the expanded element  | no       | ''            |
+| collapsed        | The collapsed element                          | no       | null          |
+| expanded         | The expanded element                           | no       | null          |
+| placeholder      | The placeholder element                        | no       | null          |
+| placeholderCount | Total copy of placeholder                      | no       | 1             |
+| showMore         | Implement your own show/hide system            | no       | null          |
+| style            | Useful to inject css variable(s)               | no       | ''            |
 
 
 ### Font Loader
@@ -611,10 +611,10 @@ Here follow you can see an example on how to use it:
 <x-ark-font-loader src="https://fonts.googleapis.com/css2?family=Inter" preconnect="https://fonts.gstatic.com">
 ```
 
-| Parameter | Description | Required | Default Value |
-|---|---|---|---|
-| src | The source of the font file | yes | |
-| preconnect | The source of the css file linked to the font itself. Can be different from the font source. | no | null |
+| Parameter  | Description                                                                                  | Required | Default Value |
+| ---------- | -------------------------------------------------------------------------------------------- | -------- | ------------- |
+| src        | The source of the font file                                                                  | yes      |               |
+| preconnect | The source of the css file linked to the font itself. Can be different from the font source. | no       | null          |
 
 ### Slider
 
@@ -651,7 +651,7 @@ Used for sliding different elements (e.g. images).
 ```
 
 | Parameter       | Description                                                                             | Required |
-|-----------------|-----------------------------------------------------------------------------------------|----------|
+| --------------- | --------------------------------------------------------------------------------------- | -------- |
 | id              | Used for initialising the slider                                                        | yes      |
 | title           | Text used for the slider title [null]                                                   | no       |
 | titleClass      | CSS classes for the title text if provided ['text-2xl']                                 | no       |
@@ -714,10 +714,10 @@ Here follow you can see an example on how to use it:
 </button>
 ```
 
-| Parameter | Description | Required | Default Value |
-|---|---|---|---|
-| class | The class of the circle | no | |
-| path-class | The class of the spinner | no | |
+| Parameter  | Description              | Required | Default Value |
+| ---------- | ------------------------ | -------- | ------------- |
+| class      | The class of the circle  | no       |               |
+| path-class | The class of the spinner | no       |               |
 
 
 ### Chart
@@ -743,7 +743,7 @@ mix.extract(['chart.js']);
 1. use the component:
 
 ```html
-<x-ark-chart 
+<x-ark-chart
     id="stats"
     data="[0.9839,1.003,1.074,1.125,1.209,1.154,1.113]"
     labels="['27.07','28.07','29.07','30.07','31.07','01.08','02.08']"
@@ -751,18 +751,18 @@ mix.extract(['chart.js']);
 />
 ```
 
-| Parameter | Description | Required | Default Value |
-|---|---|---|---|
-| id | The id of the chart | yes | |
-| data | An array of data to visualize | yes | |
-| labels | An array of labels for each data item | yes | |
-| currency | The current currency. (ISO-3 like 'USD') | yes | |
-| canvas-class | The class of the wrapper canvas | no | |
-| width | The width of the canvas | no | |
-| height | The height of the canvas | no | |
-| grid | Whether to show the grid or not | no | |
-| tooltips | Whether to show tooltips or not | no | |
-| theme | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no | |
+| Parameter    | Description                                                                                       | Required | Default Value |
+| ------------ | ------------------------------------------------------------------------------------------------- | -------- | ------------- |
+| id           | The id of the chart                                                                               | yes      |               |
+| data         | An array of data to visualize                                                                     | yes      |               |
+| labels       | An array of labels for each data item                                                             | yes      |               |
+| currency     | The current currency. (ISO-3 like 'USD')                                                          | yes      |               |
+| canvas-class | The class of the wrapper canvas                                                                   | no       |               |
+| width        | The width of the canvas                                                                           | no       |               |
+| height       | The height of the canvas                                                                          | no       |               |
+| grid         | Whether to show the grid or not                                                                   | no       |               |
+| tooltips     | Whether to show tooltips or not                                                                   | no       |               |
+| theme        | The theme to apply. (an array with 'name' and 'mode'. E.g. ['name' => 'grey', 'mode' => 'light']) | no       |               |
 
 
 ### Tabs
@@ -774,14 +774,14 @@ mix.extract(['chart.js']);
         <x-ark-tab name="tab-2">Two</x-ark-tab>
         <x-ark-tab name="tab-3">Three</x-ark-tab>
     </x-slot>
-    
+
     <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-3">...</x-ark-tab-panel>
 </x-ark-tabbed>
 ```
 
-It's possible to customize tab list by using `tabsTrigger` slot.  
+It's possible to customize tab list by using `tabsTrigger` slot.
 In the example below we use a custom dropdown.
 ```html
 <x-ark-tabbed x-data="{ menuToggle: false, closeMenu() {() => menuToggle = false} }">
@@ -804,26 +804,26 @@ In the example below we use a custom dropdown.
             </div>
         </x-ark-dropdown>
     </x-slot>
-    
+
     <x-ark-tab-panel name="tab-1">...</x-ark-tab-panel>
     <x-ark-tab-panel name="tab-2">...</x-ark-tab-panel>
 </x-ark-tabbed>
 ```
 
 The parameter accepted by `<x-ark-tabbed>`
-| Parameter        | Description                                                   | Required |
-|------------------|---------------------------------------------------------------|----------|
-| x-data           | Extra data passed to Alpine js component                      | no       |
-| on-selected      | to customise the action when a tab is pressed                 | no       |
-| default-selected | the tab selected by default                                   | no       |
-| no-data          | avoid to load Alpine js component                             | no       |
+| Parameter        | Description                                   | Required |
+| ---------------- | --------------------------------------------- | -------- |
+| x-data           | Extra data passed to Alpine js component      | no       |
+| on-selected      | to customise the action when a tab is pressed | no       |
+| default-selected | the tab selected by default                   | no       |
+| no-data          | avoid to load Alpine js component             | no       |
 
 The parameter accepted by `<x-ark-tab>`
-| Parameter | Description                                                          | Required |
-|-----------|----------------------------------------------------------------------|----------|
-| name      | The name of the tab                                                  | yes      |
+| Parameter | Description         | Required |
+| --------- | ------------------- | -------- |
+| name      | The name of the tab | yes      |
 
 The parameter accepted by `<x-ark-tab-panel>`
 | Parameter | Description                                                          | Required |
-|-----------|----------------------------------------------------------------------|----------|
+| --------- | -------------------------------------------------------------------- | -------- |
 | name      | The name of the tab panel (it must be the same used for `x-ark-tab`) | yes      |

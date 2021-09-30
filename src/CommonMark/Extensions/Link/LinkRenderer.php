@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\Extensions\Link;
+namespace ARKEcosystem\Foundation\CommonMark\Extensions\Link;
 
 use Illuminate\Support\Arr;
 use Illuminate\View\ComponentAttributeBag;

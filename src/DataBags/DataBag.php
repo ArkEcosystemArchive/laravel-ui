@@ -1,13 +1,15 @@
 <?php
 
-namespace ARKEcosystem\UserInterface\DataBags;
+declare(strict_types=1);
 
-use ARKEcosystem\UserInterface\DataBags\Resolvers\ControllerResolver;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\DomainResolver;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\GlobResolver;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\NameResolver;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\PathResolver;
-use ARKEcosystem\UserInterface\DataBags\Resolvers\RegexResolver;
+namespace ARKEcosystem\Foundation\UserInterface\DataBags;
+
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\ControllerResolver;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\DomainResolver;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\GlobResolver;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\NameResolver;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\PathResolver;
+use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\RegexResolver;
 
 final class DataBag
 {

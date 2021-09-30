@@ -1,6 +1,8 @@
 <?php
 
-use ARKEcosystem\UserInterface\Components\Toast;
+declare(strict_types=1);
+
+use ARKEcosystem\Foundation\UserInterface\Components\Toast;
 use Livewire\Livewire;
 
 it('can_see_a_toast', function () {

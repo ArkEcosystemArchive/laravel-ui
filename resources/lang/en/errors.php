@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
 
     401 => 'Something went wrong, please try again later or get in touch if the issue persists!',

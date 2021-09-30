@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark;
+namespace ARKEcosystem\Foundation\CommonMark;
 
 use League\Emoji\Emojibase\EmojibaseDatasetInterface;
 use League\Emoji\Emojibase\EmojibaseShortcodeInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\CommonMark\Extensions\Table\TableExtension;
+use ARKEcosystem\Foundation\CommonMark\Extensions\Table\TableExtension;
 use League\CommonMark\Extension\Autolink\AutolinkExtension;
 use League\CommonMark\Extension\ExternalLink\ExternalLinkExtension;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;

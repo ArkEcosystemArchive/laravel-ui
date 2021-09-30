@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\Extensions\Table;
+namespace ARKEcosystem\Foundation\CommonMark\Extensions\Table;
 
-use ARKEcosystem\CommonMark\Emoji;
+use ARKEcosystem\Foundation\CommonMark\Emoji;
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Renderer\BlockRendererInterface;
 use League\CommonMark\ElementRendererInterface;

@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests;
 
-use ARKEcosystem\CommonMark\CommonMarkServiceProvider;
+use ARKEcosystem\Foundation\CommonMark\CommonMarkServiceProvider;
 use GrahamCampbell\Markdown\MarkdownServiceProvider;
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase as Orchestra;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use ARKEcosystem\Fortify\FortifyServiceProvider;
-use ARKEcosystem\UserInterface\UserInterfaceServiceProvider;
+use ARKEcosystem\Foundation\UserInterface\UserInterfaceServiceProvider;
 use Laravel\Fortify\FortifyServiceProvider as LaravelFortifyServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;

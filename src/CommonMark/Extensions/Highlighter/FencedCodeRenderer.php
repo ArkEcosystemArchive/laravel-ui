@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\CommonMark\Extensions\Highlighter;
+namespace ARKEcosystem\Foundation\CommonMark\Extensions\Highlighter;
 
 use League\CommonMark\Block\Element\AbstractBlock;
 use League\CommonMark\Block\Element\FencedCode;
@@ -14,7 +14,7 @@ use League\CommonMark\Util\Xml;
 
 final class FencedCodeRenderer implements BlockRendererInterface
 {
-    /** @var \ARKEcosystem\CommonMark\Extensions\Highlighter\CodeBlockHighlighter */
+    /** @var \ARKEcosystem\Foundation\CommonMark\Extensions\Highlighter\CodeBlockHighlighter */
     private $highlighter;
 
     /** @var \League\CommonMark\Block\Renderer\FencedCodeRenderer */
