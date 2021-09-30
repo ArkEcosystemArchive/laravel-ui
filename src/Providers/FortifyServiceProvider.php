@@ -105,13 +105,13 @@ class FortifyServiceProvider extends ServiceProvider
         );
 
         $this->publishes([
-            __DIR__.'/../resources/views/auth'          => resource_path('views/auth'),
-            __DIR__.'/../resources/views/components'    => resource_path('views/components'),
-            __DIR__.'/../resources/views/profile'       => resource_path('views/profile'),
+            __DIR__.'/../../resources/views/auth'       => resource_path('views/auth'),
+            __DIR__.'/../../resources/views/components' => resource_path('views/components'),
+            __DIR__.'/../../resources/views/profile'    => resource_path('views/profile'),
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../resources/images' => resource_path('images'),
+            __DIR__.'/../../resources/images' => resource_path('images'),
         ], 'images');
     }
 
@@ -156,7 +156,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     private function registerViews(): void
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'ark-fortify');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'ark-fortify');
 
         Fortify::loginView(function () {
             return view('ark-fortify::auth.login');
