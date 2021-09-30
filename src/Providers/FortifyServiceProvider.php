@@ -80,7 +80,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function registerLoaders(): void
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'fortify');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'fortify');
     }
 
     /**

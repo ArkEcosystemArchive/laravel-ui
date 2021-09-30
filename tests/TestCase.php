@@ -42,15 +42,14 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
+            LaravelFortifyServiceProvider::class,
+            MarkdownServiceProvider::class,
             CommonMarkServiceProvider::class,
             FortifyServiceProvider::class,
             HermesServiceProvider::class,
-            LaravelFortifyServiceProvider::class,
             LivewireServiceProvider::class,
-            MarkdownServiceProvider::class,
             NewsletterServiceProvider::class,
             UserInterfaceServiceProvider::class,
-
         ];
     }
 }
