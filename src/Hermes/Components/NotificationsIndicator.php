@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes\Components;
+namespace ARKEcosystem\Foundation\Hermes\Components;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;

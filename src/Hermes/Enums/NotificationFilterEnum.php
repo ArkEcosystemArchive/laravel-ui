@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes\Enums;
+namespace ARKEcosystem\Foundation\Hermes\Enums;
 
 final class NotificationFilterEnum
 {

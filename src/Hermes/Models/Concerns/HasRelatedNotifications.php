@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes\Models\Concerns;
+namespace ARKEcosystem\Foundation\Hermes\Models\Concerns;
 
 trait HasRelatedNotifications
 {

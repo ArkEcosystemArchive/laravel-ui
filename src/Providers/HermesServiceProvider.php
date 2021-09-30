@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\Foundation\Providers;
 
-use ARKEcosystem\Hermes\Components\ManageNotifications;
-use ARKEcosystem\Hermes\Components\NotificationsIndicator;
+use ARKEcosystem\Foundation\Hermes\Components\ManageNotifications;
+use ARKEcosystem\Foundation\Hermes\Components\NotificationsIndicator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;

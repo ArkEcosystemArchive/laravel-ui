@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes\Components;
+namespace ARKEcosystem\Foundation\Hermes\Components;
 
 use ARKEcosystem\Foundation\Fortify\Components\Concerns\InteractsWithUser;
-use ARKEcosystem\Hermes\Enums\NotificationFilterEnum;
+use ARKEcosystem\Foundation\Hermes\Enums\NotificationFilterEnum;
 use Illuminate\Contracts\View\View;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Pagination\LengthAwarePaginator;

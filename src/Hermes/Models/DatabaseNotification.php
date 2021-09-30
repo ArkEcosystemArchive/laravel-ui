@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Hermes\Models;
+namespace ARKEcosystem\Foundation\Hermes\Models;
 
 use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasLocalizedTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
