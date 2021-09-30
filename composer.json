@@ -26,7 +26,6 @@
         "friendsofphp/php-cs-fixer": "^3.0",
         "google/recaptcha": "^1.2",
         "graham-campbell/analyzer": "^3.0",
-        "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^7.3",
         "illuminate/bus": "^8.0",
         "illuminate/contracts": "^8.0",
@@ -38,7 +37,7 @@
         "jenssegers/agent": "^2.6",
         "johnkary/phpunit-speedtrap": "^4.0",
         "laravel/fortify": "^1.8",
-        "league/commonmark": "^1.5",
+        "league/commonmark": "^2.0",
         "livewire/livewire": "^2.6",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^5.5",
@@ -67,7 +66,8 @@
         "spatie/regex": "^2.0",
         "spatie/yaml-front-matter": "^2.0",
         "teamtnt/laravel-scout-tntsearch-driver": "^10.0",
-        "unicorn-fail/emoji": "1.0.x-dev"
+        "unicorn-fail/emoji": "1.0.x-dev",
+        "lukeraymonddowning/honey": "^0.3.4"
     },
     "autoload": {
         "psr-4": {
