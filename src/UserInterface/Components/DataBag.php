@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\Foundation\UserInterface\Components;
 
-use ARKEcosystem\Foundation\UserInterface\DataBags\ResolverFactory;
+use ARKEcosystem\Foundation\DataBags\ResolverFactory;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\Component;
 

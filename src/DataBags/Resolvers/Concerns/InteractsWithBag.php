@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\Concerns;
+namespace ARKEcosystem\Foundation\DataBags\Resolvers\Concerns;
 
 use Illuminate\Support\Arr;
 

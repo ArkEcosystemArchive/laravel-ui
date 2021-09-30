@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Foundation\UserInterface\DataBags\DataBag;
-use ARKEcosystem\Foundation\UserInterface\DataBags\ResolverFactory;
+use ARKEcosystem\Foundation\DataBags\DataBag;
+use ARKEcosystem\Foundation\DataBags\ResolverFactory;
 use Illuminate\Support\Facades\Route;
 
 /**

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers;
+namespace ARKEcosystem\Foundation\DataBags\Resolvers;
 
-use ARKEcosystem\Foundation\UserInterface\DataBags\Contracts\Resolver;
+use ARKEcosystem\Foundation\DataBags\Contracts\Resolver;
 use Illuminate\Support\Facades\Route;
 
 class NameResolver implements Resolver

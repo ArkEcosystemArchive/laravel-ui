@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Foundation\UserInterface\DataBags;
+namespace ARKEcosystem\Foundation\DataBags;
 
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\ControllerResolver;
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\DomainResolver;
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\GlobResolver;
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\NameResolver;
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\PathResolver;
-use ARKEcosystem\Foundation\UserInterface\DataBags\Resolvers\RegexResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\ControllerResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\DomainResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\GlobResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\NameResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\PathResolver;
+use ARKEcosystem\Foundation\DataBags\Resolvers\RegexResolver;
 
 final class DataBag
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Foundation\UserInterface\DataBags\Contracts;
+namespace ARKEcosystem\Foundation\DataBags\Contracts;
 
 interface Resolver
 {
