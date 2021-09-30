@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
-use ARKEcosystem\Fortify\Models\User;
+use ARKEcosystem\Foundation\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
+use ARKEcosystem\Foundation\Fortify\Models\User;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Auth\UserProvider;

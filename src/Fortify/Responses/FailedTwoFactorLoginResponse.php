@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Responses;
+namespace ARKEcosystem\Foundation\Fortify\Responses;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Validation\ValidationException;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Rules\StartsWithLetterOrNumber;
+use ARKEcosystem\Foundation\Fortify\Rules\StartsWithLetterOrNumber;
 
 it('accepts a name that starts with letter or number', function ($name) {
     $rule = new StartsWithLetterOrNumber();

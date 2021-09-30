@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\AuthenticateUser;
-use ARKEcosystem\Fortify\Models\User;
+use ARKEcosystem\Foundation\Fortify\Actions\AuthenticateUser;
+use ARKEcosystem\Foundation\Fortify\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 
 it('login the user by default username (email)', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = User::factory()->create();
 
@@ -28,7 +28,7 @@ it('login the user by default username (email)', function () {
 });
 
 it('login the user with case insensitive email', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = User::factory()->create();
 
@@ -48,7 +48,7 @@ it('login the user with case insensitive email', function () {
 });
 
 it('login the user by the email when alt username is set', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = User::factory()->withUsername()->create();
@@ -69,7 +69,7 @@ it('login the user by the email when alt username is set', function () {
 });
 
 it('login the user by the alt username (username)', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = User::factory()->withUsername()->create();
@@ -90,7 +90,7 @@ it('login the user by the alt username (username)', function () {
 });
 
 it('login the user with case insensitive alt username', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = User::factory()->withUsername()->create();
@@ -111,7 +111,7 @@ it('login the user with case insensitive alt username', function () {
 });
 
 it('doesnt login the user by the alt username if not set (username)', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', null);
 
     $user = User::factory()->withUsername()->create();
@@ -131,7 +131,7 @@ it('doesnt login the user by the alt username if not set (username)', function (
 });
 
 it('doesnt login the user if password is incorrect', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = User::factory()->create();
 
@@ -149,7 +149,7 @@ it('doesnt login the user if password is incorrect', function () {
 });
 
 it('should handle the remember me checkbox', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = User::factory()->withUsername()->create();

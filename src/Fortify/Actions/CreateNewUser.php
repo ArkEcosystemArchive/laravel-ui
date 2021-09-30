@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Actions;
+namespace ARKEcosystem\Foundation\Fortify\Actions;
 
-use ARKEcosystem\Fortify\Models;
-use ARKEcosystem\Fortify\Rules\DisplayNameCharacters;
-use ARKEcosystem\Fortify\Rules\OneLetter;
-use ARKEcosystem\Fortify\Rules\StartsWithLetterOrNumber;
-use ARKEcosystem\Fortify\Rules\Username;
-use ARKEcosystem\Fortify\Support\Enums\Constants;
+use ARKEcosystem\Foundation\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Rules\DisplayNameCharacters;
+use ARKEcosystem\Foundation\Fortify\Rules\OneLetter;
+use ARKEcosystem\Foundation\Fortify\Rules\StartsWithLetterOrNumber;
+use ARKEcosystem\Foundation\Fortify\Rules\Username;
+use ARKEcosystem\Foundation\Fortify\Support\Enums\Constants;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;

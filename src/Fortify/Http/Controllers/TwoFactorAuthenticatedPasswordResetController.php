@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Http\Controllers;
+namespace ARKEcosystem\Foundation\Fortify\Http\Controllers;
 
-use ARKEcosystem\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
+use ARKEcosystem\Foundation\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Routing\Controller;
 use Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse;

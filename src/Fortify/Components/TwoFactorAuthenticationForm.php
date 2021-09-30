@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Actions\EnableTwoFactorAuthentication;
-use ARKEcosystem\Fortify\Actions\GenerateTwoFactorAuthenticationSecretKey;
-use ARKEcosystem\Fortify\Components\Concerns\InteractsWithUser;
-use ARKEcosystem\Fortify\Rules\OneTimePassword;
+use ARKEcosystem\Foundation\Fortify\Actions\EnableTwoFactorAuthentication;
+use ARKEcosystem\Foundation\Fortify\Actions\GenerateTwoFactorAuthenticationSecretKey;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\InteractsWithUser;
+use ARKEcosystem\Foundation\Fortify\Rules\OneTimePassword;
 use ARKEcosystem\Foundation\UserInterface\Http\Livewire\Concerns\HasModal;
 use ARKEcosystem\Foundation\UserInterface\Rules\CurrentPassword;
 use BaconQrCode\Renderer\Color\Rgb;

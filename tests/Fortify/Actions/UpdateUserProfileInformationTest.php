@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\UpdateUserProfileInformation;
+use ARKEcosystem\Foundation\Fortify\Actions\UpdateUserProfileInformation;
 use function Tests\createUserModel;
 use function Tests\expectValidationError;
-use Tests\UserWithNotifications;
-use Tests\UserWithoutVerification;
+use Tests\Fortify\UserWithNotifications;
+use Tests\Fortify\UserWithoutVerification;
 
 it('should update the profile information', function () {
     $user = createUserModel(UserWithoutVerification::class);

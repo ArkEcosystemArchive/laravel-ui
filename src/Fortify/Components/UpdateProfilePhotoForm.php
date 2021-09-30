@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Components\Concerns\InteractsWithUser;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\InteractsWithUser;
 use ARKEcosystem\Foundation\UserInterface\Components\UploadImageSingle;
 use Illuminate\View\View;
 use Livewire\Component;

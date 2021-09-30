@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Support\Enums;
+namespace ARKEcosystem\Foundation\Fortify\Support\Enums;
 
 final class Constants
 {

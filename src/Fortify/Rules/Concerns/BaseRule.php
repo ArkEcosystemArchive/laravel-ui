@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Rules\Concerns;
+namespace ARKEcosystem\Foundation\Fortify\Rules\Concerns;
 
 abstract class BaseRule
 {

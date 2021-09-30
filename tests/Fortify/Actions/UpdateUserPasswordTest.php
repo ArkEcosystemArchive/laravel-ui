@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\UpdateUserPassword;
+use ARKEcosystem\Foundation\Fortify\Actions\UpdateUserPassword;
 use Illuminate\Contracts\Validation\UncompromisedVerifier;
 use function Tests\createUserModel;
 use function Tests\expectValidationError;

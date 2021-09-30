@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Contracts;
+namespace ARKEcosystem\Foundation\Fortify\Contracts;
 
 interface DeleteUser
 {

@@ -26,7 +26,9 @@ class AnalysisTest extends TestCase
     {
         return [
             'Tests\createUserModel',
+            'Tests\createAttributes',
             'Tests\expectValidationError',
+            'Spatie\Snapshots\assertMatchesSnapshot',
         ];
     }
 }

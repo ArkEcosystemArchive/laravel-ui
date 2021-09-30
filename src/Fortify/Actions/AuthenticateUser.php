@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Actions;
+namespace ARKEcosystem\Foundation\Fortify\Actions;
 
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;

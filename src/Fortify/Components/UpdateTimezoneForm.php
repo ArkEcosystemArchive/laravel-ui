@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Components\Concerns\InteractsWithUser;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\InteractsWithUser;
 use Carbon\Carbon;
 use Carbon\CarbonTimeZone;
 use DateTimeZone;

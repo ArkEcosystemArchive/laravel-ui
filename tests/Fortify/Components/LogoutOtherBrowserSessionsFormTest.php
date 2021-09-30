@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Components\LogoutOtherBrowserSessionsForm;
+use ARKEcosystem\Foundation\Fortify\Components\LogoutOtherBrowserSessionsForm;
 use Livewire\Livewire;
 use function Tests\createUserModel;
 

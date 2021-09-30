@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Mail\SendFeedback;
+use ARKEcosystem\Foundation\Fortify\Mail\SendFeedback;
 use Illuminate\Support\Facades\Mail;
 
 it('sends the mail to the marketsquare team', function () {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Components\Concerns\InteractsWithUser;
-use ARKEcosystem\Fortify\Components\Concerns\ValidatesPassword;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\InteractsWithUser;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\ValidatesPassword;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 use Livewire\Component;

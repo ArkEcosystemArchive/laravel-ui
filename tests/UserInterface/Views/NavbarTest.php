@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 use function Tests\createAttributes;
-use Tests\Mocks\MediaMock;
+use Tests\UserInterface\Mocks\MediaMock;
 
 it('should render the component', function (): void {
     Route::view('/', 'ark::navbar.hamburger')->name('home');

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Actions\SubscribeToNewsletter;
+use ARKEcosystem\Foundation\Fortify\Actions\SubscribeToNewsletter;
 use Livewire\Component;
 
 final class FooterEmailSubscriptionForm extends Component

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Models\Concerns;
 
-use ARKEcosystem\Fortify\Models\Concerns\HasPhoto;
+use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasPhoto;
 use Mockery;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\MediaCollection;

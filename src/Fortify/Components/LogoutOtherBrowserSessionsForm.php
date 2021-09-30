@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Carbon;

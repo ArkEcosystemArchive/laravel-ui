@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Contracts\DeleteUser;
-use ARKEcosystem\Fortify\Mail\SendFeedback;
+use ARKEcosystem\Foundation\Fortify\Contracts\DeleteUser;
+use ARKEcosystem\Foundation\Fortify\Mail\SendFeedback;
 use ARKEcosystem\Foundation\UserInterface\Http\Livewire\Concerns\HasModal;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Facades\Auth;

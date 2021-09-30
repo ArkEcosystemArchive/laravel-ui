@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Http\Responses\FailedPasswordResetLinkRequestResponse;
+use ARKEcosystem\Foundation\Fortify\Http\Responses\FailedPasswordResetLinkRequestResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 

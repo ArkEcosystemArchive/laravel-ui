@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Components\UpdateProfileInformationForm;
+use ARKEcosystem\Foundation\Fortify\Components\UpdateProfileInformationForm;
 use Livewire\Livewire;
 use function Tests\createUserModel;
 

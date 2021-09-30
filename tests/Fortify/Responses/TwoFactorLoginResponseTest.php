@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Models\Concerns;
 
-use ARKEcosystem\Fortify\Responses\TwoFactorLoginResponse;
+use ARKEcosystem\Foundation\Fortify\Responses\TwoFactorLoginResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Mockery;

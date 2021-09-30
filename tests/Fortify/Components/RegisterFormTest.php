@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Components;
 
-use ARKEcosystem\Fortify\Components\RegisterForm;
+use ARKEcosystem\Foundation\Fortify\Components\RegisterForm;
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests;
+namespace Tests\Fortify;
 
-use ARKEcosystem\Fortify\Models\User;
+use ARKEcosystem\Foundation\Fortify\Models\User;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 

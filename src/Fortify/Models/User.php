@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Models;
+namespace ARKEcosystem\Foundation\Fortify\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 

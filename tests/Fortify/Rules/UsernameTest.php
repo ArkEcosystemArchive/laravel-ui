@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Rules\Username;
-use ARKEcosystem\Fortify\Support\Enums\Constants;
+use ARKEcosystem\Foundation\Fortify\Rules\Username;
+use ARKEcosystem\Foundation\Fortify\Support\Enums\Constants;
 
 beforeEach(function () {
     $this->subject = new Username();

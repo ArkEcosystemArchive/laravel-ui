@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Components;
+namespace ARKEcosystem\Foundation\Fortify\Components;
 
-use ARKEcosystem\Fortify\Components\Concerns\ValidatesPassword;
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Components\Concerns\ValidatesPassword;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Livewire\Component;
 
 class RegisterForm extends Component

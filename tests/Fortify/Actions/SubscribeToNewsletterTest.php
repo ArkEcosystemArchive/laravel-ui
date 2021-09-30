@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\SubscribeToNewsletter;
+use ARKEcosystem\Foundation\Fortify\Actions\SubscribeToNewsletter;
 use Illuminate\Support\Facades\Config;
 use function Tests\expectValidationError;
 

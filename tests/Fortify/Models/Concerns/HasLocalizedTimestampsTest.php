@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Models\Concerns;
 
-use ARKEcosystem\Fortify\Models\Concerns\HasLocalizedTimestamps;
-use ARKEcosystem\Fortify\Models\Concerns\HasPhoto;
+use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasLocalizedTimestamps;
+use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasPhoto;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Spatie\MediaLibrary\HasMedia;
-use Tests\MediaUser;
+use Tests\Fortify\MediaUser;
 
 /**
  * @coversNothing

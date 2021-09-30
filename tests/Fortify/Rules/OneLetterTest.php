@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Rules\OneLetter;
+use ARKEcosystem\Foundation\Fortify\Rules\OneLetter;
 
 it('doesnt accept a name that doesnt include at least one letter', function ($name) {
     $rule = new OneLetter();

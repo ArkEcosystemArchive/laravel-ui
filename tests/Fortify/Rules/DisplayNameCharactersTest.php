@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Rules\DisplayNameCharacters;
+use ARKEcosystem\Foundation\Fortify\Rules\DisplayNameCharacters;
 
 beforeEach(function (): void {
     $this->subject = new DisplayNameCharacters();

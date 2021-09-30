@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify;
+namespace ARKEcosystem\Foundation\Fortify;
 
 class Models
 {

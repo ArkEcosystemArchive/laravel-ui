@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Responses;
+namespace ARKEcosystem\Foundation\Fortify\Responses;
 
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\JsonResponse;

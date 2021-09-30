@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Rules;
+namespace ARKEcosystem\Foundation\Fortify\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 

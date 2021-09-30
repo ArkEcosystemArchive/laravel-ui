@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Models\Concerns;
+namespace ARKEcosystem\Foundation\Fortify\Models\Concerns;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;

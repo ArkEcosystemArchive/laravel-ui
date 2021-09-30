@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Components;
 
-use ARKEcosystem\Fortify\Components\ResetPasswordForm;
+use ARKEcosystem\Foundation\Fortify\Components\ResetPasswordForm;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
 use function Tests\createUserModel;
@@ -21,7 +21,7 @@ it('can interact with the form', function () {
 });
 
 it('gets the two factor code and the email', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = createUserModel();
 

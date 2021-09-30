@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Rules;
+namespace ARKEcosystem\Foundation\Fortify\Rules;
 
-use ARKEcosystem\Fortify\Rules\Concerns\ReservedUsername;
+use ARKEcosystem\Foundation\Fortify\Rules\Concerns\ReservedUsername;
 use Illuminate\Contracts\Validation\Rule;
 
 final class DisplayNameCharacters implements Rule

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Components;
 
-use ARKEcosystem\Fortify\Components\FooterEmailSubscriptionForm;
+use ARKEcosystem\Foundation\Fortify\Components\FooterEmailSubscriptionForm;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
 use function Tests\createUserModel;

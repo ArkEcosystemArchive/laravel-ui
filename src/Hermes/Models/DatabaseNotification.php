@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace ARKEcosystem\Hermes\Models;
 
-use ARKEcosystem\Fortify\Models\Concerns\HasLocalizedTimestamps;
+use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasLocalizedTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

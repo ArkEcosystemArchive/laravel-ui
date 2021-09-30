@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Http\Controllers\TwoFactorAuthenticatedPasswordResetController;
-use ARKEcosystem\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
-use ARKEcosystem\Fortify\Responses\FailedTwoFactorLoginResponse;
+use ARKEcosystem\Foundation\Fortify\Http\Controllers\TwoFactorAuthenticatedPasswordResetController;
+use ARKEcosystem\Foundation\Fortify\Http\Requests\TwoFactorResetPasswordRequest;
+use ARKEcosystem\Foundation\Fortify\Responses\FailedTwoFactorLoginResponse;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\View\View;
 use function Tests\createUserModel;

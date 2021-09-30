@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Components;
 
-use ARKEcosystem\Fortify\Components\UpdatePasswordForm;
+use ARKEcosystem\Foundation\Fortify\Components\UpdatePasswordForm;
 use Illuminate\Contracts\Validation\UncompromisedVerifier;
 use Livewire\Livewire;
 use function Tests\createUserModel;

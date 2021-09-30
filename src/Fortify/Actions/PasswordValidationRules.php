@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Actions;
+namespace ARKEcosystem\Foundation\Fortify\Actions;
 
 use Illuminate\Validation\Rules\Password;
 

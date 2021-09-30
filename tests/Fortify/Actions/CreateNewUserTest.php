@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\CreateNewUser;
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Actions\CreateNewUser;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Illuminate\Contracts\Validation\UncompromisedVerifier;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use function Tests\expectValidationError;
-use Tests\stubs\TestUser;
+use Tests\Fortify\stubs\TestUser;
 
 beforeEach(function () {
     $this->validPassword = 'Pas3w05d&123456';
@@ -17,7 +17,7 @@ beforeEach(function () {
 });
 
 it('should create a valid user with the create user action', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -34,7 +34,7 @@ it('should create a valid user with the create user action', function () {
 });
 
 it('should create user and force lowercase email', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -51,7 +51,7 @@ it('should create user and force lowercase email', function () {
 });
 
 it('should not create user with uppercase characters', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -64,7 +64,7 @@ it('should not create user with uppercase characters', function () {
 });
 
 it('should create a valid user with username if the username_alt setting is set', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = (new CreateNewUser())->create([
@@ -83,7 +83,7 @@ it('should create a valid user with username if the username_alt setting is set'
 });
 
 it('should require a username if alt username is set', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     Config::set('fortify.username_alt', 'username');
 
@@ -97,7 +97,7 @@ it('should require a username if alt username is set', function () {
 });
 
 it('should require an email', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -110,7 +110,7 @@ it('should require an email', function () {
 });
 
 it('should require a valid email', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -123,7 +123,7 @@ it('should require a valid email', function () {
 });
 
 it('should require the terms to be accepted', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -136,7 +136,7 @@ it('should require the terms to be accepted', function () {
 });
 
 it('password should match the confirmation', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -149,7 +149,7 @@ it('password should match the confirmation', function () {
 });
 
 it('password should be equal to or longer than 12 characters', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -162,7 +162,7 @@ it('password should be equal to or longer than 12 characters', function () {
 });
 
 it('password should require an uppercase letter', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -175,7 +175,7 @@ it('password should require an uppercase letter', function () {
 });
 
 it('password should require one number', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -188,7 +188,7 @@ it('password should require one number', function () {
 });
 
 it('password should require one special character', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -201,7 +201,7 @@ it('password should require one special character', function () {
 });
 
 it('handles the invitation parameter', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.models.invitation', TestUser::class);
 
     $user = (new CreateNewUser())->create([
@@ -220,7 +220,7 @@ it('handles the invitation parameter', function () {
 });
 
 it('marks the user email as verified if has an invitation', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.models.invitation', TestUser::class);
 
     $user = (new CreateNewUser())->create([
@@ -237,7 +237,7 @@ it('marks the user email as verified if has an invitation', function () {
 });
 
 it('doesnt mark the user email as verified if no ivitation ', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     $user = (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -252,7 +252,7 @@ it('doesnt mark the user email as verified if no ivitation ', function () {
 });
 
 it('should require to have a properly formatted username', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
 
     expectValidationError(fn () => (new CreateNewUser())->create([
         'name'                  => 'John Doe',
@@ -265,7 +265,7 @@ it('should require to have a properly formatted username', function () {
 });
 
 it('should work with username authentication', function () {
-    Config::set('fortify.models.user', \ARKEcosystem\Fortify\Models\User::class);
+    Config::set('fortify.models.user', \ARKEcosystem\Foundation\Fortify\Models\User::class);
     Config::set('fortify.username_alt', 'username');
 
     $user = (new CreateNewUser())->create([

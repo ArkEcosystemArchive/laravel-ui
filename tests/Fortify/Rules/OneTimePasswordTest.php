@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Rules\OneTimePassword;
+use ARKEcosystem\Foundation\Fortify\Rules\OneTimePassword;
 
 it('can check for wrong OTP', function () {
     $rule = (new OneTimePassword('secret'));

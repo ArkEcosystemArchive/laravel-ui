@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\stubs;
+namespace Tests\Fortify\stubs;
 
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Spatie\MediaLibrary\MediaCollections\Models\Concerns\HasUuid;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Components;
 
-use ARKEcosystem\Fortify\Components\DeleteUserForm;
-use ARKEcosystem\Fortify\Contracts\DeleteUser;
-use ARKEcosystem\Fortify\Mail\SendFeedback;
+use ARKEcosystem\Foundation\Fortify\Components\DeleteUserForm;
+use ARKEcosystem\Foundation\Fortify\Contracts\DeleteUser;
+use ARKEcosystem\Foundation\Fortify\Mail\SendFeedback;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;

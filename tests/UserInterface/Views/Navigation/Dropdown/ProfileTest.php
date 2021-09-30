@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use function Tests\createAttributes;
-use Tests\Mocks\MediaMock;
+use Tests\UserInterface\Mocks\MediaMock;
 
 it('should render the component', function (): void {
     $this

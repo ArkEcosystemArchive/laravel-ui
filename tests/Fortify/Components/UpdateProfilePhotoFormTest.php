@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Components\UpdateProfilePhotoForm;
+use ARKEcosystem\Foundation\Fortify\Components\UpdateProfilePhotoForm;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\MediaCollections\FileAdderFactory;
 use Spatie\MediaLibrary\MediaCollections\MediaRepository;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Tests\MediaUser;
+use Tests\Fortify\MediaUser;
 
 it('can upload a photo', function () {
     $this

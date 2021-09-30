@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ARKEcosystem\Fortify\Models;
+namespace ARKEcosystem\Foundation\Fortify\Models;
 
-use ARKEcosystem\Fortify\Models\Concerns\HasLocalizedTimestamps;
+use ARKEcosystem\Foundation\Fortify\Models\Concerns\HasLocalizedTimestamps;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;

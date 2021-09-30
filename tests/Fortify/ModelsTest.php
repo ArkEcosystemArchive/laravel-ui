@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Models\Concerns;
 
-use ARKEcosystem\Fortify\Models;
+use ARKEcosystem\Foundation\Fortify\Models;
 use Illuminate\Support\Facades\Config;
 
 it('returns the users model from config', function () {

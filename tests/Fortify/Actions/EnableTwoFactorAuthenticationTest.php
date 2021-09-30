@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Actions\EnableTwoFactorAuthentication;
+use ARKEcosystem\Foundation\Fortify\Actions\EnableTwoFactorAuthentication;
 use function Tests\createUserModel;
 
 it('should enable two factor authentication', function () {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Mocks;
+namespace Tests\UserInterface\Mocks;
 
 use Illuminate\Contracts\Support\Htmlable;
 

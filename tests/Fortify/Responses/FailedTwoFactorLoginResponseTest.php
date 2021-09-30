@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Models\Concerns;
 
-use ARKEcosystem\Fortify\Responses\FailedTwoFactorLoginResponse;
+use ARKEcosystem\Foundation\Fortify\Responses\FailedTwoFactorLoginResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 use Mockery;

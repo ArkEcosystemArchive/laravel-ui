@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use ARKEcosystem\Fortify\Components\TwoFactorAuthenticationForm;
+use ARKEcosystem\Foundation\Fortify\Components\TwoFactorAuthenticationForm;
 use Illuminate\Support\Facades\Config;
 use Livewire\Livewire;
 use PragmaRX\Google2FALaravel\Google2FA;
