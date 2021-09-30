@@ -10,7 +10,6 @@ class ReservedUsername extends BaseRule
 {
     public static function passes($attribute, $value): bool
     {
-        dd(trans('fortify::username_blacklist'));
         return ! in_array(Str::lower($value), trans('fortify::username_blacklist'), true);
     }
 
